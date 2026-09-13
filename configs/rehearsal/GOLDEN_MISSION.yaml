@@ -1,0 +1,150 @@
+# ==============================================================================
+# ASTRA-EA GOLDEN MISSION REHEARSAL CONFIGURATION (Phase 20, Section 4, D20.01)
+# Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
+# ==============================================================================
+version: "1.0.0"
+rehearsal_id: "GOLDEN_MISSION"
+title: "ASTRA-EA Golden Mission End-to-End Operational Rehearsal"
+description: "Authoritative baseline operational rehearsal combining astronaut execution, onboard runtime, physical rig/HIL simulation, ground observability, planned deviation injection, recovery guidance, and post-mission audit reporting."
+
+# 1. Mission Metadata
+mission:
+  mission_id: "ASTRA_GOLDEN_MISSION_2026"
+  phase: "OPERATIONAL_REHEARSAL"
+  authorizing_authority: "FLIGHT_DIRECTOR_SIM"
+  target_workstation: "EXP_RACK_ALPHA"
+  authoritative_clock: "ONBOARD_MET"  # Mission Elapsed Time
+
+# 2. Experiment & Procedure Definition
+experiment:
+  experiment_id: "DEMO_EXP_001"
+  experiment_title: "Microgravity Specimen Handling and Centrifugation"
+  procedure_path: "configs/experiments/demo.yaml"
+  procedure_version: "v1.0.0"
+  total_steps: 4
+  steps:
+    - step_id: "STEP_01"
+      name: "Approach Workstation & Stage Apparatus"
+      expected_action: "GRASP_CENTRIFUGE_TUBE"
+      primary_object: "CENTRIFUGE_TUBE"
+      secondary_object: "PIPETTE"
+      required_confidence: 0.85
+      max_duration_seconds: 30.0
+
+    - step_id: "STEP_02"
+      name: "Aspirate Specimen & Transfer to Vial"
+      expected_action: "PIPETTE_TRANSFER"
+      primary_object: "PIPETTE"
+      secondary_object: "SPECIMEN_VIAL"
+      required_confidence: 0.82
+      max_duration_seconds: 45.0
+
+    - step_id: "STEP_03"
+      name: "Load Specimen into Centrifuge & Seal Lid"
+      expected_action: "INSERT_AND_LATCH"
+      primary_object: "CENTRIFUGE"
+      secondary_object: "CENTRIFUGE_TUBE"
+      required_confidence: 0.88
+      max_duration_seconds: 30.0
+
+    - step_id: "STEP_04"
+      name: "Initiate Centrifugation Cycle & Verify RPM"
+      expected_action: "PRESS_RUN_BUTTON"
+      primary_object: "CENTRIFUGE_PANEL"
+      secondary_object: "CENTRIFUGE_TUBE"
+      required_confidence: 0.90
+      max_duration_seconds: 20.0
+
+# 3. Perception & Sensor Profile
+camera_profile:
+  primary_view: "VIEW_LEFT"
+  resolution: [1280, 720]
+  fps: 30
+  fov_degrees: 78.0
+  alternative_views:
+    - "VIEW_CENTER"
+    - "VIEW_RIGHT"
+  fallback_policy: "PAUSE_VERIFICATION_ON_SENSOR_LOSS"
+
+# 4. Neural Model Configuration
+model:
+  model_id: "ASTRA_OBJECT_DETECTOR_v0.1.0"
+  runtime: "ONNX_RUNTIME"
+  execution_provider: "CPUExecutionProvider"
+  weights_path: "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.onnx"
+  sha256_checksum: "VERIFIED_AT_PRECHECK"
+  fallback_mode: "RULE_BASED_HEURISTIC"
+
+# 5. Hardware Profile
+hardware_profile:
+  platform: "HIL_ORIN_NANO_EMULATION"
+  cpu_cores: 6
+  ram_mb: 8192
+  storage_target_partition: "/var/astra"
+  min_storage_margin_mb: 500
+
+# 6. Ground Segment Connection
+ground_monitor:
+  host: "127.0.0.1"
+  telemetry_port: 8080
+  video_stream_port: 8554
+  command_port: 8081
+  reconnect_interval_seconds: 2.0
+  heartbeat_timeout_seconds: 3.0
+  reconciliation_policy: "SEQUENCE_GAP_REQUEST_NO_DUPLICATES"
+
+# 7. Fault Scenarios (Planned Deviations & Subsystem Drill Injections)
+fault_scenarios:
+  intentional_deviation:
+    active: true
+    step_id: "STEP_02"
+    deviation_type: "WRONG_APPARATUS"
+    injected_object: "PIPETTE_TIP_BOX"
+    expected_object: "CENTRIFUGE_TUBE"
+    expected_alert_severity: "WARNING"
+    recovery_guidance: "Return pipette box to rack; retrieve centrifuge tube."
+    expected_recovery_step: "RECOVERY_VERIFIED"
+
+  uncertainty_injection:
+    step_id: "STEP_03"
+    occlusion_factor: 0.65
+    expected_state: "UNCERTAIN"
+    clear_after_seconds: 2.0
+
+  telemetry_loss:
+    disconnect_met_seconds: 15.0
+    duration_seconds: 5.0
+    expected_onboard_behavior: "CONTINUE_AUTONOMOUS"
+
+# 8. Operator Roles
+operator_roles:
+  astronaut_operator:
+    role_id: "ASTRONAUT_OPERATOR"
+    authority_level: "PHYSICAL_EXECUTION"
+    permitted_actions:
+      - "PERFORM_PROCEDURE_ACTIONS"
+      - "RESPOND_TO_RECOVERY_GUIDANCE"
+      - "ACKNOWLEDGE_CONSOLE_ALERT"
+
+  mission_operator:
+    role_id: "MISSION_OPERATOR"
+    authority_level: "MISSION_SUPERVISOR"
+    permitted_actions:
+      - "AUTHORIZE_EXPERIMENT_START"
+      - "PAUSE_RESUME_MISSION"
+      - "OBSERVE_GROUND_TELEMETRY"
+      - "ACKNOWLEDGE_GROUND_ALERT"
+      - "TRIGGER_RECONCILIATION"
+      - "EXPORT_POST_MISSION_REPORT"
+
+# 9. Expected Operational Outcomes & Pass/Fail Criteria
+expected_outcomes:
+  mission_verdict: "PASS"
+  required_step_verifications: 4
+  expected_deviations: 1
+  expected_recoveries: 1
+  false_verifications_allowed: 0
+  false_deviations_allowed: 0
+  max_deviation_detection_latency_ms: 250.0
+  max_recovery_instruction_latency_ms: 300.0
+  data_consistency_verification: "STRICT_MATCH_SQLITE_EVENTS_TIMELINE_EVIDENCE"

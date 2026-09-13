@@ -2,7 +2,7 @@
   "product_version": "ASTRA-EA-v1.0",
   "software_version": "1.0.0-RC1",
   "build_name": "ASTRA-EA-FLIGHT-INTEGRATION-001",
-  "build_timestamp": "2026-09-13T14:55:26Z",
+  "build_timestamp": "2026-09-13T15:07:08Z",
   "git_commit": "d480f4851815a92a6722c6b3d19b9575bae0d950",
   "model_version": "ASTRA_OBJECT_DETECTOR_v0.1.0-ONNX",
   "dataset_version": "ASTRA-DS-v1.0",
@@ -10,6 +10,6 @@
   "configuration_version": "v1.0",
   "platform_profile": "FLIGHT_TARGET_TBD",
   "package_type": "FLIGHT_INTEGRATION_BUILD",
-  "total_files": 217,
+  "total_files": 219,
   "checksums_file": "checksums/sha256sums.txt"
 }

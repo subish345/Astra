@@ -2105,30 +2105,130 @@ def cmd_mission(args: argparse.Namespace) -> int:
 
 
 def cmd_rehearsal(args: argparse.Namespace) -> int:
-    """Execute operational mission rehearsal in an isolated sandbox (Phase 19)."""
-    from core.operations.rehearsal import MissionRehearsalEngine, RehearsalSpeed
+    """Execute operational mission rehearsal in an isolated sandbox (Phase 20)."""
+    from core.operations.rehearsal import (
+        MissionRehearsalEngine,
+        RehearsalMode,
+        RehearsalRunResult,
+        RehearsalSpeed,
+    )
+    from core.operations.scorecard import RehearsalScorecardGenerator
+
     scenario = getattr(args, "scenario", "GOLDEN_MISSION")
     speed_str = getattr(args, "speed", "ACCELERATED")
+    mode_str = getattr(args, "mode", "SIMULATION")
+    operator = getattr(args, "operator", "ASTRONAUT_OPERATOR_1")
+
     speed = RehearsalSpeed(speed_str)
+    mode = RehearsalMode(mode_str)
 
     print("=" * 70)
-    print(" ASTRA-EA MISSION REHEARSAL ENGINE (Phase 19)")
+    print(" ASTRA-EA MISSION REHEARSAL FRAMEWORK (Phase 20)")
     print("=" * 70)
     print(f"Scenario:     {scenario}")
+    print(f"Mode:         {mode.value}")
     print(f"Pacing:       {speed.value}")
+    print(f"Operator:     {operator}")
     print("Sandbox:      ISOLATED (Zero live flight records modified)")
     print("-" * 70)
 
-    engine = MissionRehearsalEngine(scenario_name=scenario, speed=speed)
+    scorecard_gen = RehearsalScorecardGenerator()
+
+    if scenario == "ALL":
+        scenarios_to_run = [
+            "REH_01_DEVIATION",
+            "REH_02_CLEAN",
+            "REH_03_UNCERTAINTY",
+            "REH_04_NETWORK_FAILURE",
+            "REH_05_CAMERA_FAILURE",
+            "REH_06_MODEL_FAILURE",
+            "REH_07_STORAGE_WARNING",
+            "REH_08_GROUND_FAILURE",
+            "REH_09_VOICE_FAILURE",
+            "REH_10_COMBINED_FAULT",
+            "REH_11_VIEWPOINT",
+            "REH_12_OPERATOR_INDEP",
+            "DRESS_REHEARSAL",
+        ]
+        results = []
+        for s in scenarios_to_run:
+            eng = MissionRehearsalEngine(scenario_name=s, mode=mode, speed=speed, operator=operator)
+            res = eng.run_all()
+            results.append(res)
+            print(f"  [{res.status:<4}] {res.scenario:<26} ({res.duration_seconds:.2f}s, {res.deviations_count} dev, {res.recoveries_count} rec)")
+
+        card = scorecard_gen.generate_scorecard(results)
+        print("=" * 70)
+        print(f"Comprehensive Rehearsal Verdict: [{card.overall_verdict}] ({card.successful_rehearsals}/{card.total_rehearsals_evaluated} Passed)")
+        print("Scorecard HTML: reports/rehearsal/scorecard.html")
+        print("=" * 70)
+        return 0 if card.overall_verdict == "PASS" else 1
+
+    engine = MissionRehearsalEngine(scenario_name=scenario, mode=mode, speed=speed, operator=operator)
     res = engine.run_all()
 
-    for entry in res["log"]:
-        print(f"  [{entry['phase']:<12}] Step {entry['step_index']}: {entry['description']}")
+    for entry in engine.rehearsal_log:
+        print(f"  [{entry['phase']:<12}] Step {entry['step_index']}: {entry['title']}")
     print("=" * 70)
-    print(f"Rehearsal Verdict:  [{res['status']}] (Duration: {res['execution_duration_seconds']}s)")
-    print(f"Rehearsal Report:   reports/rehearsal/rehearsal_{scenario.lower()}.json")
+    print(f"Rehearsal Verdict:  [{res.status}] (Duration: {res.duration_seconds}s)")
+    print(f"Data Consistency:   [{res.data_consistency}]")
+    print(f"Artifacts Pack:     {res.artifacts_dir}")
     print("=" * 70)
-    return 0 if res["status"] == "PASS" else 1
+
+    scorecard_gen.generate_scorecard([res])
+    if scenario == "DRESS_REHEARSAL":
+        scorecard_gen.generate_dress_rehearsal_report(res)
+        print("Dress Rehearsal Report: reports/rehearsal/dress_rehearsal_report.html")
+
+    return 0 if res.status == "PASS" else 1
+
+
+def cmd_dress_rehearsal(args: argparse.Namespace) -> int:
+    """Execute authoritative full-length Dress Rehearsal (Phase 20, Section 46-49)."""
+    setattr(args, "scenario", "DRESS_REHEARSAL")
+    if not hasattr(args, "mode") or getattr(args, "mode", None) is None:
+        setattr(args, "mode", "FULL_REAL")
+    return cmd_rehearsal(args)
+
+
+def cmd_rehearsal_scorecard(args: argparse.Namespace) -> int:
+    """Compile and display consolidated rehearsal scorecards (Phase 20, Section 36)."""
+    import json
+    from core.common.config import get_project_root
+    from core.operations.rehearsal import RehearsalRunResult
+    from core.operations.scorecard import RehearsalScorecardGenerator
+
+    root = get_project_root()
+    rehearsal_dir = root / "reports" / "rehearsal"
+
+    results = []
+    if rehearsal_dir.exists():
+        for run_dir in sorted(rehearsal_dir.glob("REH_*")):
+            sc_file = run_dir / "scorecard.json"
+            if sc_file.is_file():
+                try:
+                    with open(sc_file, "r", encoding="utf-8") as f:
+                        d = json.load(f)
+                    results.append(RehearsalRunResult(**d))
+                except Exception:
+                    pass
+
+    gen = RehearsalScorecardGenerator(root)
+    card = gen.generate_scorecard(results)
+
+    print("=" * 70)
+    print(" ASTRA-EA OPERATIONAL REHEARSAL SCORECARD")
+    print("=" * 70)
+    print(f"Rehearsals Evaluated: {card.total_rehearsals_evaluated}")
+    print(f"Successful Runs:       {card.successful_rehearsals}")
+    print(f"Failed Runs:           {card.failed_rehearsals}")
+    print(f"Step Verification:     {card.step_verification_rate_pct}%")
+    print(f"Recovery Success:      {card.recovery_success_rate_pct}%")
+    print(f"Data Consistency:      {card.data_consistency_rate_pct}%")
+    print(f"Overall Verdict:       [{card.overall_verdict}]")
+    print(f"Scorecard HTML:        reports/rehearsal/scorecard.html")
+    print("=" * 70)
+    return 0 if card.overall_verdict == "PASS" else 1
 
 
 def cmd_training_mode(args: argparse.Namespace) -> int:
@@ -4257,11 +4357,45 @@ def build_parser() -> argparse.ArgumentParser:
     p_fpkg_bld.set_defaults(func=cmd_flight_package)
     p_fpkg.set_defaults(func=cmd_flight_package)
 
-    # rehearsal (Phase 19 Mission Rehearsal Engine)
-    p_reh = subparsers.add_parser("rehearsal", help="Simulate end-to-end mission rehearsals (Phase 19)")
-    p_reh.add_argument("--scenario", default="GOLDEN_MISSION", choices=["GOLDEN_MISSION"], help="Rehearsal scenario")
-    p_reh.add_argument("--speed", default="ACCELERATED", choices=["REALTIME", "ACCELERATED", "STEPWISE"], help="Execution pacing")
+    # rehearsal (Phase 20 Mission Rehearsal Framework)
+    p_reh = subparsers.add_parser("rehearsal", help="End-to-end mission rehearsals across operational modes (Phase 20)")
+    p_reh.add_argument(
+        "--scenario",
+        default="GOLDEN_MISSION",
+        choices=[
+            "GOLDEN_MISSION",
+            "REH_01_DEVIATION",
+            "REH_02_CLEAN",
+            "REH_03_UNCERTAINTY",
+            "REH_04_NETWORK_FAILURE",
+            "REH_05_CAMERA_FAILURE",
+            "REH_06_MODEL_FAILURE",
+            "REH_07_STORAGE_WARNING",
+            "REH_08_GROUND_FAILURE",
+            "REH_09_VOICE_FAILURE",
+            "REH_10_COMBINED_FAULT",
+            "REH_11_VIEWPOINT",
+            "REH_12_OPERATOR_INDEP",
+            "DRESS_REHEARSAL",
+            "ALL",
+        ],
+        help="Operational rehearsal scenario to execute",
+    )
+    p_reh.add_argument("--mode", default="SIMULATION", choices=["FULL_REAL", "HIL", "SIMULATION", "STEPWISE"], help="Rehearsal execution mode (Section 5)")
+    p_reh.add_argument("--speed", default="ACCELERATED", choices=["REALTIME", "ACCELERATED", "STEPWISE"], help="Execution pacing (Section 48)")
+    p_reh.add_argument("--operator", default="ASTRONAUT_OPERATOR_1", help="Operator identifier")
     p_reh.set_defaults(func=cmd_rehearsal)
+
+    # dress-rehearsal (Phase 20 Authoritative Dress Rehearsal)
+    p_dress = subparsers.add_parser("dress-rehearsal", help="Execute full-length dress rehearsal with zero developer intervention (Phase 20)")
+    p_dress.add_argument("--mode", default="FULL_REAL", choices=["FULL_REAL", "HIL", "SIMULATION", "STEPWISE"], help="Rehearsal execution mode")
+    p_dress.add_argument("--speed", default="ACCELERATED", choices=["REALTIME", "ACCELERATED", "STEPWISE"], help="Execution pacing")
+    p_dress.add_argument("--operator", default="ASTRONAUT_OPERATOR_1", help="Operator identifier")
+    p_dress.set_defaults(func=cmd_dress_rehearsal)
+
+    # rehearsal-scorecard (Phase 20 Rehearsal Scorecard Compiler)
+    p_score = subparsers.add_parser("rehearsal-scorecard", help="Compile and display consolidated rehearsal scorecards (Phase 20)")
+    p_score.set_defaults(func=cmd_rehearsal_scorecard)
 
     # training-mode (Phase 19 Operator Failure Drills)
     p_train = subparsers.add_parser("training-mode", help="Operator training mode and operational failure drills (Phase 19)")

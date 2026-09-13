@@ -50,6 +50,15 @@ class SessionBar(QFrame):
         self.lbl_brand.setStyleSheet(f"font-size: 16px; font-weight: 900; color: {Colors.BLUE_BRIGHT}; letter-spacing: 1px;")
         layout.addWidget(self.lbl_brand)
 
+        # Operational Mode Badge (Section 6: FULL_REAL, HIL, SIMULATION, REPLAY)
+        self.lbl_mode = QLabel("MODE: FULL_REAL")
+        self.lbl_mode.setStyleSheet(
+            f"font-size: 10px; font-weight: bold; color: {Colors.GREEN_BRIGHT}; "
+            f"background-color: {Colors.GREEN_BG}; border: 1px solid {Colors.GREEN}; "
+            f"border-radius: 3px; padding: 3px 8px;"
+        )
+        layout.addWidget(self.lbl_mode)
+
         # System Status Badge
         self.lbl_sys_status = QLabel("🟢 SYSTEM: NORMAL")
         self.lbl_sys_status.setStyleSheet(
@@ -155,3 +164,17 @@ class SessionBar(QFrame):
     def set_camera_profile(self, profile_name: str) -> None:
         """Update camera profile badge."""
         self.lbl_cam_profile.setText(f"📷 {profile_name.upper()}")
+
+    def set_mode(self, mode: str) -> None:
+        """Update operational mode badge (FULL_REAL, HIL, SIMULATION, REPLAY)."""
+        mode_upper = mode.upper()
+        if mode_upper == "FULL_REAL":
+            style = f"font-size: 10px; font-weight: bold; color: {Colors.GREEN_BRIGHT}; background-color: {Colors.GREEN_BG}; border: 1px solid {Colors.GREEN}; border-radius: 3px; padding: 3px 8px;"
+        elif mode_upper == "HIL":
+            style = f"font-size: 10px; font-weight: bold; color: {Colors.BLUE_BRIGHT}; background-color: {Colors.BG_SURFACE}; border: 1px solid {Colors.BLUE}; border-radius: 3px; padding: 3px 8px;"
+        elif mode_upper == "SIMULATION":
+            style = "font-size: 10px; font-weight: bold; color: #a78bfa; background-color: #2e1065; border: 1px solid #7c3aed; border-radius: 3px; padding: 3px 8px;"
+        else:  # REPLAY
+            style = f"font-size: 10px; font-weight: bold; color: {Colors.AMBER_BRIGHT}; background-color: {Colors.BG_SURFACE}; border: 1px solid {Colors.AMBER}; border-radius: 3px; padding: 3px 8px;"
+        self.lbl_mode.setText(f"MODE: {mode_upper}")
+        self.lbl_mode.setStyleSheet(style)

@@ -68,6 +68,19 @@ class HeaderPanel(QFrame):
         self.op_status_badge.setStyleSheet(self._badge_style("#059669"))
         layout.addWidget(self.op_status_badge)
 
+        # Mode Badge (Section 6: FULL_REAL, HIL, SIMULATION, REPLAY)
+        self.mode_badge = QLabel("MODE: FULL_REAL")
+        self.mode_badge.setStyleSheet("""
+            background-color: #059669;
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #10b981;
+        """)
+        layout.addWidget(self.mode_badge)
+
         # Simulation Badge (hidden by default)
         self.sim_badge = QLabel("SIMULATION")
         self.sim_badge.setStyleSheet("""
@@ -168,8 +181,35 @@ class HeaderPanel(QFrame):
             letter-spacing: 0.5px;
         """
 
+    def set_mode(self, mode: str) -> None:
+        """Update operational mode banner per Section 6 (FULL_REAL, HIL, SIMULATION, REPLAY)."""
+        mode_upper = mode.upper()
+        mode_colors = {
+            "FULL_REAL": ("#059669", "#10b981"),
+            "HIL": ("#2563eb", "#3b82f6"),
+            "SIMULATION": ("#7c3aed", "#a78bfa"),
+            "REPLAY": ("#d97706", "#f59e0b"),
+        }
+        bg, border = mode_colors.get(mode_upper, ("#7c3aed", "#a78bfa"))
+        self.mode_badge.setText(f"MODE: {mode_upper}")
+        self.mode_badge.setStyleSheet(f"""
+            background-color: {bg};
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid {border};
+        """)
+        if mode_upper == "SIMULATION":
+            self.sim_badge.setVisible(True)
+        else:
+            self.sim_badge.setVisible(False)
+
     def set_simulation_mode(self, is_sim: bool) -> None:
         self.sim_badge.setVisible(is_sim)
+        if is_sim:
+            self.set_mode("SIMULATION")
 
     def update_status(self, status: Dict[str, Any]) -> None:
         overall = status.get("overall", "OFFLINE")

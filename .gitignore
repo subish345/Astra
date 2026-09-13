@@ -71,6 +71,7 @@ exports/*
 # Operational Reports
 reports/rehearsal/*
 !reports/rehearsal/.gitkeep
+!reports/rehearsal/final-operational-readiness-report.md
 reports/training/*
 !reports/training/.gitkeep
 reports/mission_report_*.html

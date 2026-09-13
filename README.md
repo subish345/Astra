@@ -228,6 +228,27 @@ astra mission --profile validation
 astra ground-monitor
 ```
 
+### 7.0.1 Mission Operations & Rehearsal Commands (Phases 19 & 20)
+```bash
+# Automated 9-subsystem pre-mission check
+astra mission precheck
+
+# Execute end-to-end mission rehearsals across operational modes
+astra rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
+astra rehearsal --scenario ALL --speed ACCELERATED
+
+# Execute authoritative full-length dress rehearsal (zero developer intervention)
+astra dress-rehearsal --speed ACCELERATED
+
+# Compile and display consolidated operational scorecard
+astra rehearsal-scorecard
+
+# Export completed mission data package and audit reports
+astra mission export --run RUN_XXXX
+astra mission report --run RUN_XXXX
+astra mission review --run RUN_XXXX
+```
+
 ### 7.1 Diagnostics & Configuration
 ```bash
 # Run system diagnostic checks (Python runtime, GPU/CUDA, OpenCV, DB, Camera)
@@ -731,6 +752,13 @@ Comprehensive engineering documentation is maintained in the [`docs/`](file:///h
 
 | Document | Category | Description |
 | :--- | :--- | :--- |
+| [`docs/operations/mission-rehearsal.md`](file:///home/subish-loq/Documents/astra/docs/operations/mission-rehearsal.md) | Operations | Phase 20 End-to-End Mission Rehearsal Manual, multi-mode matrix, and scorecards. |
+| [`docs/operations/rehearsal-findings.md`](file:///home/subish-loq/Documents/astra/docs/operations/rehearsal-findings.md) | Assurance | Phase 20 Rehearsal findings registry, taxonomy, and resolution history. |
+| [`docs/operations/corrective-actions.md`](file:///home/subish-loq/Documents/astra/docs/operations/corrective-actions.md) | Quality | Phase 20 CAPA traceability tracking, RCA, and regression verification. |
+| [`reports/rehearsal/final-operational-readiness-report.md`](file:///home/subish-loq/Documents/astra/reports/rehearsal/final-operational-readiness-report.md) | Readiness | Phase 20 Formal Operational Readiness Assessment and limitation bounds. |
+| [`docs/operations/operations-concept.md`](file:///home/subish-loq/Documents/astra/docs/operations/operations-concept.md) | Operations | Phase 19 Operational concept, CONOPS, and human-in-the-loop workflows. |
+| [`docs/operations/operator-manual.md`](file:///home/subish-loq/Documents/astra/docs/operations/operator-manual.md) | Operations | Phase 19 Standard operating procedures and astronaut/ground operator manual. |
+| [`docs/operations/ground-operations.md`](file:///home/subish-loq/Documents/astra/docs/operations/ground-operations.md) | Ground | Phase 19 Ground segment monitoring, reconciliation, and audit export. |
 | [`docs/architecture/edge-optimization.md`](file:///home/subish-loq/Documents/astra/docs/architecture/edge-optimization.md) | Architecture | Phase 10 Edge deployment philosophy, hardware abstraction, and scheduler. |
 | [`docs/architecture/profiling-framework.md`](file:///home/subish-loq/Documents/astra/docs/architecture/profiling-framework.md) | Architecture | Phase 10 Multi-dimensional latency profiler, percentiles, and queue health. |
 | [`docs/testing/benchmarking-guide.md`](file:///home/subish-loq/Documents/astra/docs/testing/benchmarking-guide.md) | Verification | Phase 10 Baseline, profiled, soak, and optimization benchmarking guide. |
