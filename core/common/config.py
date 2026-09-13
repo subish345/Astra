@@ -81,6 +81,20 @@ class ActiveExperimentSettings(BaseModel):
     path: str = Field(default="configs/experiments/demo.yaml")
 
 
+class PerceptionSettings(BaseModel):
+    device: str = Field(default="auto")
+    detector_backend: str = Field(default="color_spatial")  # "color_spatial" or "yolo"
+    yolo_model_path: Optional[str] = Field(default="models/checkpoints/detector.onnx")
+    confidence_threshold: float = Field(default=0.45, ge=0.0, le=1.0)
+    iou_threshold: float = Field(default=0.25, ge=0.0, le=1.0)
+    max_lost_frames: int = Field(default=20, ge=1)
+    tracking_interval: int = Field(default=1, ge=1)
+    detection_interval: int = Field(default=1, ge=1)
+    pose_interval: int = Field(default=1, ge=1)
+    hand_interval: int = Field(default=1, ge=1)
+    quality_interval: int = Field(default=2, ge=1)
+
+
 class AppConfig(BaseModel):
     """Root configuration model encapsulating all subsystem settings."""
     system: SystemSettings = Field(default_factory=SystemSettings)
@@ -88,6 +102,7 @@ class AppConfig(BaseModel):
     camera: CameraSettings = Field(default_factory=CameraSettings)
     storage: StorageSettings = Field(default_factory=StorageSettings)
     thresholds: ThresholdSettings = Field(default_factory=ThresholdSettings)
+    perception: PerceptionSettings = Field(default_factory=PerceptionSettings)
     voice: VoiceSettings = Field(default_factory=VoiceSettings)
     streaming: StreamingSettings = Field(default_factory=StreamingSettings)
     active_experiment: ActiveExperimentSettings = Field(default_factory=ActiveExperimentSettings)

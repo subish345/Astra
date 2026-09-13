@@ -57,3 +57,7 @@ storage/database/*.db-shm
 .idea/
 *.swp
 .DS_Store
+
+# Simulation recordings
+simulation/recordings/*
+!simulation/recordings/.gitkeep

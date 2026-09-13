@@ -69,8 +69,22 @@ class CameraSource(ABC):
         """Return (width, height) resolution tuple."""
         pass
 
+    @abstractmethod
+    def get_source_id(self) -> str:
+        """Return unique identifier for this video source."""
+        pass
+
+    @abstractmethod
+    def get_dropped_frames(self) -> int:
+        """Return cumulative count of dropped or failed frames."""
+        pass
+
     @property
     @abstractmethod
     def is_active(self) -> bool:
         """Return True if camera source is actively producing frames."""
         pass
+
+    def is_open(self) -> bool:
+        """Return True if capture device is open and active."""
+        return self.is_active

@@ -36,6 +36,7 @@ class WebcamSource(CameraSource):
 
         self._cap: Optional[cv2.VideoCapture] = None
         self._frame_count = 0
+        self._dropped_frames = 0
         self._is_active = False
         self._status = "CLOSED"
         self._actual_width = width
@@ -96,7 +97,8 @@ class WebcamSource(CameraSource):
 
         ret, frame = self._cap.read()
         if not ret or frame is None:
-            logger.warning("Camera %d dropped frame or disconnected.", self.device_id)
+            self._dropped_frames += 1
+            logger.warning("Camera %d dropped frame or disconnected (total dropped: %d).", self.device_id, self._dropped_frames)
             self._status = "DEGRADED"
             return None
 
@@ -109,7 +111,7 @@ class WebcamSource(CameraSource):
             image=frame,
             timestamp_mono=now_mono,
             timestamp_wall=now_wall,
-            source_id=f"webcam:{self.device_id}",
+            source_id=self.get_source_id(),
         )
 
     def get_status(self) -> str:
@@ -120,6 +122,12 @@ class WebcamSource(CameraSource):
 
     def get_resolution(self) -> Tuple[int, int]:
         return (self._actual_width, self._actual_height)
+
+    def get_source_id(self) -> str:
+        return f"webcam:{self.device_id}"
+
+    def get_dropped_frames(self) -> int:
+        return self._dropped_frames
 
     @property
     def is_active(self) -> bool:

@@ -29,6 +29,19 @@ thresholds:
   temporal_window_seconds: 10.0
   uncertainty_timeout_seconds: 15.0
 
+perception:
+  device: "auto"
+  detector_backend: "color_spatial" # "color_spatial" or "yolo"
+  yolo_model_path: "models/checkpoints/detector.onnx"
+  confidence_threshold: 0.45
+  iou_threshold: 0.25
+  max_lost_frames: 20
+  tracking_interval: 1
+  detection_interval: 1
+  pose_interval: 1
+  hand_interval: 1
+  quality_interval: 2
+
 voice:
   enabled: true
   engine: "pyttsx3"

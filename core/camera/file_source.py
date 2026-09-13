@@ -119,6 +119,12 @@ class VideoFileSource(CameraSource):
     def get_resolution(self) -> Tuple[int, int]:
         return (self._width, self._height)
 
+    def get_source_id(self) -> str:
+        return f"file:{self.file_path.name}"
+
+    def get_dropped_frames(self) -> int:
+        return 0
+
     @property
     def is_active(self) -> bool:
         return self._is_active

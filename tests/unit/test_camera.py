@@ -72,6 +72,12 @@ class MockCameraSource(CameraSource):
     def get_resolution(self):
         return (640, 480)
 
+    def get_source_id(self) -> str:
+        return "mock_camera"
+
+    def get_dropped_frames(self) -> int:
+        return 0
+
     @property
     def is_active(self) -> bool:
         return self._active
