@@ -1,0 +1,10 @@
+id: "CAPA-007"
+finding_id: "FINDING-007"
+owner: "UI_SYSTEMS_ENGINEER"
+component: "MISSION_CONSOLE_UI_BRIDGE"
+change: "Harmonize visualizer HUD argument handling, implement safe attribute extraction in MainWindow._on_evidence_bundle, and add complete_experiment_run alias in DatabaseManager."
+risk: "LOW"
+tests_required:
+  - "tests/regression/test_mission_console_ui_worker.py"
+  - "tests/gui/test_mission_integration.py"
+status: "CLOSED"

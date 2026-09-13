@@ -1,0 +1,16 @@
+finding_id: "FINDING-007"
+title: "Mission Console UI worker and callback interface mismatches"
+analysis_method: "TRACE_ANALYSIS"
+symptom: "TypeError on draw_procedure_hud keyword argument 'recovery_manager', AttributeError on EvidenceItem.score, and AttributeError on db.complete_experiment_run."
+reproduction_case: "Run MissionConsoleWindow via 'astra mission' with live camera and observe worker loop execution and shutdown trace."
+evidence:
+  - "TASK_6268_LOG_TRACEBACK"
+  - "tests/regression/test_mission_console_ui_worker.py"
+root_cause_breakdown:
+  why_1: "draw_procedure_hud() signature specified recovery_state: Optional[str] but worker passed recovery_manager: ClosedLoopRecoveryManager."
+  why_2: "EvidenceItem model defined attributes .confidence and .verified, while MainWindow._on_evidence_bundle assumed .score and .is_satisfied."
+  why_3: "DatabaseManager defined end_experiment_run() and finish_experiment_run(), while worker.py called complete_experiment_run()."
+  why_4: "Root cause: Minor interface naming diverged between Phase 4/5 core assurance types and Phase 6 UI presentation bridge."
+corrective_action: "Update ProcedureVisualizer.draw_procedure_hud to accept duck-typed progress manager and recovery_manager objects, adapt EvidenceItem attributes safely using getattr fallbacks in MainWindow, and add complete_experiment_run alias to DatabaseManager."
+verification: "Dedicated regression tests in tests/regression/test_mission_console_ui_worker.py pass cleanly (3/3 tests)."
+disposition: "RESOLVED"

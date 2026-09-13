@@ -291,17 +291,21 @@ class MissionConsoleWindow(QMainWindow):
         items = []
         if hasattr(bundle, "items"):
             for factor, item in bundle.items.items():
+                score_val = getattr(item, "confidence", getattr(item, "score", 0.0))
+                sat_val = getattr(item, "verified", getattr(item, "is_satisfied", False))
+                det_str = str(item.details) if getattr(item, "details", None) else ""
+                frame_idx = getattr(item, "end_frame", getattr(item, "start_frame", getattr(item, "source_frame", 0))) or 0
                 items.append(
                     EvidenceItemState(
-                        evidence_type=factor,
-                        score=item.score,
-                        is_satisfied=item.is_satisfied,
-                        details=item.details or "",
+                        evidence_type=str(factor),
+                        score=float(score_val),
+                        is_satisfied=bool(sat_val),
+                        details=det_str,
                         timestamp=time.time(),
-                        source_frame=item.source_frame,
+                        source_frame=int(frame_idx),
                     )
                 )
-        score = bundle.score if hasattr(bundle, "score") else 0.0
+        score = getattr(bundle, "evidence_score", getattr(bundle, "score", 0.0))
         self.console_view.evidence_panel.update_evidence(items, bundle_score=score)
 
     def _on_deviation(self, decision, step_def) -> None:

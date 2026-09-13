@@ -57,14 +57,22 @@ Release Candidate 2 (`ASTRA-EA-v1.0.0-RC2`) resolves all 6 empirical findings su
 * **Finding ID**: `FINDING-006`
 * **Severity**: HIGH
 * **Category**: RECOVERY / ASSURANCE
-* **Change**: Enforced strict recovery verification latency bound (&lt;300ms SLA) in recovery matcher upon detecting target apparatus.
+* **Change**: Enforced strict recovery verification latency bound (<300ms SLA) in recovery matcher upon detecting target apparatus.
 * **Tests**: `tests/regression/test_recovery_verification_latency.py` (PASS)
 * **Impact**: Guarantees astronaut prompt feedback and procedure resumption upon placing the correct apparatus into the workstation.
+
+#### FINDING-007 / CAPA-007 (Mission Console UI Worker & Callback Interfaces)
+* **Finding ID**: `FINDING-007`
+* **Severity**: HIGH
+* **Category**: UI / ASSURANCE
+* **Change**: Standardized ProcedureVisualizer.draw_procedure_hud() to support recovery_manager argument, handled EvidenceItem confidence/verified attributes safely in MainWindow._on_evidence_bundle, and added complete_experiment_run alias in DatabaseManager.
+* **Tests**: `tests/regression/test_mission_console_ui_worker.py` (3 tests, PASS)
+* **Impact**: Eliminates runtime TypeErrors and AttributeErrors during interactive mission console execution and clean worker shutdown.
 
 ---
 
 ### Verification & Test Summary
-* **Dedicated Regression Tests**: 7 / 7 passing in `tests/regression/`
+* **Dedicated Regression Tests**: 10 / 10 passing in `tests/regression/`
 * **Operational Rehearsal Matrix**: 13 / 13 passing (`astra rehearsal --scenario ALL`)
-* **Full Repository Test Suite**: 326 / 326 passing (32.2s execution time)
+* **Full Repository Test Suite**: 329 / 329 passing (32.5s execution time)
 * **Readiness Status**: **`READY`**

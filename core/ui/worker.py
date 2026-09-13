@@ -368,10 +368,10 @@ class MissionPipelineWorker(QThread):
                 )
                 vis = proc_visualizer.draw_procedure_hud(
                     vis,
-                    progress_manager,
+                    progress_manager.get_state() if hasattr(progress_manager, "get_state") else progress_manager,
                     camera_profile=profile.id,
                     assurance_decision=decision if (curr_act and step_def) else None,
-                    recovery_manager=recovery_manager,
+                    recovery_state=recovery_manager.state.name if (recovery_manager and hasattr(recovery_manager, "state")) else None,
                 )
 
                 lat_ms = (time.perf_counter() - t0) * 1000.0
@@ -424,7 +424,12 @@ class MissionPipelineWorker(QThread):
             if self.source:
                 self.source.stop()
             if self.db:
-                self.db.complete_experiment_run(run_id=self.session_id, status="COMPLETED")
+                if hasattr(self.db, "complete_experiment_run"):
+                    self.db.complete_experiment_run(run_id=self.session_id, status="COMPLETED")
+                elif hasattr(self.db, "end_experiment_run"):
+                    self.db.end_experiment_run(run_id=self.session_id, status="COMPLETED")
+                elif hasattr(self.db, "finish_experiment_run"):
+                    self.db.finish_experiment_run(run_id=self.session_id, status="COMPLETED")
             self._is_running = False
             self.bridge.sig_session_status.emit("READY")
 

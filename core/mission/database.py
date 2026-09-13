@@ -312,6 +312,10 @@ class DatabaseManager:
         """Alias for finish_experiment_run for orchestrator compatibility."""
         self.finish_experiment_run(run_id, status=status, completed_steps=completed_steps, deviations=deviations)
 
+    def complete_experiment_run(self, run_id: str, status: str = "COMPLETED", completed_steps: int = 0, deviations: int = 0) -> None:
+        """Alias for finish_experiment_run for UI worker compatibility."""
+        self.finish_experiment_run(run_id, status=status, completed_steps=completed_steps, deviations=deviations)
+
 
     def record_experiment(self, experiment_id: str, name: str, version: str, description: Optional[str] = None) -> None:
         """Register an experiment definition in the database."""

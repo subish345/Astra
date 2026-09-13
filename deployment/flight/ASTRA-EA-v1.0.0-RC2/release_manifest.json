@@ -14,8 +14,8 @@
   "telemetry_profile": "DOWNLINK_1HZ_NDJSON_TBD",
   "command_profile": "LOCAL_OPERATOR_AUTH_V1",
   "findings_disposition": {
-    "total_findings": 6,
-    "closed_findings": 6,
+    "total_findings": 7,
+    "closed_findings": 7,
     "open_findings": 0,
     "findings_resolved": [
       "FINDING-001 (Camera tuple unpacking)",
@@ -23,14 +23,15 @@
       "FINDING-003 (Storage threshold pruning)",
       "FINDING-004 (UI alert button ergonomics)",
       "FINDING-005 (Clock display formatting stability)",
-      "FINDING-006 (Recovery verification latency bound)"
+      "FINDING-006 (Recovery verification latency bound)",
+      "FINDING-007 (Mission console UI worker and callback interfaces)"
     ]
   },
   "verification_status": {
-    "regression_tests": "PASS (7 / 7 dedicated tests)",
+    "regression_tests": "PASS (10 / 10 dedicated tests)",
     "rehearsal_suite": "PASS (13 / 13 operational scenarios)",
     "dress_rehearsal": "PASS (Zero developer interventions)",
-    "total_repository_tests": "326 passed in 32.2s",
+    "total_repository_tests": "329 passed in 32.5s",
     "status": "READY"
   }
 }

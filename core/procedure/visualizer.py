@@ -92,14 +92,26 @@ class ProcedureVisualizer:
     def draw_procedure_hud(
         self,
         frame: np.ndarray,
-        state: ProcedureState,
+        state: Any,
         bundle: Optional[EvidenceBundle] = None,
         evaluation: Optional[StepEvaluation] = None,
         camera_profile: Optional[str] = None,
         assurance_decision: Optional[Any] = None,
         recovery_state: Optional[str] = None,
+        recovery_manager: Optional[Any] = None,
     ) -> np.ndarray:
         """Render a semi-transparent procedural monitor panel onto an OpenCV frame."""
+        # Unpack ProcedureState if progress_manager passed
+        if hasattr(state, "get_state"):
+            state = state.get_state()
+
+        # Unpack recovery_state if recovery_manager passed
+        if recovery_state is None and recovery_manager is not None:
+            if hasattr(recovery_manager, "state"):
+                recovery_state = recovery_manager.state.name
+            else:
+                recovery_state = str(recovery_manager)
+
         vis = frame.copy()
         h, w = vis.shape[:2]
 
