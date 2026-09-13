@@ -1,0 +1,133 @@
+# ==============================================================================
+# DEMO PROCEDURE — NOT OFFICIAL SIH PROCEDURE
+# This is a synthetic demonstrator procedure used for engineering verification.
+# When official SIH26174 experiment steps are released, create a new YAML configuration
+# without modifying any core Python source modules.
+# ==============================================================================
+
+experiment:
+  id: "DEMO_EXP_001"
+  name: "Sample Material Handling & Container Verification (DEMO)"
+  version: "1.0.0"
+  description: "Demonstration experiment for validating multimodal action assurance and deviation detection."
+  author: "ASTRA-EA Ground Engineering Team"
+
+objects:
+  - id: "MAIN_BOX"
+    name: "Main Experiment Container"
+    category: "container"
+    color: "blue"
+    description: "Central experiment containment workstation"
+
+  - id: "RED_BOX"
+    name: "Specimen Reagent Red Box"
+    category: "sample_container"
+    color: "red"
+    description: "Active reagent specimen box"
+
+  - id: "YELLOW_BOX"
+    name: "Auxiliary Buffer Yellow Box"
+    category: "sample_container"
+    color: "yellow"
+    description: "Buffer reagent box (distractor for wrong-object deviation test)"
+
+  - id: "WORK_SURFACE"
+    name: "Experiment Work Surface"
+    category: "zone"
+    color: "gray"
+    description: "Designated surface for specimen manipulation"
+
+steps:
+  - id: "STEP_01"
+    sequence: 1
+    name: "Approach Experiment Station"
+    description: "Astronaut approaches the experiment station and positions near the main box"
+    expected_objects:
+      - "MAIN_BOX"
+    expected_actions:
+      - "APPROACH"
+    required_evidence:
+      - "astronaut_visible"
+      - "object_visible"
+    optional_evidence:
+      - "hand_visible"
+    min_confidence: 0.75
+    timeout_seconds: 30.0
+    min_duration_seconds: 2.0
+    repeatable: false
+    criticality: "INFO"
+    recovery:
+      instruction: "Please position yourself directly in front of the experiment work area."
+      target_step: "STEP_01"
+
+  - id: "STEP_02"
+    sequence: 2
+    name: "Grasp Specimen Red Box"
+    description: "Astronaut reaches for and firmly grasps the specimen Red Box"
+    expected_objects:
+      - "RED_BOX"
+    expected_actions:
+      - "REACH"
+      - "GRASP"
+    required_evidence:
+      - "object_visible"
+      - "hand_visible"
+      - "contact_detected"
+    optional_evidence:
+      - "motion_coupled"
+    min_confidence: 0.80
+    timeout_seconds: 45.0
+    min_duration_seconds: 1.5
+    repeatable: false
+    criticality: "WARNING"
+    recovery:
+      instruction: "Warning: Verify that you are grasping the RED box, not the auxiliary yellow box."
+      target_step: "STEP_02"
+
+  - id: "STEP_03"
+    sequence: 3
+    name: "Transfer Specimen to Work Surface"
+    description: "Astronaut lifts and transfers the Red Box onto the designated work surface"
+    expected_objects:
+      - "RED_BOX"
+      - "WORK_SURFACE"
+    expected_actions:
+      - "LIFT"
+      - "MOVE"
+      - "PLACE"
+    required_evidence:
+      - "object_visible"
+      - "motion_coupled"
+      - "contact_detected"
+    optional_evidence:
+      - "temporal_consistency"
+    min_confidence: 0.80
+    timeout_seconds: 60.0
+    min_duration_seconds: 3.0
+    repeatable: false
+    criticality: "WARNING"
+    recovery:
+      instruction: "Place the Red Box firmly onto the center of the work surface."
+      target_step: "STEP_03"
+
+  - id: "STEP_04"
+    sequence: 4
+    name: "Release Specimen and Conclude Transfer"
+    description: "Astronaut releases hand contact with the Red Box and withdraws hands"
+    expected_objects:
+      - "RED_BOX"
+    expected_actions:
+      - "RELEASE"
+    required_evidence:
+      - "object_visible"
+      - "contact_cleared"
+    optional_evidence:
+      - "astronaut_visible"
+    min_confidence: 0.75
+    timeout_seconds: 30.0
+    min_duration_seconds: 1.0
+    repeatable: false
+    criticality: "INFO"
+    recovery:
+      instruction: "Release your grip on the Red Box to complete the transfer step."
+      target_step: "STEP_04"

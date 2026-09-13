@@ -1,0 +1,46 @@
+system:
+  environment: development
+  offline_mode: true
+  device_name: "ASTRA-EA Ground Demonstrator"
+  log_level: INFO
+  log_to_file: true
+  log_file_path: "storage/reports/astra.log"
+
+database:
+  path: "storage/database/astra.db"
+  timeout_seconds: 10.0
+  enable_wal_mode: true
+
+camera:
+  config_path: "configs/cameras/default.yaml"
+
+storage:
+  base_dir: "storage"
+  video_dir: "storage/video"
+  evidence_dir: "storage/evidence"
+  reports_dir: "storage/reports"
+  max_storage_gb: 50.0
+
+thresholds:
+  min_detection_confidence: 0.65
+  min_pose_confidence: 0.60
+  min_hand_confidence: 0.60
+  min_evidence_score: 0.75
+  temporal_window_seconds: 10.0
+  uncertainty_timeout_seconds: 15.0
+
+voice:
+  enabled: true
+  engine: "pyttsx3"
+  rate: 165
+  volume: 0.9
+  cooldown_seconds: 3.5
+
+streaming:
+  enabled: false
+  host: "127.0.0.1"
+  port: 8554
+  protocol: "rtsp"
+
+active_experiment:
+  path: "configs/experiments/demo.yaml"
