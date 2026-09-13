@@ -1,0 +1,9 @@
+id: "CAPA-003"
+finding_id: "FINDING-003"
+owner: "FLIGHT_SOFTWARE_ENGINEER"
+component: "STORAGE_RETENTION_POLICY"
+change: "Added automated 85% threshold trigger in StorageRetentionPolicy to prune non-critical preview cache while strictly protecting verified step evidence."
+risk: "LOW"
+tests_required:
+  - "tests/regression/test_storage_pruning_policy.py"
+status: "CLOSED"

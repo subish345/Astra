@@ -1,0 +1,10 @@
+id: "CAPA-001"
+finding_id: "FINDING-001"
+owner: "SYSTEM_ENGINEER"
+component: "CAMERA_DRIVER_WRAPPER"
+change: "Safely unpack read_res into (frame, ts) before querying dimensions in precheck and maintenance inspection routines."
+risk: "LOW"
+tests_required:
+  - "tests/operations/test_maintenance_and_training.py"
+  - "tests/regression/test_camera_tuple_unpacking.py"
+status: "CLOSED"

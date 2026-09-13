@@ -1,0 +1,16 @@
+finding_id: "FINDING-003"
+title: "Storage capacity threshold pruning trigger"
+analysis_method: "FAULT_TREE"
+symptom: "Storage threshold warnings generated repeated notices without reclaiming diagnostic buffer disk space."
+reproduction_case: "Simulate storage usage exceeding 85% and monitor whether non-critical preview cache is pruned."
+evidence:
+  - "reports/rehearsal/REH_07_STORAGE_WARNING_RUN_LOG"
+  - "core/platform/storage.py"
+root_cause_breakdown:
+  top_event: "Diagnostic storage partition approaches capacity limit."
+  intermediate_event: "Retention policy only evaluated on explicit manual maintenance invocation."
+  basic_event: "Autonomous trigger hook missing between storage health telemetry evaluator and cache cleaner."
+  root_cause: "Decoupled storage monitor lacked active event listener to trigger non-critical frame pruning when utilization exceeds 85%."
+corrective_action: "Implement threshold-based prune trigger in StorageRetentionPolicy to discard transient debug frames while strictly preserving step verification evidence."
+verification: "Regression test tests/regression/test_storage_pruning_policy.py confirms non-critical buffers purged and evidence intact."
+disposition: "RESOLVED"

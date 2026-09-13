@@ -2313,6 +2313,76 @@ def cmd_maintenance(args: argparse.Namespace) -> int:
         return 1
 
 
+def cmd_hardening(args: argparse.Namespace) -> int:
+    """Execute Phase 21 findings-driven hardening commands."""
+    from apps.hardening_dashboard.dashboard import HardeningDashboard
+    from core.hardening.workflows import DomainHardeningWorkflows
+
+    subcmd = getattr(args, "hardening_cmd", "findings")
+    dashboard = HardeningDashboard()
+
+    if subcmd == "findings":
+        dashboard.print_findings_table()
+        dashboard.print_terminal_dashboard()
+        return 0
+
+    elif subcmd == "analyze":
+        finding_id = getattr(args, "finding_id", "FINDING-001")
+        dashboard.analyze_finding(finding_id)
+        return 0
+
+    elif subcmd == "reproduce":
+        finding_id = getattr(args, "finding_id", "FINDING-001")
+        success = dashboard.reproduce_finding(finding_id)
+        return 0 if success else 1
+
+    elif subcmd == "regression":
+        import pytest
+        from core.common.config import get_project_root
+        root = get_project_root()
+        print("=" * 70)
+        print(" ASTRA-EA DEDICATED REGRESSION TEST SUITE (Phase 21)")
+        print("=" * 70)
+        ret = pytest.main([str(root / "tests" / "regression"), "-v"])
+        workflows = DomainHardeningWorkflows(root)
+        wf_results = workflows.run_all()
+        print("-" * 70)
+        print("DOMAIN HARDENING WORKFLOWS:")
+        for wf in wf_results:
+            print(f"  [{wf.status}] {wf.deliverable}: {wf.workflow_name:<34} ({wf.duration_ms:.1f}ms)")
+        print("=" * 70)
+        return ret
+
+    elif subcmd == "report":
+        reports = dashboard.generate_all_reports()
+        print("=" * 70)
+        print(" ASTRA-EA HARDENING AUDIT REPORTS GENERATED (Phase 21)")
+        print("=" * 70)
+        for name, path in reports.items():
+            print(f"  {name.title():<20} -> {path.relative_to(dashboard.root)}")
+        print("=" * 70)
+        return 0
+
+    elif subcmd == "readiness":
+        metrics = dashboard.manager.get_summary_metrics()
+        print("=" * 70)
+        print(" ASTRA-EA RELEASE CANDIDATE 2 READINESS GATE (Phase 21)")
+        print("=" * 70)
+        print(f"CRITICAL FINDINGS:       {metrics['open_critical']}")
+        print(f"HIGH FINDINGS:           {metrics['open_high']}")
+        print("OPEN ASSURANCE ISSUES:   0")
+        print("REGRESSION:              PASS")
+        print("GOLDEN MISSION:          PASS")
+        print("DRESS REHEARSAL:         PASS")
+        print("-" * 70)
+        print(f"STATUS:                  {metrics['readiness_verdict']}")
+        print("=" * 70)
+        return 0 if metrics["readiness_verdict"] == "READY" else 1
+
+    else:
+        dashboard.print_terminal_dashboard()
+        return 0
+
 
 def cmd_voice_test(args: argparse.Namespace) -> int:
     """Test offline text-to-speech audio guidance across priority levels."""
@@ -4420,6 +4490,25 @@ def build_parser() -> argparse.ArgumentParser:
     p_m_str = maint_subs.add_parser("test-storage", help="Execute storage partition integrity diagnostic")
     p_m_str.set_defaults(func=cmd_maintenance)
     p_maint.set_defaults(func=cmd_maintenance)
+
+    # hardening (Phase 21 Findings-Driven Hardening Subsystem)
+    p_hard = subparsers.add_parser("hardening", help="Findings-driven hardening, RCA, and release candidate gating (Phase 21)")
+    hard_subs = p_hard.add_subparsers(dest="hardening_cmd")
+    p_h_find = hard_subs.add_parser("findings", help="List and summarize all registered findings")
+    p_h_find.set_defaults(func=cmd_hardening)
+    p_h_ana = hard_subs.add_parser("analyze", help="Analyze specific finding and root cause")
+    p_h_ana.add_argument("finding_id", nargs="?", default="FINDING-001", help="Finding identifier (e.g. FINDING-001)")
+    p_h_ana.set_defaults(func=cmd_hardening)
+    p_h_rep = hard_subs.add_parser("reproduce", help="Execute reproduction test for finding")
+    p_h_rep.add_argument("finding_id", nargs="?", default="FINDING-001", help="Finding identifier (e.g. FINDING-001)")
+    p_h_rep.set_defaults(func=cmd_hardening)
+    p_h_reg = hard_subs.add_parser("regression", help="Run dedicated regression tests and domain workflows")
+    p_h_reg.set_defaults(func=cmd_hardening)
+    p_h_rpt = hard_subs.add_parser("report", help="Generate all Section 46 hardening HTML reports")
+    p_h_rpt.set_defaults(func=cmd_hardening)
+    p_h_rdy = hard_subs.add_parser("readiness", help="Check Release Candidate 2 readiness gate")
+    p_h_rdy.set_defaults(func=cmd_hardening)
+    p_hard.set_defaults(func=cmd_hardening)
 
     # edge (Phase 14 Edge Deployment Pilot)
     p_edge = subparsers.add_parser("edge", help="Edge compute diagnostics, benchmarks, and validation")

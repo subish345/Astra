@@ -1,0 +1,18 @@
+finding_id: "FINDING-002"
+title: "Ground reconnect sequence gap deduplication"
+analysis_method: "TIMELINE_ANALYSIS"
+symptom: "Reconciliation upon telemetry reconnect replayed duplicate sequence numbers into ground event buffer."
+reproduction_case: "Disconnect ground telemetry during multi-event transmission burst, reconnect, and observe received sequence IDs."
+evidence:
+  - "reports/rehearsal/REH_04_NETWORK_FAILURE_AUDIT_LOG"
+  - "core/operations/reconciliation.py"
+root_cause_breakdown:
+  symptom_detail: "Sequence gaps were computed purely based on [last_ack + 1, current_seq] without intersecting against the ground receiver's existing local cache."
+  timeline_step_1: "Onboard sends event seq 102 and 103 in rapid succession."
+  timeline_step_2: "Socket drops after 102 is received by ground but before 102 ack packet is downlinked."
+  timeline_step_3: "Ground reconnects with last acknowledged seq 101."
+  timeline_step_4: "Onboard replays seq 102 and 103. Ground appends 102 a second time."
+  root_cause: "Missing set-difference filter in GroundReconciler to reject already-stored sequence numbers."
+corrective_action: "Apply deduplication filter in GroundReconciler ensuring set(buffered) - set(received) is requested, with duplicate_count == 0 guaranteed."
+verification: "Regression test tests/regression/test_ground_reconnect_dedup.py passes with 0 duplicates."
+disposition: "RESOLVED"

@@ -1,0 +1,12 @@
+id: "FINDING-001"
+title: "Camera sensor timeout causes unhandled tuple unpacking exception"
+source: "PHASE20_REHEARSAL_05_CAMERA_FAILURE"
+date: "2026-09-13"
+severity: "HIGH"
+category: "CAMERA"
+description: "When an optical frame acquisition timeout or sensor disconnect occurs, CameraDriver.read_frame() returns a tuple Optional[Tuple[np.ndarray, FrameTimestamp]]. Subsystems expecting a bare NumPy ndarray raised 'AttributeError: tuple object has no attribute shape' instead of cleanly transitioning perception to DEGRADED and pausing procedure verification."
+evidence:
+  - "REH_05_CAMERA_FAILURE_RUN_LOG"
+  - "tests/operations/test_maintenance_and_training.py::test_rehearsal_engine_execution"
+impact: "Could disrupt autonomous flight perception during physical USB or MIPI bus glitches; procedure assurance must pause safely without unhandled runtime exceptions."
+status: "CLOSED"

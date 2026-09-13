@@ -1,0 +1,10 @@
+id: "CAPA-006"
+finding_id: "FINDING-006"
+owner: "ASSURANCE_ENGINEER"
+component: "RECOVERY_MATCHER"
+change: "Enforce <300ms recovery latency bound in recovery matcher evidence evaluation upon detecting the correct target apparatus."
+risk: "LOW"
+tests_required:
+  - "tests/rehearsal/test_rehearsal_scenarios.py"
+  - "tests/regression/test_recovery_verification_latency.py"
+status: "CLOSED"

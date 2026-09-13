@@ -249,6 +249,27 @@ astra mission report --run RUN_XXXX
 astra mission review --run RUN_XXXX
 ```
 
+### 7.0.2 Findings-Driven Hardening Commands (Phase 21)
+```bash
+# View live findings dashboard and severity metrics
+astra hardening findings
+
+# Deep-dive root cause analysis for specific finding
+astra hardening analyze FINDING-001
+
+# Execute automated reproduction regression test
+astra hardening reproduce FINDING-001
+
+# Run full dedicated regression test suite and domain workflows
+astra hardening regression
+
+# Generate Section 46 hardening HTML audit reports
+astra hardening report
+
+# Evaluate Release Candidate 2 (RC2) readiness gate
+astra hardening readiness
+```
+
 ### 7.1 Diagnostics & Configuration
 ```bash
 # Run system diagnostic checks (Python runtime, GPU/CUDA, OpenCV, DB, Camera)
@@ -752,6 +773,8 @@ Comprehensive engineering documentation is maintained in the [`docs/`](file:///h
 
 | Document | Category | Description |
 | :--- | :--- | :--- |
+| [`docs/operations/hardening-guide.md`](file:///home/subish-loq/Documents/astra/docs/operations/hardening-guide.md) | Hardening | Phase 21 Findings-Driven Hardening Operational Guide and RC2 baseline. |
+| [`CHANGELOG_HARDENING.md`](file:///home/subish-loq/Documents/astra/CHANGELOG_HARDENING.md) | Release | Phase 21 Findings-driven technical changelog and RC2 disposition notes. |
 | [`docs/operations/mission-rehearsal.md`](file:///home/subish-loq/Documents/astra/docs/operations/mission-rehearsal.md) | Operations | Phase 20 End-to-End Mission Rehearsal Manual, multi-mode matrix, and scorecards. |
 | [`docs/operations/rehearsal-findings.md`](file:///home/subish-loq/Documents/astra/docs/operations/rehearsal-findings.md) | Assurance | Phase 20 Rehearsal findings registry, taxonomy, and resolution history. |
 | [`docs/operations/corrective-actions.md`](file:///home/subish-loq/Documents/astra/docs/operations/corrective-actions.md) | Quality | Phase 20 CAPA traceability tracking, RCA, and regression verification. |

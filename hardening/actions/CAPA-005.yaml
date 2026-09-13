@@ -1,0 +1,10 @@
+id: "CAPA-005"
+finding_id: "FINDING-005"
+owner: "TELEMETRY_ENGINEER"
+component: "GROUND_HEADER_PANEL"
+change: "Standardize UI clock display formatting to HH:MM:SS string, eliminating fractional layout redraw jitter."
+risk: "NONE"
+tests_required:
+  - "tests/ground_monitor/test_ground_panels.py"
+  - "tests/regression/test_clock_stability.py"
+status: "CLOSED"

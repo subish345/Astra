@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Corrective Actions</title>
+<style>body { font-family: sans-serif; background: #090d16; color: #f1f5f9; padding: 32px; }</style>
+</head><body><h1 style="color: #38bdf8;">Corrective Actions Log (CAPA)</h1>
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #22c55e; margin: 0 0 8px 0;">CAPA-001: Addressing FINDING-001</h3>
+                <p><strong>Component:</strong> CAMERA_DRIVER_WRAPPER | <strong>Owner:</strong> SYSTEM_ENGINEER | <strong>Status:</strong> <span style="color: #22c55e; font-weight: bold;">CLOSED</span></p>
+                <p><strong>Change:</strong> Safely unpack read_res into (frame, ts) before querying dimensions in precheck and maintenance inspection routines.</p>
+                <p><strong>Verification Tests:</strong> <code>['tests/operations/test_maintenance_and_training.py', 'tests/regression/test_camera_tuple_unpacking.py']</code></p>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #22c55e; margin: 0 0 8px 0;">CAPA-002: Addressing FINDING-002</h3>
+                <p><strong>Component:</strong> GROUND_RECONCILER | <strong>Owner:</strong> GROUND_SEGMENT_ENGINEER | <strong>Status:</strong> <span style="color: #22c55e; font-weight: bold;">CLOSED</span></p>
+                <p><strong>Change:</strong> Apply deduplication set filter in GroundReconciler to reject already-stored sequence numbers during reconnect gap request.</p>
+                <p><strong>Verification Tests:</strong> <code>['tests/operations/test_alerts_and_reconciliation.py', 'tests/regression/test_ground_reconnect_dedup.py']</code></p>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #22c55e; margin: 0 0 8px 0;">CAPA-003: Addressing FINDING-003</h3>
+                <p><strong>Component:</strong> STORAGE_RETENTION_POLICY | <strong>Owner:</strong> FLIGHT_SOFTWARE_ENGINEER | <strong>Status:</strong> <span style="color: #22c55e; font-weight: bold;">CLOSED</span></p>
+                <p><strong>Change:</strong> Added automated 85% threshold trigger in StorageRetentionPolicy to prune non-critical preview cache while strictly protecting verified step evidence.</p>
+                <p><strong>Verification Tests:</strong> <code>['tests/regression/test_storage_pruning_policy.py']</code></p>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #22c55e; margin: 0 0 8px 0;">CAPA-004: Addressing FINDING-004</h3>
+                <p><strong>Component:</strong> GROUND_ALERT_PANEL | <strong>Owner:</strong> UI_UX_ENGINEER | <strong>Status:</strong> <span style="color: #22c55e; font-weight: bold;">CLOSED</span></p>
+                <p><strong>Change:</strong> Restyle AlertPanel acknowledge button with vibrant cyan border (#0284c7), white text, and visual hover feedback.</p>
+                <p><strong>Verification Tests:</strong> <code>['tests/ground_monitor/test_ground_panels.py', 'tests/regression/test_ui_alert_contrast.py']</code></p>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #22c55e; margin: 0 0 8px 0;">CAPA-005: Addressing FINDING-005</h3>
+                <p><strong>Component:</strong> GROUND_HEADER_PANEL | <strong>Owner:</strong> TELEMETRY_ENGINEER | <strong>Status:</strong> <span style="color: #22c55e; font-weight: bold;">CLOSED</span></p>
+                <p><strong>Change:</strong> Standardize UI clock display formatting to HH:MM:SS string, eliminating fractional layout redraw jitter.</p>
+                <p><strong>Verification Tests:</strong> <code>['tests/ground_monitor/test_ground_panels.py', 'tests/regression/test_clock_stability.py']</code></p>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #22c55e; margin: 0 0 8px 0;">CAPA-006: Addressing FINDING-006</h3>
+                <p><strong>Component:</strong> RECOVERY_MATCHER | <strong>Owner:</strong> ASSURANCE_ENGINEER | <strong>Status:</strong> <span style="color: #22c55e; font-weight: bold;">CLOSED</span></p>
+                <p><strong>Change:</strong> Enforce <300ms recovery latency bound in recovery matcher evidence evaluation upon detecting the correct target apparatus.</p>
+                <p><strong>Verification Tests:</strong> <code>['tests/rehearsal/test_rehearsal_scenarios.py', 'tests/regression/test_recovery_verification_latency.py']</code></p>
+            </div>
+            </body></html>

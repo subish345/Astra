@@ -1,0 +1,91 @@
+version: "1.0.0"
+generated_at_utc: "2026-09-13T20:45:00Z"
+title: "Phase 21 Findings Hardening Change Impact Analysis"
+
+impact_matrix:
+  FINDING-001:
+    component: "CAMERA / PRECHECK"
+    affected_requirements:
+      - "REQ-PER-01"
+      - "REQ-SYS-05"
+    affected_interfaces:
+      - "CameraDriver.read_frame() -> Tuple[np.ndarray, FrameTimestamp]"
+    affected_tests:
+      - "tests/operations/test_maintenance_and_training.py"
+      - "tests/regression/test_camera_tuple_unpacking.py"
+    safety_assurance_risk: "LOW (Improves driver resilience against frame drops)"
+    regression_impact: "ZERO (Strictly backward compatible)"
+
+  FINDING-002:
+    component: "GROUND / RECONCILIATION"
+    affected_requirements:
+      - "REQ-GND-02"
+      - "REQ-GND-04"
+    affected_interfaces:
+      - "GroundReconciler.detect_gaps()"
+      - "GroundReconciler.merge_reconciled_events()"
+    affected_tests:
+      - "tests/operations/test_alerts_and_reconciliation.py"
+      - "tests/regression/test_ground_reconnect_dedup.py"
+    safety_assurance_risk: "LOW (Eliminates duplicate events in ground database)"
+    regression_impact: "ZERO (Read-only ground observer)"
+
+  FINDING-003:
+    component: "STORAGE / RETENTION"
+    affected_requirements:
+      - "REQ-STO-01"
+      - "REQ-STO-03"
+    affected_interfaces:
+      - "StorageRetentionPolicy.enforce_margin()"
+    affected_tests:
+      - "tests/regression/test_storage_pruning_policy.py"
+    safety_assurance_risk: "LOW (Preserves all verified step evidence frames)"
+    regression_impact: "ZERO (Operates only on transient cache)"
+
+  FINDING-004:
+    component: "UI / OPERATOR ERGONOMICS"
+    affected_requirements:
+      - "REQ-UI-03"
+      - "REQ-OPS-04"
+    affected_interfaces:
+      - "AlertPanel.set_lifecycle()"
+      - "AlertPanel.btn_ack stylesheet"
+    affected_tests:
+      - "tests/ground_monitor/test_ground_panels.py"
+      - "tests/regression/test_ui_alert_contrast.py"
+    safety_assurance_risk: "NONE (Cosmetic / UX styling enhancement)"
+    regression_impact: "ZERO (No backend state alteration)"
+
+  FINDING-005:
+    component: "UI / TELEMETRY CLOCK"
+    affected_requirements:
+      - "REQ-CLK-01"
+      - "REQ-UI-01"
+    affected_interfaces:
+      - "HeaderPanel.set_clocks()"
+    affected_tests:
+      - "tests/ground_monitor/test_ground_panels.py"
+      - "tests/regression/test_clock_stability.py"
+    safety_assurance_risk: "NONE (Display quantization only)"
+    regression_impact: "ZERO (Full microsecond telemetry stream preserved)"
+
+  FINDING-006:
+    component: "RECOVERY / ASSURANCE"
+    affected_requirements:
+      - "REQ-ASS-03"
+      - "REQ-REC-01"
+    affected_interfaces:
+      - "MissionRehearsalEngine.advance_step()"
+      - "RecoveryEngine.verify_recovery()"
+    affected_tests:
+      - "tests/rehearsal/test_rehearsal_scenarios.py"
+      - "tests/regression/test_recovery_verification_latency.py"
+    safety_assurance_risk: "MEDIUM (Protected by strict required apparatus assertion)"
+    regression_impact: "LOW (Enforces <300ms SLA without weakening criteria)"
+
+summary:
+  total_changes: 6
+  critical_safety_violations: 0
+  untested_interfaces: 0
+  assurance_engine_downgrades: 0
+  verdict: "APPROVED_FOR_IMPLEMENTATION"

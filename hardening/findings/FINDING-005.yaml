@@ -1,0 +1,12 @@
+id: "FINDING-005"
+title: "Ground Monitor dual clock display format jitter during accelerated synthetic sweeps"
+source: "PHASE20_DRESS_REHEARSAL"
+date: "2026-09-13"
+severity: "LOW"
+category: "PERFORMANCE"
+description: "When executing accelerated synthetic rehearsal sweeps (20x speed), millisecond fractional clock updates caused minor layout redraw jitter on the header panel dual clock badge."
+evidence:
+  - "DRESS_REHEARSAL_UI_CAPTURE"
+  - "apps/ground_monitor/panels/header_panel.py"
+impact: "Visual distraction for operators during accelerated test runs; does not impact actual mission elapsed time (MET) accounting."
+status: "CLOSED"

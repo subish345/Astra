@@ -1,0 +1,12 @@
+id: "FINDING-004"
+title: "Ground Monitor alert acknowledgement button contrast causes operator hesitation"
+source: "PHASE20_REHEARSAL_12_OPERATOR_INDEP"
+date: "2026-09-13"
+severity: "OBSERVATION"
+category: "UI"
+description: "During operator independence validation with an astronaut trainee, the alert acknowledge button visual contrast was slightly muted against the dark panel background, leading to a 2.1-second latency before operator acknowledgment."
+evidence:
+  - "REH_12_OPERATOR_INDEP_VIDEO_LOG"
+  - "apps/ground_monitor/panels/alert_panel.py"
+impact: "Slows astronaut response time to non-critical notices and minor procedural advisories."
+status: "CLOSED"

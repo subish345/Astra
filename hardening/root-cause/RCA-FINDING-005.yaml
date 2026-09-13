@@ -1,0 +1,15 @@
+finding_id: "FINDING-005"
+title: "Clock display formatting redraw jitter under accelerated sweeps"
+analysis_method: "PERFORMANCE_PROFILE"
+symptom: "Rapid millisecond label redraws caused visual jitter on the top telemetry header during accelerated rehearsals."
+reproduction_case: "Run rehearsal engine at 20x acceleration and observe clock label text update frequency."
+evidence:
+  - "reports/rehearsal/DRESS_REHEARSAL_UI_CAPTURE"
+  - "apps/ground_monitor/panels/header_panel.py"
+root_cause_breakdown:
+  step_1: "Telemetry worker emitted clock updates at 10Hz with full floating-point millisecond strings."
+  step_2: "HeaderPanel formatted clock label with variable-width decimal places, triggering layout geometry recalculations."
+  root_cause: "Lack of fixed-width quantized HH:MM:SS string formatting on high-frequency UI clock badge."
+corrective_action: "Quantize UI clock display to standard HH:MM:SS mission elapsed time (MET), while preserving floating-point microsecond precision in machine-readable telemetry packets."
+verification: "Regression test tests/regression/test_clock_stability.py verifies steady layout width and string formatting."
+disposition: "RESOLVED"
