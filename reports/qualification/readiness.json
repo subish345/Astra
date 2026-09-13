@@ -1,40 +1,32 @@
 {
-  "timestamp": "2026-09-13T13:26:33Z",
+  "timestamp": "2026-09-13T14:07:32Z",
   "project": "ASTRA-EA",
-  "phase": "Phase 15 \u2014 Qualification Readiness",
-  "trl_level": "TRL 4 (Advancing toward TRL 5/6)",
+  "phase": "Phase 17 \u2014 Environmental + Hardware Qualification Program",
+  "qualification_build_id": "ASTRA-EA-QB-001",
   "requirements": {
-    "status": "PASS (Ground/HIL Scope)",
-    "total": 32,
-    "verified": 29,
-    "planned": 3
+    "total": 38,
+    "verified": 33,
+    "validated": 2,
+    "deferred": 3,
+    "verification_coverage": "100.0%"
   },
-  "interfaces": {
-    "status": "PASS (Logical Contracts Defined)"
+  "qualification_tests": {
+    "total_procedures": 13,
+    "status": "PLANNED"
+  },
+  "nonconformances": {
+    "total": 4,
+    "open": 0,
+    "closed": 2,
+    "waived": 2
   },
   "resource_budget": {
     "status": "KNOWN (Margins Verified)"
   },
-  "fmea": {
-    "status": "COMPLETE (5 Barriers Enforced)"
-  },
-  "environmental_test_plan": {
-    "status": "PLANNED (TRL 6 Roadmap)"
-  },
-  "radiation": {
-    "status": "NOT TESTED"
-  },
-  "thermal_vacuum": {
-    "status": "NOT TESTED"
-  },
-  "vibration": {
-    "status": "NOT TESTED"
-  },
-  "emi_emc": {
-    "status": "NOT TESTED"
-  },
-  "flight_qualification": {
-    "status": "NOT STARTED"
-  },
-  "readiness_verdict": "READY"
+  "environmental_status": "PLANNED (Ready for Facility)",
+  "radiation": "PLANNED (Co-60 / Heavy-Ion)",
+  "thermal_vacuum": "PLANNED (10^-5 Torr)",
+  "vibration": "PLANNED (14.1 Grms)",
+  "emi_emc": "PLANNED (MIL-STD-461G)",
+  "readiness_verdict": "READY FOR FUTURE QUALIFICATION"
 }

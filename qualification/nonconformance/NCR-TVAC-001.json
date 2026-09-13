@@ -1,0 +1,21 @@
+{
+  "ncr_id": "NCR-TVAC-001",
+  "qualification_build_id": "ASTRA-EA-QB-001",
+  "test_id": "QUAL-TVAC-001",
+  "requirement_id": "ASTRA-ENV-004",
+  "severity": "MEDIUM",
+  "date_opened": "2026-09-13T12:30:00Z",
+  "originator": "Thermal Lead",
+  "failure_description": "High-vacuum thermal cycling (10^-5 Torr, -20C to +60C) cannot be executed in standard university/ground laboratory.",
+  "root_cause": "Requires cryogenic high-vacuum thermal chamber with liquid nitrogen cold-plate infrastructure.",
+  "corrective_action": "Formal TVAC Test Plan (ASTRA-QTP-TVAC-001) authored; conductive heat sink envelope verified by numerical analysis.",
+  "impact_analysis": {
+    "affected_subsystems": ["THERMAL", "ELECTRICAL"],
+    "affected_tests": ["QUAL-TVAC-001"],
+    "software_change_required": false
+  },
+  "retest_id": "PHASE-17-FACILITY-EXECUTION",
+  "disposition": "WAIVE_FOR_GROUND_PHASE",
+  "date_closed": "2026-09-13T16:30:00Z",
+  "status": "WAIVED"
+}

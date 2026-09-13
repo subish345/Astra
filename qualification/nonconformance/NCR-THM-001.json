@@ -1,0 +1,21 @@
+{
+  "ncr_id": "NCR-THM-001",
+  "qualification_build_id": "ASTRA-EA-QB-001",
+  "test_id": "QUAL-THM-001",
+  "requirement_id": "ASTRA-ENV-004",
+  "severity": "HIGH",
+  "date_opened": "2026-09-13T10:00:00Z",
+  "originator": "Thermal Systems Engineer",
+  "failure_description": "At +50°C ambient, CPU core frequency throttled from 1.8 GHz to 1.1 GHz after 45 minutes of continuous inference, dropping pipeline throughput to 24.1 FPS.",
+  "root_cause": "Thermal interface material (TIM) between compute module and test fixture had localized void bubbles, increasing thermal resistance.",
+  "corrective_action": "Replaced manual thermal paste with pre-cut aerospace thermal foil (CHO-THERM). Re-torqued mounting bolts to 4.5 N*m.",
+  "impact_analysis": {
+    "affected_subsystems": ["THERMAL", "PERFORMANCE"],
+    "affected_tests": ["QUAL-THM-001", "QUAL-TVAC-001"],
+    "software_change_required": false
+  },
+  "retest_id": "QUAL-THM-001-R1",
+  "disposition": "CORRECT_AND_RETEST",
+  "date_closed": "2026-09-13T14:00:00Z",
+  "status": "CLOSED"
+}

@@ -1,0 +1,21 @@
+{
+  "ncr_id": "NCR-VIB-001",
+  "qualification_build_id": "ASTRA-EA-QB-001",
+  "test_id": "QUAL-VIB-001",
+  "requirement_id": "ASTRA-ENV-003",
+  "severity": "MEDIUM",
+  "date_opened": "2026-09-13T12:00:00Z",
+  "originator": "Mechanical Systems Lead",
+  "failure_description": "Launch random vibration testing (14.1 Grms, 20-2000 Hz) cannot be executed in standard university/ground laboratory.",
+  "root_cause": "Requires certified 50 kN 3-axis electrodynamic shaker table facility accredited for space qualification testing.",
+  "corrective_action": "Formal Vibration Test Plan (ASTRA-QTP-VIB-001) authored; payload CAD mounting analyzed with fundamental resonance > 60 Hz.",
+  "impact_analysis": {
+    "affected_subsystems": ["STRUCTURAL", "OPTICS"],
+    "affected_tests": ["QUAL-VIB-001", "QUAL-VIB-002", "QUAL-SHK-001"],
+    "software_change_required": false
+  },
+  "retest_id": "PHASE-17-FACILITY-EXECUTION",
+  "disposition": "WAIVE_FOR_GROUND_PHASE",
+  "date_closed": "2026-09-13T16:00:00Z",
+  "status": "WAIVED"
+}

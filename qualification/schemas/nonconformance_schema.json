@@ -1,0 +1,122 @@
+{
+  "$defs": {
+    "NCRSeverity": {
+      "description": "Nonconformance severity taxonomy.",
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ],
+      "title": "NCRSeverity",
+      "type": "string"
+    },
+    "NCRStatus": {
+      "description": "Nonconformance lifecycle status.",
+      "enum": [
+        "OPEN",
+        "ANALYZING",
+        "CORRECTIVE_ACTION",
+        "RETEST",
+        "CLOSED",
+        "WAIVED"
+      ],
+      "title": "NCRStatus",
+      "type": "string"
+    }
+  },
+  "description": "Formal Nonconformance Record Schema (Section 43).",
+  "properties": {
+    "ncr_id": {
+      "title": "Ncr Id",
+      "type": "string"
+    },
+    "qualification_build_id": {
+      "default": "ASTRA-EA-QB-001",
+      "title": "Qualification Build Id",
+      "type": "string"
+    },
+    "test_id": {
+      "title": "Test Id",
+      "type": "string"
+    },
+    "requirement_id": {
+      "title": "Requirement Id",
+      "type": "string"
+    },
+    "severity": {
+      "$ref": "#/$defs/NCRSeverity"
+    },
+    "date_opened": {
+      "title": "Date Opened",
+      "type": "string"
+    },
+    "originator": {
+      "title": "Originator",
+      "type": "string"
+    },
+    "failure_description": {
+      "title": "Failure Description",
+      "type": "string"
+    },
+    "root_cause": {
+      "title": "Root Cause",
+      "type": "string"
+    },
+    "corrective_action": {
+      "title": "Corrective Action",
+      "type": "string"
+    },
+    "impact_analysis": {
+      "additionalProperties": true,
+      "title": "Impact Analysis",
+      "type": "object"
+    },
+    "retest_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retest Id"
+    },
+    "disposition": {
+      "title": "Disposition",
+      "type": "string"
+    },
+    "date_closed": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Date Closed"
+    },
+    "status": {
+      "$ref": "#/$defs/NCRStatus"
+    }
+  },
+  "required": [
+    "ncr_id",
+    "test_id",
+    "requirement_id",
+    "severity",
+    "date_opened",
+    "originator",
+    "failure_description",
+    "root_cause",
+    "corrective_action",
+    "disposition",
+    "status"
+  ],
+  "title": "NonconformanceRecord",
+  "type": "object"
+}

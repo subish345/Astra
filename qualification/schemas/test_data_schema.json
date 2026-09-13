@@ -1,0 +1,286 @@
+{
+  "$defs": {
+    "EnvironmentalSensorData": {
+      "description": "Environmental chamber measurements (Section 38: Unknown values remain null).",
+      "properties": {
+        "temperature_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature C"
+        },
+        "pressure_torr": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pressure Torr"
+        },
+        "acceleration_g_x": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceleration G X"
+        },
+        "acceleration_g_y": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceleration G Y"
+        },
+        "acceleration_g_z": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Acceleration G Z"
+        },
+        "bus_voltage_v": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bus Voltage V"
+        },
+        "bus_current_a": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bus Current A"
+        },
+        "rf_field_v_m": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rf Field V M"
+        },
+        "radiation_dose_rad": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Radiation Dose Rad"
+        }
+      },
+      "title": "EnvironmentalSensorData",
+      "type": "object"
+    },
+    "PowerState": {
+      "description": "Software power failure response states (Section 25).",
+      "enum": [
+        "POWER_NOMINAL",
+        "POWER_WARNING",
+        "POWER_CRITICAL",
+        "POWER_LOSS",
+        "POWER_RECOVERY"
+      ],
+      "title": "PowerState",
+      "type": "string"
+    },
+    "SystemTelemetryData": {
+      "description": "Software and compute health metrics synchronized with environment.",
+      "properties": {
+        "fps": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fps"
+        },
+        "latency_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Latency Ms"
+        },
+        "cpu_utilization_percent": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cpu Utilization Percent"
+        },
+        "gpu_utilization_percent": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gpu Utilization Percent"
+        },
+        "ram_rss_mb": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ram Rss Mb"
+        },
+        "cpu_die_temp_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cpu Die Temp C"
+        },
+        "gpu_die_temp_c": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gpu Die Temp C"
+        },
+        "health_status": {
+          "default": "NOMINAL",
+          "title": "Health Status",
+          "type": "string"
+        },
+        "assurance_state": {
+          "default": "IDLE",
+          "title": "Assurance State",
+          "type": "string"
+        },
+        "procedure_step": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Procedure Step"
+        },
+        "power_state": {
+          "$ref": "#/$defs/PowerState",
+          "default": "POWER_NOMINAL"
+        },
+        "active_errors": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Active Errors",
+          "type": "array"
+        }
+      },
+      "title": "SystemTelemetryData",
+      "type": "object"
+    }
+  },
+  "description": "Standard Qualification Test Data Model (Section 38).",
+  "properties": {
+    "qualification_id": {
+      "default": "ASTRA-EA-QB-001",
+      "title": "Qualification Id",
+      "type": "string"
+    },
+    "test_id": {
+      "title": "Test Id",
+      "type": "string"
+    },
+    "timestamp": {
+      "title": "Timestamp",
+      "type": "string"
+    },
+    "test_clock_seconds": {
+      "title": "Test Clock Seconds",
+      "type": "number"
+    },
+    "environment": {
+      "$ref": "#/$defs/EnvironmentalSensorData"
+    },
+    "system": {
+      "$ref": "#/$defs/SystemTelemetryData"
+    }
+  },
+  "required": [
+    "test_id"
+  ],
+  "title": "QualificationTelemetryFrame",
+  "type": "object"
+}

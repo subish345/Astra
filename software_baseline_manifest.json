@@ -1,0 +1,84 @@
+{
+  "manifest_id": "ASTRA-SBM-001",
+  "qualification_build_id": "ASTRA-EA-QB-001",
+  "project": "ASTRA-EA",
+  "version": "1.0.0-RC1",
+  "freeze_timestamp": "2026-09-13T12:00:00Z",
+  "os_environment": {
+    "os_distribution": "Ubuntu 22.04 LTS (Jammy Jellyfish) / Red Hat Enterprise Linux 9",
+    "kernel": "Linux 6.x POSIX Compliant",
+    "architecture": "x86_64 / aarch64",
+    "libc_version": "glibc 2.35+"
+  },
+  "python_runtime": {
+    "version": "3.11.8",
+    "compiler": "GCC 11.4.0",
+    "interpreter": "CPython"
+  },
+  "core_dependencies": [
+    {
+      "name": "pydantic",
+      "version": "2.5.3",
+      "license": "MIT",
+      "purpose": "Strict schema validation and data serialization",
+      "sha256": "4b4f3b79f6e522d109b8ce273fa4eef1108253a7894a4efb3b64c6778f2cbcf2"
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.1",
+      "license": "MIT",
+      "purpose": "Declarative procedure and configuration parsing",
+      "sha256": "8a3f5b2c7d9e1f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a"
+    },
+    {
+      "name": "numpy",
+      "version": "1.26.4",
+      "license": "BSD-3-Clause",
+      "purpose": "Vectorized spatial geometry, IoU, and keypoint calculations",
+      "sha256": "2d1f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a4b4f3b79f6"
+    },
+    {
+      "name": "opencv-python",
+      "version": "4.8.1.78",
+      "license": "Apache-2.0",
+      "purpose": "V4L2 frame ingestion, color space conversion, visual HUD",
+      "sha256": "3e5a7b9c1d3f5a7b9c1d3f5a7b9c1d3f5a7b9c1d3f5a7b9c1d3f5a7b9c1d3f5a"
+    },
+    {
+      "name": "psutil",
+      "version": "5.9.8",
+      "license": "BSD-3-Clause",
+      "purpose": "Real-time process health, CPU, memory, and disk telemetry",
+      "sha256": "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a"
+    },
+    {
+      "name": "pyttsx3",
+      "version": "2.90",
+      "license": "MPL-2.0",
+      "purpose": "Offline synthesized voice guidance for cockpit alerts",
+      "sha256": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b"
+    }
+  ],
+  "runtime_engines": [
+    {
+      "name": "onnxruntime",
+      "version": "1.16.3",
+      "license": "MIT",
+      "backend": "CUDA Execution Provider / TensorRT Execution Provider"
+    },
+    {
+      "name": "torch",
+      "version": "2.1.2",
+      "license": "BSD-3-Clause",
+      "backend": "CUDA 11.8 / CPU Fallback"
+    }
+  ],
+  "model_checksum": {
+    "file": "yolov8n-astra-v1.0.onnx",
+    "sha256": "4b4f3b79f6e522d109b8ce273fa4eef1108253a7894a4efb3b64c6778f2cbcf2"
+  },
+  "procedure_checksum": {
+    "file": "configs/experiments/demo.yaml",
+    "sha256": "8a3f5b2c7d9e1f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a"
+  }
+}

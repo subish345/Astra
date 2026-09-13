@@ -1,0 +1,119 @@
+{
+  "$defs": {
+    "QualificationStatus": {
+      "description": "Formal qualification status vocabulary (Section 3).",
+      "enum": [
+        "PLANNED",
+        "READY",
+        "NOT PERFORMED",
+        "IN PROGRESS",
+        "PASS",
+        "FAIL",
+        "PARTIAL",
+        "BLOCKED",
+        "ABORTED",
+        "WAIVED"
+      ],
+      "title": "QualificationStatus",
+      "type": "string"
+    }
+  },
+  "description": "Standard Test Procedure Schema (Section 39).",
+  "properties": {
+    "test_id": {
+      "title": "Test Id",
+      "type": "string"
+    },
+    "objective": {
+      "title": "Objective",
+      "type": "string"
+    },
+    "configuration": {
+      "title": "Configuration",
+      "type": "string"
+    },
+    "equipment": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Equipment",
+      "type": "array"
+    },
+    "setup": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Setup",
+      "type": "array"
+    },
+    "instrumentation": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Instrumentation",
+      "type": "array"
+    },
+    "preconditions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Preconditions",
+      "type": "array"
+    },
+    "procedure": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Procedure",
+      "type": "array"
+    },
+    "data_collection": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Data Collection",
+      "type": "array"
+    },
+    "acceptance_criteria": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Acceptance Criteria",
+      "type": "array"
+    },
+    "post_test_checks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Post Test Checks",
+      "type": "array"
+    },
+    "failure_handling": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Failure Handling",
+      "type": "array"
+    },
+    "status": {
+      "$ref": "#/$defs/QualificationStatus",
+      "default": "PLANNED"
+    }
+  },
+  "required": [
+    "test_id",
+    "objective",
+    "configuration",
+    "equipment",
+    "setup",
+    "instrumentation",
+    "preconditions",
+    "procedure",
+    "data_collection",
+    "acceptance_criteria",
+    "post_test_checks",
+    "failure_handling"
+  ],
+  "title": "TestProcedureSpec",
+  "type": "object"
+}

@@ -3336,6 +3336,159 @@ def cmd_qualification(args: argparse.Namespace) -> int:
     elif qual_cmd == "readiness":
         return engine.print_readiness_dashboard()
 
+    elif qual_cmd == "list-tests":
+        print("=" * 80)
+        print(" ASTRA-EA ENVIRONMENTAL QUALIFICATION TEST MATRIX (Phase 17)")
+        print(" Standard: ECSS-E-ST-10-03C / MIL-STD-810H | Baseline: ASTRA-EA-QB-001")
+        print("=" * 80)
+        print(f"{'Test ID':<15} {'Domain':<24} {'Req':<16} {'Status':<10} {'Facility'}")
+        print("-" * 80)
+        tests = engine.list_qualification_tests()
+        for t in tests:
+            print(f"{t['id']:<15} {t['domain']:<24} {t['requirement']:<16} [{t['status']:<7}] {t['facility'][:20]}")
+        print("=" * 80)
+        print(f"Total Environmental Tests: {len(tests)} | Status: ALL PLANNED FOR FUTURE FACILITY")
+        print("=" * 80)
+        return 0
+
+    elif qual_cmd == "test-status":
+        tests = engine.list_qualification_tests()
+        target = getattr(args, "test", None)
+        if target:
+            tests = [t for t in tests if t["id"] == target]
+            if not tests:
+                print(f"[ERROR] Test ID '{target}' not found in qualification test matrix.")
+                return 1
+
+        print("=" * 80)
+        print(" ASTRA-EA QUALIFICATION TEST PROCEDURE STATUS")
+        print("=" * 80)
+        for t in tests:
+            print(f"Test ID:        {t['id']} ({t['domain']})")
+            print(f"Requirement:    {t['requirement']}")
+            print(f"Status:         [{t['status']}]")
+            print(f"Facility:       {t['facility']}")
+            print(f"Objective:      {t['objective']}")
+            print(f"Acceptance:     {t['acceptance']}")
+            print(f"Sensors:        {t['instrumentation']}")
+            print("-" * 80)
+        return 0
+
+    elif qual_cmd == "telemetry":
+        from core.qualification.telemetry import QualificationTelemetry
+        telem = QualificationTelemetry()
+        duration = getattr(args, "duration", 5) or 5
+        hz = getattr(args, "hz", 2.0) or 2.0
+        interval = 1.0 / max(hz, 0.1)
+        frames = []
+
+        print("=" * 70)
+        print(" ASTRA-EA SPACE QUALIFICATION TELEMETRY STREAM")
+        print(f" Capturing at {hz} Hz for {duration} seconds...")
+        print("=" * 70)
+        print(f"{'Timestamp':<22} {'Power':<10} {'CPU %':<8} {'RAM MB':<10} {'FPS':<8} {'Latency':<10}")
+        print("-" * 70)
+
+        end_time = time.time() + duration
+        while time.time() < end_time:
+            frame = telem.capture_frame()
+            frames.append(frame.model_dump())
+            sys_d = frame.system
+            cpu_pct = sys_d.cpu_utilization_percent or 0.0
+            ram_mb = sys_d.ram_rss_mb or 0.0
+            fps_val = sys_d.fps or 0.0
+            lat_val = sys_d.latency_ms or 0.0
+            print(f"{frame.timestamp[:19]:<22} {sys_d.power_state.value:<10} {cpu_pct:<8.1f} {ram_mb:<10.1f} {fps_val:<8.1f} {lat_val:<10.1f}ms")
+            time.sleep(interval)
+
+        out_path = getattr(args, "output", None)
+        if out_path:
+            p = Path(out_path)
+            p.parent.mkdir(parents=True, exist_ok=True)
+            with open(p, "w", encoding="utf-8") as f:
+                for fr in frames:
+                    f.write(json.dumps(fr) + "\n")
+            print(f"[OK] Telemetry written to {out_path} ({len(frames)} frames)")
+        print("=" * 70)
+        return 0
+
+    elif qual_cmd in ["nonconformances", "ncrs"]:
+        ncr_data = engine.audit_nonconformances()
+        sev_filter = getattr(args, "severity", None)
+        stat_filter = getattr(args, "status", None)
+
+        records = ncr_data["records"]
+        if sev_filter:
+            records = [r for r in records if r.get("severity") == sev_filter.upper()]
+        if stat_filter:
+            records = [r for r in records if r.get("status") == stat_filter.upper()]
+
+        print("=" * 80)
+        print(" ASTRA-EA NONCONFORMANCE & ANOMALY REGISTRY (NCR)")
+        print(" Standard: ECSS-Q-ST-10-09C")
+        print("=" * 80)
+        print(f"Total: {ncr_data['total_ncrs']} | Closed: {ncr_data['closed_ncrs']} | Waived: {ncr_data['waived_ncrs']} | Open Critical: {ncr_data['critical_open_ncrs']}")
+        print("-" * 80)
+        print(f"{'NCR ID':<14} {'Test ID':<14} {'Severity':<10} {'Status':<8} {'Description':<30}")
+        print("-" * 80)
+        for r in records:
+            desc = r.get("failure_description", "")[:28]
+            print(f"{r.get('ncr_id'):<14} {r.get('test_id'):<14} {r.get('severity'):<10} [{r.get('status'):<6}] {desc}")
+            print(f"  └─ Disposition: {r.get('disposition', '')[:65]}")
+        print("=" * 80)
+        return 0
+
+    elif qual_cmd == "dependencies":
+        from core.qualification.dependencies import DependencyAuditor
+        auditor = DependencyAuditor(engine.root_dir)
+        print(auditor.render_ascii_report())
+        return 0
+
+    elif qual_cmd == "report":
+        out_dir = getattr(args, "output_dir", None)
+        if out_dir:
+            engine.reports_dir = Path(out_dir)
+            engine.reports_dir.mkdir(parents=True, exist_ok=True)
+        reports = engine.generate_qualification_reports()
+        print("=" * 70)
+        print(" ASTRA-EA QUALIFICATION REPORT GENERATION")
+        print("=" * 70)
+        for r in reports:
+            print(f"[GENERATED] {r}")
+        print(f"[GENERATED] {engine.reports_dir / 'readiness.json'}")
+        print("=" * 70)
+        print("All qualification reports successfully generated.")
+        return 0
+
+    elif qual_cmd == "reliability":
+        duration = getattr(args, "duration", 10) or 10
+        print("=" * 70)
+        print(" ASTRA-EA LONG-DURATION RELIABILITY & SOAK TEST (QUAL-REL-001)")
+        print(f" Duration: {duration}s burn-in soak | Target: Memory drift < 1.0%")
+        print("=" * 70)
+        import psutil
+        proc = psutil.Process()
+        start_mem = proc.memory_info().rss / (1024.0 * 1024.0)
+        print(f"[START] Initial Memory RSS: {start_mem:.2f} MB")
+
+        t0 = time.time()
+        step = 0
+        while time.time() - t0 < duration:
+            time.sleep(1.0)
+            step += 1
+            cur_mem = proc.memory_info().rss / (1024.0 * 1024.0)
+            drift = ((cur_mem - start_mem) / max(start_mem, 1.0)) * 100.0
+            print(f"[T+{step:02d}s] Memory RSS: {cur_mem:.2f} MB (Drift: {drift:+.2f}%) | Uptime: OK")
+
+        end_mem = proc.memory_info().rss / (1024.0 * 1024.0)
+        total_drift = ((end_mem - start_mem) / max(start_mem, 1.0)) * 100.0
+        print("-" * 70)
+        print(f"Final Memory RSS: {end_mem:.2f} MB | Net Drift: {total_drift:+.2f}%")
+        passed = abs(total_drift) < 1.0
+        print(f"Reliability Soak Check: [{'PASS' if passed else 'FAIL'}]")
+        print("=" * 70)
+        return 0 if passed else 1
+
     else:
         print(f"Unknown qualification command: {qual_cmd}")
         return 1
@@ -3835,6 +3988,37 @@ def build_parser() -> argparse.ArgumentParser:
     p_q_res.set_defaults(func=cmd_qualification)
     p_q_read = qual_subs.add_parser("readiness", help="Display Qualification Readiness Dashboard")
     p_q_read.set_defaults(func=cmd_qualification)
+
+    # Phase 17 subcommands
+    p_q_list = qual_subs.add_parser("list-tests", help="List master environmental qualification test matrix")
+    p_q_list.set_defaults(func=cmd_qualification)
+
+    p_q_status = qual_subs.add_parser("test-status", help="Display qualification test statuses and acceptance limits")
+    p_q_status.add_argument("--test", help="Filter by specific test ID (e.g. QUAL-THM-001)")
+    p_q_status.set_defaults(func=cmd_qualification)
+
+    p_q_telem = qual_subs.add_parser("telemetry", help="Stream or sample qualification telemetry frames")
+    p_q_telem.add_argument("--duration", type=int, default=5, help="Sampling duration in seconds")
+    p_q_telem.add_argument("--hz", type=float, default=2.0, help="Sampling frequency (Hz)")
+    p_q_telem.add_argument("--output", help="Optional output JSON/NDJSON file path")
+    p_q_telem.set_defaults(func=cmd_qualification)
+
+    p_q_ncr = qual_subs.add_parser("nonconformances", aliases=["ncrs"], help="Audit nonconformance records and dispositions")
+    p_q_ncr.add_argument("--severity", help="Filter by severity (CRITICAL, MAJOR, MINOR)")
+    p_q_ncr.add_argument("--status", help="Filter by status (OPEN, CLOSED, WAIVED)")
+    p_q_ncr.set_defaults(func=cmd_qualification)
+
+    p_q_dep = qual_subs.add_parser("dependencies", help="Audit software dependencies, licenses, and supply-chain checksums")
+    p_q_dep.set_defaults(func=cmd_qualification)
+
+    p_q_rep = qual_subs.add_parser("report", help="Generate all 7 HTML qualification reports in reports/qualification/")
+    p_q_rep.add_argument("--output-dir", help="Custom output directory for reports")
+    p_q_rep.set_defaults(func=cmd_qualification)
+
+    p_q_rel = qual_subs.add_parser("reliability", help="Run long-duration reliability soak or baseline burn-in test")
+    p_q_rel.add_argument("--duration", type=int, default=10, help="Burn-in soak duration in seconds")
+    p_q_rel.set_defaults(func=cmd_qualification)
+
     p_qual.set_defaults(func=cmd_qualification)
 
     # verification (Phase 16 Formal V&V Framework)
@@ -3872,6 +4056,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 def cli() -> None:
     """Main CLI entrypoint."""
+    project_root = Path(__file__).resolve().parent.parent.parent
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    cwd = os.getcwd()
+    if cwd not in sys.path:
+        sys.path.insert(0, cwd)
+
     setup_logging(level="WARNING")
     parser = build_parser()
     args = parser.parse_args()

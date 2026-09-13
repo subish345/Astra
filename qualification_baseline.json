@@ -1,0 +1,81 @@
+{
+  "qualification_build_id": "ASTRA-EA-QB-001",
+  "project": "ASTRA-EA",
+  "baseline_name": "Autonomous Spacecraft Experiment Assurance & Assistance Qualification Baseline",
+  "standard": "ECSS-E-ST-10-03C / NASA-STD-8739.8",
+  "freeze_date": "2026-09-13T12:00:00Z",
+  "hardware_profile": {
+    "target_platform": "NVIDIA Jetson Orin Nano (COTS Edge Baseline) / Space-Grade MPSoC",
+    "cpu_architecture": "6-core Arm Cortex-A78AE v8.2 64-bit",
+    "gpu_architecture": "NVIDIA Ampere (1024 CUDA cores, 32 Tensor Cores)",
+    "system_memory": "8GB 128-bit LPDDR5 (Configured RSS allocation: <= 1024 MB)",
+    "chassis_power_budget": "25.0 W (Allocated spacecraft 28V DC bus margin)",
+    "thermal_sink_interface": "Conductive chassis cold-plate mounting"
+  },
+  "software": {
+    "version": "1.0.0-RC1",
+    "git_commit": "01447948f2195df4a7ebdd588b3ae68be3ba5260",
+    "git_tag": "v1.0.0-RC1-frozen",
+    "python_runtime": "3.11+",
+    "os_environment": "Linux 6.x (Ubuntu 22.04 LTS / JetPack 5.1.2 aarch64)",
+    "entrypoint": "core.cli.commands:cli"
+  },
+  "firmware_and_drivers": {
+    "cuda_toolkit": "11.8 / 12.2",
+    "tensorrt_version": "8.6.1",
+    "onnxruntime_version": "1.16.3",
+    "v4l2_media_driver": "uvcvideo / tegra-video standard POSIX V4L2"
+  },
+  "model_artifacts": {
+    "primary_detector": {
+      "name": "yolov8n-astra-v1.0.onnx",
+      "classes": ["specimen_tube", "centrifuge_tube", "pipette", "petri_dish", "tube_rack", "chemical_vial"],
+      "sha256": "4b4f3b79f6e522d109b8ce273fa4eef1108253a7894a4efb3b64c6778f2cbcf2",
+      "input_resolution": [640, 640],
+      "precision": "FP16 / INT8"
+    },
+    "heuristic_fallback": {
+      "name": "ColorHeuristicDetector",
+      "color_spaces": ["HSV_RED", "HSV_YELLOW", "HSV_BLUE"],
+      "sha256": "5c6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e"
+    }
+  },
+  "dataset_provenance": {
+    "manifest_id": "ASTRA-DATASET-v1.0",
+    "samples_count": 5200,
+    "split_ratio": {"train": 0.70, "val": 0.20, "test": 0.10},
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "configuration": {
+    "procedure": {
+      "path": "configs/experiments/demo.yaml",
+      "sha256": "8a3f5b2c7d9e1f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a"
+    },
+    "camera_profiles": [
+      {"name": "view_left", "pitch_deg": 38.0, "file": "configs/cameras/calibration/view_left.yaml"},
+      {"name": "view_center", "pitch_deg": 52.0, "file": "configs/cameras/calibration/view_center.yaml"},
+      {"name": "view_right", "pitch_deg": 64.0, "file": "configs/cameras/calibration/view_right.yaml"}
+    ]
+  },
+  "camera_and_optics": {
+    "sensor_type": "CMOS Global Shutter / High-SNR Rolling Shutter",
+    "resolution": "1920x1080 native (1280x720 processed)",
+    "frame_rate_fps": 30.0,
+    "field_of_view_deg": 78.0,
+    "interface_bus": "USB3 Vision / GMSL2 serialized Coax",
+    "mounting_bracket": "Precision anodized aluminum vibration-isolated fixture"
+  },
+  "storage_bounds": {
+    "medium": "Industrial NVMe SSD (pSLC / 3D TLC with Power-Loss Protection)",
+    "filesystem": "Ext4 / F2FS with direct I/O",
+    "write_bandwidth_limit_mbps": 10.0,
+    "database_mode": "SQLite WAL microsecond logging"
+  },
+  "cables_and_interfaces": {
+    "power_interface": "Spacecraft 28V DC bus (isolated DC-DC converter, MIL-STD-1275E)",
+    "data_bus": "SpaceWire (ECSS-E-ST-50-52C) / CAN-FD / Isolated 100BASE-T Ethernet",
+    "connector_standard": "Glenair / Amphenol MIL-DTL-38999 Series III circular connectors",
+    "wire_harness": "Low-outgassing Tefzel / Kapton insulated aerospace harness"
+  },
+  "qualification_status": "READY FOR FUTURE QUALIFICATION"
+}
