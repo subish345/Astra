@@ -753,19 +753,20 @@ python3 main.py model compatibility
 
 ### 13.1 Phase 21 Exit Status & Quality Gates
 ASTRA-EA has completed **Phase 21 (Findings-Driven Hardening + Corrective Action + Release Candidate)**.
-In strict conformance with the Phase 21 Absolute Rule, zero hypothetical defects were invented, and all 6 empirical findings surfaced during Phase 20 operational rehearsals have been resolved:
+In strict conformance with the Phase 21 Absolute Rule, zero hypothetical defects were invented, and all 7 empirical findings surfaced during Phase 20 operational rehearsals and Phase 21 live execution have been resolved:
 - **`FINDING-001` (CAMERA / HIGH)**: Unpacked `(frame, timestamp)` safely in precheck routines to handle sensor timeouts.
 - **`FINDING-002` (GROUND / MEDIUM)**: Enforced sequence deduplication in `GroundReconciler` during burst telemetry reconnect.
 - **`FINDING-003` (STORAGE / MEDIUM)**: Added automated 85% capacity threshold trigger to prune debug frames while protecting verified step evidence.
 - **`FINDING-004` (UI / OBSERVATION)**: Upgraded alert acknowledge button contrast and ergonomics (`#3b82f6` electric blue).
 - **`FINDING-005` (PERFORMANCE / LOW)**: Standardized dual-clock rendering to stable `HH:MM:SS` mission elapsed time.
 - **`FINDING-006` (RECOVERY / HIGH)**: Enforced strict recovery verification latency bound (&lt;300ms SLA).
+- **`FINDING-007` (UI / HIGH)**: Harmonized HUD arguments, adapted EvidenceItem attributes, and added database completion alias.
 
 ### 13.2 Release Candidate 2 (RC2) Verification Summary
 - **Release Identifier:** `ASTRA-EA-v1.0.0-RC2`
 - **Release Manifest:** [`deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json`](file:///home/subish-loq/Documents/astra/deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json)
-- **Dedicated Regression Tests:** 7 / 7 passed in `tests/regression/`
-- **Full Automated Test Suite:** **326 / 326 passed in 32.3s** across 23 test directories (0 failures)
+- **Dedicated Regression Tests:** 10 / 10 passed in `tests/regression/`
+- **Full Automated Test Suite:** **329 / 329 passed in 32.4s** across 23 test directories (0 failures)
 - **Rehearsal Matrix:** 13 / 13 scenarios passed with 0 developer interventions
 - **Readiness Gate:** `astra hardening readiness` $\to$ **`STATUS: READY`**
 - **Safety Invariant:** 0 false verifications, 0 false deviations, and strict preservation of `UNCERTAIN` state.
