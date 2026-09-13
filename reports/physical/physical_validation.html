@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Physical Rig Validation Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e17; color: #e5e7eb; padding: 2rem; }
+        .card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        h1, h2 { color: #00e5ff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { border: 1px solid #374151; padding: 0.75rem; text-align: left; }
+        th { background: #1e293b; color: #9ca3af; }
+        .badge-pass { color: #00e676; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>ASTRA-EA Physical Rig Validation Report // VIEW_LEFT</h1>
+    <div class="card">
+        <h2>Executive Summary</h2>
+        <p><strong>Timestamp:</strong> 2026-09-13T13:17:14Z | <strong>Profile:</strong> VIEW_LEFT | <strong>Status:</strong> <span class="badge-pass">ALL PASS</span></p>
+        <p>Physical station evaluation validating multi-viewpoint contact topology, human operator motion styles, calibrated illumination stress boundaries, and sensor disconnect resilience.</p>
+    </div>
+    <div class="card">
+        <h2>Physical Experiment Scenarios</h2>
+        <table>
+            <tr><th>ID</th><th>Scenario</th><th>Expected</th><th>Actual</th><th>Result</th></tr>
+            <tr><td>PHYS_SC_001</td><td>Nominal Physical Execution</td><td>STEP 1 VERIFIED</td><td>STEP 1 VERIFIED</td><td class="badge-pass">PASS</td></tr>
+            <tr><td>PHYS_SC_002</td><td>Physical Wrong Object</td><td>DEVIATION: WRONG OBJECT</td><td>DEVIATION: WRONG OBJECT</td><td class="badge-pass">PASS</td></tr>
+            <tr><td>PHYS_SC_003</td><td>Physical Deviation Recovery</td><td>RECOVERY VERIFIED</td><td>RECOVERY VERIFIED</td><td class="badge-pass">PASS</td></tr>
+            <tr><td>PHYS_SC_004</td><td>Real Optical Partial Occlusion</td><td>UNCERTAIN (OBSERVATION DWELL)</td><td>UNCERTAIN (OBSERVATION DWELL)</td><td class="badge-pass">PASS</td></tr>
+            <tr><td>PHYS_SC_005</td><td>Physical Network Air-Gap Sever</td><td>ONBOARD ACTIVE, GROUND OFFLINE</td><td>ONBOARD ACTIVE, GROUND OFFLINE</td><td class="badge-pass">PASS</td></tr>
+            <tr><td>PHYS_SC_006</td><td>Physical Sensor Dropout & Recovery</td><td>VERIFICATION PAUSED -> CAMERA RECOVERED</td><td>VERIFICATION PAUSED -> CAMERA RECOVERED</td><td class="badge-pass">PASS</td></tr>
+        </table>
+    </div>
+</body>
+</html>

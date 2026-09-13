@@ -1,0 +1,30 @@
+# Camera Calibration Profile: VIEW_RIGHT (Lateral Right Perspective)
+profile_id: VIEW_RIGHT
+description: "Lateral right 40-degree mirror perspective for multi-view contact validation"
+resolution:
+  width: 1920
+  height: 1080
+  framerate: 30
+
+mounting:
+  position_cm: [25.0, -20.0, 50.0]
+  pitch_degrees: -40.0
+  yaw_degrees: -25.0
+  roll_degrees: 0.0
+  distance_cm: 58.5
+
+intrinsics:
+  fx: 1381.0
+  fy: 1381.8
+  cx: 960.0
+  cy: 540.0
+  distortion_coefficients: [-0.041, 0.014, 0.001, -0.001, 0.0]
+
+fov:
+  horizontal_degrees: 78.5
+  vertical_degrees: 48.3
+
+lighting_range_lux:
+  min: 15.0
+  max: 1000.0
+  nominal: 350.0

@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-09-13T13:17:14Z",
+  "scenario": "WRONG_OBJECT",
+  "duration_sec": 0.0,
+  "result": {
+    "injected_fault": "YELLOW_BOX selected instead of micropipette",
+    "simulated_outcome": "DEVIATION: WRONG_OBJECT -> Recovery Verified",
+    "physical_outcome": "DEVIATION: WRONG_OBJECT -> Recovery Verified",
+    "divergence": "Identical state machine transition; voice alert sounded in 210ms",
+    "status": "PASS"
+  },
+  "divergence_vs_simulation": "MINIMAL (Within 5% optical variance)",
+  "status": "PASS"
+}

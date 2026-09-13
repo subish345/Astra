@@ -1,0 +1,30 @@
+# Camera Calibration Profile: VIEW_LEFT (Lateral Left Perspective)
+profile_id: VIEW_LEFT
+description: "Lateral left 40-degree oblique perspective for tabletop bio-experiment monitoring"
+resolution:
+  width: 1920
+  height: 1080
+  framerate: 30
+
+mounting:
+  position_cm: [-25.0, -20.0, 50.0]
+  pitch_degrees: -40.0
+  yaw_degrees: 25.0
+  roll_degrees: 0.0
+  distance_cm: 58.5
+
+intrinsics:
+  fx: 1380.5
+  fy: 1382.1
+  cx: 960.0
+  cy: 540.0
+  distortion_coefficients: [-0.042, 0.015, -0.001, 0.002, 0.0]
+
+fov:
+  horizontal_degrees: 78.4
+  vertical_degrees: 48.2
+
+lighting_range_lux:
+  min: 15.0
+  max: 1000.0
+  nominal: 350.0
