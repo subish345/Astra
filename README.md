@@ -832,4 +832,104 @@ Comprehensive engineering documentation is maintained in the [`docs/`](file:///h
 
 ASTRA-EA is developed as an engineering ground demonstrator for the **Smart India Hackathon 2024 (SIH26174)**. While architected following spacecraft software assurance principles (ECSS / NASA-STD-8739.8 concepts), it is **not** flight-qualified, radiation-hardened, or certified for human spaceflight missions without formal flight hardware qualification.
 
+---
+
+## 17. How to Run the Program (Execution Quick Reference)
+
+This section provides a complete, step-by-step operational guide to launch and verify ASTRA-EA in any environment.
+
+### 17.1 Environment Setup & Installation
+```bash
+# Clone the repository
+git clone <repo-url>
+cd astra
+
+# (Recommended) Activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install ASTRA-EA in editable development mode
+pip install -e ".[dev]"
+```
+
+### 17.2 Pre-Flight Subsystem Diagnostic
+Verify that Python runtime, OpenCV DNN, optical sensors, local SQLite database, and audio speech engines are operational:
+```bash
+# Verify system dependencies and hardware acceleration
+astra doctor
+
+# Verify full 10-subsystem deployment readiness
+astra deployment doctor
+```
+
+### 17.3 Running the Main Applications
+
+#### Option A: Onboard Astronaut Mission Console (Primary Flight UI)
+Launches the full interactive PySide6 astronaut cockpit interface with live HUD, step verification, tri-state assurance cards, and recovery guidance:
+```bash
+astra mission
+# Alternatively:
+python3 main.py mission
+```
+
+#### Option B: Ground Observation Monitor (Mission Control UI)
+Launches the read-only ground telemetry console for flight directors and ground engineers:
+```bash
+astra ground-monitor
+# Alternatively:
+python3 main.py ground-monitor
+```
+
+#### Option C: Turnkey End-to-End Flight Demonstration
+Executes an automated, self-contained mission demonstration cycle (Preparation → Execution → Planned Deviation → Real-time Recovery → Audit Report):
+```bash
+# Interactive visual demonstration
+astra demo
+
+# Headless mode for CI/CD or terminal-only environments
+astra demo --headless
+```
+
+### 17.4 Running Operational Rehearsals (Phase 20)
+Simulate nominal, degraded, and fault-injection operational runs under the automated rehearsal framework:
+```bash
+# Run the canonical Golden Mission rehearsal (accelerated pacing)
+astra rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
+
+# Run all 13 operational rehearsal scenarios
+astra rehearsal --scenario ALL --speed ACCELERATED
+
+# Execute authoritative full-length Dress Rehearsal (zero developer intervention)
+astra dress-rehearsal --speed ACCELERATED
+
+# View consolidated rehearsal scorecards
+astra rehearsal-scorecard
+```
+
+### 17.5 Running Findings-Driven Hardening & Release Candidate Gates (Phase 21)
+Inspect the active findings registry, run dedicated regression tests, and evaluate release readiness:
+```bash
+# Inspect all registered findings and current status
+astra hardening findings
+
+# Deep-dive root cause analysis for a specific finding
+astra hardening analyze FINDING-001
+
+# Run dedicated reproduction test for a finding
+astra hardening reproduce FINDING-001
+
+# Execute all dedicated regression tests
+pytest tests/regression/
+
+# Evaluate the formal Release Candidate 2 (RC2) readiness gate
+astra hardening readiness
+```
+
+### 17.6 Running the Full Verification Test Suite
+Execute the entire repository automated test suite (326 tests across 23 directories):
+```bash
+pytest
+```
+
+
 
