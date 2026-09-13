@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>FMEA & Fault Tree</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e17; color: #e5e7eb; padding: 2rem; }
+h1, h2 { color: #00e5ff; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 2rem; }
+th, td { border: 1px solid #374151; padding: 0.75rem; text-align: left; }
+th { background: #1e293b; color: #9ca3af; }
+.pass { color: #00e676; font-weight: bold; }
+.planned { color: #ffab00; font-weight: bold; }
+.not-tested { color: #9ca3af; font-style: italic; }
+.not-started { color: #ef4444; font-weight: bold; }
+</style></head><body>
+<h1>ASTRA-EA // FMEA & Fault Tree</h1>
+
+            <h2>Failure Mode and Effects Analysis (FMEA)</h2>
+            <table>
+                <tr><th>Subsystem</th><th>Failure Mode</th><th>Detection</th><th>Mitigation</th><th>Residual Risk</th></tr>
+                <tr><td>Camera Sensor</td><td>Sensor blackout</td><td>V4L2 timeout (<100ms)</td><td>PAUSED verification state</td><td class="pass">LOW</td></tr>
+                <tr><td>Neural Model</td><td>CUDA OOM / Crash</td><td>Heartbeat monitor</td><td>Heuristic baseline fallback</td><td class="pass">LOW</td></tr>
+                <tr><td>Assurance Engine</td><td>False verification</td><td>5-barrier evidence check</td><td>Mandatory multi-frame contact</td><td class="pass">NEGLIGIBLE</td></tr>
+                <tr><td>Audio Driver</td><td>ALSA device error</td><td>Return-code check</td><td>Auto-switch to visual HUD</td><td class="pass">LOW</td></tr>
+                <tr><td>Storage SSD</td><td>Disk full / write error</td><td>SQLite exception trap</td><td>Memory ring buffer fallback</td><td class="pass">LOW</td></tr>
+            </table>
+        
+</body></html>

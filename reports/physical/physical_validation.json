@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-13T13:17:14Z",
+  "timestamp": "2026-09-13T13:23:50Z",
   "profile_id": "VIEW_LEFT",
   "duration_sec": 1,
   "elapsed_real_sec": 0.16,
@@ -119,9 +119,9 @@
   ],
   "stability": {
     "frames_processed": 30,
-    "average_fps": 189.5,
-    "initial_rss_mb": 395.9,
-    "final_rss_mb": 395.9,
+    "average_fps": 189.9,
+    "initial_rss_mb": 396.0,
+    "final_rss_mb": 396.0,
     "memory_growth_mb": 0.0,
     "memory_leak_detected": false,
     "storage_integrity": "VERIFIED (Zero corruption)"

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>ASTRA-EA Qualification Readiness Dashboard</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e17; color: #e5e7eb; padding: 2rem; }
+h1, h2 { color: #00e5ff; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 2rem; }
+th, td { border: 1px solid #374151; padding: 0.75rem; text-align: left; }
+th { background: #1e293b; color: #9ca3af; }
+.pass { color: #00e676; font-weight: bold; }
+.planned { color: #ffab00; font-weight: bold; }
+.not-tested { color: #9ca3af; font-style: italic; }
+.not-started { color: #ef4444; font-weight: bold; }
+</style></head><body>
+<h1>ASTRA-EA // ASTRA-EA Qualification Readiness Dashboard</h1>
+
+            <h2>System Qualification Readiness Status</h2>
+            <table>
+                <tr><th>Engineering Domain</th><th>Readiness State</th><th>Scope / Notes</th></tr>
+                <tr><td>Requirements</td><td class="pass">PASS</td><td>29/32 Ground Requirements Verified (3 Environmental Planned)</td></tr>
+                <tr><td>Interfaces (ICD)</td><td class="pass">PASS</td><td>Logical contracts defined for Camera, Power, Time, Bus, Thermal</td></tr>
+                <tr><td>Resource Budget</td><td class="pass">KNOWN</td><td>CPU, RAM, VRAM, Storage, Bandwidth measured with >35% margins</td></tr>
+                <tr><td>FMEA & Fault Tree</td><td class="pass">COMPLETE</td><td>5-barrier defense against False Procedure Verification</td></tr>
+                <tr><td>Environmental Test Plan</td><td class="planned">PLANNED</td><td>Vibration, Shock, TVAC, Radiation protocols documented</td></tr>
+                <tr><td>Radiation (TID / SEE)</td><td class="not-tested">NOT TESTED</td><td>Future space-grade compute testbed requirement</td></tr>
+                <tr><td>Thermal Vacuum (TVAC)</td><td class="not-tested">NOT TESTED</td><td>Future thermal chamber cycling requirement</td></tr>
+                <tr><td>Vibration (Launch Profile)</td><td class="not-tested">NOT TESTED</td><td>Future electrodynamic shaker table requirement</td></tr>
+                <tr><td>EMI / EMC</td><td class="not-tested">NOT TESTED</td><td>MIL-STD-461G anechoic chamber requirement</td></tr>
+                <tr><td>Flight Qualification</td><td class="not-started">NOT STARTED</td><td>Engineering demonstrator (TRL 4)</td></tr>
+            </table>
+        
+</body></html>
