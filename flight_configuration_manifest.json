@@ -1,0 +1,12 @@
+{
+  "hardware_profile": "FLIGHT_TARGET_TBD",
+  "software_version": "1.0.0-RC1",
+  "model_version": "ASTRA_OBJECT_DETECTOR_v0.1.0-ONNX",
+  "procedure_version": "DEMO-PROC-v1.0",
+  "configuration_version": "v1.0",
+  "camera_profile": "SONY_IMX477_1080P30_V4L2",
+  "storage_profile": "FLIGHT_DATA_PARTITIONED_10GB",
+  "telemetry_profile": "DOWNLINK_1HZ_NDJSON_TBD",
+  "command_profile": "LOCAL_OPERATOR_AUTH_V1",
+  "build_timestamp": "2026-09-13T14:32:22Z"
+}

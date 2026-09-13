@@ -1,0 +1,216 @@
+{
+  "title": "ASTRA-EA HIL Flight Integration Test Report",
+  "timestamp": "2026-09-13T14:32:27Z",
+  "total_scenarios": 12,
+  "passed": 12,
+  "failed": 0,
+  "overall_status": "PASS",
+  "total_duration_seconds": 0.08,
+  "scenarios": [
+    {
+      "scenario_id": "HIL-01",
+      "scenario_name": "BOOT",
+      "status": "PASS",
+      "duration_ms": 75.22,
+      "details": "Boot completed with state READY",
+      "metrics": {
+        "boot_state": "READY"
+      }
+    },
+    {
+      "scenario_id": "HIL-02",
+      "scenario_name": "SELF_TEST",
+      "status": "PASS",
+      "duration_ms": 0.09,
+      "details": "Subsystem health self-test verified",
+      "metrics": {
+        "overall_status": "READY",
+        "subsystems": {
+          "BOOT": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "PLATFORM": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "CAMERA": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "MODEL": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "PERCEPTION": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "PROCEDURE": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "ASSURANCE": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "STORAGE": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "CLOCK": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "TELEMETRY": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          },
+          "COMMAND": {
+            "state": "READY",
+            "message": "Nominal",
+            "details": {}
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "HIL-03",
+      "scenario_name": "NORMAL_EXPERIMENT",
+      "status": "PASS",
+      "duration_ms": 5.39,
+      "details": "Experiment steps verified without deviation",
+      "metrics": {
+        "steps_verified": 3
+      }
+    },
+    {
+      "scenario_id": "HIL-04",
+      "scenario_name": "DEVIATION",
+      "status": "PASS",
+      "duration_ms": 0.1,
+      "details": "Wrong apparatus interaction triggered DEVIATION alarm",
+      "metrics": {
+        "deviation": "DETECTED"
+      }
+    },
+    {
+      "scenario_id": "HIL-05",
+      "scenario_name": "RECOVERY",
+      "status": "PASS",
+      "duration_ms": 0.04,
+      "details": "Corrective recovery action confirmed by assurance engine",
+      "metrics": {
+        "recovery": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "HIL-06",
+      "scenario_name": "UNCERTAINTY",
+      "status": "PASS",
+      "duration_ms": 0.04,
+      "details": "Partial occlusion correctly flagged as UNCERTAIN (non-guessing invariant)",
+      "metrics": {
+        "confidence": 0.45
+      }
+    },
+    {
+      "scenario_id": "HIL-07",
+      "scenario_name": "CAMERA_FAILURE",
+      "status": "PASS",
+      "duration_ms": 0.04,
+      "details": "Camera failure detected; verification paused without using stale frames",
+      "metrics": {
+        "state": "FAILED",
+        "fps": 0.0,
+        "frame_count": 0,
+        "consecutive_drop_count": 5,
+        "last_frame_timestamp": null,
+        "error_message": "Simulated hardware sensor failure injected"
+      }
+    },
+    {
+      "scenario_id": "HIL-08",
+      "scenario_name": "MODEL_FAILURE",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "details": "Model inference exception caught; fallback procedure engaged",
+      "metrics": {
+        "fallback": "ACTIVE"
+      }
+    },
+    {
+      "scenario_id": "HIL-09",
+      "scenario_name": "STORAGE_WARNING",
+      "status": "PASS",
+      "duration_ms": 0.16,
+      "details": "Storage partition monitoring active: 22.3% utilized",
+      "metrics": {
+        "total_capacity_mb": 256000.0,
+        "free_capacity_mb": 196470.9,
+        "used_capacity_mb": 57154.0,
+        "percent_used": 22.3,
+        "mission_size_mb": 0.0,
+        "evidence_size_mb": 0.0,
+        "telemetry_size_mb": 0.0,
+        "reports_size_mb": 0.0,
+        "diagnostics_size_mb": 0.0,
+        "status": "NOMINAL"
+      }
+    },
+    {
+      "scenario_id": "HIL-10",
+      "scenario_name": "NETWORK_LOSS",
+      "status": "PASS",
+      "duration_ms": 0.96,
+      "details": "Telemetry link severed; onboard mission execution continued autonomously",
+      "metrics": {
+        "onboard_active": true
+      }
+    },
+    {
+      "scenario_id": "HIL-11",
+      "scenario_name": "RESTART_HANDLING",
+      "status": "PASS",
+      "duration_ms": 0.46,
+      "details": "Incomplete run detected on restart; REVIEW_REQUIRED policy applied",
+      "metrics": {
+        "restart_status": "INCOMPLETE_RUN_DETECTED",
+        "incomplete_run_detected": true,
+        "policy": "REVIEW_REQUIRED",
+        "action": "HOLD_FOR_OPERATOR_REVIEW",
+        "previous_state": {
+          "experiment_id": "EXP-HIL-01",
+          "run_id": "RUN-999",
+          "current_step_id": "STEP-02",
+          "procedure_state": "RUNNING",
+          "assurance_state": "VERIFIED",
+          "recovery_state": "NONE",
+          "last_event_sequence": 42,
+          "timestamp_utc": "2026-09-13T12:00:00Z",
+          "is_completed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "HIL-12",
+      "scenario_name": "SHUTDOWN",
+      "status": "PASS",
+      "duration_ms": 0.07,
+      "details": "Safe shutdown completed in 0.0 ms",
+      "metrics": {
+        "shutdown_ms": 0.0
+      }
+    }
+  ]
+}

@@ -52,6 +52,18 @@ storage/database/*.db-wal
 storage/database/*.db-shm
 !storage/database/.gitkeep
 
+# Flight Data Partitions
+flight_data/mission/*
+!flight_data/mission/.gitkeep
+flight_data/evidence/*
+!flight_data/evidence/.gitkeep
+flight_data/telemetry/*
+!flight_data/telemetry/.gitkeep
+flight_data/reports/*
+!flight_data/reports/.gitkeep
+flight_data/diagnostics/*
+!flight_data/diagnostics/.gitkeep
+
 # IDEs & OS
 .vscode/
 .idea/
