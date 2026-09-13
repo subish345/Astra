@@ -64,6 +64,17 @@ flight_data/reports/*
 flight_data/diagnostics/*
 !flight_data/diagnostics/.gitkeep
 
+# Mission Data Exports
+exports/*
+!exports/.gitkeep
+
+# Operational Reports
+reports/rehearsal/*
+!reports/rehearsal/.gitkeep
+reports/training/*
+!reports/training/.gitkeep
+reports/mission_report_*.html
+
 # IDEs & OS
 .vscode/
 .idea/

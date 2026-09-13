@@ -1980,7 +1980,94 @@ def cmd_assurance_test(args: argparse.Namespace) -> int:
 
 
 def cmd_mission(args: argparse.Namespace) -> int:
-    """Launch the PySide6 Mission Console GUI."""
+    """Mission operations: precheck, export, report, review, or launch console GUI."""
+    mission_cmd = getattr(args, "mission_cmd", None)
+
+    if mission_cmd == "precheck":
+        from core.operations.precheck import PreMissionRunner
+        runner = PreMissionRunner()
+        res = runner.run_all_checks()
+
+        if getattr(args, "json", False):
+            print(json.dumps(res, indent=2))
+            return 0 if res["is_authorized_to_start"] else 1
+
+        print("=" * 70)
+        print(" ASTRA-EA PRE-MISSION VERIFICATION MATRIX (Phase 19)")
+        print("=" * 70)
+        print(f"{'Subsystem':<16} {'Status':<10} {'Details'}")
+        print("-" * 70)
+        for chk in res["checks"]:
+            st = chk["status"]
+            print(f"{chk['subsystem']:<16} [{st:<8}] {chk['details']}")
+        print("=" * 70)
+        print(f"OVERALL VERDICT:     [{res['overall_status']}] (Duration: {res['total_duration_ms']:.1f} ms)")
+        if res["overall_status"] == "READY":
+            print("MISSION READINESS:   AUTHORIZED (Ready for experiment startup)")
+        elif res["overall_status"] == "DEGRADED":
+            print("MISSION READINESS:   AUTHORIZED (Degraded operational mode permitted)")
+        else:
+            print("MISSION READINESS:   BLOCKED (Critical subsystem failure detected)")
+        print("=" * 70)
+        return 0 if res["is_authorized_to_start"] else 1
+
+    elif mission_cmd == "export":
+        from core.operations.export import MissionDataExporter
+        exporter = MissionDataExporter()
+        run_id = getattr(args, "run", "RUN_0001")
+        out_base = Path(args.output_dir) if getattr(args, "output_dir", None) else None
+        target = exporter.export_run(run_id=run_id, output_base=out_base)
+        print("=" * 65)
+        print(" ASTRA-EA MISSION DATA BUNDLE EXPORT")
+        print("=" * 65)
+        print(f"Run Identifier:     {run_id}")
+        print(f"Export Bundle:      {target}")
+        print(f"Manifest:           {target / 'manifest.json'}")
+        print(f"Checksums:          {target / 'checksums.sha256'}")
+        print(f"Audit Report:       {target / 'report.html'}")
+        print("=" * 65)
+        return 0
+
+    elif mission_cmd == "report":
+        from core.operations.report import MissionReportGenerator
+        reporter = MissionReportGenerator()
+        run_id = getattr(args, "run", "RUN_0001")
+        out_p = Path(args.output_dir) if getattr(args, "output_dir", None) else None
+        target = reporter.generate_report_file(run_id=run_id, output_path=out_p)
+        print("=" * 65)
+        print(" ASTRA-EA MISSION AUDIT REPORT")
+        print("=" * 65)
+        print(f"Run Identifier:     {run_id}")
+        print(f"Report Generated:   {target}")
+        print("=" * 65)
+        return 0
+
+    elif mission_cmd == "review":
+        from core.operations.export import MissionDataExporter
+        from core.operations.report import MissionReportGenerator
+        exporter = MissionDataExporter()
+        reporter = MissionReportGenerator()
+        run_id = getattr(args, "run", "RUN_0001")
+        events = exporter._collect_run_events(run_id)
+        timeline = exporter._collect_run_timeline(run_id, events)
+        health = exporter._collect_health_snapshot()
+        data = reporter.generate_report_data(run_id, events, timeline, health)
+        print("=" * 70)
+        print(f" ASTRA-EA MISSION RUN REVIEW — {run_id}")
+        print("=" * 70)
+        print(f"Status:     {data['overall_status']}")
+        print(f"Duration:   {data['duration_seconds']:.1f}s")
+        print(f"Verified:   {data['metrics']['steps_verified']} steps")
+        print(f"Deviations: {data['metrics']['deviations_count']}")
+        print(f"Recoveries: {data['metrics']['recoveries_count']}")
+        print("-" * 70)
+        print("Timeline Milestones:")
+        for ms in data["timeline_milestones"]:
+            print(f"  [{ms['onboard_met_seconds']}s] {ms['milestone_type']}: {ms['title']}")
+        print("=" * 70)
+        return 0
+
+    # Fallback to PySide6 Mission Console GUI
     from PySide6.QtWidgets import QApplication
     from core.ui.main_window import MissionConsoleWindow
 
@@ -2015,6 +2102,116 @@ def cmd_mission(args: argparse.Namespace) -> int:
         window.show()
 
     return app.exec()
+
+
+def cmd_rehearsal(args: argparse.Namespace) -> int:
+    """Execute operational mission rehearsal in an isolated sandbox (Phase 19)."""
+    from core.operations.rehearsal import MissionRehearsalEngine, RehearsalSpeed
+    scenario = getattr(args, "scenario", "GOLDEN_MISSION")
+    speed_str = getattr(args, "speed", "ACCELERATED")
+    speed = RehearsalSpeed(speed_str)
+
+    print("=" * 70)
+    print(" ASTRA-EA MISSION REHEARSAL ENGINE (Phase 19)")
+    print("=" * 70)
+    print(f"Scenario:     {scenario}")
+    print(f"Pacing:       {speed.value}")
+    print("Sandbox:      ISOLATED (Zero live flight records modified)")
+    print("-" * 70)
+
+    engine = MissionRehearsalEngine(scenario_name=scenario, speed=speed)
+    res = engine.run_all()
+
+    for entry in res["log"]:
+        print(f"  [{entry['phase']:<12}] Step {entry['step_index']}: {entry['description']}")
+    print("=" * 70)
+    print(f"Rehearsal Verdict:  [{res['status']}] (Duration: {res['execution_duration_seconds']}s)")
+    print(f"Rehearsal Report:   reports/rehearsal/rehearsal_{scenario.lower()}.json")
+    print("=" * 70)
+    return 0 if res["status"] == "PASS" else 1
+
+
+def cmd_training_mode(args: argparse.Namespace) -> int:
+    """Execute operator training mode and failure drills (Phase 19)."""
+    from core.operations.training import DrillType, OperatorTrainingEngine
+    drill_str = getattr(args, "drill", None)
+    operator = getattr(args, "operator", "Trainee_01")
+    engine = OperatorTrainingEngine()
+
+    print("=" * 75)
+    print(" ASTRA-EA OPERATOR TRAINING MODE — FAILURE DRILLS (Phase 19)")
+    print("=" * 75)
+    print(f"Operator:     {operator}")
+    print("Environment:  SIMULATED FAILURE DRILL (Safe Training Sandbox)")
+    print("-" * 75)
+
+    if drill_str:
+        drill = DrillType(drill_str)
+        eval_res = engine.run_drill(drill=drill, operator=operator)
+        print(f"Drill ID:         {eval_res.drill_id}")
+        print(f"Detection Time:   {eval_res.detection_time_ms:.1f} ms")
+        print(f"Response Time:    {eval_res.response_time_ms:.1f} ms")
+        print(f"Recovery Time:    {eval_res.recovery_time_ms:.1f} ms")
+        print(f"Final State:      {eval_res.final_state}")
+        print(f"Verdict:          [{eval_res.verdict}]")
+        print("=" * 75)
+        return 0 if eval_res.verdict == "PASS" else 1
+
+    summary = engine.run_all_drills(operator=operator)
+    print(f"{'Drill ID':<28} {'Detect (ms)':<14} {'Response (ms)':<14} {'Verdict'}")
+    print("-" * 75)
+    for d in summary["drills"]:
+        print(f"{d['drill_id']:<28} {d['detection_time_ms']:<14.1f} {d['response_time_ms']:<14.1f} [{d['verdict']}]")
+    print("=" * 75)
+    print(f"Total Drills: {summary['total_drills']} | Passed: {summary['passed']} | Failed: {summary['failed']}")
+    print(f"Overall Training Score: [{summary['overall_status']}]")
+    print("=" * 75)
+    return 0 if summary["overall_status"] == "PASS" else 1
+
+
+def cmd_maintenance(args: argparse.Namespace) -> int:
+    """Manage maintenance mode and execute isolated diagnostics (Phase 19)."""
+    from core.operations.maintenance import MaintenanceModeManager
+    maint_cmd = getattr(args, "maint_cmd", "status")
+    mgr = MaintenanceModeManager()
+
+    if maint_cmd == "status":
+        is_maint = mgr.is_maintenance_mode()
+        print("=" * 60)
+        print(" ASTRA-EA SYSTEM OPERATIONAL MODE STATUS")
+        print("=" * 60)
+        print(f"Active Mode:     {'MAINTENANCE MODE' if is_maint else 'OPERATIONAL MISSION MODE'}")
+        print(f"Live Starts:     {'BLOCKED' if is_maint else 'PERMITTED'}")
+        print("=" * 60)
+        return 0
+
+    elif maint_cmd == "enter":
+        op = getattr(args, "operator", "SYSTEM_ENGINEER")
+        reason = getattr(args, "reason", "Diagnostic check")
+        ok, msg = mgr.enter_maintenance_mode(operator=op, reason=reason)
+        print(msg)
+        return 0 if ok else 1
+
+    elif maint_cmd == "exit":
+        op = getattr(args, "operator", "SYSTEM_ENGINEER")
+        ok, msg = mgr.exit_maintenance_mode(operator=op)
+        print(msg)
+        return 0 if ok else 1
+
+    elif maint_cmd == "test-camera":
+        res = mgr.run_camera_diagnostic()
+        print(f"Camera Diagnostic: [{ 'PASS' if res.passed else 'FAIL' }] - {res.details}")
+        return 0 if res.passed else 1
+
+    elif maint_cmd == "test-storage":
+        res = mgr.run_storage_diagnostic()
+        print(f"Storage Diagnostic: [{ 'PASS' if res.passed else 'FAIL' }] - {res.details}")
+        return 0 if res.passed else 1
+
+    else:
+        print(f"Unknown maintenance command: {maint_cmd}")
+        return 1
+
 
 
 def cmd_voice_test(args: argparse.Namespace) -> int:
@@ -3798,13 +3995,33 @@ def build_parser() -> argparse.ArgumentParser:
     p_ass_rep.add_argument("--session-id", default="SESSION_002", help="Mission session identifier")
     p_ass_rep.set_defaults(func=cmd_assurance_replay)
 
-    # mission (Phase 6 Mission Console)
-    p_mis = subparsers.add_parser("mission", help="Launch the Qt Mission Console")
+    # mission (Phase 6 & Phase 19 Mission Operations)
+    p_mis = subparsers.add_parser("mission", help="Mission operations: precheck, export, report, review, console")
     p_mis.add_argument("--source", default="0", help="Camera index or video file path")
     p_mis.add_argument("--camera-profile", default="view_left", help="Camera viewpoint profile")
     p_mis.add_argument("--procedure", default="configs/experiments/demo.yaml", help="Path to procedure YAML")
     p_mis.add_argument("--session-id", default="SESSION_001", help="Mission session identifier")
     p_mis.add_argument("--fullscreen", action="store_true", help="Launch in fullscreen mode")
+    mis_subs = p_mis.add_subparsers(dest="mission_cmd")
+
+    p_mis_pre = mis_subs.add_parser("precheck", help="Run automated pre-mission verification matrix")
+    p_mis_pre.add_argument("--json", action="store_true", help="Output results in JSON format")
+    p_mis_pre.set_defaults(func=cmd_mission)
+
+    p_mis_exp = mis_subs.add_parser("export", help="Export self-contained run bundle")
+    p_mis_exp.add_argument("--run", required=True, help="Run identifier (e.g. RUN_0001)")
+    p_mis_exp.add_argument("--output-dir", help="Destination base directory")
+    p_mis_exp.set_defaults(func=cmd_mission)
+
+    p_mis_rep = mis_subs.add_parser("report", help="Generate post-mission audit report")
+    p_mis_rep.add_argument("--run", required=True, help="Run identifier")
+    p_mis_rep.add_argument("--output-dir", help="Output path or directory")
+    p_mis_rep.set_defaults(func=cmd_mission)
+
+    p_mis_rev = mis_subs.add_parser("review", help="Review mission execution events and timeline")
+    p_mis_rev.add_argument("--run", required=True, help="Run identifier")
+    p_mis_rev.set_defaults(func=cmd_mission)
+
     p_mis.set_defaults(func=cmd_mission)
 
     # voice (Phase 6 Audio Guidance)
@@ -4039,6 +4256,36 @@ def build_parser() -> argparse.ArgumentParser:
     p_fpkg_bld.add_argument("--output-dir", help="Output directory base")
     p_fpkg_bld.set_defaults(func=cmd_flight_package)
     p_fpkg.set_defaults(func=cmd_flight_package)
+
+    # rehearsal (Phase 19 Mission Rehearsal Engine)
+    p_reh = subparsers.add_parser("rehearsal", help="Simulate end-to-end mission rehearsals (Phase 19)")
+    p_reh.add_argument("--scenario", default="GOLDEN_MISSION", choices=["GOLDEN_MISSION"], help="Rehearsal scenario")
+    p_reh.add_argument("--speed", default="ACCELERATED", choices=["REALTIME", "ACCELERATED", "STEPWISE"], help="Execution pacing")
+    p_reh.set_defaults(func=cmd_rehearsal)
+
+    # training-mode (Phase 19 Operator Failure Drills)
+    p_train = subparsers.add_parser("training-mode", help="Operator training mode and operational failure drills (Phase 19)")
+    p_train.add_argument("--drill", choices=["DRILL_CAMERA_FAILURE", "DRILL_NETWORK_LOSS", "DRILL_WRONG_OBJECT", "DRILL_MODEL_FAILURE", "DRILL_STORAGE_WARNING", "DRILL_GROUND_DISCONNECT", "DRILL_RECOVERY_FAILURE"], help="Specific failure drill to execute")
+    p_train.add_argument("--operator", default="Trainee_01", help="Operator identifier")
+    p_train.set_defaults(func=cmd_training_mode)
+
+    # maintenance (Phase 19 Maintenance Mode & Diagnostics)
+    p_maint = subparsers.add_parser("maintenance", help="Maintenance mode manager and subsystem diagnostics (Phase 19)")
+    maint_subs = p_maint.add_subparsers(dest="maint_cmd")
+    p_m_stat = maint_subs.add_parser("status", help="Check maintenance mode status")
+    p_m_stat.set_defaults(func=cmd_maintenance)
+    p_m_ent = maint_subs.add_parser("enter", help="Enter maintenance mode (blocks live experiment starts)")
+    p_m_ent.add_argument("--operator", default="SYSTEM_ENGINEER", help="Operator entering maintenance mode")
+    p_m_ent.add_argument("--reason", default="Routine diagnostic inspection", help="Reason for maintenance")
+    p_m_ent.set_defaults(func=cmd_maintenance)
+    p_m_ext = maint_subs.add_parser("exit", help="Exit maintenance mode")
+    p_m_ext.add_argument("--operator", default="SYSTEM_ENGINEER", help="Operator exiting maintenance mode")
+    p_m_ext.set_defaults(func=cmd_maintenance)
+    p_m_cam = maint_subs.add_parser("test-camera", help="Execute optical camera loopback diagnostic")
+    p_m_cam.set_defaults(func=cmd_maintenance)
+    p_m_str = maint_subs.add_parser("test-storage", help="Execute storage partition integrity diagnostic")
+    p_m_str.set_defaults(func=cmd_maintenance)
+    p_maint.set_defaults(func=cmd_maintenance)
 
     # edge (Phase 14 Edge Deployment Pilot)
     p_edge = subparsers.add_parser("edge", help="Edge compute diagnostics, benchmarks, and validation")

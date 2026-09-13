@@ -132,8 +132,13 @@ class GroundMonitorWindow(QMainWindow):
         self.state.sig_activity_changed.connect(self.mission_panel.set_activity)
         self.state.sig_assurance_changed.connect(self.mission_panel.set_assurance)
         self.state.sig_alert_changed.connect(self.alert_panel.set_alert)
+        self.state.sig_alert_ack_changed.connect(lambda _, lc: self.alert_panel.set_lifecycle(lc))
+        self.state.sig_op_status_changed.connect(self.header_panel.set_operational_status)
+        self.state.sig_reconciliation_changed.connect(self.header_panel.set_reconciliation_status)
+        self.state.sig_clocks_updated.connect(self.header_panel.set_clocks)
         self.state.sig_timeline_added.connect(self.timeline_panel.add_event)
         self.state.sig_health_changed.connect(self.health_panel.update_health)
+        self.alert_panel.set_ack_callback(self.state.acknowledge_active_alert)
 
     @Slot(dict)
     def _handle_link_update(self, status: Dict[str, Any]) -> None:

@@ -50,42 +50,102 @@ class HeaderPanel(QFrame):
 
         layout.addStretch()
 
-        # Center: Simulation Badge (hidden by default)
-        self.sim_badge = QLabel("SIMULATION MODE")
+        # Center: Dual Clocks & Operational Status (Phase 19)
+        self.clock_badge = QLabel("MET: 00:00:00 | GRT: --:--:--")
+        self.clock_badge.setStyleSheet("""
+            background-color: #111c35;
+            color: #38bdf8;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #1e293b;
+        """)
+        layout.addWidget(self.clock_badge)
+
+        self.op_status_badge = QLabel("NOMINAL")
+        self.op_status_badge.setStyleSheet(self._badge_style("#059669"))
+        layout.addWidget(self.op_status_badge)
+
+        # Simulation Badge (hidden by default)
+        self.sim_badge = QLabel("SIMULATION")
         self.sim_badge.setStyleSheet("""
             background-color: #7c3aed;
             color: white;
             font-weight: bold;
             font-size: 11px;
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: 4px;
             border: 1px solid #a78bfa;
         """)
         self.sim_badge.setVisible(False)
         layout.addWidget(self.sim_badge)
 
-        layout.addSpacing(15)
+        layout.addSpacing(10)
 
-        # Right: Telemetry Badges
-        # Video channel badge
+        # Right: Telemetry & Channel Badges (Section 55: VID, EVT, TLM, CMD separated)
         self.vid_badge = QLabel("VID: OFFLINE")
         self.vid_badge.setStyleSheet(self._badge_style(COLOR_LINK_OFFLINE))
         layout.addWidget(self.vid_badge)
 
-        # Event channel badge
         self.evt_badge = QLabel("EVT: OFFLINE")
         self.evt_badge.setStyleSheet(self._badge_style(COLOR_LINK_OFFLINE))
         layout.addWidget(self.evt_badge)
 
-        # Heartbeat age badge
+        self.tlm_badge = QLabel("TLM: ONLINE")
+        self.tlm_badge.setStyleSheet(self._badge_style(COLOR_LINK_ONLINE))
+        layout.addWidget(self.tlm_badge)
+
+        self.cmd_badge = QLabel("CMD: TBD")
+        self.cmd_badge.setStyleSheet(self._badge_style("#334155", text_color="#94a3b8"))
+        layout.addWidget(self.cmd_badge)
+
         self.hb_badge = QLabel("HB: --")
         self.hb_badge.setStyleSheet(self._badge_style("#1e293b", text_color="#94a3b8"))
         layout.addWidget(self.hb_badge)
+
+        self.sync_badge = QLabel("SYNC: OK")
+        self.sync_badge.setStyleSheet(self._badge_style("#0369a1"))
+        layout.addWidget(self.sync_badge)
 
         # Master Link Badge
         self.link_badge = QLabel("LINK: OFFLINE")
         self.link_badge.setStyleSheet(self._master_badge_style(COLOR_LINK_OFFLINE))
         layout.addWidget(self.link_badge)
+
+    def set_operational_status(self, status: str) -> None:
+        """Update high-level mission operational status (Section 14)."""
+        color_map = {
+            "NOMINAL": "#059669",
+            "ATTENTION": "#d97706",
+            "DEGRADED": "#ea580c",
+            "ANOMALY": "#dc2626",
+            "RECOVERY": "#2563eb",
+            "COMPLETE": "#16a34a",
+        }
+        bg = color_map.get(status.upper(), "#475569")
+        self.op_status_badge.setText(status.upper())
+        self.op_status_badge.setStyleSheet(self._badge_style(bg))
+
+    def set_reconciliation_status(self, rec_dict: Dict[str, Any]) -> None:
+        """Update sequence sync & gap status (Section 43, 44)."""
+        is_synced = rec_dict.get("is_synced", True)
+        gaps = rec_dict.get("missing_gaps", [])
+        if is_synced and not gaps:
+            self.sync_badge.setText("SYNC: OK")
+            self.sync_badge.setStyleSheet(self._badge_style("#0369a1"))
+        else:
+            self.sync_badge.setText(f"SYNC: GAP ({len(gaps)})")
+            self.sync_badge.setStyleSheet(self._badge_style("#b91c1c"))
+
+    def set_clocks(self, met_seconds: float, grt_utc: str) -> None:
+        """Update dual clocks: Onboard MET and Ground Receipt Time (Section 13)."""
+        mins, secs = divmod(int(met_seconds), 60)
+        hrs, mins = divmod(mins, 60)
+        met_str = f"{hrs:02d}:{mins:02d}:{secs:02d}"
+        time_part = grt_utc.split("T")[-1][:8] if "T" in grt_utc else grt_utc[:8]
+        self.clock_badge.setText(f"MET: {met_str} | GRT: {time_part}")
 
     def _badge_style(self, bg_color: str, text_color: str = "#ffffff") -> str:
         return f"""
