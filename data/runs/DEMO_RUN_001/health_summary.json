@@ -1,7 +1,7 @@
 {
   "overall_status": "NORMAL",
   "summary": "All subsystems operational",
-  "timestamp": 1789304430.7685685,
+  "timestamp": 1789305064.0114825,
   "critical_failures": [],
   "degraded_components": [],
   "subsystems": {
@@ -9,67 +9,67 @@
       "status": "NORMAL",
       "criticality": "CRITICAL",
       "message": "Initialized",
-      "timestamp": 1789304429.408092
+      "timestamp": 1789305062.6163762
     },
     "perception": {
       "status": "NORMAL",
       "criticality": "CRITICAL",
       "message": "Initialized",
-      "timestamp": 1789304429.4080932
+      "timestamp": 1789305062.6163776
     },
     "procedure": {
       "status": "NORMAL",
       "criticality": "CRITICAL",
       "message": "Initialized",
-      "timestamp": 1789304429.408094
+      "timestamp": 1789305062.616378
     },
     "assurance": {
       "status": "NORMAL",
       "criticality": "CRITICAL",
       "message": "Initialized",
-      "timestamp": 1789304429.4080942
+      "timestamp": 1789305062.6163785
     },
     "evidence": {
       "status": "NORMAL",
       "criticality": "CRITICAL",
       "message": "Initialized",
-      "timestamp": 1789304429.4080946
+      "timestamp": 1789305062.616379
     },
     "database": {
       "status": "NORMAL",
       "criticality": "CRITICAL",
       "message": "Initialized",
-      "timestamp": 1789304429.408095
+      "timestamp": 1789305062.6163795
     },
     "storage": {
       "status": "NORMAL",
       "criticality": "IMPORTANT",
       "message": "Initialized",
-      "timestamp": 1789304429.4080956
+      "timestamp": 1789305062.61638
     },
     "recording": {
       "status": "NORMAL",
       "criticality": "IMPORTANT",
       "message": "Initialized",
-      "timestamp": 1789304429.4080958
+      "timestamp": 1789305062.6163802
     },
     "voice": {
       "status": "NORMAL",
       "criticality": "OPTIONAL",
       "message": "Initialized",
-      "timestamp": 1789304429.408096
+      "timestamp": 1789305062.6163805
     },
     "streaming": {
       "status": "NORMAL",
       "criticality": "OPTIONAL",
       "message": "Initialized",
-      "timestamp": 1789304429.4080963
+      "timestamp": 1789305062.6163807
     },
     "ground_monitor": {
       "status": "NORMAL",
       "criticality": "OPTIONAL",
       "message": "Initialized",
-      "timestamp": 1789304429.4080966
+      "timestamp": 1789305062.616381
     }
   }
 }

@@ -1,0 +1,27 @@
+profile_name: "PROFILE_REALTIME"
+description: "High-throughput real-time profile targeting 60+ FPS with interleaved pose estimation."
+
+perception:
+  input_resolution: [640, 640]
+  confidence_threshold: 0.50
+  nms_threshold: 0.45
+  device: "auto"
+  runtime: "auto"
+
+scheduler:
+  tracking_interval: 1
+  detection_interval: 1
+  pose_interval: 2
+  hand_interval: 1
+  queue_policy: "latest_frame"
+  max_queue_size: 2
+
+stream:
+  enabled: true
+  quality_mode: "MEDIUM"
+  fps: 15
+
+resources:
+  max_ram_gb: 4.0
+  max_cpu_percent: 80.0
+  max_gpu_memory_gb: 4.0

@@ -1,0 +1,27 @@
+profile_name: "PROFILE_DEV"
+description: "Development and deep-debugging profile with full diagnostics and maximum telemetry fidelity."
+
+perception:
+  input_resolution: [640, 640]
+  confidence_threshold: 0.40
+  nms_threshold: 0.45
+  device: "auto"
+  runtime: "opencv_dnn"
+
+scheduler:
+  tracking_interval: 1
+  detection_interval: 1
+  pose_interval: 1
+  hand_interval: 1
+  queue_policy: "latest_frame"
+  max_queue_size: 10
+
+stream:
+  enabled: true
+  quality_mode: "HIGH"
+  fps: 15
+
+resources:
+  max_ram_gb: 8.0
+  max_cpu_percent: 95.0
+  max_gpu_memory_gb: 6.0

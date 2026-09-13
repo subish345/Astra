@@ -1,0 +1,192 @@
+{
+  "timestamp": "2026-09-13T12:30:12Z",
+  "platform": {
+    "os_name": "Linux",
+    "os_release": "7.1.12-200.fc44.x86_64",
+    "architecture": "x86_64",
+    "cpu_model": "Intel(R) Core(TM) i7-14700HX",
+    "cpu_cores_physical": 20,
+    "cpu_cores_logical": 28,
+    "total_ram_gb": 31.03,
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "gpu_available": false,
+    "vram_total_mb": 8151,
+    "active_backend": "cpu",
+    "python_version": "3.14.7"
+  },
+  "duration_seconds": 0.45,
+  "throughput": {
+    "camera_fps": 132.41,
+    "compute_capacity_fps": 133.39,
+    "effective_e2e_fps": 132.41,
+    "total_frames_captured": 60,
+    "total_frames_processed": 60
+  },
+  "end_to_end_latency": {
+    "p50_ms": 5.907,
+    "p90_ms": 7.834,
+    "p95_ms": 8.182,
+    "p99_ms": 117.871,
+    "mean_ms": 7.512,
+    "min_ms": 3.622,
+    "max_ms": 117.871,
+    "std_dev_ms": 14.448,
+    "samples": 60
+  },
+  "stages": {
+    "capture": {
+      "p50_ms": 0.003,
+      "p90_ms": 0.004,
+      "p95_ms": 0.005,
+      "p99_ms": 0.012,
+      "mean_ms": 0.003,
+      "min_ms": 0.002,
+      "max_ms": 0.012,
+      "std_dev_ms": 0.001,
+      "samples": 60
+    },
+    "detection": {
+      "p50_ms": 2.867,
+      "p90_ms": 3.725,
+      "p95_ms": 4.216,
+      "p99_ms": 112.638,
+      "mean_ms": 4.832,
+      "min_ms": 2.396,
+      "max_ms": 112.638,
+      "std_dev_ms": 14.044,
+      "samples": 60
+    },
+    "pose": {
+      "p50_ms": 0.0,
+      "p90_ms": 2.737,
+      "p95_ms": 2.891,
+      "p99_ms": 3.209,
+      "mean_ms": 1.301,
+      "min_ms": 0.0,
+      "max_ms": 3.209,
+      "std_dev_ms": 1.312,
+      "samples": 60
+    },
+    "hands": {
+      "p50_ms": 1.062,
+      "p90_ms": 1.377,
+      "p95_ms": 1.741,
+      "p99_ms": 1.825,
+      "mean_ms": 1.125,
+      "min_ms": 0.843,
+      "max_ms": 1.825,
+      "std_dev_ms": 0.244,
+      "samples": 60
+    },
+    "tracking": {
+      "p50_ms": 0.022,
+      "p90_ms": 0.028,
+      "p95_ms": 0.032,
+      "p99_ms": 0.041,
+      "mean_ms": 0.023,
+      "min_ms": 0.012,
+      "max_ms": 0.041,
+      "std_dev_ms": 0.006,
+      "samples": 60
+    },
+    "interaction": {
+      "p50_ms": 0.004,
+      "p90_ms": 0.005,
+      "p95_ms": 0.006,
+      "p99_ms": 0.007,
+      "mean_ms": 0.004,
+      "min_ms": 0.002,
+      "max_ms": 0.007,
+      "std_dev_ms": 0.001,
+      "samples": 60
+    },
+    "activity": {
+      "p50_ms": 0.02,
+      "p90_ms": 0.029,
+      "p95_ms": 0.033,
+      "p99_ms": 0.042,
+      "mean_ms": 0.022,
+      "min_ms": 0.012,
+      "max_ms": 0.042,
+      "std_dev_ms": 0.006,
+      "samples": 60
+    },
+    "evidence": {
+      "p50_ms": 0.108,
+      "p90_ms": 0.154,
+      "p95_ms": 0.172,
+      "p99_ms": 0.251,
+      "mean_ms": 0.113,
+      "min_ms": 0.073,
+      "max_ms": 0.251,
+      "std_dev_ms": 0.03,
+      "samples": 60
+    },
+    "procedure": {
+      "p50_ms": 0.043,
+      "p90_ms": 0.062,
+      "p95_ms": 0.068,
+      "p99_ms": 0.073,
+      "mean_ms": 0.045,
+      "min_ms": 0.034,
+      "max_ms": 0.073,
+      "std_dev_ms": 0.009,
+      "samples": 60
+    },
+    "assurance": {
+      "p50_ms": 0.029,
+      "p90_ms": 0.043,
+      "p95_ms": 0.046,
+      "p99_ms": 0.05,
+      "mean_ms": 0.032,
+      "min_ms": 0.021,
+      "max_ms": 0.05,
+      "std_dev_ms": 0.007,
+      "samples": 60
+    },
+    "ui_publish": {
+      "p50_ms": 0.0,
+      "p90_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "mean_ms": 0.0,
+      "min_ms": 0.0,
+      "max_ms": 0.0,
+      "std_dev_ms": 0.0,
+      "samples": 60
+    },
+    "stream": {
+      "p50_ms": 0.0,
+      "p90_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "mean_ms": 0.0,
+      "min_ms": 0.0,
+      "max_ms": 0.0,
+      "std_dev_ms": 0.0,
+      "samples": 60
+    },
+    "recording": {
+      "p50_ms": 0.0,
+      "p90_ms": 0.0,
+      "p95_ms": 0.0,
+      "p99_ms": 0.0,
+      "mean_ms": 0.0,
+      "min_ms": 0.0,
+      "max_ms": 0.0,
+      "std_dev_ms": 0.0,
+      "samples": 60
+    }
+  },
+  "resources": {
+    "avg_process_cpu_percent": 473.2,
+    "peak_process_cpu_percent": 566.8,
+    "avg_system_cpu_percent": 25.1,
+    "avg_ram_mb": 208.98,
+    "peak_ram_mb": 209.05,
+    "avg_vram_mb": "N/A",
+    "peak_vram_mb": "N/A"
+  },
+  "queues": {},
+  "benchmark_mode": "OPTIMIZED"
+}
