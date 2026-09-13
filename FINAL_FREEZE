@@ -3,7 +3,7 @@
 ================================================================================
 PRODUCT:             ASTRA-EA (SIH26174)
 VERSION:             1.0.0-RC1
-COMMIT HASH:         2f5d872df02013a39b2ef11f1b7c4dc7fb972195
+COMMIT HASH:         5796cdeb70e0727c722fc4dc1df963a48c9c7581
 DATASET VERSION:     ASTRA-DATASET-v1.0
 MODEL VERSION:       ASTRA_OBJECT_DETECTOR_v1.0
 PROCEDURE VERSION:   DEMO_EXP_001 v1.0

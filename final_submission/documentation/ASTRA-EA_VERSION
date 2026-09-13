@@ -2,7 +2,7 @@ ASTRA-EA PRODUCT VERSION METADATA
 ================================================================================
 Product Name:        ASTRA-EA (Autonomous Spacecraft Experiment Assurance)
 Product Version:     1.0.0-RC1
-Git Commit:          2f5d872df02013a39b2ef11f1b7c4dc7fb972195
+Git Commit:          5796cdeb70e0727c722fc4dc1df963a48c9c7581
 Build Timestamp:     2026-09-13T12:59:00Z
 Python Runtime:      3.14.7 (x86_64-linux)
 Operating System:    Linux (POSIX compliant)
