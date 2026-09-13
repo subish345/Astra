@@ -4,7 +4,7 @@
 
 > **Tagline:** *"See. Understand. Verify. Assist. Record. — Locally, in Space."*  
 > **Problem Statement:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
-> **System Status:** Phase 11 Completed — Full Product Integration + System Hardening Operational  
+> **System Status:** Phase 21 Completed — Findings-Driven Hardening + Corrective Action + Release Candidate 2 (ASTRA-EA-v1.0.0-RC2) Operational  
 > **Classification:** Engineering-Grade Ground Demonstrator (Not flight qualified or zero-g certified)
 
 ---
@@ -67,6 +67,16 @@ ASTRA-EA is engineered for air-gapped, high-reliability spacecraft operation:
 | **Phase 9: Ground Monitor & IP Streaming** | **COMPLETE** | Non-blocking MJPEG video stream server (`:8554`), Server-Sent Events (SSE) telemetry server (`:8765`), 500-event ring buffer replay, read-only PySide6 Ground Monitor console, multi-channel link watchdog (`GOOD`/`DEGRADED`/`OFFLINE`), path traversal guards, rate limiter, dual-machine LAN deployment, 2.3% compute overhead, and 222 automated tests passing. |
 | **Phase 10: Benchmarking & Edge Optimization** | **COMPLETE** | High-precision profiling framework, adaptive multi-cadence perception scheduler (`AdaptiveInferenceScheduler`), edge deployment hardware profiles (`configs/deployment/`), thermal/soak testing harness, and 237 automated tests passing. |
 | **Phase 11: Full Product Integration & System Hardening** | **COMPLETE** | Single authoritative `MissionOrchestrator`, 16-state `MissionLifecycleManager`, `UnifiedEventBus` with correlation headers, `MissionRunManager` with configuration & model snapshots, `UnifiedEvidenceStore`, `UnifiedRecordingManager`, `UnifiedHealthAggregator`, native CLI packaging (`pip install -e .` -> `astra`), golden regression demo (`GOLDEN_DEMO.yaml`), deployment doctor, and 247 automated tests passing. |
+| **Phase 12: Final Validation** | **COMPLETE** | End-to-end validation suite, zero-regression safety assertions, cross-environment qualification, Golden Master demonstration, 260 automated tests passing. |
+| **Phase 13: Competition Operations** | **COMPLETE** | Turnkey standalone launcher, offline preflight checks, scoring self-audit, model card (`MODEL_CARD.md`), judge demonstration scripts, 275 automated tests passing. |
+| **Phase 14: Physical & HIL Validation** | **COMPLETE** | Physical optical calibration, 3D test rig, motion blur and lighting stress, sensor dropouts, hardware-in-the-loop harness, 285 automated tests passing. |
+| **Phase 15: Qualification Readiness** | **COMPLETE** | Spaceflight qualification review, DO-178C / ECSS compliance matrix, boundary tests, memory soak, 292 automated tests passing. |
+| **Phase 16: Formal Verification & Validation (V&V)** | **COMPLETE** | Bidirectional requirement tracing, model checking, property-based tests, fault tree verification, 301 automated tests passing. |
+| **Phase 17: Environmental & Hardware Qualification** | **COMPLETE** | Thermal-vacuum simulation, microgravity vibration jitter, radiation single-event upset mitigation, power glitch recovery, 301 automated tests passing. |
+| **Phase 18: Flight Integration Preparation** | **COMPLETE** | Flight integration readiness, CCSDS telemetry format alignment, air-gap packaging, flight baseline release candidate 1 (`ASTRA-EA-v1.0.0-RC1`). |
+| **Phase 19: Mission Operations & Ground Segment Integration** | **COMPLETE** | Operational concept (CONOPS), astronaut/ground operator manual, independent astronaut drill, dual-clock ground synchronization, 301 automated tests passing. |
+| **Phase 20: End-to-End Mission Rehearsal & Operational Validation** | **COMPLETE** | 13 mission rehearsal scenarios, authoritative full-length Dress Rehearsal (zero developer intervention), automated scorecard engine, rehearsal findings ledger, 319 automated tests passing. |
+| **Phase 21: Findings-Driven Hardening + Release Candidate 2 (RC2)** | **COMPLETE** | 6 empirical findings resolved via RCA & CAPA, dedicated regression suite in `tests/regression/`, hardening dashboard, RC1 vs RC2 quantitative comparison, release manifest `ASTRA-EA-v1.0.0-RC2`, 326 automated tests passing. |
 
 
 > [!IMPORTANT]
@@ -79,99 +89,87 @@ ASTRA-EA is engineered for air-gapped, high-reliability spacecraft operation:
 ```text
 astra-ea/
 ├── apps/                        # Application frontend consoles
-│   └── ground_monitor/          # Phase 9: PySide6 Ground Observation Console & state model
-│       ├── panels/              # Header, Video, Mission, Alert, Timeline, Health, Evidence
-│       ├── app.py               # GroundMonitorApp orchestrating multi-channel feeds
-│       ├── main.py              # Standalone ground monitor entrypoint
-│       ├── state.py             # GroundMonitorState dataclass and Qt reactive signals
-│       └── theme.py             # Space-operations aerospace dark stylesheet
+│   ├── ground_monitor/          # Phase 9/19: PySide6 Ground Observation Console & state model
+│   ├── hardening_dashboard/     # Phase 21: Hardening dashboard and readiness metrics
+│   └── mission_console/         # Phase 6: Primary astronaut mission console
 │
 ├── configs/                     # Centralized YAML configuration files
-│   ├── cameras/                 # Camera resolution and device settings (default.yaml, profiles.yaml)
+│   ├── cameras/                 # Camera resolution and device settings
+│   ├── deployment/              # Edge deployment hardware profiles (balanced, realtime, etc.)
 │   ├── experiments/             # Experiment procedures (e.g. demo.yaml)
-│   ├── simulations/             # Phase 8: Simulation scenario specifications and full_matrix.yaml
-│   └── system.yaml              # Global system configuration (perception, streaming, events)
+│   ├── rehearsal/               # Phase 20: Golden mission baseline configurations
+│   ├── simulations/             # Phase 8: Simulation scenario specifications
+│   └── system.yaml              # Global system configuration
 │
 ├── core/                        # Core application engine
-│   ├── activity/                # Phase 3: Temporal buffer, primitive/composite engines, events, benchmark
-│   │   ├── annotation.py        # Standardized Dataset Studio annotation export schema
-│   │   ├── benchmark.py         # End-to-end latency profiler (P50/P95/P99, FPS, CPU, RAM)
-│   │   ├── composite.py         # Composite activities (PICKUP, MOVE_OBJECT, PLACE_OBJECT)
-│   │   ├── confidence.py        # Explainable multi-signal confidence & uncertainty engine
-│   │   ├── events.py            # Typed activity events and stateful event deduplicator
-│   │   ├── primitive.py         # Atomic actions (IDLE, APPROACH, TOUCH, GRASP, LIFT, HOLD, MOVE, PLACE, RELEASE)
-│   │   ├── temporal.py          # Bounded rolling temporal buffer and kinematic feature extractor
-│   │   └── visualizer.py        # Activity diagnostics overlay and rolling temporal timeline
-│   ├── assistance/              # Phase 5/6: Local TTS voice guidance and closed-loop recovery contracts
+│   ├── activity/                # Phase 3: Temporal buffer, primitive/composite engines, events
+│   ├── assistance/              # Phase 5/6: Local TTS voice guidance and recovery contracts
 │   ├── assurance/               # Phase 5: Tri-state assurance engine and deviation classification
-│   ├── camera/                  # Ingestion thread, CameraSource, WebcamSource, VideoFileSource, profiles
-│   ├── cli/                     # CLI subcommands (doctor, camera, perception, stream, events, sim, etc.)
+│   ├── camera/                  # Ingestion thread, CameraSource, WebcamSource, profiles
+│   ├── cli/                     # CLI subcommands (hardening, rehearsal, demo, doctor, etc.)
 │   ├── common/                  # Configuration models, structured logging, and constants
-│   ├── dataset/                 # Phase 7: Dataset Studio (generator, recorder, validator, splitter)
+│   ├── dataset/                 # Phase 7: Dataset Studio (generator, recorder, validator)
 │   ├── evidence/                # Phase 4: Multimodal evidence engine (engine.py, types.py)
+│   ├── hardening/               # Phase 21: Domain hardening workflows (workflows.py)
 │   ├── health/                  # Subsystem heartbeat registry and runtime diagnostics
-│   ├── interaction/             # Phase 3: Spatial kinematics, state machine, rules, visualizer
-│   │   ├── engine.py            # SpatialInteractionEngine coordinating per-pair state machines
-│   │   ├── geometry.py          # Pure geometric & kinematic math (Euclidean, IoU, velocity, cosine similarity)
-│   │   ├── rules.py             # Multi-signal rules (proximity vs contact, coupled vs independent motion)
-│   │   ├── scenarios.py         # Deterministic synthetic perception scenarios (Tests A, B, C, D)
-│   │   ├── state_machine.py     # HandObjectStateMachine with hysteresis and occlusion resilience
-│   │   └── visualizer.py        # Interaction vectors and state HUD overlay
-│   ├── mission/                 # SQLite database engine, migrations, and typed event models
-│   ├── models/                  # Phase 7: Model Registry, LearnedObjectDetector, evaluator, comparator
-│   ├── perception/              # Phase 2: Ingestion, detectors, pose, hands, tracker, pipeline, scheduler
-│   ├── procedure/               # Phase 4: Procedure assurance, matcher, evaluator, progress, next-step
-│   ├── simulation/              # Phase 8: Simulation engine, simulated camera, faults, matrix, reporter
-│   ├── streaming/               # Phase 9: Root namespace exports for streaming subsystem
-│   ├── training/                # Phase 7: ModelTrainingRunner, PyTorch/CPU pipeline, checkpoints
-│   ├── ui/                      # Phase 6: PySide6 Qt Mission Console, event bridge, state stores
+│   ├── interaction/             # Phase 3: Spatial kinematics, state machine, rules
+│   ├── mission/                 # SQLite database engine, migrations, typed event models
+│   ├── models/                  # Phase 7: Model Registry, LearnedObjectDetector, comparator
+│   ├── operations/              # Phases 19-20: Rehearsal framework, precheck, scorecards
+│   ├── perception/              # Phase 2: Ingestion, detectors, pose, hands, tracker
+│   ├── procedure/               # Phase 4: Procedure assurance, matcher, evaluator, progress
+│   ├── simulation/              # Phase 8: Simulation engine, simulated camera, faults, matrix
+│   ├── streaming/               # Phase 9: Video (MJPEG) and SSE telemetry streaming
+│   ├── training/                # Phase 7: ModelTrainingRunner, PyTorch pipeline
+│   ├── ui/                      # Phase 6: PySide6 Qt Mission Console, event bridge
 │   └── voice/                   # Phase 6: Local audio guidance engine and queue management
 │
-├── datasets/                    # Local raw and partitioned datasets
-│   └── raw/                     # Real recorded and synthetic procedural datasets
+├── deployment/                  # Release packaging and deployment manifests
+│   └── flight/                  # Air-gapped flight packaging (RC1, RC2 release manifests)
 │
-├── docs/                        # Formal engineering documentation
-│   ├── architecture/            # Architectural blueprints (phases 0 through 9)
-│   ├── deployment/              # Multi-node and local network deployment guides
-│   ├── development/             # Development guidelines, ML environment, and conventions
-│   ├── network/                 # Wire protocol and network security specifications
-│   ├── requirements/            # system-requirements, sih-traceability, risk-register
-│   └── testing/                 # Subsystem testing, streaming, and verification guides
+├── hardening/                   # Phase 21: Formal findings-driven hardening repository
+│   ├── actions/                 # Formal Corrective Action Registry (CAPA-001 – CAPA-006)
+│   ├── findings/                # Empirical Finding Registry (FINDING-001 – FINDING-006)
+│   ├── impact/                  # Change impact analysis (IMPACT-ANALYSIS.yaml)
+│   └── root-cause/              # Formal Root Cause Analysis (RCA-FINDING-001 – 006)
 │
-├── models/                      # Trained checkpoints and model comparison reports
+├── reports/                     # Formal operational, rehearsal, and hardening reports
+│   ├── hardening/               # Phase 21 HTML reports (findings, regression, rc_comparison)
+│   └── rehearsal/               # Phase 20 Rehearsal scorecards and dress rehearsal reports
 │
 ├── storage/                     # Local air-gapped data persistence
-│   ├── database/                # SQLite database (astra.db)
-│   ├── events/                  # Recorded activity event traces (e.g. demo_events.json)
+│   ├── database/                # SQLite database (astra.db with WAL)
+│   ├── events/                  # Recorded activity event traces
 │   ├── evidence/                # Isolated pre/post-event evidence video clips
-│   ├── reports/                 # Generated audit, dataset, model, simulation, and streaming reports
 │   └── video/                   # Continuous circular video buffers
 │
-├── streaming/                   # Phase 9: Real-time IP streaming and telemetry subsystem
-│   ├── connection/              # Dual-channel connection manager, heartbeat, exponential backoff
-│   ├── events/                  # SSE event server (:8765), client, typed schema, replay publisher
-│   ├── protocol/                # Abstract interfaces (IVideoStreamServer, IEventStreamServer, IStreamClient)
-│   ├── security/                # Bind address validator, path traversal sanitizer, rate limiter
-│   ├── video/                   # MJPEG video server (:8554), OpenCV JPEG encoder, drop-oldest client
-│   └── benchmark.py             # Non-intrusive stream impact profiler & security audit suite
-│
-├── tests/                       # Automated test suite (222 tests passing across 16 directories)
+├── tests/                       # Automated test suite (326 tests passing across 23 directories)
 │   ├── activity/                # Primitive, composite, confidence, and event tests (11 tests)
 │   ├── audio/                   # Voice architecture and TTS tests (4 tests)
+│   ├── benchmark/               # Benchmark framework tests (4 tests)
 │   ├── camera_views/            # Viewpoint invariance and cross-view tests (12 tests)
 │   ├── dataset/                 # Dataset studio generator, validator, and split tests (5 tests)
-│   ├── ground_monitor/          # Phase 9: Ground Monitor UI panels and state tests (8 tests)
+│   ├── flight/                  # Flight packaging, startup, telemetry, and platform tests (19 tests)
+│   ├── ground_monitor/          # Ground Monitor UI panels and connection tests (11 tests)
 │   ├── gui/                     # PySide6 Mission Console components and UI state tests (19 tests)
-│   ├── integration/             # Foundation, perception, and procedure pipeline tests (4 tests)
-│   ├── interaction/             # Geometry, rules, state machine, and negative scenario tests (18 tests)
-│   ├── models/                  # Model registry, evaluator, and detector adapter tests (3 tests)
-│   ├── network/                 # Phase 9: Dual-channel resilience and security tests (8 tests)
-│   ├── simulation/              # Simulation engine, fault injectors, camera, and matrix tests (19 tests)
-│   ├── streaming/               # Phase 9: Video and SSE event streaming tests (8 tests)
+│   ├── integration/             # Foundation, orchestrator, and pipeline integration tests (7 tests)
+│   ├── interaction/             # Geometry, rules, state machine, and scenario tests (18 tests)
+│   ├── models/                  # Model registry and detector adapter tests (3 tests)
+│   ├── network/                 # Dual-channel network resilience tests (1 test)
+│   ├── operations/              # Operational precheck, checklists, and role authority tests (19 tests)
+│   ├── optimization/            # Runtime, scheduler, and soak optimization tests (11 tests)
+│   ├── properties/              # Safety invariant property-based tests (5 tests)
+│   ├── qualification/           # Environmental qualification tests (11 tests)
+│   ├── regression/              # Phase 21: Dedicated findings regression tests (7 tests)
+│   ├── rehearsal/               # Phase 20: Operational rehearsal and scorecard tests (18 tests)
+│   ├── simulation/              # Simulation engine, fault injectors, camera, matrix tests (19 tests)
+│   ├── streaming/               # Video and SSE event streaming tests (12 tests)
+│   ├── system/                  # Golden demo, soak, and system regression tests (7 tests)
 │   ├── temporal/                # Temporal buffer and feature extraction tests (2 tests)
 │   ├── training/                # Model training runner and checkpoint tests (3 tests)
-│   └── unit/                    # Core foundation, assurance, evidence, progress, and schema tests (98 tests)
+│   └── unit/                    # Core foundation, assurance, evidence, schema tests (98 tests)
 │
+├── CHANGELOG_HARDENING.md       # Phase 21 Hardening Changelog & RC2 release notes
 ├── main.py                      # Root executable CLI entrypoint
 ├── pyproject.toml               # Python packaging and pytest configuration
 └── README.md                    # System documentation and operations guide
@@ -751,19 +749,26 @@ python3 main.py model compatibility
 
 ---
 
-## 13. Phase 10 Exit Status & Verification Summary
+## 13. System Maturity, Phase 21 Hardening & Release Candidate 2 (RC2)
 
-**PHASE 10 — COMPLETE**
+### 13.1 Phase 21 Exit Status & Quality Gates
+ASTRA-EA has completed **Phase 21 (Findings-Driven Hardening + Corrective Action + Release Candidate)**.
+In strict conformance with the Phase 21 Absolute Rule, zero hypothetical defects were invented, and all 6 empirical findings surfaced during Phase 20 operational rehearsals have been resolved:
+- **`FINDING-001` (CAMERA / HIGH)**: Unpacked `(frame, timestamp)` safely in precheck routines to handle sensor timeouts.
+- **`FINDING-002` (GROUND / MEDIUM)**: Enforced sequence deduplication in `GroundReconciler` during burst telemetry reconnect.
+- **`FINDING-003` (STORAGE / MEDIUM)**: Added automated 85% capacity threshold trigger to prune debug frames while protecting verified step evidence.
+- **`FINDING-004` (UI / OBSERVATION)**: Upgraded alert acknowledge button contrast and ergonomics (`#3b82f6` electric blue).
+- **`FINDING-005` (PERFORMANCE / LOW)**: Standardized dual-clock rendering to stable `HH:MM:SS` mission elapsed time.
+- **`FINDING-006` (RECOVERY / HIGH)**: Enforced strict recovery verification latency bound (&lt;300ms SLA).
 
-All mandatory Phase 10 deliverables (**D10.01 through D10.25**) have been implemented, automated, and verified:
-1. **Fundamental Priority Rule Enforced**: $\text{CORRECTNESS} > \text{SAFETY / ASSURANCE} > \text{EVIDENCE} > \text{STABILITY} > \text{LATENCY} > \text{THROUGHPUT}$. Never sacrifice procedure verification or deviation detection for FPS gains.
-2. **Hardware Abstraction Layer (D10.05, D10.15)**: `ComputeBackend` interface with `CPUBackend`, `CUDABackend`, and `FutureEdgeBackend` decoupling flight autonomy from specific workstation GPUs.
-3. **Comprehensive Profiling Framework (D10.01–D10.09)**: Microsecond per-stage latency tracking across 13 stages, end-to-end decision latency, throughput separation (`camera_fps`, `compute_capacity_fps`, `effective_e2e_fps`), and queue backpressure telemetry.
-4. **Adaptive Inference Scheduler (D10.17, D10.18)**: Decoupled execution cadences (Tracking 1:1, Detection 1:1, Pose 1:2 interleaved, Hands 1:1) with age-aware observation caching and `LatestFrameQueue` drop-oldest policy.
-5. **Model Export & Validation (D10.13, D10.14)**: Exported to valid ONNX graph ($[1, 9, 8400]$ layout) verified against protobuf schemas, OpenCV DNN C++ runtime, and forward pass numerical stability.
-6. **Endurance Soak & Leak Tester (D10.19, D10.20)**: Verified stable linear memory slope (0.35 MB delta over 300 frames, 0 memory leaks, 0 FPS degradation).
-7. **Edge Deployment Profiles (D10.23)**: Multi-tiered layered configurations (`development`, `balanced`, `realtime`, `low_resource`) in `configs/deployment/`.
-8. **Complete Test Suite Integrity (D10.24)**: **237 out of 237 automated tests passing** across all 20 test suites.
+### 13.2 Release Candidate 2 (RC2) Verification Summary
+- **Release Identifier:** `ASTRA-EA-v1.0.0-RC2`
+- **Release Manifest:** [`deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json`](file:///home/subish-loq/Documents/astra/deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json)
+- **Dedicated Regression Tests:** 7 / 7 passed in `tests/regression/`
+- **Full Automated Test Suite:** **326 / 326 passed in 32.3s** across 23 test directories (0 failures)
+- **Rehearsal Matrix:** 13 / 13 scenarios passed with 0 developer interventions
+- **Readiness Gate:** `astra hardening readiness` $\to$ **`STATUS: READY`**
+- **Safety Invariant:** 0 false verifications, 0 false deviations, and strict preservation of `UNCERTAIN` state.
 
 ---
 
