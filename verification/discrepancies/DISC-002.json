@@ -1,0 +1,11 @@
+{
+  "id": "DISC-002",
+  "requirement": "ASTRA-IF-004",
+  "test": "V-IF-004",
+  "severity": "LOW",
+  "description": "Slow ground telemetry clients could cause memory backpressure on telemetry socket queues.",
+  "status": "CLOSED",
+  "root_cause": "Standard socket writes blocked when TCP window size shrank on high-latency ground links.",
+  "corrective_action": "Introduced non-blocking async worker with bounded ring buffer and DROP_OLDEST policy.",
+  "verification": "Tested with artificial 200 ms latency; core pipeline maintained 34+ FPS. V-IF-004 PASS."
+}

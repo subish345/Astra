@@ -1,0 +1,21 @@
+id: V-IF-001
+requirement: ASTRA-IF-001
+title: V4L2 Device Disconnect and Reconnect Detection
+purpose: Verify that camera device disconnection is detected within 100 ms and handled safely.
+preconditions:
+  - Video capture loop running
+setup:
+  - Disconnect video source device simulation
+inputs:
+  - Device bus disconnect signal
+procedure:
+  - Induce camera read failure
+  - Measure elapsed time until device manager detects disconnect
+expected_result:
+  - Disconnect signaled in <= 100 ms
+  - System transitions to safe paused state
+acceptance_criteria:
+  - Detection latency <= 100 ms
+evidence:
+  - reports/physical/failure_report.html
+  - verification/evidence/EVID-IF-001-DISCONNECT.json

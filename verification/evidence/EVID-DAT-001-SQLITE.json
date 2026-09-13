@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-DAT-001",
+  "evidence_type": "DATABASE_RECORD",
+  "database": "data/runs/DEMO_RUN_001/events.db",
+  "journal_mode": "wal",
+  "synchronous": "NORMAL",
+  "records_written": 284,
+  "result": "PASS"
+}

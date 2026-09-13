@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-SAF-001",
+  "evidence_type": "TEST_OUTPUT",
+  "synthetic_ambiguous_frames": 100,
+  "false_verifications": 0,
+  "false_verification_rate": 0.0,
+  "result": "PASS"
+}

@@ -1,0 +1,10 @@
+{
+  "requirement_id": "ASTRA-OPS-003",
+  "evidence_type": "TEST_OUTPUT",
+  "audit_command": "astra final-check",
+  "execution_duration_seconds": 1.82,
+  "threshold_seconds": 3.0,
+  "passed_checks": 14,
+  "failed_checks": 0,
+  "result": "PASS"
+}

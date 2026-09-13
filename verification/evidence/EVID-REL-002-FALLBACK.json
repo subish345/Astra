@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-REL-002",
+  "evidence_type": "TEST_OUTPUT",
+  "detector_crash_injected": true,
+  "engaged_detector": "ColorHeuristicDetector",
+  "tubes_detected": 2,
+  "pipeline_resumed": true,
+  "result": "PASS"
+}

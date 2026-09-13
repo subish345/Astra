@@ -1,0 +1,21 @@
+id: V-SYS-004-TEMPORAL
+requirement: ASTRA-SYS-004
+title: Temporal Dwell Verification
+purpose: Verify that interaction dwell requires >= 10 consecutive frames before committing state transition.
+preconditions:
+  - Temporal buffer initialized with window size 10
+setup:
+  - Deliver 8 frames of valid contact
+inputs:
+  - 8 contact frames followed by non-contact
+procedure:
+  - Verify activity is NOT committed at 8 frames
+  - Deliver 2 additional contact frames (total 10)
+  - Verify activity committed
+expected_result:
+  - Activity committed only upon reaching frame 10
+acceptance_criteria:
+  - Strict dwell threshold enforcement
+evidence:
+  - final_submission/screenshots/04_evidence.jpg
+  - verification/evidence/EVID-SYS-004-TEMPORAL.json

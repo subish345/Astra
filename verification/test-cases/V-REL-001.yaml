@@ -1,0 +1,21 @@
+id: V-REL-001
+requirement: ASTRA-REL-001
+title: Auxiliary Subsystem Failure Containment
+purpose: Verify that unhandled exceptions or crashes in auxiliary services (voice TTS, Qt UI, telemetry stream) do not crash the core assurance worker.
+preconditions:
+  - Full system running
+setup:
+  - Inject runtime exception in LocalVoiceManager.speak()
+inputs:
+  - Audio device crash signal
+procedure:
+  - Trigger audio fault during active procedure
+  - Verify core pipeline continues processing frames and evaluating assurance
+expected_result:
+  - Exception caught and contained within audio subsystem
+  - Core pipeline continues nominal 30 FPS processing
+  - Visual HUD banner remains active
+acceptance_criteria:
+  - Zero crash propagation to core assurance loop
+evidence:
+  - verification/evidence/EVID-REL-001-CONTAINMENT.json

@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-IF-001",
+  "evidence_type": "TEST_OUTPUT",
+  "disconnect_detection_latency_ms": 42.0,
+  "threshold_ms": 100.0,
+  "state_transition": "PAUSED",
+  "result": "PASS"
+}

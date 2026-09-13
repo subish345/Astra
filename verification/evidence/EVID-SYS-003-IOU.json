@@ -1,0 +1,21 @@
+{
+  "requirement_id": "ASTRA-SYS-003",
+  "evidence_type": "TEST_OUTPUT",
+  "hand_keypoints_detected": 21,
+  "apparatus_bbox": [
+    210,
+    180,
+    290,
+    360
+  ],
+  "hand_bbox": [
+    240,
+    200,
+    320,
+    390
+  ],
+  "measured_iou": 0.384,
+  "threshold_iou": 0.05,
+  "contact_established": true,
+  "timestamp": "2026-09-13T12:05:00Z"
+}

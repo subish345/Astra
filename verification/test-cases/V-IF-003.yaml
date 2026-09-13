@@ -1,0 +1,21 @@
+id: V-IF-003
+requirement: ASTRA-IF-003
+title: Dual-Clock Monotonic and UTC Time Synchronization
+purpose: Verify that all logged events record dual timestamps (monotonic mission clock and UTC wall clock) with sub-millisecond precision.
+preconditions:
+  - Database logging active
+setup:
+  - Generate 50 mock pipeline events
+inputs:
+  - Procedure progress and assurance events
+procedure:
+  - Record events to database
+  - Query logged records and inspect timestamp schemas
+expected_result:
+  - Every event row contains monotonic_timestamp and utc_iso_timestamp
+  - Monotonic clock is strictly non-decreasing
+acceptance_criteria:
+  - Dual timestamps present on 100% of records
+evidence:
+  - data/runs/DEMO_RUN_001/events.json
+  - verification/evidence/EVID-IF-003-TIME.json

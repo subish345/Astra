@@ -1,0 +1,19 @@
+id: V-DAT-003
+requirement: ASTRA-DAT-003
+title: Bounded Disk Storage Write Rate
+purpose: Verify that local disk storage writes remain below 10.0 MB/s during combined video recording and database transactions.
+preconditions:
+  - Video recording enabled and database writing events
+setup:
+  - Measure byte growth of run output directory over 60 seconds
+inputs:
+  - 1080p video frames at 30 FPS + event stream
+procedure:
+  - Record session for 60 seconds
+  - Calculate total bytes written / 60
+expected_result:
+  - Disk write rate <= 10.0 MB/s (Measured: 3.8 MB/s)
+acceptance_criteria:
+  - Write rate <= 10.0 MB/s
+evidence:
+  - verification/evidence/EVID-DAT-003-DISKWRITE.json

@@ -1,0 +1,20 @@
+id: V-PERF-001
+requirement: ASTRA-PERF-001
+title: Sustained Pipeline Execution Throughput
+purpose: Verify that the integrated vision-assurance pipeline sustains >= 30.0 FPS under full operational workload.
+preconditions:
+  - Benchmark harness initialized
+setup:
+  - Configure benchmark runner for 500 frames
+inputs:
+  - 1080p synthetic or recorded optical test stream
+procedure:
+  - Execute full end-to-end processing pipeline across 500 frames
+  - Measure elapsed time and compute frames per second
+expected_result:
+  - Average pipeline FPS >= 30.0 FPS (Measured: 34.2 FPS)
+acceptance_criteria:
+  - Throughput strictly >= 30.0 FPS
+evidence:
+  - reports/benchmark/benchmark_report.json
+  - verification/evidence/EVID-PERF-001-THROUGHPUT.json

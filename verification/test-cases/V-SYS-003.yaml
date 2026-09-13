@@ -1,0 +1,23 @@
+id: V-SYS-003
+requirement: ASTRA-SYS-005
+title: Procedural Prerequisite Enforcement on Skipped Step
+purpose: Verify that performing actions associated with subsequent steps (e.g. step 3) before completing prerequisite steps (e.g. step 1) is rejected as a procedural deviation.
+preconditions:
+  - Procedure engine initialized with step 1 active
+setup:
+  - Inject activity matching step 3 (pipette aspiration)
+inputs:
+  - Synthetic activity event for step 3
+procedure:
+  - Pass step 3 activity to StepEvaluator while step 1 is still pending
+  - Check prerequisite validation logic
+expected_result:
+  - StepEvaluator marks prerequisite failure
+  - Procedure does not jump to step 3
+  - State machine flags out-of-order deviation
+acceptance_criteria:
+  - State machine remains locked on active step 1
+  - Out-of-order deviation recorded in event database
+evidence:
+  - configs/experiments/demo.yaml
+  - verification/evidence/EVID-SYS-005-PROC.json

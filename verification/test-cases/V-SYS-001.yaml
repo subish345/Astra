@@ -1,0 +1,28 @@
+id: V-SYS-001
+requirement: ASTRA-SYS-001
+title: Correct Nominal Experiment Execution
+purpose: Verify that the end-to-end assurance pipeline ingests optical video, detects apparatus, accumulates temporal dwell, and advances through procedure steps to nominal completion.
+preconditions:
+  - Camera calibrated and connected or synthetic optical video feed active
+  - Demo experiment procedure loaded (configs/experiments/demo.yaml)
+  - Baseline neural weights or heuristic detector available
+setup:
+  - Initialize ProcedureProgressManager and TriStateAssuranceEngine
+  - Verify state machine starts at Step 1 (IDLE/PENDING)
+inputs:
+  - Synthetic or live frame stream executing correct specimen_tube interaction
+procedure:
+  - Ingest video frames at native resolution (1280x720)
+  - Perform hand-object proximity calculation (IoU > 0.05)
+  - Accumulate temporal dwell for >= 10 consecutive frames
+  - Evaluate assurance state and advance procedure
+expected_result:
+  - Pipeline remains in nominal execution state
+  - Procedure advances from step 1 through step 4
+  - Final assurance decision is VERIFIED with zero false deviations
+acceptance_criteria:
+  - Step progression matches expected sequence
+  - All step completion events recorded in database with microsecond timestamps
+evidence:
+  - storage/evidence/live_camera_probe.jpg
+  - verification/evidence/EVID-SYS-001-CAM.png

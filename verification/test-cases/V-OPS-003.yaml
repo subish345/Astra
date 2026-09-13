@@ -1,0 +1,19 @@
+id: V-OPS-003
+requirement: ASTRA-OPS-003
+title: Pre-Flight Self-Test Execution Latency
+purpose: Verify that the automated pre-flight self-test completes within 3.0 seconds.
+preconditions:
+  - CLI framework active
+setup:
+  - Run astra final-check under test harness
+inputs:
+  - Execution command
+procedure:
+  - Trigger audit command
+  - Measure execution wall-clock time
+expected_result:
+  - All subsystem audits complete in <= 3.0 seconds (Measured: 1.8 s)
+acceptance_criteria:
+  - Duration <= 3.0 s and all 14 subsystem checks PASS
+evidence:
+  - verification/evidence/EVID-OPS-003-SELFTEST.json

@@ -1,0 +1,20 @@
+id: V-SEC-002
+requirement: ASTRA-SEC-002
+title: Cryptographic SHA-256 Artifact Integrity Verification
+purpose: Verify that model weights, configuration files, and critical artifacts have matching SHA-256 checksums verified prior to run.
+preconditions:
+  - Checksum manifest available at competition/CHECKSUMS/SHA256SUMS
+setup:
+  - Read checksum manifest
+inputs:
+  - Repository files and model checkpoints
+procedure:
+  - Compute SHA-256 hash for every tracked artifact
+  - Compare against recorded baseline checksums
+expected_result:
+  - 100% of tracked files match verified SHA-256 checksums
+acceptance_criteria:
+  - Zero checksum mismatches
+evidence:
+  - competition/CHECKSUMS/SHA256SUMS
+  - verification/evidence/EVID-SEC-002-SHA256.json

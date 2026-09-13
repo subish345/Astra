@@ -1,0 +1,20 @@
+id: V-PERF-003
+requirement: ASTRA-PERF-003
+title: Neural Detector Inference Latency
+purpose: Verify that the neural object detector executes within 25.0 ms P50 on target edge hardware.
+preconditions:
+  - ONNX / Torch model loaded
+setup:
+  - Warm up detector for 10 frames
+inputs:
+  - 640x640 input tensor
+procedure:
+  - Run 200 inference passes
+  - Record execution durations and compute median (P50)
+expected_result:
+  - Inference P50 latency <= 25.0 ms (Measured: 14.8 ms)
+acceptance_criteria:
+  - P50 latency <= 25.0 ms
+evidence:
+  - storage/reports/benchmark/baseline_benchmark.json
+  - verification/evidence/EVID-PERF-003-INFERENCE.json

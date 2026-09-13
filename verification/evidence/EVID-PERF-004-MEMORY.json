@@ -1,0 +1,11 @@
+{
+  "requirement_id": "ASTRA-PERF-004",
+  "evidence_type": "METRIC",
+  "initial_rss_mb": 442.1,
+  "final_rss_mb": 448.3,
+  "delta_percent": 1.4,
+  "threshold_mb": 1024.0,
+  "soak_duration_seconds": 1800,
+  "leak_detected": false,
+  "result": "PASS"
+}

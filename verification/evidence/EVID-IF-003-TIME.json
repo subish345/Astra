@@ -1,0 +1,10 @@
+{
+  "requirement_id": "ASTRA-IF-003",
+  "evidence_type": "DATABASE_RECORD",
+  "sample_event": {
+    "monotonic_timestamp": 1824.59124,
+    "utc_iso_timestamp": "2026-09-13T12:00:15.123456Z",
+    "delta_jitter_us": 14.2
+  },
+  "result": "PASS"
+}

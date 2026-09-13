@@ -46,3 +46,6 @@ pythonpath = ["."]
 testpaths = [
     "tests"
 ]
+markers = [
+    "requirement(id): Formal engineering requirement ID"
+]

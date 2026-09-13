@@ -1,0 +1,22 @@
+id: V-REL-003
+requirement: ASTRA-REL-003
+title: Formal Degraded Operational Modes Transition
+purpose: Verify that the system cleanly transitions between Nominal, Vision-Degraded, Voice-Degraded, and Safe-Pause modes.
+preconditions:
+  - System operational
+setup:
+  - Induce sequential resource constraints
+inputs:
+  - Simulated camera dropout followed by memory pressure
+procedure:
+  - Inject camera frame loss -> observe SAFE_PAUSE transition
+  - Restore camera -> observe NOMINAL resumption
+  - Disable audio device -> observe VOICE_DEGRADED mode
+expected_result:
+  - Mode transitions execute deterministically according to degraded-modes.md
+  - Telemetry accurately reflects active operational mode
+acceptance_criteria:
+  - All degraded mode transitions occur without process crash
+evidence:
+  - docs/qualification/degraded-modes.md
+  - verification/evidence/EVID-REL-003-DEGRADED.json

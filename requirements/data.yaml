@@ -1,0 +1,40 @@
+- id: ASTRA-DAT-001
+  title: Microsecond Event Logging in SQLite WAL Mode
+  description: Every procedure transition and anomaly shall be recorded in a local SQLite WAL database with microsecond ISO-8601 timestamps.
+  category: DATA
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Data Management Team
+  evidence:
+    - data/runs/DEMO_RUN_001/events.json
+    - verification/evidence/EVID-DAT-001-SQLITE.json
+
+- id: ASTRA-DAT-002
+  title: Causal Provenance Evidence Chain
+  description: The system shall maintain an unalterable causal evidence chain linking high-level decisions to raw bounding boxes and video frame indices.
+  category: DATA
+  priority: HIGH
+  verification_method:
+    - DEMONSTRATION
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Data Management Team
+  evidence:
+    - verification/evidence/EVID-DAT-002-PROVENANCE.json
+
+- id: ASTRA-DAT-003
+  title: Bounded Disk Storage Write Rate
+  description: Local disk storage writes shall not exceed 10.0 MB/s during active 1080p MP4 recording and SQLite transactions.
+  category: DATA
+  priority: MEDIUM
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Data Management Team
+  evidence:
+    - verification/evidence/EVID-DAT-003-DISKWRITE.json

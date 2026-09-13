@@ -1,0 +1,19 @@
+id: V-PERF-005
+requirement: ASTRA-PERF-005
+title: Cold-Boot Initialization Latency
+purpose: Verify that system cold-boot and transition to READY state executes within 5.0 seconds.
+preconditions:
+  - System processes uninitialized
+setup:
+  - Measure execution from process invocation to READY log message
+inputs:
+  - Launch CLI command
+procedure:
+  - Launch system startup sequence
+  - Measure monotonic clock elapsed time until READY state
+expected_result:
+  - Total elapsed time <= 5.0 seconds (Measured: 2.1 s)
+acceptance_criteria:
+  - Startup duration <= 5.0 s
+evidence:
+  - verification/evidence/EVID-PERF-005-BOOT.json

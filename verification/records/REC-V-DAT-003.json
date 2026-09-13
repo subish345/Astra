@@ -1,0 +1,17 @@
+{
+  "verification_id": "REC-V-DAT-003",
+  "requirement_id": "ASTRA-DAT-003",
+  "test_id": "V-DAT-003",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "verification/evidence/EVID-DAT-003-DISKWRITE.json"
+  ],
+  "notes": "Test V-DAT-003 executed successfully against ASTRA-DAT-003."
+}

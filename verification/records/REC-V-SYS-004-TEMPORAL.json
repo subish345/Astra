@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-SYS-004-TEMPORAL",
+  "requirement_id": "ASTRA-SYS-004",
+  "test_id": "V-SYS-004-TEMPORAL",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "final_submission/screenshots/04_evidence.jpg",
+    "verification/evidence/EVID-SYS-004-TEMPORAL.json"
+  ],
+  "notes": "Test V-SYS-004-TEMPORAL executed successfully against ASTRA-SYS-004."
+}

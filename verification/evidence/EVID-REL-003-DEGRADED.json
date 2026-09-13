@@ -1,0 +1,12 @@
+{
+  "requirement_id": "ASTRA-REL-003",
+  "evidence_type": "TEST_OUTPUT",
+  "degraded_modes_tested": [
+    "NOMINAL",
+    "VISION_DEGRADED",
+    "VOICE_DEGRADED",
+    "SAFE_PAUSE"
+  ],
+  "unhandled_exceptions": 0,
+  "result": "PASS"
+}

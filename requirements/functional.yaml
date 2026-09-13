@@ -1,0 +1,112 @@
+- id: ASTRA-SYS-001
+  title: Optical Camera Stream Ingestion
+  description: The system shall ingest digital video streams from calibrated overhead optical camera sensors at a resolution of not less than 1280x720 pixels.
+  category: FUNCTIONAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: PHYSICAL
+  status: VERIFIED
+  owner: Perception Team
+  evidence:
+    - storage/evidence/live_camera_probe.jpg
+    - verification/evidence/EVID-SYS-001-CAM.png
+
+- id: ASTRA-SYS-002
+  title: Laboratory Apparatus Object Detection
+  description: The perception engine shall detect, localize, and classify laboratory experiment objects across the designated 6 classes (specimen_tube, centrifuge_tube, pipette, petri_dish, tube_rack, chemical_vial).
+  category: FUNCTIONAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: COMPONENT
+  status: VERIFIED
+  owner: ML Engineering
+  evidence:
+    - models/reports/model_evaluation_report.json
+    - verification/evidence/EVID-SYS-002-DET.json
+
+- id: ASTRA-SYS-003
+  title: Hand-Object Spatial Interaction Detection
+  description: The interaction engine shall calculate spatial proximity and contact topology (IoU > 0.05) between detected human hand keypoints and experiment apparatus.
+  category: FUNCTIONAL
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: COMPONENT
+  status: VERIFIED
+  owner: Perception Team
+  evidence:
+    - reports/physical/viewpoint_report.html
+    - verification/evidence/EVID-SYS-003-IOU.json
+
+- id: ASTRA-SYS-004
+  title: Temporal Activity Dwell Accumulation
+  description: The activity engine shall accumulate temporal interaction dwell over a moving window of not less than 10 consecutive frames prior to confirming an action.
+  category: FUNCTIONAL
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: COMPONENT
+  status: VERIFIED
+  owner: Core Systems
+  evidence:
+    - final_submission/screenshots/04_evidence.jpg
+    - verification/evidence/EVID-SYS-004-TEMPORAL.json
+
+- id: ASTRA-SYS-005
+  title: Deterministic Experiment Procedure State Tracking
+  description: The procedure engine shall track experiment progression using a deterministic state machine defined in validated declarative configuration files.
+  category: FUNCTIONAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: INTEGRATION
+  status: VERIFIED
+  owner: Core Systems
+  evidence:
+    - configs/experiments/demo.yaml
+    - verification/evidence/EVID-SYS-005-PROC.json
+
+- id: ASTRA-SYS-006
+  title: Tri-State Assurance Evaluation
+  description: The assurance engine shall evaluate observed activities against active step expectations and transition between VERIFIED, UNCERTAIN, and DEVIATION states.
+  category: FUNCTIONAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: INTEGRATION
+  status: VERIFIED
+  owner: Assurance Team
+  evidence:
+    - data/runs/DEMO_RUN_001/events.json
+    - verification/evidence/EVID-SYS-006-ASSURANCE.json
+
+- id: ASTRA-SYS-007
+  title: Cockpit Voice Guidance and Visual HUD Alerts
+  description: Upon procedural deviation, the assistance engine shall generate localized voice guidance and visual HUD banners explaining the mistake and recovery action.
+  category: FUNCTIONAL
+  priority: HIGH
+  verification_method:
+    - DEMONSTRATION
+    - TEST
+  verification_level: SYSTEM
+  status: VALIDATED
+  owner: Cockpit UX Team
+  evidence:
+    - final_submission/demo_videos/02_wrong_object.mp4
+    - verification/evidence/EVID-SYS-007-VOICE.wav
+
+- id: ASTRA-SYS-008
+  title: Closed-Loop Corrective Action Recovery
+  description: The assistance engine shall formally verify the corrective action before allowing the procedure state machine to advance to subsequent steps.
+  category: FUNCTIONAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: HIL
+  status: VALIDATED
+  owner: Assurance Team
+  evidence:
+    - final_submission/demo_videos/03_recovery.mp4
+    - verification/evidence/EVID-SYS-008-RECOVERY.json

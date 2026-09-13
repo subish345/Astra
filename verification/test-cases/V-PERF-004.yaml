@@ -1,0 +1,22 @@
+id: V-PERF-004
+requirement: ASTRA-PERF-004
+title: Memory Footprint and Leak-Free Endurance Stability
+purpose: Verify that system memory consumption (RSS) remains below 1024 MB with zero progressive memory leaks during a 30-minute soak test.
+preconditions:
+  - System initialized and memory profiling hooks active
+setup:
+  - Configure psutil / OS memory sampler
+inputs:
+  - Continuous simulated experiment session running 30 minutes
+procedure:
+  - Sample RSS and VMS every 5 seconds
+  - Compare initial baseline RSS with final RSS
+expected_result:
+  - Peak RSS <= 1024 MB (Measured: 448 MB)
+  - Memory slope < 5% growth over test duration
+acceptance_criteria:
+  - RSS <= 1024 MB
+  - Zero unbounded memory growth
+evidence:
+  - final_submission/benchmark/resource_report.html
+  - verification/evidence/EVID-PERF-004-MEMORY.json

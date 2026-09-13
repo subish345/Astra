@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-SEC-003",
+  "evidence_type": "TEST_OUTPUT",
+  "remote_write_requests": 20,
+  "rejected_write_requests": 20,
+  "arbitrary_execution_allowed": false,
+  "result": "PASS"
+}

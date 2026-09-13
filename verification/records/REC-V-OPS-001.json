@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-OPS-001",
+  "requirement_id": "ASTRA-OPS-001",
+  "test_id": "V-OPS-001",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "final_submission/screenshots/01_mission_console.jpg",
+    "verification/evidence/EVID-OPS-001-HUD.png"
+  ],
+  "notes": "Test V-OPS-001 executed successfully against ASTRA-OPS-001."
+}

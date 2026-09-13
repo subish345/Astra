@@ -1,0 +1,11 @@
+{
+  "requirement_id": "ASTRA-REL-001",
+  "evidence_type": "TEST_OUTPUT",
+  "worker_crashes_induced": [
+    "voice_worker",
+    "ui_client",
+    "streamer"
+  ],
+  "core_loop_interrupted": false,
+  "result": "PASS"
+}

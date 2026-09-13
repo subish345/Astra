@@ -1,0 +1,20 @@
+id: V-IF-004
+requirement: ASTRA-IF-004
+title: Non-Blocking Telemetry Publisher
+purpose: Verify that telemetry streaming operates asynchronously and does not introduce latency into the core 30 FPS vision-assurance loop.
+preconditions:
+  - TelemetryServer running
+setup:
+  - Connect simulated high-latency telemetry client (inject 200 ms network lag)
+inputs:
+  - High-frequency telemetry packets
+procedure:
+  - Stream packets while measuring core pipeline frame processing duration
+  - Verify core frame duration is unimpacted by client network lag
+expected_result:
+  - Core processing thread remains <= 33 ms per frame
+  - Telemetry buffer drops older frames if network backpressures
+acceptance_criteria:
+  - Pipeline FPS remains >= 30.0 FPS
+evidence:
+  - verification/evidence/EVID-IF-004-TELEMETRY.json

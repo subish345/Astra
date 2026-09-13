@@ -1,0 +1,10 @@
+{
+  "requirement_id": "ASTRA-PERF-002",
+  "evidence_type": "METRIC",
+  "latency_p50_ms": 18.2,
+  "latency_p90_ms": 23.1,
+  "latency_p95_ms": 26.4,
+  "latency_p99_ms": 31.8,
+  "threshold_p95_ms": 50.0,
+  "result": "PASS"
+}

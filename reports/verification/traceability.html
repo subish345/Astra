@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Formal Requirements Traceability Matrix</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; }
+        h1, h2 { color: #38bdf8; }
+        .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+        .metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; }
+        .badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+        .badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+        .badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+        th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        tr:hover { background: #1e293b44; }
+        code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; }
+    </style>
+</head>
+<body>
+    <h1>ASTRA-EA — Formal Requirements Traceability Matrix (Phase 16)</h1>
+    <p>Standard: ECSS-E-ST-40C / NASA-STD-8739.8 | Milestone: Phase 16 Formal V&V</p>
+
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div>Total Requirements</div>
+            <div class="metric-val">38</div>
+        </div>
+        <div class="metric-card">
+            <div>Verification Coverage</div>
+            <div class="metric-val">100.0%</div>
+        </div>
+        <div class="metric-card">
+            <div>Evidence Coverage</div>
+            <div class="metric-val">100.0%</div>
+        </div>
+        <div class="metric-card">
+            <div>Traceability Orphans</div>
+            <div class="metric-val">0 (CLEAN)</div>
+        </div>
+    </div>
+
+    <h2>End-to-End Requirement-to-Evidence Matrix</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Req ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Design Component</th>
+                <th>Source Module</th>
+                <th>Formal Test Case</th>
+                <th>Result</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong><code>ASTRA-DAT-001</code></strong></td>
+                <td>Microsecond Event Logging in SQLite WAL Mode</td>
+                <td>DATA</td>
+                <td>SQLite WAL Microsecond Logger</td>
+                <td><code>core/mission/database.py</code></td>
+                <td><code>V-DAT-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-DAT-002</code></strong></td>
+                <td>Causal Provenance Evidence Chain</td>
+                <td>DATA</td>
+                <td>Causal Decision Provenance</td>
+                <td><code>core/procedure/traceability.py</code></td>
+                <td><code>V-DAT-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-DAT-003</code></strong></td>
+                <td>Bounded Disk Storage Write Rate</td>
+                <td>DATA</td>
+                <td>Bounded Storage Rate Limiter</td>
+                <td><code>storage/storage_manager.py</code></td>
+                <td><code>V-DAT-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-001</code></strong></td>
+                <td>Illumination Dynamic Range Robustness</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Photometric Dynamic Range Handler</td>
+                <td><code>core/camera/profile.py</code></td>
+                <td><code>V-ENV-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-002</code></strong></td>
+                <td>Optical Multi-Angle Viewpoint Invariance</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Multi-Angle Viewpoint Invariance</td>
+                <td><code>core/camera/profile.py</code></td>
+                <td><code>V-ENV-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-003</code></strong></td>
+                <td>Launch Random Vibration Survival</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Launch Vibration Structural Isolation</td>
+                <td><code>docs/qualification/environmental-test-plan.md</code></td>
+                <td><code>V-ENV-003</code></td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-004</code></strong></td>
+                <td>Conductive Thermal-Vacuum Operational Cycling</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Conductive Thermal Vacuum Path</td>
+                <td><code>docs/qualification/environmental-test-plan.md</code></td>
+                <td><code>V-ENV-004</code></td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-005</code></strong></td>
+                <td>Total Ionizing Dose Radiation Tolerance</td>
+                <td>ENVIRONMENTAL</td>
+                <td>TID Radiation Mitigation & ECC</td>
+                <td><code>docs/qualification/environmental-test-plan.md</code></td>
+                <td><code>V-ENV-005</code></td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-001</code></strong></td>
+                <td>POSIX V4L2 Sensor Ingestion and Disconnect Handling</td>
+                <td>INTERFACE</td>
+                <td>V4L2 Ingestion & Device Monitor</td>
+                <td><code>core/camera/device_manager.py</code></td>
+                <td><code>V-IF-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-002</code></strong></td>
+                <td>Vehicle Bus Adapter Decoupling</td>
+                <td>INTERFACE</td>
+                <td>Vehicle Bus Abstraction</td>
+                <td><code>core/integration/bus.py</code></td>
+                <td><code>V-IF-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-003</code></strong></td>
+                <td>Dual-Clock Monotonic and UTC Time Synchronization</td>
+                <td>INTERFACE</td>
+                <td>Dual Monotonic/UTC Time Sync</td>
+                <td><code>core/mission/database.py</code></td>
+                <td><code>V-IF-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-004</code></strong></td>
+                <td>Non-Blocking Telemetry Publisher</td>
+                <td>INTERFACE</td>
+                <td>Non-Blocking Telemetry Server</td>
+                <td><code>core/streaming/event_server.py</code></td>
+                <td><code>V-IF-004</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-OPS-001</code></strong></td>
+                <td>Cockpit HUD High-Contrast Usability</td>
+                <td>OPERATIONS</td>
+                <td>High-Contrast Cockpit HUD</td>
+                <td><code>core/gui/console.py</code></td>
+                <td><code>V-OPS-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-OPS-002</code></strong></td>
+                <td>Speech Articulation Rate Compliance</td>
+                <td>OPERATIONS</td>
+                <td>Speech Articulation Rate Controller</td>
+                <td><code>core/assistance/voice.py</code></td>
+                <td><code>V-OPS-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-OPS-003</code></strong></td>
+                <td>Pre-Flight Self-Test Execution</td>
+                <td>OPERATIONS</td>
+                <td>Pre-Flight Self-Test Diagnostician</td>
+                <td><code>core/cli/commands.py</code></td>
+                <td><code>V-OPS-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-001</code></strong></td>
+                <td>Sustained Pipeline Execution Throughput</td>
+                <td>PERFORMANCE</td>
+                <td>High-Throughput Scheduler</td>
+                <td><code>core/optimization/scheduler.py</code></td>
+                <td><code>V-PERF-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-002</code></strong></td>
+                <td>End-to-End Decision Latency</td>
+                <td>PERFORMANCE</td>
+                <td>Latency Control Loop</td>
+                <td><code>core/procedure/benchmark.py</code></td>
+                <td><code>V-PERF-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-003</code></strong></td>
+                <td>Neural Detector Inference Latency</td>
+                <td>PERFORMANCE</td>
+                <td>Edge Neural Runtime</td>
+                <td><code>core/optimization/runtime.py</code></td>
+                <td><code>V-PERF-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-004</code></strong></td>
+                <td>Memory Footprint and Leak-Free Stability</td>
+                <td>PERFORMANCE</td>
+                <td>Memory Stability Manager</td>
+                <td><code>core/optimization/soak.py</code></td>
+                <td><code>V-PERF-004</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-005</code></strong></td>
+                <td>Cold-Boot Initialization Latency</td>
+                <td>PERFORMANCE</td>
+                <td>Cold-Boot Initializer</td>
+                <td><code>core/cli/commands.py</code></td>
+                <td><code>V-PERF-005</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-REL-001</code></strong></td>
+                <td>Auxiliary Subsystem Crash Isolation</td>
+                <td>RELIABILITY</td>
+                <td>Subsystem Failure Containment</td>
+                <td><code>core/system/orchestrator.py</code></td>
+                <td><code>V-REL-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-REL-002</code></strong></td>
+                <td>Deep Neural Detector Heuristic Fallback</td>
+                <td>RELIABILITY</td>
+                <td>Heuristic Detector Fallback</td>
+                <td><code>core/perception/color_detector.py</code></td>
+                <td><code>V-SYS-008</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-REL-003</code></strong></td>
+                <td>Formal Degraded Operational Modes</td>
+                <td>RELIABILITY</td>
+                <td>Formal Degraded Modes</td>
+                <td><code>docs/qualification/degraded-modes.md</code></td>
+                <td><code>V-REL-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-001</code></strong></td>
+                <td>Non-Guessing Assurance Barrier</td>
+                <td>SAFETY</td>
+                <td>Epistemic Non-Guessing Barrier</td>
+                <td><code>core/assurance/engine.py</code></td>
+                <td><code>V-SAF-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-002</code></strong></td>
+                <td>Occlusion-Induced Uncertainty State Transition</td>
+                <td>SAFETY</td>
+                <td>Occlusion Observation Window</td>
+                <td><code>core/assurance/engine.py</code></td>
+                <td><code>V-SYS-004</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-003</code></strong></td>
+                <td>Video Stream Ingestion Freeze Containment</td>
+                <td>SAFETY</td>
+                <td>Ingestion Dropout Watchdog</td>
+                <td><code>core/camera/device_manager.py</code></td>
+                <td><code>V-SYS-006</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-004</code></strong></td>
+                <td>Ground Network and Audio Auxiliary Failure Isolation</td>
+                <td>SAFETY</td>
+                <td>Auxiliary Subsystem Isolation</td>
+                <td><code>core/assistance/voice.py</code></td>
+                <td><code>V-SYS-007</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SEC-001</code></strong></td>
+                <td>100% Air-Gapped Offline Execution</td>
+                <td>SECURITY</td>
+                <td>Air-Gapped Execution Enforcer</td>
+                <td><code>core/security/airgap.py</code></td>
+                <td><code>V-SEC-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SEC-002</code></strong></td>
+                <td>Cryptographic SHA-256 Artifact Integrity Verification</td>
+                <td>SECURITY</td>
+                <td>Cryptographic Checksum Verifier</td>
+                <td><code>competition/CHECKSUMS/SHA256SUMS</code></td>
+                <td><code>V-SEC-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SEC-003</code></strong></td>
+                <td>Ground Streaming Read-Only Protection</td>
+                <td>SECURITY</td>
+                <td>Read-Only Ground Endpoint Guard</td>
+                <td><code>core/streaming/security.py</code></td>
+                <td><code>V-SEC-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-001</code></strong></td>
+                <td>Optical Camera Stream Ingestion</td>
+                <td>FUNCTIONAL</td>
+                <td>Optical Ingestion</td>
+                <td><code>core/camera/webcam.py</code></td>
+                <td><code>V-SYS-001</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-002</code></strong></td>
+                <td>Laboratory Apparatus Object Detection</td>
+                <td>FUNCTIONAL</td>
+                <td>Neural Perception</td>
+                <td><code>core/perception/detector.py</code></td>
+                <td><code>V-SYS-002</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-003</code></strong></td>
+                <td>Hand-Object Spatial Interaction Detection</td>
+                <td>FUNCTIONAL</td>
+                <td>Spatial Interaction</td>
+                <td><code>core/interaction/geometry.py</code></td>
+                <td><code>V-SYS-003-IOU</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-004</code></strong></td>
+                <td>Temporal Activity Dwell Accumulation</td>
+                <td>FUNCTIONAL</td>
+                <td>Temporal Activity Dwell</td>
+                <td><code>core/temporal/buffer.py</code></td>
+                <td><code>V-SYS-004-TEMPORAL</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-005</code></strong></td>
+                <td>Deterministic Experiment Procedure State Tracking</td>
+                <td>FUNCTIONAL</td>
+                <td>Deterministic Procedure Tracking</td>
+                <td><code>core/procedure/progress.py</code></td>
+                <td><code>V-SYS-003</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-006</code></strong></td>
+                <td>Tri-State Assurance Evaluation</td>
+                <td>FUNCTIONAL</td>
+                <td>Tri-State Assurance</td>
+                <td><code>core/assurance/engine.py</code></td>
+                <td><code>V-SYS-006-ASSURANCE</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-007</code></strong></td>
+                <td>Cockpit Voice Guidance and Visual HUD Alerts</td>
+                <td>FUNCTIONAL</td>
+                <td>Cockpit Voice & HUD Guidance</td>
+                <td><code>core/assistance/voice.py</code></td>
+                <td><code>V-SYS-007-VOICE</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VALIDATED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-008</code></strong></td>
+                <td>Closed-Loop Corrective Action Recovery</td>
+                <td>FUNCTIONAL</td>
+                <td>Closed-Loop Recovery</td>
+                <td><code>core/assistance/recovery.py</code></td>
+                <td><code>V-SYS-005</code></td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><span class="badge-pass">VALIDATED</span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

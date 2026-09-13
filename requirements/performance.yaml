@@ -1,0 +1,68 @@
+- id: ASTRA-PERF-001
+  title: Sustained Pipeline Execution Throughput
+  description: The integrated pipeline shall maintain a sustained throughput of not less than 30.0 frames per second under full operational workload.
+  category: PERFORMANCE
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Performance Team
+  evidence:
+    - reports/benchmark/benchmark_report.json
+    - verification/evidence/EVID-PERF-001-THROUGHPUT.json
+
+- id: ASTRA-PERF-002
+  title: End-to-End Decision Latency
+  description: The end-to-end decision latency (optical frame arrival to assurance state evaluation) shall not exceed 50.0 milliseconds at P95.
+  category: PERFORMANCE
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Performance Team
+  evidence:
+    - reports/benchmark/soak_report.json
+    - verification/evidence/EVID-PERF-002-LATENCY.json
+
+- id: ASTRA-PERF-003
+  title: Neural Detector Inference Latency
+  description: Neural detector inference latency on target edge compute hardware shall not exceed 25.0 milliseconds at P50.
+  category: PERFORMANCE
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: COMPONENT
+  status: VERIFIED
+  owner: ML Engineering
+  evidence:
+    - storage/reports/benchmark/baseline_benchmark.json
+    - verification/evidence/EVID-PERF-003-INFERENCE.json
+
+- id: ASTRA-PERF-004
+  title: Memory Footprint and Leak-Free Stability
+  description: Resident Set Size (RSS) memory consumption shall remain below 1,024 MB with zero memory growth (<5%) over a 30-minute soak test.
+  category: PERFORMANCE
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Software Systems
+  evidence:
+    - final_submission/benchmark/resource_report.html
+    - verification/evidence/EVID-PERF-004-MEMORY.json
+
+- id: ASTRA-PERF-005
+  title: Cold-Boot Initialization Latency
+  description: System cold-boot and initialization to the READY operational state shall execute within 5.0 seconds.
+  category: PERFORMANCE
+  priority: MEDIUM
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Core Systems
+  evidence:
+    - verification/evidence/EVID-PERF-005-BOOT.json

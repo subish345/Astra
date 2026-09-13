@@ -1,0 +1,21 @@
+id: V-ENV-005
+requirement: ASTRA-ENV-005
+title: Total Ionizing Dose Radiation Tolerance (TRL 6 Qualification Plan)
+purpose: Verify that payload compute memory, storage, and logic withstand Total Ionizing Dose (TID) radiation up to 50 krad without destructive latch-up or bit corruption.
+preconditions:
+  - Cobalt-60 gamma ray or proton beam irradiation facility operational
+setup:
+  - Mount unpowered and powered compute boards in radiation cell
+inputs:
+  - Cumulative radiation exposure reaching 50 krad(Si)
+procedure:
+  - Expose boards to radiation dose at controlled rate (< 0.1 rad/s)
+  - Monitor power bus supply currents for single-event latch-up (SEL)
+  - Perform memory pattern read/write audits for single-event upsets (SEU)
+expected_result:
+  - Zero destructive latch-up events
+  - Error-correcting code (ECC) memory handles transient upsets without kernel crash
+acceptance_criteria:
+  - Post-exposure functional operation verified (TRL 6 qualification gate)
+evidence:
+  - docs/qualification/environmental-test-plan.md

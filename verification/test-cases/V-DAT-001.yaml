@@ -1,0 +1,21 @@
+id: V-DAT-001
+requirement: ASTRA-DAT-001
+title: Microsecond Event Logging in SQLite WAL Mode
+purpose: Verify that all procedure transitions and anomalies are logged to SQLite WAL database with microsecond timestamps.
+preconditions:
+  - DatabaseManager initialized
+setup:
+  - Configure temporary test database
+inputs:
+  - Transition and anomaly events
+procedure:
+  - Emit 25 events
+  - Query sqlite PRAGMA journal_mode and inspect event records
+expected_result:
+  - Journal mode is wal
+  - Timestamps recorded with microsecond ISO-8601 formatting
+acceptance_criteria:
+  - WAL mode active and microsecond precision verified
+evidence:
+  - data/runs/DEMO_RUN_001/events.json
+  - verification/evidence/EVID-DAT-001-SQLITE.json

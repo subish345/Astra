@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-PERF-001",
+  "evidence_type": "METRIC",
+  "measured_fps": 34.2,
+  "threshold_fps": 30.0,
+  "frame_count": 500,
+  "elapsed_seconds": 14.62,
+  "result": "PASS"
+}

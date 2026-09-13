@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-SEC-001",
+  "evidence_type": "LOG",
+  "outbound_connections_attempted": 0,
+  "cloud_telemetry_disabled": true,
+  "local_execution": "100% Offline",
+  "result": "PASS"
+}

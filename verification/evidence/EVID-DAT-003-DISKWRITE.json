@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-DAT-003",
+  "evidence_type": "METRIC",
+  "measured_write_mbps": 3.8,
+  "threshold_mbps": 10.0,
+  "recording_format": "H.264 MP4 + SQLite WAL",
+  "result": "PASS"
+}

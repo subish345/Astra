@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-SEC-001",
+  "requirement_id": "ASTRA-SEC-001",
+  "test_id": "V-SEC-001",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "data/runs/DEMO_RUN_001/mission_report.json",
+    "verification/evidence/EVID-SEC-001-AIRGAP.json"
+  ],
+  "notes": "Test V-SEC-001 executed successfully against ASTRA-SEC-001."
+}

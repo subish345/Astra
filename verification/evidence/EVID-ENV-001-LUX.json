@@ -1,0 +1,21 @@
+{
+  "requirement_id": "ASTRA-ENV-001",
+  "evidence_type": "METRIC",
+  "illumination_levels_lux": [
+    45,
+    120,
+    250,
+    500,
+    850
+  ],
+  "recall_scores": [
+    0.912,
+    0.941,
+    0.958,
+    0.952,
+    0.934
+  ],
+  "min_recall": 0.912,
+  "threshold_recall": 0.9,
+  "result": "PASS"
+}

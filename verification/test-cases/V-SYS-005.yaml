@@ -1,0 +1,24 @@
+id: V-SYS-005
+requirement: ASTRA-SYS-008
+title: Closed-Loop Procedural Deviation Recovery
+purpose: Verify that after a deviation is triggered, the recovery engine provides corrective guidance and verifies the correct compensatory action before resuming the procedure.
+preconditions:
+  - System in DEVIATION state due to wrong object interaction
+setup:
+  - Initialize ClosedLoopRecoveryManager
+inputs:
+  - Corrective activity: return wrong object, grasp expected object with >= 10 frames dwell
+procedure:
+  - Process corrective activity frames through ClosedLoopRecoveryManager
+  - Evaluate recovery verification criteria
+  - Transition back to nominal procedure tracking
+expected_result:
+  - Recovery manager transitions from AWAITING_CORRECTION to RECOVERED
+  - Procedure state machine resumes nominal step progression
+  - Recovery event recorded in mission telemetry
+acceptance_criteria:
+  - Recovery verification completes successfully
+  - Corrective dwell threshold enforced
+evidence:
+  - final_submission/demo_videos/03_recovery.mp4
+  - verification/evidence/EVID-SYS-008-RECOVERY.json

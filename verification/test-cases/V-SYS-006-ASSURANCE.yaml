@@ -1,0 +1,21 @@
+id: V-SYS-006-ASSURANCE
+requirement: ASTRA-SYS-006
+title: Tri-State Assurance State Machine Evaluation
+purpose: Verify that the assurance engine systematically transitions between VERIFIED, UNCERTAIN, and DEVIATION states based on active step evidence.
+preconditions:
+  - Procedure active on Step 1
+setup:
+  - Initialize TriStateAssuranceEngine
+inputs:
+  - Varied evidence bundles (nominal, occluded, wrong object)
+procedure:
+  - Deliver nominal evidence -> expect VERIFIED
+  - Deliver low confidence evidence -> expect UNCERTAIN
+  - Deliver conflicting object evidence -> expect DEVIATION
+expected_result:
+  - State machine correctly yields VERIFIED, UNCERTAIN, and DEVIATION states
+acceptance_criteria:
+  - Zero ambiguous states
+evidence:
+  - data/runs/DEMO_RUN_001/events.json
+  - verification/evidence/EVID-SYS-006-ASSURANCE.json

@@ -1,0 +1,21 @@
+id: V-SEC-001
+requirement: ASTRA-SEC-001
+title: 100% Air-Gapped Offline Execution
+purpose: Verify that the system executes completely without external internet access, DNS lookups, or remote license dependencies.
+preconditions:
+  - System network environment isolated (no default route or loopback only)
+setup:
+  - Configure socket firewall / monitor outbound network sockets
+inputs:
+  - Standard demo execution command
+procedure:
+  - Run full experiment session under air-gap condition
+  - Monitor all network connections
+expected_result:
+  - Zero outbound connections to public IP addresses
+  - System operates with full functionality
+acceptance_criteria:
+  - Zero internet calls attempted
+evidence:
+  - data/runs/DEMO_RUN_001/mission_report.json
+  - verification/evidence/EVID-SEC-001-AIRGAP.json

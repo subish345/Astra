@@ -1,0 +1,41 @@
+- id: ASTRA-SEC-001
+  title: 100% Air-Gapped Offline Execution
+  description: The system shall operate 100% air-gapped without requiring external Internet access, cloud services, telemetry uplinks, or remote license servers.
+  category: SECURITY
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Security Team
+  evidence:
+    - data/runs/DEMO_RUN_001/mission_report.json
+    - verification/evidence/EVID-SEC-001-AIRGAP.json
+
+- id: ASTRA-SEC-002
+  title: Cryptographic SHA-256 Artifact Integrity Verification
+  description: Neural model checkpoints, configuration files, and dataset manifests shall be verified via cryptographic SHA-256 hashes prior to execution.
+  category: SECURITY
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Security Team
+  evidence:
+    - competition/CHECKSUMS/SHA256SUMS
+    - verification/evidence/EVID-SEC-002-SHA256.json
+
+- id: ASTRA-SEC-003
+  title: Ground Streaming Read-Only Protection
+  description: Ground streaming endpoints shall enforce strict read-only access and reject arbitrary remote command execution.
+  category: SECURITY
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Security Team
+  evidence:
+    - tests/streaming/test_security_sanitization.py
+    - verification/evidence/EVID-SEC-003-READONLY.json

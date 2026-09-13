@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA — Verification Execution Records</title>
+    <style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; line-height: 1.5; }
+h1, h2, h3 { color: #38bdf8; font-weight: 600; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; }
+.nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 500; }
+.nav-link.active { color: #38bdf8; font-weight: 700; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+.metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+.metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; margin-top: 0.25rem; }
+.badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-waived { background: #374151; color: #d1d5db; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+tr:hover { background: #1e293b44; }
+code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; font-size: 0.85rem; }
+.alert-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+    <h1>Verification Execution Records</h1>
+    <p>Individual Test Run Logs Linked to Software Baseline and Hardware Profiles</p>
+    
+<div class="nav-bar">
+    <a href="v_and_v_summary.html" class="nav-link">Executive Summary</a>
+    <a href="requirements_status.html" class="nav-link">Requirements</a>
+    <a href="traceability.html" class="nav-link">Traceability Matrix</a>
+    <a href="verification_results.html" class="nav-link">Verification Results</a>
+    <a href="validation_results.html" class="nav-link">Validation Results</a>
+    <a href="performance_results.html" class="nav-link">Performance Results</a>
+    <a href="discrepancies.html" class="nav-link">Discrepancies</a>
+    <a href="evidence_index.html" class="nav-link">Evidence Index</a>
+</div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Record ID</th>
+                <th>Requirement</th>
+                <th>Test Case</th>
+                <th>Software Version</th>
+                <th>Hardware Profile</th>
+                <th>Operator</th>
+                <th>Result</th>
+                <th>Evidence Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>REC-V-DAT-001</code></td>
+                <td><strong><code>ASTRA-DAT-001</code></strong></td>
+                <td><code>V-DAT-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>data/runs/DEMO_RUN_001/events.json, verification/evidence/EVID-DAT-001-SQLITE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-DAT-002</code></td>
+                <td><strong><code>ASTRA-DAT-002</code></strong></td>
+                <td><code>V-DAT-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>verification/evidence/EVID-DAT-002-PROVENANCE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-DAT-003</code></td>
+                <td><strong><code>ASTRA-DAT-003</code></strong></td>
+                <td><code>V-DAT-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>verification/evidence/EVID-DAT-003-DISKWRITE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-ENV-001</code></td>
+                <td><strong><code>ASTRA-ENV-001</code></strong></td>
+                <td><code>V-ENV-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/physical/physical_validation.json, verification/evidence/EVID-ENV-001-LUX.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-ENV-002</code></td>
+                <td><strong><code>ASTRA-ENV-002</code></strong></td>
+                <td><code>V-ENV-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/physical/viewpoint_report.html, verification/evidence/EVID-ENV-002-ANGLE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-ENV-003</code></td>
+                <td><strong><code>ASTRA-ENV-003</code></strong></td>
+                <td><code>V-ENV-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+                <td><small>docs/qualification/environmental-test-plan.md</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-ENV-004</code></td>
+                <td><strong><code>ASTRA-ENV-004</code></strong></td>
+                <td><code>V-ENV-004</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+                <td><small>docs/qualification/environmental-test-plan.md</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-ENV-005</code></td>
+                <td><strong><code>ASTRA-ENV-005</code></strong></td>
+                <td><code>V-ENV-005</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+                <td><small>docs/qualification/environmental-test-plan.md</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-IF-001</code></td>
+                <td><strong><code>ASTRA-IF-001</code></strong></td>
+                <td><code>V-IF-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/physical/failure_report.html, verification/evidence/EVID-IF-001-DISCONNECT.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-IF-002</code></td>
+                <td><strong><code>ASTRA-IF-002</code></strong></td>
+                <td><code>V-IF-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>core/integration/bus.py, verification/evidence/EVID-IF-002-BUS.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-IF-003</code></td>
+                <td><strong><code>ASTRA-IF-003</code></strong></td>
+                <td><code>V-IF-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>data/runs/DEMO_RUN_001/events.json, verification/evidence/EVID-IF-003-TIME.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-IF-004</code></td>
+                <td><strong><code>ASTRA-IF-004</code></strong></td>
+                <td><code>V-IF-004</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>verification/evidence/EVID-IF-004-TELEMETRY.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-OPS-001</code></td>
+                <td><strong><code>ASTRA-OPS-001</code></strong></td>
+                <td><code>V-OPS-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>final_submission/screenshots/01_mission_console.jpg, verification/evidence/EVID-OPS-001-HUD.png</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-OPS-002</code></td>
+                <td><strong><code>ASTRA-OPS-002</code></strong></td>
+                <td><code>V-OPS-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>tests/audio/test_voice_architecture.py, verification/evidence/EVID-OPS-002-SPEECH.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-OPS-003</code></td>
+                <td><strong><code>ASTRA-OPS-003</code></strong></td>
+                <td><code>V-OPS-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>verification/evidence/EVID-OPS-003-SELFTEST.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-PERF-001</code></td>
+                <td><strong><code>ASTRA-PERF-001</code></strong></td>
+                <td><code>V-PERF-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/benchmark/benchmark_report.json, verification/evidence/EVID-PERF-001-THROUGHPUT.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-PERF-002</code></td>
+                <td><strong><code>ASTRA-PERF-002</code></strong></td>
+                <td><code>V-PERF-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/benchmark/soak_report.json, verification/evidence/EVID-PERF-002-LATENCY.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-PERF-003</code></td>
+                <td><strong><code>ASTRA-PERF-003</code></strong></td>
+                <td><code>V-PERF-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>storage/reports/benchmark/baseline_benchmark.json, verification/evidence/EVID-PERF-003-INFERENCE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-PERF-004</code></td>
+                <td><strong><code>ASTRA-PERF-004</code></strong></td>
+                <td><code>V-PERF-004</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>final_submission/benchmark/resource_report.html, verification/evidence/EVID-PERF-004-MEMORY.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-PERF-005</code></td>
+                <td><strong><code>ASTRA-PERF-005</code></strong></td>
+                <td><code>V-PERF-005</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>verification/evidence/EVID-PERF-005-BOOT.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-REL-001</code></td>
+                <td><strong><code>ASTRA-REL-001</code></strong></td>
+                <td><code>V-REL-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>verification/evidence/EVID-REL-001-CONTAINMENT.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-REL-003</code></td>
+                <td><strong><code>ASTRA-REL-003</code></strong></td>
+                <td><code>V-REL-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>docs/qualification/degraded-modes.md, verification/evidence/EVID-REL-003-DEGRADED.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SAF-001</code></td>
+                <td><strong><code>ASTRA-SAF-001</code></strong></td>
+                <td><code>V-SAF-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>storage/reports/simulation/sim_stress_optical.json, verification/evidence/EVID-SAF-001-NONGUESSING.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SEC-001</code></td>
+                <td><strong><code>ASTRA-SEC-001</code></strong></td>
+                <td><code>V-SEC-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>data/runs/DEMO_RUN_001/mission_report.json, verification/evidence/EVID-SEC-001-AIRGAP.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SEC-002</code></td>
+                <td><strong><code>ASTRA-SEC-002</code></strong></td>
+                <td><code>V-SEC-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>competition/CHECKSUMS/SHA256SUMS, verification/evidence/EVID-SEC-002-SHA256.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SEC-003</code></td>
+                <td><strong><code>ASTRA-SEC-003</code></strong></td>
+                <td><code>V-SEC-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>tests/streaming/test_security_sanitization.py, verification/evidence/EVID-SEC-003-READONLY.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-001</code></td>
+                <td><strong><code>ASTRA-SYS-001</code></strong></td>
+                <td><code>V-SYS-001</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>storage/evidence/live_camera_probe.jpg, verification/evidence/EVID-SYS-001-CAM.png</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-002</code></td>
+                <td><strong><code>ASTRA-SYS-002</code></strong></td>
+                <td><code>V-SYS-002</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>models/reports/model_evaluation_report.json, verification/evidence/EVID-SYS-002-DET.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-003</code></td>
+                <td><strong><code>ASTRA-SYS-005</code></strong></td>
+                <td><code>V-SYS-003</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>configs/experiments/demo.yaml, verification/evidence/EVID-SYS-005-PROC.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-003-IOU</code></td>
+                <td><strong><code>ASTRA-SYS-003</code></strong></td>
+                <td><code>V-SYS-003-IOU</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/physical/viewpoint_report.html, verification/evidence/EVID-SYS-003-IOU.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-004</code></td>
+                <td><strong><code>ASTRA-SAF-002</code></strong></td>
+                <td><code>V-SYS-004</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/physical/physical_validation.html, verification/evidence/EVID-SAF-002-OCCLUSION.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-004-TEMPORAL</code></td>
+                <td><strong><code>ASTRA-SYS-004</code></strong></td>
+                <td><code>V-SYS-004-TEMPORAL</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>final_submission/screenshots/04_evidence.jpg, verification/evidence/EVID-SYS-004-TEMPORAL.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-005</code></td>
+                <td><strong><code>ASTRA-SYS-008</code></strong></td>
+                <td><code>V-SYS-005</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>final_submission/demo_videos/03_recovery.mp4, verification/evidence/EVID-SYS-008-RECOVERY.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-006</code></td>
+                <td><strong><code>ASTRA-SAF-003</code></strong></td>
+                <td><code>V-SYS-006</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/hil/simulation_vs_physical.html, verification/evidence/EVID-SAF-003-FREEZE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-006-ASSURANCE</code></td>
+                <td><strong><code>ASTRA-SYS-006</code></strong></td>
+                <td><code>V-SYS-006-ASSURANCE</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>data/runs/DEMO_RUN_001/events.json, verification/evidence/EVID-SYS-006-ASSURANCE.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-007</code></td>
+                <td><strong><code>ASTRA-SAF-004</code></strong></td>
+                <td><code>V-SYS-007</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>final_submission/demo_videos/05_offline.mp4, verification/evidence/EVID-SAF-004-ISOLATION.json</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-007-VOICE</code></td>
+                <td><strong><code>ASTRA-SYS-007</code></strong></td>
+                <td><code>V-SYS-007-VOICE</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>final_submission/demo_videos/02_wrong_object.mp4, verification/evidence/EVID-SYS-007-VOICE.wav</small></td>
+            </tr>
+            <tr>
+                <td><code>REC-V-SYS-008</code></td>
+                <td><strong><code>ASTRA-REL-002</code></strong></td>
+                <td><code>V-SYS-008</code></td>
+                <td>1.0.0-RC1</td>
+                <td>edge_profile_jetson</td>
+                <td>ASTRA_AUTOMATED_VV</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><small>reports/hil/hardware_matrix.html, verification/evidence/EVID-REL-002-FALLBACK.json</small></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

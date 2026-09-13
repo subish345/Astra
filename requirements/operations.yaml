@@ -1,0 +1,40 @@
+- id: ASTRA-OPS-001
+  title: Cockpit HUD High-Contrast Usability
+  description: The operator cockpit interface shall provide high-contrast visual cues visible from not less than 1.5 meters distance.
+  category: OPERATIONS
+  priority: HIGH
+  verification_method:
+    - INSPECTION
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Human Factors / Crew Operations
+  evidence:
+    - final_submission/screenshots/01_mission_console.jpg
+    - verification/evidence/EVID-OPS-001-HUD.png
+
+- id: ASTRA-OPS-002
+  title: Speech Articulation Rate Compliance
+  description: Vocal assistance speech strings shall maintain an articulation rate between 140 and 170 words per minute for optimal cockpit intelligibility.
+  category: OPERATIONS
+  priority: MEDIUM
+  verification_method:
+    - TEST
+  verification_level: COMPONENT
+  status: VERIFIED
+  owner: Human Factors / Audio Team
+  evidence:
+    - tests/audio/test_voice_architecture.py
+    - verification/evidence/EVID-OPS-002-SPEECH.json
+
+- id: ASTRA-OPS-003
+  title: Pre-Flight Self-Test Execution
+  description: The system shall provide a single-command pre-flight self-test (astra final-check / astra competition-check) executing in less than 3 seconds.
+  category: OPERATIONS
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Systems Integration
+  evidence:
+    - verification/evidence/EVID-OPS-003-SELFTEST.json

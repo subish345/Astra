@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-IF-002",
+  "requirement_id": "ASTRA-IF-002",
+  "test_id": "V-IF-002",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "core/integration/bus.py",
+    "verification/evidence/EVID-IF-002-BUS.json"
+  ],
+  "notes": "Test V-IF-002 executed successfully against ASTRA-IF-002."
+}

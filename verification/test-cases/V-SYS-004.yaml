@@ -1,0 +1,23 @@
+id: V-SYS-004
+requirement: ASTRA-SAF-002
+title: Uncertainty State Transition on Optical Occlusion
+purpose: Verify that brief optical occlusion or low confidence (<0.50) transitions the assurance engine into UNCERTAIN without falsely confirming deviation or verifying the step.
+preconditions:
+  - Nominal procedure running on step 2
+setup:
+  - Inject 5 frames of low confidence (<0.40) or partial bounding box occlusion
+inputs:
+  - Occluded synthetic video frames
+procedure:
+  - Deliver low confidence detections to TriStateAssuranceEngine
+  - Verify assurance state evaluation during occlusion dwell window
+expected_result:
+  - Assurance state evaluates to UNCERTAIN
+  - Observation dwell counter increments
+  - No false DEVIATION emitted during the grace period
+acceptance_criteria:
+  - Assurance state is UNCERTAIN
+  - Step completion is blocked
+evidence:
+  - reports/physical/physical_validation.html
+  - verification/evidence/EVID-SAF-002-OCCLUSION.json

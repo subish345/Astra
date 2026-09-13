@@ -1,0 +1,20 @@
+id: V-DAT-002
+requirement: ASTRA-DAT-002
+title: Causal Provenance Evidence Chain
+purpose: Verify that decisions maintain unbroken causal linkages back to raw bounding boxes and frame numbers.
+preconditions:
+  - MultimodalEvidenceEngine active
+setup:
+  - Run 5-step test sequence
+inputs:
+  - Video stream and bounding box detections
+procedure:
+  - Generate StepTraceRecord for each step completion
+  - Inspect evidence bundle: check frame_idx, bounding_boxes, confidence, timestamp
+expected_result:
+  - Every step transition has an attached EvidenceBundle
+  - EvidenceBundle contains valid frame index, detection list, and verification rule
+acceptance_criteria:
+  - Traceability unbroken across all steps
+evidence:
+  - verification/evidence/EVID-DAT-002-PROVENANCE.json

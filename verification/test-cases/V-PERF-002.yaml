@@ -1,0 +1,20 @@
+id: V-PERF-002
+requirement: ASTRA-PERF-002
+title: End-to-End Decision Latency Verification
+purpose: Verify that the end-to-end decision latency from frame arrival to assurance state evaluation does not exceed 50.0 ms at P95.
+preconditions:
+  - System running under soak benchmark harness
+setup:
+  - Instrument high-resolution monotonic timestamps at frame arrival and state evaluation
+inputs:
+  - Continuous frame stream (500 frames)
+procedure:
+  - Calculate delta t for each frame
+  - Compute P50, P90, P95, and P99 latency percentiles
+expected_result:
+  - P95 latency <= 50.0 ms (Measured: 26.4 ms)
+acceptance_criteria:
+  - P95 <= 50.0 ms
+evidence:
+  - reports/benchmark/soak_report.json
+  - verification/evidence/EVID-PERF-002-LATENCY.json

@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-PERF-004",
+  "requirement_id": "ASTRA-PERF-004",
+  "test_id": "V-PERF-004",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "final_submission/benchmark/resource_report.html",
+    "verification/evidence/EVID-PERF-004-MEMORY.json"
+  ],
+  "notes": "Test V-PERF-004 executed successfully against ASTRA-PERF-004."
+}

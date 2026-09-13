@@ -3341,6 +3341,121 @@ def cmd_qualification(args: argparse.Namespace) -> int:
         return 1
 
 
+def cmd_verification(args: argparse.Namespace) -> int:
+    """Execute Formal Verification & Validation framework commands (Phase 16)."""
+    from verification.test_registry import TestRegistry
+    from verification.traceability import TraceabilityEngine
+    from verification.regression import RegressionEngine
+    from verification.report_generator import ReportGenerator
+
+    verif_cmd = getattr(args, "verif_cmd", "list")
+    reg = TestRegistry()
+    te = TraceabilityEngine()
+
+    if verif_cmd == "list":
+        print("=" * 80)
+        print(" ASTRA-EA FORMAL REQUIREMENTS & VERIFICATION STATUS (Phase 16)")
+        print("=" * 80)
+        print(f"{'Requirement ID':<18} {'Category':<14} {'Level':<14} {'Status':<12} {'Title'}")
+        print("-" * 80)
+        for rid, req in sorted(reg.requirements.items()):
+            print(f"{rid:<18} {req.get('category','SYSTEM'):<14} {req.get('verification_level','SYSTEM'):<14} [{req.get('status','DRAFT')}] {req.get('title','')[:26]}")
+        print("=" * 80)
+        metrics = te.compute_metrics()
+        print(f"Total: {metrics['total_requirements']} | Verified: {metrics['verified']} | Validated: {metrics['validated']} | Deferred (TRL 6): {metrics['deferred']}")
+        print(f"Verification Coverage: {metrics['verification_coverage_percent']}% | Evidence Coverage: {metrics['evidence_coverage_percent']}%")
+        print("=" * 80)
+        return 0
+
+    elif verif_cmd == "run":
+        req_arg = getattr(args, "requirement", None)
+        test_arg = getattr(args, "test", None)
+
+        if req_arg:
+            print(f"Executing formal tests for requirement: {req_arg}")
+            matched_tests = [tid for tid, tc in reg.test_cases.items() if tc.get("requirement") == req_arg]
+            if not matched_tests:
+                print(f"[FAIL] No registered test cases found for requirement: {req_arg}")
+                return 1
+            for tid in matched_tests:
+                res = reg.execute_test(tid)
+                print(f"[{res['result']}] {tid:<20} -> {req_arg} ({res.get('notes', '')})")
+            return 0
+
+        elif test_arg:
+            if test_arg not in reg.test_cases:
+                print(f"[FAIL] Unknown formal test case: {test_arg}")
+                return 1
+            res = reg.execute_test(test_arg)
+            print(f"[{res['result']}] {test_arg} -> {res.get('requirement_id')} ({res.get('notes', '')})")
+            return 0
+
+        else:
+            print("=" * 80)
+            print(" EXECUTING ALL FORMAL V&V TEST CASES (V-SYS-001 TO V-ENV-005)")
+            print("=" * 80)
+            results = reg.run_all()
+            for tid, res in sorted(results.items()):
+                print(f"[{res['result']:<8}] {tid:<22} Req: {res.get('requirement_id'):<16} Status: {res['result']}")
+            pass_count = sum(1 for r in results.values() if r["result"] == "PASS")
+            def_count = sum(1 for r in results.values() if r["result"] == "DEFERRED")
+            print("-" * 80)
+            print(f"Execution complete: {pass_count} PASSED, {def_count} DEFERRED (Planned TRL 6)")
+            print("=" * 80)
+            return 0
+
+    elif verif_cmd == "regression":
+        engine = RegressionEngine()
+        res = engine.run_full_regression()
+        return 0 if res["all_passed"] else 1
+
+    elif verif_cmd == "coverage":
+        print("=" * 60)
+        print(" ASTRA-EA FORMAL REQUIREMENT COVERAGE AUDIT")
+        print("=" * 60)
+        metrics = te.compute_metrics()
+        print(f"Total Requirements:         {metrics['total_requirements']}")
+        print(f"Applicable Requirements:    {metrics['applicable_requirements']}")
+        print(f"Verified Requirements:      {metrics['verified']}")
+        print(f"Validated Requirements:     {metrics['validated']}")
+        print(f"Deferred Requirements:      {metrics['deferred']} (TRL 6 Facilities)")
+        print(f"Verification Coverage:      {metrics['verification_coverage_percent']}%")
+        print(f"Evidence Coverage:          {metrics['evidence_coverage_percent']}%")
+        print(f"Traceability Orphans:       {'0 (CLEAN)' if metrics['orphan_free'] else 'DETECTED'}")
+        print("=" * 60)
+        return 0
+
+    elif verif_cmd == "traceability":
+        print("==============================================================================")
+        print(" ASTRA-EA MASTER REQUIREMENTS TRACEABILITY GRAPH")
+        print("==============================================================================")
+        print(te.render_ascii_table())
+        print("==============================================================================")
+        return 0
+
+    elif verif_cmd == "report":
+        print("=" * 60)
+        print(" GENERATING FORMAL V&V REPORT SUITE (reports/verification/)")
+        print("=" * 60)
+        rg = ReportGenerator()
+        files = rg.generate_all()
+        for f in files:
+            print(f"[✓] Generated: {f.relative_to(te.root_dir)}")
+        print("=" * 60)
+        print("Report generation complete. Open reports/verification/v_and_v_summary.html")
+        print("=" * 60)
+        return 0
+
+    elif verif_cmd == "dashboard":
+        from apps.verification_dashboard.run_dashboard import run_dashboard
+        run_dashboard(open_browser=getattr(args, "open", False))
+        return 0
+
+    else:
+        print(f"Unknown verification command: {verif_cmd}")
+        return 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Construct CLI argument parser."""
     parser = argparse.ArgumentParser(
@@ -3721,6 +3836,36 @@ def build_parser() -> argparse.ArgumentParser:
     p_q_read = qual_subs.add_parser("readiness", help="Display Qualification Readiness Dashboard")
     p_q_read.set_defaults(func=cmd_qualification)
     p_qual.set_defaults(func=cmd_qualification)
+
+    # verification (Phase 16 Formal V&V Framework)
+    p_verif = subparsers.add_parser("verification", help="Formal Verification & Validation framework")
+    verif_subs = p_verif.add_subparsers(dest="verif_cmd")
+
+    p_v_list = verif_subs.add_parser("list", help="List all formal requirements, status, and test linkages")
+    p_v_list.set_defaults(func=cmd_verification)
+
+    p_v_run = verif_subs.add_parser("run", help="Execute formal test cases")
+    p_v_run.add_argument("--requirement", help="Target requirement ID (e.g. ASTRA-SYS-001)")
+    p_v_run.add_argument("--test", help="Target test case ID (e.g. V-SYS-002)")
+    p_v_run.set_defaults(func=cmd_verification)
+
+    p_v_reg = verif_subs.add_parser("regression", help="Execute full formal V&V regression suite")
+    p_v_reg.set_defaults(func=cmd_verification)
+
+    p_v_cov = verif_subs.add_parser("coverage", help="Display verification and evidence coverage metrics")
+    p_v_cov.set_defaults(func=cmd_verification)
+
+    p_v_trc = verif_subs.add_parser("traceability", help="Display end-to-end requirement traceability graph")
+    p_v_trc.set_defaults(func=cmd_verification)
+
+    p_v_rep = verif_subs.add_parser("report", help="Generate complete suite of 8 formal V&V HTML reports")
+    p_v_rep.set_defaults(func=cmd_verification)
+
+    p_v_dash = verif_subs.add_parser("dashboard", help="Launch interactive Mission Assurance V&V dashboard")
+    p_v_dash.add_argument("--open", action="store_true", help="Open browser automatically")
+    p_v_dash.set_defaults(func=cmd_verification)
+
+    p_verif.set_defaults(func=cmd_verification)
 
     return parser
 

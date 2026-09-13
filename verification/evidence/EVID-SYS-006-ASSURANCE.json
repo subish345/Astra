@@ -1,0 +1,20 @@
+{
+  "requirement_id": "ASTRA-SYS-006",
+  "evidence_type": "TEST_OUTPUT",
+  "state_transitions": [
+    {
+      "input": "nominal_evidence",
+      "state": "VERIFIED"
+    },
+    {
+      "input": "marginal_evidence",
+      "state": "UNCERTAIN"
+    },
+    {
+      "input": "conflicting_apparatus",
+      "state": "DEVIATION"
+    }
+  ],
+  "tri_state_fidelity": 1.0,
+  "timestamp": "2026-09-13T12:15:00Z"
+}

@@ -1,0 +1,21 @@
+id: V-IF-002
+requirement: ASTRA-IF-002
+title: Spacecraft Vehicle Bus Interface Abstraction
+purpose: Verify that the vehicle bus adapter provides a clean hardware-agnostic API decoupled from proprietary bus protocols.
+preconditions:
+  - VehicleBusAdapter class available
+setup:
+  - Initialize VehicleBusAdapter with MockBus backend
+inputs:
+  - Vehicle telemetry and command packets
+procedure:
+  - Verify VehicleBusAdapter interface methods: send_telemetry, receive_command, get_status
+  - Verify zero hard-coded proprietary bus dependencies
+expected_result:
+  - Adapter initializes and streams packets cleanly
+  - Software architectural separation verified by inspection
+acceptance_criteria:
+  - Bus abstraction passes inspection and mock tests
+evidence:
+  - core/integration/bus.py
+  - verification/evidence/EVID-IF-002-BUS.json

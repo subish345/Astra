@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-SAF-004",
+  "evidence_type": "TEST_OUTPUT",
+  "network_loss_simulated": true,
+  "audio_crash_simulated": true,
+  "onboard_assurance_suspended": false,
+  "onboard_frames_processed": 500,
+  "result": "PASS"
+}

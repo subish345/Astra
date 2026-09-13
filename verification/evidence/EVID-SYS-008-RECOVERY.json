@@ -1,0 +1,10 @@
+{
+  "requirement_id": "ASTRA-SYS-008",
+  "evidence_type": "TEST_OUTPUT",
+  "deviation_type": "WRONG_OBJECT_INTERACTION",
+  "corrective_guidance_issued": "Return chemical vial and grasp specimen tube.",
+  "corrective_action_detected": "specimen_tube contact >= 10 frames",
+  "recovery_status": "RECOVERED",
+  "procedure_resumed": true,
+  "timestamp": "2026-09-13T12:20:00Z"
+}

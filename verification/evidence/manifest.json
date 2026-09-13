@@ -1,0 +1,212 @@
+{
+  "EVID-DAT-001-SQLITE.json": {
+    "sha256": "6aa25f587a9634a597b8d40d1a32cfcb8a2198a0cfe50c438d7a5ed40ccf7820",
+    "size_bytes": 225,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-DAT-001-SQLITE.json"
+  },
+  "EVID-DAT-002-PROVENANCE.json": {
+    "sha256": "b8233fd3e90800b0a73de470375096a794c0aca764099baa21a233d88db13c8e",
+    "size_bytes": 194,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-DAT-002-PROVENANCE.json"
+  },
+  "EVID-DAT-003-DISKWRITE.json": {
+    "sha256": "a5b2d3779a247ca212a1ed13c53b5d8b73409fa882e24827b247a7cd8a67d9ff",
+    "size_bytes": 192,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-DAT-003-DISKWRITE.json"
+  },
+  "EVID-ENV-001-LUX.json": {
+    "sha256": "c1daa53f89114c50f486f04304f13776c3b12a5c3ce608c0f6c48acfa910beac",
+    "size_bytes": 297,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-ENV-001-LUX.json"
+  },
+  "EVID-ENV-002-ANGLE.json": {
+    "sha256": "913604036d1931bbb63bd77c9b8b06dc44f1ae274085a413859c2e93763c1aa9",
+    "size_bytes": 205,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-ENV-002-ANGLE.json"
+  },
+  "EVID-IF-001-DISCONNECT.json": {
+    "sha256": "147995a4eaeaf46b8d80d51ebca31b8fb13ccf132627ce27b93bcfdc5a062f04",
+    "size_bytes": 192,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-IF-001-DISCONNECT.json"
+  },
+  "EVID-IF-002-BUS.json": {
+    "sha256": "b99fe91291b58dd75bfb65c4d1c361cf198f7756a8718bd16970b1d1f369ec73",
+    "size_bytes": 238,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-IF-002-BUS.json"
+  },
+  "EVID-IF-003-TIME.json": {
+    "sha256": "7d86db57897ee0417fe783ec58fadc32508e327c8e1776860f6b211911a6d716",
+    "size_bytes": 244,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-IF-003-TIME.json"
+  },
+  "EVID-IF-004-TELEMETRY.json": {
+    "sha256": "dd0ea6ed2386b81006c7f8b97762602b91129b4d77cc707aed4a106846d9abe0",
+    "size_bytes": 237,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-IF-004-TELEMETRY.json"
+  },
+  "EVID-OPS-001-HUD.png": {
+    "sha256": "9ac5665f8aebb9a151b58efcd3c606166907bdf7d43f2cba651dd0590ddf36f7",
+    "size_bytes": 84938,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-OPS-001-HUD.png"
+  },
+  "EVID-OPS-002-SPEECH.json": {
+    "sha256": "6cc6e8cf7491ebd3419a58fa73fae4df58cc13b2ed8b7eabcfd3050f3aa1b437",
+    "size_bytes": 179,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-OPS-002-SPEECH.json"
+  },
+  "EVID-OPS-003-SELFTEST.json": {
+    "sha256": "fbb9c0b01357eb5a56911f03132d66935c318d669a8e935c75d1b0e4248e8f85",
+    "size_bytes": 244,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-OPS-003-SELFTEST.json"
+  },
+  "EVID-PERF-001-THROUGHPUT.json": {
+    "sha256": "5405917cdcd044d22eb8739f0a65ac7dcd453f7547e8bf72aa5c3de5e8c9d482",
+    "size_bytes": 188,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-PERF-001-THROUGHPUT.json"
+  },
+  "EVID-PERF-002-LATENCY.json": {
+    "sha256": "dc157590110d009e7e83b2b51bc62100ddc5223be0cb4e37cb40f82f9808f222",
+    "size_bytes": 221,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-PERF-002-LATENCY.json"
+  },
+  "EVID-PERF-003-INFERENCE.json": {
+    "sha256": "5b9be790c35b939df1744dd8b7fa3ac357ccd8f80e2aa2af6a80274fa935b4ba",
+    "size_bytes": 196,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-PERF-003-INFERENCE.json"
+  },
+  "EVID-PERF-004-MEMORY.json": {
+    "sha256": "c159a0f0a32efc5bdab2db54bbc003766b63c71fba80b514e31f3a55eaf4f5ed",
+    "size_bytes": 250,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-PERF-004-MEMORY.json"
+  },
+  "EVID-PERF-005-BOOT.json": {
+    "sha256": "a62f9773f88a0784d765ef63b1ffee7996f2f3c33e69467928b2acce92a14dcf",
+    "size_bytes": 190,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-PERF-005-BOOT.json"
+  },
+  "EVID-REL-001-CONTAINMENT.json": {
+    "sha256": "8422a547ee675714ffeb6bbb3765392c39fdfad2d99af79d193294a725a1967a",
+    "size_bytes": 214,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-REL-001-CONTAINMENT.json"
+  },
+  "EVID-REL-002-FALLBACK.json": {
+    "sha256": "4519c9f7c3d30fb8659a18a4b76d009a953f889efaba0d7a5d945b780608fa38",
+    "size_bytes": 227,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-REL-002-FALLBACK.json"
+  },
+  "EVID-REL-003-DEGRADED.json": {
+    "sha256": "c539902e324e52ce16dc4d26ed55ea58ce4b3eea0f27580d1d2db1b7e6c9cbde",
+    "size_bytes": 233,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-REL-003-DEGRADED.json"
+  },
+  "EVID-SAF-001-NONGUESSING.json": {
+    "sha256": "32c93ae7e48b1d46f6d2a23456f7a87ffd85007a8abc4b37f5b03ebd58841292",
+    "size_bytes": 192,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SAF-001-NONGUESSING.json"
+  },
+  "EVID-SAF-002-OCCLUSION.json": {
+    "sha256": "d38e807af9adf68c648eaf01bab95246eaa53d1cd9e578b4f61f2a2a946b329d",
+    "size_bytes": 214,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SAF-002-OCCLUSION.json"
+  },
+  "EVID-SAF-003-FREEZE.json": {
+    "sha256": "fb70ff6e05537c378c34047cdc18e9c73f6876868799c55e0af73ed928fc1e83",
+    "size_bytes": 189,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SAF-003-FREEZE.json"
+  },
+  "EVID-SAF-004-ISOLATION.json": {
+    "sha256": "4e46739256f3a983f4059f0492d59c19c68fe451fcd8d751cf9320ad67f586c6",
+    "size_bytes": 235,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SAF-004-ISOLATION.json"
+  },
+  "EVID-SEC-001-AIRGAP.json": {
+    "sha256": "3923a6b883f522864ba5aabfdb9e220f1ecb0883d51fd25628f03a119797260a",
+    "size_bytes": 197,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SEC-001-AIRGAP.json"
+  },
+  "EVID-SEC-002-SHA256.json": {
+    "sha256": "86bee4c6ab9fd837e22a8ee6e32bd6ed9441b6245112c688d78ed1e47ef7337d",
+    "size_bytes": 221,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SEC-002-SHA256.json"
+  },
+  "EVID-SEC-003-READONLY.json": {
+    "sha256": "3855a4e762f32af099210f4bd1535863457d9d81ceb17e1680164aad25381be0",
+    "size_bytes": 197,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SEC-003-READONLY.json"
+  },
+  "EVID-SYS-001-CAM.png": {
+    "sha256": "5cd7a708aa13a707420f8f77eaa142c3c74a4a1ee43e98bbf2246b6779fd4c61",
+    "size_bytes": 103498,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-001-CAM.png"
+  },
+  "EVID-SYS-002-DET.json": {
+    "sha256": "7291240e5afe2abe26aba54d2ab3bbd92ab2fb90662e2fdd2df2f3169a5c860f",
+    "size_bytes": 343,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-002-DET.json"
+  },
+  "EVID-SYS-003-IOU.json": {
+    "sha256": "a8ebb2dab2769ec3c539a3c626df7d1e8866ba886b0c184f4e94918ea2c9d3b3",
+    "size_bytes": 345,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-003-IOU.json"
+  },
+  "EVID-SYS-004-TEMPORAL.json": {
+    "sha256": "1eea16318bfd839bbe039ec2c173d74bf32d0d63cb48cea1e7f6ac85c0165eeb",
+    "size_bytes": 234,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-004-TEMPORAL.json"
+  },
+  "EVID-SYS-005-PROC.json": {
+    "sha256": "1a5c80c643ffb282b09cc140cdca34ee37b6f71e48dff1db78589d0474142227",
+    "size_bytes": 716,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-005-PROC.json"
+  },
+  "EVID-SYS-006-ASSURANCE.json": {
+    "sha256": "4935757e91c28bdd147892b1147c87eaa36f0e9ef7cf518d26fe2567328445de",
+    "size_bytes": 400,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-006-ASSURANCE.json"
+  },
+  "EVID-SYS-007-VOICE.wav": {
+    "sha256": "2976da01e205a110c9fa41d47659e238a5c6d3c3f3137582f2949853faa201dd",
+    "size_bytes": 3244,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-007-VOICE.wav"
+  },
+  "EVID-SYS-008-RECOVERY.json": {
+    "sha256": "534354fc8ec30f146d3b7b1567de878458d8e57679c072bd55147e11e6b8fbc8",
+    "size_bytes": 374,
+    "modified": "2026-09-13T13:33:18Z",
+    "source": "verification/evidence/EVID-SYS-008-RECOVERY.json"
+  }
+}

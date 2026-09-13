@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-SEC-002",
+  "evidence_type": "CHECKSUM",
+  "total_files_audited": 42,
+  "verified_checksums": 42,
+  "mismatches": 0,
+  "manifest_path": "competition/CHECKSUMS/SHA256SUMS",
+  "result": "PASS"
+}
