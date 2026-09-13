@@ -1,0 +1,18 @@
+{
+  "total_samples": 30,
+  "total_sessions": 4,
+  "train_sessions": [
+    "SYNTH_SESS_003",
+    "SYNTH_SESS_002"
+  ],
+  "train_samples": 16,
+  "val_sessions": [
+    "SYNTH_SESS_004"
+  ],
+  "val_samples": 6,
+  "test_sessions": [
+    "SYNTH_SESS_001"
+  ],
+  "test_samples": 8,
+  "seed": 42
+}

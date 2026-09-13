@@ -1,0 +1,15 @@
+matrix_id: "FULL_MISSION_FAULT_MATRIX"
+name: "ASTRA Full Mission & Fault Injection Verification Matrix"
+description: "Comprehensive multi-scenario simulation stress test covering nominal ops, behavioral faults, optical degradation, viewpoint shifts, and sensor dropouts."
+scenarios:
+  - "configs/simulations/nominal_mission.yaml"
+  - "configs/simulations/wrong_object_fault.yaml"
+  - "configs/simulations/wrong_order_fault.yaml"
+  - "configs/simulations/optical_stress.yaml"
+  - "configs/simulations/sensor_dropout.yaml"
+  - "configs/simulations/viewpoint_shift.yaml"
+max_frames_per_scenario: 180
+evaluation_criteria:
+  min_resilience_score: 75.0
+  max_unhandled_crashes: 0
+  allow_false_deviations_under_optical_stress: false

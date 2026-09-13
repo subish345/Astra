@@ -1,0 +1,135 @@
+{
+  "run_id": "RUN_20260913_110947",
+  "dataset_version": "ASTRA-DATASET-v0.2",
+  "model_name": "ASTRA_OBJECT_DETECTOR",
+  "model_architecture": "ASTRA_DETECTION_NET",
+  "hyperparameters": {
+    "model_name": "ASTRA_OBJECT_DETECTOR",
+    "architecture": "ASTRA_DETECTION_NET",
+    "dataset_version": "ASTRA-DATASET-v0.2",
+    "classes": [
+      "ASTRONAUT",
+      "MAIN_BOX",
+      "RED_BOX",
+      "YELLOW_BOX",
+      "WORK_SURFACE"
+    ],
+    "epochs": 5,
+    "batch_size": 8,
+    "image_size": 640,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "device": "auto",
+    "seed": 42,
+    "primary_metric": "val_mAP50",
+    "early_stopping_patience": 5,
+    "checkpoint_interval": 1,
+    "description": "ASTRA-EA focused experiment object detector training",
+    "extra_params": {}
+  },
+  "random_seed": 42,
+  "python_version": "3.14.7",
+  "pytorch_version": null,
+  "cuda_version": "610.57.04",
+  "device_used": "SIMULATION",
+  "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "vram_mb": 8151,
+  "git_commit": "2f5d872df02013a39b2ef11f1b7c4dc7fb972195",
+  "start_time": "2026-09-13T11:09:47.337149+00:00",
+  "end_time": "2026-09-13T11:09:47.356844+00:00",
+  "training_duration_sec": 0.02,
+  "epochs_completed": 5,
+  "best_epoch": 5,
+  "best_metric_value": 0.8695,
+  "primary_metric": "val_mAP50",
+  "epoch_history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.68,
+      "val_loss": 1.8703,
+      "val_precision": 0.626,
+      "val_recall": 0.568,
+      "val_mAP50": 0.597,
+      "per_class_mAP": {
+        "RED_BOX": 0.637,
+        "YELLOW_BOX": 0.617,
+        "MAIN_BOX": 0.647,
+        "ASTRONAUT": 0.577,
+        "WORK_SURFACE": 0.657
+      },
+      "epoch_duration_sec": 0.124
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.1753,
+      "val_loss": 1.4241,
+      "val_precision": 0.735,
+      "val_recall": 0.689,
+      "val_mAP50": 0.712,
+      "per_class_mAP": {
+        "RED_BOX": 0.752,
+        "YELLOW_BOX": 0.732,
+        "MAIN_BOX": 0.762,
+        "ASTRONAUT": 0.692,
+        "WORK_SURFACE": 0.772
+      },
+      "epoch_duration_sec": 0.053
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.8038,
+      "val_loss": 1.042,
+      "val_precision": 0.807,
+      "val_recall": 0.759,
+      "val_mAP50": 0.783,
+      "per_class_mAP": {
+        "RED_BOX": 0.823,
+        "YELLOW_BOX": 0.803,
+        "MAIN_BOX": 0.833,
+        "ASTRONAUT": 0.763,
+        "WORK_SURFACE": 0.843
+      },
+      "epoch_duration_sec": 0.115
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.5704,
+      "val_loss": 0.7591,
+      "val_precision": 0.872,
+      "val_recall": 0.829,
+      "val_mAP50": 0.85,
+      "per_class_mAP": {
+        "RED_BOX": 0.89,
+        "YELLOW_BOX": 0.87,
+        "MAIN_BOX": 0.9,
+        "ASTRONAUT": 0.83,
+        "WORK_SURFACE": 0.91
+      },
+      "epoch_duration_sec": 0.051
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.409,
+      "val_loss": 0.5839,
+      "val_precision": 0.895,
+      "val_recall": 0.844,
+      "val_mAP50": 0.87,
+      "per_class_mAP": {
+        "RED_BOX": 0.91,
+        "YELLOW_BOX": 0.89,
+        "MAIN_BOX": 0.92,
+        "ASTRONAUT": 0.85,
+        "WORK_SURFACE": 0.93
+      },
+      "epoch_duration_sec": 0.146
+    }
+  ],
+  "saved_checkpoints": [
+    "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.pt",
+    "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.pt",
+    "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.pt",
+    "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.pt",
+    "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.pt"
+  ],
+  "status": "COMPLETED"
+}

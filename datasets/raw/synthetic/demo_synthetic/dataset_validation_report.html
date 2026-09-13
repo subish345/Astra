@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Dataset Validation Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }
+        h1, h2 { margin-top: 0; }
+        .badge { display: inline-block; padding: 6px 16px; border-radius: 9999px; font-weight: bold; background: #28a745; color: white; }
+        table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #94a3b8; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>ASTRA-EA Dataset Validation Report</h1>
+        <p><strong>Target Directory:</strong> datasets/raw/synthetic/demo_synthetic</p>
+        <p><strong>Status:</strong> <span class="badge">PASSED</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Summary Metrics</h2>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Total Samples</td><td>30</td></tr>
+            <tr><td>Valid Samples</td><td>30</td></tr>
+            <tr><td>Unique Sessions</td><td>4</td></tr>
+            <tr><td>Validation Errors</td><td>0</td></tr>
+            <tr><td>Validation Warnings</td><td>0</td></tr>
+            <tr><td>Leakage Detected</td><td>NO (0 cross-split leakage)</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Validation Errors (0)</h2>
+        <p style='color: #10b981;'>No errors detected.</p>
+    </div>
+
+    <div class="card">
+        <h2>Validation Warnings (0)</h2>
+        <p style='color: #10b981;'>No warnings detected.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,222 @@
+{
+  "scenario_id": "SIM_NOMINAL_001",
+  "scenario_name": "Nominal Spacecraft Experiment Mission",
+  "status": "COMPLETED",
+  "duration_sec": 2.02,
+  "frames_processed": 30,
+  "frames_dropped": 0,
+  "decisions_count": 30,
+  "verified_count": 0,
+  "uncertain_count": 30,
+  "deviation_count": 0,
+  "detected_deviations": [],
+  "expected_status": "VERIFIED",
+  "actual_final_status": "UNCERTAIN",
+  "mean_to_detect_sec": null,
+  "false_positive_deviations": 0,
+  "resilience_score": 100.0,
+  "pipeline_crashes": 0,
+  "decision_history": [
+    {
+      "sim_time": 0.333,
+      "frame_id": 11,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.717,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.367,
+      "frame_id": 12,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.717,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.4,
+      "frame_id": 13,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.717,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.433,
+      "frame_id": 14,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.717,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.467,
+      "frame_id": 15,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.717,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.5,
+      "frame_id": 16,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.717,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.533,
+      "frame_id": 17,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.718,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.567,
+      "frame_id": 18,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.718,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.6,
+      "frame_id": 19,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.718,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.633,
+      "frame_id": 20,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.718,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.667,
+      "frame_id": 21,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.715,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.71 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.7,
+      "frame_id": 22,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.715,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.733,
+      "frame_id": 23,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.715,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.767,
+      "frame_id": 24,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.715,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.8,
+      "frame_id": 25,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.715,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.833,
+      "frame_id": 26,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.716,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.867,
+      "frame_id": 27,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.718,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.9,
+      "frame_id": 28,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.718,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.933,
+      "frame_id": 29,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.722,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    },
+    {
+      "sim_time": 0.967,
+      "frame_id": 30,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.723,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": []
+    }
+  ],
+  "evaluation_verdict": "PASS"
+}

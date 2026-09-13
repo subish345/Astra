@@ -1,0 +1,10 @@
+{
+  "system_name": "ASTRA-EA",
+  "version": "1.0.0",
+  "git_commit": "2f5d872df02013a39b2ef11f1b7c4dc7fb972195",
+  "python_version": "3.14.7",
+  "platform": "Linux-7.1.12-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "build_identifier": "1.0.0-2f5d872",
+  "tagline": "See. Understand. Verify. Assist. Record. \u2014 Locally, in Space.",
+  "problem_statement": "SIH26174 \u2014 AI Human Activity Recognition for On-board BAS Experiments"
+}

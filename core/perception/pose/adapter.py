@@ -34,52 +34,91 @@ class LightweightPoseEstimator(PoseEstimator):
     def __init__(self, min_confidence: float = 0.50):
         self.min_confidence = min_confidence
         self._has_cascade = False
-        try:
-            from pathlib import Path
-            cascade_dir = getattr(cv2.data, "haarcascades", "")
-            cascade_path = Path(cascade_dir) / "haarcascade_frontalface_default.xml"
-            if cascade_path.is_file():
-                self._face_cascade = cv2.CascadeClassifier(str(cascade_path))
-                self._has_cascade = not self._face_cascade.empty()
-            else:
-                self._has_cascade = False
-        except Exception:
-            self._has_cascade = False
+        self._has_upperbody = False
+
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent.parent.parent
+        chk_dir = root / "models" / "checkpoints"
+        sys_cascade_dir = Path(getattr(cv2.data, "haarcascades", ""))
+
+        face_paths = [
+            chk_dir / "haarcascade_frontalface_default.xml",
+            sys_cascade_dir / "haarcascade_frontalface_default.xml",
+        ]
+        upperbody_paths = [
+            chk_dir / "haarcascade_upperbody.xml",
+            sys_cascade_dir / "haarcascade_upperbody.xml",
+        ]
+
+        for p in face_paths:
+            if p.is_file():
+                self._face_cascade = cv2.CascadeClassifier(str(p))
+                if not self._face_cascade.empty():
+                    self._has_cascade = True
+                    break
+
+        for p in upperbody_paths:
+            if p.is_file():
+                self._upperbody_cascade = cv2.CascadeClassifier(str(p))
+                if not self._upperbody_cascade.empty():
+                    self._has_upperbody = True
+                    break
 
     def _detect_faces_or_head(self, img: np.ndarray) -> List[Tuple[int, int, int, int]]:
-        """Locate face or head anchor points via cascade or skin morphology."""
+        """Locate real human face or head anchor points without false positives on furniture."""
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        # 1. Frontal face detection
         if self._has_cascade:
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            faces = self._face_cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=4, minSize=(60, 60))
+            faces = self._face_cascade.detectMultiScale(
+                gray, scaleFactor=1.15, minNeighbors=5, minSize=(50, 50)
+            )
             if len(faces) > 0:
                 return [(int(x), int(y), int(w), int(h)) for (x, y, w, h) in faces]
 
-        # Fallback: skin-tone upper-body/head contour detection
-        h, w = img.shape[:2]
-        ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
-        mask = cv2.inRange(ycrcb, np.array([0, 133, 77]), np.array([255, 173, 127]))
-        # Focus on upper 70% of image
-        mask[int(h * 0.75) :, :] = 0
+        # 2. Upper-body detection fallback
+        if self._has_upperbody:
+            bodies = self._upperbody_cascade.detectMultiScale(
+                gray, scaleFactor=1.15, minNeighbors=4, minSize=(100, 100)
+            )
+            if len(bodies) > 0:
+                # Estimate head as top third of detected upper body
+                head_anchors = []
+                for (x, y, w, h) in bodies:
+                    hw = int(w * 0.45)
+                    hh = int(h * 0.35)
+                    hx = int(x + (w - hw) / 2)
+                    head_anchors.append((hx, int(y), hw, hh))
+                return head_anchors
 
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
-        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+        # 3. If no cascades available, use strict skin oval morphology
+        if not self._has_cascade and not self._has_upperbody:
+            h, w = img.shape[:2]
+            ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+            mask = cv2.inRange(ycrcb, np.array([0, 133, 77]), np.array([255, 173, 127]))
+            mask[int(h * 0.70):, :] = 0  # Upper 70% only
 
-        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        candidates = []
-        for c in contours:
-            area = cv2.contourArea(c)
-            if area >= 2500:
-                bx, by, bw, bh = cv2.boundingRect(c)
-                aspect = bh / max(1, bw)
-                if 0.7 <= aspect <= 2.2:
-                    candidates.append((bx, by, bw, bh, area))
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
+            mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
 
-        if candidates:
-            # Pick largest candidate as head/face anchor
-            candidates.sort(key=lambda x: x[4], reverse=True)
-            bx, by, bw, bh, _ = candidates[0]
-            return [(bx, by, bw, bh)]
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            candidates = []
+            for c in contours:
+                area = cv2.contourArea(c)
+                if 3000 <= area <= 30000:
+                    bx, by, bw, bh = cv2.boundingRect(c)
+                    aspect = bh / max(1, bw)
+                    hull = cv2.convexHull(c)
+                    solidity = area / max(1.0, cv2.contourArea(hull))
+                    # Face oval has aspect 1.1 - 1.6 and high solidity > 0.75
+                    if 1.0 <= aspect <= 1.6 and solidity >= 0.75:
+                        candidates.append((bx, by, bw, bh, area))
+
+            if candidates:
+                candidates.sort(key=lambda x: x[4], reverse=True)
+                bx, by, bw, bh, _ = candidates[0]
+                return [(bx, by, bw, bh)]
 
         return []
 

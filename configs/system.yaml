@@ -31,7 +31,10 @@ thresholds:
 
 perception:
   device: "auto"
-  detector_backend: "color_spatial" # "color_spatial" or "yolo"
+  detector_backend: "color_spatial" # "color_spatial", "learned", or "yolo"
+  object_detector:
+    mode: "baseline" # "baseline" (ColorSpatialObjectDetector) or "learned" (LearnedObjectDetector)
+    model_id: "ASTRA_OBJECT_DETECTOR_v0.1.0"
   yolo_model_path: "models/checkpoints/detector.onnx"
   confidence_threshold: 0.45
   iou_threshold: 0.25
@@ -42,6 +45,31 @@ perception:
   hand_interval: 1
   quality_interval: 2
 
+interaction:
+  approach_distance_threshold: 0.35
+  near_distance_threshold: 0.18
+  contact_distance_threshold: 0.08
+  contact_iou_threshold: 0.05
+  approach_speed_threshold: -0.03
+  contact_confirmation_frames: 3
+  coupled_motion_correlation_min: 0.70
+  coupled_motion_speed_min: 10.0
+  release_distance_growth_threshold: 0.04
+  max_temporary_lost_frames: 15
+
+activity:
+  temporal_window_seconds: 5.0
+  sampling_rate_hz: 30.0
+  min_activity_duration_seconds: 0.20
+  hysteresis_frames: 3
+  confirmation_frames: 4
+  uncertainty_timeout_seconds: 2.0
+  confidence_weight_object: 0.20
+  confidence_weight_hand: 0.20
+  confidence_weight_contact: 0.25
+  confidence_weight_motion: 0.20
+  confidence_weight_temporal: 0.15
+
 voice:
   enabled: true
   engine: "pyttsx3"
@@ -50,10 +78,32 @@ voice:
   cooldown_seconds: 3.5
 
 streaming:
-  enabled: false
+  enabled: true
   host: "127.0.0.1"
   port: 8554
-  protocol: "rtsp"
+  protocol: "mjpeg_http"
+  width: 1280
+  height: 720
+  fps: 15
+  quality: "medium"
+  jpeg_quality: 75
+
+events:
+  enabled: true
+  host: "127.0.0.1"
+  port: 8765
+  heartbeat_interval_seconds: 2.0
+  buffer_capacity: 500
+
+heartbeat:
+  interval_seconds: 2.0
+  timeout_seconds: 6.0
+
+ground_monitor:
+  enabled: true
+  stream_url: "http://127.0.0.1:8554/video"
+  events_url: "http://127.0.0.1:8765/events"
+  reconnect_interval_seconds: 2.0
 
 active_experiment:
   path: "configs/experiments/demo.yaml"

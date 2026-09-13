@@ -1,0 +1,30 @@
+{
+  "dataset_version": "ASTRA-DATASET-v0.2",
+  "test_samples_count": 8,
+  "baseline": {
+    "name": "ColorSpatialObjectDetector",
+    "precision": 0.7692,
+    "recall": 0.25,
+    "f1": 0.3774,
+    "mAP50": 0.5096,
+    "avg_latency_ms": 18.31,
+    "fps": 54.6,
+    "memory_mb": 15.0
+  },
+  "learned_model": {
+    "name": "ASTRA_OBJECT_DETECTOR_v0.1.0",
+    "precision": 0.7879,
+    "recall": 0.65,
+    "f1": 0.7123,
+    "mAP50": 0.7189,
+    "avg_latency_ms": 5.55,
+    "fps": 180.3,
+    "memory_mb": 45.0
+  },
+  "comparison": {
+    "delta_mAP": 0.2093,
+    "delta_latency_ms": -12.77,
+    "recommendation": "ADOPT_LEARNED_MODEL",
+    "rationale": "Learned model improves mAP by +0.209 with acceptable latency (5.5ms)."
+  }
+}

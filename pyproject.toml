@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "astra-ea"
-version = "0.1.0"
+version = "1.0.0"
 description = "Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -36,9 +36,13 @@ dev = [
 [project.scripts]
 astra = "core.cli.commands:cli"
 
+[tool.setuptools.packages.find]
+include = ["core*", "streaming*", "apps*", "storage*"]
+
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q"
+pythonpath = ["."]
 testpaths = [
     "tests"
 ]

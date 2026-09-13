@@ -1,0 +1,64 @@
+# ==============================================================================
+# ASTRA-EA FINAL DEMONSTRATION PROFILE (configs/deployment/final_demo.yaml)
+# Production-grade demonstrator profile for official SIH evaluation.
+# ==============================================================================
+
+profile_name: "PROFILE_FINAL_DEMO"
+description: "Final SIH26174 Judge Demonstration Profile: 100% offline air-gapped runtime, deterministic guidance, and local recording."
+mode: "DEMO"
+
+experiment:
+  id: "DEMO_EXP_001"
+  path: "configs/experiments/demo.yaml"
+  label: "DEMO PROCEDURE — NOT OFFICIAL SIH PROCEDURE"
+
+camera:
+  default_source: 0
+  profile: "view_left"
+  width: 640
+  height: 480
+  fps: 30
+
+model:
+  active_id: "ASTRA_OBJECT_DETECTOR_v1.0"
+  runtime: "onnx"
+  detector: "baseline"
+  allow_fallback: true
+  confidence_threshold: 0.50
+  nms_threshold: 0.45
+
+scheduler:
+  tracking_interval: 1
+  detection_interval: 1
+  pose_interval: 1
+  hand_interval: 1
+  queue_policy: "latest_frame"
+  max_queue_size: 5
+
+voice:
+  enabled: true
+  speech_rate: 160
+  volume: 0.90
+  allow_headless_simulation: true
+
+recording:
+  enabled: true
+  output_dir: "data/recordings"
+  format: "mp4v"
+  fps: 30
+
+streaming:
+  enabled: true
+  video_port: 8554
+  events_port: 8765
+  host: "127.0.0.1"
+
+ui:
+  fullscreen: false
+  theme: "aerospace_dark"
+  show_diagnostics: false
+
+resources:
+  max_ram_gb: 4.0
+  max_cpu_percent: 85.0
+  max_gpu_memory_gb: 4.0

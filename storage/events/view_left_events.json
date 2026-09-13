@@ -1,0 +1,58 @@
+[
+  {
+    "activity_id": "ACT_L_0001",
+    "activity_name": "APPROACH",
+    "actor": "ASTRONAUT",
+    "target_object_id": "MAIN_BOX",
+    "confidence": 0.93,
+    "start_time": 1.0,
+    "end_time": 3.5,
+    "camera_profile": "VIEW_LEFT",
+    "evidence": {
+      "score": 0.93,
+      "required_satisfied": true
+    }
+  },
+  {
+    "activity_id": "ACT_L_0002",
+    "activity_name": "GRASP",
+    "actor": "ASTRONAUT",
+    "target_object_id": "RED_BOX",
+    "confidence": 0.94,
+    "start_time": 4.0,
+    "end_time": 6.5,
+    "camera_profile": "VIEW_LEFT",
+    "evidence": {
+      "score": 0.92,
+      "required_satisfied": true
+    }
+  },
+  {
+    "activity_id": "ACT_L_0003",
+    "activity_name": "MOVE",
+    "actor": "ASTRONAUT",
+    "target_object_id": "RED_BOX",
+    "confidence": 0.91,
+    "start_time": 7.0,
+    "end_time": 10.5,
+    "camera_profile": "VIEW_LEFT",
+    "evidence": {
+      "score": 0.91,
+      "required_satisfied": true
+    }
+  },
+  {
+    "activity_id": "ACT_L_0004",
+    "activity_name": "RELEASE",
+    "actor": "ASTRONAUT",
+    "target_object_id": "RED_BOX",
+    "confidence": 0.95,
+    "start_time": 11.0,
+    "end_time": 13.0,
+    "camera_profile": "VIEW_LEFT",
+    "evidence": {
+      "score": 0.94,
+      "required_satisfied": true
+    }
+  }
+]

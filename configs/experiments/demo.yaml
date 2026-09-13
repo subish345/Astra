@@ -37,20 +37,44 @@ objects:
     color: "gray"
     description: "Designated surface for specimen manipulation"
 
+zones:
+  - id: "EXPERIMENT_STATION"
+    name: "Main Workstation Station Area"
+    type: "rectangle"
+    coordinates: [0.10, 0.10, 0.90, 0.90]
+    description: "Operating envelope directly facing the main container workstation"
+
+  - id: "WORK_SURFACE_ZONE"
+    name: "Work Surface Manipulation Zone"
+    type: "rectangle"
+    coordinates: [0.25, 0.40, 0.75, 0.85]
+    description: "Designated surface area for specimen placement"
+
 steps:
   - id: "STEP_01"
     sequence: 1
     name: "Approach Experiment Station"
-    description: "Astronaut approaches the experiment station and positions near the main box"
+    description: "Astronaut approaches the experiment station and positions within the station zone"
     expected_objects:
       - "MAIN_BOX"
     expected_actions:
       - "APPROACH"
     required_evidence:
-      - "astronaut_visible"
-      - "object_visible"
+      - "ACTOR_DETECTED"
+      - "OBJECT_DETECTED"
+      - "SPATIAL_PROXIMITY"
+      - "TEMPORAL_PRESENCE"
     optional_evidence:
-      - "hand_visible"
+      - "HAND_DETECTED"
+    evidence_paths:
+      any_of:
+        - ["ACTOR_DETECTED", "OBJECT_DETECTED", "SPATIAL_PROXIMITY", "TEMPORAL_PRESENCE"]
+    completion:
+      type: "ENTER_ZONE"
+      zone: "EXPERIMENT_STATION"
+      minimum_duration_seconds: 2.0
+    transitions:
+      - "STEP_02"
     min_confidence: 0.75
     timeout_seconds: 30.0
     min_duration_seconds: 2.0
@@ -70,11 +94,16 @@ steps:
       - "REACH"
       - "GRASP"
     required_evidence:
-      - "object_visible"
-      - "hand_visible"
-      - "contact_detected"
+      - "OBJECT_DETECTED"
+      - "HAND_DETECTED"
+      - "HAND_OBJECT_CONTACT"
     optional_evidence:
-      - "motion_coupled"
+      - "COUPLED_MOTION"
+    evidence_paths:
+      any_of:
+        - ["OBJECT_DETECTED", "HAND_DETECTED", "HAND_OBJECT_CONTACT"]
+    transitions:
+      - "STEP_03"
     min_confidence: 0.80
     timeout_seconds: 45.0
     min_duration_seconds: 1.5
@@ -87,7 +116,7 @@ steps:
   - id: "STEP_03"
     sequence: 3
     name: "Transfer Specimen to Work Surface"
-    description: "Astronaut lifts and transfers the Red Box onto the designated work surface"
+    description: "Astronaut lifts, moves, approaches destination, and places Red Box onto work surface"
     expected_objects:
       - "RED_BOX"
       - "WORK_SURFACE"
@@ -95,12 +124,31 @@ steps:
       - "LIFT"
       - "MOVE"
       - "PLACE"
+    action_sequence:
+      - "LIFT"
+      - "MOVE"
+      - "APPROACH_DESTINATION"
+      - "PLACE"
+    destination:
+      object: "WORK_SURFACE"
+      zone: "WORK_SURFACE_ZONE"
+      max_distance: 0.25
+    stabilization:
+      minimum_duration_seconds: 0.75
+      maximum_position_delta: 0.05
     required_evidence:
-      - "object_visible"
-      - "motion_coupled"
-      - "contact_detected"
+      - "OBJECT_DETECTED"
+      - "COUPLED_MOTION"
+      - "DESTINATION_MATCH"
+      - "OBJECT_STABILIZED"
     optional_evidence:
-      - "temporal_consistency"
+      - "HAND_OBJECT_CONTACT"
+      - "TEMPORAL_CONSISTENCY"
+    evidence_paths:
+      any_of:
+        - ["OBJECT_DETECTED", "COUPLED_MOTION", "DESTINATION_MATCH", "OBJECT_STABILIZED"]
+    transitions:
+      - "STEP_04"
     min_confidence: 0.80
     timeout_seconds: 60.0
     min_duration_seconds: 3.0
@@ -119,10 +167,15 @@ steps:
     expected_actions:
       - "RELEASE"
     required_evidence:
-      - "object_visible"
-      - "contact_cleared"
+      - "OBJECT_DETECTED"
+      - "CONTACT_CLEARED"
     optional_evidence:
-      - "astronaut_visible"
+      - "ACTOR_DETECTED"
+      - "OBJECT_STABILIZED"
+    evidence_paths:
+      any_of:
+        - ["OBJECT_DETECTED", "CONTACT_CLEARED"]
+    transitions: []
     min_confidence: 0.75
     timeout_seconds: 30.0
     min_duration_seconds: 1.0
@@ -131,3 +184,13 @@ steps:
     recovery:
       instruction: "Release your grip on the Red Box to complete the transfer step."
       target_step: "STEP_04"
+
+transitions:
+  STEP_01:
+    next: ["STEP_02"]
+  STEP_02:
+    next: ["STEP_03"]
+  STEP_03:
+    next: ["STEP_04"]
+  STEP_04:
+    next: []

@@ -14,21 +14,20 @@ Status Definitions:
 
 ## 2. Requirement Mapping Matrix
 
-| SIH26174 Requirement | ASTRA-EA Architecture Component | Subsystem Location | Current Status (Phase 0/1) | Phase Scheduled | Notes / Verification Strategy |
+| SIH26174 Requirement | ASTRA-EA Architecture Component | Subsystem Location | Current Status (Phase 4) | Phase Verified | Notes / Verification Strategy |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **AI Perception (Object Detection)** | Object Detector Interface & Implementations | `core/perception/` | **PARTIAL** | Phase 4 | Bounding boxes, class labels, confidence scores for configured items. |
-| **AI Perception (Human Pose)** | Pose Estimator Interface & Keypoint Models | `core/perception/` | **PARTIAL** | Phase 4 | Orientation-invariant body keypoint detection (standing, floating, inverted). |
-| **Hand-Object Interaction** | Interaction Engine | `core/interaction/` | **PARTIAL** | Phase 5 | Distance, trajectory coupling, contact, grasp, move, place detection. |
-| **Activity Recognition** | Temporal Activity Recognizer | `core/activity/` | **PARTIAL** | Phase 6 | Multi-frame temporal window reasoning (5–30 sec) across interactions. |
-| **Experiment Step Recognition** | Procedure Engine | `core/procedure/` | **PARTIAL** | Phase 2 | Schema-driven state machine comparing activities to active step. |
-| **Sequence Validation** | Assurance Engine | `core/assurance/` | **PARTIAL** | Phase 8 | Tri-state verification (`VERIFIED`, `UNCERTAIN`, `DEVIATION`). |
-| **Skipped-Step & Wrong-Order Detection**| Assurance Deviation Evaluator | `core/assurance/` | **PARTIAL** | Phase 8 | Identifies sequence skips, reversals, incorrect objects, or timeouts. |
-| **Intelligent Assistance & Voice Alerts** | Voice Manager & Guidance Engine | `core/assistance/`, `voice/` | **PARTIAL** | Phase 9, 10 | Offline TTS, priority queues, speech deduplication, recovery guidance. |
-| **Timestamped Experiment Logging** | Mission Event Logger & SQLite Store | `core/mission/`, `storage/` | **PARTIAL** | Phase 1 | Structured event logs + lightweight human-readable audit records. |
-| **Local Video Recording & Evidence** | Circular Buffer & Evidence Recorder | `core/camera/`, `storage/` | **PARTIAL** | Phase 14 | Pre- and post-event buffered video clip extraction per milestone/deviation. |
-| **Live Monitoring GUI** | Mission Console (PySide6) | `apps/mission_console/` | **PLANNED** | Phase 11 | High-density dark-themed operations dashboard with live feed & evidence. |
-| **IP Video Streaming** | Pluggable Streaming Layer | `streaming/` | **PLANNED** | Phase 15 | Local RTSP/WebRTC streaming for decoupled ground oversight. |
-| **Offline Processing Capability** | Edge Runtime Architecture | Whole System | **PARTIAL** | Phase 1 | 100% air-gapped execution, zero external cloud dependencies. |
-| **Configurable Experiment Sequence** | YAML Procedure Definition & Validator | `configs/experiments/`, `core/procedure/` | **IMPLEMENTED** | Phase 1 | Schema-driven; zero code changes required to define or modify experiments. |
-| **Synthetic Dataset Pipeline** | Dataset Studio & Synthetic Generator | `apps/dataset_studio/`, `datasets/` | **PLANNED** | Phase 12 | Generates synthetic augmentations labeled clearly as `SYNTHETIC`. |
-| **Simulation & Fault Injection** | Simulation Lab & Scenario Runner | `apps/simulation_lab/`, `simulation/` | **PLANNED** | Phase 13 | File-based video replay with deterministic deviation injection. |
+| **AI Perception (Object Detection)** | Object Detector Interface & Implementations | `core/perception/detection/` | **VALIDATED** | Phase 2 | `ColorSpatialObjectDetector`, `YOLOAdapter` (OpenCV DNN), verified on live camera. |
+| **AI Perception (Human Pose)** | Pose Estimator Interface & Keypoint Models | `core/perception/pose/` | **VALIDATED** | Phase 2 | Microgravity orientation-invariant torso & shoulder keypoint grounding. |
+| **Hand-Object Interaction** | Spatial Interaction Engine | `core/interaction/` | **VALIDATED** | Phase 3 | Distance, trajectory coupling, contact, grasp, move, place state machine. |
+| **Activity Recognition** | Temporal Activity Recognizer | `core/activity/` | **VALIDATED** | Phase 3 | Bounded rolling buffer (5–30s), primitive and composite action composition. |
+| **Experiment Step Recognition** | Procedure Engine & Step Evaluator | `core/procedure/` | **VALIDATED** | Phase 4 | Procedure matcher, step evaluator, progress FSM, expected next step engine. |
+| **Multimodal Corroborating Evidence** | Evidence Corroboration Engine | `core/evidence/` | **VALIDATED** | Phase 4 | 13-factor multimodal evidence bundles with deterministic scoring. |
+| **Timestamped Experiment Logging** | Mission Event Logger & SQLite Store | `core/mission/`, `storage/` | **VALIDATED** | Phase 1, 4 | SQLite WAL schema (15 tables), step evaluations, evidence bundles, and traces. |
+| **Deterministic Offline Replay** | Procedure Replay Engine | `core/procedure/replay.py` | **VALIDATED** | Phase 4 | Offline deterministic replay of recorded event traces without camera hardware. |
+| **Causal Audit Traceability** | Step Trace Record Engine | `core/procedure/traceability.py` | **VALIDATED** | Phase 4 | Full causal ASCII audit trees linking step decisions to frame numbers & bboxes. |
+| **Sequence Deviation Detection** | Assurance Deviation Evaluator | `core/assurance/` | **READY** | Phase 5 | Tri-state verification (`VERIFIED`, `UNCERTAIN`, `DEVIATION`) & deviation taxonomy. |
+| **Intelligent Assistance & Voice Alerts** | Voice Manager & Guidance Engine | `core/assistance/` | **READY** | Phase 5 | Offline TTS (`pyttsx3`), priority queues, speech deduplication, recovery guidance. |
+| **Live Monitoring GUI** | Mission Console (PySide6) | `apps/mission_console/` | **PLANNED** | Phase 6 | High-density dark-themed operations dashboard with live video HUD. |
+| **Synthetic Dataset Pipeline** | Dataset Studio & Synthetic Generator | `apps/dataset_studio/` | **PLANNED** | Phase 7 | Generates synthetic microgravity augmentations labeled as `SYNTHETIC`. |
+| **Offline Processing Capability** | Edge Runtime Architecture | Whole System | **VALIDATED** | Phase 1–4 | 100% air-gapped local execution, zero cloud or external API dependencies. |
+| **Configurable Experiment Sequence** | YAML Procedure Definition & Validator | `configs/experiments/`, `core/procedure/` | **VALIDATED** | Phase 1, 4 | Dynamic schema-driven; zero code changes required to define experiments. |

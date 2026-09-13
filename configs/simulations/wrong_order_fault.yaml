@@ -1,0 +1,17 @@
+scenario_id: "SIM_FAULT_WRONG_ORDER"
+name: "Operator Deviation — Out of Order Step Execution"
+description: "Operator attempts specimen transfer step before completing initial acquisition."
+procedure_path: "configs/experiments/demo.yaml"
+camera_profile: "VIEW_LEFT"
+duration_sec: 6.0
+target_fps: 30.0
+synthetic_seed: 30003
+faults:
+  - fault_type: "WRONG_ORDER"
+    start_time: 1.5
+    duration_sec: 4.0
+    intensity: 1.0
+    frequency: 1.0
+expected_final_status: "DEVIATION"
+expected_deviations:
+  - "WRONG_ORDER"

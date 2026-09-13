@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Simulation Run — SIM_FAULT_WRONG_ORDER</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }
+        h1, h2 { margin-top: 0; }
+        .badge { display: inline-block; padding: 6px 14px; border-radius: 9999px; font-weight: bold; background: #10b981; color: white; }
+        .metric-badge { display: inline-block; padding: 8px 16px; border-radius: 6px; background: #0f172a; border: 1px solid #334155; margin-right: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #94a3b8; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>ASTRA-EA Simulation Scenario Report</h1>
+        <p><strong>Scenario:</strong> Operator Deviation — Out of Order Step Execution (<code>SIM_FAULT_WRONG_ORDER</code>) | <span class="badge">PASS</span></p>
+        <div style="margin-top: 16px;">
+            <div class="metric-badge">Resilience: <strong>100.0%</strong></div>
+            <div class="metric-badge">Frames Processed: <strong>180</strong></div>
+            <div class="metric-badge">Decisions: <strong>169</strong></div>
+            <div class="metric-badge">Verified / Uncertain / Deviation: <strong>4 / 45 / 120</strong></div>
+            <div class="metric-badge">MTTD: <strong>0.00s</strong></div>
+            <div class="metric-badge">Pipeline Crashes: <strong>0</strong></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Decision & Fault Injection History</h2>
+        <table>
+            <tr><th>Sim Time</th><th>Frame</th><th>Step</th><th>Assurance Decision</th><th>Conf</th><th>Active Faults</th><th>Reason</th></tr>
+            <tr>
+                <td>4.97s</td>
+                <td>#150</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.00s</td>
+                <td>#151</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.03s</td>
+                <td>#152</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.07s</td>
+                <td>#153</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.10s</td>
+                <td>#154</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.13s</td>
+                <td>#155</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.17s</td>
+                <td>#156</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.20s</td>
+                <td>#157</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.23s</td>
+                <td>#158</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.27s</td>
+                <td>#159</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.30s</td>
+                <td>#160</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.33s</td>
+                <td>#161</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.37s</td>
+                <td>#162</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.40s</td>
+                <td>#163</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.43s</td>
+                <td>#164</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.47s</td>
+                <td>#165</td>
+                <td>STEP_01</td>
+                <td><span style="color:#ef4444; font-weight:bold;">DEVIATION</span></td>
+                <td>0.88</td>
+                <td>WRONG_ORDER</td>
+                <td>Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station</td>
+            </tr><tr>
+                <td>5.50s</td>
+                <td>#166</td>
+                <td>STEP_01</td>
+                <td><span style="color:#10b981; font-weight:bold;">VERIFIED</span></td>
+                <td>0.90</td>
+                <td>None (Nominal)</td>
+                <td>Step criteria and multimodal evidence satisfied</td>
+            </tr><tr>
+                <td>5.53s</td>
+                <td>#167</td>
+                <td>STEP_02</td>
+                <td><span style="color:#10b981; font-weight:bold;">VERIFIED</span></td>
+                <td>0.90</td>
+                <td>None (Nominal)</td>
+                <td>Step criteria and multimodal evidence satisfied</td>
+            </tr><tr>
+                <td>5.57s</td>
+                <td>#168</td>
+                <td>STEP_03</td>
+                <td><span style="color:#10b981; font-weight:bold;">VERIFIED</span></td>
+                <td>0.85</td>
+                <td>None (Nominal)</td>
+                <td>Step criteria and multimodal evidence satisfied</td>
+            </tr><tr>
+                <td>5.60s</td>
+                <td>#169</td>
+                <td>STEP_04</td>
+                <td><span style="color:#10b981; font-weight:bold;">VERIFIED</span></td>
+                <td>0.89</td>
+                <td>None (Nominal)</td>
+                <td>Step criteria and multimodal evidence satisfied</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

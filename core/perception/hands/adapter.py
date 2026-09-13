@@ -18,25 +18,45 @@ from core.perception.types import BoundingBox, HandObservation, HandType, Keypoi
 class LightweightHandDetector(HandDetector):
     """Local, offline hand and wrist detector based on skin-space morphology."""
 
-    def __init__(self, min_hand_area: float = 1800.0, max_hands: int = 2):
+    def __init__(self, min_hand_area: float = 4800.0, max_hands: int = 2):
         self.min_hand_area = min_hand_area
         self.max_hands = max_hands
 
     def detect(self, frame: FrameData) -> List[HandObservation]:
-        """Detect hands, wrist location, and fingertip keypoints."""
+        """Detect hands, wrist location, and fingertip keypoints using dual-space skin geometry."""
         img = frame.image
         h, w = img.shape[:2]
 
-        # Convert to YCrCb for robust illumination-tolerant skin segmentation
+        # 1. Dual-space illumination-tolerant skin filtering: YCrCb + HSV
         ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
-        mask = cv2.inRange(ycrcb, np.array([0, 133, 77]), np.array([255, 173, 127]))
+        mask_ycrcb = cv2.inRange(ycrcb, np.array([0, 133, 77]), np.array([255, 173, 127]))
+
+        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        mask_hsv1 = cv2.inRange(hsv, np.array([0, 50, 60]), np.array([20, 200, 255]))
+        mask_hsv2 = cv2.inRange(hsv, np.array([170, 50, 60]), np.array([180, 200, 255]))
+        mask_hsv = cv2.bitwise_or(mask_hsv1, mask_hsv2)
+
+        combined = cv2.bitwise_and(mask_ycrcb, mask_hsv)
 
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=1)
+        mask = cv2.morphologyEx(combined, cv2.MORPH_OPEN, kernel, iterations=1)
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=2)
 
         contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        valid_contours = [c for c in contours if cv2.contourArea(c) >= self.min_hand_area]
+        valid_contours = []
+        for c in contours:
+            area = cv2.contourArea(c)
+            if area < self.min_hand_area or area > 26000.0:
+                continue
+            x, y, cw, ch = cv2.boundingRect(c)
+            # Filter out top-edge ceiling reflections and oversized bounds
+            if y <= 15 or cw > 220 or ch > 250:
+                continue
+            aspect = float(cw) / ch if ch > 0 else 0
+            if not (0.38 <= aspect <= 1.85):
+                continue
+            valid_contours.append(c)
+
         # Sort by area descending
         valid_contours = sorted(valid_contours, key=cv2.contourArea, reverse=True)[: self.max_hands]
 

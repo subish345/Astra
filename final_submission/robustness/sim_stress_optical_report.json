@@ -1,0 +1,262 @@
+{
+  "scenario_id": "SIM_STRESS_OPTICAL",
+  "scenario_name": "Environmental Degradation \u2014 Optical & Lighting Stress",
+  "status": "COMPLETED",
+  "duration_sec": 2.74,
+  "frames_processed": 180,
+  "frames_dropped": 0,
+  "decisions_count": 75,
+  "verified_count": 15,
+  "uncertain_count": 60,
+  "deviation_count": 0,
+  "detected_deviations": [],
+  "expected_status": "UNCERTAIN",
+  "actual_final_status": "UNCERTAIN",
+  "mean_to_detect_sec": null,
+  "false_positive_deviations": 0,
+  "resilience_score": 100.0,
+  "pipeline_crashes": 0,
+  "decision_history": [
+    {
+      "sim_time": 1.833,
+      "frame_id": 56,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.721,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 1.867,
+      "frame_id": 57,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.721,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 1.9,
+      "frame_id": 58,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.721,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 1.933,
+      "frame_id": 59,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.721,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 1.967,
+      "frame_id": 60,
+      "step_id": "STEP_01",
+      "decision_type": "UNCERTAIN",
+      "deviation_category": null,
+      "confidence": 0.722,
+      "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.0,
+      "frame_id": 61,
+      "step_id": "STEP_01",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.901,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.033,
+      "frame_id": 62,
+      "step_id": "STEP_02",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.895,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.067,
+      "frame_id": 63,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.847,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.1,
+      "frame_id": 64,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.846,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.133,
+      "frame_id": 65,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.848,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.167,
+      "frame_id": 66,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.844,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.2,
+      "frame_id": 67,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.844,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.233,
+      "frame_id": 68,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.844,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.267,
+      "frame_id": 69,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.844,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.3,
+      "frame_id": 70,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.844,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.333,
+      "frame_id": 71,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.846,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.367,
+      "frame_id": 72,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.846,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.4,
+      "frame_id": 73,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.847,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.433,
+      "frame_id": 74,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.847,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    },
+    {
+      "sim_time": 2.467,
+      "frame_id": 75,
+      "step_id": "STEP_04",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.89,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": [
+        "LOW_LIGHT"
+      ]
+    }
+  ],
+  "evaluation_verdict": "PASS"
+}

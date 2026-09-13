@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 import yaml
 from pydantic import BaseModel, Field, field_validator
 
@@ -33,10 +33,14 @@ class CameraSettings(BaseModel):
 
 
 class CameraDeviceSettings(BaseModel):
+    id: str = Field(default="camera_0")
+    profile: str = Field(default="view_left")
+    source: Optional[Union[int, str]] = Field(default=None)
     source_type: str = Field(default="webcam")  # "webcam" or "file"
     device_id: int = Field(default=0, ge=0)
     file_path: Optional[str] = Field(default=None)
     fps: int = Field(default=30, gt=0)
+    expected_fps: int = Field(default=30, gt=0)
     width: int = Field(default=1280, gt=0)
     height: int = Field(default=720, gt=0)
     auto_reconnect: bool = Field(default=True)
@@ -71,10 +75,35 @@ class VoiceSettings(BaseModel):
 
 
 class StreamingSettings(BaseModel):
-    enabled: bool = Field(default=False)
+    enabled: bool = Field(default=True)
     host: str = Field(default="127.0.0.1")
     port: int = Field(default=8554, gt=1024, lt=65535)
-    protocol: str = Field(default="rtsp")
+    protocol: str = Field(default="mjpeg_http")
+    width: int = Field(default=1280, gt=100)
+    height: int = Field(default=720, gt=100)
+    fps: int = Field(default=15, ge=1, le=60)
+    quality: str = Field(default="medium")
+    jpeg_quality: int = Field(default=75, ge=10, le=100)
+
+
+class EventsSettings(BaseModel):
+    enabled: bool = Field(default=True)
+    host: str = Field(default="127.0.0.1")
+    port: int = Field(default=8765, gt=1024, lt=65535)
+    heartbeat_interval_seconds: float = Field(default=2.0, gt=0.5)
+    buffer_capacity: int = Field(default=500, ge=50)
+
+
+class HeartbeatSettings(BaseModel):
+    interval_seconds: float = Field(default=2.0, gt=0.5)
+    timeout_seconds: float = Field(default=6.0, gt=1.0)
+
+
+class GroundMonitorSettings(BaseModel):
+    enabled: bool = Field(default=True)
+    stream_url: str = Field(default="http://127.0.0.1:8554/video")
+    events_url: str = Field(default="http://127.0.0.1:8765/events")
+    reconnect_interval_seconds: float = Field(default=2.0, ge=0.5)
 
 
 class ActiveExperimentSettings(BaseModel):
@@ -95,6 +124,33 @@ class PerceptionSettings(BaseModel):
     quality_interval: int = Field(default=2, ge=1)
 
 
+class InteractionSettings(BaseModel):
+    approach_distance_threshold: float = Field(default=0.35, ge=0.0, le=1.0)
+    near_distance_threshold: float = Field(default=0.18, ge=0.0, le=1.0)
+    contact_distance_threshold: float = Field(default=0.08, ge=0.0, le=1.0)
+    contact_iou_threshold: float = Field(default=0.05, ge=0.0, le=1.0)
+    approach_speed_threshold: float = Field(default=-0.03)  # Negative means distance is decreasing
+    contact_confirmation_frames: int = Field(default=3, ge=1)
+    coupled_motion_correlation_min: float = Field(default=0.70, ge=-1.0, le=1.0)
+    coupled_motion_speed_min: float = Field(default=10.0, ge=0.0)
+    release_distance_growth_threshold: float = Field(default=0.04, ge=0.0)
+    max_temporary_lost_frames: int = Field(default=15, ge=1)
+
+
+class ActivitySettings(BaseModel):
+    temporal_window_seconds: float = Field(default=5.0, gt=0.5)
+    sampling_rate_hz: float = Field(default=30.0, gt=1.0)
+    min_activity_duration_seconds: float = Field(default=0.20, ge=0.05)
+    hysteresis_frames: int = Field(default=3, ge=1)
+    confirmation_frames: int = Field(default=4, ge=1)
+    uncertainty_timeout_seconds: float = Field(default=2.0, gt=0.1)
+    confidence_weight_object: float = Field(default=0.20, ge=0.0, le=1.0)
+    confidence_weight_hand: float = Field(default=0.20, ge=0.0, le=1.0)
+    confidence_weight_contact: float = Field(default=0.25, ge=0.0, le=1.0)
+    confidence_weight_motion: float = Field(default=0.20, ge=0.0, le=1.0)
+    confidence_weight_temporal: float = Field(default=0.15, ge=0.0, le=1.0)
+
+
 class AppConfig(BaseModel):
     """Root configuration model encapsulating all subsystem settings."""
     system: SystemSettings = Field(default_factory=SystemSettings)
@@ -103,8 +159,13 @@ class AppConfig(BaseModel):
     storage: StorageSettings = Field(default_factory=StorageSettings)
     thresholds: ThresholdSettings = Field(default_factory=ThresholdSettings)
     perception: PerceptionSettings = Field(default_factory=PerceptionSettings)
+    interaction: InteractionSettings = Field(default_factory=InteractionSettings)
+    activity: ActivitySettings = Field(default_factory=ActivitySettings)
     voice: VoiceSettings = Field(default_factory=VoiceSettings)
     streaming: StreamingSettings = Field(default_factory=StreamingSettings)
+    events: EventsSettings = Field(default_factory=EventsSettings)
+    heartbeat: HeartbeatSettings = Field(default_factory=HeartbeatSettings)
+    ground_monitor: GroundMonitorSettings = Field(default_factory=GroundMonitorSettings)
     active_experiment: ActiveExperimentSettings = Field(default_factory=ActiveExperimentSettings)
 
     @classmethod
@@ -160,4 +221,12 @@ def load_camera_config(camera_config_path: Optional[str | Path] = None) -> Camer
         raw_data = yaml.safe_load(f) or {}
 
     cam_data = raw_data.get("camera", raw_data)
+    if "source" in cam_data and cam_data["source"] is not None:
+        src = cam_data["source"]
+        if isinstance(src, int) or (isinstance(src, str) and src.isdigit()):
+            cam_data["device_id"] = int(src)
+            cam_data["source_type"] = "webcam"
+        else:
+            cam_data["file_path"] = str(src)
+            cam_data["source_type"] = "file"
     return CameraDeviceSettings(**cam_data)

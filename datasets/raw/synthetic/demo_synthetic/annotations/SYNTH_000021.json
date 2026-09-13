@@ -1,0 +1,79 @@
+{
+  "sample_id": "SYNTH_000021",
+  "image_path": "images/SYNTH_000021.jpg",
+  "session_id": "SYNTH_SESS_003",
+  "camera_profile": "VIEW_LEFT",
+  "scenario": "WRONG_ORDER",
+  "source": "SYNTHETIC",
+  "width": 640,
+  "height": 480,
+  "timestamp": 0.132,
+  "objects": [
+    {
+      "class_name": "WORK_SURFACE",
+      "bbox": [
+        99.0,
+        281.0,
+        611.0,
+        465.0
+      ],
+      "track_id": 1,
+      "confidence": 1.0,
+      "attributes": {}
+    },
+    {
+      "class_name": "MAIN_BOX",
+      "bbox": [
+        137.0,
+        221.0,
+        228.0,
+        301.0
+      ],
+      "track_id": 2,
+      "confidence": 1.0,
+      "attributes": {}
+    },
+    {
+      "class_name": "RED_BOX",
+      "bbox": [
+        315.0,
+        299.0,
+        361.0,
+        341.0
+      ],
+      "track_id": 3,
+      "confidence": 1.0,
+      "attributes": {}
+    },
+    {
+      "class_name": "YELLOW_BOX",
+      "bbox": [
+        498.0,
+        302.0,
+        544.0,
+        344.0
+      ],
+      "track_id": 4,
+      "confidence": 1.0,
+      "attributes": {}
+    },
+    {
+      "class_name": "ASTRONAUT",
+      "bbox": [
+        117.0,
+        58.0,
+        281.0,
+        292.0
+      ],
+      "track_id": 5,
+      "confidence": 1.0,
+      "attributes": {}
+    }
+  ],
+  "metadata": {
+    "generator_version": "0.1.0",
+    "scene_seed": 54661,
+    "experiment_id": "DEMO_EXP_001",
+    "lighting_style": "BRIGHT"
+  }
+}

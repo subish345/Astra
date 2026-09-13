@@ -1,0 +1,942 @@
+[
+  {
+    "event_id": "EVT_000001_B53584",
+    "event_type": "MissionStarted",
+    "sequence_num": 1,
+    "sequence": 1,
+    "timestamp": "2026-09-13T13:00:30.036578+00:00",
+    "timestamp_mono": 33101.0078,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": null,
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "profile": "final_demo",
+      "start_time": "2026-09-13T13:00:30.036572+00:00"
+    }
+  },
+  {
+    "event_id": "EVT_000002_5D5EB1",
+    "event_type": "StepUncertain",
+    "sequence_num": 2,
+    "sequence": 2,
+    "timestamp": "2026-09-13T13:00:30.045489+00:00",
+    "timestamp_mono": 33101.0167,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000003_3BDDC1",
+    "event_type": "StepUncertain",
+    "sequence_num": 3,
+    "sequence": 3,
+    "timestamp": "2026-09-13T13:00:30.061540+00:00",
+    "timestamp_mono": 33101.0327,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000004_8ECB7F",
+    "event_type": "StepUncertain",
+    "sequence_num": 4,
+    "sequence": 4,
+    "timestamp": "2026-09-13T13:00:30.077388+00:00",
+    "timestamp_mono": 33101.0486,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000005_8E48DE",
+    "event_type": "StepUncertain",
+    "sequence_num": 5,
+    "sequence": 5,
+    "timestamp": "2026-09-13T13:00:30.092926+00:00",
+    "timestamp_mono": 33101.0641,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000006_12C654",
+    "event_type": "StepUncertain",
+    "sequence_num": 6,
+    "sequence": 6,
+    "timestamp": "2026-09-13T13:00:30.108342+00:00",
+    "timestamp_mono": 33101.0795,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000007_4EC9CC",
+    "event_type": "StepUncertain",
+    "sequence_num": 7,
+    "sequence": 7,
+    "timestamp": "2026-09-13T13:00:30.123965+00:00",
+    "timestamp_mono": 33101.0952,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000008_DB68CF",
+    "event_type": "StepUncertain",
+    "sequence_num": 8,
+    "sequence": 8,
+    "timestamp": "2026-09-13T13:00:30.139601+00:00",
+    "timestamp_mono": 33101.1108,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000009_3A4438",
+    "event_type": "StepUncertain",
+    "sequence_num": 9,
+    "sequence": 9,
+    "timestamp": "2026-09-13T13:00:30.154989+00:00",
+    "timestamp_mono": 33101.1262,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000010_BD7B76",
+    "event_type": "StepUncertain",
+    "sequence_num": 10,
+    "sequence": 10,
+    "timestamp": "2026-09-13T13:00:30.170828+00:00",
+    "timestamp_mono": 33101.142,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000011_DF8563",
+    "event_type": "StepUncertain",
+    "sequence_num": 11,
+    "sequence": 11,
+    "timestamp": "2026-09-13T13:00:30.186888+00:00",
+    "timestamp_mono": 33101.1581,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000012_CFA792",
+    "event_type": "StepUncertain",
+    "sequence_num": 12,
+    "sequence": 12,
+    "timestamp": "2026-09-13T13:00:30.204642+00:00",
+    "timestamp_mono": 33101.1758,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000013_6AEA3E",
+    "event_type": "StepUncertain",
+    "sequence_num": 13,
+    "sequence": 13,
+    "timestamp": "2026-09-13T13:00:30.221084+00:00",
+    "timestamp_mono": 33101.1923,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000014_3D852D",
+    "event_type": "StepUncertain",
+    "sequence_num": 14,
+    "sequence": 14,
+    "timestamp": "2026-09-13T13:00:30.236334+00:00",
+    "timestamp_mono": 33101.2075,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000015_1B4545",
+    "event_type": "StepUncertain",
+    "sequence_num": 15,
+    "sequence": 15,
+    "timestamp": "2026-09-13T13:00:30.252288+00:00",
+    "timestamp_mono": 33101.2235,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000016_5E370A",
+    "event_type": "StepUncertain",
+    "sequence_num": 16,
+    "sequence": 16,
+    "timestamp": "2026-09-13T13:00:30.268516+00:00",
+    "timestamp_mono": 33101.2397,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000017_FFD864",
+    "event_type": "StepUncertain",
+    "sequence_num": 17,
+    "sequence": 17,
+    "timestamp": "2026-09-13T13:00:30.284439+00:00",
+    "timestamp_mono": 33101.2556,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000018_C0C67C",
+    "event_type": "StepUncertain",
+    "sequence_num": 18,
+    "sequence": 18,
+    "timestamp": "2026-09-13T13:00:30.302955+00:00",
+    "timestamp_mono": 33101.2742,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000019_526DB5",
+    "event_type": "StepUncertain",
+    "sequence_num": 19,
+    "sequence": 19,
+    "timestamp": "2026-09-13T13:00:30.319853+00:00",
+    "timestamp_mono": 33101.2911,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000020_537C8A",
+    "event_type": "StepUncertain",
+    "sequence_num": 20,
+    "sequence": 20,
+    "timestamp": "2026-09-13T13:00:30.338287+00:00",
+    "timestamp_mono": 33101.3095,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000021_561D0E",
+    "event_type": "StepUncertain",
+    "sequence_num": 21,
+    "sequence": 21,
+    "timestamp": "2026-09-13T13:00:30.355252+00:00",
+    "timestamp_mono": 33101.3265,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000022_3C4649",
+    "event_type": "StepUncertain",
+    "sequence_num": 22,
+    "sequence": 22,
+    "timestamp": "2026-09-13T13:00:30.371029+00:00",
+    "timestamp_mono": 33101.3422,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000023_41AD79",
+    "event_type": "StepUncertain",
+    "sequence_num": 23,
+    "sequence": 23,
+    "timestamp": "2026-09-13T13:00:30.386778+00:00",
+    "timestamp_mono": 33101.358,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000024_20A4C5",
+    "event_type": "StepUncertain",
+    "sequence_num": 24,
+    "sequence": 24,
+    "timestamp": "2026-09-13T13:00:30.403328+00:00",
+    "timestamp_mono": 33101.3745,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000025_8E7CA6",
+    "event_type": "StepUncertain",
+    "sequence_num": 25,
+    "sequence": 25,
+    "timestamp": "2026-09-13T13:00:30.418912+00:00",
+    "timestamp_mono": 33101.3901,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000026_6EE4F4",
+    "event_type": "StepUncertain",
+    "sequence_num": 26,
+    "sequence": 26,
+    "timestamp": "2026-09-13T13:00:30.434608+00:00",
+    "timestamp_mono": 33101.4058,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000027_235859",
+    "event_type": "StepUncertain",
+    "sequence_num": 27,
+    "sequence": 27,
+    "timestamp": "2026-09-13T13:00:30.450647+00:00",
+    "timestamp_mono": 33101.4219,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000028_3CB1F0",
+    "event_type": "StepUncertain",
+    "sequence_num": 28,
+    "sequence": 28,
+    "timestamp": "2026-09-13T13:00:30.466711+00:00",
+    "timestamp_mono": 33101.4379,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000029_8782C0",
+    "event_type": "StepUncertain",
+    "sequence_num": 29,
+    "sequence": 29,
+    "timestamp": "2026-09-13T13:00:30.482653+00:00",
+    "timestamp_mono": 33101.4539,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000030_1662F1",
+    "event_type": "StepUncertain",
+    "sequence_num": 30,
+    "sequence": 30,
+    "timestamp": "2026-09-13T13:00:30.498780+00:00",
+    "timestamp_mono": 33101.47,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000031_29E989",
+    "event_type": "StepUncertain",
+    "sequence_num": 31,
+    "sequence": 31,
+    "timestamp": "2026-09-13T13:00:30.514620+00:00",
+    "timestamp_mono": 33101.4858,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000032_516FA3",
+    "event_type": "StepUncertain",
+    "sequence_num": 32,
+    "sequence": 32,
+    "timestamp": "2026-09-13T13:00:30.530612+00:00",
+    "timestamp_mono": 33101.5018,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000033_83CD82",
+    "event_type": "StepUncertain",
+    "sequence_num": 33,
+    "sequence": 33,
+    "timestamp": "2026-09-13T13:00:30.546954+00:00",
+    "timestamp_mono": 33101.5182,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000034_C13F9B",
+    "event_type": "StepUncertain",
+    "sequence_num": 34,
+    "sequence": 34,
+    "timestamp": "2026-09-13T13:00:30.563090+00:00",
+    "timestamp_mono": 33101.5343,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000035_7E35BB",
+    "event_type": "StepUncertain",
+    "sequence_num": 35,
+    "sequence": 35,
+    "timestamp": "2026-09-13T13:00:30.578444+00:00",
+    "timestamp_mono": 33101.5496,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000036_0F26BA",
+    "event_type": "StepUncertain",
+    "sequence_num": 36,
+    "sequence": 36,
+    "timestamp": "2026-09-13T13:00:30.594096+00:00",
+    "timestamp_mono": 33101.5653,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000037_1A9B41",
+    "event_type": "StepUncertain",
+    "sequence_num": 37,
+    "sequence": 37,
+    "timestamp": "2026-09-13T13:00:30.609968+00:00",
+    "timestamp_mono": 33101.5812,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000038_158DE0",
+    "event_type": "StepUncertain",
+    "sequence_num": 38,
+    "sequence": 38,
+    "timestamp": "2026-09-13T13:00:30.625965+00:00",
+    "timestamp_mono": 33101.5972,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000039_B03E64",
+    "event_type": "StepUncertain",
+    "sequence_num": 39,
+    "sequence": 39,
+    "timestamp": "2026-09-13T13:00:30.641396+00:00",
+    "timestamp_mono": 33101.6126,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000040_A7C6D3",
+    "event_type": "StepUncertain",
+    "sequence_num": 40,
+    "sequence": 40,
+    "timestamp": "2026-09-13T13:00:30.656856+00:00",
+    "timestamp_mono": 33101.6281,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  },
+  {
+    "event_id": "EVT_000041_8F39BF",
+    "event_type": "StepUncertain",
+    "sequence_num": 41,
+    "sequence": 41,
+    "timestamp": "2026-09-13T13:00:30.672972+00:00",
+    "timestamp_mono": 33101.6442,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "DEMO_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
+        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+      ]
+    }
+  }
+]

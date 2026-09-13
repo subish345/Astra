@@ -13,6 +13,7 @@ import numpy as np
 from core.camera.interface import FrameData
 from core.common.logging import get_logger
 from core.perception.detection.interface import ObjectDetector
+from core.perception.device import DeviceManager
 from core.perception.types import BoundingBox, Detection
 
 logger = get_logger("PERCEPTION")
@@ -35,7 +36,7 @@ class YOLOAdapter(ObjectDetector):
         self.confidence_threshold = confidence_threshold
         self.nms_threshold = nms_threshold
         self.input_size = input_size
-        self.device = device.lower()
+        self.requested_device = device.lower()
 
         if not self.model_path.exists():
             raise FileNotFoundError(f"YOLO model weights file not found: {self.model_path}")
@@ -43,11 +44,22 @@ class YOLOAdapter(ObjectDetector):
         logger.info("Loading YOLO ONNX network from %s...", self.model_path)
         self._net = cv2.dnn.readNetFromONNX(str(self.model_path))
 
-        if self.device in ("cuda", "gpu"):
-            self._net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-            self._net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
-            logger.info("YOLO DNN target set to CUDA.")
+        # Check device capabilities cleanly
+        dev_info = DeviceManager.get_device_info(self.requested_device)
+        has_cv_cuda = getattr(cv2.cuda, "getCudaEnabledDeviceCount", lambda: 0)() > 0
+
+        if dev_info.is_cuda and has_cv_cuda:
+            try:
+                self._net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+                self._net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+                logger.info("YOLO DNN target set to CUDA.")
+            except Exception as exc:
+                logger.warning("Failed to configure CUDA DNN backend: %s. Falling back to CPU.", exc)
+                self._net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+                self._net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
         else:
+            if dev_info.is_cuda and not has_cv_cuda:
+                logger.info("Host CUDA available, but active OpenCV build lacks DNN CUDA support. Using CPU target.")
             self._net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
             self._net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
             logger.info("YOLO DNN target set to CPU.")
@@ -55,6 +67,9 @@ class YOLOAdapter(ObjectDetector):
     def detect(self, frame: FrameData) -> List[Detection]:
         """Run YOLO inference and extract detections."""
         img = frame.image
+        if img is None or img.size == 0:
+            return []
+
         orig_h, orig_w = img.shape[:2]
 
         blob = cv2.dnn.blobFromImage(
@@ -67,11 +82,19 @@ class YOLOAdapter(ObjectDetector):
         self._net.setInput(blob)
         outputs = self._net.forward()
 
-        # Handle YOLOv8/v11 output shape [1, 4 + num_classes, num_anchors]
-        if len(outputs.shape) == 3 and outputs.shape[1] < outputs.shape[2]:
-            outputs = np.transpose(outputs[0], (1, 0))
-        elif len(outputs.shape) == 3:
-            outputs = outputs[0]
+        num_classes = len(self.classes)
+
+        # Handle YOLO shape transposition:
+        # If shape is [1, 4+N, num_anchors], transpose to [num_anchors, 4+N]
+        if len(outputs.shape) == 3:
+            if outputs.shape[1] in (4 + num_classes, 5 + num_classes):
+                outputs = np.transpose(outputs[0], (1, 0))
+            elif outputs.shape[2] in (4 + num_classes, 5 + num_classes):
+                outputs = outputs[0]
+            elif outputs.shape[1] < outputs.shape[2]:
+                outputs = np.transpose(outputs[0], (1, 0))
+            else:
+                outputs = outputs[0]
 
         boxes = []
         confidences = []
@@ -81,11 +104,20 @@ class YOLOAdapter(ObjectDetector):
         y_factor = orig_h / self.input_size
 
         for row in outputs:
-            classes_scores = row[4:]
+            # Check whether output format includes objectness score (YOLOv5/v7: 5 + N) vs anchor-free (YOLOv8/v11: 4 + N)
+            if len(row) >= 5 + num_classes:
+                obj_conf = float(row[4])
+                classes_scores = row[5 : 5 + num_classes] * obj_conf
+            else:
+                classes_scores = row[4 : 4 + num_classes]
+
+            if len(classes_scores) == 0:
+                continue
+
             max_score = float(np.max(classes_scores))
             if max_score >= self.confidence_threshold:
                 class_id = int(np.argmax(classes_scores))
-                cx, cy, w, h = row[0], row[1], row[2], row[3]
+                cx, cy, w, h = float(row[0]), float(row[1]), float(row[2]), float(row[3])
                 left = int((cx - 0.5 * w) * x_factor)
                 top = int((cy - 0.5 * h) * y_factor)
                 width = int(w * x_factor)
@@ -95,33 +127,44 @@ class YOLOAdapter(ObjectDetector):
                 confidences.append(max_score)
                 class_ids.append(class_id)
 
-        indices = cv2.dnn.NMSBoxes(boxes, confidences, self.confidence_threshold, self.nms_threshold)
-
         detections: List[Detection] = []
-        if len(indices) > 0:
-            for idx in indices.flatten():
-                bx, by, bw, bh = boxes[idx]
-                cid = class_ids[idx]
-                class_name = self.classes[cid] if cid < len(self.classes) else f"class_{cid}"
-                conf = confidences[idx]
+        if not boxes:
+            return detections
 
-                bbox = BoundingBox(
-                    x1=float(max(0, bx)),
-                    y1=float(max(0, by)),
-                    x2=float(min(orig_w, bx + bw)),
-                    y2=float(min(orig_h, by + bh)),
-                )
+        indices = cv2.dnn.NMSBoxes(boxes, confidences, self.confidence_threshold, self.nms_threshold)
+        if len(indices) == 0:
+            return detections
 
-                detections.append(
-                    Detection(
-                        class_name=class_name,
-                        confidence=round(conf, 3),
-                        bbox=bbox,
-                        timestamp=frame.timestamp_mono,
-                        frame_id=frame.frame_id,
-                        source="YOLO_ONNX",
-                    )
+        # Safely convert to flat 1D sequence regardless of whether OpenCV returns tuple or ndarray
+        flat_indices = np.array(indices).flatten()
+
+        for idx in flat_indices:
+            idx = int(idx)
+            bx, by, bw, bh = boxes[idx]
+            cid = class_ids[idx]
+            class_name = self.classes[cid] if cid < len(self.classes) else f"class_{cid}"
+            conf = confidences[idx]
+
+            x1 = float(max(0, min(orig_w, bx)))
+            y1 = float(max(0, min(orig_h, by)))
+            x2 = float(max(0, min(orig_w, bx + bw)))
+            y2 = float(max(0, min(orig_h, by + bh)))
+
+            # Discard degenerate bounding boxes
+            if x2 <= x1 or y2 <= y1:
+                continue
+
+            bbox = BoundingBox(x1=x1, y1=y1, x2=x2, y2=y2)
+            detections.append(
+                Detection(
+                    class_name=class_name,
+                    confidence=round(conf, 3),
+                    bbox=bbox,
+                    timestamp=frame.timestamp_mono,
+                    frame_id=frame.frame_id,
+                    source="YOLO_ONNX",
                 )
+            )
 
         return detections
 

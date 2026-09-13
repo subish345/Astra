@@ -1,0 +1,22 @@
+{
+  "model_id": "ASTRA_OBJECT_DETECTOR_v0.1.0",
+  "dataset_version": "ASTRA-DATASET-v0.1",
+  "viewpoints": {
+    "VIEW_LEFT": {
+      "samples": 5,
+      "precision": 0.789,
+      "recall": 0.6,
+      "f1": 0.682,
+      "mAP50": 0.695
+    }
+  },
+  "scenarios": {
+    "CORRECT": {
+      "samples": 5,
+      "precision": 0.789,
+      "recall": 0.6,
+      "f1": 0.682,
+      "mAP50": 0.695
+    }
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "scenario_id": "SIM_FAULT_WRONG_ORDER",
+  "scenario_name": "Operator Deviation \u2014 Out of Order Step Execution",
+  "status": "COMPLETED",
+  "duration_sec": 2.27,
+  "frames_processed": 180,
+  "frames_dropped": 0,
+  "decisions_count": 169,
+  "verified_count": 4,
+  "uncertain_count": 45,
+  "deviation_count": 120,
+  "detected_deviations": [
+    "SKIPPED_STEP"
+  ],
+  "expected_status": "DEVIATION",
+  "actual_final_status": "DEVIATION",
+  "mean_to_detect_sec": 0.0,
+  "false_positive_deviations": 0,
+  "resilience_score": 100.0,
+  "pipeline_crashes": 0,
+  "decision_history": [
+    {
+      "sim_time": 4.967,
+      "frame_id": 150,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.0,
+      "frame_id": 151,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.033,
+      "frame_id": 152,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.067,
+      "frame_id": 153,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.1,
+      "frame_id": 154,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.133,
+      "frame_id": 155,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.167,
+      "frame_id": 156,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.2,
+      "frame_id": 157,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.233,
+      "frame_id": 158,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.267,
+      "frame_id": 159,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.3,
+      "frame_id": 160,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.333,
+      "frame_id": 161,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.367,
+      "frame_id": 162,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.4,
+      "frame_id": 163,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.433,
+      "frame_id": 164,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.467,
+      "frame_id": 165,
+      "step_id": "STEP_01",
+      "decision_type": "DEVIATION",
+      "deviation_category": "SKIPPED_STEP",
+      "confidence": 0.88,
+      "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+      "active_faults": [
+        "WRONG_ORDER"
+      ]
+    },
+    {
+      "sim_time": 5.5,
+      "frame_id": 166,
+      "step_id": "STEP_01",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.904,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": []
+    },
+    {
+      "sim_time": 5.533,
+      "frame_id": 167,
+      "step_id": "STEP_02",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.898,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": []
+    },
+    {
+      "sim_time": 5.567,
+      "frame_id": 168,
+      "step_id": "STEP_03",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.846,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": []
+    },
+    {
+      "sim_time": 5.6,
+      "frame_id": 169,
+      "step_id": "STEP_04",
+      "decision_type": "VERIFIED",
+      "deviation_category": null,
+      "confidence": 0.89,
+      "reason": "Step criteria and multimodal evidence satisfied",
+      "active_faults": []
+    }
+  ],
+  "evaluation_verdict": "PASS"
+}

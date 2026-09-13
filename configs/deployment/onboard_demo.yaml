@@ -1,0 +1,60 @@
+profile_name: "PROFILE_ONBOARD_DEMO"
+description: "Integrated onboard flight demonstrator profile configuring perception, procedure, voice, recording, streaming, and mission console."
+
+mode: "DEMO"
+
+camera:
+  default_source: 0
+  profile: "view_left"
+  width: 640
+  height: 480
+  fps: 30
+
+model:
+  detector: "baseline"  # or "learned"
+  runtime: "opencv_dnn"
+  input_resolution: [640, 640]
+  confidence_threshold: 0.50
+  nms_threshold: 0.45
+  allow_fallback: true
+
+procedure:
+  default_experiment: "DEMO_EXP_001"
+  config_path: "configs/experiments/demo.yaml"
+  auto_advance: true
+
+voice:
+  enabled: true
+  rate: 175
+  volume: 0.9
+
+recording:
+  enabled: true
+  fps: 30
+  resolution: [640, 480]
+  codec: "mp4v"
+  auto_start: true
+
+stream:
+  enabled: true
+  port: 8554
+  events_port: 8765
+  quality_mode: "MEDIUM"
+  fps: 15
+
+scheduler:
+  tracking_interval: 1
+  detection_interval: 1
+  pose_interval: 1
+  hand_interval: 1
+  queue_policy: "latest_frame"
+  max_queue_size: 5
+
+resources:
+  max_ram_gb: 4.0
+  max_cpu_percent: 85.0
+  max_gpu_memory_gb: 4.0
+
+logging:
+  level: "INFO"
+  retention_days: 7

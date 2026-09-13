@@ -1,0 +1,35 @@
+# ==============================================================================
+# ASTRA-EA Camera Viewpoint Profiles
+# Defines viewpoint parameters for optical sensors observing the experiment station.
+# ==============================================================================
+
+profiles:
+  view_left:
+    id: "VIEW_LEFT"
+    name: "Left-Side Perspective"
+    description: "Camera positioned toward the front-left observation quadrant"
+    horizontal_bias: "LEFT"
+    nominal_distance_m: 1.2
+    elevation_deg: 15.0
+    azimuth_deg: -35.0
+    field_of_view_deg: 78.0
+
+  view_right:
+    id: "VIEW_RIGHT"
+    name: "Right-Side Perspective"
+    description: "Camera positioned toward the front-right observation quadrant"
+    horizontal_bias: "RIGHT"
+    nominal_distance_m: 1.2
+    elevation_deg: 15.0
+    azimuth_deg: 35.0
+    field_of_view_deg: 78.0
+
+  view_center:
+    id: "VIEW_CENTER"
+    name: "Center Front Perspective"
+    description: "Camera positioned orthogonally in front of the experiment workstation"
+    horizontal_bias: "CENTER"
+    nominal_distance_m: 1.0
+    elevation_deg: 10.0
+    azimuth_deg: 0.0
+    field_of_view_deg: 78.0
