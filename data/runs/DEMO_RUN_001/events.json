@@ -1,11 +1,11 @@
 [
   {
-    "event_id": "EVT_000001_503FB4",
+    "event_id": "EVT_000001_DAE82C",
     "event_type": "MissionStarted",
     "sequence_num": 1,
     "sequence": 1,
-    "timestamp": "2026-09-13T13:11:03.289668+00:00",
-    "timestamp_mono": 33734.2609,
+    "timestamp": "2026-09-14T18:03:01.419241+00:00",
+    "timestamp_mono": 15278.4317,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -16,16 +16,16 @@
     "severity": "INFO",
     "payload": {
       "profile": "final_demo",
-      "start_time": "2026-09-13T13:11:03.289656+00:00"
+      "start_time": "2026-09-14T18:03:01.419230+00:00"
     }
   },
   {
-    "event_id": "EVT_000002_352A35",
+    "event_id": "EVT_000002_AFD0AE",
     "event_type": "StepUncertain",
     "sequence_num": 2,
     "sequence": 2,
-    "timestamp": "2026-09-13T13:11:03.297734+00:00",
-    "timestamp_mono": 33734.2689,
+    "timestamp": "2026-09-14T18:03:01.445809+00:00",
+    "timestamp_mono": 15278.4583,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -37,18 +37,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000003_F93D0B",
+    "event_id": "EVT_000003_BC4CED",
     "event_type": "StepUncertain",
     "sequence_num": 3,
     "sequence": 3,
-    "timestamp": "2026-09-13T13:11:03.313729+00:00",
-    "timestamp_mono": 33734.2849,
+    "timestamp": "2026-09-14T18:03:01.481048+00:00",
+    "timestamp_mono": 15278.4935,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -60,18 +59,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000004_5C6719",
+    "event_id": "EVT_000004_765139",
     "event_type": "StepUncertain",
     "sequence_num": 4,
     "sequence": 4,
-    "timestamp": "2026-09-13T13:11:03.329151+00:00",
-    "timestamp_mono": 33734.3004,
+    "timestamp": "2026-09-14T18:03:01.514248+00:00",
+    "timestamp_mono": 15278.5267,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -83,18 +81,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000005_34366A",
+    "event_id": "EVT_000005_FCAD9F",
     "event_type": "StepUncertain",
     "sequence_num": 5,
     "sequence": 5,
-    "timestamp": "2026-09-13T13:11:03.344826+00:00",
-    "timestamp_mono": 33734.316,
+    "timestamp": "2026-09-14T18:03:01.548258+00:00",
+    "timestamp_mono": 15278.5607,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -106,18 +103,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000006_A25DC2",
+    "event_id": "EVT_000006_0FE18B",
     "event_type": "StepUncertain",
     "sequence_num": 6,
     "sequence": 6,
-    "timestamp": "2026-09-13T13:11:03.360392+00:00",
-    "timestamp_mono": 33734.3316,
+    "timestamp": "2026-09-14T18:03:01.579958+00:00",
+    "timestamp_mono": 15278.5924,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -129,18 +125,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000007_DE839B",
+    "event_id": "EVT_000007_EFB44C",
     "event_type": "StepUncertain",
     "sequence_num": 7,
     "sequence": 7,
-    "timestamp": "2026-09-13T13:11:03.375747+00:00",
-    "timestamp_mono": 33734.347,
+    "timestamp": "2026-09-14T18:03:01.615296+00:00",
+    "timestamp_mono": 15278.6278,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -152,18 +147,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000008_A1D15B",
+    "event_id": "EVT_000008_FDDCF7",
     "event_type": "StepUncertain",
     "sequence_num": 8,
     "sequence": 8,
-    "timestamp": "2026-09-13T13:11:03.392062+00:00",
-    "timestamp_mono": 33734.3633,
+    "timestamp": "2026-09-14T18:03:01.646621+00:00",
+    "timestamp_mono": 15278.6591,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -175,18 +169,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000009_F48776",
+    "event_id": "EVT_000009_1DE76A",
     "event_type": "StepUncertain",
     "sequence_num": 9,
     "sequence": 9,
-    "timestamp": "2026-09-13T13:11:03.407818+00:00",
-    "timestamp_mono": 33734.379,
+    "timestamp": "2026-09-14T18:03:01.678129+00:00",
+    "timestamp_mono": 15278.6906,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -198,18 +191,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000010_4C28C4",
+    "event_id": "EVT_000010_FF36A6",
     "event_type": "StepUncertain",
     "sequence_num": 10,
     "sequence": 10,
-    "timestamp": "2026-09-13T13:11:03.424564+00:00",
-    "timestamp_mono": 33734.3958,
+    "timestamp": "2026-09-14T18:03:01.711269+00:00",
+    "timestamp_mono": 15278.7237,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -221,18 +213,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000011_E52CAB",
+    "event_id": "EVT_000011_C93557",
     "event_type": "StepUncertain",
     "sequence_num": 11,
     "sequence": 11,
-    "timestamp": "2026-09-13T13:11:03.440518+00:00",
-    "timestamp_mono": 33734.4117,
+    "timestamp": "2026-09-14T18:03:01.742310+00:00",
+    "timestamp_mono": 15278.7548,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -244,18 +235,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000012_72015D",
+    "event_id": "EVT_000012_2D98DE",
     "event_type": "StepUncertain",
     "sequence_num": 12,
     "sequence": 12,
-    "timestamp": "2026-09-13T13:11:03.456647+00:00",
-    "timestamp_mono": 33734.4279,
+    "timestamp": "2026-09-14T18:03:01.774079+00:00",
+    "timestamp_mono": 15278.7865,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -267,18 +257,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000013_5C6582",
+    "event_id": "EVT_000013_33A146",
     "event_type": "StepUncertain",
     "sequence_num": 13,
     "sequence": 13,
-    "timestamp": "2026-09-13T13:11:03.472638+00:00",
-    "timestamp_mono": 33734.4438,
+    "timestamp": "2026-09-14T18:03:01.805702+00:00",
+    "timestamp_mono": 15278.8182,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -290,18 +279,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000014_5D1737",
+    "event_id": "EVT_000014_826ED1",
     "event_type": "StepUncertain",
     "sequence_num": 14,
     "sequence": 14,
-    "timestamp": "2026-09-13T13:11:03.489391+00:00",
-    "timestamp_mono": 33734.4606,
+    "timestamp": "2026-09-14T18:03:01.836602+00:00",
+    "timestamp_mono": 15278.8491,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -313,18 +301,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000015_0B9CE8",
+    "event_id": "EVT_000015_341A15",
     "event_type": "StepUncertain",
     "sequence_num": 15,
     "sequence": 15,
-    "timestamp": "2026-09-13T13:11:03.505742+00:00",
-    "timestamp_mono": 33734.4769,
+    "timestamp": "2026-09-14T18:03:01.869986+00:00",
+    "timestamp_mono": 15278.8824,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -336,18 +323,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000016_92CCC9",
+    "event_id": "EVT_000016_FE8A7B",
     "event_type": "StepUncertain",
     "sequence_num": 16,
     "sequence": 16,
-    "timestamp": "2026-09-13T13:11:03.521568+00:00",
-    "timestamp_mono": 33734.4928,
+    "timestamp": "2026-09-14T18:03:01.901708+00:00",
+    "timestamp_mono": 15278.9142,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -359,18 +345,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000017_C896A2",
+    "event_id": "EVT_000017_703438",
     "event_type": "StepUncertain",
     "sequence_num": 17,
     "sequence": 17,
-    "timestamp": "2026-09-13T13:11:03.538011+00:00",
-    "timestamp_mono": 33734.5092,
+    "timestamp": "2026-09-14T18:03:01.935002+00:00",
+    "timestamp_mono": 15278.9475,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -382,18 +367,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000018_3F4AAD",
+    "event_id": "EVT_000018_26FB6C",
     "event_type": "StepUncertain",
     "sequence_num": 18,
     "sequence": 18,
-    "timestamp": "2026-09-13T13:11:03.554063+00:00",
-    "timestamp_mono": 33734.5253,
+    "timestamp": "2026-09-14T18:03:01.967523+00:00",
+    "timestamp_mono": 15278.98,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -405,18 +389,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000019_6592B4",
+    "event_id": "EVT_000019_37B927",
     "event_type": "StepUncertain",
     "sequence_num": 19,
     "sequence": 19,
-    "timestamp": "2026-09-13T13:11:03.569946+00:00",
-    "timestamp_mono": 33734.5412,
+    "timestamp": "2026-09-14T18:03:02.005116+00:00",
+    "timestamp_mono": 15279.0176,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -428,18 +411,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000020_64B44A",
+    "event_id": "EVT_000020_412BF8",
     "event_type": "StepUncertain",
     "sequence_num": 20,
     "sequence": 20,
-    "timestamp": "2026-09-13T13:11:03.585934+00:00",
-    "timestamp_mono": 33734.5571,
+    "timestamp": "2026-09-14T18:03:02.037465+00:00",
+    "timestamp_mono": 15279.0499,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -451,18 +433,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000021_6ED366",
+    "event_id": "EVT_000021_EA3783",
     "event_type": "StepUncertain",
     "sequence_num": 21,
     "sequence": 21,
-    "timestamp": "2026-09-13T13:11:03.601454+00:00",
-    "timestamp_mono": 33734.5727,
+    "timestamp": "2026-09-14T18:03:02.073317+00:00",
+    "timestamp_mono": 15279.0858,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -474,18 +455,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000022_A97703",
+    "event_id": "EVT_000022_312306",
     "event_type": "StepUncertain",
     "sequence_num": 22,
     "sequence": 22,
-    "timestamp": "2026-09-13T13:11:03.616977+00:00",
-    "timestamp_mono": 33734.5882,
+    "timestamp": "2026-09-14T18:03:02.106907+00:00",
+    "timestamp_mono": 15279.1194,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -497,18 +477,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000023_2E5FB5",
+    "event_id": "EVT_000023_FDDEA7",
     "event_type": "StepUncertain",
     "sequence_num": 23,
     "sequence": 23,
-    "timestamp": "2026-09-13T13:11:03.632670+00:00",
-    "timestamp_mono": 33734.6039,
+    "timestamp": "2026-09-14T18:03:02.138686+00:00",
+    "timestamp_mono": 15279.1511,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -520,18 +499,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000024_67F61D",
+    "event_id": "EVT_000024_FD5946",
     "event_type": "StepUncertain",
     "sequence_num": 24,
     "sequence": 24,
-    "timestamp": "2026-09-13T13:11:03.648126+00:00",
-    "timestamp_mono": 33734.6193,
+    "timestamp": "2026-09-14T18:03:02.169918+00:00",
+    "timestamp_mono": 15279.1824,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -543,18 +521,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000025_9C17DF",
+    "event_id": "EVT_000025_2DF10E",
     "event_type": "StepUncertain",
     "sequence_num": 25,
     "sequence": 25,
-    "timestamp": "2026-09-13T13:11:03.663569+00:00",
-    "timestamp_mono": 33734.6348,
+    "timestamp": "2026-09-14T18:03:02.200785+00:00",
+    "timestamp_mono": 15279.2132,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -566,18 +543,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000026_C1DFF8",
+    "event_id": "EVT_000026_552CBD",
     "event_type": "StepUncertain",
     "sequence_num": 26,
     "sequence": 26,
-    "timestamp": "2026-09-13T13:11:03.679280+00:00",
-    "timestamp_mono": 33734.6505,
+    "timestamp": "2026-09-14T18:03:02.231182+00:00",
+    "timestamp_mono": 15279.2436,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -589,18 +565,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000027_7A0A6C",
+    "event_id": "EVT_000027_9BEBC6",
     "event_type": "StepUncertain",
     "sequence_num": 27,
     "sequence": 27,
-    "timestamp": "2026-09-13T13:11:03.695033+00:00",
-    "timestamp_mono": 33734.6662,
+    "timestamp": "2026-09-14T18:03:02.261481+00:00",
+    "timestamp_mono": 15279.2739,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -612,18 +587,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000028_FC3D74",
+    "event_id": "EVT_000028_94150C",
     "event_type": "StepUncertain",
     "sequence_num": 28,
     "sequence": 28,
-    "timestamp": "2026-09-13T13:11:03.710754+00:00",
-    "timestamp_mono": 33734.682,
+    "timestamp": "2026-09-14T18:03:02.292229+00:00",
+    "timestamp_mono": 15279.3047,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -635,18 +609,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000029_91A71A",
+    "event_id": "EVT_000029_19115A",
     "event_type": "StepUncertain",
     "sequence_num": 29,
     "sequence": 29,
-    "timestamp": "2026-09-13T13:11:03.726487+00:00",
-    "timestamp_mono": 33734.6977,
+    "timestamp": "2026-09-14T18:03:02.325990+00:00",
+    "timestamp_mono": 15279.3384,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -658,18 +631,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000030_A5E0A5",
+    "event_id": "EVT_000030_5BD522",
     "event_type": "StepUncertain",
     "sequence_num": 30,
     "sequence": 30,
-    "timestamp": "2026-09-13T13:11:03.742156+00:00",
-    "timestamp_mono": 33734.7134,
+    "timestamp": "2026-09-14T18:03:02.357043+00:00",
+    "timestamp_mono": 15279.3695,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -681,18 +653,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000031_E38E92",
+    "event_id": "EVT_000031_5577A7",
     "event_type": "StepUncertain",
     "sequence_num": 31,
     "sequence": 31,
-    "timestamp": "2026-09-13T13:11:03.758293+00:00",
-    "timestamp_mono": 33734.7295,
+    "timestamp": "2026-09-14T18:03:02.394099+00:00",
+    "timestamp_mono": 15279.4066,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -704,18 +675,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000032_B7B554",
+    "event_id": "EVT_000032_06EC21",
     "event_type": "StepUncertain",
     "sequence_num": 32,
     "sequence": 32,
-    "timestamp": "2026-09-13T13:11:03.774380+00:00",
-    "timestamp_mono": 33734.7456,
+    "timestamp": "2026-09-14T18:03:02.426716+00:00",
+    "timestamp_mono": 15279.4392,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -727,18 +697,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000033_ED91BD",
+    "event_id": "EVT_000033_7C0E5C",
     "event_type": "StepUncertain",
     "sequence_num": 33,
     "sequence": 33,
-    "timestamp": "2026-09-13T13:11:03.790429+00:00",
-    "timestamp_mono": 33734.7616,
+    "timestamp": "2026-09-14T18:03:02.458565+00:00",
+    "timestamp_mono": 15279.471,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -750,18 +719,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000034_130B70",
+    "event_id": "EVT_000034_67F7B5",
     "event_type": "StepUncertain",
     "sequence_num": 34,
     "sequence": 34,
-    "timestamp": "2026-09-13T13:11:03.805970+00:00",
-    "timestamp_mono": 33734.7772,
+    "timestamp": "2026-09-14T18:03:02.490731+00:00",
+    "timestamp_mono": 15279.5032,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -773,18 +741,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000035_5B4088",
+    "event_id": "EVT_000035_265681",
     "event_type": "StepUncertain",
     "sequence_num": 35,
     "sequence": 35,
-    "timestamp": "2026-09-13T13:11:03.821411+00:00",
-    "timestamp_mono": 33734.7926,
+    "timestamp": "2026-09-14T18:03:02.522695+00:00",
+    "timestamp_mono": 15279.5352,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -796,18 +763,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000036_56531B",
+    "event_id": "EVT_000036_C3908F",
     "event_type": "StepUncertain",
     "sequence_num": 36,
     "sequence": 36,
-    "timestamp": "2026-09-13T13:11:03.836854+00:00",
-    "timestamp_mono": 33734.8081,
+    "timestamp": "2026-09-14T18:03:02.554254+00:00",
+    "timestamp_mono": 15279.5667,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -819,18 +785,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000037_D00B4E",
+    "event_id": "EVT_000037_7CF220",
     "event_type": "StepUncertain",
     "sequence_num": 37,
     "sequence": 37,
-    "timestamp": "2026-09-13T13:11:03.852659+00:00",
-    "timestamp_mono": 33734.8239,
+    "timestamp": "2026-09-14T18:03:02.585878+00:00",
+    "timestamp_mono": 15279.5983,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -842,18 +807,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000038_86C4B7",
+    "event_id": "EVT_000038_BC1FBC",
     "event_type": "StepUncertain",
     "sequence_num": 38,
     "sequence": 38,
-    "timestamp": "2026-09-13T13:11:03.868125+00:00",
-    "timestamp_mono": 33734.8393,
+    "timestamp": "2026-09-14T18:03:02.617125+00:00",
+    "timestamp_mono": 15279.6296,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -865,18 +829,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000039_FF4517",
+    "event_id": "EVT_000039_D9AE0E",
     "event_type": "StepUncertain",
     "sequence_num": 39,
     "sequence": 39,
-    "timestamp": "2026-09-13T13:11:03.883981+00:00",
-    "timestamp_mono": 33734.8552,
+    "timestamp": "2026-09-14T18:03:02.649173+00:00",
+    "timestamp_mono": 15279.6616,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -888,18 +851,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000040_63C9F3",
+    "event_id": "EVT_000040_691141",
     "event_type": "StepUncertain",
     "sequence_num": 40,
     "sequence": 40,
-    "timestamp": "2026-09-13T13:11:03.899576+00:00",
-    "timestamp_mono": 33734.8708,
+    "timestamp": "2026-09-14T18:03:02.680742+00:00",
+    "timestamp_mono": 15279.6932,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -911,18 +873,17 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   },
   {
-    "event_id": "EVT_000041_6D6C07",
+    "event_id": "EVT_000041_F8D1C4",
     "event_type": "StepUncertain",
     "sequence_num": 41,
     "sequence": 41,
-    "timestamp": "2026-09-13T13:11:03.915622+00:00",
-    "timestamp_mono": 33734.8868,
+    "timestamp": "2026-09-14T18:03:02.714558+00:00",
+    "timestamp_mono": 15279.727,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -934,8 +895,7 @@
     "payload": {
       "step": "STEP_01",
       "reasons": [
-        "Partial evidence from FINAL_DEMO; composite confidence 0.38 below threshold 0.75",
-        "Missing evidence: ['SPATIAL_PROXIMITY', 'TEMPORAL_PRESENCE', 'EVIDENCE_PATHS_UNSATISFIED']"
+        "Observed action is occluded or below the step confidence threshold"
       ]
     }
   }
