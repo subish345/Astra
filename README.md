@@ -366,6 +366,11 @@ python3 main.py mission --source storage/video/demo.mp4 --camera-profile view_le
 # Launch Mission Console in fullscreen mode
 python3 main.py mission --fullscreen
 
+# Launch continuous background camera and action observation
+python3 main.py mission \
+  --source 0 \
+  --procedure configs/experiments/always_observe.yaml
+
 # Test offline text-to-speech audio guidance across all priority levels
 python3 main.py voice test
 ```
@@ -470,6 +475,20 @@ Located at [`configs/experiments/demo.yaml`](file:///home/subish-loq/Documents/a
 
 > [!NOTE]
 > When the official SIH26174 scientific experiment procedure is released, it can be seamlessly introduced by placing a new YAML file into `configs/experiments/` without altering application source code.
+
+### 8.1 Always Observe (`ALWAYS_OBSERVE_001`)
+
+Located at [`configs/experiments/always_observe.yaml`](file:///home/subish-loq/Documents/astra/configs/experiments/always_observe.yaml), **Always Observe** keeps the camera and local perception pipeline running continuously. It detects astronaut pose, hands, colored experiment objects, tracking, and recognized actions until the operator presses **STOP**. It has no procedural steps and is intended for background monitoring.
+
+```bash
+python3 main.py mission \
+  --source 0 \
+  --procedure configs/experiments/always_observe.yaml
+```
+
+Detected actions are written to the Mission Console timeline, for example `GRASP`, `MOVE`, `PLACE`, and `RELEASE`, with the associated object ID when available.
+
+During `DEMO_EXP_001`, completing Steps 1 and 2 automatically displays a violet virtual work surface. Move `RED_BOX` into that zone; the demo fast-placement rule advances from Step 3 to Step 4 without requiring the box to be perfectly still.
 
 ---
 
@@ -935,6 +954,5 @@ Execute the entire repository automated test suite (326 tests across 23 director
 ```bash
 pytest
 ```
-
 
 

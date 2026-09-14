@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import time
+from pathlib import Path
 from typing import Optional
 
 from PySide6.QtCore import Qt, QTimer
@@ -81,6 +82,7 @@ class MissionConsoleWindow(QMainWindow):
             on_start=self.start_mission,
             on_pause=self.pause_mission,
             on_stop=self.stop_mission,
+            on_experiment_changed=self._on_experiment_changed,
             parent=self,
         )
         self.session_bar.set_camera_profile(self.camera_profile)
@@ -157,6 +159,13 @@ class MissionConsoleWindow(QMainWindow):
         self.status_bar.setStyleSheet(f"background-color: {Colors.BG_PANEL}; color: {Colors.TEXT_MUTED}; font-size: 11px;")
         self.status_bar.showMessage("ASTRA-EA v0.1.0 (Phase 6 Mission Console) | Air-Gapped Local Operation | Optical Source Ready")
         self.setStatusBar(self.status_bar)
+
+    def _on_experiment_changed(self, procedure_path: str) -> None:
+        """Select the procedure used by the next mission run."""
+        if self.worker and self.worker.isRunning():
+            return
+        self.procedure_path = procedure_path
+        self.status_bar.showMessage(f"Selected experiment: {Path(procedure_path).stem}")
 
     def _connect_signals(self) -> None:
         """Connect bridge signals to UI update methods."""

@@ -6,7 +6,10 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Callable, Optional
+
+from core.procedure.validator import load_procedure_file
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
@@ -29,6 +32,7 @@ class SessionBar(QFrame):
         on_start: Optional[Callable[[], None]] = None,
         on_pause: Optional[Callable[[], None]] = None,
         on_stop: Optional[Callable[[], None]] = None,
+        on_experiment_changed: Optional[Callable[[str], None]] = None,
         parent: Optional[QWidget] = None,
     ) -> None:
         super().__init__(parent)
@@ -36,6 +40,7 @@ class SessionBar(QFrame):
         self.on_start = on_start
         self.on_pause = on_pause
         self.on_stop = on_stop
+        self.on_experiment_changed = on_experiment_changed
 
         self._init_ui()
 
@@ -94,7 +99,9 @@ class SessionBar(QFrame):
         layout.addWidget(lbl_exp)
 
         self.cmb_exp = QComboBox()
-        self.cmb_exp.addItem("DEMO_EXP_001 (Material Handling v1.0.0)")
+        self._populate_experiments()
+        if self.on_experiment_changed:
+            self.cmb_exp.currentIndexChanged.connect(self._experiment_changed)
         self.cmb_exp.setStyleSheet(
             f"background-color: {Colors.BG_SURFACE}; color: {Colors.TEXT_PRIMARY}; "
             f"border: 1px solid {Colors.BORDER_DEFAULT}; border-radius: 3px; padding: 3px 8px; font-size: 11px; font-weight: bold;"
@@ -123,6 +130,25 @@ class SessionBar(QFrame):
         if self.on_stop:
             self.btn_stop.clicked.connect(self.on_stop)
         layout.addWidget(self.btn_stop)
+
+    def _populate_experiments(self) -> None:
+        """Discover validated experiment definitions for the selector."""
+        root = Path(__file__).resolve().parents[3]
+        paths = sorted((root / "configs" / "experiments").glob("*.yaml"))
+        for path in paths:
+            try:
+                proc = load_procedure_file(path)
+            except Exception:
+                continue
+            label = f"{proc.experiment.id} ({proc.experiment.name} v{proc.experiment.version})"
+            self.cmb_exp.addItem(label, str(path))
+        if self.cmb_exp.count() == 0:
+            self.cmb_exp.addItem("DEMO_EXP_001 (Material Handling v1.0.0)", "configs/experiments/demo.yaml")
+
+    def _experiment_changed(self, index: int) -> None:
+        path = self.cmb_exp.itemData(index)
+        if path and self.on_experiment_changed:
+            self.on_experiment_changed(str(path))
 
     def set_session_state(self, status: str, run_id: Optional[str] = None) -> None:
         """Update buttons and badges based on session state."""
