@@ -134,8 +134,9 @@ steps:
       zone: "WORK_SURFACE_ZONE"
       max_distance: 0.25
     stabilization:
-      minimum_duration_seconds: 0.75
+      minimum_duration_seconds: 1.0
       maximum_position_delta: 0.05
+    allow_unstable_placement: true
     required_evidence:
       - "OBJECT_DETECTED"
       - "COUPLED_MOTION"
@@ -151,7 +152,7 @@ steps:
       - "STEP_04"
     min_confidence: 0.80
     timeout_seconds: 60.0
-    min_duration_seconds: 3.0
+    min_duration_seconds: 0.0
     repeatable: false
     criticality: "WARNING"
     recovery:

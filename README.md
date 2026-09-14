@@ -4,7 +4,7 @@
 
 > **Tagline:** *"See. Understand. Verify. Assist. Record. — Locally, in Space."*  
 > **Problem Statement:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
-> **System Status:** Phase 21 Completed — Findings-Driven Hardening + Corrective Action + Release Candidate 2 (ASTRA-EA-v1.0.0-RC2) Operational  
+> **System Status:** Phase 22 Completed — MediaPipe 33-Point Pose & Cyber-Aerospace HUD Integration (ASTRA-EA-v1.0.0-RC2+mediapipe) Operational  
 > **Classification:** Engineering-Grade Ground Demonstrator (Not flight qualified or zero-g certified)
 
 ---
@@ -47,7 +47,7 @@ ASTRA-EA is engineered for air-gapped, high-reliability spacecraft operation:
 - **No LLM in Critical Assurance Path:** Procedural validation, sequence verification, and safety decisions are 100% deterministic and model-based.
 - **Local Audio Guidance:** Offline text-to-speech engine (`pyttsx3`) with speech deduplication, priority preemption, and cooldown intervals.
 - **Local Persistence:** ACID-compliant SQLite audit store with Write-Ahead Logging (WAL), persisting assurance decisions, recovery events, step evaluations, and evidence bundles.
-- **Honest Latency & Throughput Metrics:** Measured assurance evaluation latency P50 is **~0.01 ms**; full pipeline compute latency P50 is **~9.2 ms** (~108 FPS processing capacity on CPU).
+- **Honest Latency & Throughput Metrics:** Measured assurance evaluation latency P50 is **~0.01 ms**; full pipeline compute latency P50 is **~21.6–23.8 ms** (~42–46 FPS processing capacity on CPU with MediaPipe 33-keypoint skeletal inference).
 
 ---
 
@@ -57,7 +57,7 @@ ASTRA-EA is engineered for air-gapped, high-reliability spacecraft operation:
 | :--- | :--- | :--- |
 | **Phase 0: Requirements & Baseline** | **COMPLETE** | Architecture, functional requirements, SIH traceability matrix, and risk register in `docs/`. |
 | **Phase 1: Architecture & Foundation** | **COMPLETE** | Modular project structure, YAML config system, SQLite schema (15 tables), health monitoring, and CLI. |
-| **Phase 2: Camera & Perception** | **COMPLETE** | Threaded ingestion, `ColorSpatialObjectDetector`, `YOLOAdapter` (OpenCV DNN), pose estimator, hand detector, and `MultiObjectTracker`. |
+| **Phase 2: Camera & Perception** | **COMPLETE** | Threaded ingestion, `ColorSpatialObjectDetector`, `YOLOAdapter` (OpenCV DNN), `MediaPipePoseEstimator` (33 3D keypoints), `MediaPipeHandDetector` (anatomical left/right), `TemporalPoseSmoother`, and `MultiObjectTracker`. |
 | **Phase 3: Interaction & Activity** | **COMPLETE** | Live camera window, aerospace HUD, keyboard toggles, dual-space hand filter, Haar pose grounding, and interaction/temporal engines verified on `/dev/video0`. |
 | **Phase 4: Procedure Assurance & Evidence** | **COMPLETE** | Procedure Matcher (D4.01), Evidence Engine (D4.02), Step Evaluator (D4.03), Progress Manager (D4.04), Next Step Engine (D4.05), Traceability (D4.07), Visualizer HUD (D4.08), Replay (D4.11), SQLite Audit (D4.13), 109 automated tests passing. |
 | **Phase 5: Camera Robustness & Recovery** | **COMPLETE** | Camera viewpoint profiles (`VIEW_LEFT`, `VIEW_RIGHT`), viewpoint-invariant spatial geometry, anatomical hand grounding, Tri-State Assurance Engine, closed-loop recovery state machine (`DETECT` $\to$ `RESUME`), local TTS voice manager, and 8-scenario cross-view validation matrix (143 automated tests passing). |
@@ -77,6 +77,7 @@ ASTRA-EA is engineered for air-gapped, high-reliability spacecraft operation:
 | **Phase 19: Mission Operations & Ground Segment Integration** | **COMPLETE** | Operational concept (CONOPS), astronaut/ground operator manual, independent astronaut drill, dual-clock ground synchronization, 301 automated tests passing. |
 | **Phase 20: End-to-End Mission Rehearsal & Operational Validation** | **COMPLETE** | 13 mission rehearsal scenarios, authoritative full-length Dress Rehearsal (zero developer intervention), automated scorecard engine, rehearsal findings ledger, 319 automated tests passing. |
 | **Phase 21: Findings-Driven Hardening + Release Candidate 2 (RC2)** | **COMPLETE** | 6 empirical findings resolved via RCA & CAPA, dedicated regression suite in `tests/regression/`, hardening dashboard, RC1 vs RC2 quantitative comparison, release manifest `ASTRA-EA-v1.0.0-RC2`, 326 automated tests passing. |
+| **Phase 22: MediaPipe 33-Point Pose & Cyber-Aerospace HUD** | **COMPLETE** | Google MediaPipe PoseLandmarker Lite (33 3D BlazePose joints), anatomical hand effectors (`MediaPipeHandDetector`), adaptive One-Euro temporal smoothing (`TemporalPoseSmoother`), 33-bone glowing wireframe skeleton, concentric hand reticles, laser targeting guides, alpha-fading trajectory trails, GPU/CPU delegate auto-selection, graceful fallback to legacy Haar/morphology detectors, **340 automated tests passing**. |
 
 
 > [!IMPORTANT]
@@ -116,7 +117,7 @@ astra-ea/
 │   ├── mission/                 # SQLite database engine, migrations, typed event models
 │   ├── models/                  # Phase 7: Model Registry, LearnedObjectDetector, comparator
 │   ├── operations/              # Phases 19-20: Rehearsal framework, precheck, scorecards
-│   ├── perception/              # Phase 2: Ingestion, detectors, pose, hands, tracker
+│   ├── perception/              # Phase 2/22: Ingestion, detectors, MediaPipe pose (33-pt), anatomical hands, tracker, HUD visualizer
 │   ├── procedure/               # Phase 4: Procedure assurance, matcher, evaluator, progress
 │   ├── simulation/              # Phase 8: Simulation engine, simulated camera, faults, matrix
 │   ├── streaming/               # Phase 9: Video (MJPEG) and SSE telemetry streaming
@@ -143,7 +144,7 @@ astra-ea/
 │   ├── evidence/                # Isolated pre/post-event evidence video clips
 │   └── video/                   # Continuous circular video buffers
 │
-├── tests/                       # Automated test suite (326 tests passing across 23 directories)
+├── tests/                       # Automated test suite (340 tests passing across 23 directories)
 │   ├── activity/                # Primitive, composite, confidence, and event tests (11 tests)
 │   ├── audio/                   # Voice architecture and TTS tests (4 tests)
 │   ├── benchmark/               # Benchmark framework tests (4 tests)
@@ -167,7 +168,7 @@ astra-ea/
 │   ├── system/                  # Golden demo, soak, and system regression tests (7 tests)
 │   ├── temporal/                # Temporal buffer and feature extraction tests (2 tests)
 │   ├── training/                # Model training runner and checkpoint tests (3 tests)
-│   └── unit/                    # Core foundation, assurance, evidence, schema tests (98 tests)
+│   └── unit/                    # Core foundation, assurance, evidence, schema, mediapipe adapter tests (106 tests)
 │
 ├── CHANGELOG_HARDENING.md       # Phase 21 Hardening Changelog & RC2 release notes
 ├── main.py                      # Root executable CLI entrypoint
@@ -295,13 +296,16 @@ python3 main.py camera list
 python3 main.py camera test --source 0 --frames 30
 ```
 
-### 7.3 Perception Pipeline (Phase 2)
+### 7.3 Perception Pipeline (Phases 2 & 22)
 ```bash
-# Run live perception monitor (Object Detection + Astronaut Pose + Hands + Tracking)
+# Run live perception monitor (Object Detection + 33-Point BlazePose + Anatomical Hands + Tracking)
 python3 main.py perception test --source 0
 
 # Run headless perception benchmark on a video file
 python3 main.py perception test --source storage/video/sample.mp4 --benchmark --no-display
+
+# Run 60-frame benchmark with MediaPipe skeletal overlay
+python3 main.py perception test --source 0 --frames 60 --benchmark
 ```
 
 ### 7.4 Physical Interaction Engine (Phase 3)

@@ -64,7 +64,7 @@ class StepEvaluator:
         # 2. Minimum duration check
         duration = max(0.0, candidate.timestamp_end - candidate.timestamp_start)
         duration_satisfied = True
-        if step.min_duration_seconds > 0.0 and duration < (step.min_duration_seconds * 0.8):
+        if step.min_duration_seconds > 0.0 and duration < step.min_duration_seconds:
             duration_satisfied = False
             reasons.append(
                 f"Observed duration {duration:.2f}s is below required {step.min_duration_seconds:.2f}s"
@@ -81,12 +81,12 @@ class StepEvaluator:
         if step.action_sequence:
             cand_act = candidate.activity_type.upper().strip()
             match_details = candidate.match_details or {}
-            observed_actions = list(match_details.get("primitives", []))
+            observed_actions = [str(a).upper().strip() for a in match_details.get("primitives", [])]
             if cand_act not in observed_actions:
                 observed_actions.append(cand_act)
-            terminal_action = step.action_sequence[-1].upper().strip()
-            # If the activity does not represent either a full sequence or terminal step action
-            if cand_act != terminal_action and not any(act in observed_actions for act in step.action_sequence):
+            expected_sequence = [a.upper().strip() for a in step.action_sequence]
+            observed_iter = iter(observed_actions)
+            if not all(any(observed == expected for observed in observed_iter) for expected in expected_sequence):
                 action_seq_satisfied = False
                 reasons.append(
                     f"Action sequence incomplete: observed {observed_actions}, expected {step.action_sequence}"
@@ -102,7 +102,17 @@ class StepEvaluator:
             )
 
         # 6. Determine StepMatchStatus (VERIFIED, UNCERTAIN, NOT_MATCHED)
-        if req_satisfied and conf_satisfied and duration_satisfied and action_seq_satisfied:
+        # Fast-placement demo rule: entering the virtual work surface is the
+        # completion trigger, even with a small or moving box.
+        fast_virtual_place = (
+            step.id == "STEP_03"
+            and getattr(step, "allow_unstable_placement", False)
+            and bundle.check_requirement("DESTINATION_MATCH")
+        )
+        if fast_virtual_place:
+            status = StepMatchStatus.VERIFIED
+            reasons.append("Virtual work-surface placement accepted (fast demo rule)")
+        elif req_satisfied and conf_satisfied and duration_satisfied and action_seq_satisfied:
             status = StepMatchStatus.VERIFIED
             reasons.append("All required evidence, confidence threshold, and temporal constraints satisfied")
         elif (

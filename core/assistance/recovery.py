@@ -183,15 +183,16 @@ class ClosedLoopRecoveryManager(GuidanceEngine):
             # Astronaut recovers if they released or detached the wrong object,
             # or ceased contact with it
             act_type = activity.activity_type.upper().strip()
-            if act_type in ("RELEASE", "DETACH", "RETRACT", "IDLE"):
+            if act_type in ("RELEASE", "DETACH", "RETRACT") and activity.confidence >= step.min_confidence:
                 recovered = True
-            elif evidence.get_evidence("hand_contact_clearance") and evidence.get_evidence("hand_contact_clearance").verified:
+            elif evidence.check_requirement("CONTACT_CLEARED"):
                 recovered = True
 
         elif reason == DeviationReason.SKIPPED_STEP:
             # Astronaut returns to previous step or stops premature forward action
             act_type = activity.activity_type.upper().strip()
-            if act_type in ("APPROACH", "ASTRONAUT_APPROACH", "IDLE") or step.id == ctx.target_step_id:
+            if (act_type in ("APPROACH", "ASTRONAUT_APPROACH") and step.id == ctx.target_step_id
+                    and evidence.required_satisfied and activity.confidence >= step.min_confidence):
                 recovered = True
 
         elif reason == DeviationReason.INCOMPLETE_ACTION:
@@ -279,4 +280,3 @@ class ClosedLoopRecoveryManager(GuidanceEngine):
 
 # Canonical alias for mission orchestrator
 ClosedLoopRecoveryEngine = ClosedLoopRecoveryManager
-

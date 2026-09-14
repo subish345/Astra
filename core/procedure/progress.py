@@ -106,6 +106,11 @@ class ProcedureProgressManager:
             {"step_id": best_cand.step_id, "score": best_cand.match_score, "activity": best_cand.activity_type},
         )
 
+        # Future candidates remain observations; they cannot bypass the active step.
+        if best_cand.step_id != self.current_step:
+            self.procedure_status = ProcedureStatus.MONITORING
+            return self.get_state()
+
         # 2. Check if candidate step is already verified (Deduplication)
         step_def = self._step_map.get(best_cand.step_id)
         if step_def and best_cand.step_id in self._verified_step_ids and not step_def.repeatable:
@@ -266,4 +271,3 @@ class ProcedureProgressManager:
                 reasons=["Step verified by orchestrator"],
             )
             self._handle_step_verified(step, evaluation)
-

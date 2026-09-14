@@ -103,6 +103,16 @@ class TriStateAssuranceEngine(AssuranceEngine):
         # ----------------------------------------------------------------------
         # 2. SKIPPED STEP / WRONG ORDER DETECTION
         # ----------------------------------------------------------------------
+        is_occluded = bool(evidence.metadata.get("occluded") or evidence.metadata.get("is_occluded") or activity.metadata.get("occluded"))
+        if is_occluded or activity.confidence < current_step.min_confidence:
+            return AssuranceDecision(
+                experiment_id=procedure.id if procedure else "DEMO_EXP_001",
+                step_id=current_step.id, sequence=current_step.sequence,
+                decision=DecisionType.UNCERTAIN, confidence=activity.confidence,
+                reason="Insufficient visibility or activity confidence for a conclusive decision",
+                reasons=["Observed action is occluded or below the step confidence threshold"],
+                camera_profile=cam_prof_str, session_id=active_session,
+            )
         if procedure and current_step.id not in completed_ids:
             matching_future_step = self._detect_premature_future_step(activity, evidence, procedure, current_step, completed_ids)
             if matching_future_step:
@@ -234,7 +244,19 @@ class TriStateAssuranceEngine(AssuranceEngine):
         # 7. TRI-STATE DECISION: VERIFIED vs UNCERTAIN
         # ----------------------------------------------------------------------
         # Verification requires all mandatory evidence, confidence threshold, and no active occlusion
-        if req_satisfied and conf_satisfied and not is_occluded:
+        from core.procedure.matcher import ProcedureMatcher
+        action = activity.activity_type.upper().strip()
+        compatible_actions = ProcedureMatcher.ACTIVITY_ACTION_MAP.get(action, [action])
+        expected_actions = [a.upper().strip() for a in current_step.expected_actions]
+        action_satisfied = not expected_actions or any(a in expected_actions for a in compatible_actions)
+        observed_primitives = getattr(activity, "primitives", []) or activity.metadata.get("primitives", [])
+        if current_step.action_sequence and observed_primitives:
+            expected_sequence = [a.upper() for a in current_step.action_sequence]
+            observed_sequence = [str(a).upper() for a in observed_primitives]
+            action_satisfied = all(a in observed_sequence for a in expected_sequence)
+        temporal_item = evidence.items.get("TEMPORAL_CONSISTENCY")
+        duration_satisfied = temporal_item is None or temporal_item.verified
+        if req_satisfied and conf_satisfied and not is_occluded and action_satisfied and duration_satisfied:
             return AssuranceDecision(
                 experiment_id=procedure.id if procedure else "DEMO_EXP_001",
                 step_id=current_step.id,

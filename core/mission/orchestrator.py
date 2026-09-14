@@ -43,6 +43,7 @@ from core.optimization.scheduler import AdaptiveInferenceScheduler, SchedulerCad
 from core.perception.detection.color_adapter import ColorSpatialObjectDetector
 from core.perception.hands.adapter import LightweightHandDetector
 from core.perception.pose.adapter import LightweightPoseEstimator
+from core.perception.factory import create_pose_and_hand_detectors
 from core.perception.tracking.tracker import MultiObjectTracker
 from core.procedure.evaluator import StepEvaluator
 from core.procedure.matcher import ProcedureMatcher
@@ -108,8 +109,9 @@ class MissionOrchestrator:
 
         # Pipeline Engines
         self.detector = ColorSpatialObjectDetector()
-        self.pose_estimator = LightweightPoseEstimator()
-        self.hand_detector = LightweightHandDetector()
+        # Use the production MediaPipe 33-point pose/hand path when its model
+        # asset is available, with an explicit degraded fallback otherwise.
+        self.pose_estimator, self.hand_detector = create_pose_and_hand_detectors()
         self.tracker = MultiObjectTracker()
         self.interaction_engine = SpatialInteractionEngine()
         self.temporal_buffer = TemporalBuffer(window_seconds=2.0)

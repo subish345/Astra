@@ -83,9 +83,11 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
         )
 
         # 1. OBJECT_DETECTED
-        obj_track = next((t for t in tracks if t.class_name == target_obj and t.is_active), None)
+        obj_track = next((t for t in tracks if t.class_name == target_obj and t.is_active and t.lost_frames == 0), None)
         obj_conf = obj_track.confidence if obj_track else 0.0
-        if not obj_track and activity and activity.metadata and activity.metadata.get("object_detected") is not None:
+        if perception_state is not None:
+            obj_detected = obj_track is not None
+        elif not obj_track and activity and activity.metadata and activity.metadata.get("object_detected") is not None:
             obj_detected = bool(activity.metadata.get("object_detected"))
             obj_conf = 0.90 if obj_detected else 0.0
         else:
@@ -162,14 +164,13 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
         in_contact = False
         contact_conf = 0.0
         for ev in interactions:
+            if target_obj and ev.target_object_id != target_obj:
+                continue
             if ev.state in (InteractionState.CONTACT, InteractionState.GRASPING, InteractionState.HOLDING, InteractionState.MOVING):
                 in_contact = True
                 contact_conf = max(contact_conf, ev.confidence)
-            elif ev.spatial and ev.spatial.normalized_distance <= self.contact_distance_threshold:
-                in_contact = True
-                contact_conf = max(contact_conf, 0.75)
 
-        if not in_contact and activity and activity.metadata and activity.metadata.get("in_contact") is not None:
+        if not in_contact and raw_interactions is None and activity and activity.metadata and activity.metadata.get("in_contact") is not None:
             in_contact = bool(activity.metadata.get("in_contact"))
             contact_conf = 0.90 if in_contact else 0.10
         elif not in_contact and raw_interactions is None and perception_state is None and activity:
@@ -299,7 +300,9 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
             if p_box and o_box:
                 p_center = p_box.center if hasattr(p_box, "center") else ((p_box[0] + p_box[2]) / 2.0, (p_box[1] + p_box[3]) / 2.0)
                 o_center = o_box.center if hasattr(o_box, "center") else ((o_box[0] + o_box[2]) / 2.0, (o_box[1] + o_box[3]) / 2.0)
-                proximity_dist = float(np.hypot(p_center[0] - o_center[0], p_center[1] - o_center[1]))
+                scale_x = perception_state.frame_width or 1
+                scale_y = perception_state.frame_height or 1
+                proximity_dist = float(np.hypot((p_center[0] - o_center[0]) / scale_x, (p_center[1] - o_center[1]) / scale_y))
                 if proximity_dist <= 0.35:
                     proximity_ok = True
                     proximity_conf = max(0.60, 1.0 - proximity_dist)
@@ -350,6 +353,7 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
             dest_rule = step.destination
             dest_obj_name = dest_rule.object
             max_d = dest_rule.max_distance
+            zone_checked = False
             if dest_obj_name and obj_track:
                 dest_track = next((t for t in tracks if t.class_name == dest_obj_name and t.is_active), None)
                 if dest_track and obj_track.bbox and dest_track.bbox:
@@ -357,25 +361,39 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
                     d_box = dest_track.bbox
                     o_center = o_box.center if hasattr(o_box, "center") else ((o_box[0] + o_box[2]) / 2.0, (o_box[1] + o_box[3]) / 2.0)
                     d_center = d_box.center if hasattr(d_box, "center") else ((d_box[0] + d_box[2]) / 2.0, (d_box[1] + d_box[3]) / 2.0)
-                    d_dist = float(np.hypot(o_center[0] - d_center[0], o_center[1] - d_center[1]))
+                    scale_x = perception_state.frame_width if perception_state and perception_state.frame_width else 1
+                    scale_y = perception_state.frame_height if perception_state and perception_state.frame_height else 1
+                    d_dist = float(np.hypot((o_center[0] - d_center[0]) / scale_x, (o_center[1] - d_center[1]) / scale_y))
                     if d_dist <= max_d:
                         dest_match = True
                         dest_conf = 0.92
                     else:
                         dest_match = False
                         dest_conf = max(0.10, 1.0 - d_dist)
+            # The demo work surface is a virtual zone, so it has no physical
+            # detection track. Match the RED_BOX center against that zone.
+            if not dest_match and obj_track and dest_rule.zone == "WORK_SURFACE_ZONE":
+                zone_checked = True
+                frame_w = perception_state.frame_width if perception_state and perception_state.frame_width else 0
+                frame_h = perception_state.frame_height if perception_state and perception_state.frame_height else 0
+                if frame_w and frame_h:
+                    cx, cy = obj_track.bbox.center
+                    nx, ny = cx / frame_w, cy / frame_h
+                    inside = 0.25 <= nx <= 0.75 and 0.40 <= ny <= 0.85
+                    dest_match = inside
+                    dest_conf = 0.92 if inside else 0.10
             if activity and activity.metadata and "destination_match" in activity.metadata:
                 dest_match = bool(activity.metadata["destination_match"])
                 dest_conf = 0.90 if dest_match else 0.15
-            elif not dest_match and activity and activity.activity_name in ("PLACE", "PLACE_OBJECT"):
+            elif not dest_match and not zone_checked and activity and activity.activity_name in ("PLACE", "PLACE_OBJECT"):
                 dest_match = True
                 dest_conf = activity.confidence
         elif activity and activity.metadata and "destination_match" in activity.metadata:
             dest_match = bool(activity.metadata["destination_match"])
             dest_conf = 0.90 if dest_match else 0.15
         else:
-            dest_match = True
-            dest_conf = 0.85
+            dest_match = False
+            dest_conf = 0.0
         bundle.add_item(
             EvidenceItem(
                 evidence_type=EvidenceType.DESTINATION_MATCH,
@@ -408,8 +426,8 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
         bundle.add_item(
             EvidenceItem(
                 evidence_type=EvidenceType.OBJECT_STABILIZED,
-                verified=stab_ok,
-                confidence=stab_conf,
+                verified=stab_ok and (perception_state is None or obj_track is not None),
+                confidence=stab_conf if perception_state is None or obj_track is not None else 0.0,
                 details={"is_moving": obj_moving, "destination_matched": dest_match},
             )
         )
@@ -418,8 +436,6 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
         pose_ok = False
         if perception_state and perception_state.poses:
             pose_ok = len(perception_state.poses[0].keypoints) >= 4
-        else:
-            pose_ok = True  # Default permissive when running without full pose
         bundle.add_item(
             EvidenceItem(
                 evidence_type=EvidenceType.POSE_CONSISTENCY,
@@ -496,6 +512,14 @@ class MultimodalEvidenceEngine(BaseEvidenceEngine):
         # 1. Standard required evidence list (normalized)
         for req in step.required_evidence:
             canonical_req = normalize_evidence_name(req)
+            if (
+                canonical_req == "OBJECT_STABILIZED"
+                and getattr(step, "allow_unstable_placement", False)
+                and bundle.check_requirement("DESTINATION_MATCH")
+            ):
+                # Placement dwell in the virtual surface is sufficient for the
+                # demo; stillness remains visible as telemetry but is advisory.
+                continue
             if not bundle.check_requirement(canonical_req):
                 missing.append(canonical_req)
 

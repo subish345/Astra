@@ -86,6 +86,17 @@ class Detection:
     def center(self) -> Tuple[float, float]:
         return self.bbox.center
 
+    @property
+    def semantic_category(self) -> str:
+        """Stable semantic category used when all experiment containers are grouped."""
+        if self.class_name.upper() in {"RED_BOX", "YELLOW_BOX", "MAIN_BOX"}:
+            return "SPECIMEN_CONTAINER"
+        return self.class_name.upper()
+
+    @property
+    def is_specimen_container(self) -> bool:
+        return self.semantic_category == "SPECIMEN_CONTAINER"
+
 
 @dataclass
 class PoseObservation:
@@ -143,6 +154,22 @@ class Track:
     def center(self) -> Tuple[float, float]:
         return self.bbox.center
 
+    @property
+    def label(self) -> str:
+        """Alias for class_name for UI compatibility."""
+        return self.class_name
+
+    @property
+    def semantic_category(self) -> str:
+        """Group all recognized experiment containers under one semantic label."""
+        if self.class_name.upper() in {"RED_BOX", "YELLOW_BOX", "MAIN_BOX"}:
+            return "SPECIMEN_CONTAINER"
+        return self.class_name.upper()
+
+    @property
+    def is_specimen_container(self) -> bool:
+        return self.semantic_category == "SPECIMEN_CONTAINER"
+
 
 @dataclass
 class LatencyBreakdown:
@@ -162,6 +189,8 @@ class PerceptionState:
     timestamp: float
     frame_id: int
     source_id: str
+    frame_width: int = 0
+    frame_height: int = 0
     persons: List[PoseObservation] = field(default_factory=list)
     objects: List[Detection] = field(default_factory=list)
     hands: List[HandObservation] = field(default_factory=list)

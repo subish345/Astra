@@ -223,7 +223,9 @@ class MissionConsoleWindow(QMainWindow):
     def stop_mission(self) -> None:
         """Stop background execution."""
         if self.worker:
-            self.worker.stop()
+            if not self.worker.stop():
+                self.session_bar.set_session_state("STOPPING", self.session_id)
+                return
             self.worker = None
         self.session_bar.set_session_state("READY", self.session_id)
 
@@ -236,6 +238,17 @@ class MissionConsoleWindow(QMainWindow):
     # =========================================================================
 
     def _on_frame_ready(self, frame_np, perception_state) -> None:
+        panel = self.console_view.video_panel
+        if self.worker:
+            config = self.worker.overlay_config
+            config.show_pose = panel.show_pose
+            config.show_hands = panel.show_hands
+            config.show_boxes = panel.show_objects
+            config.show_tracks = panel.show_tracking
+            config.show_interactions = panel.show_interaction
+            config.show_hud = panel.show_debug
+            config.show_confidence = panel.show_debug
+            config.show_laser_guides = panel.show_debug
         self.console_view.video_panel.update_frame(frame_np, perception_state)
 
     def _on_step_progress(self, proc_state) -> None:
@@ -262,8 +275,8 @@ class MissionConsoleWindow(QMainWindow):
                 expected_action=f"VERIFYING {curr_step}",
                 status=self.state.step_statuses.get(curr_step, "IN_PROGRESS"),
             )
-        if next_step:
-            self.console_view.step_panel.update_next_action(f"Prepare for {next_step.replace('_', ' ').title()}")
+        if curr_step:
+            self.console_view.step_panel.update_next_action(f"Complete {curr_step.replace('_', ' ').title()}")
         elif status_name == "COMPLETED":
             self.console_view.step_panel.update_next_action("EXPERIMENT COMPLETE", is_completed=True)
 
@@ -359,6 +372,9 @@ class MissionConsoleWindow(QMainWindow):
     def closeEvent(self, event) -> None:
         """Clean shutdown upon window close."""
         self.stop_mission()
+        if self.worker is not None and self.worker.isRunning():
+            event.ignore()
+            return
         if self.voice_manager:
             self.voice_manager.shutdown()
         event.accept()

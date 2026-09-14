@@ -33,6 +33,11 @@ class BenchmarkReport:
     gpu_memory_used_mb: Optional[int]
     accuracy_status: str = "NOT EVALUATED (Requires ground-truth annotated dataset)"
 
+    @property
+    def throughput_fps(self) -> float:
+        """Alias for avg_fps for CLI compatibility."""
+        return self.avg_fps
+
     def format_text(self) -> str:
         """Format human-readable benchmark summary."""
         lines = [

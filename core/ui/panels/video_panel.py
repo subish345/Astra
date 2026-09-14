@@ -131,8 +131,9 @@ class VideoPanel(QFrame):
         self.lbl_ent_red = QLabel("Red Box: —")
         self.lbl_ent_yellow = QLabel("Yellow Box: —")
         self.lbl_ent_main = QLabel("Work Station: —")
+        self.lbl_ent_specimen = QLabel("Specimen Container: —")
 
-        for lbl in (self.lbl_ent_astro, self.lbl_ent_red, self.lbl_ent_yellow, self.lbl_ent_main):
+        for lbl in (self.lbl_ent_astro, self.lbl_ent_red, self.lbl_ent_yellow, self.lbl_ent_main, self.lbl_ent_specimen):
             lbl.setStyleSheet(f"font-size: 11px; color: {Colors.TEXT_SECONDARY};")
             ent_layout.addWidget(lbl)
         ent_layout.addStretch()
@@ -162,6 +163,8 @@ class VideoPanel(QFrame):
             return
 
         h, w, ch = frame.shape
+        if perception_state:
+            self.lbl_camera_info.setText(f"CAMERA: {perception_state.source_id} | {w}x{h}")
         bytes_per_line = ch * w
 
         # OpenCV BGR to RGB conversion
@@ -178,8 +181,8 @@ class VideoPanel(QFrame):
 
         # Update perception entity statuses if state provided
         if perception_state and hasattr(perception_state, "tracks"):
-            tracked_labels = {t.label.upper() for t in perception_state.tracks}
-            has_person = bool(hasattr(perception_state, "pose") and perception_state.pose)
+            tracked_labels = {t.class_name.upper() for t in perception_state.tracks if t.is_active and t.lost_frames == 0}
+            has_person = bool(getattr(perception_state, "poses", []))
 
             self.lbl_ent_astro.setText(f"Astronaut: {'✓' if has_person else '—'}")
             self.lbl_ent_astro.setStyleSheet(f"font-size: 11px; color: {Colors.GREEN_BRIGHT if has_person else Colors.TEXT_MUTED}; font-weight: bold;")
@@ -192,9 +195,13 @@ class VideoPanel(QFrame):
             self.lbl_ent_yellow.setText(f"Yellow Box: {'✓' if has_yellow else '—'}")
             self.lbl_ent_yellow.setStyleSheet(f"font-size: 11px; color: {Colors.GREEN_BRIGHT if has_yellow else Colors.TEXT_MUTED}; font-weight: bold;")
 
-            has_main = any("MAIN" in l or "BOX" in l for l in tracked_labels)
+            has_main = "MAIN_BOX" in tracked_labels
             self.lbl_ent_main.setText(f"Work Station: {'✓' if has_main else '—'}")
             self.lbl_ent_main.setStyleSheet(f"font-size: 11px; color: {Colors.GREEN_BRIGHT if has_main else Colors.TEXT_MUTED}; font-weight: bold;")
+
+            has_specimen = bool(tracked_labels & {"RED_BOX", "YELLOW_BOX", "MAIN_BOX"})
+            self.lbl_ent_specimen.setText(f"Specimen Container: {'✓' if has_specimen else '—'}")
+            self.lbl_ent_specimen.setStyleSheet(f"font-size: 11px; color: {Colors.GREEN_BRIGHT if has_specimen else Colors.TEXT_MUTED}; font-weight: bold;")
 
     def set_camera_profile(self, profile_name: str, source_name: str = "0") -> None:
         """Update camera telemetry header."""

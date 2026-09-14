@@ -38,7 +38,7 @@ def validate_experiment_definition(exp: ExperimentDefinition) -> List[str]:
         object_ids.add(obj.id)
 
     # 2. Steps validation
-    if not exp.steps:
+    if not exp.steps and not exp.continuous_observation:
         errors.append("Experiment definition contains no procedure steps.")
         return errors
 

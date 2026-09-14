@@ -11,10 +11,12 @@ execution completely from the Qt GUI main thread.
 from __future__ import annotations
 
 import time
+from collections import deque
 from pathlib import Path
 from typing import Optional
 
 import numpy as np
+import psutil
 from PySide6.QtCore import QThread
 
 from core.activity.composite import CompositeActivityEngine
@@ -37,10 +39,11 @@ from core.perception.detection.color_adapter import ColorSpatialObjectDetector
 from core.perception.events import PerceptionEventBus
 from core.perception.hands.adapter import LightweightHandDetector
 from core.perception.pipeline import PerceptionPipeline
+from core.perception.factory import create_pose_and_hand_detectors
 from core.perception.pose.adapter import LightweightPoseEstimator
 from core.perception.scheduler import PerceptionScheduler, SchedulerConfig
 from core.perception.tracking.tracker import MultiObjectTracker
-from core.perception.visualizer import PerceptionVisualizer
+from core.perception.visualizer import PerceptionVisualizer, OverlayConfig
 from core.procedure.progress import ProcedureProgressManager
 from core.procedure.validator import load_procedure_file
 from core.procedure.visualizer import ProcedureVisualizer
@@ -77,11 +80,32 @@ class MissionPipelineWorker(QThread):
 
         self.db: Optional[DatabaseManager] = None
         self.source = None
+        self.overlay_config = OverlayConfig(show_confidence=False, show_hud=False, show_laser_guides=False)
 
     def run(self) -> None:
         """Main execution thread loop."""
         self._is_running = True
-        self._stop_requested = False
+        self._terminal_status = "ABORTED"
+        try:
+            self._run_pipeline()
+        except Exception as exc:
+            self._terminal_status = "FAILED"
+            logger.exception("Mission worker initialization or execution failed")
+            self.bridge.sig_timeline_event.emit("SYSTEM", "Worker Error", str(exc), "DANGER")
+        finally:
+            try:
+                if self.source:
+                    self.source.stop()
+                if self.db:
+                    self.db.complete_experiment_run(self.session_id, status=self._terminal_status)
+            finally:
+                if self.db:
+                    self.db.close()
+                self._is_running = False
+                self.bridge.sig_session_status.emit(self._terminal_status)
+
+    def _run_pipeline(self) -> None:
+        """Execute a session; run() owns cleanup, including initialization failures."""
         self.bridge.sig_session_status.emit("INITIALIZING")
 
         root = get_project_root()
@@ -92,6 +116,7 @@ class MissionPipelineWorker(QThread):
         try:
             procedure = load_procedure_file(proc_path)
         except Exception as exc:
+            self._terminal_status = "FAILED"
             logger.error("Failed to load procedure file: %s", exc)
             self.bridge.sig_timeline_event.emit("SYSTEM", "Procedure Load Failed", str(exc), "DANGER")
             self.bridge.sig_session_status.emit("FAILED")
@@ -121,15 +146,16 @@ class MissionPipelineWorker(QThread):
             self.source = VideoFileSource(file_path=src_path)
 
         if not self.source.start():
+            self._terminal_status = "FAILED"
             logger.error("Failed to start camera source: %s", self.camera_source_str)
             self.bridge.sig_timeline_event.emit("SYSTEM", "Camera Source Failed", f"Source {self.camera_source_str} failed to open.", "DANGER")
             self.bridge.sig_session_status.emit("FAILED")
             return
 
         # Initialize Pipeline Components
-        detector = ColorSpatialObjectDetector(min_area=500.0)
-        pose_est = LightweightPoseEstimator()
-        hand_det = LightweightHandDetector()
+        # Small specimen containers must remain detectable inside the virtual zone.
+        detector = ColorSpatialObjectDetector(min_area=100.0)
+        pose_est, hand_det = create_pose_and_hand_detectors()
         tracker = MultiObjectTracker(iou_threshold=0.2)
         scheduler = PerceptionScheduler(SchedulerConfig())
         event_bus = PerceptionEventBus()
@@ -153,7 +179,8 @@ class MissionPipelineWorker(QThread):
         assurance_engine = TriStateAssuranceEngine(default_camera_profile=profile.id, default_session_id=self.session_id)
         recovery_manager = ClosedLoopRecoveryManager()
         progress_manager = ProcedureProgressManager(procedure=procedure, run_id=self.session_id)
-        visualizer = PerceptionVisualizer()
+        observe_only = bool(getattr(procedure, "continuous_observation", False))
+        visualizer = PerceptionVisualizer(self.overlay_config)
         proc_visualizer = ProcedureVisualizer(procedure=procedure)
 
         step_map = {s.id: s for s in procedure.steps}
@@ -194,7 +221,7 @@ class MissionPipelineWorker(QThread):
                     run_id=self.session_id,
                     message=f"Mission Started: {procedure.experiment.name}",
                     severity=EventSeverity.INFO,
-                    payload={"total_steps": len(procedure.steps), "first_step_id": procedure.steps[0].id},
+                    payload={"total_steps": len(procedure.steps), "first_step_id": procedure.steps[0].id if procedure.steps else None},
                 )
             except Exception as exc:
                 logger.warning("Could not start event stream server: %s", exc)
@@ -202,16 +229,21 @@ class MissionPipelineWorker(QThread):
         self.bridge.sig_session_status.emit("RUNNING")
         self.bridge.sig_timeline_event.emit("SYSTEM", "Mission Started", f"Run {self.session_id} initialized with {procedure.experiment.name}", "INFO")
 
-        # Announce first step
-        first_step = procedure.steps[0]
-        first_msg = recovery_manager.get_step_guidance(first_step)
-        if self.voice_manager:
-            self.voice_manager.speak(first_msg.text)
-        self.bridge.sig_voice.emit(first_msg.text, "GUIDANCE")
-        self.bridge.sig_timeline_event.emit("STEP", f"Step 01 Active: {first_step.name}", first_step.description or "", "INFO")
+        # Announce first step, unless this is the continuous Always Observe mode.
+        if not observe_only:
+            first_step = procedure.steps[0]
+            first_msg = recovery_manager.get_step_guidance(first_step)
+            if self.voice_manager:
+                self.voice_manager.speak(first_msg.text)
+            self.bridge.sig_voice.emit(first_msg.text, "GUIDANCE")
+            self.bridge.sig_timeline_event.emit("STEP", f"Step 01 Active: {first_step.name}", first_step.description or "", "INFO")
 
         frames_processed = 0
-        latencies = []
+        latencies = deque(maxlen=120)
+        process = psutil.Process()
+        process.cpu_percent()
+        processing_started = time.monotonic()
+        camera_failed = False
 
         try:
             while not self._stop_requested:
@@ -223,8 +255,22 @@ class MissionPipelineWorker(QThread):
                 if fd is None:
                     if not getattr(self.source, "is_active", True):
                         break
+                    if not camera_failed:
+                        camera_failed = True
+                        self.bridge.sig_session_status.emit("CAMERA_FAILURE")
+                        self.bridge.sig_timeline_event.emit("SYSTEM", "Camera Failure", "Verification paused: no valid frame.", "DANGER")
                     time.sleep(0.005)
                     continue
+
+                if camera_failed:
+                    camera_failed = False
+                    pipeline.reset()
+                    temporal_buffer = TemporalBuffer(window_seconds=cfg.activity.temporal_window_seconds)
+                    interaction_engine = SpatialInteractionEngine(cfg.interaction)
+                    evidence_engine = MultimodalEvidenceEngine()
+                    primitive_engine = PrimitiveActivityEngine(cfg.activity)
+                    composite_engine = CompositeActivityEngine()
+                    self.bridge.sig_session_status.emit("RUNNING")
 
                 packet = FramePacket.from_frame_data(fd, capture_fps=self.source.get_fps())
                 t0 = time.perf_counter()
@@ -250,6 +296,14 @@ class MissionPipelineWorker(QThread):
                 curr_act = composites[0] if composites else (primitives[0] if primitives else None)
                 curr_step_id = progress_manager.current_step
                 step_def = step_map.get(curr_step_id) if curr_step_id else None
+
+                if observe_only and curr_act:
+                    self.bridge.sig_timeline_event.emit(
+                        "OBSERVATION",
+                        curr_act.activity_name,
+                        f"Detected action on {curr_act.target_object_id or 'NONE'}",
+                        "INFO",
+                    )
 
                 bundle = evidence_engine.evaluate(
                     activity=curr_act,
@@ -289,7 +343,7 @@ class MissionPipelineWorker(QThread):
                                 status="VERIFIED",
                                 severity=EventSeverity.INFO,
                                 message=f"Step {step_def.id} Verified",
-                                payload={"step_index": proc_state.current_step_index, "activity": curr_act.activity_name if curr_act else "IDLE"},
+                                payload={"step_index": len(proc_state.completed_steps), "activity": curr_act.activity_name if curr_act else "IDLE"},
                             )
                     elif decision.is_uncertain:
                         self.bridge.sig_timeline_event.emit("ASSURANCE", f"{step_def.id} Uncertain", "Verification paused due to low visibility or partial occlusion", "WARNING")
@@ -307,7 +361,21 @@ class MissionPipelineWorker(QThread):
                             )
                     elif decision.is_deviation:
                         self.bridge.sig_deviation.emit(decision, step_def)
-                        self.bridge.sig_timeline_event.emit("DEVIATION", f"Deviation: {decision.deviation_type.name if decision.deviation_type else 'ERROR'}", "; ".join(decision.reasons), "DANGER")
+                        # AssuranceDecision exposes deviation_reason (the UI used to
+                        # read the non-existent deviation_type attribute here, which
+                        # crashed the worker exactly when a wrong object was found).
+                        deviation_reason = getattr(decision, "deviation_reason", None)
+                        deviation_name = (
+                            deviation_reason.name
+                            if hasattr(deviation_reason, "name")
+                            else (str(deviation_reason) if deviation_reason else "ERROR")
+                        )
+                        self.bridge.sig_timeline_event.emit(
+                            "DEVIATION",
+                            f"Deviation: {deviation_name}",
+                            "; ".join(decision.reasons),
+                            "DANGER",
+                        )
                         messages = recovery_manager.handle_decision(decision, step_def)
                         for msg in messages:
                             if self.voice_manager:
@@ -327,12 +395,12 @@ class MissionPipelineWorker(QThread):
                                 severity=EventSeverity.DANGER,
                                 message="; ".join(decision.reasons) if decision.reasons else "Deviation detected",
                                 payload={
-                                    "deviation_type": decision.deviation_type.name if decision.deviation_type else "UNKNOWN",
+                                    "deviation_type": deviation_name,
                                     "recovery_action": messages[0].text if messages else "",
                                 },
                             )
 
-                    elif recovery_manager.is_recovering:
+                    if recovery_manager.is_recovering and not decision.is_deviation:
                         rec_done, rec_msg = recovery_manager.observe_corrective_action(curr_act, bundle, step_def)
                         if rec_done and rec_msg:
                             if self.voice_manager:
@@ -352,6 +420,7 @@ class MissionPipelineWorker(QThread):
                                     severity=EventSeverity.INFO,
                                     message="Recovery Verified",
                                 )
+                            recovery_manager.complete_recovery()
                 else:
                     proc_state = progress_manager.get_state()
                     self.bridge.sig_step_progress.emit(proc_state)
@@ -366,13 +435,17 @@ class MissionPipelineWorker(QThread):
                     activity_name=curr_act.activity_name if curr_act else "IDLE",
                     activity_confidence=curr_act.confidence if curr_act else 0.0,
                 )
-                vis = proc_visualizer.draw_procedure_hud(
-                    vis,
-                    progress_manager.get_state() if hasattr(progress_manager, "get_state") else progress_manager,
-                    camera_profile=profile.id,
-                    assurance_decision=decision if (curr_act and step_def) else None,
-                    recovery_state=recovery_manager.state.name if (recovery_manager and hasattr(recovery_manager, "state")) else None,
-                )
+                # The operator placement target is operational guidance, not a
+                # debug overlay: show it automatically once STEP_02 is complete.
+                vis = proc_visualizer.draw_virtual_work_surface(vis, proc_state)
+                if self.overlay_config.show_hud:
+                    vis = proc_visualizer.draw_procedure_hud(
+                        vis,
+                        progress_manager.get_state(),
+                        camera_profile=profile.id,
+                        assurance_decision=decision if (curr_act and step_def) else None,
+                        recovery_state=recovery_manager.current_state.name,
+                    )
 
                 lat_ms = (time.perf_counter() - t0) * 1000.0
                 latencies.append(lat_ms)
@@ -387,19 +460,22 @@ class MissionPipelineWorker(QThread):
 
                 # Periodically emit health telemetry
                 if frames_processed % 15 == 0:
-                    mean_lat = float(np.mean(latencies[-30:])) if latencies else 10.0
-                    fps_val = 1000.0 / mean_lat if mean_lat > 0 else 30.0
+                    mean_lat = float(np.mean(list(latencies)[-30:])) if latencies else 0.0
+                    fps_val = frames_processed / max(0.001, time.monotonic() - processing_started)
                     self.bridge.sig_health.emit({
-                        "fps": min(fps_val, 30.0),
+                        "fps": fps_val,
                         "latency_ms": mean_lat,
-                        "cpu_pct": 20.0,
-                        "ram_mb": 420.0,
+                        "cpu_pct": process.cpu_percent(),
+                        "ram_mb": process.memory_info().rss / (1024 * 1024),
                         "frames": frames_processed,
                     })
                     if event_server:
-                        event_server.set_health_metrics({"fps": round(min(fps_val, 30.0), 1), "latency_ms": round(mean_lat, 2)})
+                        event_server.set_health_metrics({"fps": round(fps_val, 1), "latency_ms": round(mean_lat, 2)})
 
-                if progress_manager.get_state().status.value == "COMPLETED":
+                proc_st = progress_manager.get_state()
+                st_val = getattr(proc_st, "procedure_status", getattr(proc_st, "status", None))
+                if getattr(st_val, "value", str(st_val)) == "COMPLETED":
+                    self._terminal_status = "COMPLETED"
                     self.bridge.sig_session_status.emit("COMPLETED")
                     self.bridge.sig_timeline_event.emit("SYSTEM", "Procedure Completed", "All procedure steps verified successfully.", "SUCCESS")
                     if event_server:
@@ -414,6 +490,7 @@ class MissionPipelineWorker(QThread):
                     break
 
         except Exception as exc:
+            self._terminal_status = "FAILED"
             logger.error("Exception in mission worker loop: %s", exc)
             self.bridge.sig_timeline_event.emit("SYSTEM", "Worker Error", str(exc), "DANGER")
         finally:
@@ -421,17 +498,6 @@ class MissionPipelineWorker(QThread):
                 video_server.stop()
             if event_server:
                 event_server.stop()
-            if self.source:
-                self.source.stop()
-            if self.db:
-                if hasattr(self.db, "complete_experiment_run"):
-                    self.db.complete_experiment_run(run_id=self.session_id, status="COMPLETED")
-                elif hasattr(self.db, "end_experiment_run"):
-                    self.db.end_experiment_run(run_id=self.session_id, status="COMPLETED")
-                elif hasattr(self.db, "finish_experiment_run"):
-                    self.db.finish_experiment_run(run_id=self.session_id, status="COMPLETED")
-            self._is_running = False
-            self.bridge.sig_session_status.emit("READY")
 
     def pause(self) -> None:
         """Pause worker processing."""
@@ -441,7 +507,7 @@ class MissionPipelineWorker(QThread):
         """Resume worker processing."""
         self._is_paused = False
 
-    def stop(self) -> None:
+    def stop(self) -> bool:
         """Request worker termination."""
         self._stop_requested = True
-        self.wait(timeout=2000)
+        return self.wait(2000)

@@ -132,6 +132,11 @@ class ProcedureState:
     last_evaluation: Optional[StepEvaluation] = None
     timestamp: float = 0.0
 
+    @property
+    def status(self) -> ProcedureStatus:
+        """Alias for procedure_status for UI worker compatibility."""
+        return self.procedure_status
+
     def to_dict(self) -> Dict[str, Any]:
         return {
             "experiment_id": self.experiment_id,

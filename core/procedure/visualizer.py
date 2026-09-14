@@ -217,3 +217,33 @@ class ProcedureVisualizer:
         cv2.putText(vis, f"NEXT:    {next_id}", (px + 10, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 215, 255), 1)
 
         return vis
+
+    def draw_virtual_work_surface(self, frame: np.ndarray, state: Any) -> np.ndarray:
+        """Draw the configured placement zone after approach and grasp are verified."""
+        if hasattr(state, "get_state"):
+            state = state.get_state()
+        completed = set(getattr(state, "completed_steps", []) or [])
+        current = getattr(state, "current_step", None)
+        if not {"STEP_01", "STEP_02"}.issubset(completed) or current not in {"STEP_03", "STEP_04"}:
+            return frame
+
+        h, w = frame.shape[:2]
+        # WORK_SURFACE_ZONE from configs/experiments/demo.yaml: [0.25, 0.40, 0.75, 0.85]
+        x1, y1, x2, y2 = int(0.25 * w), int(0.40 * h), int(0.75 * w), int(0.85 * h)
+        # Violet target box is the operator-facing virtual work surface.
+        color = (220, 80, 220) if current == "STEP_03" else (180, 120, 255)
+        vis = frame.copy()
+        overlay = vis.copy()
+        cv2.rectangle(overlay, (x1, y1), (x2, y2), color, -1)
+        cv2.addWeighted(overlay, 0.10, vis, 0.90, 0, vis)
+        # Dashed border makes the virtual target clear without hiding the real object.
+        dash = 14
+        for x in range(x1, x2, dash * 2):
+            cv2.line(vis, (x, y1), (min(x + dash, x2), y1), color, 2, cv2.LINE_AA)
+            cv2.line(vis, (x, y2), (min(x + dash, x2), y2), color, 2, cv2.LINE_AA)
+        for y in range(y1, y2, dash * 2):
+            cv2.line(vis, (x1, y), (x1, min(y + dash, y2)), color, 2, cv2.LINE_AA)
+            cv2.line(vis, (x2, y), (x2, min(y + dash, y2)), color, 2, cv2.LINE_AA)
+        label = "VIRTUAL WORK SURFACE — PLACE RED_BOX" if current == "STEP_03" else "RED_BOX PLACED — RELEASE"
+        cv2.putText(vis, label, (x1 + 8, max(20, y1 - 8)), cv2.FONT_HERSHEY_SIMPLEX, 0.48, color, 2, cv2.LINE_AA)
+        return vis

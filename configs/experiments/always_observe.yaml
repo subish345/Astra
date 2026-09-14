@@ -1,0 +1,27 @@
+# Continuous observation experiment. No procedural steps are completed here;
+# the Mission Console keeps camera, pose, hands, objects, tracking, and action
+# recognition running until the operator presses STOP.
+experiment:
+  id: "ALWAYS_OBSERVE_001"
+  name: "Always Observe"
+  version: "1.0.0"
+  description: "Continuous background observation and action detection."
+  author: "ASTRA-EA Ground Engineering Team"
+continuous_observation: true
+
+objects:
+  - id: "MAIN_BOX"
+    name: "Main Experiment Container"
+    category: "container"
+    color: "blue"
+  - id: "RED_BOX"
+    name: "Specimen Reagent Red Box"
+    category: "sample_container"
+    color: "red"
+  - id: "YELLOW_BOX"
+    name: "Auxiliary Buffer Yellow Box"
+    category: "sample_container"
+    color: "yellow"
+
+zones: []
+steps: []

@@ -137,7 +137,10 @@ class PerceptionPipeline:
         # 5. Hand Detection
         t_h0 = time.perf_counter()
         if self.scheduler.should_run_hands(frame_id):
-            hands = self.hand_detector.detect(frame_data)
+            try:
+                hands = self.hand_detector.detect(frame_data, poses=poses)
+            except TypeError:
+                hands = self.hand_detector.detect(frame_data)
             self._last_hands = hands
             for hand in hands:
                 self.event_bus.publish(HandDetectedEvent(timestamp=packet.timestamp_mono, frame_id=frame_id, hand=hand))
@@ -161,6 +164,8 @@ class PerceptionPipeline:
             frame_id=frame_id,
             source_id=packet.source_id,
             persons=poses,
+            frame_width=packet.width,
+            frame_height=packet.height,
             objects=detections,
             hands=hands,
             poses=poses,

@@ -133,6 +133,7 @@ class ExperimentStep(BaseModel):
     action_sequence: Optional[List[str]] = Field(default=None, description="Ordered sequence of sub-actions required for step")
     destination: Optional[DestinationRule] = Field(default=None, description="Destination constraints for transfer/place steps")
     stabilization: Optional[StabilizationRule] = Field(default=None, description="Stabilization constraints for placement")
+    allow_unstable_placement: bool = Field(default=False, description="Allow placement verification without stillness evidence")
     required_evidence: List[str] = Field(default_factory=list, description="Mandatory evidence flags")
     optional_evidence: List[str] = Field(default_factory=list, description="Supplemental corroborating evidence")
     evidence_paths: Optional[EvidencePathRule] = Field(default=None, description="Alternate evidence groupings (any_of, all_of)")
@@ -194,6 +195,7 @@ class ExperimentDefinition(BaseModel):
     objects: List[ExperimentObject] = Field(default_factory=list)
     zones: List[ZoneDefinition] = Field(default_factory=list, description="Spatial workstation and destination zones")
     steps: List[ExperimentStep] = Field(default_factory=list)
+    continuous_observation: bool = Field(default=False, description="Keep perception running without procedural steps")
     transitions: Optional[Dict[str, Any]] = Field(default=None, description="Global experiment transition topology")
 
     @property
