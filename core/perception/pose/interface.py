@@ -1,4 +1,4 @@
-"""Abstract pose estimator interface for ASTRA-EA.
+"""Abstract pose estimator interface for Pramman.
 """
 
 from __future__ import annotations

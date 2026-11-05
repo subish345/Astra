@@ -1,4 +1,4 @@
-"""Compute hardware and device selection manager for ASTRA-EA perception.
+"""Compute hardware and device selection manager for Pramman perception.
 
 Inspects CUDA, GPU accelerators, and memory availability, providing clean CPU fallback
 without crashing when GPU hardware or drivers are unavailable.

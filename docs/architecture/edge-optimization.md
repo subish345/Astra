@@ -4,7 +4,7 @@
 
 In spacecraft computing environments, flight avionics are characterized by stringent thermal budgets, radiation-hardened or low-power microprocessors, and tightly partitioned memory regions. High-end workstation GPUs (such as the development laptop's NVIDIA RTX 5060) are development tools, **not** guaranteed flight hardware.
 
-ASTRA-EA adheres to a strict hardware abstraction philosophy:
+Pramman adheres to a strict hardware abstraction philosophy:
 $$\text{CORRECTNESS} > \text{SAFETY / ASSURANCE BEHAVIOR} > \text{EVIDENCE QUALITY} > \text{STABILITY} > \text{LATENCY} > \text{THROUGHPUT} > \text{RESOURCE EFFICIENCY}$$
 
 1. **Assurance Invariance**: We never sacrifice procedure verification correctness or deviation detection sensitivity to achieve higher FPS.
@@ -66,7 +66,7 @@ When perception stages are skipped on non-execution frames, the scheduler serves
 
 When downstream compute encounters transient backpressure (e.g. storage I/O or garbage collection), naive FIFO queues accumulate latency, causing decisions to fall seconds behind the live optical feed.
 
-ASTRA-EA introduces `LatestFrameQueue`:
+Pramman introduces `LatestFrameQueue`:
 - Bounded depth (default: 2 to 5 frames).
 - **Drop-Oldest Eviction**: When a new camera frame arrives while the queue is full, the oldest buffered frame is discarded immediately.
 - **Guaranteed Low Decision Latency**: Ensures the assurance engine always operates on the freshest physical reality.
@@ -75,7 +75,7 @@ ASTRA-EA introduces `LatestFrameQueue`:
 
 ## 5. Model Inference Runtimes
 
-ASTRA-EA supports dynamic model runtime selection via `RuntimeFactory`:
+Pramman supports dynamic model runtime selection via `RuntimeFactory`:
 
 1. **`OpenCVDNNRuntime`**: Zero-dependency portable ONNX runner executing through OpenCV's DNN C++ backend (`cv2.dnn.readNetFromONNX`). Fully functional on clean CPU setups without installing heavy external runtimes.
 2. **`ONNXRuntimeEngine`**: High-performance runtime leveraging Microsoft ONNX Runtime with execution providers (CPUExecutionProvider, CUDAExecutionProvider) and automatic fallback to OpenCV DNN.

@@ -1,0 +1,75 @@
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: Logging before InitGoogle() is written to STDERR
+W0000 00:00:1789397544.685529   61459 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1789397544.696464   61459 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1789397621.791228   61460 landmark_projection_calculator.cc:81] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+W0000 00:00:1789397634.208449   63289 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1789397634.219393   63289 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+{
+  "duration_seconds": 124.17215310500023,
+  "frames": 3182,
+  "captures": 3184,
+  "read_failures": 0,
+  "delivered_fps_including_ui_actions": 25.62571285628356,
+  "observations": {
+    "frames_with_pose": 824,
+    "frames_with_hands": 820,
+    "landmark_count_33": 824,
+    "object_MAIN_BOX": 15,
+    "object_ASTRONAUT": 58
+  },
+  "events": {
+    "session": 5,
+    "timeline": 114,
+    "voice": 2,
+    "evidence": 107,
+    "procedure": 107,
+    "health": 211,
+    "ground_link": 112,
+    "ui_capture": 5,
+    "ground_disconnect": 1,
+    "ground_reconnect": 1,
+    "assurance": 110,
+    "stop": 1,
+    "restart": 1
+  },
+  "stage_latency_ms": {
+    "capture_ms": {
+      "p50": 0.1260274998458044,
+      "p95": 11.40559350028525,
+      "p99": 17.234344850066925
+    },
+    "quality_ms": {
+      "p50": 0.005,
+      "p95": 2.84,
+      "p99": 3.3219000000000003
+    },
+    "detection_ms": {
+      "p50": 4.78,
+      "p95": 6.979499999999999,
+      "p99": 8.24
+    },
+    "pose_ms": {
+      "p50": 8.9,
+      "p95": 17.44,
+      "p99": 21.12420000000001
+    },
+    "hand_ms": {
+      "p50": 1.1,
+      "p95": 1.68,
+      "p99": 2.0
+    },
+    "tracking_ms": {
+      "p50": 0.01,
+      "p95": 0.02,
+      "p99": 0.03
+    },
+    "total_ms": {
+      "p50": 16.32,
+      "p95": 25.2,
+      "p99": 29.091800000000013
+    }
+  },
+  "recording_scope": "QA observer of real camera; not proof of built-in Mission Console recording",
+  "human_acceptance": "PENDING; no physical action labels asserted"
+}

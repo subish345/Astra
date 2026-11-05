@@ -1,6 +1,6 @@
-# ASTRA-EA: Master Formal Verification & Validation (V&V) Report
+# Pramman: Master Formal Verification & Validation (V&V) Report
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Classification:** Spacecraft Payload Formal Systems Engineering Report  
 **Standard Adherence:** ECSS-E-ST-10-02C (Verification), ECSS-E-ST-40C (Software), NASA-STD-8739.8 (Software Assurance)  
 **Milestone:** Phase 16 — Formal Verification & Validation Framework  
@@ -11,12 +11,12 @@
 
 ## 1. Executive Summary & Core Principle
 
-This report establishes the formal Verification & Validation (V&V) baseline for the ASTRA-EA payload software and systems integration architecture.
+This report establishes the formal Verification & Validation (V&V) baseline for the Pramman payload software and systems integration architecture.
 
 ### Core Systems Engineering Principle
 In strict adherence to NASA and ECSS engineering doctrine, **Verification** and **Validation** are maintained as distinct concepts:
 - **Verification (*"Did we build the system according to its specified requirements?"*)**: Confirms that every functional, performance, interface, safety, reliability, security, and data requirement is satisfied through deterministic tests, analytical modeling, formal inspection, or structured demonstration.
-- **Validation (*"Does the system solve the intended operational problem?"*)**: Proves through physical test rig executions, hardware-in-the-loop (HIL) fault simulations, and end-to-end experiment scenarios that ASTRA-EA successfully guides and assures astronaut scientific procedures in the target mission environment.
+- **Validation (*"Does the system solve the intended operational problem?"*)**: Proves through physical test rig executions, hardware-in-the-loop (HIL) fault simulations, and end-to-end experiment scenarios that Pramman successfully guides and assures astronaut scientific procedures in the target mission environment.
 
 > [!IMPORTANT]
 > **Environmental Qualification Disclosure:**  
@@ -171,7 +171,7 @@ All observed engineering discrepancies have been systematically documented in `v
 
 ## 9. Environmental & Flight Qualification Status (TRL Roadmap)
 
-ASTRA-EA maintains strict intellectual honesty regarding environmental and flight qualification:
+Pramman maintains strict intellectual honesty regarding environmental and flight qualification:
 
 ```text
 GROUND VERIFICATION & VALIDATION (Phase 0–16):
@@ -211,7 +211,7 @@ Phase 16 has fulfilled all deliverables (**D16.01 through D16.25**):
 9. **Dashboard:** `apps/verification_dashboard/` provides an interactive mission assurance dashboard.
 10. **CLI Operations:** `astra verification list|run|regression|coverage|traceability|report|dashboard` provides complete command-line management.
 
-For every requirement, ASTRA-EA can answer:
+For every requirement, Pramman can answer:
 > **How did we verify it, what test produced the result, what evidence proves that result, and what version of the system produced it?**
 
 **Status: PHASE 16 COMPLETE AND VERIFIED.**

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Mission Panel
+# Pramman Ground Mission Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Mission metadata, active step progress, and Tri-State Assurance decision display."""

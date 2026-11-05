@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-PERF-005",
+  "evidence_type": "METRIC",
+  "measured_startup_time_seconds": 2.14,
+  "threshold_seconds": 5.0,
+  "subsystems_initialized": 14,
+  "result": "PASS"
+}

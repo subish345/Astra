@@ -1,4 +1,4 @@
-# ASTRA-EA Integration & Verification Testing Guide
+# Pramman Integration & Verification Testing Guide
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version**: `v1.0.0`
@@ -7,7 +7,7 @@
 
 ## 1. Test Pyramid & Coverage Hierarchy
 
-ASTRA-EA enforces a strict six-tier verification testing pyramid to ensure absolute reliability in flight-like conditions:
+Pramman enforces a strict six-tier verification testing pyramid to ensure absolute reliability in flight-like conditions:
 
 ```text
                ▲
@@ -43,7 +43,7 @@ python3 -m pytest tests/integration/test_mission_orchestrator.py \
 
 ## 3. Golden Demo Regression Test (`GOLDEN_DEMO.yaml`)
 
-The Golden Demo scenario (`configs/simulations/GOLDEN_DEMO.yaml`) represents the canonical regression path for ASTRA-EA:
+The Golden Demo scenario (`configs/simulations/GOLDEN_DEMO.yaml`) represents the canonical regression path for Pramman:
 1. **Pre-Flight Self-Test**: Validates optical sensors, object models, procedure definitions, SQLite storage, local voice synthesis, and recording pipelines.
 2. **Step 1 (Nominal)**: Astronaut approaches and grasps `RED_BOX`. Action and spatial bounds verified.
 3. **Step 2 (Injected Fault)**: Astronaut grasps `BLUE_BOX` instead of required `YELLOW_BOX`.

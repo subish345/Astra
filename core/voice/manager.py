@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Audio Queue & Priority Manager
+# Pramman Audio Queue & Priority Manager
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Thread-safe audio queue manager with priority preemption, deduplication, and cooldowns."""

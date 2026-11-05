@@ -1,4 +1,4 @@
-"""Pre-Mission Automated Verification Runner for ASTRA-EA (Phase 19, Section 9, 10, 11, D19.05, D19.06).
+"""Pre-Mission Automated Verification Runner for Pramman (Phase 19, Section 9, 10, 11, D19.05, D19.06).
 
 Implements 'astra mission precheck' to systematically validate hardware, camera, model,
 procedure, storage, clock, recording, ground link, and health before authorizing READY state.

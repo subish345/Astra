@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-OPS-002",
+  "evidence_type": "METRIC",
+  "measured_wpm": 152,
+  "min_wpm": 140,
+  "max_wpm": 170,
+  "speech_clarity_score": 0.98,
+  "result": "PASS"
+}

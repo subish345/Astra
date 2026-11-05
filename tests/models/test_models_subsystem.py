@@ -1,4 +1,4 @@
-"""Unit and integration tests for ASTRA-EA Model Registry & Evaluation Subsystem.
+"""Unit and integration tests for Pramman Model Registry & Evaluation Subsystem.
 
 Tests cover:
 - ModelRegistry state transitions & promotion rules

@@ -1,4 +1,4 @@
-"""Mission Clock and Spacecraft Timing Interface Abstraction for ASTRA-EA (Phase 18).
+"""Mission Clock and Spacecraft Timing Interface Abstraction for Pramman (Phase 18).
 
 In accordance with Section 16 & 17:
 Provides wall-clock, monotonic, mission elapsed time (MET), frame timestamps,

@@ -1,4 +1,4 @@
-"""Platform Hardware Abstraction and Profile Management for ASTRA-EA (Phase 18).
+"""Platform Hardware Abstraction and Profile Management for Pramman (Phase 18).
 
 In accordance with Section 4 & 5:
 Defines PlatformCapabilities aggregating CPU, GPU, RAM, Storage, Camera, Clock,

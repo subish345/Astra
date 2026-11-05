@@ -1,4 +1,4 @@
-# ASTRA-EA — Dual-Machine LAN Deployment Guide
+# Pramman — Dual-Machine LAN Deployment Guide
 
 ## Multi-Node Ground Monitoring and Local/IP Streaming Setup
 
@@ -8,7 +8,7 @@
 
 ## 1. System Deployment Topology
 
-ASTRA-EA supports a distributed operational configuration where the autonomous spacecraft runtime (**Onboard**) and the remote observation station (**Ground Monitor**) run on separate physical machines interconnected via a local area network (LAN), Ethernet tether, or lab Wi-Fi network.
+Pramman supports a distributed operational configuration where the autonomous spacecraft runtime (**Onboard**) and the remote observation station (**Ground Monitor**) run on separate physical machines interconnected via a local area network (LAN), Ethernet tether, or lab Wi-Fi network.
 
 ```text
 ┌────────────────────────────────────────────────────────┐

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Hardening Manager (Phase 21, D21.01, D21.03)
+# Pramman Hardening Manager (Phase 21, D21.01, D21.03)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Orchestrates findings tracking, root cause analyses, corrective actions,

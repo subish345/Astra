@@ -1,4 +1,4 @@
-"""ASTRA-EA Mission Operations Package (Phase 19).
+"""Pramman Mission Operations Package (Phase 19).
 
 Exports roles, authority models, mission phase state machines, checklist engines,
 automated precheck runners, alert lifecycles, timeline models, reconciliation,

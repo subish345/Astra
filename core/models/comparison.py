@@ -1,4 +1,4 @@
-"""Baseline vs Learned Model Comparator for ASTRA-EA.
+"""Baseline vs Learned Model Comparator for Pramman.
 
 Directly benchmarks the deterministic development baseline (ColorSpatialObjectDetector)
 against the candidate learned model (LearnedObjectDetector) on identical test samples.
@@ -242,7 +242,7 @@ class ModelComparator:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Baseline vs Learned Model Comparison</title>
+    <title>Pramman Baseline vs Learned Model Comparison</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -255,7 +255,7 @@ class ModelComparator:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Baseline vs Learned Model Benchmark</h1>
+        <h1>Pramman Baseline vs Learned Model Benchmark</h1>
         <p><strong>Dataset:</strong> {res['dataset_version']} ({res['test_samples_count']} test samples)</p>
         <p><strong>Recommendation:</strong> <span class="badge">{cmp['recommendation']}</span></p>
         <p><em>{cmp['rationale']}</em></p>

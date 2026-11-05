@@ -1,4 +1,4 @@
-"""Unified Flight Software Health Model for ASTRA-EA (Phase 18).
+"""Unified Flight Software Health Model for Pramman (Phase 18).
 
 In accordance with Section 49:
 Aggregates subsystem health into system-level status: READY, DEGRADED, FAILED.

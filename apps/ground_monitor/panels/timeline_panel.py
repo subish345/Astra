@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Timeline Panel
+# Pramman Ground Timeline Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Filterable mission event timeline displaying onboard timestamps, latency, and event categories."""

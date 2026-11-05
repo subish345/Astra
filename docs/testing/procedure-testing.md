@@ -1,4 +1,4 @@
-# ASTRA-EA — Phase 4 Procedure Assurance & Step Recognition Testing
+# Pramman — Phase 4 Procedure Assurance & Step Recognition Testing
 
 ## 1. Test Suite Summary
 
@@ -14,19 +14,19 @@ Phase 4 testing covers unit tests, integration pipelines, deterministic event re
 
 | Test Module | Coverage Dimension | Key Scenarios Tested |
 |---|---|---|
-| [`tests/unit/test_procedure_matcher.py`](file:///home/subish-loq/Documents/astra/tests/unit/test_procedure_matcher.py) | Activity $\to$ Step Candidate Matching | Exact match, wrong object mismatch, action mismatch, completed step exclusion, repeatable step retention, candidate score ranking |
-| [`tests/unit/test_evidence_engine.py`](file:///home/subish-loq/Documents/astra/tests/unit/test_evidence_engine.py) | Multimodal Evidence Aggregation | All required evidence satisfied, missing required items, temporal duration inconsistency, `any_of` alternate paths, `all_of` alternate paths |
-| [`tests/unit/test_step_evaluator.py`](file:///home/subish-loq/Documents/astra/tests/unit/test_step_evaluator.py) | Step Verification Decisions | `VERIFIED` step evaluation, `UNCERTAIN` evaluation on partial evidence, `NOT_MATCHED` on ID mismatch, Phase 4 deviation exclusion |
-| [`tests/unit/test_next_step_engine.py`](file:///home/subish-loq/Documents/astra/tests/unit/test_next_step_engine.py) | Transition Graph Reasoning | Initial step resolution, graph transitions, conditional runtime branching, sequence fallback, optional step skipping |
-| [`tests/unit/test_procedure_progress.py`](file:///home/subish-loq/Documents/astra/tests/unit/test_procedure_progress.py) | State Machine & Lifecycle | Baseline ready state, step verification and advancement, uncertain evidence preventing advancement, duplicate activity deduplication, procedure completion |
-| [`tests/unit/test_traceability_and_persistence.py`](file:///home/subish-loq/Documents/astra/tests/unit/test_traceability_and_persistence.py) | Audit Traces & SQLite | ASCII audit tree generation, dictionary serialization, database transactional persistence for evaluations, bundles, and progress |
-| [`tests/integration/test_procedure_pipeline.py`](file:///home/subish-loq/Documents/astra/tests/integration/test_procedure_pipeline.py) | End-to-End Procedural Flow | Multi-step live sequence: Approach $\to$ Grasp $\to$ Move (Wrong Object Rejection) |
+| [`tests/unit/test_procedure_matcher.py`](file:///home/subish-loq/Documents/pramman_proj/tests/unit/test_procedure_matcher.py) | Activity $\to$ Step Candidate Matching | Exact match, wrong object mismatch, action mismatch, completed step exclusion, repeatable step retention, candidate score ranking |
+| [`tests/unit/test_evidence_engine.py`](file:///home/subish-loq/Documents/pramman_proj/tests/unit/test_evidence_engine.py) | Multimodal Evidence Aggregation | All required evidence satisfied, missing required items, temporal duration inconsistency, `any_of` alternate paths, `all_of` alternate paths |
+| [`tests/unit/test_step_evaluator.py`](file:///home/subish-loq/Documents/pramman_proj/tests/unit/test_step_evaluator.py) | Step Verification Decisions | `VERIFIED` step evaluation, `UNCERTAIN` evaluation on partial evidence, `NOT_MATCHED` on ID mismatch, Phase 4 deviation exclusion |
+| [`tests/unit/test_next_step_engine.py`](file:///home/subish-loq/Documents/pramman_proj/tests/unit/test_next_step_engine.py) | Transition Graph Reasoning | Initial step resolution, graph transitions, conditional runtime branching, sequence fallback, optional step skipping |
+| [`tests/unit/test_procedure_progress.py`](file:///home/subish-loq/Documents/pramman_proj/tests/unit/test_procedure_progress.py) | State Machine & Lifecycle | Baseline ready state, step verification and advancement, uncertain evidence preventing advancement, duplicate activity deduplication, procedure completion |
+| [`tests/unit/test_traceability_and_persistence.py`](file:///home/subish-loq/Documents/pramman_proj/tests/unit/test_traceability_and_persistence.py) | Audit Traces & SQLite | ASCII audit tree generation, dictionary serialization, database transactional persistence for evaluations, bundles, and progress |
+| [`tests/integration/test_procedure_pipeline.py`](file:///home/subish-loq/Documents/pramman_proj/tests/integration/test_procedure_pipeline.py) | End-to-End Procedural Flow | Multi-step live sequence: Approach $\to$ Grasp $\to$ Move (Wrong Object Rejection) |
 
 ---
 
 ## 3. Deterministic Procedure Replay
 
-ASTRA-EA supports offline deterministic verification of recorded event sequences without requiring live camera hardware:
+Pramman supports offline deterministic verification of recorded event sequences without requiring live camera hardware:
 
 ```bash
 python3 main.py procedure replay --events storage/events/demo_events.json
@@ -35,10 +35,10 @@ python3 main.py procedure replay --events storage/events/demo_events.json
 Output:
 ```text
 ============================================================
- ASTRA-EA DETERMINISTIC PROCEDURE REPLAY
+ Pramman DETERMINISTIC PROCEDURE REPLAY
 ============================================================
 Experiment:    Sample Material Handling & Container Verification (DEMO) (DEMO_EXP_001)
-Event Source:  /home/subish-loq/Documents/astra/storage/events/demo_events.json
+Event Source:  /home/subish-loq/Documents/pramman_proj/storage/events/demo_events.json
 Run ID:        REPLAY_001
 ------------------------------------------------------------
 Total Events Processed: 5
@@ -53,7 +53,7 @@ Final Procedure Status: COMPLETED
 
 ## 4. Empirical Performance Benchmark
 
-Measured using [`ProcedureBenchmark`](file:///home/subish-loq/Documents/astra/core/procedure/benchmark.py) over 500 real iterations against `configs/experiments/demo.yaml`:
+Measured using [`ProcedureBenchmark`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/benchmark.py) over 500 real iterations against `configs/experiments/demo.yaml`:
 
 ```bash
 python3 main.py procedure benchmark --iterations 500

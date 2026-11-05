@@ -1,0 +1,92 @@
+# ==============================================================================
+# ASTRA-EA Mission Operations Configuration
+# Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
+# ==============================================================================
+# ECSS-E-ST-70C & NASA-STD-8739.8 Spacecraft Ground & Mission Operations Profile
+# Note: Spacecraft bus interfaces, retention horizons, and command protocols
+# preserve standard aerospace placeholders (TBD, TBC, ASSUMPTION).
+
+operations:
+  system_id: "ASTRA-EA-OPS-001"
+  version: "1.0.0-RC1"
+  mission_mode: "OPERATIONAL"   # OPERATIONAL | MAINTENANCE | REHEARSAL | TRAINING
+
+  # Data Retention Policies (Section 27)
+  retention:
+    mission_records: "TBD"      # Permanent flight archive placeholder
+    video: "TBD"                # High-definition video buffer placeholder
+    evidence: "TBD"             # Cryptographic decision evidence placeholder
+    logs: "TBD"                 # Diagnostic log retention placeholder
+    default_policy: "PRUNE_NON_CRITICAL_FIRST"
+
+  # Authority & Role Assignment (Section 5, 6, 7)
+  roles:
+    default_active_role: "LOCAL_OPERATOR"
+    roles_defined:
+      - ASTRONAUT_OPERATOR
+      - MISSION_OPERATOR
+      - GROUND_MONITOR
+      - SYSTEM_ENGINEER
+      - DATA_REVIEWER
+      - MAINTAINER
+      - LOCAL_OPERATOR
+
+  # Operational Alert Priorities & Escalation (Section 15, 16, 57)
+  alerts:
+    priorities:
+      - CRITICAL
+      - WARNING
+      - NOTICE
+      - INFO
+    escalation:
+      level_1: "ASTRONAUT_OR_MISSION_OPERATOR"
+      level_2: "SYSTEM_ENGINEER"
+      level_3: "FLIGHT_DIRECTOR_AUTHORITY"
+
+  # Ground Communication Channels (Section 55)
+  channels:
+    video:
+      enabled: true
+      protocol: "MJPEG_OVER_HTTP"
+    events:
+      enabled: true
+      protocol: "SSE_OR_WEBSOCKET"
+    telemetry:
+      enabled: true
+      interval_seconds: 1.0
+    command:
+      enabled: false           # Future spacecraft command link placeholder (TBD)
+
+  # Checklists Configuration (Section 39)
+  checklists:
+    pre_mission:
+      id: "PRE_MISSION"
+      title: "Pre-Mission Verification Checklist"
+      items:
+        - id: "PWR_01"
+          name: "Power & Silicon Baseline"
+          critical: true
+        - id: "CAM_01"
+          name: "Optical Stream Active"
+          critical: true
+        - id: "MOD_01"
+          name: "Model ONNX Cryptographic Integrity"
+          critical: true
+        - id: "PRC_01"
+          name: "Procedure Schema & Step Contract"
+          critical: true
+        - id: "STR_01"
+          name: "Storage Partitions & Priority Bound"
+          critical: true
+        - id: "CLK_01"
+          name: "Mission Monotonic Clock Initialized"
+          critical: true
+        - id: "REC_01"
+          name: "Video & Audit Recorder Ready"
+          critical: false
+        - id: "GND_01"
+          name: "Ground Telemetry Publisher Online"
+          critical: false
+        - id: "HLT_01"
+          name: "Unified Subsystem Health Self-Test"
+          critical: true

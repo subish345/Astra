@@ -1,0 +1,12 @@
+id: "FINDING-003"
+title: "Diagnostic storage warning threshold lacks automated preview frame pruning trigger"
+source: "PHASE20_REHEARSAL_07_STORAGE_WARNING"
+date: "2026-09-13"
+severity: "MEDIUM"
+category: "STORAGE"
+description: "When storage partition exceeded the 85% capacity threshold, the system logged warnings but required an explicit threshold-based hook to automatically purge non-critical preview frames while strictly preserving mission-critical step verification evidence."
+evidence:
+  - "REH_07_STORAGE_WARNING_RUN_LOG"
+  - "core/platform/storage.py"
+impact: "Could risk storage exhaustion during multi-hour extended flight experiments if transient preview frames are not pruned."
+status: "CLOSED"

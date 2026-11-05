@@ -1,0 +1,35 @@
+{
+  "dataset_name": "demo_synthetic",
+  "generator_version": "0.1.0",
+  "seed": 54321,
+  "experiment_id": "DEMO_EXP_001",
+  "sample_count": 30,
+  "session_count": 4,
+  "camera_profiles": [
+    "VIEW_LEFT",
+    "VIEW_RIGHT"
+  ],
+  "scenarios": [
+    "CORRECT",
+    "WRONG_OBJECT",
+    "WRONG_ORDER",
+    "SKIPPED",
+    "INCOMPLETE",
+    "UNCERTAIN",
+    "RECOVERY"
+  ],
+  "classes": [
+    "ASTRONAUT",
+    "MAIN_BOX",
+    "RED_BOX",
+    "YELLOW_BOX",
+    "WORK_SURFACE"
+  ],
+  "class_counts": {
+    "ASTRONAUT": 29,
+    "MAIN_BOX": 30,
+    "RED_BOX": 30,
+    "YELLOW_BOX": 30,
+    "WORK_SURFACE": 30
+  }
+}

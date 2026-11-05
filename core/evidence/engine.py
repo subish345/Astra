@@ -1,4 +1,4 @@
-"""Corroborating multimodal evidence engine for ASTRA-EA.
+"""Corroborating multimodal evidence engine for Pramman.
 
 Aggregates observations across perception, kinematics, temporal features, and
 spatial states to produce structured, explainable EvidenceBundles for experiment steps.

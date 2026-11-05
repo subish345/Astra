@@ -1,0 +1,20 @@
+scenario_id: "SIM_FAULT_DROPOUT"
+name: "Sensor & Telemetry Dropout Stress"
+description: "Simulates transient camera transmission loss, intermittent dropped frames, and total black frame dropouts."
+procedure_path: "configs/experiments/demo.yaml"
+camera_profile: "VIEW_LEFT"
+duration_sec: 6.0
+target_fps: 30.0
+synthetic_seed: 50005
+faults:
+  - fault_type: "FRAME_DROP"
+    start_time: 1.0
+    duration_sec: 1.5
+    intensity: 0.8
+    frequency: 0.5
+  - fault_type: "BLACK_FRAME"
+    start_time: 3.5
+    duration_sec: 1.5
+    intensity: 1.0
+expected_final_status: "UNCERTAIN"
+expected_deviations: []

@@ -1,0 +1,22 @@
+{
+  "timestamp": 3841.901284738,
+  "frame_id": 1,
+  "source_id": "webcam:0",
+  "persons": [],
+  "objects": [],
+  "hands": [],
+  "poses": [],
+  "tracks": [],
+  "fps": 30.0,
+  "quality": null,
+  "latency": {
+    "capture_ms": 0.0,
+    "quality_ms": 0.0,
+    "detection_ms": 121.1,
+    "pose_ms": 10.22,
+    "hand_ms": 1.62,
+    "tracking_ms": 0.02,
+    "total_ms": 132.99
+  },
+  "metadata": {}
+}

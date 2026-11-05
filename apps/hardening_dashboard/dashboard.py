@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Hardening Dashboard (Phase 21, Section 43, D21.13)
+# Pramman Hardening Dashboard (Phase 21, Section 43, D21.13)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Hardening Dashboard and CLI Reporter for Findings, Root Causes, and CAPAs."""
@@ -31,7 +31,7 @@ class HardeningDashboard:
         b_stat = metrics["by_status"]
 
         print("=" * 70)
-        print(" ASTRA-EA FINDINGS-DRIVEN HARDENING DASHBOARD (Phase 21)")
+        print(" Pramman FINDINGS-DRIVEN HARDENING DASHBOARD (Phase 21)")
         print("=" * 70)
         print("FINDINGS SEVERITY:")
         print(f"  CRITICAL:     {b_sev['CRITICAL']}")
@@ -71,7 +71,7 @@ class HardeningDashboard:
         action = self.manager.get_action(finding_id)
 
         print("=" * 70)
-        print(f" ASTRA-EA HARDENING ANALYSIS: {f.id}")
+        print(f" Pramman HARDENING ANALYSIS: {f.id}")
         print("=" * 70)
         print(f"Title:        {f.title}")
         print(f"Severity:     {f.severity}")
@@ -177,7 +177,7 @@ class HardeningDashboard:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Findings Registry (Phase 21)</title>
+    <title>Pramman Findings Registry (Phase 21)</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #090d16; color: #f1f5f9; padding: 32px; }}
         .card {{ background: #0d1527; border: 1px solid #1e293b; border-radius: 8px; padding: 24px; margin-bottom: 24px; }}
@@ -188,7 +188,7 @@ class HardeningDashboard:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Findings Registry</h1>
+        <h1>Pramman Findings Registry</h1>
         <p style="color: #94a3b8;">Total: {metrics['total_findings']} | Closed: {metrics['by_status']['CLOSED']} | Readiness Verdict: <strong style="color: #22c55e;">{metrics['readiness_verdict']}</strong></p>
     </div>
     <div class="card">
@@ -283,7 +283,7 @@ th {{ background: #111c35; color: #94a3b8; }}
 </style>
 </head><body>
 <div class="card">
-    <h1 style="color: #38bdf8; margin: 0;">ASTRA-EA Final Hardening & RC2 Audit Report</h1>
+    <h1 style="color: #38bdf8; margin: 0;">Pramman Final Hardening & RC2 Audit Report</h1>
     <p style="color: #94a3b8;">Phase 21 Findings-Driven Hardening Complete | Baseline: v1.0.0-RC2</p>
     <p style="font-size: 16px;">Overall Status: <strong style="color: #22c55e;">READY FOR QUALIFICATION & DEMONSTRATION</strong></p>
 </div>

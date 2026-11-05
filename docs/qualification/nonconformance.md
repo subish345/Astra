@@ -1,4 +1,4 @@
-# ASTRA-EA: Nonconformance Reporting (NCR) & Corrective Action Procedure
+# Pramman: Nonconformance Reporting (NCR) & Corrective Action Procedure
 
 **Document ID:** `ASTRA-SOP-NCR-001`  
 **Classification:** Spacecraft Quality Assurance & Qualification Standard Operating Procedure  
@@ -80,10 +80,10 @@ Every NCR is serialized in `qualification/nonconformance/NCR-xxx.json`:
 
 ---
 
-## 5. Nonconformance Registry in ASTRA-EA
+## 5. Nonconformance Registry in Pramman
 
 Historical and active NCR records are stored in `qualification/nonconformance/` and audited via the unified CLI:
 
 ```bash
-astra qualification nonconformances
+pramman qualification nonconformances
 ```

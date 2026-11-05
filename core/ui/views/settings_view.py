@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Operational Settings View
+# Pramman Operational Settings View
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Safe configuration view for operators and astronauts (camera, audio, overlays)."""
@@ -13,6 +13,7 @@ from PySide6.QtWidgets import (
     QCheckBox,
     QComboBox,
     QFrame,
+    QFileDialog,
     QGridLayout,
     QHBoxLayout,
     QLabel,
@@ -64,6 +65,9 @@ class SettingsView(QWidget):
         self.txt_source.setPlaceholderText("0 or video file path")
         cfg_layout.addWidget(lbl_src, 0, 0)
         cfg_layout.addWidget(self.txt_source, 0, 1)
+        self.btn_video = QPushButton("Choose video…")
+        self.btn_video.clicked.connect(self._choose_video)
+        cfg_layout.addWidget(self.btn_video, 0, 2)
 
         # Camera Viewpoint Profile
         lbl_prof = QLabel("Camera Viewpoint Profile:")
@@ -72,6 +76,7 @@ class SettingsView(QWidget):
         self.cmb_profile.addItems(["VIEW_LEFT (Left-side experiment view)", "VIEW_RIGHT (Right-side experiment view)", "VIEW_CENTER (Centered overhead view)"])
         cfg_layout.addWidget(lbl_prof, 1, 0)
         cfg_layout.addWidget(self.cmb_profile, 1, 1)
+        self.cmb_profile.setToolTip("Viewpoint calibration, not a camera selector. Use source 0, 1, etc. to choose a camera.")
 
         # Voice Speech Rate
         lbl_rate = QLabel("Voice Speech Rate (WPM):")
@@ -96,6 +101,16 @@ class SettingsView(QWidget):
         if self.on_test_voice:
             self.btn_voice_test.clicked.connect(self.on_test_voice)
         cfg_layout.addWidget(self.btn_voice_test, 4, 1)
+        self.btn_apply_source = QPushButton("Apply source & restart")
+        cfg_layout.addWidget(self.btn_apply_source, 5, 1)
+        self.lbl_source_status = QLabel("Camera index (0, 1, …) or a local video file. STOP releases the source.")
+        self.lbl_source_status.setWordWrap(True)
+        cfg_layout.addWidget(self.lbl_source_status, 6, 0, 1, 3)
 
         layout.addWidget(cfg_frame)
         layout.addStretch()
+
+    def _choose_video(self):
+        path, _ = QFileDialog.getOpenFileName(self, "Choose experiment video", "", "Videos (*.mp4 *.avi *.mkv *.webm *.mov);;All files (*)")
+        if path:
+            self.txt_source.setText(path)

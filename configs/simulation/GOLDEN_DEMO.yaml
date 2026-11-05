@@ -1,5 +1,5 @@
 scenario_id: "GOLDEN_DEMO_001"
-name: "ASTRA-EA Golden Verification & Judge Demonstration Scenario"
+name: "Pramman Golden Verification & Judge Demonstration Scenario"
 description: "Predictable baseline regression scenario: Nominal Step 1 -> Step 2 Wrong Object Deviation -> Closed-Loop Recovery -> Steps 3 & 4 Completion."
 version: "1.0.0"
 procedure_path: "configs/experiments/demo.yaml"

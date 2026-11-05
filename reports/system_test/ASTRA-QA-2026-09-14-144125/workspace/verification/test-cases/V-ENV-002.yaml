@@ -1,0 +1,20 @@
+id: V-ENV-002
+requirement: ASTRA-ENV-002
+title: Multi-Angle Optical Viewpoint Invariance
+purpose: Verify that procedural step evaluation remains consistent across camera downward pitch angles between 35 deg and 65 deg.
+preconditions:
+  - Multi-view camera calibration profiles available (view_left, view_center, view_right)
+setup:
+  - Mount camera or load viewpoint profiles for 35, 45, 55, 65 deg pitch
+inputs:
+  - Standard physical transfer sequence
+procedure:
+  - Process procedure runs across all 3 calibrated camera angles
+  - Evaluate step classification agreement
+expected_result:
+  - 100% agreement on step completion and deviation detection across viewpoints
+acceptance_criteria:
+  - Zero false deviations caused by viewpoint variation
+evidence:
+  - reports/physical/viewpoint_report.html
+  - verification/evidence/EVID-ENV-002-ANGLE.json

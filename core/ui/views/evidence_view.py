@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Dedicated Evidence Audit View
+# Pramman Dedicated Evidence Audit View
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Full-screen evidence audit viewer inspecting multimodal corroboration trees."""

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Reconnection Backoff Manager
+# Pramman Reconnection Backoff Manager
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Exponential backoff with jitter for graceful network link reconnection."""

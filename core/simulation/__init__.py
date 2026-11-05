@@ -1,4 +1,4 @@
-"""ASTRA-EA Simulation & Fault Injection Subsystem.
+"""Pramman Simulation & Fault Injection Subsystem.
 
 Provides end-to-end mission simulation, modular fault injection operators
 (optical, behavioral, perception, system), simulated camera streaming,

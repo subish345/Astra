@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Audio UX Subsystem
+# Pramman Audio UX Subsystem
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Audio UX and offline voice guidance subsystem for astronaut assistance."""

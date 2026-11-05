@@ -1,0 +1,32 @@
+{
+  "dataset_directory": "datasets/raw/synthetic/demo_synthetic",
+  "total_samples": 30,
+  "total_sessions": 4,
+  "total_annotated_objects": 149,
+  "class_distribution": {
+    "WORK_SURFACE": 30,
+    "MAIN_BOX": 30,
+    "RED_BOX": 30,
+    "YELLOW_BOX": 30,
+    "ASTRONAUT": 29
+  },
+  "viewpoint_distribution": {
+    "VIEW_LEFT": 16,
+    "VIEW_RIGHT": 14
+  },
+  "scenario_distribution": {
+    "CORRECT": 8,
+    "WRONG_OBJECT": 8,
+    "WRONG_ORDER": 8,
+    "SKIPPED": 6
+  },
+  "source_distribution": {
+    "SYNTHETIC": 30
+  },
+  "splits": {
+    "train": 16,
+    "validation": 6,
+    "test": 8
+  },
+  "imbalances": []
+}

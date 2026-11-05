@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-IF-004",
+  "evidence_type": "METRIC",
+  "streaming_thread": "AsyncQueueWorker",
+  "core_pipeline_delay_ms": 0.0,
+  "packet_drop_policy": "DROP_OLDEST",
+  "telemetry_bandwidth_kbps": 12.4,
+  "result": "PASS"
+}

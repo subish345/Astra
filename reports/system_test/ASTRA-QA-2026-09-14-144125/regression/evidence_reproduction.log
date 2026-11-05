@@ -1,0 +1,129 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 18 items / 12 deselected / 6 selected
+
+tests/regression/test_qa6_runtime_safety.py FFFFFF                       [100%]
+
+=================================== FAILURES ===================================
+___________ test_live_activity_label_does_not_invent_missing_object ____________
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_live_activity_label_does_not_invent_missing_object(procedure):
+        from core.evidence.engine import MultimodalEvidenceEngine
+        from core.perception.types import PerceptionState
+        activity = ActivityObservation('GRASP', 'actor', 'RED_BOX', .95, TemporalWindow(0., 3.))
+        state = PerceptionState(timestamp=3., frame_id=100, source_id='UNIT_FIXTURE')
+        bundle = MultimodalEvidenceEngine().evaluate(activity, interactions=[], perception_state=state, step=procedure.steps[1])
+>       assert not bundle.check_requirement('OBJECT_DETECTED')
+E       AssertionError: assert not True
+E        +  where True = check_requirement('OBJECT_DETECTED')
+E        +    where check_requirement = EvidenceBundle(activity_id='ACT_471A0731', activity_name='GRASP', target_object_id='RED_BOX', timestamp=3.0, step_id='...nce=0.454, is_conclusive=False, timestamp_range=(0.0, 3.0), source_frames=[100], bundle_id='EVD_633F4F4D', metadata={}).check_requirement
+
+tests/regression/test_qa6_runtime_safety.py:117: AssertionError
+_______________ test_other_object_contact_cannot_satisfy_target ________________
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_other_object_contact_cannot_satisfy_target(procedure):
+        from core.evidence.engine import MultimodalEvidenceEngine
+        from core.interaction.types import InteractionEvent, InteractionState
+        from core.perception.types import HandType, PerceptionState
+        activity = ActivityObservation('GRASP', 'actor', 'RED_BOX', .95, TemporalWindow(0., 3.))
+>       interaction = InteractionEvent(target_object_id='YELLOW_BOX', target_track_id=2, hand_type=HandType.RIGHT,
+            state=InteractionState.CONTACT, confidence=.95, timestamp=3.)
+E       TypeError: InteractionEvent.__init__() missing 1 required positional argument: 'distance'
+
+tests/regression/test_qa6_runtime_safety.py:126: TypeError
+______ test_placement_requires_complete_ordered_action_sequence[actions0] ______
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+actions = ['MOVE']
+
+    @pytest.mark.parametrize('actions', [['MOVE'], ['PLACE'], ['MOVE', 'LIFT', 'APPROACH_DESTINATION', 'PLACE']])
+    def test_placement_requires_complete_ordered_action_sequence(procedure, actions):
+        from core.procedure.types import StepCandidate, StepMatchStatus
+        from core.procedure.evaluator import StepEvaluator
+        candidate = StepCandidate(step_id='STEP_03', activity_type=actions[-1], object_id='RED_BOX',
+            match_score=.99, timestamp_start=0., timestamp_end=5., match_details={'primitives': actions})
+        bundle = EvidenceBundle(required_satisfied=True, evidence_score=.99)
+>       assert StepEvaluator().evaluate_step(candidate, bundle, procedure.steps[2]).status != StepMatchStatus.VERIFIED
+E       AssertionError: assert <StepMatchStatus.VERIFIED: 'VERIFIED'> != <StepMatchStatus.VERIFIED: 'VERIFIED'>
+E        +  where <StepMatchStatus.VERIFIED: 'VERIFIED'> = StepEvaluation(experiment_id='DEMO_EXP_001', run_id='RUN_001', step_id='STEP_03', status=<StepMatchStatus.VERIFIED: 'V... 0.99, 'composite_confidence': 0.99, 'duration_seconds': 5.0, 'step_min_confidence': 0.8, 'bundle_items_verified': []}).status
+E        +    where StepEvaluation(experiment_id='DEMO_EXP_001', run_id='RUN_001', step_id='STEP_03', status=<StepMatchStatus.VERIFIED: 'V... 0.99, 'composite_confidence': 0.99, 'duration_seconds': 5.0, 'step_min_confidence': 0.8, 'bundle_items_verified': []}) = evaluate_step(StepCandidate(step_id='STEP_03', activity_type='MOVE', object_id='RED_BOX', match_score=0.99, status=<StepMatchStatus...._id='', actor='ASTRONAUT', timestamp_start=0.0, timestamp_end=5.0, match_details={'primitives': ['MOVE']}, metadata={}), EvidenceBundle(activity_id='', activity_name='', target_object_id=None, timestamp=0.0, step_id=None, items={}, require...fidence=0.99, is_conclusive=False, timestamp_range=(0.0, 0.0), source_frames=[], bundle_id='EVD_2C218FA0', metadata={}), ExperimentStep(id='STEP_03', sequence=3, name='Transfer Specimen to Work Surface', description='Astronaut lifts, moves...Place the Red Box firmly onto the center of the work surface.', target_step='STEP_03', max_recovery_time_seconds=60.0)))
+E        +      where evaluate_step = <core.procedure.evaluator.StepEvaluator object at 0x7f03815ae120>.evaluate_step
+E        +        where <core.procedure.evaluator.StepEvaluator object at 0x7f03815ae120> = <class 'core.procedure.evaluator.StepEvaluator'>()
+E        +  and   <StepMatchStatus.VERIFIED: 'VERIFIED'> = <enum 'StepMatchStatus'>.VERIFIED
+
+tests/regression/test_qa6_runtime_safety.py:140: AssertionError
+______ test_placement_requires_complete_ordered_action_sequence[actions1] ______
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+actions = ['PLACE']
+
+    @pytest.mark.parametrize('actions', [['MOVE'], ['PLACE'], ['MOVE', 'LIFT', 'APPROACH_DESTINATION', 'PLACE']])
+    def test_placement_requires_complete_ordered_action_sequence(procedure, actions):
+        from core.procedure.types import StepCandidate, StepMatchStatus
+        from core.procedure.evaluator import StepEvaluator
+        candidate = StepCandidate(step_id='STEP_03', activity_type=actions[-1], object_id='RED_BOX',
+            match_score=.99, timestamp_start=0., timestamp_end=5., match_details={'primitives': actions})
+        bundle = EvidenceBundle(required_satisfied=True, evidence_score=.99)
+>       assert StepEvaluator().evaluate_step(candidate, bundle, procedure.steps[2]).status != StepMatchStatus.VERIFIED
+E       AssertionError: assert <StepMatchStatus.VERIFIED: 'VERIFIED'> != <StepMatchStatus.VERIFIED: 'VERIFIED'>
+E        +  where <StepMatchStatus.VERIFIED: 'VERIFIED'> = StepEvaluation(experiment_id='DEMO_EXP_001', run_id='RUN_001', step_id='STEP_03', status=<StepMatchStatus.VERIFIED: 'V... 0.99, 'composite_confidence': 0.99, 'duration_seconds': 5.0, 'step_min_confidence': 0.8, 'bundle_items_verified': []}).status
+E        +    where StepEvaluation(experiment_id='DEMO_EXP_001', run_id='RUN_001', step_id='STEP_03', status=<StepMatchStatus.VERIFIED: 'V... 0.99, 'composite_confidence': 0.99, 'duration_seconds': 5.0, 'step_min_confidence': 0.8, 'bundle_items_verified': []}) = evaluate_step(StepCandidate(step_id='STEP_03', activity_type='PLACE', object_id='RED_BOX', match_score=0.99, status=<StepMatchStatus...id='', actor='ASTRONAUT', timestamp_start=0.0, timestamp_end=5.0, match_details={'primitives': ['PLACE']}, metadata={}), EvidenceBundle(activity_id='', activity_name='', target_object_id=None, timestamp=0.0, step_id=None, items={}, require...fidence=0.99, is_conclusive=False, timestamp_range=(0.0, 0.0), source_frames=[], bundle_id='EVD_88486502', metadata={}), ExperimentStep(id='STEP_03', sequence=3, name='Transfer Specimen to Work Surface', description='Astronaut lifts, moves...Place the Red Box firmly onto the center of the work surface.', target_step='STEP_03', max_recovery_time_seconds=60.0)))
+E        +      where evaluate_step = <core.procedure.evaluator.StepEvaluator object at 0x7f0381609950>.evaluate_step
+E        +        where <core.procedure.evaluator.StepEvaluator object at 0x7f0381609950> = <class 'core.procedure.evaluator.StepEvaluator'>()
+E        +  and   <StepMatchStatus.VERIFIED: 'VERIFIED'> = <enum 'StepMatchStatus'>.VERIFIED
+
+tests/regression/test_qa6_runtime_safety.py:140: AssertionError
+______ test_placement_requires_complete_ordered_action_sequence[actions2] ______
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+actions = ['MOVE', 'LIFT', 'APPROACH_DESTINATION', 'PLACE']
+
+    @pytest.mark.parametrize('actions', [['MOVE'], ['PLACE'], ['MOVE', 'LIFT', 'APPROACH_DESTINATION', 'PLACE']])
+    def test_placement_requires_complete_ordered_action_sequence(procedure, actions):
+        from core.procedure.types import StepCandidate, StepMatchStatus
+        from core.procedure.evaluator import StepEvaluator
+        candidate = StepCandidate(step_id='STEP_03', activity_type=actions[-1], object_id='RED_BOX',
+            match_score=.99, timestamp_start=0., timestamp_end=5., match_details={'primitives': actions})
+        bundle = EvidenceBundle(required_satisfied=True, evidence_score=.99)
+>       assert StepEvaluator().evaluate_step(candidate, bundle, procedure.steps[2]).status != StepMatchStatus.VERIFIED
+E       AssertionError: assert <StepMatchStatus.VERIFIED: 'VERIFIED'> != <StepMatchStatus.VERIFIED: 'VERIFIED'>
+E        +  where <StepMatchStatus.VERIFIED: 'VERIFIED'> = StepEvaluation(experiment_id='DEMO_EXP_001', run_id='RUN_001', step_id='STEP_03', status=<StepMatchStatus.VERIFIED: 'V... 0.99, 'composite_confidence': 0.99, 'duration_seconds': 5.0, 'step_min_confidence': 0.8, 'bundle_items_verified': []}).status
+E        +    where StepEvaluation(experiment_id='DEMO_EXP_001', run_id='RUN_001', step_id='STEP_03', status=<StepMatchStatus.VERIFIED: 'V... 0.99, 'composite_confidence': 0.99, 'duration_seconds': 5.0, 'step_min_confidence': 0.8, 'bundle_items_verified': []}) = evaluate_step(StepCandidate(step_id='STEP_03', activity_type='PLACE', object_id='RED_BOX', match_score=0.99, status=<StepMatchStatus...t=0.0, timestamp_end=5.0, match_details={'primitives': ['MOVE', 'LIFT', 'APPROACH_DESTINATION', 'PLACE']}, metadata={}), EvidenceBundle(activity_id='', activity_name='', target_object_id=None, timestamp=0.0, step_id=None, items={}, require...fidence=0.99, is_conclusive=False, timestamp_range=(0.0, 0.0), source_frames=[], bundle_id='EVD_10D06A16', metadata={}), ExperimentStep(id='STEP_03', sequence=3, name='Transfer Specimen to Work Surface', description='Astronaut lifts, moves...Place the Red Box firmly onto the center of the work surface.', target_step='STEP_03', max_recovery_time_seconds=60.0)))
+E        +      where evaluate_step = <core.procedure.evaluator.StepEvaluator object at 0x7f038160a490>.evaluate_step
+E        +        where <core.procedure.evaluator.StepEvaluator object at 0x7f038160a490> = <class 'core.procedure.evaluator.StepEvaluator'>()
+E        +  and   <StepMatchStatus.VERIFIED: 'VERIFIED'> = <enum 'StepMatchStatus'>.VERIFIED
+
+tests/regression/test_qa6_runtime_safety.py:140: AssertionError
+_____________ test_future_candidate_cannot_skip_authoritative_step _____________
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_future_candidate_cannot_skip_authoritative_step(procedure):
+        progress = ProcedureProgressManager(procedure)
+        act = ActivityObservation('GRASP', 'actor', 'RED_BOX', .99, TemporalWindow(0., 5.))
+        state = progress.update(act, EvidenceBundle(required_satisfied=True, evidence_score=.99))
+>       assert state.current_step == 'STEP_01'
+E       AssertionError: assert 'STEP_03' == 'STEP_01'
+E         
+E         - STEP_01
+E         ?       ^
+E         + STEP_03
+E         ?       ^
+
+tests/regression/test_qa6_runtime_safety.py:147: AssertionError
+=========================== short test summary info ============================
+FAILED tests/regression/test_qa6_runtime_safety.py::test_live_activity_label_does_not_invent_missing_object
+FAILED tests/regression/test_qa6_runtime_safety.py::test_other_object_contact_cannot_satisfy_target
+FAILED tests/regression/test_qa6_runtime_safety.py::test_placement_requires_complete_ordered_action_sequence[actions0]
+FAILED tests/regression/test_qa6_runtime_safety.py::test_placement_requires_complete_ordered_action_sequence[actions1]
+FAILED tests/regression/test_qa6_runtime_safety.py::test_placement_requires_complete_ordered_action_sequence[actions2]
+FAILED tests/regression/test_qa6_runtime_safety.py::test_future_candidate_cannot_skip_authoritative_step
+======================= 6 failed, 12 deselected in 0.66s =======================

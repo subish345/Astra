@@ -1,4 +1,4 @@
-"""Service Registry and Subsystem Lifecycle Interfaces for ASTRA-EA.
+"""Service Registry and Subsystem Lifecycle Interfaces for Pramman.
 
 Provides clean dependency injection, service discovery, and unified lifecycle management
 (initialize -> start -> stop -> health) across all Onboard Core subsystems.

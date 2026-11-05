@@ -1,4 +1,4 @@
-"""Subsystem health monitoring manager for ASTRA-EA.
+"""Subsystem health monitoring manager for Pramman.
 
 Tracks heartbeats, resource metrics, degradation states, and failure recovery
 across all application subsystems.

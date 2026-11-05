@@ -1,0 +1,27 @@
+[ WARN:0@1.134] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+[ WARN:0@1.137] global cap.cpp:435 open VIDEOIO(FFMPEG): raised OpenCV exception:
+
+OpenCV(5.0.0) /io/opencv/modules/videoio/src/cap_ffmpeg_impl.hpp:1243: error: (-2:Unspecified error) in function 'bool CvCapture_FFMPEG::open(const char*, int, const cv::Ptr<cv::IStreamReader>&, const cv::VideoCaptureParameters&)'
+> VIDEOIO/FFMPEG: Camera index out of range (expected: 'index < device_list->nb_devices'), where
+>     'index' is 0
+> must be less than
+>     'device_list->nb_devices' is 0
+
+
+[ WARN:0@1.137] global obsensor_stream_channel_v4l2.cpp:82 xioctl ioctl: fd=-1, req=-2140645888
+[ WARN:0@1.137] global obsensor_stream_channel_v4l2.cpp:138 queryUvcDeviceInfoList ioctl error return: 9
+[ WARN:0@1.137] global obsensor_stream_channel_v4l2.cpp:82 xioctl ioctl: fd=-1, req=-2140645888
+[ WARN:0@1.137] global obsensor_stream_channel_v4l2.cpp:138 queryUvcDeviceInfoList ioctl error return: 9
+[ERROR:0@1.137] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
+============================================================
+ ASTRA-EA SYSTEM DIAGNOSTIC (DOCTOR)
+============================================================
+[✓] Python Runtime: 3.14.7 (PASS)
+[✓] PyTorch: 2.14.0+cpu (CUDA: False, Device: CPU only)
+[✓] OpenCV: 5.0.0
+[✓] System Configuration: Valid (configs/system.yaml)
+[✓] SQLite Database: Initialized and readable (storage/database/astra.db, migrations: 1)
+[✓] Storage Subsystem: Writable (Used: 0.004 GB, Free: 187.32 GB)
+[-] Camera Device 0: UNAVAILABLE or PERMISSION DENIED (Use VideoFileSource for simulation)
+============================================================
+Diagnostic Result: ALL FOUNDATION CHECKS PASSED.

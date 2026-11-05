@@ -1,4 +1,4 @@
-# ASTRA-EA: Spacecraft Power Interface Qualification Test Plan
+# Pramman: Spacecraft Power Interface Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-PWR-001`  
 **Test Identifier:** `QUAL-PWR-001`  
@@ -11,7 +11,7 @@
 
 ## 1. Objective
 
-This qualification test program verifies that the ASTRA-EA power conversion stages, internal power sequencing, and software state machine operate reliably under nominal, transient, degraded, and interrupted power conditions on the spacecraft 28V DC power bus.
+This qualification test program verifies that the Pramman power conversion stages, internal power sequencing, and software state machine operate reliably under nominal, transient, degraded, and interrupted power conditions on the spacecraft 28V DC power bus.
 
 Specific goals:
 1. Verify nominal steady-state operation within the 25.0W chassis power allocation across the full 18V to 36V voltage window.
@@ -43,7 +43,7 @@ Specific goals:
 
 ## 3. Software Power State Architecture
 
-ASTRA-EA implements a deterministic 4-stage power defense state machine:
+Pramman implements a deterministic 4-stage power defense state machine:
 
 ```text
        ┌────────────────────────┐

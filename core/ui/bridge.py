@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Backend-to-UI Event Bridge
+# Pramman Backend-to-UI Event Bridge
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Thread-safe event bridge connecting background AI inference workers to the Qt UI."""
@@ -46,6 +46,9 @@ class BackendEventBridge(QObject):
 
     # Overall mission session status changed: (status_str)
     sig_session_status = Signal(str)
+
+    # Video recording state changed: (is_recording, file_path_or_info)
+    sig_recording_status = Signal(bool, str)
 
     def __init__(self, parent: Optional[QObject] = None) -> None:
         super().__init__(parent)

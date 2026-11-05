@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Video Stream Configuration
+# Pramman Video Stream Configuration
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Configuration models and quality profiles for local IP video streaming."""

@@ -1,4 +1,4 @@
-"""Authoritative Mission Lifecycle State Machine for ASTRA-EA.
+"""Authoritative Mission Lifecycle State Machine for Pramman.
 
 Centralizes global mission execution states, prevents fragmented subsystem status,
 and enforces valid state transition topologies across Onboard Core, Mission Console,

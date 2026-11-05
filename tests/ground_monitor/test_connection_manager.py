@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Connection Watchdog & Backoff Tests
+# Pramman Connection Watchdog & Backoff Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated tests for HeartbeatWatchdog, BackoffManager, and ConnectionManager."""

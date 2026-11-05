@@ -1,4 +1,4 @@
-"""MediaPipe 33-Keypoint Pose Estimator Adapter for ASTRA-EA.
+"""MediaPipe 33-Keypoint Pose Estimator Adapter for Pramman.
 
 Extracts complete 3D skeletal landmarks using Google MediaPipe PoseLandmarker Lite,
 enabling true biokinematic articulation (shoulders, elbows, wrists, hips, knees, feet)
@@ -143,6 +143,12 @@ class MediaPipePoseEstimator(PoseEstimator):
     @property
     def is_available(self) -> bool:
         return self._is_ready and self.detector is not None
+
+    def close(self):
+        if self.detector is not None:
+            self.detector.close()
+            self.detector = None
+        self._is_ready = False
 
     def estimate(self, frame: FrameData) -> List[PoseObservation]:
         """Extract 33 3D skeletal landmarks from the optical frame."""

@@ -1,4 +1,4 @@
-"""Batch Simulation Matrix Runner for ASTRA-EA.
+"""Batch Simulation Matrix Runner for Pramman.
 
 Executes parameterized fault test matrices across scenarios, evaluating overall
 pipeline resilience, fault detection reliability, and zero-crash compliance.
@@ -43,7 +43,7 @@ class SimulationMatrixRunner:
     ) -> Dict[str, Any]:
         """Execute all scenarios in the matrix sequentially."""
         print("=" * 70)
-        print(f"ASTRA-EA SIMULATION MATRIX: {matrix_name}")
+        print(f"Pramman SIMULATION MATRIX: {matrix_name}")
         print(f"Total Scenarios to Execute: {len(scenarios)}")
         print("=" * 70)
 

@@ -1,6 +1,6 @@
-# ASTRA-EA: Competition Package & Operator Defense Suite
+# Pramman: Competition Package & Operator Defense Suite
 
-**Project:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**Project:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Build:** `ASTRA-EA-COMPETITION-RC1`  
 **System State:** **FEATURE FREEZE ACTIVE**
@@ -11,7 +11,7 @@
 
 This directory contains the operational runbooks, technical defense dossiers, judge presentation materials, model/dataset cards, and system verification utilities for the live Smart India Hackathon (SIH) competition demonstration.
 
-ASTRA-EA is an **engineering-grade ground demonstrator (TRL 4)** providing offline, vision-based experiment assurance for astronauts aboard the Bharatiya Antariksh Station (BAS).
+Pramman is an **engineering-grade ground demonstrator (TRL 4)** providing offline, vision-based experiment assurance for astronauts aboard the Bharatiya Antariksh Station (BAS).
 
 ---
 

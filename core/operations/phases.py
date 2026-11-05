@@ -1,4 +1,4 @@
-"""Mission Lifecycle Phases and State Transitions for ASTRA-EA (Phase 19, Section 8).
+"""Mission Lifecycle Phases and State Transitions for Pramman (Phase 19, Section 8).
 
 Defines the formal state machine governing mission execution:
 PREPARATION -> INITIALIZATION -> READY -> EXPERIMENT -> ANOMALY -> RECOVERY -> COMPLETION -> POST_MISSION

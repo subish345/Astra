@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA — Verification & Validation Executive Summary</title>
+    <style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; line-height: 1.5; }
+h1, h2, h3 { color: #38bdf8; font-weight: 600; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; }
+.nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 500; }
+.nav-link.active { color: #38bdf8; font-weight: 700; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+.metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+.metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; margin-top: 0.25rem; }
+.badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-waived { background: #374151; color: #d1d5db; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+tr:hover { background: #1e293b44; }
+code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; font-size: 0.85rem; }
+.alert-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+    <h1>ASTRA-EA — Formal Verification & Validation Executive Summary</h1>
+    <p>Autonomous Spacecraft Experiment Assurance & Assistance | Milestone: Phase 16 V&V Framework</p>
+    
+<div class="nav-bar">
+    <a href="v_and_v_summary.html" class="nav-link">Executive Summary</a>
+    <a href="requirements_status.html" class="nav-link">Requirements</a>
+    <a href="traceability.html" class="nav-link">Traceability Matrix</a>
+    <a href="verification_results.html" class="nav-link">Verification Results</a>
+    <a href="validation_results.html" class="nav-link">Validation Results</a>
+    <a href="performance_results.html" class="nav-link">Performance Results</a>
+    <a href="discrepancies.html" class="nav-link">Discrepancies</a>
+    <a href="evidence_index.html" class="nav-link">Evidence Index</a>
+</div>
+
+
+    <div class="alert-box">
+        <strong>Formal V&V Principle:</strong> Verification (<em>"Did we build the system according to its specified requirements?"</em>) 
+        and Validation (<em>"Does the system solve the intended operational problem?"</em>) are strictly separated. 
+        Environmental qualification (vibration, TVAC, radiation) remains explicitly categorized as <strong>PLANNED / NOT PERFORMED (TRL 6)</strong>.
+    </div>
+
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-title">Total Requirements</div>
+            <div class="metric-val">38</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Verified (Ground Scope)</div>
+            <div class="metric-val">33</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Validated (Scenarios)</div>
+            <div class="metric-val">2</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Deferred (TRL 6 Roadmap)</div>
+            <div class="metric-val">3</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Verification Coverage</div>
+            <div class="metric-val">100.0%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Evidence Coverage</div>
+            <div class="metric-val">100.0%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Traceability Defects</div>
+            <div class="metric-val">0</div>
+        </div>
+    </div>
+
+    <h2>Engineering Verification Pillars</h2>
+    <table>
+        <thead>
+            <tr><th>Verification Pillar</th><th>Verification Method</th><th>Level</th><th>Scope</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Functional Perception & Procedure</td><td>TEST, DEMONSTRATION</td><td>COMPONENT, INTEGRATION</td><td>Optical, IoU > 0.05, 10-frame dwell, Tri-state</td><td><span class="badge-pass">VERIFIED</span></td></tr>
+            <tr><td>Real-Time Performance & Margins</td><td>TEST</td><td>SYSTEM</td><td>34.2 FPS, 26.4 ms P95 latency, 448 MB RSS</td><td><span class="badge-pass">VERIFIED</span></td></tr>
+            <tr><td>Hardware-in-the-Loop & Physical Rig</td><td>TEST</td><td>HIL, PHYSICAL</td><td>45-850 Lux, 35-65 deg pitch, 3 viewpoints</td><td><span class="badge-pass">VERIFIED</span></td></tr>
+            <tr><td>Epistemic Safety & Fault Isolation</td><td>TEST, ANALYSIS</td><td>SYSTEM</td><td>Non-guessing, camera dropout pause, air-gap</td><td><span class="badge-pass">VERIFIED</span></td></tr>
+            <tr><td>Spacecraft Environmental Qual</td><td>TEST (Shaker/TVAC)</td><td>ENVIRONMENTAL</td><td>Launch vibration, TVAC cycling, TID radiation</td><td><span class="badge-deferred">PLANNED (TRL 6)</span></td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

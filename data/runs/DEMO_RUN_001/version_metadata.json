@@ -1,10 +1,10 @@
 {
-  "system_name": "ASTRA-EA",
+  "system_name": "ORBITA",
   "version": "1.0.0",
-  "git_commit": "c02788d769a4468cd63dc4f065429083ae11cef4",
-  "python_version": "3.14.7",
-  "platform": "Linux-7.1.12-200.fc44.x86_64-x86_64-with-glibc2.43",
-  "build_identifier": "1.0.0-c02788d",
+  "git_commit": "6ac44dc56de3305060c09f914eb4eb03422d08d8",
+  "python_version": "3.14.8",
+  "platform": "Linux-7.2.15-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "build_identifier": "1.0.0-6ac44dc",
   "tagline": "See. Understand. Verify. Assist. Record. \u2014 Locally, in Space.",
   "problem_statement": "SIH26174 \u2014 AI Human Activity Recognition for On-board BAS Experiments"
 }

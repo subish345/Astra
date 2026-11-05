@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Event Stream Server Tests
+# Pramman Event Stream Server Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated tests for GroundEvent schema, EventPublisher, SSE server, and client."""

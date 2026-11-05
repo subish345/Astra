@@ -1,4 +1,4 @@
-"""Core data structures and state definitions for ASTRA-EA procedure management.
+"""Core data structures and state definitions for Pramman procedure management.
 
 Defines step candidates, step evaluations, procedure status enumerations,
 and traceable state snapshots.

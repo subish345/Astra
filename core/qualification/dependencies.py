@@ -1,4 +1,4 @@
-"""Automated Dependency Auditor & Supply-Chain Integrity Verifier for ASTRA-EA (Phase 17).
+"""Automated Dependency Auditor & Supply-Chain Integrity Verifier for Pramman (Phase 17).
 
 Inspects active Python packages, licenses, purposes, and artifact checksums.
 Complies with aerospace supply-chain security guidelines (ECSS-Q-ST-80C).
@@ -154,9 +154,9 @@ class DependencyAuditor:
         art_data = self.verify_supply_chain_artifacts()
 
         lines = []
-        lines.append("=" * 80)
-        lines.append(" ASTRA-EA DEPENDENCY AUDIT & SUPPLY-CHAIN INTEGRITY (Phase 17)")
-        lines.append("=" * 80)
+        lines.append("=" * 70)
+        lines.append(" ORBITA DEPENDENCY AUDIT & SUPPLY-CHAIN INTEGRITY (Phase 17)")
+        lines.append("=" * 70)
         lines.append(f"{'Package':<18} {'Version':<14} {'License':<14} {'Status':<12} {'Purpose'}")
         lines.append("-" * 80)
         for p in dep_data["packages"]:

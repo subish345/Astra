@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Connection Heartbeat & Watchdog
+# Pramman Connection Heartbeat & Watchdog
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Lightweight link watchdog monitoring heartbeat age and classifying link quality."""

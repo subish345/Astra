@@ -1,0 +1,29 @@
+# Master ASTRA-EA System Requirements Catalog (Phase 16)
+# Standard: ECSS-E-ST-40C / NASA-STD-8739.8
+
+metadata:
+  system: Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)
+  version: 1.0.0-RC1
+  standard: ECSS-E-ST-40C / NASA-STD-8739.8
+  total_requirements: 35
+  categories:
+    - functional
+    - performance
+    - interface
+    - safety
+    - reliability
+    - security
+    - data
+    - operations
+    - environmental
+
+includes:
+  - functional.yaml
+  - performance.yaml
+  - interface.yaml
+  - safety.yaml
+  - reliability.yaml
+  - security.yaml
+  - data.yaml
+  - operations.yaml
+  - environmental.yaml

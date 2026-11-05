@@ -1,4 +1,4 @@
-"""Operator Roles and Authority Model for ASTRA-EA (Phase 19, D19.03, D19.04).
+"""Operator Roles and Authority Model for Pramman (Phase 19, D19.03, D19.04).
 
 Defines role responsibilities, access control policies, and command authority rules
 governing both onboard and ground operations.

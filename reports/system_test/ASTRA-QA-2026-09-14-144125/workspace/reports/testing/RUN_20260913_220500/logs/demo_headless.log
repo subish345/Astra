@@ -1,0 +1,28 @@
+============================================================
+ ASTRA-EA — ONE-COMMAND FLIGHT DEMONSTRATION MODE
+============================================================
+Profile:     final_demo
+Procedure:   configs/experiments/demo.yaml
+Mode:        HEADLESS AUTOMATED
+Air-Gap:     100% LOCAL (NO CLOUD DEPENDENCY)
+============================================================
+
+[+] Running Pre-Flight Self-Test...
+------------------------------------------------------------
+SUBSYSTEM                STATUS      
+------------------------------------------------------------
+Camera                   PASS        
+Model                    PASS        
+Procedure                PASS        
+Database                 PASS        
+Storage                  PASS        
+Voice                    PASS        
+Recording                PASS        
+Mission Console          PASS        
+Ground Stream            PASS (OPTIONAL)
+------------------------------------------------------------
+VERDICT: PASS
+============================================================
+
+[+] Starting headless autonomous demonstration run...
+[✓] Demo completed successfully. Report: data/runs/DEMO_RUN_001/mission_report.json

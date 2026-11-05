@@ -1,7 +1,7 @@
-# ASTRA-EA Perception Architecture & Pipeline Design
+# Pramman Perception Architecture & Pipeline Design
 
 ## 1. Overview
-The **ASTRA-EA Perception Subsystem** ingests video frames from onboard cameras, performs optical quality assessments, runs scheduled computer vision models, maintains persistent spatial-temporal tracks, and outputs normalized `PerceptionState` telemetry for downstream interaction and procedure engines.
+The **Pramman Perception Subsystem** ingests video frames from onboard cameras, performs optical quality assessments, runs scheduled computer vision models, maintains persistent spatial-temporal tracks, and outputs normalized `PerceptionState` telemetry for downstream interaction and procedure engines.
 
 ```mermaid
 flowchart TD

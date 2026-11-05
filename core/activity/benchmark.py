@@ -113,7 +113,7 @@ class ActivityBenchmark:
     def print_summary(self, report: Phase3BenchmarkReport) -> None:
         """Output human-readable benchmark summary."""
         print("\n============================================================")
-        print(" ASTRA-EA PHASE 3 PIPELINE BENCHMARK REPORT")
+        print(" Pramman PHASE 3 PIPELINE BENCHMARK REPORT")
         print("============================================================")
         print(f"Processed Frames:       {report.frame_count}")
         print(f"Elapsed Time:           {report.duration_seconds:.2f}s")

@@ -1,0 +1,22 @@
+id: V-SYS-007-VOICE
+requirement: ASTRA-SYS-007
+title: Cockpit Voice Guidance and Visual HUD Alerts
+purpose: Verify that procedural deviation generates localized voice guidance and visual alert banners.
+preconditions:
+  - LocalVoiceManager initialized
+setup:
+  - Trigger mock deviation event
+inputs:
+  - Deviation alert packet
+procedure:
+  - Deliver deviation to assistance engine
+  - Verify speech synthesis queue receives recovery prompt
+  - Verify HUD message emitted
+expected_result:
+  - Voice audio generated within 200 ms
+  - Visual HUD state updated with red recovery banner
+acceptance_criteria:
+  - Voice string matches expected corrective guidance
+evidence:
+  - final_submission/demo_videos/02_wrong_object.mp4
+  - verification/evidence/EVID-SYS-007-VOICE.wav

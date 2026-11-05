@@ -1,0 +1,33 @@
+============================================================
+ ASTRA-EA TEMPORAL ACTIVITY RECOGNITION TEST (PHASE 3)
+============================================================
+DISPLAY STATUS: ONLINE (ASTRA-EA — TEMPORAL ACTIVITY RECOGNITION)
+----------------------------------------
+KEYBOARD CONTROLS:
+  [P]ose  [H]ands  [O]bjects  [T]racking  [I]nteraction  [A]ctivity  [D]ebug HUD  [E]vidence  [R]eset  [Q]uit
+============================================================
+Executing activity recognition benchmark for 120 frames...
+
+============================================================
+ ASTRA-EA PHASE 3 PIPELINE BENCHMARK REPORT
+============================================================
+Processed Frames:       120
+Elapsed Time:           4.23s
+Throughput:             28.4 FPS
+------------------------------------------------------------
+LATENCY PERCENTILES (End-to-End Pipeline):
+  P50 (Median):         13.44 ms
+  P95:                  16.82 ms
+  P99:                  18.14 ms
+------------------------------------------------------------
+AVERAGE LATENCY BY SUBSYSTEM:
+  Perception Stage:     13.66 ms
+  Interaction Stage:    0.00 ms
+  Temporal Buffer:      0.01 ms
+  Activity Engine:      0.00 ms
+------------------------------------------------------------
+RESOURCE UTILIZATION:
+  CPU Usage:            0.0%
+  RAM RSS:              115.9 MB
+============================================================
+

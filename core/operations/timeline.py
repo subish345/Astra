@@ -1,4 +1,4 @@
-"""Mission Timeline Model and Authoritative Timestamps for ASTRA-EA (Phase 19, Section 12, 13, D19.02).
+"""Mission Timeline Model and Authoritative Timestamps for Pramman (Phase 19, Section 12, 13, D19.02).
 
 Maintains mission event timelines, anchoring all milestones to authoritative onboard
 Mission Elapsed Time (MET) while mapping Ground Receipt Time (GRT).

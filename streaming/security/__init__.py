@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Streaming Security Package
+# Pramman Streaming Security Package
 # ==============================================================================
 """Security utilities for network binding, path traversal defense, and rate limiting."""
 

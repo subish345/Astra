@@ -1,4 +1,4 @@
-# ASTRA-EA Video Streaming Architecture
+# Pramman Video Streaming Architecture
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Classification:** Phase 9 Video Ingestion, Encoding, and IP Distribution Design
@@ -61,7 +61,7 @@ $$\text{Camera Ingestion} \longrightarrow \text{Perception + Assurance Loop} \xr
 
 ## 3. Stream Quality Profiles
 
-Configured in [`configs/system.yaml`](file:///home/subish-loq/Documents/astra/configs/system.yaml):
+Configured in [`configs/system.yaml`](file:///home/subish-loq/Documents/pramman_proj/configs/system.yaml):
 
 | Quality Tier | Resolution | Target FPS | JPEG Quality | Avg Encode Time | Typical Bandwidth |
 | :--- | :--- | :--- | :--- | :--- | :--- |

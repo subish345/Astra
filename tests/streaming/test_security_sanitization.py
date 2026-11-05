@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Security & Sanitization Tests
+# Pramman Security & Sanitization Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Validates path traversal prevention, bind address enforcement, and rate limiting."""

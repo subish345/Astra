@@ -1,0 +1,56 @@
+- id: ASTRA-SAF-001
+  title: Non-Guessing Assurance Barrier
+  description: The system shall NEVER guess or falsely verify an experiment step in the presence of ambiguous, occluded, or insufficient optical evidence.
+  category: SAFETY
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: HIL
+  status: VERIFIED
+  owner: Safety & Mission Assurance
+  evidence:
+    - storage/reports/simulation/sim_stress_optical.json
+    - verification/evidence/EVID-SAF-001-NONGUESSING.json
+
+- id: ASTRA-SAF-002
+  title: Occlusion-Induced Uncertainty State Transition
+  description: Under optical occlusion or marginal detection confidence (<0.50), the system shall transition to UNCERTAIN and engage an observation dwell window rather than flagging immediate deviation.
+  category: SAFETY
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: PHYSICAL
+  status: VERIFIED
+  owner: Safety & Mission Assurance
+  evidence:
+    - reports/physical/physical_validation.html
+    - verification/evidence/EVID-SAF-002-OCCLUSION.json
+
+- id: ASTRA-SAF-003
+  title: Video Stream Ingestion Freeze Containment
+  description: If optical video ingestion ceases for 3 or more consecutive frames, procedure verification shall immediately transition to PAUSED without false verification or unhandled exception.
+  category: SAFETY
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: HIL
+  status: VERIFIED
+  owner: Safety & Mission Assurance
+  evidence:
+    - reports/hil/simulation_vs_physical.html
+    - verification/evidence/EVID-SAF-003-FREEZE.json
+
+- id: ASTRA-SAF-004
+  title: Ground Network and Audio Auxiliary Failure Isolation
+  description: Ground telemetry transmission failures or cockpit audio device crashes SHALL NOT block, delay, or suspend onboard procedural assurance.
+  category: SAFETY
+  priority: CRITICAL
+  verification_method:
+    - ANALYSIS
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Safety & Mission Assurance
+  evidence:
+    - final_submission/demo_videos/05_offline.mp4
+    - verification/evidence/EVID-SAF-004-ISOLATION.json

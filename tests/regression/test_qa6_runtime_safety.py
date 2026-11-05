@@ -37,7 +37,10 @@ def test_qthread_stop_uses_supported_wait_signature(app):
 def test_next_action_keeps_authoritative_current_step(app, procedure):
     from core.ui.main_window import MissionConsoleWindow
     from core.ui.state import MissionUIState
-    window = SimpleNamespace(state=MissionUIState(), console_view=MagicMock())
+    window = SimpleNamespace(
+        state=MissionUIState(), console_view=MagicMock(),
+        _live_observe_selected=lambda: False,
+    )
     MissionConsoleWindow._on_step_progress(window, ProcedureProgressManager(procedure).get_state())
     guidance = window.console_view.step_panel.update_next_action.call_args.args[0]
     assert '01' in guidance
@@ -76,7 +79,7 @@ def test_worker_failed_or_empty_camera_never_completes_run(app, monkeypatch, tmp
     db = DatabaseManager(root / 'storage/astra.db')
     with db.get_connection() as conn:
         row = conn.execute("SELECT status FROM experiment_runs WHERE run_id='QA_FAILURE'").fetchone()
-    assert row[0] == ('FAILED' if not opens else 'ABORTED')
+    assert row[0] == 'FAILED'  # A camera that opens but delivers no frames is also a failure.
 
 
 @pytest.mark.parametrize('name,confidence,metadata', [('IDLE', .95, {}), ('GRASP', .1, {}), ('GRASP', .9, {'occluded': True})])

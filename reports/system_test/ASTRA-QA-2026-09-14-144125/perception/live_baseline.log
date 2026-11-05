@@ -1,0 +1,50 @@
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: Logging before InitGoogle() is written to STDERR
+W0000 00:00:1789397022.302102   52594 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1789397022.318775   52594 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[ WARN:0@62.281] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+[video4linux2,v4l2 @ 0x5580d3a9d0c0] ioctl(VIDIOC_G_INPUT): Inappropriate ioctl for device
+[ERROR:0@62.281] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
+============================================================
+ ASTRA-EA LIVE PERCEPTION SUBSYSTEM
+============================================================
+OBJECT DETECTOR
+Implementation: ColorSpatialObjectDetector (Development Baseline)
+Model:          Deterministic HSV & Spatial Morphology
+Classes:        0 — RED_BOX, 1 — YELLOW_BOX, 2 — MAIN_BOX, 3 — ASTRONAUT
+Weights:        N/A (Offline CV Rules)
+Device:         CPU
+----------------------------------------
+POSE ESTIMATION
+Model:          MediaPipePoseEstimator (CPU)
+Landmarks:      33 Keypoints
+Status:         ONLINE
+----------------------------------------
+HAND DETECTION
+Model:          MediaPipeHandDetector (Pose-Derived Anatomical)
+Status:         ONLINE
+----------------------------------------
+TRACKING
+Model:          MultiObjectTracker (IoU + Spatial Centroid)
+Status:         ONLINE
+----------------------------------------
+DISPLAY STATUS: ONLINE (ASTRA-EA — LIVE PERCEPTION)
+----------------------------------------
+KEYBOARD CONTROLS (Active in Window):
+  [P]ose  [H]ands  [O]bjects  [T]racking  [D]ebug HUD  [E]vidence  [R]eset  [Q]uit
+============================================================
+Executing perception benchmark for 1800 frames...
+============================================================
+ ASTRA-EA PERCEPTION PERFORMANCE BENCHMARK REPORT
+============================================================
+Frames Evaluated:    1800
+Total Duration:      60.03 s
+Throughput (FPS):    Avg: 30.0 | Min: 30.0 | Max: 30.0
+Latency (P50):       14.68 ms
+Latency (P95):       18.22 ms
+Latency (P99):       21.86 ms
+Avg CPU Usage:       9.7%
+GPU Memory Used:     298 MB
+------------------------------------------------------------
+Model Accuracy:      NOT EVALUATED (Requires ground-truth annotated dataset)
+============================================================

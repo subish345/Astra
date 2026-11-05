@@ -1,0 +1,24 @@
+======================================================================
+ ASTRA-EA MISSION REHEARSAL FRAMEWORK (Phase 20)
+======================================================================
+Scenario:     GOLDEN_MISSION
+Mode:         SIMULATION
+Pacing:       ACCELERATED
+Operator:     ASTRONAUT_OPERATOR_1
+Sandbox:      ISOLATED (Zero live flight records modified)
+----------------------------------------------------------------------
+  [PREPARATION ] Step 1: Pre-mission checklist verification
+  [INITIALIZATION] Step 2: Subsystem clock sync and frame lock
+  [READY       ] Step 3: Authorized mission start dispatched
+  [EXPERIMENT  ] Step 4: Step 1: Approach Workstation & Stage Apparatus
+  [ANOMALY     ] Step 5: Step 2: Inadvertent Wrong Apparatus Gripped (DEVIATION)
+  [RECOVERY    ] Step 6: Recovery guidance followed; correct apparatus detected
+  [EXPERIMENT  ] Step 7: Step 3: Centrifuge vortexing completed nominally
+  [EXPERIMENT  ] Step 8: Step 4: Specimen deposition and sealing completed
+  [COMPLETION  ] Step 9: Mission completed; all step assertions satisfied
+  [POST_MISSION] Step 10: Post-mission audit report generation & integrity seal
+======================================================================
+Rehearsal Verdict:  [PASS] (Duration: 0.039s)
+Data Consistency:   [CONSISTENT]
+Artifacts Pack:     /home/subish-loq/Documents/astra/reports/rehearsal/REH_GOLDEN_MISSION_20260913_163845
+======================================================================

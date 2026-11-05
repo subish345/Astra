@@ -1,4 +1,4 @@
-# ASTRA-EA — Final System Architecture
+# Pramman — Final System Architecture
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version:** `1.0.0-RC1`
@@ -7,7 +7,7 @@
 
 ## 1. End-to-End Pipeline Data Flow
 
-The operational core of ASTRA-EA follows a strict, unidirectional data-flow pipeline:
+The operational core of Pramman follows a strict, unidirectional data-flow pipeline:
 
 ```text
                Optical Camera (/dev/video0 / RTSP / Synthetic Source)
@@ -75,7 +75,7 @@ The operational core of ASTRA-EA follows a strict, unidirectional data-flow pipe
 
 ## 2. Supporting Subsystems
 
-ASTRA-EA integrates six critical supporting subsystems:
+Pramman integrates six critical supporting subsystems:
 
 1. **Dataset Studio (`core/dataset/`)**:
    - Synthetic microgravity data generator with reproducible random seeds.

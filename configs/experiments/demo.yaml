@@ -10,7 +10,7 @@ experiment:
   name: "Sample Material Handling & Container Verification (DEMO)"
   version: "1.0.0"
   description: "Demonstration experiment for validating multimodal action assurance and deviation detection."
-  author: "ASTRA-EA Ground Engineering Team"
+  author: "Pramman Ground Engineering Team"
 
 objects:
   - id: "MAIN_BOX"
@@ -136,7 +136,7 @@ steps:
     stabilization:
       minimum_duration_seconds: 1.0
       maximum_position_delta: 0.05
-    allow_unstable_placement: true
+    allow_unstable_placement: false
     required_evidence:
       - "OBJECT_DETECTED"
       - "COUPLED_MOTION"

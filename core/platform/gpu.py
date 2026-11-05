@@ -1,4 +1,4 @@
-"""GPU and Accelerator Hardware Abstraction for ASTRA-EA (Phase 18)."""
+"""GPU and Accelerator Hardware Abstraction for Pramman (Phase 18)."""
 
 from __future__ import annotations
 

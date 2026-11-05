@@ -1,4 +1,4 @@
-# ASTRA-EA — Audio UX & Voice Guidance Architecture
+# Pramman — Audio UX & Voice Guidance Architecture
 
 ## Local Offline Speech Synthesis & Notification Engine
 
@@ -17,7 +17,7 @@
 
 ## 2. Priority Hierarchy & Cooldown Policy
 
-[`AudioPolicy`](file:///home/subish-loq/Documents/astra/core/voice/policies.py) defines strict operational timing:
+[`AudioPolicy`](file:///home/subish-loq/Documents/pramman_proj/core/voice/policies.py) defines strict operational timing:
 
 | Priority | Numeric Value | Default Cooldown | Preemption Behavior | Operational Usage |
 |---|:---:|:---:|---|---|

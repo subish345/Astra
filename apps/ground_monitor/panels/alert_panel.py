@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Alert Panel
+# Pramman Ground Alert Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Real-time operational deviation alerts and closed-loop recovery guidance."""

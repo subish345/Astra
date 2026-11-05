@@ -1,0 +1,11 @@
+{
+  "model_id": "ColorSpatialObjectDetector (Baseline)",
+  "detector_type": "baseline",
+  "runtime": "opencv",
+  "input_resolution": [
+    640,
+    640
+  ],
+  "confidence_threshold": 0.5,
+  "dataset_version": "NOT_APPLICABLE"
+}

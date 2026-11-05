@@ -17,7 +17,7 @@ def test_inspect_ml_environment_returns_required_keys():
 def test_ml_doctor_execution(capsys):
     ret = run_ml_doctor()
     captured = capsys.readouterr()
-    assert "ASTRA-EA ML ENVIRONMENT" in captured.out
+    assert "ORBITA ML ENVIRONMENT" in captured.out or "Pramman ML ENVIRONMENT" in captured.out
     assert "Python:" in captured.out
     assert "PyTorch:" in captured.out
     assert "ML ENVIRONMENT STATUS:" in captured.out

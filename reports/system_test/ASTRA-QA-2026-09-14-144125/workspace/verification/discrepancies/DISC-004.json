@@ -1,0 +1,11 @@
+{
+  "id": "DISC-004",
+  "requirement": "ASTRA-ENV-004",
+  "test": "V-ENV-004",
+  "severity": "MEDIUM",
+  "description": "Thermal-vacuum cycling (10^-5 Torr, -20C to +60C) cannot be executed in standard ground laboratory.",
+  "status": "WAIVED",
+  "root_cause": "Requires thermal-vacuum chamber facility.",
+  "corrective_action": "Thermal conduction dissipation path designed into edge enclosure specification; conductive thermal budget verified.",
+  "verification": "Waived for Phase 16 ground demonstrator; scheduled for Phase 17 environmental qualification program."
+}

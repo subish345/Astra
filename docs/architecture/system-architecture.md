@@ -1,8 +1,8 @@
-# ASTRA-EA System Architecture
+# Pramman System Architecture
 
 ## 1. System Overview
 
-**ASTRA-EA** (Autonomous Spacecraft Experiment Assurance & Assistance) is an offline, edge-AI platform designed to observe astronaut-object interactions, recognize scientific experiment activities, validate procedural sequences, detect deviations, provide voice/visual guidance, and maintain an immutable local audit record.
+**Pramman** (Autonomous Spacecraft Experiment Assurance & Assistance) is an offline, edge-AI platform designed to observe astronaut-object interactions, recognize scientific experiment activities, validate procedural sequences, detect deviations, provide voice/visual guidance, and maintain an immutable local audit record.
 
 The foundational design axiom is:
 > **AI observes. Evidence explains. The assurance engine decides. The assistance engine communicates. The logger records.**

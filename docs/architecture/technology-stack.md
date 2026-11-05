@@ -1,7 +1,7 @@
-# ASTRA-EA Technology Decisions & Stack Evaluation
+# Pramman Technology Decisions & Stack Evaluation
 
 ## 1. Core Architectural Strategy
-ASTRA-EA prioritizes **offline reliability, determinism, bounded resource footprint, and zero cloud lock-in**.
+Pramman prioritizes **offline reliability, determinism, bounded resource footprint, and zero cloud lock-in**.
 
 ---
 

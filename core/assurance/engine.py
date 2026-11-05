@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Tri-State Assurance Engine
+# Pramman Tri-State Assurance Engine
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Tri-State Assurance Engine evaluating VERIFIED, UNCERTAIN, and DEVIATION states.

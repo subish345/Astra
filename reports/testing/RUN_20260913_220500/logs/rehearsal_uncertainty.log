@@ -1,0 +1,23 @@
+======================================================================
+ ASTRA-EA MISSION REHEARSAL FRAMEWORK (Phase 20)
+======================================================================
+Scenario:     REH_03_UNCERTAINTY
+Mode:         SIMULATION
+Pacing:       ACCELERATED
+Operator:     ASTRONAUT_OPERATOR_1
+Sandbox:      ISOLATED (Zero live flight records modified)
+----------------------------------------------------------------------
+  [PREPARATION ] Step 1: Pre-mission checks passed
+  [READY       ] Step 2: Experiment started
+  [EXPERIMENT  ] Step 3: Step 1: Verified normally
+  [EXPERIMENT  ] Step 4: Partial visual occlusion introduced by operator sleeve
+  [EXPERIMENT  ] Step 5: Visibility restored; perception resumes confidence
+  [EXPERIMENT  ] Step 6: Step 2: Verified nominally after clearing occlusion
+  [EXPERIMENT  ] Step 7: Step 3: Verified normally
+  [EXPERIMENT  ] Step 8: Step 4: Verified normally
+  [COMPLETION  ] Step 9: Experiment completed; uncertainty handled with zero false alarms
+======================================================================
+Rehearsal Verdict:  [PASS] (Duration: 0.039s)
+Data Consistency:   [CONSISTENT]
+Artifacts Pack:     /home/subish-loq/Documents/astra/reports/rehearsal/REH_REH_03_UNCERTAINTY_20260913_163757
+======================================================================

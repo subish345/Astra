@@ -1,0 +1,46 @@
+[ WARN:0@5.177] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+[video4linux2,v4l2 @ 0x55f8a9032a80] ioctl(VIDIOC_G_INPUT): Inappropriate ioctl for device
+[ERROR:0@5.178] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
+============================================================
+ ASTRA-EA LIVE PERCEPTION SUBSYSTEM
+============================================================
+OBJECT DETECTOR
+Implementation: ColorSpatialObjectDetector (Development Baseline)
+Model:          Deterministic HSV & Spatial Morphology
+Classes:        0 — RED_BOX, 1 — YELLOW_BOX, 2 — MAIN_BOX, 3 — ASTRONAUT
+Weights:        N/A (Offline CV Rules)
+Device:         CPU
+----------------------------------------
+POSE ESTIMATION
+Model:          LightweightPoseEstimator (Haar Cascades)
+Landmarks:      11 Keypoints
+Status:         ONLINE
+----------------------------------------
+HAND DETECTION
+Model:          LightweightHandDetector (Dual-space HSV+YCrCb)
+Status:         ONLINE
+----------------------------------------
+TRACKING
+Model:          MultiObjectTracker (IoU + Spatial Centroid)
+Status:         ONLINE
+----------------------------------------
+DISPLAY STATUS: ONLINE (ASTRA-EA — LIVE PERCEPTION)
+----------------------------------------
+KEYBOARD CONTROLS (Active in Window):
+  [P]ose  [H]ands  [O]bjects  [T]racking  [D]ebug HUD  [E]vidence  [R]eset  [Q]uit
+============================================================
+Executing perception benchmark for 120 frames...
+============================================================
+ ASTRA-EA PERCEPTION PERFORMANCE BENCHMARK REPORT
+============================================================
+Frames Evaluated:    120
+Total Duration:      4.16 s
+Throughput (FPS):    Avg: 28.9 | Min: 30.0 | Max: 30.0
+Latency (P50):       15.55 ms
+Latency (P95):       18.65 ms
+Latency (P99):       21.42 ms
+Avg CPU Usage:       15.2%
+GPU Memory:          N/A (CPU Mode)
+------------------------------------------------------------
+Model Accuracy:      NOT EVALUATED (Requires ground-truth annotated dataset)
+============================================================

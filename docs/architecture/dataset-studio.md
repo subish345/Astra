@@ -1,4 +1,4 @@
-# ASTRA-EA Dataset Studio & Training Subsystem Architecture
+# Pramman Dataset Studio & Training Subsystem Architecture
 
 Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 

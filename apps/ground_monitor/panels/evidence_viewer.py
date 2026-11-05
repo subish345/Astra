@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Evidence Viewer
+# Pramman Ground Evidence Viewer
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Read-only viewer for corroborating multimodal evidence bundles and causal trees."""
@@ -43,7 +43,7 @@ class EvidenceViewerDialog(QDialog):
         super().__init__(parent)
         self.evidence_id = evidence_id
         self.base_url = base_url
-        self.setWindowTitle(f"ASTRA-EA Evidence Audit — {evidence_id}")
+        self.setWindowTitle(f"ORBITA Evidence Audit — {evidence_id}")
         self.setMinimumSize(640, 480)
         self.setStyleSheet(f"""
             QDialog {{

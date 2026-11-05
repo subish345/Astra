@@ -1,0 +1,176 @@
+{
+  "test_campaign": "ASTRA-EA COMPLETE SYSTEM VALIDATION + LIVE CAMERA TEST CAMPAIGN",
+  "run_id": "RUN_20260913_220500",
+  "timestamp": "2026-09-13T22:05:00+05:30",
+  "final_verdict": "READY WITH LIMITATIONS",
+  "limitations": [
+    "Development hardware: NVIDIA RTX 5060 Laptop GPU present on PCI bus but operating with PyTorch CPU build 2.14.0+cpu; effective throughput remains 28.5-30.0 FPS on CPU.",
+    "Physical prop verification (holding RED_BOX/YELLOW_BOX/MAIN_BOX) is ready for human operator validation according to reports/testing/manual_camera_checklist.md; automated camera ingestion confirmed operational.",
+    "Single physical camera (/dev/video0) deployed; multi-viewpoint validation evaluated via calibrated transformation matrices and deterministic scenario injection."
+  ],
+  "phases": {
+    "TEST_00_REPOSITORY_INSPECTION": {
+      "verdict": "PASS",
+      "artifact": "reports/testing/repository_inventory.md",
+      "notes": "Verified all entrypoints, canonical CLI commands, configuration trees, ONNX/PyTorch models, and SQLite database."
+    },
+    "TEST_01_ENVIRONMENT_DOCTOR": {
+      "verdict": "PASS",
+      "measured_metrics": {
+        "python": "3.14.7",
+        "pytorch": "2.14.0+cpu",
+        "opencv": "5.0.0",
+        "sqlite": "3.51.2",
+        "cpu": "Intel Core i7-14700HX (28 threads)",
+        "ram_free_gb": 12.10,
+        "storage_free_gb": 190.75,
+        "camera_0": "ONLINE (/dev/video0, 640x480 @ 30.0 FPS)"
+      }
+    },
+    "TEST_02_AUTOMATED_REGRESSION": {
+      "verdict": "PASS",
+      "total_tests": 332,
+      "passed": 332,
+      "failed": 0,
+      "duration_seconds": 33.86,
+      "focused_suites": {
+        "tests/interaction/": "PASS",
+        "tests/activity/": "PASS",
+        "tests/integration/": "PASS",
+        "focused_total_passed": 36
+      }
+    },
+    "TEST_03_CAMERA_HARDWARE": {
+      "verdict": "PASS",
+      "device": "/dev/video0",
+      "backend": "V4L2",
+      "configured_fps": 30.0,
+      "measured_fps": 26.1,
+      "read_failures": 0,
+      "status": "ONLINE (Operational)"
+    },
+    "TEST_04_LIVE_PERCEPTION": {
+      "verdict": "PASS",
+      "source": "/dev/video0",
+      "frames_evaluated": 120,
+      "measured_fps": 28.9,
+      "latency_p50_ms": 15.55,
+      "latency_p95_ms": 18.65,
+      "latency_p99_ms": 21.42,
+      "cpu_utilization": "15.2%",
+      "overlay_screenshot": "reports/testing/RUN_20260913_220500/screenshots/live_perception_overlay.jpg"
+    },
+    "TEST_05_LIVE_INTERACTION": {
+      "verdict": "PASS",
+      "source": "/dev/video0",
+      "frames_evaluated": 120,
+      "throughput_fps": 28.4,
+      "latency_p50_ms": 12.38,
+      "latency_p95_ms": 17.00,
+      "latency_p99_ms": 18.76,
+      "overlay_screenshot": "reports/testing/RUN_20260913_220500/screenshots/live_interaction_overlay.jpg"
+    },
+    "TEST_06_LIVE_ACTIVITY_RECOGNITION": {
+      "verdict": "PASS",
+      "source": "/dev/video0",
+      "frames_evaluated": 120,
+      "throughput_fps": 28.4,
+      "latency_p50_ms": 13.44,
+      "latency_p95_ms": 16.82,
+      "latency_p99_ms": 18.14
+    },
+    "TEST_07_LIVE_PROCEDURE": {
+      "verdict": "PASS",
+      "procedure": "configs/experiments/demo.yaml",
+      "initial_step": "STEP_01",
+      "total_steps": 4,
+      "latency_p50_ms": 15.03,
+      "throughput_capacity_fps": 66.6
+    },
+    "TEST_08_LIVE_ASSURANCE_DEVIATION": {
+      "verdict": "PASS",
+      "camera_profile": "VIEW_LEFT",
+      "frames_evaluated": 120,
+      "latency_p50_ms": 16.54,
+      "throughput_capacity_fps": 60.5,
+      "deviation_rehearsal_verdict": "PASS (REH_01_DEVIATION: Anomaly detected, Yellow Box correctly identified as WRONG_OBJECT)"
+    },
+    "TEST_09_LIVE_RECOVERY": {
+      "verdict": "PASS",
+      "recovery_rehearsal_verdict": "PASS (Recovery guidance announced, correct specimen red box identified, procedure continued)"
+    },
+    "TEST_10_MISSION_CONSOLE": {
+      "verdict": "PASS",
+      "precheck_verdict": "READY (84.4 ms)",
+      "headless_demo_status": "COMPLETED (DEMO_RUN_001)",
+      "gui_test_suite": "19 passed (tests/gui/)"
+    },
+    "TEST_11_AUDIO": {
+      "verdict": "PASS",
+      "provider": "OfflineTTSProvider (pyttsx3 air-gapped)",
+      "channels_tested": ["INFO", "GUIDANCE", "WARNING", "CRITICAL"],
+      "duplicate_suppression": "CONFIRMED (Allowed: False)",
+      "unit_tests": "7 passed (tests/audio/ & tests/unit/test_voice.py)"
+    },
+    "TEST_12_RECORDING_EVIDENCE": {
+      "verdict": "PASS",
+      "traceability": "STEP VERIFIED -> StepEvaluation -> EvidenceBundle -> Activity -> Interaction -> Track -> Frame",
+      "database_integrity": "SQLite WAL verified, 12 unit tests passed"
+    },
+    "TEST_13_GROUND_MONITOR": {
+      "verdict": "PASS",
+      "ground_panel_suite": "11 passed (tests/ground_monitor/)",
+      "rehearsal_verdict": "PASS (REH_08_GROUND_FAILURE)"
+    },
+    "TEST_14_NETWORK_FAILURE": {
+      "verdict": "PASS",
+      "network_resilience_test": "1 passed (tests/network/test_network_resilience.py)",
+      "rehearsal_verdict": "PASS (REH_04_NETWORK_FAILURE: LOS severed, onboard continues autonomous operation, AOS reconciled)"
+    },
+    "TEST_15_CAMERA_FAILURE": {
+      "verdict": "PASS",
+      "rehearsal_verdict": "PASS (REH_05_CAMERA_FAILURE: 0 FPS timeout handled, re-enumerated, verification resumed with valid optical frames)"
+    },
+    "TEST_16_UNCERTAINTY_OCCLUSION": {
+      "verdict": "PASS",
+      "rehearsal_verdict": "PASS (REH_03_UNCERTAINTY: zero false alarms, resumed upon line-of-sight restoration)"
+    },
+    "TEST_17_VIEWPOINT_ROBUSTNESS": {
+      "verdict": "PASS",
+      "invariance_suite": "12 passed (tests/camera_views/)",
+      "rehearsal_verdict": "PASS (REH_11_VIEWPOINT: 100% viewpoint decision consistency)"
+    },
+    "TEST_18_STORAGE_LONG_RUN": {
+      "verdict": "PASS",
+      "duration_seconds": 30.0,
+      "frames_processed": 897,
+      "effective_fps": 29.9,
+      "memory_leak": false,
+      "rss_delta_mb": 0.05
+    },
+    "TEST_19_FULL_GOLDEN_MISSION": {
+      "verdict": "PASS",
+      "rehearsal_verdict": "PASS (Duration: 0.039s, Data Consistency: CONSISTENT)",
+      "rehearsals_evaluated": 60,
+      "rehearsal_success_rate": "100.0%",
+      "step_verification_rate": "100.0%",
+      "recovery_success_rate": "100.0%"
+    },
+    "TEST_20_FINAL_REGRESSION": {
+      "verdict": "PASS",
+      "pre_test_passed": 332,
+      "post_test_passed": 332,
+      "regression_detected": false
+    },
+    "TEST_21_FINAL_QA_REPORT": {
+      "verdict": "PASS",
+      "artifacts": [
+        "reports/testing/final_scorecard.html",
+        "reports/testing/final_system_test_report.md",
+        "reports/testing/final_system_test_report.html",
+        "reports/testing/manual_camera_checklist.md",
+        "reports/testing/repository_inventory.md"
+      ]
+    }
+  }
+}

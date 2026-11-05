@@ -1,4 +1,4 @@
-"""Unit and integration tests for ASTRA-EA Training Subsystem.
+"""Unit and integration tests for Pramman Training Subsystem.
 
 Tests cover:
 - TrainingConfig validation

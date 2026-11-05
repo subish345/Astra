@@ -1,4 +1,4 @@
-"""Learned Object Detector conforming to ASTRA-EA perception interface.
+"""Learned Object Detector conforming to Pramman perception interface.
 
 Wraps trained model checkpoints, executing inference on video frames and
 producing standardized Detection objects with confidence scoring and NMS.

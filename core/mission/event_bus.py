@@ -1,4 +1,4 @@
-"""Unified Event Bus and Telemetry Broker for ASTRA-EA.
+"""Unified Event Bus and Telemetry Broker for Pramman.
 
 Provides non-blocking, thread-safe publish/subscribe messaging across Onboard Core
 services, Mission Console UI bridges, and Ground Monitor streaming components.

@@ -1,4 +1,4 @@
-"""Integration test for ASTRA-EA Phase 2 Perception Pipeline."""
+"""Integration test for Pramman Phase 2 Perception Pipeline."""
 
 from datetime import datetime, timezone
 import numpy as np

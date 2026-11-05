@@ -1,4 +1,4 @@
-"""Training Run Report Generator for ASTRA-EA.
+"""Training Run Report Generator for Pramman.
 
 Generates HTML and JSON training reports with training/validation loss curves,
 per-class performance metrics, hyperparameter configs, and device info.
@@ -54,7 +54,7 @@ class TrainingReporter:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Training Run Report — {meta.run_id}</title>
+    <title>Pramman Training Run Report — {meta.run_id}</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -68,7 +68,7 @@ class TrainingReporter:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Training Run Report</h1>
+        <h1>Pramman Training Run Report</h1>
         <p><strong>Run ID:</strong> {meta.run_id} | <span class="badge">{meta.status}</span></p>
         <p><strong>Model:</strong> {meta.model_name} ({meta.model_architecture})</p>
         <p><strong>Dataset Version:</strong> {meta.dataset_version}</p>

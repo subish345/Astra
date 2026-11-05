@@ -1,4 +1,4 @@
-"""Mission Clock abstraction for ASTRA-EA.
+"""Mission Clock abstraction for Pramman.
 
 Provides synchronized, monotonic timing references for microsecond latency profiling,
 timeout evaluation, and mission elapsed time (MET), while maintaining timezone-aware

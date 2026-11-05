@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-SAF-002",
+  "evidence_type": "TEST_OUTPUT",
+  "occlusion_event_frames": 15,
+  "state_transition": "UNCERTAIN",
+  "dwell_engaged": true,
+  "premature_deviations": 0,
+  "result": "PASS"
+}

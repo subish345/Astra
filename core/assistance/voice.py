@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Offline Voice Guidance Manager
+# Pramman Offline Voice Guidance Manager
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Local offline text-to-speech manager for astronaut voice assistance.

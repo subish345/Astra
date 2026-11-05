@@ -1,0 +1,20 @@
+id: V-OPS-001
+requirement: ASTRA-OPS-001
+title: Cockpit HUD High-Contrast Visual Legibility
+purpose: Verify that cockpit HUD visual cues maintain high contrast and are legible from 1.5 meters distance.
+preconditions:
+  - Cockpit Mission Console rendered
+setup:
+  - Generate HUD banners for NOMINAL, UNCERTAIN, and DEVIATION states
+inputs:
+  - UI state snapshots
+procedure:
+  - Measure color contrast ratio between font and banner backgrounds
+  - Confirm compliance with WCAG AAA contrast guidelines (>= 7:1)
+expected_result:
+  - Contrast ratios: Green banner 8.2:1, Yellow banner 9.4:1, Red banner 7.8:1
+acceptance_criteria:
+  - Minimum contrast ratio >= 7.0:1
+evidence:
+  - final_submission/screenshots/01_mission_console.jpg
+  - verification/evidence/EVID-OPS-001-HUD.png

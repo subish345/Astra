@@ -1,12 +1,13 @@
 # ==============================================================================
-# ASTRA-EA Mission Console Main Window
+# Pramman Mission Console Main Window
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
-"""Main Qt application shell for the ASTRA-EA Mission Console."""
+"""Main Qt application shell for the Pramman Mission Console."""
 
 from __future__ import annotations
 
 import time
+from uuid import uuid4
 from pathlib import Path
 from typing import Optional
 
@@ -14,6 +15,7 @@ from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QButtonGroup,
+    QFileDialog,
     QFrame,
     QHBoxLayout,
     QMainWindow,
@@ -31,6 +33,7 @@ from core.ui.theme import Colors, MAIN_STYLESHEET
 from core.ui.views.console_view import ConsoleView
 from core.ui.views.evidence_view import EvidenceView
 from core.ui.views.health_view import HealthView
+from core.ui.views.recordings_view import RecordingsView
 from core.ui.views.settings_view import SettingsView
 from core.ui.views.timeline_view import TimelineView
 from core.ui.worker import MissionPipelineWorker
@@ -39,7 +42,7 @@ from core.voice.interface import AudioPriority
 
 
 class MissionConsoleWindow(QMainWindow):
-    """Main application window for the ASTRA-EA Mission Console."""
+    """Main application window for the Pramman Mission Console."""
 
     def __init__(
         self,
@@ -51,24 +54,45 @@ class MissionConsoleWindow(QMainWindow):
         parent: Optional[QWidget] = None,
     ) -> None:
         super().__init__(parent)
-        self.setWindowTitle("ASTRA-EA — Mission Console [SIH26174]")
+        self.setWindowTitle("ORBITA — Mission Console [SIH26174]")
         self.resize(1440, 900)
         self.setMinimumSize(1200, 680)
         self.setStyleSheet(MAIN_STYLESHEET)
 
         self.procedure_path = procedure_path
+        self._mode_cache = None
         self.camera_source = camera_source
         self.camera_profile = camera_profile
         self.session_id = session_id
+        self._session_prefix = session_id
         self.voice_manager = voice_manager or AudioQueueManager()
 
         self.state = MissionUIState()
+        self.mirror_camera: bool = False
         self.bridge = BackendEventBridge(self)
         self.worker: Optional[MissionPipelineWorker] = None
+        self._auto_start_timer = QTimer(self)
+        self._auto_start_timer.setSingleShot(True)
+        self._auto_start_timer.timeout.connect(self.start_mission)
 
         self._init_ui()
+        # Match the selector to the actual launch procedure, not alphabetical order.
+        from core.common.config import get_project_root
+        selected = Path(self.procedure_path)
+        if not selected.is_absolute():
+            selected = get_project_root() / selected
+        combo = self.session_bar.cmb_exp
+        combo.blockSignals(True)
+        for index in range(combo.count()):
+            if Path(combo.itemData(index)).resolve() == selected.resolve():
+                combo.setCurrentIndex(index)
+                break
+        combo.blockSignals(False)
         self._connect_signals()
         self._setup_shortcuts()
+        self._sync_mode_panels()
+        if self._live_observe_selected():
+            self._auto_start_timer.start(0)
 
     def _init_ui(self) -> None:
         central = QWidget(self)
@@ -82,6 +106,9 @@ class MissionConsoleWindow(QMainWindow):
             on_start=self.start_mission,
             on_pause=self.pause_mission,
             on_stop=self.stop_mission,
+            on_upload_video=self.upload_and_verify_video,
+            on_toggle_record=self.toggle_recording,
+            on_toggle_mirror=self.toggle_camera_mirror,
             on_experiment_changed=self._on_experiment_changed,
             parent=self,
         )
@@ -107,10 +134,11 @@ class MissionConsoleWindow(QMainWindow):
 
         nav_items = [
             ("MISSION", 0),
-            ("EVIDENCE", 1),
-            ("TIMELINE", 2),
-            ("HEALTH", 3),
-            ("SETTINGS", 4),
+            ("RECORDINGS", 1),
+            ("EVIDENCE", 2),
+            ("TIMELINE", 3),
+            ("HEALTH", 4),
+            ("SETTINGS", 5),
         ]
 
         for label, idx in nav_items:
@@ -137,19 +165,27 @@ class MissionConsoleWindow(QMainWindow):
         self.stack = QStackedWidget(self)
 
         self.console_view = ConsoleView(self)
+        if hasattr(self.console_view, "video_panel") and hasattr(self.console_view.video_panel, "btn_mirror"):
+            self.console_view.video_panel.btn_mirror.toggled.connect(self.toggle_camera_mirror)
         self.stack.addWidget(self.console_view)  # 0
 
+        self.recordings_view = RecordingsView(on_verify_video=self.verify_selected_video, parent=self)
+        self.stack.addWidget(self.recordings_view)  # 1
+
         self.evidence_view = EvidenceView(self)
-        self.stack.addWidget(self.evidence_view)  # 1
+        self.stack.addWidget(self.evidence_view)  # 2
 
         self.timeline_view = TimelineView(self)
-        self.stack.addWidget(self.timeline_view)  # 2
+        self.stack.addWidget(self.timeline_view)  # 3
 
         self.health_view = HealthView(self)
-        self.stack.addWidget(self.health_view)  # 3
+        self.stack.addWidget(self.health_view)  # 4
 
         self.settings_view = SettingsView(on_test_voice=self.test_voice_guidance, parent=self)
-        self.stack.addWidget(self.settings_view)  # 4
+        self.settings_view.txt_source.setText(self.camera_source)
+        self.settings_view.cmb_profile.setCurrentIndex({"view_left": 0, "view_right": 1, "view_center": 2}.get(self.camera_profile.lower(), 0))
+        self.settings_view.btn_apply_source.clicked.connect(self.apply_camera_settings)
+        self.stack.addWidget(self.settings_view)  # 5
 
         body_layout.addWidget(self.stack, stretch=1)
         root_layout.addLayout(body_layout, stretch=1)
@@ -157,7 +193,7 @@ class MissionConsoleWindow(QMainWindow):
         # Status Bar
         self.status_bar = QStatusBar(self)
         self.status_bar.setStyleSheet(f"background-color: {Colors.BG_PANEL}; color: {Colors.TEXT_MUTED}; font-size: 11px;")
-        self.status_bar.showMessage("ASTRA-EA v0.1.0 (Phase 6 Mission Console) | Air-Gapped Local Operation | Optical Source Ready")
+        self.status_bar.showMessage("ORBITA v1.0.0 (Mission Console) | Air-Gapped Local Operation | Optical Source Ready")
         self.setStatusBar(self.status_bar)
 
     def _on_experiment_changed(self, procedure_path: str) -> None:
@@ -165,7 +201,27 @@ class MissionConsoleWindow(QMainWindow):
         if self.worker and self.worker.isRunning():
             return
         self.procedure_path = procedure_path
+        self._auto_start_timer.stop()
         self.status_bar.showMessage(f"Selected experiment: {Path(procedure_path).stem}")
+        self._sync_mode_panels()
+        if self._live_observe_selected():
+            self._auto_start_timer.start(0)
+
+    def _live_observe_selected(self) -> bool:
+        cached = self._mode_cache
+        if cached is not None and cached[0] == str(self.procedure_path):
+            return cached[1]
+        from core.common.config import get_project_root
+        from core.procedure.validator import load_procedure_file
+        path = Path(self.procedure_path)
+        if not path.is_absolute():
+            path = get_project_root() / path
+        try:
+            result = bool(load_procedure_file(path).continuous_observation)
+            self._mode_cache = (str(self.procedure_path), result)
+            return result
+        except Exception:
+            return False
 
     def _connect_signals(self) -> None:
         """Connect bridge signals to UI update methods."""
@@ -179,6 +235,40 @@ class MissionConsoleWindow(QMainWindow):
         self.bridge.sig_health.connect(self._on_health)
         self.bridge.sig_timeline_event.connect(self._on_timeline_event)
         self.bridge.sig_session_status.connect(self._on_session_status)
+        self.bridge.sig_recording_status.connect(self._on_recording_status)
+
+    def _sync_mode_panels(self):
+        live = self._live_observe_selected()
+        for panel in (self.console_view.progress_panel, self.console_view.status_panel, self.console_view.evidence_panel):
+            panel.setVisible(not live)
+        self.console_view.video_panel.set_live_observe(live)
+        if live:
+            self._on_step_progress(None)
+            self.console_view.step_panel.lbl_status_badge.setText(self.state.session.status)
+
+    def apply_camera_settings(self):
+        from core.common.config import get_project_root
+        source = self.settings_view.txt_source.text().strip()
+        if not source:
+            self.settings_view.lbl_source_status.setText("Enter a camera index or choose a video file.")
+            return
+        if not source.isdigit():
+            path = Path(source).expanduser()
+            if not path.is_absolute():
+                path = get_project_root() / path
+            if not path.is_file():
+                self.settings_view.lbl_source_status.setText(f"Video file not found: {path}. Current session unchanged.")
+                return
+            source = str(path)
+        self.stop_mission()
+        if self.worker is not None:
+            self.settings_view.lbl_source_status.setText("Previous capture is still stopping. Wait, then apply again.")
+            return
+        self.camera_source = source
+        self.camera_profile = ("view_left", "view_right", "view_center")[self.settings_view.cmb_profile.currentIndex()]
+        self.session_bar.set_camera_profile(self.camera_profile)
+        self.settings_view.lbl_source_status.setText(f"Opening {source}…")
+        self.start_mission()
 
     def _setup_shortcuts(self) -> None:
         """Keyboard shortcuts."""
@@ -206,11 +296,108 @@ class MissionConsoleWindow(QMainWindow):
     # Mission Lifecycle Actions
     # =========================================================================
 
+    def upload_and_verify_video(self) -> None:
+        """Prompt operator to select an experiment video file and immediately verify movements and steps."""
+        from core.common.config import get_project_root
+
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Upload / Select Experiment Video File",
+            str(get_project_root()),
+            "Video Files (*.mp4 *.avi *.mkv *.webm *.mov);;All Files (*)",
+        )
+        if not file_path:
+            return
+
+        vid_path = Path(file_path).resolve()
+        if not vid_path.is_file():
+            self._on_timeline_event("SYSTEM", "Invalid File", f"File not found: {vid_path}", "DANGER")
+            return
+
+        self.stop_mission()
+        self.camera_source = str(vid_path)
+        self.settings_view.txt_source.setText(str(vid_path))
+        self.session_bar.set_mode("REPLAY")
+        self.session_bar.lbl_sys_status.setText("🎥 VIDEO VERIFY")
+        self._on_timeline_event("SYSTEM", "Video Uploaded", f"Analyzing movement & step accuracy: {vid_path.name}", "INFO")
+
+        # Automatically start verification on the uploaded video
+        self.start_mission()
+
+    def verify_selected_video(self, video_path: str) -> None:
+        """Load a recorded video segment from the archive and replay for step/movement verification."""
+        vpath = Path(video_path).resolve()
+        if not vpath.exists():
+            return
+        self.stop_mission()
+        self.camera_source = str(vpath)
+        self.settings_view.txt_source.setText(str(vpath))
+        self.session_bar.set_mode("REPLAY")
+        self.session_bar.lbl_sys_status.setText("🎥 REPLAY / VERIFY")
+        self._on_timeline_event(
+            "RECORDINGS",
+            "Loaded Recording",
+            f"Replaying {vpath.name} for step verification.",
+            "INFO",
+        )
+        self.stack.setCurrentIndex(0)
+        btn_mission = self.nav_group.button(0)
+        if btn_mission:
+            btn_mission.setChecked(True)
+        self.start_mission()
+
+    def toggle_camera_mirror(self, enabled: Optional[bool] = None) -> None:
+        """Toggle camera horizontal mirroring (mirror view)."""
+        if enabled is None:
+            self.mirror_camera = not getattr(self, "mirror_camera", False)
+        else:
+            self.mirror_camera = bool(enabled)
+
+        # Sync session bar button
+        if hasattr(self, "session_bar") and hasattr(self.session_bar, "btn_mirror"):
+            self.session_bar.btn_mirror.blockSignals(True)
+            self.session_bar.btn_mirror.setChecked(self.mirror_camera)
+            self.session_bar.btn_mirror.blockSignals(False)
+
+        # Sync video panel button
+        if hasattr(self, "console_view") and hasattr(self.console_view, "video_panel"):
+            vp = self.console_view.video_panel
+            if hasattr(vp, "btn_mirror"):
+                vp.btn_mirror.blockSignals(True)
+                vp.btn_mirror.setChecked(self.mirror_camera)
+                vp.btn_mirror.blockSignals(False)
+
+        # Apply to active worker immediately
+        if self.worker:
+            self.worker.mirror_camera = self.mirror_camera
+
+        status_text = "MIRRORED (SELFIE)" if self.mirror_camera else "STANDARD"
+        self._on_timeline_event("CAMERA", f"Camera View: {status_text}", f"Camera mirroring {'enabled' if self.mirror_camera else 'disabled'}", "INFO")
+
+    def toggle_recording(self) -> None:
+        """Toggle manual video recording for the active session."""
+        if self.worker is not None and self.worker.isRunning():
+            if self.worker.recording_manager.is_recording:
+                self.worker.stop_manual_recording()
+            else:
+                self.worker.start_manual_recording()
+        else:
+            self._on_timeline_event(
+                "SYSTEM",
+                "Recording Notice",
+                "Start a mission run first to begin recording.",
+                "WARNING",
+            )
+
     def start_mission(self) -> None:
         """Launch the background pipeline worker."""
+        self._auto_start_timer.stop()
         if self.worker is not None and self.worker.isRunning():
             return
 
+        self._mode_cache = None
+        self._sync_mode_panels()
+        self.session_id = f"{self._session_prefix}-{uuid4().hex}"
         self.worker = MissionPipelineWorker(
             bridge=self.bridge,
             procedure_path=self.procedure_path,
@@ -220,27 +407,37 @@ class MissionConsoleWindow(QMainWindow):
             voice_manager=self.voice_manager,
             parent=self,
         )
+        self.worker.mirror_camera = getattr(self, "mirror_camera", False)
         self.worker.start()
-        self.session_bar.set_session_state("RUNNING", self.session_id)
+        self._on_session_status("INITIALIZING")
 
     def pause_mission(self) -> None:
         """Pause or resume the pipeline worker."""
+        if self._live_observe_selected():
+            self.status_bar.showMessage("Live Observe keeps the camera active. Use STOP to end observation.")
+            return
         if self.worker:
             self.worker.pause()
             self.session_bar.set_session_state("PAUSED", self.session_id)
 
     def stop_mission(self) -> None:
         """Stop background execution."""
+        self._auto_start_timer.stop()
         if self.worker:
             if not self.worker.stop():
-                self.session_bar.set_session_state("STOPPING", self.session_id)
+                self._on_session_status("STOPPING")
                 return
             self.worker = None
-        self.session_bar.set_session_state("READY", self.session_id)
+        if not self.camera_source.isdigit():
+            self.camera_source = "0"
+            self.settings_view.txt_source.setText("0")
+        self.session_bar.set_mode("FULL_REAL")
+        self.session_bar.lbl_sys_status.setText("🟢 SYSTEM: NORMAL")
+        self._on_session_status("READY")
 
     def test_voice_guidance(self) -> None:
         """Test audio guidance utterance."""
-        self.voice_manager.speak("Testing ASTRA-EA audio guidance channel. Systems nominal.", priority=AudioPriority.INFO)
+        self.voice_manager.speak("Testing ORBITA audio guidance channel. Systems nominal.", priority=AudioPriority.INFO)
 
     # =========================================================================
     # Backend Bridge Event Handlers (Executed on Main Qt UI Thread)
@@ -254,13 +451,24 @@ class MissionConsoleWindow(QMainWindow):
             config.show_hands = panel.show_hands
             config.show_boxes = panel.show_objects
             config.show_tracks = panel.show_tracking
+            config.show_lost_tracks = panel.show_debug
             config.show_interactions = panel.show_interaction
             config.show_hud = panel.show_debug
             config.show_confidence = panel.show_debug
             config.show_laser_guides = panel.show_debug
         self.console_view.video_panel.update_frame(frame_np, perception_state)
+        self.console_view.health_panel.set_subsystem_status("Camera", "ONLINE")
+        self.console_view.health_panel.set_subsystem_status("Perception", "ACTIVE")
 
     def _on_step_progress(self, proc_state) -> None:
+        if self._live_observe_selected():
+            panel = self.console_view.step_panel
+            panel.lbl_step_num.setText("LIVE OBSERVE")
+            panel.lbl_step_title.setText("Continuous person and hand observation")
+            panel.lbl_expected.setText("No procedure sequence required")
+            panel.lbl_status_badge.setText("OBSERVING")
+            panel.update_next_action("Move naturally; keep your hands and objects visible. STOP ends observation.")
+            return
         completed = proc_state.completed_steps if hasattr(proc_state, "completed_steps") else []
         curr_step = proc_state.current_step if hasattr(proc_state, "current_step") else None
         next_step = proc_state.next_expected_step if hasattr(proc_state, "next_expected_step") else None
@@ -377,6 +585,38 @@ class MissionConsoleWindow(QMainWindow):
     def _on_session_status(self, status: str) -> None:
         self.state.session.status = status
         self.session_bar.set_session_state(status, self.session_id)
+        busy = status in {"INITIALIZING", "RUNNING", "CAMERA_FAILURE", "STOPPING"}
+        self.session_bar.cmb_exp.setEnabled(not busy)
+        self.session_bar.btn_start.setEnabled(not busy)
+        self.session_bar.btn_stop.setEnabled(busy or status in ("PAUSED", "COMPLETED"))
+        self.session_bar.btn_pause.setEnabled(status == "RUNNING" and not self._live_observe_selected())
+        self.settings_view.lbl_source_status.setText(f"Source {self.camera_source}: {status}. See timeline for errors.")
+        if status != "RUNNING":
+            self.console_view.video_panel.set_source_status(status)
+        health = self.console_view.health_panel
+        health.lbl_core_state.setText(f"SESSION: {status}")
+        live = self._live_observe_selected()
+        for name in ("Camera", "Perception", "Procedure", "Assurance"):
+            value = "NOT USED" if live and name in {"Procedure", "Assurance"} else status
+            health.set_subsystem_status(name, value)
+        if status != "RUNNING":
+            health.lbl_fps.setText("FPS: —")
+            health.lbl_lat.setText("LATENCY: —")
+        if live:
+            self.console_view.step_panel.lbl_status_badge.setText(status)
+        if status in ("COMPLETED", "FAILED"):
+            if self.worker is not None and not self.worker.isRunning():
+                try:
+                    self.worker.wait(100)
+                except Exception:
+                    pass
+                self.worker = None
+
+    def _on_recording_status(self, is_rec: bool, file_path: str) -> None:
+        """Handle recording status updates from background worker."""
+        self.session_bar.set_recording_state(is_rec, file_path)
+        if not is_rec and hasattr(self, "recordings_view"):
+            self.recordings_view.refresh_recordings()
 
     def closeEvent(self, event) -> None:
         """Clean shutdown upon window close."""

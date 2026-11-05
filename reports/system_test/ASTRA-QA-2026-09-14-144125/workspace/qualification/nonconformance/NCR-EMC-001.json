@@ -1,0 +1,21 @@
+{
+  "ncr_id": "NCR-EMC-001",
+  "qualification_build_id": "ASTRA-EA-QB-001",
+  "test_id": "QUAL-EMC-002",
+  "requirement_id": "ASTRA-SEC-003",
+  "severity": "MEDIUM",
+  "date_opened": "2026-09-13T11:00:00Z",
+  "originator": "EMC Test Specialist",
+  "failure_description": "Radiated emissions at 120 MHz exceeded RE102 spacecraft limit curve by 3.2 dB due to unshielded camera flex cable.",
+  "root_cause": "Preliminary prototype camera harness lacked 360-degree conductive backshell termination at the chassis connector.",
+  "corrective_action": "Replaced flex ribbon with double-shielded twisted pair cable and Amphenol MIL-DTL-38999 360-degree ground collar.",
+  "impact_analysis": {
+    "affected_subsystems": ["CAMERA_HARDWARE", "SECURITY_DATA"],
+    "affected_tests": ["QUAL-EMC-002"],
+    "software_change_required": false
+  },
+  "retest_id": "QUAL-EMC-002-R1",
+  "disposition": "CORRECT_AND_RETEST",
+  "date_closed": "2026-09-13T15:00:00Z",
+  "status": "CLOSED"
+}

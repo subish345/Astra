@@ -1,4 +1,4 @@
-"""Adaptive temporal pose smoothing for ASTRA-EA.
+"""Adaptive temporal pose smoothing for Pramman.
 
 Applies velocity-adaptive exponential smoothing (One-Euro filter principles) to 33-point
 skeletal landmarks, removing high-frequency sensor noise and jitter while maintaining

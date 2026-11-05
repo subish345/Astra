@@ -1,4 +1,4 @@
-# ASTRA-EA — Ground Segment Operations Manual
+# Pramman — Ground Segment Operations Manual
 
 ## Phase 19: Mission Operations & Ground Segment Integration (D19.09)
 **Project:** Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)

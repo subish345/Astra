@@ -1,4 +1,4 @@
-# ASTRA-EA — Flight Software Description
+# Pramman — Flight Software Description
 
 ### Document ID: `ASTRA-FSD-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  
@@ -8,11 +8,11 @@
 
 ## 1. Architectural Architecture
 
-ASTRA-EA operates as a modular, decoupled flight software pipeline executing on the target edge compute platform:
+Pramman operates as a modular, decoupled flight software pipeline executing on the target edge compute platform:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    ASTRA-EA CORE PIPELINE                   │
+│                    Pramman CORE PIPELINE                   │
 │                                                             │
 │   [CameraDriver] ──► [PerceptionEngine] ──► [TemporalAssurance]
 │          ▲                    ▲                     │       │

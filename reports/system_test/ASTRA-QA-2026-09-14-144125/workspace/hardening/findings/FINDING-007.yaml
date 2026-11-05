@@ -1,0 +1,12 @@
+id: "FINDING-007"
+title: "Mission Console UI worker and evidence callback interface mismatches"
+source: "PHASE21_LIVE_MISSION_CONSOLE_EXECUTION"
+date: "2026-09-13"
+severity: "HIGH"
+category: "UI"
+description: "During live execution of the Mission Console (`astra mission`), three interface mismatches occurred: (1) ProcedureVisualizer.draw_procedure_hud() received keyword argument 'recovery_manager' instead of 'recovery_state', raising an unexpected keyword argument TypeError, (2) MainWindow._on_evidence_bundle accessed 'item.score' instead of 'item.confidence' on EvidenceItem objects, raising an AttributeError, and (3) worker termination invoked 'db.complete_experiment_run' which was missing as an alias on DatabaseManager."
+evidence:
+  - "TASK_6268_LOG_TRACEBACK"
+  - "tests/regression/test_mission_console_ui_worker.py"
+impact: "Disrupted the visual procedural overlay rendering, caused timeline errors during evidence bundle emission, and logged unhandled attribute errors on mission worker completion."
+status: "CLOSED"

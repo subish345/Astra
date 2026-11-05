@@ -1,0 +1,18 @@
+[ WARN:0@0.328] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video1): can't open camera by index
+ioctl(VIDIOC_QBUF): Bad file descriptor
+============================================================
+ ASTRA-EA LOCAL CAMERA DISCOVERY
+============================================================
+Camera Device 0 (/dev/video0):
+  Status:     AVAILABLE
+  Resolution: 640x480
+  FPS:        30.0
+  Backend:    V4L2
+----------------------------------------
+Camera Device 1 (/dev/video1):
+  Status:     AVAILABLE
+  Resolution: 640x480
+  FPS:        30.0
+  Backend:    FFMPEG
+----------------------------------------
+============================================================

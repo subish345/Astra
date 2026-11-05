@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Nonconformance Log</title><style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #070c18; color: #e2e8f0; line-height: 1.5; }
+        h1, h2, h3 { color: #00d2ff; font-weight: 600; }
+        .nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #0d1527; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; border: 1px solid #1e2e50; }
+        .nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 600; text-decoration: none; }
+        .nav-link:hover { color: #00d2ff; }
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .metric-card { background: #131f38; padding: 1.25rem; border-radius: 8px; border: 1px solid #1e2e50; }
+        .metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+        .metric-val { font-size: 2rem; font-weight: bold; color: #00d2ff; margin-top: 0.25rem; font-family: monospace; }
+        .badge-pass { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+        .badge-planned { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+        .badge-waived { background: rgba(107, 114, 128, 0.15); color: #9ca3af; border: 1px solid #9ca3af; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0d1527; border-radius: 8px; overflow: hidden; border: 1px solid #1e2e50; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e2e50; font-size: 0.88rem; }
+        th { background: #131f38; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        tr:hover { background: rgba(255, 255, 255, 0.02); }
+        code { background: rgba(0, 210, 255, 0.08); padding: 2px 6px; border-radius: 4px; color: #00d2ff; font-family: monospace; }
+        .alert-box { background: #0d1527; border-left: 4px solid #00d2ff; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; border: 1px solid #1e2e50; }
+        </style></head><body>
+        <h1>Nonconformance & Anomaly Registry</h1>
+        <p>ECSS-Q-ST-10-09C Discrepancy Tracking and Corrective Action Audits</p>
+        
+        <div class="nav-bar">
+            <a href="environmental_matrix.html" class="nav-link">Environmental Matrix</a>
+            <a href="qualification_status.html" class="nav-link">Qualification Status</a>
+            <a href="test_results.html" class="nav-link">Test Procedures</a>
+            <a href="nonconformances.html" class="nav-link">Nonconformances (NCR)</a>
+            <a href="resource_report.html" class="nav-link">Resource Margins</a>
+            <a href="instrumentation.html" class="nav-link">Instrumentation Plan</a>
+            <a href="final_qualification_readiness.html" class="nav-link">Readiness Verdict</a>
+        </div>
+        
+        <div class="metric-grid">
+            <div class="metric-card"><div class="metric-title">Total NCRs</div><div class="metric-val">4</div></div>
+            <div class="metric-card"><div class="metric-title">Closed NCRs</div><div class="metric-val">2</div></div>
+            <div class="metric-card"><div class="metric-title">Waived (Facility Roadmapped)</div><div class="metric-val">2</div></div>
+            <div class="metric-card"><div class="metric-title">Open Critical NCRs</div><div class="metric-val">0</div></div>
+        </div>
+        <table><thead><tr><th>NCR ID</th><th>Test ID</th><th>Requirement</th><th>Severity</th><th>Description</th><th>Disposition</th><th>Status</th></tr></thead><tbody><tr><td><strong><code>NCR-EMC-001</code></strong></td><td><code>QUAL-EMC-002</code></td><td><code>ASTRA-SEC-003</code></td><td><strong>MEDIUM</strong></td><td>Radiated emissions at 120 MHz exceeded RE102 spacecraft limit curve by 3.2 dB due to unshielded camera flex cable.</td><td><small>CORRECT_AND_RETEST</small></td><td><span class="badge-pass">CLOSED</span></td></tr><tr><td><strong><code>NCR-THM-001</code></strong></td><td><code>QUAL-THM-001</code></td><td><code>ASTRA-ENV-004</code></td><td><strong>HIGH</strong></td><td>At +50°C ambient, CPU core frequency throttled from 1.8 GHz to 1.1 GHz after 45 minutes of continuous inference, dropping pipeline throughput to 24.1 FPS.</td><td><small>CORRECT_AND_RETEST</small></td><td><span class="badge-pass">CLOSED</span></td></tr><tr><td><strong><code>NCR-TVAC-001</code></strong></td><td><code>QUAL-TVAC-001</code></td><td><code>ASTRA-ENV-004</code></td><td><strong>MEDIUM</strong></td><td>High-vacuum thermal cycling (10^-5 Torr, -20C to +60C) cannot be executed in standard university/ground laboratory.</td><td><small>WAIVE_FOR_GROUND_PHASE</small></td><td><span class="badge-waived">WAIVED</span></td></tr><tr><td><strong><code>NCR-VIB-001</code></strong></td><td><code>QUAL-VIB-001</code></td><td><code>ASTRA-ENV-003</code></td><td><strong>MEDIUM</strong></td><td>Launch random vibration testing (14.1 Grms, 20-2000 Hz) cannot be executed in standard university/ground laboratory.</td><td><small>WAIVE_FOR_GROUND_PHASE</small></td><td><span class="badge-waived">WAIVED</span></td></tr></tbody></table></body></html>

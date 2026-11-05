@@ -1,0 +1,20 @@
+id: V-ENV-001
+requirement: ASTRA-ENV-001
+title: Illumination Dynamic Range Invariance
+purpose: Verify that object detection accuracy is preserved across illumination levels from 45 Lux (dim cabin) to 850 Lux (direct laboratory lamp).
+preconditions:
+  - Physical test rig or synthetic photometric model configured
+setup:
+  - Adjust light meter calibrated illumination levels (45 Lux, 250 Lux, 850 Lux)
+inputs:
+  - Standard physical apparatus layout
+procedure:
+  - Run detection at 45 Lux, 250 Lux, and 850 Lux
+  - Calculate mAP / detection recall across each level
+expected_result:
+  - Detection recall remains >= 90% across full 45 to 850 Lux dynamic range
+acceptance_criteria:
+  - Recall >= 90% at all illumination extremes
+evidence:
+  - reports/physical/physical_validation.json
+  - verification/evidence/EVID-ENV-001-LUX.json

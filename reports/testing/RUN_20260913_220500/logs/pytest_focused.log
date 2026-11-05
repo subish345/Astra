@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/subish-loq/Documents/astra
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 36 items
+
+tests/interaction/test_geometry.py ......                                [ 16%]
+tests/interaction/test_rules.py .....                                    [ 30%]
+tests/interaction/test_scenarios.py .....                                [ 44%]
+tests/interaction/test_state_machine.py ..                               [ 50%]
+tests/activity/test_composite.py ...                                     [ 58%]
+tests/activity/test_confidence.py ...                                    [ 66%]
+tests/activity/test_events.py ..                                         [ 72%]
+tests/activity/test_primitive.py ...                                     [ 80%]
+tests/integration/test_foundation_integration.py .                       [ 83%]
+tests/integration/test_mission_orchestrator.py ...                       [ 91%]
+tests/integration/test_perception_pipeline.py .                          [ 94%]
+tests/integration/test_phase3_pipeline.py .                              [ 97%]
+tests/integration/test_procedure_pipeline.py .                           [100%]
+
+============================== 36 passed in 1.39s ==============================

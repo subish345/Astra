@@ -1,0 +1,18 @@
+{
+  "ASTRA-DATASET-v0.1": {
+    "version": "0.1.0",
+    "created_at": "2026-09-13T11:04:30.888033+00:00",
+    "sample_count": 20,
+    "session_count": 4,
+    "manifest_path": "/home/subish-loq/Documents/astra/datasets/manifests/ASTRA-DATASET-v0.1.json",
+    "dataset_directory": "datasets/raw/synthetic/demo_synthetic"
+  },
+  "ASTRA-DATASET-v0.2": {
+    "version": "0.2.0",
+    "created_at": "2026-09-13T11:09:40.746560+00:00",
+    "sample_count": 30,
+    "session_count": 4,
+    "manifest_path": "/home/subish-loq/Documents/astra/datasets/manifests/ASTRA-DATASET-v0.2.json",
+    "dataset_directory": "datasets/raw/synthetic/demo_synthetic"
+  }
+}

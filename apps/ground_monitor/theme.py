@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor Theme & Styling
+# Pramman Ground Monitor Theme & Styling
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Aerospace mission operations color palette and QSS styling for Ground Monitor."""

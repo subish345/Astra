@@ -1,4 +1,4 @@
-"""ASTRA-EA Machine Learning Environment Diagnostics (ML Doctor).
+"""Pramman Machine Learning Environment Diagnostics (ML Doctor).
 
 Provides comprehensive verification of:
 - Python runtime
@@ -147,7 +147,7 @@ def inspect_ml_environment() -> Dict[str, Any]:
 def run_ml_doctor() -> int:
     """Run interactive ML diagnostic check and print formatted report."""
     print("=" * 60)
-    print("ASTRA-EA ML ENVIRONMENT DIAGNOSTIC")
+    print("ORBITA ML ENVIRONMENT DIAGNOSTIC")
     print("=" * 60)
 
     info = inspect_ml_environment()

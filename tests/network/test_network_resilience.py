@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Network Resilience & Reconnection Tests
+# Pramman Network Resilience & Reconnection Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated end-to-end test verifying state reconciliation after network loss."""

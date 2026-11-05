@@ -1,4 +1,4 @@
-"""CPU Hardware Abstraction and Telemetry for ASTRA-EA (Phase 18)."""
+"""CPU Hardware Abstraction and Telemetry for Pramman (Phase 18)."""
 
 from __future__ import annotations
 

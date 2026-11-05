@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-SYS-006",
+  "requirement_id": "ASTRA-SAF-003",
+  "test_id": "V-SYS-006",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "reports/hil/simulation_vs_physical.html",
+    "verification/evidence/EVID-SAF-003-FREEZE.json"
+  ],
+  "notes": "Test V-SYS-006 executed successfully against ASTRA-SAF-003."
+}

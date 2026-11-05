@@ -200,7 +200,7 @@ class DatasetValidator:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Dataset Validation Report</title>
+    <title>Pramman Dataset Validation Report</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -214,7 +214,7 @@ class DatasetValidator:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Dataset Validation Report</h1>
+        <h1>Pramman Dataset Validation Report</h1>
         <p><strong>Target Directory:</strong> {report['dataset_dir']}</p>
         <p><strong>Status:</strong> <span class="badge">{status_text}</span></p>
     </div>

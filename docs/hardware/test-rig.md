@@ -1,4 +1,4 @@
-# ASTRA-EA: Physical Experiment Station & Test Rig Specification
+# Pramman: Physical Experiment Station & Test Rig Specification
 
 **System:** Autonomous Spacecraft Experiment Assurance & Assistance  
 **Classification:** Hardware Engineering & Physical Validation Document  
@@ -7,7 +7,7 @@
 ---
 
 ## 1. Test Rig Overview & Purpose
-The ASTRA-EA Physical Test Rig provides a standardized, geometrically repeatable ground station for validating the complete end-to-end edge assurance pipeline against physical human movement, real optical lens physics, ambient illumination shifts, and physical tool handling.
+The Pramman Physical Test Rig provides a standardized, geometrically repeatable ground station for validating the complete end-to-end edge assurance pipeline against physical human movement, real optical lens physics, ambient illumination shifts, and physical tool handling.
 
 ```
                   [Rigid Overhead Mount]

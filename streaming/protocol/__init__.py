@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Streaming Protocols
+# Pramman Streaming Protocols
 # ==============================================================================
 """Streaming protocol interfaces and definitions."""
 

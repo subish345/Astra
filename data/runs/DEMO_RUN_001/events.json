@@ -1,11 +1,11 @@
 [
   {
-    "event_id": "EVT_000001_DAE82C",
+    "event_id": "EVT_000001_CF6415",
     "event_type": "MissionStarted",
     "sequence_num": 1,
     "sequence": 1,
-    "timestamp": "2026-09-14T18:03:01.419241+00:00",
-    "timestamp_mono": 15278.4317,
+    "timestamp": "2026-11-04T05:20:59.664953+00:00",
+    "timestamp_mono": 1378.89,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -16,16 +16,16 @@
     "severity": "INFO",
     "payload": {
       "profile": "final_demo",
-      "start_time": "2026-09-14T18:03:01.419230+00:00"
+      "start_time": "2026-11-04T05:20:59.664935+00:00"
     }
   },
   {
-    "event_id": "EVT_000002_AFD0AE",
+    "event_id": "EVT_000002_157565",
     "event_type": "StepUncertain",
     "sequence_num": 2,
     "sequence": 2,
-    "timestamp": "2026-09-14T18:03:01.445809+00:00",
-    "timestamp_mono": 15278.4583,
+    "timestamp": "2026-11-04T05:20:59.736678+00:00",
+    "timestamp_mono": 1378.9617,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -42,12 +42,12 @@
     }
   },
   {
-    "event_id": "EVT_000003_BC4CED",
+    "event_id": "EVT_000003_8437D8",
     "event_type": "StepUncertain",
     "sequence_num": 3,
     "sequence": 3,
-    "timestamp": "2026-09-14T18:03:01.481048+00:00",
-    "timestamp_mono": 15278.4935,
+    "timestamp": "2026-11-04T05:20:59.812682+00:00",
+    "timestamp_mono": 1379.0377,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -64,12 +64,12 @@
     }
   },
   {
-    "event_id": "EVT_000004_765139",
+    "event_id": "EVT_000004_9C24CF",
     "event_type": "StepUncertain",
     "sequence_num": 4,
     "sequence": 4,
-    "timestamp": "2026-09-14T18:03:01.514248+00:00",
-    "timestamp_mono": 15278.5267,
+    "timestamp": "2026-11-04T05:20:59.893342+00:00",
+    "timestamp_mono": 1379.1184,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -86,12 +86,12 @@
     }
   },
   {
-    "event_id": "EVT_000005_FCAD9F",
+    "event_id": "EVT_000005_198FCC",
     "event_type": "StepUncertain",
     "sequence_num": 5,
     "sequence": 5,
-    "timestamp": "2026-09-14T18:03:01.548258+00:00",
-    "timestamp_mono": 15278.5607,
+    "timestamp": "2026-11-04T05:20:59.970753+00:00",
+    "timestamp_mono": 1379.1958,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -108,12 +108,12 @@
     }
   },
   {
-    "event_id": "EVT_000006_0FE18B",
+    "event_id": "EVT_000006_D7EEC2",
     "event_type": "StepUncertain",
     "sequence_num": 6,
     "sequence": 6,
-    "timestamp": "2026-09-14T18:03:01.579958+00:00",
-    "timestamp_mono": 15278.5924,
+    "timestamp": "2026-11-04T05:21:00.054572+00:00",
+    "timestamp_mono": 1379.2796,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -130,12 +130,12 @@
     }
   },
   {
-    "event_id": "EVT_000007_EFB44C",
+    "event_id": "EVT_000007_FC8A16",
     "event_type": "StepUncertain",
     "sequence_num": 7,
     "sequence": 7,
-    "timestamp": "2026-09-14T18:03:01.615296+00:00",
-    "timestamp_mono": 15278.6278,
+    "timestamp": "2026-11-04T05:21:00.138050+00:00",
+    "timestamp_mono": 1379.3631,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -152,12 +152,12 @@
     }
   },
   {
-    "event_id": "EVT_000008_FDDCF7",
+    "event_id": "EVT_000008_F6BDE9",
     "event_type": "StepUncertain",
     "sequence_num": 8,
     "sequence": 8,
-    "timestamp": "2026-09-14T18:03:01.646621+00:00",
-    "timestamp_mono": 15278.6591,
+    "timestamp": "2026-11-04T05:21:00.227260+00:00",
+    "timestamp_mono": 1379.4523,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -174,12 +174,12 @@
     }
   },
   {
-    "event_id": "EVT_000009_1DE76A",
+    "event_id": "EVT_000009_179C83",
     "event_type": "StepUncertain",
     "sequence_num": 9,
     "sequence": 9,
-    "timestamp": "2026-09-14T18:03:01.678129+00:00",
-    "timestamp_mono": 15278.6906,
+    "timestamp": "2026-11-04T05:21:00.305377+00:00",
+    "timestamp_mono": 1379.5304,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -196,12 +196,12 @@
     }
   },
   {
-    "event_id": "EVT_000010_FF36A6",
+    "event_id": "EVT_000010_8DEB72",
     "event_type": "StepUncertain",
     "sequence_num": 10,
     "sequence": 10,
-    "timestamp": "2026-09-14T18:03:01.711269+00:00",
-    "timestamp_mono": 15278.7237,
+    "timestamp": "2026-11-04T05:21:00.381639+00:00",
+    "timestamp_mono": 1379.6067,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -218,12 +218,12 @@
     }
   },
   {
-    "event_id": "EVT_000011_C93557",
+    "event_id": "EVT_000011_00E6F5",
     "event_type": "StepUncertain",
     "sequence_num": 11,
     "sequence": 11,
-    "timestamp": "2026-09-14T18:03:01.742310+00:00",
-    "timestamp_mono": 15278.7548,
+    "timestamp": "2026-11-04T05:21:00.458419+00:00",
+    "timestamp_mono": 1379.6834,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -240,12 +240,12 @@
     }
   },
   {
-    "event_id": "EVT_000012_2D98DE",
+    "event_id": "EVT_000012_E0EC6D",
     "event_type": "StepUncertain",
     "sequence_num": 12,
     "sequence": 12,
-    "timestamp": "2026-09-14T18:03:01.774079+00:00",
-    "timestamp_mono": 15278.7865,
+    "timestamp": "2026-11-04T05:21:00.544824+00:00",
+    "timestamp_mono": 1379.7698,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -262,12 +262,12 @@
     }
   },
   {
-    "event_id": "EVT_000013_33A146",
+    "event_id": "EVT_000013_465601",
     "event_type": "StepUncertain",
     "sequence_num": 13,
     "sequence": 13,
-    "timestamp": "2026-09-14T18:03:01.805702+00:00",
-    "timestamp_mono": 15278.8182,
+    "timestamp": "2026-11-04T05:21:00.617536+00:00",
+    "timestamp_mono": 1379.8426,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -284,12 +284,12 @@
     }
   },
   {
-    "event_id": "EVT_000014_826ED1",
+    "event_id": "EVT_000014_42F7C1",
     "event_type": "StepUncertain",
     "sequence_num": 14,
     "sequence": 14,
-    "timestamp": "2026-09-14T18:03:01.836602+00:00",
-    "timestamp_mono": 15278.8491,
+    "timestamp": "2026-11-04T05:21:00.700409+00:00",
+    "timestamp_mono": 1379.9254,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -306,12 +306,12 @@
     }
   },
   {
-    "event_id": "EVT_000015_341A15",
+    "event_id": "EVT_000015_60F71F",
     "event_type": "StepUncertain",
     "sequence_num": 15,
     "sequence": 15,
-    "timestamp": "2026-09-14T18:03:01.869986+00:00",
-    "timestamp_mono": 15278.8824,
+    "timestamp": "2026-11-04T05:21:00.778755+00:00",
+    "timestamp_mono": 1380.0038,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -328,12 +328,12 @@
     }
   },
   {
-    "event_id": "EVT_000016_FE8A7B",
+    "event_id": "EVT_000016_2C2DFB",
     "event_type": "StepUncertain",
     "sequence_num": 16,
     "sequence": 16,
-    "timestamp": "2026-09-14T18:03:01.901708+00:00",
-    "timestamp_mono": 15278.9142,
+    "timestamp": "2026-11-04T05:21:00.854337+00:00",
+    "timestamp_mono": 1380.0794,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -350,12 +350,12 @@
     }
   },
   {
-    "event_id": "EVT_000017_703438",
+    "event_id": "EVT_000017_E763D3",
     "event_type": "StepUncertain",
     "sequence_num": 17,
     "sequence": 17,
-    "timestamp": "2026-09-14T18:03:01.935002+00:00",
-    "timestamp_mono": 15278.9475,
+    "timestamp": "2026-11-04T05:21:00.932181+00:00",
+    "timestamp_mono": 1380.1572,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -372,12 +372,12 @@
     }
   },
   {
-    "event_id": "EVT_000018_26FB6C",
+    "event_id": "EVT_000018_94FA45",
     "event_type": "StepUncertain",
     "sequence_num": 18,
     "sequence": 18,
-    "timestamp": "2026-09-14T18:03:01.967523+00:00",
-    "timestamp_mono": 15278.98,
+    "timestamp": "2026-11-04T05:21:01.016201+00:00",
+    "timestamp_mono": 1380.2412,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -394,12 +394,12 @@
     }
   },
   {
-    "event_id": "EVT_000019_37B927",
+    "event_id": "EVT_000019_8D1FF8",
     "event_type": "StepUncertain",
     "sequence_num": 19,
     "sequence": 19,
-    "timestamp": "2026-09-14T18:03:02.005116+00:00",
-    "timestamp_mono": 15279.0176,
+    "timestamp": "2026-11-04T05:21:01.081257+00:00",
+    "timestamp_mono": 1380.3063,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -416,12 +416,12 @@
     }
   },
   {
-    "event_id": "EVT_000020_412BF8",
+    "event_id": "EVT_000020_5BB43E",
     "event_type": "StepUncertain",
     "sequence_num": 20,
     "sequence": 20,
-    "timestamp": "2026-09-14T18:03:02.037465+00:00",
-    "timestamp_mono": 15279.0499,
+    "timestamp": "2026-11-04T05:21:01.148487+00:00",
+    "timestamp_mono": 1380.3735,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -438,12 +438,12 @@
     }
   },
   {
-    "event_id": "EVT_000021_EA3783",
+    "event_id": "EVT_000021_D46F17",
     "event_type": "StepUncertain",
     "sequence_num": 21,
     "sequence": 21,
-    "timestamp": "2026-09-14T18:03:02.073317+00:00",
-    "timestamp_mono": 15279.0858,
+    "timestamp": "2026-11-04T05:21:01.239068+00:00",
+    "timestamp_mono": 1380.4641,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -460,12 +460,12 @@
     }
   },
   {
-    "event_id": "EVT_000022_312306",
+    "event_id": "EVT_000022_A9D7AA",
     "event_type": "StepUncertain",
     "sequence_num": 22,
     "sequence": 22,
-    "timestamp": "2026-09-14T18:03:02.106907+00:00",
-    "timestamp_mono": 15279.1194,
+    "timestamp": "2026-11-04T05:21:01.305071+00:00",
+    "timestamp_mono": 1380.5301,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -482,12 +482,12 @@
     }
   },
   {
-    "event_id": "EVT_000023_FDDEA7",
+    "event_id": "EVT_000023_9C4170",
     "event_type": "StepUncertain",
     "sequence_num": 23,
     "sequence": 23,
-    "timestamp": "2026-09-14T18:03:02.138686+00:00",
-    "timestamp_mono": 15279.1511,
+    "timestamp": "2026-11-04T05:21:01.379979+00:00",
+    "timestamp_mono": 1380.605,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -504,12 +504,12 @@
     }
   },
   {
-    "event_id": "EVT_000024_FD5946",
+    "event_id": "EVT_000024_16D9F5",
     "event_type": "StepUncertain",
     "sequence_num": 24,
     "sequence": 24,
-    "timestamp": "2026-09-14T18:03:02.169918+00:00",
-    "timestamp_mono": 15279.1824,
+    "timestamp": "2026-11-04T05:21:01.447603+00:00",
+    "timestamp_mono": 1380.6726,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -526,12 +526,12 @@
     }
   },
   {
-    "event_id": "EVT_000025_2DF10E",
+    "event_id": "EVT_000025_B237AB",
     "event_type": "StepUncertain",
     "sequence_num": 25,
     "sequence": 25,
-    "timestamp": "2026-09-14T18:03:02.200785+00:00",
-    "timestamp_mono": 15279.2132,
+    "timestamp": "2026-11-04T05:21:01.513575+00:00",
+    "timestamp_mono": 1380.7386,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -548,12 +548,12 @@
     }
   },
   {
-    "event_id": "EVT_000026_552CBD",
+    "event_id": "EVT_000026_677BF0",
     "event_type": "StepUncertain",
     "sequence_num": 26,
     "sequence": 26,
-    "timestamp": "2026-09-14T18:03:02.231182+00:00",
-    "timestamp_mono": 15279.2436,
+    "timestamp": "2026-11-04T05:21:01.577442+00:00",
+    "timestamp_mono": 1380.8025,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -570,12 +570,12 @@
     }
   },
   {
-    "event_id": "EVT_000027_9BEBC6",
+    "event_id": "EVT_000027_2201D7",
     "event_type": "StepUncertain",
     "sequence_num": 27,
     "sequence": 27,
-    "timestamp": "2026-09-14T18:03:02.261481+00:00",
-    "timestamp_mono": 15279.2739,
+    "timestamp": "2026-11-04T05:21:01.645879+00:00",
+    "timestamp_mono": 1380.8709,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -592,12 +592,12 @@
     }
   },
   {
-    "event_id": "EVT_000028_94150C",
+    "event_id": "EVT_000028_510871",
     "event_type": "StepUncertain",
     "sequence_num": 28,
     "sequence": 28,
-    "timestamp": "2026-09-14T18:03:02.292229+00:00",
-    "timestamp_mono": 15279.3047,
+    "timestamp": "2026-11-04T05:21:01.719036+00:00",
+    "timestamp_mono": 1380.9441,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -614,12 +614,12 @@
     }
   },
   {
-    "event_id": "EVT_000029_19115A",
+    "event_id": "EVT_000029_AD50D8",
     "event_type": "StepUncertain",
     "sequence_num": 29,
     "sequence": 29,
-    "timestamp": "2026-09-14T18:03:02.325990+00:00",
-    "timestamp_mono": 15279.3384,
+    "timestamp": "2026-11-04T05:21:01.798591+00:00",
+    "timestamp_mono": 1381.0236,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -636,12 +636,12 @@
     }
   },
   {
-    "event_id": "EVT_000030_5BD522",
+    "event_id": "EVT_000030_65F500",
     "event_type": "StepUncertain",
     "sequence_num": 30,
     "sequence": 30,
-    "timestamp": "2026-09-14T18:03:02.357043+00:00",
-    "timestamp_mono": 15279.3695,
+    "timestamp": "2026-11-04T05:21:01.874823+00:00",
+    "timestamp_mono": 1381.0998,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -658,12 +658,12 @@
     }
   },
   {
-    "event_id": "EVT_000031_5577A7",
+    "event_id": "EVT_000031_1788A7",
     "event_type": "StepUncertain",
     "sequence_num": 31,
     "sequence": 31,
-    "timestamp": "2026-09-14T18:03:02.394099+00:00",
-    "timestamp_mono": 15279.4066,
+    "timestamp": "2026-11-04T05:21:01.956305+00:00",
+    "timestamp_mono": 1381.1813,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -680,12 +680,12 @@
     }
   },
   {
-    "event_id": "EVT_000032_06EC21",
+    "event_id": "EVT_000032_79EF2F",
     "event_type": "StepUncertain",
     "sequence_num": 32,
     "sequence": 32,
-    "timestamp": "2026-09-14T18:03:02.426716+00:00",
-    "timestamp_mono": 15279.4392,
+    "timestamp": "2026-11-04T05:21:02.032738+00:00",
+    "timestamp_mono": 1381.2578,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -702,12 +702,12 @@
     }
   },
   {
-    "event_id": "EVT_000033_7C0E5C",
+    "event_id": "EVT_000033_02ED09",
     "event_type": "StepUncertain",
     "sequence_num": 33,
     "sequence": 33,
-    "timestamp": "2026-09-14T18:03:02.458565+00:00",
-    "timestamp_mono": 15279.471,
+    "timestamp": "2026-11-04T05:21:02.106753+00:00",
+    "timestamp_mono": 1381.3318,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -724,12 +724,12 @@
     }
   },
   {
-    "event_id": "EVT_000034_67F7B5",
+    "event_id": "EVT_000034_5A3484",
     "event_type": "StepUncertain",
     "sequence_num": 34,
     "sequence": 34,
-    "timestamp": "2026-09-14T18:03:02.490731+00:00",
-    "timestamp_mono": 15279.5032,
+    "timestamp": "2026-11-04T05:21:02.178098+00:00",
+    "timestamp_mono": 1381.4031,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -746,12 +746,12 @@
     }
   },
   {
-    "event_id": "EVT_000035_265681",
+    "event_id": "EVT_000035_C8D54B",
     "event_type": "StepUncertain",
     "sequence_num": 35,
     "sequence": 35,
-    "timestamp": "2026-09-14T18:03:02.522695+00:00",
-    "timestamp_mono": 15279.5352,
+    "timestamp": "2026-11-04T05:21:02.260369+00:00",
+    "timestamp_mono": 1381.4854,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -768,12 +768,12 @@
     }
   },
   {
-    "event_id": "EVT_000036_C3908F",
+    "event_id": "EVT_000036_39AF13",
     "event_type": "StepUncertain",
     "sequence_num": 36,
     "sequence": 36,
-    "timestamp": "2026-09-14T18:03:02.554254+00:00",
-    "timestamp_mono": 15279.5667,
+    "timestamp": "2026-11-04T05:21:02.338483+00:00",
+    "timestamp_mono": 1381.5635,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -790,12 +790,12 @@
     }
   },
   {
-    "event_id": "EVT_000037_7CF220",
+    "event_id": "EVT_000037_C53ADD",
     "event_type": "StepUncertain",
     "sequence_num": 37,
     "sequence": 37,
-    "timestamp": "2026-09-14T18:03:02.585878+00:00",
-    "timestamp_mono": 15279.5983,
+    "timestamp": "2026-11-04T05:21:02.417143+00:00",
+    "timestamp_mono": 1381.6422,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -812,12 +812,12 @@
     }
   },
   {
-    "event_id": "EVT_000038_BC1FBC",
+    "event_id": "EVT_000038_1533AC",
     "event_type": "StepUncertain",
     "sequence_num": 38,
     "sequence": 38,
-    "timestamp": "2026-09-14T18:03:02.617125+00:00",
-    "timestamp_mono": 15279.6296,
+    "timestamp": "2026-11-04T05:21:02.498265+00:00",
+    "timestamp_mono": 1381.7233,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -834,12 +834,12 @@
     }
   },
   {
-    "event_id": "EVT_000039_D9AE0E",
+    "event_id": "EVT_000039_ED27AB",
     "event_type": "StepUncertain",
     "sequence_num": 39,
     "sequence": 39,
-    "timestamp": "2026-09-14T18:03:02.649173+00:00",
-    "timestamp_mono": 15279.6616,
+    "timestamp": "2026-11-04T05:21:02.576057+00:00",
+    "timestamp_mono": 1381.8011,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -856,12 +856,12 @@
     }
   },
   {
-    "event_id": "EVT_000040_691141",
+    "event_id": "EVT_000040_35DCA3",
     "event_type": "StepUncertain",
     "sequence_num": 40,
     "sequence": 40,
-    "timestamp": "2026-09-14T18:03:02.680742+00:00",
-    "timestamp_mono": 15279.6932,
+    "timestamp": "2026-11-04T05:21:02.655141+00:00",
+    "timestamp_mono": 1381.8802,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",
@@ -878,12 +878,12 @@
     }
   },
   {
-    "event_id": "EVT_000041_F8D1C4",
+    "event_id": "EVT_000041_784738",
     "event_type": "StepUncertain",
     "sequence_num": 41,
     "sequence": 41,
-    "timestamp": "2026-09-14T18:03:02.714558+00:00",
-    "timestamp_mono": 15279.727,
+    "timestamp": "2026-11-04T05:21:02.730945+00:00",
+    "timestamp_mono": 1381.956,
     "context": {
       "mission_id": "ASTRA_MISSION",
       "run_id": "DEMO_RUN_001",

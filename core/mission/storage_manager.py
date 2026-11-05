@@ -1,4 +1,4 @@
-"""Storage and Directory Management for ASTRA-EA.
+"""Storage and Directory Management for Pramman.
 
 Monitors disk capacity, tracks dataset/recording/evidence directory growth,
 ensures canonical directory initialization, and warns of storage backpressure.

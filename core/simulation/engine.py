@@ -1,4 +1,4 @@
-"""End-to-End Mission Simulation Engine for ASTRA-EA.
+"""End-to-End Mission Simulation Engine for Pramman.
 
 Orchestrates simulated mission scenarios, feeding fault-injected frames through
 the actual perception, interaction, temporal activity, procedure, and assurance
@@ -96,7 +96,7 @@ class SimulationRunResult(BaseModel):
 
 
 class SimulationEngine:
-    """Runs simulated mission scenarios through the complete ASTRA-EA pipeline."""
+    """Runs simulated mission scenarios through the complete Pramman pipeline."""
 
     def __init__(
         self,

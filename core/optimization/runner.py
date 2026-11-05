@@ -1,4 +1,4 @@
-"""Unified Benchmark Runner for ASTRA-EA.
+"""Unified Benchmark Runner for Pramman.
 
 Orchestrates full end-to-end pipeline benchmarking, per-stage latency profiling,
 and system resource monitoring across camera, perception, interaction, activity,
@@ -60,7 +60,7 @@ class BenchmarkRunner:
         """Execute end-to-end pipeline benchmark across specified number of frames."""
         mode_label = "BASELINE (Unoptimized)" if is_baseline else f"OPTIMIZED ({profile_name})"
         logger.info(
-            "Starting ASTRA-EA %s benchmark for %d frames...",
+            "Starting Pramman %s benchmark for %d frames...",
             mode_label,
             frames,
         )

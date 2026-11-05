@@ -1,4 +1,4 @@
-# ASTRA-EA: Operator Quick Start Guide
+# Pramman: Operator Quick Start Guide
 
 **Audience:** Demonstration operators, evaluators, and judges.  
 **Requirement:** Zero prior knowledge of the codebase. All actions use native CLI commands.
@@ -11,7 +11,7 @@
 [1. POWER ON] ──> [2. CONNECT CAMERA] ──> [3. RUN CHECK]
                                                  │
                                                  ▼
-[6. START RUN] <── [5. VERIFY READY] <── [4. RUN ASTRA-EA]
+[6. START RUN] <── [5. VERIFY READY] <── [4. RUN Pramman]
 ```
 
 ---
@@ -39,22 +39,22 @@
 ### Step 3: Run Environment & Readiness Check
 Run the automated pre-flight readiness audit:
 ```bash
-astra competition-check
+pramman competition-check
 ```
 *Expected output: All 15 subsystems report `PASS`, culminating in `STATUS: READY`.*
 
 If testing live camera nodes specifically, run:
 ```bash
-astra final-check
+pramman final-check
 ```
 *Expected output: `SYSTEM: READY FOR DEMONSTRATION`.*
 
 ---
 
-### Step 4: Launch ASTRA-EA Demonstration
+### Step 4: Launch Pramman Demonstration
 Launch the integrated demonstration session:
 ```bash
-astra demo
+pramman demo
 ```
 *Behind the scenes, this loads `configs/deployment/final_demo.yaml`, initializes video ingestion, loads the frozen neural model, starts the Mission Console at `http://127.0.0.1:8000`, and starts Ground Monitor streaming at `http://127.0.0.1:8080`.*
 

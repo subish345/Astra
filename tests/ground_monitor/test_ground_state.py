@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor State Tests
+# Pramman Ground Monitor State Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated tests for GroundMonitorState mutations and event processing."""

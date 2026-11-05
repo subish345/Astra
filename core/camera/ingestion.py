@@ -1,4 +1,4 @@
-"""Video ingestion service and frame queue management for ASTRA-EA.
+"""Video ingestion service and frame queue management for Pramman.
 
 Provides threaded ingestion, bounded queue buffering, frame-drop detection,
 and real-time capture FPS calculation.

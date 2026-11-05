@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Normalized Spatial Reasoning & Anatomical Hand Grounding
+# Pramman Normalized Spatial Reasoning & Anatomical Hand Grounding
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Normalized spatial relationships and viewpoint-invariant anatomical hand reasoning.

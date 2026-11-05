@@ -1,0 +1,13 @@
+{
+  "requirement_id": "ASTRA-IF-002",
+  "evidence_type": "INSPECTION",
+  "adapter_class": "VehicleBusAdapter",
+  "backends": [
+    "MockBus",
+    "SpaceWireBus",
+    "CANBus",
+    "SerialBus"
+  ],
+  "decoupled": true,
+  "result": "PASS"
+}

@@ -1,4 +1,4 @@
-"""Long-Run Stability, Memory Leak, and Thermal Soak Tester for ASTRA-EA.
+"""Long-Run Stability, Memory Leak, and Thermal Soak Tester for Pramman.
 
 Executes continuous full-pipeline mission processing over configurable durations:
 - Samples process RSS memory, CPU%, and FPS degradation over time.
@@ -50,7 +50,7 @@ class SoakTester:
         procedure: Optional[ExperimentProcedure] = None,
     ) -> Dict[str, Any]:
         """Execute endurance soak test for the specified number of seconds."""
-        logger.info("Starting ASTRA-EA soak test for %d seconds (Target %d FPS)...", duration_seconds, target_fps)
+        logger.info("Starting Pramman soak test for %d seconds (Target %d FPS)...", duration_seconds, target_fps)
 
         # Baseline initialization and warmup
         from datetime import datetime, timezone

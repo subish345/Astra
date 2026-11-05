@@ -1,4 +1,4 @@
-"""Model Hardware Compatibility Matrix Generator for ASTRA-EA.
+"""Model Hardware Compatibility Matrix Generator for Pramman.
 
 Evaluates registered and candidate models across available hardware backends:
 - Host CPU
@@ -84,7 +84,7 @@ class ModelCompatibilityMatrix:
     def print_ascii_matrix(self, report: Dict[str, Any]) -> None:
         """Print ASCII formatted compatibility scorecard."""
         print("=" * 75)
-        print(" ASTRA-EA MODEL HARDWARE COMPATIBILITY MATRIX")
+        print(" Pramman MODEL HARDWARE COMPATIBILITY MATRIX")
         print("=" * 75)
         print(f"{'Model Identifier':<38} {'CPU':<8} {'CUDA':<8} {'ONNX':<8} {'Status':<12}")
         print("-" * 75)

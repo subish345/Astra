@@ -1,4 +1,4 @@
-# ASTRA-EA — Spacecraft Edge Deployment Guide
+# Pramman — Spacecraft Edge Deployment Guide
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version:** `1.0.0-RC1`
@@ -7,7 +7,7 @@
 
 ## 1. Hardware Architecture Target
 
-ASTRA-EA is designed to deploy on space-station payload computer form-factors (e.g. Spaceborne Computer, ruggedized payload controller, or embedded x86/ARM64 industrial boards):
+Pramman is designed to deploy on space-station payload computer form-factors (e.g. Spaceborne Computer, ruggedized payload controller, or embedded x86/ARM64 industrial boards):
 
 * **CPU**: Quad-core x86_64 or ARM64 processor (e.g., Intel Core i5/i7, AMD Ryzen Embedded, or NVIDIA Jetson AGX Orin).
 * **RAM**: Minimum 4.0 GB (8.0 GB recommended).
@@ -29,10 +29,10 @@ chmod +x scripts/install.sh
 ./scripts/install.sh
 
 # 3. Verify deployment doctor readiness
-astra deployment doctor
+pramman deployment doctor
 
 # 4. Perform pre-demonstration final system check
-astra final-check
+pramman final-check
 ```
 
 ---
@@ -58,15 +58,15 @@ Key environment parameters:
 ### Canonical Launch Commands:
 ```bash
 # Launch One-Command Demonstration (with self-test and nominal/deviation flow)
-astra demo
+pramman demo
 
 # Launch One-Command Demonstration Headlessly (for CI or automated test harnesses)
-astra demo --headless
+pramman demo --headless
 
 # Launch Onboard Mission Console (PySide6 Interactive UI)
-astra mission
+pramman mission
 
 # Launch Independent Ground Monitor Dashboard
-astra ground-monitor
+pramman ground-monitor
 ```
 *(Development fallback `python3 main.py <command>` remains fully supported).*

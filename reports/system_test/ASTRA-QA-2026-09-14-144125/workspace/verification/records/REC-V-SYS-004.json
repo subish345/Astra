@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-SYS-004",
+  "requirement_id": "ASTRA-SAF-002",
+  "test_id": "V-SYS-004",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "reports/physical/physical_validation.html",
+    "verification/evidence/EVID-SAF-002-OCCLUSION.json"
+  ],
+  "notes": "Test V-SYS-004 executed successfully against ASTRA-SAF-002."
+}

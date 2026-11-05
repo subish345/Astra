@@ -1,0 +1,17 @@
+{
+  "verification_id": "REC-V-ENV-003",
+  "requirement_id": "ASTRA-ENV-003",
+  "test_id": "V-ENV-003",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "DEFERRED",
+  "evidence": [
+    "docs/qualification/environmental-test-plan.md"
+  ],
+  "notes": "Deferred to future Phase 17 environmental test facility (TRL 6)."
+}

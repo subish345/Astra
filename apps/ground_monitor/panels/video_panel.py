@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Video Panel
+# Pramman Ground Video Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Live IP video observation panel with telemetry overlays and connection placeholders."""

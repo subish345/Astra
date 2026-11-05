@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Camera Profiles & Viewpoint Management
+# Pramman Camera Profiles & Viewpoint Management
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Camera profile definitions and viewpoint registry for viewpoint-invariant experiment assurance."""

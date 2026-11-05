@@ -1,0 +1,7 @@
+{
+  "requirement_id": "ASTRA-DAT-002",
+  "evidence_type": "TRACE",
+  "trace_chain": "StepTraceRecord -> FrameIdx -> BBoxes -> IoU -> Decision",
+  "integrity_verified": true,
+  "result": "PASS"
+}

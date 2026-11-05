@@ -1,4 +1,4 @@
-# ASTRA-EA: Demonstration Hardware Checklist
+# Pramman: Demonstration Hardware Checklist
 
 **Classification:** Physical Operations Pre-Flight Packing & Deployment Checklist  
 **Release:** `ASTRA-EA-COMPETITION-RC1`

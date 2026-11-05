@@ -1,4 +1,4 @@
-"""Procedure Performance Benchmark (D4.15) for ASTRA-EA.
+"""Procedure Performance Benchmark (D4.15) for Pramman.
 
 Genuinely benchmarks procedure matching, evidence aggregation, step evaluation,
 and end-to-end activity-to-step latency across statistical percentile distributions (P50, P95, P99).

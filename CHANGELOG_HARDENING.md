@@ -1,6 +1,27 @@
-# ASTRA-EA Hardening Changelog (Phase 21, Section 35)
+# ORBITA Hardening & Release Changelog
 
 ### Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
+
+---
+
+## [1.1.0] — 2026-11-05 (Official Release v1.1.0)
+
+### Highlights & New Capabilities
+* **Unified ORBITA CLI (`orbita.py`):** Single entry point supporting `mission`, `ground`, `observe`, `recordings`, `verify`, `doctor`, and `replay` commands.
+* **Continuous Visual Observation:** Live observation mode (`Always Observe` & `live_observer.py`) with generalized open-vocabulary detector fallback (`general_adapter.py`).
+* **Relational Database Schema v2 (`storage/database/astra.db`):** Added `camera_visuals` table for persisting training keyframes and movement accuracy, and `video_segments` metadata tracking (frame counts, FPS, duration).
+* **High-Clarity 1.0x Real-Time Video Recording:**
+  * Implemented monotonic timestamp pacing in `UnifiedRecordingManager.record_frame()`, ensuring recorded video plays at exact 1.0x normal real-time speed.
+  * Encodes clean native camera frames (`fd.image` @ 1280x720) without HUD degradation or duplicate overlays.
+* **Interactive Recordings Archive & Integrated Player (`RecordingsView`):**
+  * Built-in player with Play, Pause, Stop, time display, frame counter, and scrubber slider.
+  * User-selectable playback speed multiplier (`1.0x Normal`, `0.5x Slow`, `0.25x Quarter`, `1.5x Fast`, `2.0x Double`).
+  * Dedicated `🗑 Delete` and `🧹 Clean Missing` database pruning controls.
+* **External Video Upload & Step Verification (`📁 Upload Video`):** Immediate verification of user-uploaded `.mp4`/`.avi` videos against mission procedure steps with automatic database registration.
+* **Real-Time Camera Mirroring (`🪞 Mirror Camera`):**
+  * Instant horizontal flip (`cv2.flip(frame, 1)`) providing a natural selfie/mirror experience.
+  * Pre-overlay mirroring guarantees forward, perfectly readable HUD text, bounding box labels, and step guidance.
+  * Removed obsolete static badges (`LOCAL / OFFLINE`, `VIEW_LEFT`) from the top session bar.
 
 ---
 

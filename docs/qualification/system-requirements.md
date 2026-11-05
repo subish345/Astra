@@ -1,7 +1,7 @@
-# ASTRA-EA: Spacecraft Payload System Requirements Specification
+# Pramman: Spacecraft Payload System Requirements Specification
 
 **Classification:** Formal Engineering Requirements Specification  
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Standard Adherence:** Tailored ECSS-E-ST-40C / NASA-STD-8739.8  
 **Milestone:** Phase 15 — Qualification Readiness
 

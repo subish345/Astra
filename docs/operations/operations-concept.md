@@ -1,4 +1,4 @@
-# ASTRA-EA — Concept of Operations (CONOPS)
+# Pramman — Concept of Operations (CONOPS)
 
 ## Phase 19: Mission Operations & Ground Segment Integration (D19.01)
 **Project:** Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)  
@@ -9,7 +9,7 @@
 
 ## 1. Operational Purpose & Mission Overview
 
-ASTRA-EA operates as an autonomous, closed-loop AI mission assurance and crew assistance system aboard human-crewed spacecraft and remote orbital laboratory platforms. 
+Pramman operates as an autonomous, closed-loop AI mission assurance and crew assistance system aboard human-crewed spacecraft and remote orbital laboratory platforms. 
 
 The primary mission operational objective is to ensure that complex scientific procedures (e.g. molecular biology, crystal growth, fluid physics) conducted in microgravity are executed with **100% protocol fidelity**, providing real-time cognitive guidance, detecting procedural deviations, generating verifiable evidence chains, and ensuring ground science teams have full situational awareness without interfering with astronaut workflow.
 

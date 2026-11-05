@@ -1,0 +1,20 @@
+============================================================
+ ASTRA-EA PROCEDURE ASSURANCE & STEP RECOGNITION (LIVE)
+============================================================
+Experiment:       Sample Material Handling & Container Verification (DEMO) (DEMO_EXP_001 v1.0.0)
+Total Steps:      4
+Initial Step:     STEP_01
+Camera Source:    0
+Audit Run ID:     RUN_PROC_1789317386
+============================================================
+------------------------------------------------------------
+PROCEDURE ASSURANCE EXECUTION SUMMARY
+Final Status:         READY
+Completed Steps:      []
+Current Step:         STEP_01
+Next Expected:        STEP_02
+Compute Latency P50:  15.03 ms
+Compute Latency P95:  19.31 ms
+Compute Latency P99:  23.20 ms
+Throughput Capacity:  66.6 FPS
+============================================================

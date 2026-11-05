@@ -1,0 +1,24 @@
+id: V-SYS-002
+requirement: ASTRA-SYS-002
+title: Procedural Deviation Detection on Wrong Object Interaction
+purpose: Verify that interacting with an incorrect experiment apparatus (e.g. chemical_vial instead of specimen_tube) triggers a DEVIATION assurance state and issues corrective alerts.
+preconditions:
+  - Experiment procedure active and waiting on Step 1 (specimen_tube expected)
+setup:
+  - Configure test runner to inject chemical_vial contact bounding box
+inputs:
+  - Frame sequence showing hand grasp on chemical_vial
+procedure:
+  - Process 10 frames with chemical_vial interaction
+  - Trigger step verification evaluation
+  - Query TriStateAssuranceEngine decision
+expected_result:
+  - TriStateAssuranceEngine returns DEVIATION
+  - Step progress is NOT advanced
+  - Voice warning queue receives wrong object alert string
+acceptance_criteria:
+  - DecisionType equals DEVIATION
+  - Active step remains unchanged
+evidence:
+  - models/reports/model_evaluation_report.json
+  - verification/evidence/EVID-SYS-002-DET.json

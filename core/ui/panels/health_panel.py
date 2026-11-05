@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA System Health & Telemetry Panel
+# Pramman System Health & Telemetry Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Panel presenting subsystem operational health status and empirical performance metrics."""
@@ -59,6 +59,9 @@ class SubsystemBadge(QFrame):
                 f"color: {Colors.GREEN_BRIGHT}; background-color: {Colors.GREEN_BG}; "
                 f"border: 1px solid {Colors.GREEN}; font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 2px;"
             )
+        elif self.status in {"READY", "NOT USED", "UNVERIFIED", "INITIALIZING", "PAUSED", "STOPPING", "COMPLETED", "ABORTED"}:
+            self.lbl_status.setText(self.status)
+            self.lbl_status.setStyleSheet(f"color: {Colors.TEXT_MUTED}; font-size: 9px; padding: 1px 4px;")
         elif self.status == "OFFLINE":
             # For network: Expected air-gapped condition, not failure!
             self.lbl_status.setText("🔴 OFFLINE (AIR-GAPPED)")
@@ -102,7 +105,7 @@ class HealthPanel(QFrame):
 
         hdr_layout.addStretch()
 
-        self.lbl_core_state = QLabel("CORE SYSTEM: OPERATIONAL")
+        self.lbl_core_state = QLabel("SESSION: READY")
         self.lbl_core_state.setStyleSheet(
             f"color: {Colors.GREEN_BRIGHT}; font-size: 10px; font-weight: bold; "
             f"background-color: {Colors.GREEN_BG}; border: 1px solid {Colors.GREEN}; padding: 2px 6px; border-radius: 3px;"
@@ -115,13 +118,13 @@ class HealthPanel(QFrame):
         grid.setSpacing(4)
 
         subsystems = [
-            ("Camera", "ONLINE"),
-            ("Perception", "ACTIVE"),
-            ("Procedure", "ACTIVE"),
-            ("Assurance", "ACTIVE"),
-            ("Voice", "ACTIVE"),
-            ("Database", "ACTIVE"),
-            ("Storage", "NORMAL"),
+            ("Camera", "READY"),
+            ("Perception", "READY"),
+            ("Procedure", "READY"),
+            ("Assurance", "READY"),
+            ("Voice", "UNVERIFIED"),
+            ("Database", "UNVERIFIED"),
+            ("Storage", "UNVERIFIED"),
             ("Network", "OFFLINE"),
         ]
 
@@ -139,10 +142,10 @@ class HealthPanel(QFrame):
         telem_layout.setContentsMargins(6, 4, 6, 4)
         telem_layout.setSpacing(12)
 
-        self.lbl_fps = QLabel("FPS: 30.0")
-        self.lbl_lat = QLabel("LATENCY: 12.0 ms")
-        self.lbl_cpu = QLabel("CPU: 18%")
-        self.lbl_ram = QLabel("RAM: 420 MB")
+        self.lbl_fps = QLabel("FPS: —")
+        self.lbl_lat = QLabel("LATENCY: —")
+        self.lbl_cpu = QLabel("CPU: —")
+        self.lbl_ram = QLabel("RAM: —")
 
         for lbl in (self.lbl_fps, self.lbl_lat, self.lbl_cpu, self.lbl_ram):
             lbl.setStyleSheet(f"font-size: 11px; font-weight: bold; color: {Colors.TEXT_SECONDARY};")

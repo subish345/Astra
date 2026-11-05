@@ -1,4 +1,4 @@
-"""Procedure Progress Manager (D4.04) for ASTRA-EA.
+"""Procedure Progress Manager (D4.04) for Pramman.
 
 Maintains the procedure state machine, handles step transitions, enforces event deduplication,
 prevents premature advancement on uncertain evidence, and detects procedure completion.

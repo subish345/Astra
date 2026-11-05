@@ -1,4 +1,4 @@
-# ASTRA-EA: Master Qualification Verification Matrix (VCD)
+# Pramman: Master Qualification Verification Matrix (VCD)
 
 **Classification:** Verification Control Document (VCD)  
 **Standard:** ECSS-E-ST-10-02C (Verification)  

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Video Stream Server & Encoder Tests
+# Pramman Video Stream Server & Encoder Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated tests for VideoStreamServer, StreamEncoder, and VideoStreamClient."""

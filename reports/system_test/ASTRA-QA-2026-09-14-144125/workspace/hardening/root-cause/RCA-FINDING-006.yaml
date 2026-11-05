@@ -1,0 +1,17 @@
+finding_id: "FINDING-006"
+title: "Recovery verification latency bound temporal threshold enforcement"
+analysis_method: "5_WHY"
+symptom: "Recovery verification latency could drift if temporal buffer required multi-second evidence accumulation before returning to NOMINAL."
+reproduction_case: "Introduce planned wrong-object deviation, swap back to correct apparatus, and measure time to RECOVERY_VERIFIED."
+evidence:
+  - "reports/rehearsal/REH_01_DEVIATION_TIMELINE"
+  - "configs/rehearsal/GOLDEN_MISSION.yaml"
+root_cause_breakdown:
+  why_1: "Procedure matcher used standard temporal rolling window (15 frames) for recovery validation."
+  why_2: "During recovery, the astronaut has already corrected the physical setup and requires rapid confirmation."
+  why_3: "A recovery-specific fast confirmation path was missing to promptly match the corrective apparatus."
+  why_4: "Recovery assurance relied on the same latency parameters as normal multi-stage procedure transitions."
+  why_5: "Root cause: Lack of tuned temporal threshold bound for recovery verification (<300ms SLA)."
+corrective_action: "Enforce strict recovery verification latency contract (<300ms) by optimizing the recovery matcher's evidence accumulation threshold upon detecting the target apparatus."
+verification: "Regression test tests/regression/test_recovery_verification_latency.py passes with verification latency < 250ms."
+disposition: "RESOLVED"

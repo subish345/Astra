@@ -1,4 +1,4 @@
-"""Post-Mission Reporting Engine for ASTRA-EA (Phase 19, Section 30, 31, 35, D19.14).
+"""Post-Mission Reporting Engine for Pramman (Phase 19, Section 30, 31, 35, D19.14).
 
 Compiles authoritative experiment execution records into comprehensive JSON and
 self-contained, standalone HTML reports.
@@ -37,7 +37,7 @@ class MissionReportGenerator:
         duration_s = timeline.get("current_met_seconds", 0.0)
 
         return {
-            "title": f"ASTRA-EA Mission Assurance Audit Report — {run_id}",
+            "title": f"Pramman Mission Assurance Audit Report — {run_id}",
             "generated_at_utc": datetime.now(timezone.utc).isoformat(),
             "experiment_id": "DEMO_EXP_001",
             "run_id": run_id,
@@ -174,7 +174,7 @@ class MissionReportGenerator:
     <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <h1>ASTRA-EA Post-Mission Audit Report</h1>
+                <h1>Pramman Post-Mission Audit Report</h1>
                 <p style="color: #94a3b8; margin: 0;">Run Identifier: <strong>{run_id}</strong> | Experiment: <strong>DEMO_EXP_001</strong> | Generated: {report_data['generated_at_utc']}</p>
             </div>
             <span class="badge">{status}</span>

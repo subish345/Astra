@@ -1,0 +1,26 @@
+{
+  "model_id": "ASTRA_OBJECT_DETECTOR_v0.1.0",
+  "export_timestamp": "2026-09-13T12:30:35Z",
+  "format": "ONNX",
+  "opset_version": 17,
+  "input_name": "images",
+  "input_shape": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "output_name": "output",
+  "output_shape": [
+    1,
+    9,
+    8400
+  ],
+  "classes": [
+    "ASTRONAUT",
+    "MAIN_BOX",
+    "RED_BOX",
+    "YELLOW_BOX",
+    "WORK_SURFACE"
+  ]
+}

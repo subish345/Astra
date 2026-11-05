@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Streaming Security & Access Control
+# Pramman Streaming Security & Access Control
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Security validation for bind addresses, evidence file paths, and request payloads."""

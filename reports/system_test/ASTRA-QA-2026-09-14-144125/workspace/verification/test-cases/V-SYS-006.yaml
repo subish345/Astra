@@ -1,0 +1,24 @@
+id: V-SYS-006
+requirement: ASTRA-SAF-003
+title: Camera Video Ingestion Failure and Freeze Handling
+purpose: Verify that when the optical camera disconnects or frame ingestion freezes for >= 3 frames, verification immediately pauses without false step completion.
+preconditions:
+  - Video stream active and processing frames
+setup:
+  - Configure simulated camera to inject EOF or disconnect signal
+inputs:
+  - Camera disconnect interrupt / 0 fps frame drop
+procedure:
+  - Ingest 5 nominal frames
+  - Cease frame delivery for >= 3 frames
+  - Check health monitor and assurance state
+expected_result:
+  - Health monitor detects sensor dropout
+  - Pipeline transitions to PAUSED
+  - No active step is marked completed
+acceptance_criteria:
+  - Pipeline state is PAUSED
+  - Step progression remains halted
+evidence:
+  - reports/hil/simulation_vs_physical.html
+  - verification/evidence/EVID-SAF-003-FREEZE.json

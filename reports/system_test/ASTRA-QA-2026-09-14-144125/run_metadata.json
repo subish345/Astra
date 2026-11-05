@@ -1,0 +1,9 @@
+{
+  "run_id": "ASTRA-QA-2026-09-14-144125",
+  "timestamp_utc": "2026-09-14T14:41:25.937144+00:00",
+  "repository": "/home/subish-loq/Documents/astra",
+  "commit": "c02788d769a4468cd63dc4f065429083ae11cef4",
+  "branch": "phase21-hardening-rc2",
+  "dirty_tree": true,
+  "test_workspace": "/home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace"
+}

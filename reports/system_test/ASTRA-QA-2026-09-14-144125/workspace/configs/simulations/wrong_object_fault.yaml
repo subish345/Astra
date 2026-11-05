@@ -1,0 +1,18 @@
+scenario_id: "SIM_FAULT_WRONG_OBJECT"
+name: "Operator Deviation — Unauthorized Specimen Selection"
+description: "Astronaut mistakenly interacts with YELLOW_BOX instead of authorized RED_BOX."
+procedure_path: "configs/experiments/demo.yaml"
+camera_profile: "VIEW_LEFT"
+duration_sec: 6.0
+target_fps: 30.0
+synthetic_seed: 20002
+faults:
+  - fault_type: "WRONG_OBJECT"
+    start_time: 1.0
+    duration_sec: 4.5
+    intensity: 1.0
+    frequency: 1.0
+    target: "RED_BOX"
+expected_final_status: "DEVIATION"
+expected_deviations:
+  - "WRONG_OBJECT"

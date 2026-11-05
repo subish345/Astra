@@ -1,4 +1,4 @@
-"""Qualification Readiness Engine & Systems Engineering Auditor for ASTRA-EA (Phase 17).
+"""Qualification Readiness Engine & Systems Engineering Auditor for Pramman (Phase 17).
 
 Audits system-level requirements compliance, hardware/software interface contracts,
 resource budget allocations, environmental test matrix, nonconformance tracking,
@@ -374,7 +374,7 @@ class QualificationEngine:
         {nav}
         <div class="alert-box">
             <h3>QUALIFICATION READINESS VERDICT: READY FOR FUTURE QUALIFICATION</h3>
-            <p>ASTRA-EA has completed ground V&V with 100% requirement traceability. Complete test plans, telemetry interfaces, schemas, and nonconformance controls are established for future certified aerospace facility campaigns.</p>
+            <p>Pramman has completed ground V&V with 100% requirement traceability. Complete test plans, telemetry interfaces, schemas, and nonconformance controls are established for future certified aerospace facility campaigns.</p>
         </div>
         <table><thead><tr><th>Subsystem Gate</th><th>Compliance Status</th><th>Notes</th></tr></thead><tbody>
         <tr><td>System Requirements Baseline</td><td><span class="badge-pass">PASS</span></td><td>35 Ground Requirements 100% Verified</td></tr>
@@ -391,7 +391,7 @@ class QualificationEngine:
         # Update readiness.json
         readiness_data = {
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "project": "ASTRA-EA",
+            "project": "Pramman",
             "phase": "Phase 17 — Environmental + Hardware Qualification Program",
             "qualification_build_id": "ASTRA-EA-QB-001",
             "requirements": {
@@ -457,7 +457,7 @@ class QualificationEngine:
         tests = self.list_qualification_tests()
 
         print("=" * 60)
-        print(" ASTRA-EA QUALIFICATION READINESS DASHBOARD (Phase 17)")
+        print(" Pramman QUALIFICATION READINESS DASHBOARD (Phase 17)")
         print("=" * 60)
         print(f"Qualification Build ID: ASTRA-EA-QB-001")
         print(f"Baseline Software:      v1.0.0-RC1 (ECSS-E-ST-10-02C)")

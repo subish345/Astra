@@ -1,4 +1,4 @@
-"""Unified Subsystem Health Aggregator for ASTRA-EA.
+"""Unified Subsystem Health Aggregator for Pramman.
 
 Aggregates operational status, heartbeats, and failure propagation across all
 onboard subsystems, enforcing safety policies for critical vs non-critical failures.

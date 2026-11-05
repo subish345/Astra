@@ -1,8 +1,8 @@
 # ==============================================================================
-# ASTRA-EA Mission Rehearsal Framework (Phase 20, D20.02 - D20.05)
+# Pramman Mission Rehearsal Framework (Phase 20, D20.02 - D20.05)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
-"""Mission Rehearsal Engine for ASTRA-EA (Phase 20, Sections 4-53).
+"""Mission Rehearsal Engine for Pramman (Phase 20, Sections 4-53).
 
 Orchestrates end-to-end mission rehearsals across operational modes:
 - FULL_REAL (physical experiment + real camera + real runtime)

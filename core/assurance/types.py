@@ -1,8 +1,8 @@
 # ==============================================================================
-# ASTRA-EA Assurance Decision Structures
+# Pramman Assurance Decision Structures
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
-"""Assurance decision structures for ASTRA-EA.
+"""Assurance decision structures for Pramman.
 
 Enforces the three core mission states: VERIFIED, UNCERTAIN, and DEVIATION,
 carrying camera profile metadata and closed-loop recovery guidance.

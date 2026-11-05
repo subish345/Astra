@@ -1,4 +1,4 @@
-# ASTRA-EA Perception Testing & Verification Guide
+# Pramman Perception Testing & Verification Guide
 
 ## 1. Testing Strategy
 

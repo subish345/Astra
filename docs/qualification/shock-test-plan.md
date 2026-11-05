@@ -1,4 +1,4 @@
-# ASTRA-EA: Mechanical Shock Qualification Test Plan
+# Pramman: Mechanical Shock Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-SHK-001`  
 **Test Identifier:** `QUAL-SHK-001`  
@@ -11,7 +11,7 @@
 
 ## 1. Objective
 
-This test program specifies the future qualification protocol to verify that the ASTRA-EA payload survives high-amplitude, high-frequency mechanical shock events typical of launch vehicle fairing jettison, spacecraft stage separation, and solar array deployment pyrotechnics.
+This test program specifies the future qualification protocol to verify that the Pramman payload survives high-amplitude, high-frequency mechanical shock events typical of launch vehicle fairing jettison, spacecraft stage separation, and solar array deployment pyrotechnics.
 
 Specific goals:
 1. Subject the payload to Shock Response Spectrum (SRS) pulses up to $1,000\text{ G}$ at $1,000\text{ Hz}$.

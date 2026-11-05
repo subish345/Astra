@@ -1,4 +1,4 @@
-"""Subsystem health monitoring data types for ASTRA-EA.
+"""Subsystem health monitoring data types for Pramman.
 """
 
 from __future__ import annotations
@@ -12,7 +12,7 @@ from core.mission.events import HealthState
 
 
 class HealthComponent(str, Enum):
-    """Subsystems monitored by the ASTRA-EA health system."""
+    """Subsystems monitored by the Pramman health system."""
     CAMERA = "CAMERA"
     PERCEPTION = "PERCEPTION"
     PROCEDURE = "PROCEDURE"

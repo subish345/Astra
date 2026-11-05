@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Console End-to-End GUI Integration Tests
+# Pramman Mission Console End-to-End GUI Integration Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Integration tests verifying full typed event propagation through MissionConsoleWindow."""
@@ -157,13 +157,14 @@ def test_integration_recovery_lifecycle(console_window):
 
 
 def test_navigation_stack_views(console_window):
-    """Verify switching views across all 5 main window screens."""
+    """Verify switching views across all 6 main window screens."""
     views = [
         ("MISSION", 0),
-        ("EVIDENCE", 1),
-        ("TIMELINE", 2),
-        ("HEALTH", 3),
-        ("SETTINGS", 4),
+        ("RECORDINGS", 1),
+        ("EVIDENCE", 2),
+        ("TIMELINE", 3),
+        ("HEALTH", 4),
+        ("SETTINGS", 5),
     ]
     for label, idx in views:
         console_window.stack.setCurrentIndex(idx)
@@ -174,3 +175,39 @@ def test_navigation_stack_views(console_window):
     assert not pix.isNull()
     assert pix.width() >= 1200
     assert pix.height() >= 680
+
+
+def test_recording_status_signal_integration(console_window):
+    """Verify sig_recording_status updates SessionBar and recordings view."""
+    # Emit active recording state
+    console_window.bridge.sig_recording_status.emit(True, "data/recordings/test_rec.mp4")
+    assert console_window.session_bar.btn_rec.isChecked()
+    assert "STOP REC" in console_window.session_bar.btn_rec.text()
+    assert console_window.session_bar.lbl_rec_badge.isVisible()
+
+    # Emit stopped recording state
+    console_window.bridge.sig_recording_status.emit(False, "")
+    assert not console_window.session_bar.btn_rec.isChecked()
+    assert "REC" in console_window.session_bar.btn_rec.text()
+    assert not console_window.session_bar.lbl_rec_badge.isVisible()
+
+
+def test_video_replay_completion_and_reset(console_window):
+    """Verify video replay session completion allows start/stop without sticking."""
+    # Simulate replay launch
+    console_window.camera_source = "data/recordings/sample.mp4"
+    console_window.session_bar.set_mode("REPLAY")
+
+    # Complete session
+    console_window.bridge.sig_session_status.emit("COMPLETED")
+
+    # Check button availability - user must not be stuck
+    assert console_window.session_bar.btn_start.isEnabled()
+    assert console_window.session_bar.btn_stop.isEnabled()
+    assert "COMPLETED" in console_window.console_view.video_panel.video_surface.text()
+
+    # User clicks STOP to return to live camera
+    console_window.stop_mission()
+    assert console_window.state.session.status == "READY"
+    assert console_window.camera_source == "0"
+    assert console_window.session_bar.lbl_mode.text() == "MODE: FULL_REAL"

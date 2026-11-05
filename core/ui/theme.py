@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Console Theme & Styles
+# Pramman Mission Console Theme & Styles
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Design tokens, color palettes, and stylesheets for space-operations Mission Console."""

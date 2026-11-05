@@ -1,4 +1,4 @@
-# ASTRA-EA — Final Environmental & Hardware Qualification Program Report
+# Pramman — Final Environmental & Hardware Qualification Program Report
 
 ### Document ID: `ASTRA-QUAL-REP-001`
 **Program Milestone**: Phase 17 — Environmental + Hardware Qualification Program  
@@ -16,7 +16,7 @@
 
 ## 1. Executive Summary & Qualification Rule
 
-ASTRA-EA (Autonomous Spacecraft Experiment Assurance & Assistance, SIH26174) has completed ground engineering verification with **100% requirement coverage** across all functional, perception, temporal assurance, safety, and operator interface subsystems.
+Pramman (Autonomous Spacecraft Experiment Assurance & Assistance, SIH26174) has completed ground engineering verification with **100% requirement coverage** across all functional, perception, temporal assurance, safety, and operator interface subsystems.
 
 To bridge the gap between laboratory ground demonstrator readiness and future spacecraft flight integration, Phase 17 establishes the formal **Environmental & Hardware Qualification Program**.
 
@@ -40,7 +40,7 @@ The hardware and software baseline is strictly configuration-controlled and froz
 | **Compute Board** | NVIDIA Jetson Orin NX (16GB, 20W profile) | Carrier Rev B | FROZEN |
 | **Optical Sensor** | Sony IMX477 1/2.3" CMOS (1080p @ 30 FPS) | M12 6.0mm f/1.8 lens | FROZEN |
 | **Spacecraft Bus** | 28V DC Nominal (18V–36V Float) | MIL-STD-704F / ECSS-E-ST-20C | FROZEN |
-| **Software Baseline** | ASTRA-EA Core Pipeline v1.0.0-RC1 | Git Commit Freeze | FROZEN |
+| **Software Baseline** | Pramman Core Pipeline v1.0.0-RC1 | Git Commit Freeze | FROZEN |
 | **Manifest Checksum** | `software_baseline_manifest.json` | `698e57fb273cc00ff50ef50d8926eb891fc8a385fdb025eb270d10e82208034b` | VERIFIED |
 | **Model Evaluation** | `model_evaluation_report.json` | `2d4b94f1ba155250495f50f757e7ebaa838a3cf12d1b7a2d67a140f7f3da1122` | VERIFIED |
 | **Procedure Spec** | `configs/experiments/demo.yaml` | `f31317a3297a78368564177651e73708a3d13c72b22ec6b4d326f555ff428131` | VERIFIED |
@@ -172,11 +172,11 @@ The software manifest audited by `DependencyAuditor` confirms:
 
 ## 9. Final Readiness Statement
 
-ASTRA-EA satisfies all ground programmatic, verification, architectural, interface, and safety gating requirements. The qualification framework establishes complete traceability and rigorous test procedures for future formal spaceflight qualification campaigns.
+Pramman satisfies all ground programmatic, verification, architectural, interface, and safety gating requirements. The qualification framework establishes complete traceability and rigorous test procedures for future formal spaceflight qualification campaigns.
 
 ```
 ============================================================
-           ASTRA-EA FLIGHT QUALIFICATION STATUS
+           Pramman FLIGHT QUALIFICATION STATUS
 ============================================================
 Ground Verification Scope:     100% PASS (35 Requirements)
 Resource Margins:              PASS (>30% AIAA S-120-2006)

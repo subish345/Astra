@@ -1,4 +1,4 @@
-"""Deployment Profile Loader for ASTRA-EA.
+"""Deployment Profile Loader for Pramman.
 
 Loads and validates layered deployment configurations from configs/deployment/:
 - development.yaml

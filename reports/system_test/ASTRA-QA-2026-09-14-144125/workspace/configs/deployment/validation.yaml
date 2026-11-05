@@ -1,0 +1,34 @@
+profile_name: "PROFILE_VALIDATION"
+description: "Validation profile: minimal UI overhead, maximum audit persistence and event traceability."
+
+mode: "VALIDATION"
+
+camera:
+  default_source: 0
+  profile: "view_left"
+  width: 640
+  height: 480
+  fps: 30
+
+perception:
+  input_resolution: [640, 640]
+  confidence_threshold: 0.50
+  nms_threshold: 0.45
+  device: "auto"
+  runtime: "auto"
+
+scheduler:
+  tracking_interval: 1
+  detection_interval: 1
+  pose_interval: 1
+  hand_interval: 1
+  queue_policy: "latest_frame"
+  max_queue_size: 10
+
+stream:
+  enabled: false
+
+resources:
+  max_ram_gb: 4.0
+  max_cpu_percent: 85.0
+  max_gpu_memory_gb: 4.0

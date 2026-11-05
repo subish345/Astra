@@ -1,4 +1,4 @@
-"""Standalone Runner for ASTRA-EA Environmental & Hardware Qualification Dashboard (Phase 17).
+"""Standalone Runner for Pramman Environmental & Hardware Qualification Dashboard (Phase 17).
 
 Serves the Spacecraft Qualification Readiness Dashboard locally at http://localhost:8095.
 """
@@ -20,7 +20,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def run_dashboard(open_browser: bool = False) -> None:
     print("=" * 65)
-    print(" ASTRA-EA ENVIRONMENTAL & HARDWARE QUALIFICATION DASHBOARD")
+    print(" Pramman ENVIRONMENTAL & HARDWARE QUALIFICATION DASHBOARD")
     print("=" * 65)
     print(f" Serving dashboard from: {DIRECTORY}")
     print(f" Access URL: http://localhost:{PORT}/index.html")

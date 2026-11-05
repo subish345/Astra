@@ -1,4 +1,4 @@
-"""Unit tests for ASTRA-EA configuration subsystem."""
+"""Unit tests for Pramman configuration subsystem."""
 
 import os
 from pathlib import Path

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # ==============================================================================
-# ASTRA-EA Ground Monitor Executable Entrypoint
+# ORBITA Ground Monitor Executable Entrypoint
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
-"""CLI launcher for the standalone ASTRA-EA Ground Monitor application."""
+"""CLI launcher for the standalone ORBITA Ground Monitor application."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ from core.common.config import load_config
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="ASTRA-EA Ground Observability Console")
+    parser = argparse.ArgumentParser(description="ORBITA Ground Observability Console")
     parser.add_argument("--stream-url", type=str, default=None, help="URL of remote video stream")
     parser.add_argument("--events-url", type=str, default=None, help="URL of remote telemetry SSE events")
     parser.add_argument("--fullscreen", action="store_true", help="Launch in fullscreen mode")
@@ -44,7 +44,7 @@ def main() -> int:
     if app is None:
         app = QApplication(sys.argv)
 
-    app.setApplicationName("ASTRA-EA Ground Monitor")
+    app.setApplicationName("ORBITA Ground Monitor")
     app.setOrganizationName("ISRO-SIH")
 
     window = GroundMonitorWindow(stream_url=stream_url, events_url=events_url)

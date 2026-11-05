@@ -1,4 +1,4 @@
-"""Unified Evidence Store for ASTRA-EA.
+"""Unified Evidence Store for Pramman.
 
 Acts as the canonical, authoritative repository for evidence artifacts:
 - High-resolution keyframe snapshots (.jpg)

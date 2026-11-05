@@ -1,0 +1,17 @@
+finding_id: "FINDING-001"
+title: "Camera driver tuple return unpacking exception"
+analysis_method: "5_WHY"
+symptom: "Unhandled AttributeError: 'tuple' object has no attribute 'shape' during camera sensor failure drill."
+reproduction_case: "Simulate camera disconnect or frame timeout where CameraDriver.read_frame() returns (frame, timestamp)."
+evidence:
+  - "reports/rehearsal/REH_05_CAMERA_FAILURE_RUN_LOG"
+  - "tests/operations/test_maintenance_and_training.py:45"
+root_cause_breakdown:
+  why_1: "Callers in precheck and maintenance attempted frame.shape directly."
+  why_2: "Callers assumed read_frame() returned a bare NumPy ndarray."
+  why_3: "CameraDriver API was updated in Phase 14 to return (frame, timestamp) tuple to support nanosecond hardware clock stamping."
+  why_4: "Operational precheck wrappers were written before the tuple signature was propagated across all inspection routines."
+  why_5: "Root cause: Inconsistent tuple return signature handling across diagnostic wrappers."
+corrective_action: "Safely unpack read_res into (frame, ts) before querying shape or processing frame dimensions."
+verification: "Regression test tests/regression/test_camera_tuple_unpacking.py passes without exception."
+disposition: "RESOLVED"

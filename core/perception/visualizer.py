@@ -1,4 +1,4 @@
-"""Perception debug visualization overlay renderer for ASTRA-EA.
+"""Perception debug visualization overlay renderer for Pramman.
 
 Renders cyber-aerospace visual telemetry: 33-point glowing skeletal wireframes,
 concentric hand reticles, laser targeting beams, alpha-decay trajectory trails,
@@ -21,6 +21,7 @@ class OverlayConfig:
     """Toggles for rendering perception debug overlays and HUD telemetry."""
     show_boxes: bool = True
     show_tracks: bool = True
+    show_lost_tracks: bool = False
     show_pose: bool = True
     show_hands: bool = True
     show_confidence: bool = True
@@ -122,7 +123,7 @@ class PerceptionVisualizer:
         # 1. Render Tracks / Bounding Boxes & Glowing Trajectory Trails
         if self.config.show_boxes or self.config.show_tracks:
             for track in state.tracks:
-                if track.state == TrackState.LOST:
+                if track.state == TrackState.LOST or (track.lost_frames > 0 and not self.config.show_lost_tracks):
                     continue
 
                 color = self.COLOR_MAP.get(track.class_name, self.COLOR_MAP["DEFAULT"])
@@ -151,7 +152,7 @@ class PerceptionVisualizer:
                 cv2.putText(vis, label, (bx1 + 3, max(lh, by1 - 3)), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 0, 0), 1, cv2.LINE_AA)
 
                 # Dynamic Alpha-Fading Trajectory Trail (Breadcrumb trail)
-                if len(track.history) > 1:
+                if self.config.show_tracks and len(track.history) > 1:
                     hist = track.history
                     n_pts = len(hist)
                     for idx in range(1, n_pts):
@@ -168,7 +169,8 @@ class PerceptionVisualizer:
         # 2. Render 33-Keypoint Glowing Skeleton
         if self.config.show_pose:
             for pose in state.poses:
-                kp_dict = {kp.name.lower(): (int(kp.x), int(kp.y)) for kp in pose.keypoints if kp.name}
+                kp_dict = {kp.name.lower(): (int(kp.x), int(kp.y)) for kp in pose.keypoints
+                           if kp.name and kp.confidence >= 0.6 and 0 <= kp.x < w and 0 <= kp.y < h}
 
                 # Select bone list based on number of keypoints
                 is_mediapipe = len(pose.keypoints) > 15
@@ -183,7 +185,7 @@ class PerceptionVisualizer:
 
                 # Draw glowing joint nodes
                 for kp in pose.keypoints:
-                    if not kp.name:
+                    if not kp.name or kp.name.lower() not in kp_dict:
                         continue
                     px, py = int(kp.x), int(kp.y)
                     name_l = kp.name.lower()
@@ -210,6 +212,8 @@ class PerceptionVisualizer:
         active_hand_points: List[Tuple[int, int]] = []
         if self.config.show_hands:
             for hand in state.hands:
+                if hand.confidence < 0.6 or not (0 <= hand.wrist[0] < w and 0 <= hand.wrist[1] < h):
+                    continue
                 wx, wy = int(hand.wrist[0]), int(hand.wrist[1])
                 is_left = hand.hand_type.value == "LEFT"
                 hand_color = (214, 112, 218) if is_left else (0, 165, 255)
@@ -273,7 +277,7 @@ class PerceptionVisualizer:
             # HUD Telemetry content
             ty = hy + 20
             # Header
-            cv2.putText(vis, f"ASTRA-EA | {mode}", (hx + 10, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.46, (0, 230, 255), 1, cv2.LINE_AA)
+            cv2.putText(vis, f"Pramman | {mode}", (hx + 10, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.46, (0, 230, 255), 1, cv2.LINE_AA)
             ty += 18
             cv2.line(vis, (hx + 8, ty - 4), (hx + hud_w - 8, ty - 4), (40, 65, 80), 1)
 

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission UI State Store Tests
+# Pramman Mission UI State Store Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Unit tests for MissionUIState data container and BackendEventBridge."""

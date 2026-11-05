@@ -1,4 +1,4 @@
-# ASTRA-EA — Final Dataset Summary
+# Pramman — Final Dataset Summary
 
 ## Dataset ID: `ASTRA-DATASET-v1.0`
 **Freeze Status:** LOCKED & VALIDATED (Zero Cross-Split Leakage)  

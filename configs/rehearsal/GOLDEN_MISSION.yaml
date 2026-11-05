@@ -1,10 +1,10 @@
 # ==============================================================================
-# ASTRA-EA GOLDEN MISSION REHEARSAL CONFIGURATION (Phase 20, Section 4, D20.01)
+# Pramman GOLDEN MISSION REHEARSAL CONFIGURATION (Phase 20, Section 4, D20.01)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 version: "1.0.0"
 rehearsal_id: "GOLDEN_MISSION"
-title: "ASTRA-EA Golden Mission End-to-End Operational Rehearsal"
+title: "Pramman Golden Mission End-to-End Operational Rehearsal"
 description: "Authoritative baseline operational rehearsal combining astronaut execution, onboard runtime, physical rig/HIL simulation, ground observability, planned deviation injection, recovery guidance, and post-mission audit reporting."
 
 # 1. Mission Metadata

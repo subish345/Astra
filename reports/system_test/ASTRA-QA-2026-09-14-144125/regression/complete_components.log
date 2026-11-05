@@ -1,0 +1,34 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 93 items
+
+tests/regression/test_camera_tuple_unpacking.py ..                       [  2%]
+tests/regression/test_clock_stability.py .                               [  3%]
+tests/regression/test_ground_reconnect_dedup.py .                        [  4%]
+tests/regression/test_mission_console_ui_worker.py ...                   [  7%]
+tests/regression/test_qa6_runtime_safety.py .....................        [ 30%]
+tests/regression/test_recovery_verification_latency.py .                 [ 31%]
+tests/regression/test_storage_pruning_policy.py .                        [ 32%]
+tests/regression/test_system_validation_fixes.py ...                     [ 35%]
+tests/regression/test_ui_alert_contrast.py .                             [ 36%]
+tests/unit/test_procedure_semantics.py ............                      [ 49%]
+tests/unit/test_procedure_progress.py .....                              [ 54%]
+tests/unit/test_step_evaluator.py ....                                   [ 59%]
+tests/unit/test_evidence_engine.py .....                                 [ 64%]
+tests/unit/test_assurance_engine.py .....                                [ 69%]
+tests/unit/test_recovery.py ..                                           [ 72%]
+tests/gui/test_console_components.py ........                            [ 80%]
+tests/gui/test_mission_integration.py ......                             [ 87%]
+tests/gui/test_mission_ui_state.py .....                                 [ 92%]
+tests/integration/test_foundation_integration.py .                       [ 93%]
+tests/integration/test_mission_orchestrator.py ...                       [ 96%]
+tests/integration/test_perception_pipeline.py .                          [ 97%]
+tests/integration/test_phase3_pipeline.py .                              [ 98%]
+tests/integration/test_procedure_pipeline.py .                           [100%]
+
+- generated xml file: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/regression/complete_components.xml -
+============================== 93 passed in 3.84s ==============================

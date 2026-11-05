@@ -1,7 +1,7 @@
-# ASTRA-EA Module Contracts & Interface Specifications
+# Pramman Module Contracts & Interface Specifications
 
 ## 1. Design Philosophy
-All modules in ASTRA-EA adhere to the **Single Responsibility Principle** and communicate through strongly typed contracts and abstract interfaces. No module directly accesses internal state or third-party implementations of adjacent modules.
+All modules in Pramman adhere to the **Single Responsibility Principle** and communicate through strongly typed contracts and abstract interfaces. No module directly accesses internal state or third-party implementations of adjacent modules.
 
 ---
 

@@ -136,7 +136,7 @@ class DatasetReporter:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Dataset Balance & Quality Report</title>
+    <title>Pramman Dataset Balance & Quality Report</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -150,7 +150,7 @@ class DatasetReporter:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Dataset Balance & Quality Report</h1>
+        <h1>Pramman Dataset Balance & Quality Report</h1>
         <p><strong>Directory:</strong> {report['dataset_directory']}</p>
         <p><strong>Total Samples:</strong> {report['total_samples']} across {report['total_sessions']} session(s)</p>
         <p><strong>Total Annotated Objects:</strong> {report['total_annotated_objects']}</p>

@@ -1,4 +1,4 @@
-# ASTRA-EA — Ground Monitor Testing Strategy
+# Pramman — Ground Monitor Testing Strategy
 
 ## Automated and Headless Verification for Ground Observation Console
 
@@ -22,14 +22,14 @@ This ensures complete verification of widget layouts, reactive signal-slot propa
 
 | Test Suite | File | Focus Areas |
 | :--- | :--- | :--- |
-| **State Model Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | `GroundMonitorState` dataclass mutation, Qt signal dispatching (`state_changed`, `timeline_added`, `alert_added`), sequence ordering, and timeline trimming. |
-| **Header Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | Link quality badge styling (`ONLINE`, `DEGRADED`, `OFFLINE`), dual-channel indicators (Video / Telemetry), reconnect counter, and mode banner (`SIMULATION MODE`). |
-| **Video Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | Video stream display, overlay diagnostics (FPS, bitrate, dropped frames), aspect ratio preservation, and "VIDEO OFFLINE" fallback placeholder. |
-| **Mission Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | Experiment ID, run ID, step counter badge (`STEP 03 / 04`), verification state (`VERIFIED`, `UNCERTAIN`, `DEVIATED`), and current activity description. |
-| **Alert & Timeline Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | Active deviation alerts, recovery status banners, chronological event list with filter tabs (`ALL`, `STEPS`, `DEVIATIONS`, `RECOVERY`, `SYSTEM`), onboard vs transit latency display. |
-| **Health Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | CPU/RAM telemetry gauges, camera sensor status, pipeline FPS, heartbeat age indicator. |
-| **Evidence Viewer Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | Read-only modal dialog, metadata inspection (step, confidence, bounding boxes), image/video preview, export button safety. |
-| **Integration Window Tests**| [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/astra/tests/ground_monitor/test_ground_monitor.py) | `GroundMonitorWindow` full composition, signal dispatching, event server feed ingestion, connection drop UX handling. |
+| **State Model Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | `GroundMonitorState` dataclass mutation, Qt signal dispatching (`state_changed`, `timeline_added`, `alert_added`), sequence ordering, and timeline trimming. |
+| **Header Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | Link quality badge styling (`ONLINE`, `DEGRADED`, `OFFLINE`), dual-channel indicators (Video / Telemetry), reconnect counter, and mode banner (`SIMULATION MODE`). |
+| **Video Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | Video stream display, overlay diagnostics (FPS, bitrate, dropped frames), aspect ratio preservation, and "VIDEO OFFLINE" fallback placeholder. |
+| **Mission Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | Experiment ID, run ID, step counter badge (`STEP 03 / 04`), verification state (`VERIFIED`, `UNCERTAIN`, `DEVIATED`), and current activity description. |
+| **Alert & Timeline Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | Active deviation alerts, recovery status banners, chronological event list with filter tabs (`ALL`, `STEPS`, `DEVIATIONS`, `RECOVERY`, `SYSTEM`), onboard vs transit latency display. |
+| **Health Panel Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | CPU/RAM telemetry gauges, camera sensor status, pipeline FPS, heartbeat age indicator. |
+| **Evidence Viewer Tests** | [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | Read-only modal dialog, metadata inspection (step, confidence, bounding boxes), image/video preview, export button safety. |
+| **Integration Window Tests**| [`tests/ground_monitor/test_ground_monitor.py`](file:///home/subish-loq/Documents/pramman_proj/tests/ground_monitor/test_ground_monitor.py) | `GroundMonitorWindow` full composition, signal dispatching, event server feed ingestion, connection drop UX handling. |
 
 ---
 

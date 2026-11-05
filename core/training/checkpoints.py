@@ -1,4 +1,4 @@
-"""Model Checkpoint Manager for ASTRA-EA.
+"""Model Checkpoint Manager for Pramman.
 
 Manages saving and loading of model weights and metadata in models/checkpoints/,
 ensuring models are never silently overwritten.

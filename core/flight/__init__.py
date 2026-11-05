@@ -1,4 +1,4 @@
-"""Flight Integration Software Architecture for ASTRA-EA (Phase 18)."""
+"""Flight Integration Software Architecture for Pramman (Phase 18)."""
 
 from core.flight.integrity import ModelIntegrityVerifier, ProcedureIntegrityVerifier
 from core.flight.logger import FlightLogger

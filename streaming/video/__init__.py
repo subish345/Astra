@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Video Streaming Package
+# Pramman Video Streaming Package
 # ==============================================================================
 """Video streaming package supporting local IP MJPEG distribution and reception."""
 

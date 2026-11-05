@@ -1,0 +1,20 @@
+{
+  "modified_files": [
+    "core/gui/console.py"
+  ],
+  "file_count": 1,
+  "primary_subsystems": [
+    "GUI_CONSOLE"
+  ],
+  "cascading_subsystems": [],
+  "affected_requirements": [
+    "ASTRA-OPS-001"
+  ],
+  "recommended_regression_tests": [
+    "V-OPS-001"
+  ],
+  "retrain_model_advised": false,
+  "procedure_revalidation_required": false,
+  "is_ui_only_change": true,
+  "summary": "Impact: 1 subsystems affected, 1 test cases scheduled for re-verification."
+}

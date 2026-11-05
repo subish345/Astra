@@ -1,4 +1,4 @@
-"""Simulation and Resilience Report Generator for ASTRA-EA.
+"""Simulation and Resilience Report Generator for Pramman.
 
 Outputs comprehensive JSON and visual HTML scorecards evaluating system
 robustness, MTTD, MTTR, false alarm rates, and pipeline stability under fault stress.
@@ -109,7 +109,7 @@ class SimulationReporter:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Simulation Run — {res.scenario_id}</title>
+    <title>Pramman Simulation Run — {res.scenario_id}</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -123,7 +123,7 @@ class SimulationReporter:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Simulation Scenario Report</h1>
+        <h1>Pramman Simulation Scenario Report</h1>
         <p><strong>Scenario:</strong> {res.scenario_name} (<code>{res.scenario_id}</code>) | <span class="badge">{res.evaluation_verdict}</span></p>
         <div style="margin-top: 16px;">
             <div class="metric-badge">Resilience: <strong>{res.resilience_score:.1f}%</strong></div>
@@ -172,7 +172,7 @@ class SimulationReporter:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Simulation Matrix Resilience Report</title>
+    <title>Pramman Simulation Matrix Resilience Report</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -185,7 +185,7 @@ class SimulationReporter:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Simulation Matrix Resilience Report</h1>
+        <h1>Pramman Simulation Matrix Resilience Report</h1>
         <p><strong>Suite:</strong> {summary['matrix_name']}</p>
         <div style="margin-top: 16px;">
             <div class="metric-badge">Average Resilience: <strong>{summary['average_resilience_score']:.1f}%</strong></div>

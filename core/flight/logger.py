@@ -1,4 +1,4 @@
-"""Flight-Like Bounded and Structured Logging for ASTRA-EA (Phase 18).
+"""Flight-Like Bounded and Structured Logging for Pramman (Phase 18).
 
 In accordance with Section 38 & 64:
 - Bounded file size with automatic log rotation

@@ -1,4 +1,4 @@
-"""Operational Checklist Engine for ASTRA-EA (Phase 19, Section 39, 40, D19.16).
+"""Operational Checklist Engine for Pramman (Phase 19, Section 39, 40, D19.16).
 
 Provides configurable operational checklists with cryptographically signed item statuses,
 timestamps, operator identity, and optional evidence verification.

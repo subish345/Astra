@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor State Model
+# Pramman Ground Monitor State Model
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Reactive state store for Ground Monitor with Qt thread-safe signal synchronization."""

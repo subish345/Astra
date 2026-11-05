@@ -1,0 +1,11 @@
+camera:
+  source_type: "webcam" # "webcam" or "file"
+  device_id: 0
+  file_path: null
+  fps: 30
+  width: 1280
+  height: 720
+  auto_reconnect: true
+  reconnect_delay_seconds: 2.0
+  max_reconnect_attempts: 5
+  buffer_size: 150 # 5 seconds at 30 FPS

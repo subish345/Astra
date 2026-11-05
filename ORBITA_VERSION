@@ -1,0 +1,15 @@
+ORBITA PRODUCT VERSION METADATA
+================================================================================
+Product Name:        ORBITA (Autonomous Spacecraft Experiment Assurance & Assistance)
+Product Version:     1.1.0
+Git Commit:          556590cf1ca6ce8de6c9290201e79c0820131e36
+Build Timestamp:     2026-11-05T13:48:00Z
+Python Runtime:      3.14.10 (x86_64-linux)
+Operating System:    Linux (POSIX compliant)
+Active Model:        ASTRA_OBJECT_DETECTOR_v1.0 (ONNX / OpenCV DNN)
+Active Dataset:      ASTRA-DATASET-v1.0 (Synthetic + Real Microgravity Validation)
+Active Procedure:    DEMO_EXP_001 v1.0 (Sample Handling & Placement Verification)
+System State:        OFFICIAL RELEASE (v1.1.0)
+================================================================================
+Notice: Engineering-Grade Ground Demonstrator for SIH26174 Evaluation.
+Developed by Team Zetta Warriors.

@@ -1,4 +1,4 @@
-"""Model Evaluator and Sanity Validator for ASTRA-EA.
+"""Model Evaluator and Sanity Validator for Pramman.
 
 Evaluates models strictly against held-out test splits, generating mAP,
 per-class precision/recall, confusion matrices, latency/FPS, and HTML/JSON reports.
@@ -328,7 +328,7 @@ class ModelEvaluator:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Model Evaluation Report — {res['model_id']}</title>
+    <title>Pramman Model Evaluation Report — {res['model_id']}</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }}
         .card {{ background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }}
@@ -342,7 +342,7 @@ class ModelEvaluator:
 </head>
 <body>
     <div class="card">
-        <h1>ASTRA-EA Model Evaluation Report</h1>
+        <h1>Pramman Model Evaluation Report</h1>
         <p><strong>Model:</strong> {res['model_id']} | <strong>Dataset:</strong> {res['dataset_version']} (Test Split: {res['test_samples_evaluated']} samples)</p>
         <div>
             <div class="metric-badge">mAP@50: <strong>{ov['mAP50']:.3f}</strong></div>

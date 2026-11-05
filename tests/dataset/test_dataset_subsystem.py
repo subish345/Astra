@@ -1,4 +1,4 @@
-"""Unit and integration tests for ASTRA-EA Dataset Subsystem.
+"""Unit and integration tests for Pramman Dataset Subsystem.
 
 Tests cover:
 - Annotation and Manifest schema validation

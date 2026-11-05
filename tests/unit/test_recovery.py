@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Closed-Loop Recovery Manager Unit Tests
+# Pramman Closed-Loop Recovery Manager Unit Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Unit tests for ClosedLoopRecoveryManager state machine."""

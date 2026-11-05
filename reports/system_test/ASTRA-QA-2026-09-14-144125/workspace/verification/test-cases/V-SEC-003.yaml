@@ -1,0 +1,21 @@
+id: V-SEC-003
+requirement: ASTRA-SEC-003
+title: Ground Streaming Read-Only Protection
+purpose: Verify that ground streaming endpoints reject incoming command injection and maintain read-only state.
+preconditions:
+  - Streaming endpoints listening
+setup:
+  - Connect client to telemetry port
+inputs:
+  - Malformed packets, command injection strings, write requests
+procedure:
+  - Transmit simulated remote command execution payloads to streaming server
+  - Verify server rejects payloads without modifying local state
+expected_result:
+  - Payloads rejected / ignored
+  - Local configuration and state remain completely unchanged
+acceptance_criteria:
+  - Zero command injection capability
+evidence:
+  - tests/streaming/test_security_sanitization.py
+  - verification/evidence/EVID-SEC-003-READONLY.json

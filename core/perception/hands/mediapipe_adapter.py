@@ -1,4 +1,4 @@
-"""MediaPipe Anatomical Hand Detector Adapter for ASTRA-EA.
+"""MediaPipe Anatomical Hand Detector Adapter for Pramman.
 
 Extracts anatomical hand observations (wrist, palm center, thumb, index, pinky) directly
 from 33-point BlazePose landmarks, ensuring biological left/right distinction invariant to

@@ -1,0 +1,1508 @@
+{
+  "matrix_name": "ASTRA Full Mission & Fault Injection Verification Matrix",
+  "total_scenarios": 6,
+  "passed_scenarios": 6,
+  "pass_rate": 100.0,
+  "average_resilience_score": 100.0,
+  "total_frames_evaluated": 697,
+  "total_crashes": 0,
+  "total_false_positive_deviations": 0,
+  "scenario_results": [
+    {
+      "scenario_id": "SIM_NOMINAL_001",
+      "scenario_name": "Nominal Spacecraft Experiment Mission",
+      "status": "COMPLETED",
+      "duration_sec": 1.54,
+      "frames_processed": 120,
+      "frames_dropped": 0,
+      "decisions_count": 75,
+      "verified_count": 15,
+      "uncertain_count": 60,
+      "deviation_count": 0,
+      "detected_deviations": [],
+      "expected_status": "VERIFIED",
+      "actual_final_status": "UNCERTAIN",
+      "mean_to_detect_sec": null,
+      "false_positive_deviations": 0,
+      "resilience_score": 100.0,
+      "pipeline_crashes": 0,
+      "decision_history": [
+        {
+          "sim_time": 1.833,
+          "frame_id": 56,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.719,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.867,
+          "frame_id": 57,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.72,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.9,
+          "frame_id": 58,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.72,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.933,
+          "frame_id": 59,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.72,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.967,
+          "frame_id": 60,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.0,
+          "frame_id": 61,
+          "step_id": "STEP_01",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.898,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.033,
+          "frame_id": 62,
+          "step_id": "STEP_02",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.897,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.067,
+          "frame_id": 63,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.845,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.1,
+          "frame_id": 64,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.133,
+          "frame_id": 65,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.167,
+          "frame_id": 66,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.2,
+          "frame_id": 67,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.233,
+          "frame_id": 68,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.267,
+          "frame_id": 69,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.3,
+          "frame_id": 70,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.333,
+          "frame_id": 71,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.367,
+          "frame_id": 72,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.4,
+          "frame_id": 73,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.845,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.433,
+          "frame_id": 74,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.845,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.467,
+          "frame_id": 75,
+          "step_id": "STEP_04",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.889,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        }
+      ],
+      "evaluation_verdict": "PASS"
+    },
+    {
+      "scenario_id": "SIM_FAULT_WRONG_OBJECT",
+      "scenario_name": "Operator Deviation \u2014 Unauthorized Specimen Selection",
+      "status": "COMPLETED",
+      "duration_sec": 1.52,
+      "frames_processed": 120,
+      "frames_dropped": 0,
+      "decisions_count": 120,
+      "verified_count": 0,
+      "uncertain_count": 89,
+      "deviation_count": 31,
+      "detected_deviations": [
+        "WRONG_OBJECT"
+      ],
+      "expected_status": "DEVIATION",
+      "actual_final_status": "DEVIATION",
+      "mean_to_detect_sec": 0.0,
+      "false_positive_deviations": 0,
+      "resilience_score": 100.0,
+      "pipeline_crashes": 0,
+      "decision_history": [
+        {
+          "sim_time": 3.333,
+          "frame_id": 101,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.367,
+          "frame_id": 102,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.4,
+          "frame_id": 103,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.433,
+          "frame_id": 104,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.467,
+          "frame_id": 105,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.5,
+          "frame_id": 106,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.533,
+          "frame_id": 107,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.567,
+          "frame_id": 108,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.6,
+          "frame_id": 109,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.633,
+          "frame_id": 110,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.667,
+          "frame_id": 111,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.7,
+          "frame_id": 112,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.733,
+          "frame_id": 113,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.767,
+          "frame_id": 114,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.8,
+          "frame_id": 115,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.833,
+          "frame_id": 116,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.867,
+          "frame_id": 117,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.9,
+          "frame_id": 118,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.933,
+          "frame_id": 119,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        },
+        {
+          "sim_time": 3.967,
+          "frame_id": 120,
+          "step_id": "STEP_03",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.718,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.80",
+          "active_faults": [
+            "WRONG_OBJECT"
+          ]
+        }
+      ],
+      "evaluation_verdict": "PASS"
+    },
+    {
+      "scenario_id": "SIM_FAULT_WRONG_ORDER",
+      "scenario_name": "Operator Deviation \u2014 Out of Order Step Execution",
+      "status": "COMPLETED",
+      "duration_sec": 1.44,
+      "frames_processed": 120,
+      "frames_dropped": 0,
+      "decisions_count": 120,
+      "verified_count": 0,
+      "uncertain_count": 45,
+      "deviation_count": 75,
+      "detected_deviations": [
+        "SKIPPED_STEP"
+      ],
+      "expected_status": "DEVIATION",
+      "actual_final_status": "DEVIATION",
+      "mean_to_detect_sec": 0.0,
+      "false_positive_deviations": 0,
+      "resilience_score": 100.0,
+      "pipeline_crashes": 0,
+      "decision_history": [
+        {
+          "sim_time": 3.333,
+          "frame_id": 101,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.367,
+          "frame_id": 102,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.4,
+          "frame_id": 103,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.433,
+          "frame_id": 104,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.467,
+          "frame_id": 105,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.5,
+          "frame_id": 106,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.533,
+          "frame_id": 107,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.567,
+          "frame_id": 108,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.6,
+          "frame_id": 109,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.633,
+          "frame_id": 110,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.667,
+          "frame_id": 111,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.7,
+          "frame_id": 112,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.733,
+          "frame_id": 113,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.767,
+          "frame_id": 114,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.8,
+          "frame_id": 115,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.833,
+          "frame_id": 116,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.867,
+          "frame_id": 117,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.9,
+          "frame_id": 118,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.933,
+          "frame_id": 119,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        },
+        {
+          "sim_time": 3.967,
+          "frame_id": 120,
+          "step_id": "STEP_01",
+          "decision_type": "DEVIATION",
+          "deviation_category": "SKIPPED_STEP",
+          "confidence": 0.88,
+          "reason": "Skipped step: detected actions for Grasp Specimen Red Box before completing Approach Experiment Station",
+          "active_faults": [
+            "WRONG_ORDER"
+          ]
+        }
+      ],
+      "evaluation_verdict": "PASS"
+    },
+    {
+      "scenario_id": "SIM_STRESS_OPTICAL",
+      "scenario_name": "Environmental Degradation \u2014 Optical & Lighting Stress",
+      "status": "COMPLETED",
+      "duration_sec": 1.84,
+      "frames_processed": 120,
+      "frames_dropped": 0,
+      "decisions_count": 75,
+      "verified_count": 15,
+      "uncertain_count": 60,
+      "deviation_count": 0,
+      "detected_deviations": [],
+      "expected_status": "UNCERTAIN",
+      "actual_final_status": "UNCERTAIN",
+      "mean_to_detect_sec": null,
+      "false_positive_deviations": 0,
+      "resilience_score": 100.0,
+      "pipeline_crashes": 0,
+      "decision_history": [
+        {
+          "sim_time": 1.833,
+          "frame_id": 56,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.721,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 1.867,
+          "frame_id": 57,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.721,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 1.9,
+          "frame_id": 58,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.721,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 1.933,
+          "frame_id": 59,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.721,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 1.967,
+          "frame_id": 60,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.722,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.0,
+          "frame_id": 61,
+          "step_id": "STEP_01",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.901,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.033,
+          "frame_id": 62,
+          "step_id": "STEP_02",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.895,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.067,
+          "frame_id": 63,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.1,
+          "frame_id": 64,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.133,
+          "frame_id": 65,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.848,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.167,
+          "frame_id": 66,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.2,
+          "frame_id": 67,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.233,
+          "frame_id": 68,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.267,
+          "frame_id": 69,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.3,
+          "frame_id": 70,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.844,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.333,
+          "frame_id": 71,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.367,
+          "frame_id": 72,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.4,
+          "frame_id": 73,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.433,
+          "frame_id": 74,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        },
+        {
+          "sim_time": 2.467,
+          "frame_id": 75,
+          "step_id": "STEP_04",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.89,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "LOW_LIGHT"
+          ]
+        }
+      ],
+      "evaluation_verdict": "PASS"
+    },
+    {
+      "scenario_id": "SIM_FAULT_DROPOUT",
+      "scenario_name": "Sensor & Telemetry Dropout Stress",
+      "status": "COMPLETED",
+      "duration_sec": 1.04,
+      "frames_processed": 97,
+      "frames_dropped": 23,
+      "decisions_count": 75,
+      "verified_count": 15,
+      "uncertain_count": 60,
+      "deviation_count": 0,
+      "detected_deviations": [],
+      "expected_status": "UNCERTAIN",
+      "actual_final_status": "UNCERTAIN",
+      "mean_to_detect_sec": null,
+      "false_positive_deviations": 0,
+      "resilience_score": 100.0,
+      "pipeline_crashes": 0,
+      "decision_history": [
+        {
+          "sim_time": 1.833,
+          "frame_id": 56,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.72,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 1.867,
+          "frame_id": 57,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.72,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 1.9,
+          "frame_id": 58,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.72,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 1.933,
+          "frame_id": 59,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.721,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 1.967,
+          "frame_id": 60,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.721,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.0,
+          "frame_id": 61,
+          "step_id": "STEP_01",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.898,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.033,
+          "frame_id": 62,
+          "step_id": "STEP_02",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.897,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.067,
+          "frame_id": 63,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.1,
+          "frame_id": 64,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.133,
+          "frame_id": 65,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.167,
+          "frame_id": 66,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.2,
+          "frame_id": 67,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.233,
+          "frame_id": 68,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.267,
+          "frame_id": 69,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.845,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.3,
+          "frame_id": 70,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.333,
+          "frame_id": 71,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.367,
+          "frame_id": 72,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.4,
+          "frame_id": 73,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.433,
+          "frame_id": 74,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        },
+        {
+          "sim_time": 2.467,
+          "frame_id": 75,
+          "step_id": "STEP_04",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.897,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": [
+            "FRAME_DROP"
+          ]
+        }
+      ],
+      "evaluation_verdict": "PASS"
+    },
+    {
+      "scenario_id": "SIM_SHIFT_VIEWPOINT",
+      "scenario_name": "Dynamic Multi-Angle Viewpoint Switch",
+      "status": "COMPLETED",
+      "duration_sec": 1.46,
+      "frames_processed": 120,
+      "frames_dropped": 0,
+      "decisions_count": 75,
+      "verified_count": 15,
+      "uncertain_count": 60,
+      "deviation_count": 0,
+      "detected_deviations": [],
+      "expected_status": "VERIFIED",
+      "actual_final_status": "UNCERTAIN",
+      "mean_to_detect_sec": null,
+      "false_positive_deviations": 0,
+      "resilience_score": 100.0,
+      "pipeline_crashes": 0,
+      "decision_history": [
+        {
+          "sim_time": 1.833,
+          "frame_id": 56,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.719,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.72 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.867,
+          "frame_id": 57,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.727,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.73 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.9,
+          "frame_id": 58,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.727,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.73 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.933,
+          "frame_id": 59,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.727,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.73 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 1.967,
+          "frame_id": 60,
+          "step_id": "STEP_01",
+          "decision_type": "UNCERTAIN",
+          "deviation_category": null,
+          "confidence": 0.727,
+          "reason": "Partial evidence from VIEW_LEFT; composite confidence 0.73 below threshold 0.75",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.0,
+          "frame_id": 61,
+          "step_id": "STEP_01",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.907,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.033,
+          "frame_id": 62,
+          "step_id": "STEP_02",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.896,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.067,
+          "frame_id": 63,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.1,
+          "frame_id": 64,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.133,
+          "frame_id": 65,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.167,
+          "frame_id": 66,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.2,
+          "frame_id": 67,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.233,
+          "frame_id": 68,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.267,
+          "frame_id": 69,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.3,
+          "frame_id": 70,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.333,
+          "frame_id": 71,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.845,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.367,
+          "frame_id": 72,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.845,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.4,
+          "frame_id": 73,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.847,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.433,
+          "frame_id": 74,
+          "step_id": "STEP_03",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.846,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        },
+        {
+          "sim_time": 2.467,
+          "frame_id": 75,
+          "step_id": "STEP_04",
+          "decision_type": "VERIFIED",
+          "deviation_category": null,
+          "confidence": 0.89,
+          "reason": "Step criteria and multimodal evidence satisfied",
+          "active_faults": []
+        }
+      ],
+      "evaluation_verdict": "PASS"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# ASTRA-EA Deployment & Installation Guide
+# Pramman Deployment & Installation Guide
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version**: `v1.0.0`
@@ -32,7 +32,7 @@ Or install manually via editable pip packaging:
 python3 -m pip install -e .
 
 # 2. Verify native CLI availability
-astra version
+pramman version
 ```
 
 ---
@@ -42,13 +42,13 @@ astra version
 Before initiating a mission or demonstration, execute the deployment doctor:
 
 ```bash
-astra deployment doctor
+pramman deployment doctor
 ```
 
 Expected readiness output:
 ```text
 ================================================================================
- ASTRA-EA DEPLOYMENT READINESS AUDIT (DOCTOR) — v1.0.0
+ Pramman DEPLOYMENT READINESS AUDIT (DOCTOR) — v1.0.0
 ================================================================================
 COMPONENT                  DETAILS                                    VERDICT   
 --------------------------------------------------------------------------------

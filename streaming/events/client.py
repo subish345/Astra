@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Telemetry Event Client
+# Pramman Ground Telemetry Event Client
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Background SSE event stream client with automatic reconnection and replay reconciliation."""

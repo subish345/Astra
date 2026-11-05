@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Telemetry Event Schema
+# Pramman Ground Telemetry Event Schema
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Typed data schemas and serialization formats for lightweight ground telemetry events."""

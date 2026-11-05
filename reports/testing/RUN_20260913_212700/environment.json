@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-13T21:27:35Z",
+  "hardware": {
+    "cpu": "Intel(R) Core(TM) i7-14700HX",
+    "cpu_cores_threads": "28 cores / threads",
+    "ram_total_mb": 31779,
+    "ram_available_mb": 15355,
+    "gpu": "Host GPU not enumerated by driver (nvidia-smi: No devices found)",
+    "storage_free_gb": 191.82,
+    "camera_device": "/dev/video0",
+    "camera_resolution": "640x480",
+    "camera_fps": 30.0
+  },
+  "software": {
+    "os": "Linux fedora-loq 7.1.12-200.fc44.x86_64",
+    "python": "3.14.7",
+    "opencv": "5.0.0",
+    "pytorch_installed": false,
+    "cuda_available": false,
+    "display": ":0",
+    "wayland_display": "wayland-0",
+    "sqlite_database": "storage/database/astra.db"
+  },
+  "verdict": {
+    "environment_doctor": "PASS",
+    "notes": "All foundation checks passed. Model inference operates via OpenCV DNN / ONNX Runtime CPU fallback."
+  }
+}

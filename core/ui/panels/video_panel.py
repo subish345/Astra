@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Live Video Panel
+# Pramman Live Video Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Live camera visualization panel with operational overlays and developer toggles."""
@@ -38,6 +38,8 @@ class VideoPanel(QFrame):
         self.show_tracking = True
         self.show_interaction = True
         self.show_debug = False
+        self.live_observe = False
+        self.mirror_camera = False
 
         self._init_ui()
 
@@ -58,7 +60,7 @@ class VideoPanel(QFrame):
         self.lbl_camera_info.setStyleSheet(f"font-size: 11px; color: {Colors.TEXT_SECONDARY}; font-weight: bold;")
         hdr_layout.addWidget(self.lbl_camera_info)
 
-        self.lbl_cam_status = QLabel("🟢 ONLINE")
+        self.lbl_cam_status = QLabel("NO FRAMES")
         self.lbl_cam_status.setStyleSheet(
             f"background-color: {Colors.GREEN_BG}; color: {Colors.GREEN_BRIGHT}; "
             f"border: 1px solid {Colors.GREEN}; border-radius: 3px; padding: 2px 6px; font-size: 10px; font-weight: bold;"
@@ -115,6 +117,19 @@ class VideoPanel(QFrame):
 
         ctrl_layout.addStretch()
 
+        self.btn_mirror = QPushButton("🪞 Mirror")
+        self.btn_mirror.setCheckable(True)
+        self.btn_mirror.setChecked(False)
+        self.btn_mirror.setStyleSheet(
+            f"QPushButton {{ background-color: {Colors.BG_SURFACE}; color: {Colors.TEXT_PRIMARY}; "
+            f"border: 1px solid {Colors.BORDER_DEFAULT}; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: bold; }} "
+            f"QPushButton:hover {{ background-color: {Colors.BG_HOVER}; }} "
+            f"QPushButton:checked {{ background-color: #1e3a5f; color: #93c5fd; border: 1px solid #3b82f6; }}"
+        )
+        self.btn_mirror.setToolTip("Mirror camera view horizontally (natural selfie / mirror view)")
+        self.btn_mirror.toggled.connect(self._toggle_mirror)
+        ctrl_layout.addWidget(self.btn_mirror)
+
         self.btn_debug = QPushButton("Debug Mode")
         self.btn_debug.setCheckable(True)
         self.btn_debug.setChecked(False)
@@ -138,6 +153,34 @@ class VideoPanel(QFrame):
             ent_layout.addWidget(lbl)
         ent_layout.addStretch()
         layout.addLayout(ent_layout)
+        self.lbl_live_objects = QLabel("Recognized objects: waiting for frames")
+        self.lbl_live_objects.setWordWrap(True)
+        self.lbl_live_objects.hide()
+        layout.addWidget(self.lbl_live_objects)
+        self.lbl_live_activity = QLabel("")
+        self.lbl_live_activity.setWordWrap(True)
+        self.lbl_live_activity.hide()
+        layout.addWidget(self.lbl_live_activity)
+
+    def set_live_observe(self, enabled):
+        self.live_observe = enabled
+        for label in (self.lbl_ent_red, self.lbl_ent_yellow, self.lbl_ent_main, self.lbl_ent_specimen):
+            label.setVisible(not enabled)
+        self.lbl_live_objects.setVisible(enabled)
+        self.lbl_live_activity.setVisible(enabled)
+
+    def set_source_status(self, status):
+        self.lbl_cam_status.setText(status)
+        color = Colors.GREEN_BRIGHT if status == "ONLINE" else Colors.TEXT_MUTED
+        self.lbl_cam_status.setStyleSheet(f"color: {color}; font-weight: bold;")
+        if status not in {"ONLINE", "PAUSED"}:
+            self.video_surface.clear()
+            if status == "COMPLETED":
+                self.video_surface.setText("✔ VIDEO REPLAY & VERIFICATION COMPLETED\n\nClick ▶ START to replay again or ⏹ STOP to reset to camera")
+            else:
+                self.video_surface.setText(status)
+            self.lbl_live_objects.setText("Recognized objects: waiting for fresh frames")
+            self.lbl_live_activity.setText("")
 
     def _toggle_pose(self, checked: bool) -> None:
         self.show_pose = checked
@@ -157,14 +200,32 @@ class VideoPanel(QFrame):
     def _toggle_debug(self, checked: bool) -> None:
         self.show_debug = checked
 
+    def _toggle_mirror(self, checked: bool) -> None:
+        self.mirror_camera = checked
+
+    def set_mirrored(self, mirrored: bool) -> None:
+        self.mirror_camera = mirrored
+        if hasattr(self, "btn_mirror"):
+            self.btn_mirror.blockSignals(True)
+            self.btn_mirror.setChecked(mirrored)
+            self.btn_mirror.blockSignals(False)
+
     def update_frame(self, frame: np.ndarray, perception_state: Optional[object] = None) -> None:
         """Render new video frame onto the video surface."""
         if frame is None or frame.size == 0:
             return
+        self.set_source_status("ONLINE")
 
         h, w, ch = frame.shape
         if perception_state:
             self.lbl_camera_info.setText(f"CAMERA: {perception_state.source_id} | {w}x{h}")
+            if self.live_observe:
+                objects = getattr(perception_state, "objects", [])
+                names = sorted({f"{obj.class_name} ({obj.confidence:.0%})" for obj in objects
+                                if obj.class_name.lower() not in {"person", "astronaut"}})
+                self.lbl_live_objects.setText("Recognized objects: " + (", ".join(names) if names else "none confidently recognized"))
+                metadata = getattr(perception_state, "metadata", {})
+                self.lbl_live_activity.setText(metadata.get("live_observation", "Waiting for hand observations"))
         bytes_per_line = ch * w
 
         # OpenCV BGR to RGB conversion

@@ -1,4 +1,4 @@
-"""Typed perception events and lightweight event bus for ASTRA-EA.
+"""Typed perception events and lightweight event bus for Pramman.
 
 Decouples the high-frequency perception pipeline from UI observers, logging,
 and downstream reasoning engines.

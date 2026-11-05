@@ -37,7 +37,7 @@ def test_dress_rehearsal_execution_and_report(tmp_path: Path) -> None:
     report_file = gen.generate_dress_rehearsal_report(result)
     assert report_file.is_file()
     content = report_file.read_text(encoding="utf-8")
-    assert "ASTRA-EA Full Mission Dress Rehearsal Report" in content
+    assert "Full Mission Dress Rehearsal Report" in content
     assert "ZERO developer interventions" in content
     assert result.run_id in content
 
@@ -80,7 +80,7 @@ def test_scorecard_generator_multi_runs(tmp_path: Path) -> None:
     assert len(data["run_summaries"]) == 3
 
     html_text = sc_html.read_text(encoding="utf-8")
-    assert "ASTRA-EA Operational Rehearsal Scorecard" in html_text
+    assert "Operational Rehearsal Scorecard" in html_text
     assert "SCORECARD: PASS" in html_text
 
 

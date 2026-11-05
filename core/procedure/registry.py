@@ -1,4 +1,4 @@
-"""Experiment Registry for ASTRA-EA.
+"""Experiment Registry for Pramman.
 
 Discovers, validates, registers, and resolves experiment procedures from configs/experiments/:
 - Lists available experiments and versions

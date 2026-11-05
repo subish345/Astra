@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Connection Package
+# Pramman Ground Connection Package
 # ==============================================================================
 """Connection management, heartbeat monitoring, and reconnection backoff."""
 

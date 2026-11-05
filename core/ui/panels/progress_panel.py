@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Experiment Progress Timeline Panel
+# Pramman Experiment Progress Timeline Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Panel presenting the vertical experiment procedure timeline and step progress."""

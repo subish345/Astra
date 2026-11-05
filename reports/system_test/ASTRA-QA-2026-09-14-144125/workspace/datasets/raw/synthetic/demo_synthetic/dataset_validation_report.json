@@ -1,0 +1,12 @@
+{
+  "dataset_dir": "datasets/raw/synthetic/demo_synthetic",
+  "is_valid": true,
+  "sample_count": 30,
+  "valid_sample_count": 30,
+  "session_count": 4,
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "leakage_issues": []
+}

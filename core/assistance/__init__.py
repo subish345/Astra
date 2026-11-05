@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Assistance Package
+# Pramman Assistance Package
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Assistance tier providing voice guidance and closed-loop deviation recovery."""

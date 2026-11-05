@@ -1,7 +1,7 @@
-# ASTRA-EA: Master Environmental & Hardware Qualification Test Matrix
+# Pramman: Master Environmental & Hardware Qualification Test Matrix
 
 **Document ID:** `ASTRA-EQM-001`  
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Classification:** Spacecraft Payload Qualification Test Matrix  
 **Standard Adherence:** ECSS-E-ST-10-03C / NASA-STD-7001 / MIL-STD-810H / MIL-STD-461G  
 **Baseline Configuration:** `ASTRA-EA-QB-001` (Software `v1.0.0-RC1`)  

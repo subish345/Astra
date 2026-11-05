@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-09-13T09:17:29.777019+00:00",
+  "os": "Linux 7.1.12-200.fc44.x86_64 (x86_64)",
+  "python_version": "3.14.7",
+  "opencv_version": "5.0.0",
+  "pytorch_version": "NOT_INSTALLED",
+  "cuda_available": false,
+  "gpu_hardware": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "camera_source": "0",
+  "camera_backend": "V4L2",
+  "camera_status": "ONLINE",
+  "resolution": "640x480",
+  "configured_fps": 30.0,
+  "effective_fps": 9.6,
+  "processing_fps": 62.8,
+  "detector_implementation": "ColorSpatialObjectDetector (Development Baseline)",
+  "detector_mode": "COLOR/SPATIAL DEVELOPMENT DETECTOR",
+  "detector_classes": [
+    "RED_BOX",
+    "YELLOW_BOX",
+    "MAIN_BOX",
+    "ASTRONAUT"
+  ],
+  "yolo_weights_path": null,
+  "yolo_weights_status": "MISSING",
+  "pose_implementation": "LightweightPoseEstimator (Haar Cascade + Upperbody)",
+  "hand_implementation": "LightweightHandDetector (Dual-Space YCrCb+HSV Morphology)",
+  "tracker_implementation": "MultiObjectTracker (Kalman / IoU)",
+  "interaction_engine": "SpatialInteractionEngine",
+  "activity_engine": "PrimitiveActivityEngine + CompositeActivityEngine",
+  "gui_display_status": "ONLINE (Display: :0, Platform: xcb)",
+  "errors": [],
+  "warnings": [
+    "PyTorch not installed in active environment; running in CPU fallback mode."
+  ]
+}

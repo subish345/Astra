@@ -1,6 +1,6 @@
 # Model Card: ASTRA_OBJECT_DETECTOR_v1.0
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Model Identifier:** `ASTRA_OBJECT_DETECTOR_v1.0`  
 **Framework:** PyTorch 2.x / ONNX Runtime  
@@ -10,7 +10,7 @@
 ---
 
 ## 1. Model Overview & Purpose
-`ASTRA_OBJECT_DETECTOR_v1.0` is an edge-optimized convolutional neural network designed specifically for real-time bounding-box detection, localization, and classification of laboratory science apparatus during astronaut experiment manipulation. It acts as the primary visual perception stage in the ASTRA-EA pipeline.
+`ASTRA_OBJECT_DETECTOR_v1.0` is an edge-optimized convolutional neural network designed specifically for real-time bounding-box detection, localization, and classification of laboratory science apparatus during astronaut experiment manipulation. It acts as the primary visual perception stage in the Pramman pipeline.
 
 ---
 
@@ -64,7 +64,7 @@ Evaluated against the frozen 1,263-frame test partition:
 
 ### Intended Use
 - Ground-demonstrator visual monitoring of laboratory experiment objects under tabletop lighting.
-- Hand-object interaction tracking when combined with ASTRA-EA pose estimation.
+- Hand-object interaction tracking when combined with Pramman pose estimation.
 - Real-time procedural deviation interception and recovery verification.
 
 ### Prohibited / Non-Intended Use

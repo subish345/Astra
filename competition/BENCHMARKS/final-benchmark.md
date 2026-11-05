@@ -1,6 +1,6 @@
-# ASTRA-EA: Master Benchmark Card
+# Pramman: Master Benchmark Card
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Benchmark Date:** 2026-09-13  
 **Status:** **EMPIRICALLY VERIFIED & LOCKED**

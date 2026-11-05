@@ -1,4 +1,4 @@
-# ASTRA-EA — Mission Data Operations & Retention
+# Pramman — Mission Data Operations & Retention
 
 ## Phase 19: Mission Operations & Ground Segment Integration (D19.10)
 **Project:** Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
@@ -7,7 +7,7 @@
 
 ## 1. Partitioned Storage Architecture (Section 25, 26)
 
-ASTRA-EA enforces strict segregation of mission data from diagnostic and training artifacts:
+Pramman enforces strict segregation of mission data from diagnostic and training artifacts:
 
 ```text
 flight_data/
@@ -46,7 +46,7 @@ PRIORITY RANKING:
 To export a completed mission run for ground science distribution:
 
 ```bash
-astra mission export --run RUN_0001 --output-dir exports/
+pramman mission export --run RUN_0001 --output-dir exports/
 ```
 
 ### Export Bundle Contents:

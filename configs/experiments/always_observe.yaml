@@ -2,11 +2,11 @@
 # the Mission Console keeps camera, pose, hands, objects, tracking, and action
 # recognition running until the operator presses STOP.
 experiment:
-  id: "ALWAYS_OBSERVE_001"
-  name: "Always Observe"
+  id: "LIVE_OBSERVE_001"
+  name: "Live Observe"
   version: "1.0.0"
-  description: "Continuous background observation and action detection."
-  author: "ASTRA-EA Ground Engineering Team"
+  description: "Continuous live body, hand movement, and common-object observation until STOP."
+  author: "Pramman Ground Engineering Team"
 continuous_observation: true
 
 objects:

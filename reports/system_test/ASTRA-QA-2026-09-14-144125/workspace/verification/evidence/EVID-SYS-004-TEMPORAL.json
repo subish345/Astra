@@ -1,0 +1,9 @@
+{
+  "requirement_id": "ASTRA-SYS-004",
+  "evidence_type": "TRACE",
+  "configured_dwell_frames": 10,
+  "observed_dwell_frames": 12,
+  "activity_type": "TUBE_TRANSFER",
+  "action_committed": true,
+  "timestamp": "2026-09-13T12:10:00Z"
+}

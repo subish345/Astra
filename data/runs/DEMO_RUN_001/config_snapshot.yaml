@@ -72,7 +72,7 @@ streaming:
   quality: medium
   width: 1280
 system:
-  device_name: ASTRA-EA Ground Demonstrator
+  device_name: Pramman Ground Demonstrator
   environment: development
   log_file_path: storage/reports/astra.log
   log_level: INFO

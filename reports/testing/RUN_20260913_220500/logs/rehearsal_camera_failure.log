@@ -1,0 +1,23 @@
+======================================================================
+ ASTRA-EA MISSION REHEARSAL FRAMEWORK (Phase 20)
+======================================================================
+Scenario:     REH_05_CAMERA_FAILURE
+Mode:         SIMULATION
+Pacing:       ACCELERATED
+Operator:     ASTRONAUT_OPERATOR_1
+Sandbox:      ISOLATED (Zero live flight records modified)
+----------------------------------------------------------------------
+  [PREPARATION ] Step 1: Pre-mission checks passed
+  [READY       ] Step 2: Experiment started
+  [EXPERIMENT  ] Step 3: Step 1: Verified normally
+  [ANOMALY     ] Step 4: Camera sensor stream dropped (0 fps timeout)
+  [RECOVERY    ] Step 5: Camera sensor bus re-enumerated and restored
+  [EXPERIMENT  ] Step 6: Step 2: Step verification resumes only with valid optical frames
+  [EXPERIMENT  ] Step 7: Step 3: Verified normally
+  [EXPERIMENT  ] Step 8: Step 4: Verified normally
+  [COMPLETION  ] Step 9: Experiment completed safely without unverified transitions
+======================================================================
+Rehearsal Verdict:  [PASS] (Duration: 0.039s)
+Data Consistency:   [CONSISTENT]
+Artifacts Pack:     /home/subish-loq/Documents/astra/reports/rehearsal/REH_REH_05_CAMERA_FAILURE_20260913_163754
+======================================================================

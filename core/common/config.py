@@ -1,4 +1,4 @@
-"""Configuration management system for ASTRA-EA.
+"""Configuration management system for Pramman.
 
 Loads and validates YAML configuration files using Pydantic, supporting environment
 variable overrides and ensuring zero magic numbers in application source code.
@@ -16,7 +16,7 @@ from pydantic import BaseModel, Field, field_validator
 class SystemSettings(BaseModel):
     environment: str = Field(default="development")
     offline_mode: bool = Field(default=True)
-    device_name: str = Field(default="ASTRA-EA Ground Demonstrator")
+    device_name: str = Field(default="Pramman Ground Demonstrator")
     log_level: str = Field(default="INFO")
     log_to_file: bool = Field(default=True)
     log_file_path: str = Field(default="storage/reports/astra.log")

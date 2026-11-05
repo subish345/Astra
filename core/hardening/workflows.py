@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Domain Hardening Workflows (Phase 21, D21.06 - D21.12)
+# Pramman Domain Hardening Workflows (Phase 21, D21.06 - D21.12)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated validation workflows enforcing hardening standards across:

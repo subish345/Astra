@@ -1,0 +1,44 @@
+[
+  {
+    "event_id": "EVT_000001_9D25E3",
+    "event_type": "MissionStarted",
+    "sequence_num": 1,
+    "sequence": 1,
+    "timestamp": "2026-09-14T14:55:04.509419+00:00",
+    "timestamp_mono": 4001.5219,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "TEST_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": null,
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "profile": "demo",
+      "start_time": "2026-09-14T14:55:04.509409+00:00"
+    }
+  },
+  {
+    "event_id": "EVT_000002_BE0BEF",
+    "event_type": "StepUncertain",
+    "sequence_num": 2,
+    "sequence": 2,
+    "timestamp": "2026-09-14T14:55:04.518365+00:00",
+    "timestamp_mono": 4001.5308,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "TEST_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": "STEP_01",
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "step": "STEP_01",
+      "reasons": [
+        "Observed action is occluded or below the step confidence threshold"
+      ]
+    }
+  }
+]

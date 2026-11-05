@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Current Step & Next Action Panel
+# Pramman Current Step & Next Action Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Panel presenting current procedural step details and prominent next action guidance."""

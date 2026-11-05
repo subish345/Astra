@@ -1,4 +1,4 @@
-"""ONNX Model Export Pipeline and Pre-Flight Validation for ASTRA-EA.
+"""ONNX Model Export Pipeline and Pre-Flight Validation for Pramman.
 
 Exports trained detector models to standardized ONNX representation and validates:
 - Graph protobuf integrity and input/output tensor shapes.

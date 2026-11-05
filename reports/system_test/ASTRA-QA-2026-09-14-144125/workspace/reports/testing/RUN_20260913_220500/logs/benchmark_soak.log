@@ -1,0 +1,12 @@
+============================================================
+ ASTRA-EA SOAK TEST SUMMARY
+============================================================
+Verdict:         PASS
+Duration:        30.0s
+Frames:          897
+Effective FPS:   29.9
+Startup RSS:     299.82 MB
+Shutdown RSS:    299.88 MB
+RSS Delta:       0.05 MB
+Memory Leak:     False
+============================================================

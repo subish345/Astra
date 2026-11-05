@@ -1,4 +1,4 @@
-"""Standardized data structures for the ASTRA-EA perception tier.
+"""Standardized data structures for the Pramman perception tier.
 
 Provides typed containers for 2D bounding boxes, detections, human poses,
 hand keypoints, multi-object tracks, frame quality, latency profiles, and

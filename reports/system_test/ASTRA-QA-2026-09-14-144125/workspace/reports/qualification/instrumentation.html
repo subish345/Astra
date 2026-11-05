@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Test Instrumentation Plan</title><style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #070c18; color: #e2e8f0; line-height: 1.5; }
+        h1, h2, h3 { color: #00d2ff; font-weight: 600; }
+        .nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #0d1527; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; border: 1px solid #1e2e50; }
+        .nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 600; text-decoration: none; }
+        .nav-link:hover { color: #00d2ff; }
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .metric-card { background: #131f38; padding: 1.25rem; border-radius: 8px; border: 1px solid #1e2e50; }
+        .metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+        .metric-val { font-size: 2rem; font-weight: bold; color: #00d2ff; margin-top: 0.25rem; font-family: monospace; }
+        .badge-pass { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+        .badge-planned { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid #f59e0b; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+        .badge-waived { background: rgba(107, 114, 128, 0.15); color: #9ca3af; border: 1px solid #9ca3af; padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0d1527; border-radius: 8px; overflow: hidden; border: 1px solid #1e2e50; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e2e50; font-size: 0.88rem; }
+        th { background: #131f38; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        tr:hover { background: rgba(255, 255, 255, 0.02); }
+        code { background: rgba(0, 210, 255, 0.08); padding: 2px 6px; border-radius: 4px; color: #00d2ff; font-family: monospace; }
+        .alert-box { background: #0d1527; border-left: 4px solid #00d2ff; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; border: 1px solid #1e2e50; }
+        </style></head><body>
+        <h1>Chamber Instrumentation & Sensor Mapping Plan</h1>
+        <p>Interface Definition for External Qualification Sensors Synchronized with ASTRA Telemetry</p>
+        
+        <div class="nav-bar">
+            <a href="environmental_matrix.html" class="nav-link">Environmental Matrix</a>
+            <a href="qualification_status.html" class="nav-link">Qualification Status</a>
+            <a href="test_results.html" class="nav-link">Test Procedures</a>
+            <a href="nonconformances.html" class="nav-link">Nonconformances (NCR)</a>
+            <a href="resource_report.html" class="nav-link">Resource Margins</a>
+            <a href="instrumentation.html" class="nav-link">Instrumentation Plan</a>
+            <a href="final_qualification_readiness.html" class="nav-link">Readiness Verdict</a>
+        </div>
+        
+        <table><thead><tr><th>Domain</th><th>Sensor Type</th><th>Location</th><th>Parameter</th><th>Sampling Rate</th></tr></thead><tbody>
+        <tr><td>Thermal</td><td>Type T Thermocouples (x4)</td><td>Chamber, Chassis, Camera, Storage</td><td>Surface & Case Temperature (°C)</td><td>1 Hz</td></tr>
+        <tr><td>Vacuum</td><td>Ionization / Pirani Gauge</td><td>Chamber vacuum port</td><td>Vacuum Pressure (Torr)</td><td>1 Hz</td></tr>
+        <tr><td>Vibration</td><td>Triaxial Accelerometers (x3)</td><td>Shaker head, compute, camera mount</td><td>Acceleration (Grms, PSD)</td><td>10 kHz</td></tr>
+        <tr><td>Shock</td><td>Piezoresistive Shock Accelerometer</td><td>Chassis mounting lugs</td><td>SRS Acceleration (G peak)</td><td>1 MHz</td></tr>
+        <tr><td>EMI / EMC</td><td>LISN + Horn/Biconical Antennas</td><td>Power leads & 1m antenna distance</td><td>Conducted & Radiated RF Fields</td><td>Sweep</td></tr>
+        <tr><td>Electrical</td><td>Current Probes & Voltage Divider</td><td>Main 28V DC power bus</td><td>Voltage, Current, Power (W)</td><td>100 Hz</td></tr>
+        <tr><td>Software</td><td>QualificationTelemetry Daemon</td><td>Internal Linux kernel & process</td><td>FPS, Latency, Procedure State</td><td>30 Hz</td></tr>
+        </tbody></table></body></html>

@@ -1,4 +1,4 @@
-# ASTRA-EA: Software Partitioning, Fault Containment & Degraded Operational Modes
+# Pramman: Software Partitioning, Fault Containment & Degraded Operational Modes
 
 **Classification:** Safety & Reliability Engineering Specification  
 **Document ID:** `ASTRA-DEG-001`  

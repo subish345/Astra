@@ -1,0 +1,19 @@
+id: V-SYS-003-IOU
+requirement: ASTRA-SYS-003
+title: Spatial Contact Calculation
+purpose: Verify that the interaction engine calculates 2D bounding box and keypoint spatial proximity with IoU > 0.05.
+preconditions:
+  - Detection pipeline active
+setup:
+  - Generate overlapping bounding boxes (hand and specimen_tube) with known IoU = 0.18
+inputs:
+  - Synthetic detection pair
+procedure:
+  - Run calculate_iou and proximity test
+expected_result:
+  - Spatial proximity flags CONTACT_ESTABLISHED
+acceptance_criteria:
+  - IoU exceeds configured 0.05 threshold
+evidence:
+  - reports/physical/viewpoint_report.html
+  - verification/evidence/EVID-SYS-003-IOU.json

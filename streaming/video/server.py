@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Video Stream Server
+# Pramman Video Stream Server
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Local IP multipart MJPEG video streaming server with client backpressure isolation."""
@@ -52,7 +52,7 @@ class _MJPEGRequestHandler(BaseHTTPRequestHandler):
         html = """<!DOCTYPE html>
 <html>
 <head>
-    <title>ASTRA-EA Live Observation Stream</title>
+    <title>Pramman Live Observation Stream</title>
     <style>
         body { background: #0b0f19; color: #e2e8f0; font-family: monospace; text-align: center; margin: 0; padding: 20px; }
         h1 { color: #38bdf8; font-size: 1.5rem; margin-bottom: 5px; }
@@ -62,10 +62,10 @@ class _MJPEGRequestHandler(BaseHTTPRequestHandler):
     </style>
 </head>
 <body>
-    <h1>ASTRA-EA Ground Video Stream</h1>
+    <h1>Pramman Ground Video Stream</h1>
     <span class="badge">LOCAL IP OBSERVATION</span>
     <div class="container">
-        <img src="/video" alt="ASTRA-EA Video Feed" />
+        <img src="/video" alt="Pramman Video Feed" />
     </div>
 </body>
 </html>"""

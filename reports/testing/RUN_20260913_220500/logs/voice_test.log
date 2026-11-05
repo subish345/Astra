@@ -1,0 +1,13 @@
+============================================================
+ ASTRA-EA LOCAL VOICE SUBSYSTEM TEST
+============================================================
+Provider:  OfflineTTSProvider (pyttsx3 air-gapped speech synthesis)
+Queue:     Priority preemption & cooldown deduplication enabled
+------------------------------------------------------------
+[INFO    ] Synthesizing: "ASTRA-EA voice guidance channel initialized. Systems nominal."
+[GUIDANCE] Synthesizing: "Step 2 active: Grasp the red specimen container."
+[WARNING ] Synthesizing: "Warning: Yellow box detected instead of red specimen container."
+[DEDUP   ] Immediate duplicate rejected: True (Allowed: False)
+[CRITICAL] Synthesizing: "Critical procedure deviation detected. Return yellow box immediately."
+[✓] Voice subsystem test complete.
+============================================================

@@ -1,4 +1,4 @@
-"""Pydantic schema definitions for ASTRA-EA experiment procedures.
+"""Pydantic schema definitions for Pramman experiment procedures.
 
 Defines strongly-typed structures for experiment metadata, tracked objects,
 steps, expected actions, multimodal evidence requirements, and recovery guidance.
@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field, field_validator
 
 
 class ActionPrimitive(str, Enum):
-    """Primitive human-object action concepts recognized by ASTRA-EA."""
+    """Primitive human-object action concepts recognized by Pramman."""
     IDLE = "IDLE"
     APPROACH = "APPROACH"
     REACH = "REACH"

@@ -1,4 +1,4 @@
-# ASTRA-EA Rehearsal Corrective Actions Log (Phase 20, D20.22)
+# Pramman Rehearsal Corrective Actions Log (Phase 20, D20.22)
 
 ### Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 

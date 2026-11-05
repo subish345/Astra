@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor Main Window
+# ORBITA Ground Monitor Main Window
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Main window for the standalone read-only Ground Monitor application."""
@@ -45,7 +45,7 @@ class GroundMonitorWindow(QMainWindow):
         parent: Optional[QWidget] = None,
     ) -> None:
         super().__init__(parent)
-        self.setWindowTitle("ASTRA-EA Ground Observability Console (Read-Only)")
+        self.setWindowTitle("ORBITA Ground Observability Console (Read-Only)")
         self.resize(1366, 850)
         self.setMinimumSize(1024, 680)
         self.setStyleSheet(GROUND_MONITOR_QSS)

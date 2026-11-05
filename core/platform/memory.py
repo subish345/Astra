@@ -1,4 +1,4 @@
-"""Memory Hardware Abstraction and Allocation Guards for ASTRA-EA (Phase 18)."""
+"""Memory Hardware Abstraction and Allocation Guards for Pramman (Phase 18)."""
 
 from __future__ import annotations
 

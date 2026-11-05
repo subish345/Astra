@@ -1,0 +1,62 @@
+usage: astra [-h]
+             {version,doctor,config,experiment,db,camera,perception,interaction,activity,procedure,assurance,mission,voice,ml,dataset,model,sim,simulation,stream,events,ground-monitor,benchmark,demo,final-check,competition-check,deployment,physical-test,hil,flight-package,rehearsal,dress-rehearsal,rehearsal-scorecard,training-mode,maintenance,hardening,edge,qualification,verification,system-test} ...
+
+ASTRA-EA — Autonomous Spacecraft Experiment Assurance & Assistance CLI
+
+positional arguments:
+  {version,doctor,config,experiment,db,camera,perception,interaction,activity,procedure,assurance,mission,voice,ml,dataset,model,sim,simulation,stream,events,ground-monitor,benchmark,demo,final-check,competition-check,deployment,physical-test,hil,flight-package,rehearsal,dress-rehearsal,rehearsal-scorecard,training-mode,maintenance,hardening,edge,qualification,verification,system-test}
+                        Available subcommands
+    version             Print system version and status
+    doctor              Run system diagnostics and environment checks
+    config              Configuration management
+    experiment          Experiment procedure operations
+    db                  Database management
+    camera              Camera device management
+    perception          Perception subsystem operations
+    interaction         Interaction subsystem operations
+    activity            Activity recognition subsystem operations
+    procedure           Procedure assurance and step recognition operations
+    assurance           Assurance engine and viewpoint robustness operations
+    mission             Mission operations: precheck, export, report, review,
+                        console
+    voice               Audio guidance and voice assistance operations
+    ml                  Machine learning runtime diagnostics
+    dataset             Dataset Studio operations
+    model               Model development, training, evaluation, and registry
+    sim                 Simulation & Fault Injection platform
+    simulation          Simulation & Fault Injection platform (alias)
+    stream              Video streaming management and diagnostics
+    events              Ground telemetry event operations
+    ground-monitor      Launch the Qt Ground Monitor console
+    benchmark           End-to-end benchmarking, latency profiling, and
+                        endurance soak
+    demo                One-command interactive flight demonstrator
+    final-check         Run comprehensive 14-subsystem pre-demonstration audit
+    competition-check   Run official SIH competition readiness verification
+    deployment          Deployment readiness and health diagnostics
+    physical-test       Run physical test rig validation
+    hil                 Hardware-in-the-Loop testing engine
+    flight-package      Flight-integration build packaging and validation
+                        (Phase 18)
+    rehearsal           End-to-end mission rehearsals across operational modes
+                        (Phase 20)
+    dress-rehearsal     Execute full-length dress rehearsal with zero
+                        developer intervention (Phase 20)
+    rehearsal-scorecard
+                        Compile and display consolidated rehearsal scorecards
+                        (Phase 20)
+    training-mode       Operator training mode and operational failure drills
+                        (Phase 19)
+    maintenance         Maintenance mode manager and subsystem diagnostics
+                        (Phase 19)
+    hardening           Findings-driven hardening, RCA, and release candidate
+                        gating (Phase 21)
+    edge                Edge compute diagnostics, benchmarks, and validation
+    qualification       Spacecraft qualification readiness and systems
+                        engineering
+    verification        Formal Verification & Validation framework
+    system-test         Execute complete system validation test suite and
+                        manual checklist
+
+options:
+  -h, --help            show this help message and exit

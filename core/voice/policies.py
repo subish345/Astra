@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Audio Policies & Deduplication
+# Pramman Audio Policies & Deduplication
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Audio policy, cooldown timing, deduplication, and preemption management."""

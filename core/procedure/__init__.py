@@ -1,4 +1,4 @@
-"""ASTRA-EA experiment procedure management subsystem."""
+"""Pramman experiment procedure management subsystem."""
 
 from core.procedure.evaluator import StepEvaluator
 from core.procedure.matcher import ProcedureMatcher

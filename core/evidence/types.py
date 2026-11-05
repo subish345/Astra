@@ -1,6 +1,6 @@
-"""Multimodal evidence structures for ASTRA-EA.
+"""Multimodal evidence structures for Pramman.
 
-This is a core architectural innovation of ASTRA-EA: ensuring that AI confidence
+This is a core architectural innovation of Pramman: ensuring that AI confidence
 never directly becomes mission ground truth, but is corroborated by explainable evidence factors.
 """
 

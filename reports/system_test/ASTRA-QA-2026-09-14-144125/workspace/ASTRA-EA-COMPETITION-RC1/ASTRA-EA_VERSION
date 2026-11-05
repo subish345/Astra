@@ -1,0 +1,15 @@
+ASTRA-EA PRODUCT VERSION METADATA
+================================================================================
+Product Name:        ASTRA-EA (Autonomous Spacecraft Experiment Assurance)
+Product Version:     1.0.0-RC1
+Git Commit:          5796cdeb70e0727c722fc4dc1df963a48c9c7581
+Build Timestamp:     2026-09-13T12:59:00Z
+Python Runtime:      3.14.7 (x86_64-linux)
+Operating System:    Linux (POSIX compliant)
+Active Model:        ASTRA_OBJECT_DETECTOR_v1.0 (ONNX / OpenCV DNN)
+Active Dataset:      ASTRA-DATASET-v1.0 (Synthetic + Real Microgravity Validation)
+Active Procedure:    DEMO_EXP_001 v1.0 (Sample Handling & Placement Verification)
+System State:        COMPETITION RELEASE CANDIDATE 1 (FEATURE FREEZE)
+================================================================================
+Notice: Engineering-Grade Ground Demonstrator for SIH26174 Evaluation.
+Not flight-qualified or zero-g certified.

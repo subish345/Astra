@@ -1,4 +1,4 @@
-# ASTRA-EA Ground Monitor Architecture
+# Pramman Ground Monitor Architecture
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Classification:** Phase 9 Technical Design & Remote Observability Blueprint
@@ -7,7 +7,7 @@
 
 ## 1. Primary Architectural Principle
 
-The **ASTRA-EA Ground Monitor** is an external, remote observation and situational awareness platform designed for flight controllers, principal investigators, and ground support personnel. 
+The **Pramman Ground Monitor** is an external, remote observation and situational awareness platform designed for flight controllers, principal investigators, and ground support personnel. 
 
 ### Core Separation Axiom
 $$\text{ONBOARD} = \text{EXECUTION + PERCEPTION + ASSURANCE + RECOVERY + LOCAL LOGGING}$$

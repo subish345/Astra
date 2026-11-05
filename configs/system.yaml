@@ -1,7 +1,7 @@
 system:
   environment: development
   offline_mode: true
-  device_name: "ASTRA-EA Ground Demonstrator"
+  device_name: "Pramman Ground Demonstrator"
   log_level: INFO
   log_to_file: true
   log_file_path: "storage/reports/astra.log"

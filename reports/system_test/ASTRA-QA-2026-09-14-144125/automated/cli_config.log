@@ -1,0 +1,3 @@
+Validating configuration files...
+✓ configs/system.yaml: OK (Environment: development)
+✓ configs/cameras/default.yaml: OK (Source: webcam, Resolution: 1280x720)

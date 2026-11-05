@@ -1,4 +1,4 @@
-# ASTRA-EA — SIH26174 Final Requirement Traceability Matrix
+# Pramman — SIH26174 Final Requirement Traceability Matrix
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance
 **Product Version:** `1.0.0-RC1`  
@@ -18,7 +18,7 @@
 
 ## 2. Requirement Traceability Matrix
 
-| SIH Requirement | ASTRA-EA Component | Implementation Location | Verification Evidence | Status |
+| SIH Requirement | Pramman Component | Implementation Location | Verification Evidence | Status |
 | :--- | :--- | :--- | :--- | :--- |
 | **1. Object Detection** | Optical Perception Layer | `core/perception/detection/` | `tests/unit/test_color_detector.py`, `tests/models/test_models_subsystem.py`, `ASTRA_OBJECT_DETECTOR_v0.1.0.onnx` | **PASS** |
 | **2. Human Pose Estimation** | Anatomical Kinematics | `core/perception/pose/` | `tests/unit/test_perception_types.py`, upper-body keypoints tracked at 30 FPS | **PASS** |

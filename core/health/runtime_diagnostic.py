@@ -1,4 +1,4 @@
-"""Runtime hardware and environment diagnostics generator for ASTRA-EA.
+"""Runtime hardware and environment diagnostics generator for Pramman.
 
 Produces storage/reports/runtime_diagnostic.json with comprehensive environment telemetry.
 """

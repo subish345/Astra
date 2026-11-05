@@ -1,4 +1,4 @@
-"""File-based video source for ASTRA-EA simulation and test replay.
+"""File-based video source for Pramman simulation and test replay.
 
 Reads recorded video files (.mp4, .avi, .mkv) with optional real-time playback pacing
 and loop capabilities.
@@ -128,3 +128,11 @@ class VideoFileSource(CameraSource):
     @property
     def is_active(self) -> bool:
         return self._is_active
+
+    @property
+    def frame_count(self) -> int:
+        return self._frame_count
+
+    @property
+    def fps(self) -> float:
+        return self._fps

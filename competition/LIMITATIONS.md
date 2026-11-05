@@ -1,6 +1,6 @@
-# ASTRA-EA: System Limitations & Engineering Disclosures
+# Pramman: System Limitations & Engineering Disclosures
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Document Classification:** Final Technical Engineering Transparency Disclosure  
 **Release:** 1.0.0-RC1 (SIH26174 Ground Demonstrator)
 
@@ -8,7 +8,7 @@
 
 ## 1. Executive Disclosure & Claim Policy
 
-ASTRA-EA is developed as an **engineering-grade ground demonstrator** validating the software architecture, edge-AI perception pipeline, procedural assurance engine, and explainable audit logging for astronaut experiment monitoring.
+Pramman is developed as an **engineering-grade ground demonstrator** validating the software architecture, edge-AI perception pipeline, procedural assurance engine, and explainable audit logging for astronaut experiment monitoring.
 
 ### Authorized Technical Claims
 - **Ground Demonstrator:** Validated laboratory ground prototype (TRL 4).
@@ -76,7 +76,7 @@ ASTRA-EA is developed as an **engineering-grade ground demonstrator** validating
 
 | Milestone | TRL Level | Engineering Scope | Key Requirements |
 | :--- | :---: | :--- | :--- |
-| **ASTRA-EA (Current)** | **TRL 4** | Laboratory ground demonstration | Edge-AI assurance, state machine, deviation detection |
+| **Pramman (Current)** | **TRL 4** | Laboratory ground demonstration | Edge-AI assurance, state machine, deviation detection |
 | **High-Fidelity Mockup** | **TRL 5** | Neutral Buoyancy / Parabolic Flight | Microgravity posture, floating tool tracking, multi-camera fusion |
 | **Payload Prototype** | **TRL 6** | Space-grade compute testbed | Quantization to space FPGA/DSP, TVAC chamber testing, radiation screening |
 | **Flight Demonstration** | **TRL 7** | Orbital technology demonstrator | Operational validation on Bharatiya Antariksh Station (BAS) or ISS payload rack |

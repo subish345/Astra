@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Camera-Angle Viewpoint Invariance & Robustness Matrix
+# Pramman Camera-Angle Viewpoint Invariance & Robustness Matrix
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated validation of camera viewpoint invariance and deviation robustness.

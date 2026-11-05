@@ -1,0 +1,54 @@
+- id: ASTRA-IF-001
+  title: POSIX V4L2 Sensor Ingestion and Disconnect Handling
+  description: The camera ingestion interface shall ingest standard POSIX V4L2 / UVC video streams and handle hardware disconnect signaling within 100 ms.
+  category: INTERFACE
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: PHYSICAL
+  status: VERIFIED
+  owner: Hardware Interface Team
+  evidence:
+    - reports/physical/failure_report.html
+    - verification/evidence/EVID-IF-001-DISCONNECT.json
+
+- id: ASTRA-IF-002
+  title: Vehicle Bus Adapter Decoupling
+  description: The system shall provide an abstract Vehicle Bus Adapter decoupled from proprietary physical spacecraft data buses.
+  category: INTERFACE
+  priority: HIGH
+  verification_method:
+    - INSPECTION
+  verification_level: INTEGRATION
+  status: VERIFIED
+  owner: Systems Integration
+  evidence:
+    - core/integration/bus.py
+    - verification/evidence/EVID-IF-002-BUS.json
+
+- id: ASTRA-IF-003
+  title: Dual-Clock Monotonic and UTC Time Synchronization
+  description: The time synchronization engine shall record dual timestamps for every event monotonic elapsed mission duration and UTC wall-clock timestamp.
+  category: INTERFACE
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Core Systems
+  evidence:
+    - data/runs/DEMO_RUN_001/events.json
+    - verification/evidence/EVID-IF-003-TIME.json
+
+- id: ASTRA-IF-004
+  title: Non-Blocking Telemetry Publisher
+  description: The telemetry publisher shall stream non-blocking health and mission status packets over isolated WebSocket / network sockets without blocking the inference loop.
+  category: INTERFACE
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Ground Network Team
+  evidence:
+    - verification/evidence/EVID-IF-004-TELEMETRY.json

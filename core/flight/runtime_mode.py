@@ -1,4 +1,4 @@
-"""Flight Runtime Mode and Security Policy Enforcement for ASTRA-EA (Phase 18).
+"""Flight Runtime Mode and Security Policy Enforcement for Pramman (Phase 18).
 
 In accordance with Section 9, 31, 39, 67 & 68:
 Enforces strict separation between DEVELOPMENT, DEMO, VALIDATION, and FLIGHT_INTEGRATION modes.

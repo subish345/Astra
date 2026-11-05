@@ -1,8 +1,8 @@
-# ASTRA-EA — Multimodal Evidence Engine Architecture
+# Pramman — Multimodal Evidence Engine Architecture
 
 ## 1. Overview & Principles
 
-AI model confidence cannot serve as mission ground truth in human spaceflight operations. In ASTRA-EA, confidence from object detection, pose estimation, and activity recognition is corroborated across independent physical and temporal dimensions to produce explainable, traceable **Evidence Bundles**.
+AI model confidence cannot serve as mission ground truth in human spaceflight operations. In Pramman, confidence from object detection, pose estimation, and activity recognition is corroborated across independent physical and temporal dimensions to produce explainable, traceable **Evidence Bundles**.
 
 $$\text{Perception Confidence} + \text{Interaction Evidence} + \text{Temporal Consistency} + \text{Procedure Match} = \text{Step Assurance Evidence}$$
 
@@ -10,7 +10,7 @@ $$\text{Perception Confidence} + \text{Interaction Evidence} + \text{Temporal Co
 
 ## 2. Evidence Taxonomy (13 Dimensions)
 
-Defined in [`core/evidence/types.py`](file:///home/subish-loq/Documents/astra/core/evidence/types.py):
+Defined in [`core/evidence/types.py`](file:///home/subish-loq/Documents/pramman_proj/core/evidence/types.py):
 
 | Evidence Type | Verification Criterion | Source Modality |
 |---|---|---|
@@ -46,7 +46,7 @@ Where:
 
 ## 4. Alternate Evidence Path Groupings
 
-Experiment procedures can define flexible, non-brittle evidence rules via [`EvidencePathRule`](file:///home/subish-loq/Documents/astra/core/procedure/schema.py):
+Experiment procedures can define flexible, non-brittle evidence rules via [`EvidencePathRule`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/schema.py):
 
 ```yaml
 evidence_paths:
@@ -64,7 +64,7 @@ Supported evaluation operators:
 
 ## 5. Causal Audit Traceability
 
-Every [`StepEvaluation`](file:///home/subish-loq/Documents/astra/core/procedure/types.py) retains an unbroken causal chain:
+Every [`StepEvaluation`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/types.py) retains an unbroken causal chain:
 
 ```text
 STEP_02: Grasp Specimen Red Box [VERIFIED - 93.00%]

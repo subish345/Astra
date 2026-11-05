@@ -3,16 +3,16 @@
   "experiment_id": "DEMO_EXP_001",
   "procedure_version": "1.0.0",
   "camera_profile": "view_left",
-  "start_time_utc": "2026-09-14T18:03:01.408058+00:00",
-  "end_time_utc": "2026-09-14T18:03:02.792590+00:00",
+  "start_time_utc": "2026-11-04T05:20:59.646204+00:00",
+  "end_time_utc": "2026-11-04T05:21:02.769367+00:00",
   "status": "COMPLETED",
-  "duration_seconds": 1.38,
+  "duration_seconds": 3.12,
   "software_version": "1.0.0",
-  "git_commit": "c02788d769a4468cd63dc4f065429083ae11cef4",
+  "git_commit": "6ac44dc56de3305060c09f914eb4eb03422d08d8",
   "total_steps": 4,
   "completed_steps": 0,
   "deviations_count": 0,
   "recoveries_count": 0,
   "uncertain_count": 40,
-  "effective_fps": 29.13
+  "effective_fps": 12.88
 }

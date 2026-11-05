@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Telemetry Event Publisher
+# Pramman Ground Telemetry Event Publisher
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Thread-safe event publisher maintaining sequence ordering and replay history."""

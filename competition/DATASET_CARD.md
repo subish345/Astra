@@ -1,6 +1,6 @@
 # Dataset Card: ASTRA-DATASET-v1.0
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Dataset Identifier:** `ASTRA-DATASET-v1.0`  
 **License:** Research / Ground Demonstration Only  

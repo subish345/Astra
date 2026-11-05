@@ -1,4 +1,4 @@
-"""OpenCV-based physical camera source for ASTRA-EA.
+"""OpenCV-based physical camera source for Pramman.
 
 Supports local webcams, USB video class (UVC) devices, and MIPI cameras.
 """

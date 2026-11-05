@@ -1,0 +1,30 @@
+{
+  "timestamp": 3861.844625629,
+  "frame_id": 600,
+  "source_id": "webcam:0",
+  "persons": [],
+  "objects": [],
+  "hands": [],
+  "poses": [],
+  "tracks": [],
+  "fps": 30.0,
+  "quality": {
+    "grade": "BLURRY",
+    "blur_score": 44.34,
+    "brightness": 117.63,
+    "contrast": 50.03,
+    "is_acceptable": false,
+    "width": 640,
+    "height": 480
+  },
+  "latency": {
+    "capture_ms": 0.0,
+    "quality_ms": 1.82,
+    "detection_ms": 4.71,
+    "pose_ms": 8.69,
+    "hand_ms": 1.07,
+    "tracking_ms": 0.01,
+    "total_ms": 16.32
+  },
+  "metadata": {}
+}

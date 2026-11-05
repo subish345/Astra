@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-09-13T12:30:45Z",
+  "platform": {
+    "os_name": "Linux",
+    "os_release": "7.1.12-200.fc44.x86_64",
+    "architecture": "x86_64",
+    "cpu_model": "Intel(R) Core(TM) i7-14700HX",
+    "cpu_cores_physical": 20,
+    "cpu_cores_logical": 28,
+    "total_ram_gb": 31.03,
+    "gpu_name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "gpu_available": false,
+    "vram_total_mb": 8151,
+    "active_backend": "cpu",
+    "python_version": "3.14.7"
+  },
+  "models": [
+    {
+      "model_id": "ColorSpatialObjectDetector (Baseline)",
+      "type": "Algorithmic Color/Spatial",
+      "cpu": true,
+      "cuda": false,
+      "onnx": false,
+      "status": "OPERATIONAL"
+    },
+    {
+      "model_id": "ASTRA_OBJECT_DETECTOR_v0.1.0",
+      "type": "Learned Detector Checkpoint",
+      "cpu": true,
+      "cuda": false,
+      "onnx": false,
+      "status": "OPERATIONAL"
+    },
+    {
+      "model_id": "ASTRA_OBJECT_DETECTOR_v0.1.0.onnx",
+      "type": "Exported ONNX Graph",
+      "cpu": true,
+      "cuda": false,
+      "onnx": true,
+      "status": "VALIDATED",
+      "onnx_validation": "PASS",
+      "inference_latency_ms": 14.74
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "release_version": "1.0.0-RC1",
+  "commit": "01447948f2195df4a7ebdd588b3ae68be3ba5260",
+  "tag": "v1.0.0-RC1-frozen",
+  "build_date": "2026-09-13T12:00:00Z",
+  "environment": {
+    "os": "Linux x86_64 / Linux aarch64 (JetPack 5.1.2)",
+    "python": "3.11+",
+    "cpu": "Intel Core i7 / NVIDIA Jetson Orin Nano (6-core Arm Cortex-A78AE)",
+    "gpu": "NVIDIA Ampere architecture (1024 CUDA cores)",
+    "ram_allocated_mb": 1024,
+    "camera_interface": "POSIX V4L2 / UVC standard",
+    "runtime_backends": ["ONNX Runtime 1.16", "Torch 2.1.2", "OpenCV 4.8"]
+  },
+  "artifacts": {
+    "model": {
+      "name": "yolov8n-astra-v1.0.pt",
+      "sha256": "4b4f3b79f6e522d109b8ce273fa4eef1108253a7894a4efb3b64c6778f2cbcf2"
+    },
+    "dataset": {
+      "manifest": "ASTRA-DATASET-v1.0",
+      "sha256": "4b4f3b79f6e522d109b8ce273fa4eef1108253a7894a4efb3b64c6778f2cbcf2"
+    },
+    "procedure": {
+      "path": "configs/experiments/demo.yaml",
+      "sha256": "4b4f3b79f6e522d109b8ce273fa4eef1108253a7894a4efb3b64c6778f2cbcf2"
+    }
+  },
+  "test_suite": {
+    "total_tests": 253,
+    "passed": 253,
+    "failed": 0,
+    "formal_vv_test_cases": 38,
+    "verified_requirements": 32,
+    "deferred_environmental_requirements": 3,
+    "result": "QUALIFIED_GROUND_BASELINE"
+  }
+}

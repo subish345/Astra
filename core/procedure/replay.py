@@ -1,4 +1,4 @@
-"""Procedure Replay Engine (D4.11) for ASTRA-EA.
+"""Procedure Replay Engine (D4.11) for Pramman.
 
 Replays recorded activity/event sequences deterministically through the procedure engine,
 reconstructing current steps, verification decisions, uncertainty, and next expected steps

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Rehearsal Scenarios Definition (Phase 20, D20.06 - D20.18)
+# Pramman Rehearsal Scenarios Definition (Phase 20, D20.06 - D20.18)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Scenario definitions for the 12 formal operational rehearsals and dress rehearsal."""

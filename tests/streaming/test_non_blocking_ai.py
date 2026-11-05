@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Non-Blocking Invariant Tests
+# Pramman Non-Blocking Invariant Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Validates that network transmission and slow clients NEVER block the critical AI pipeline."""

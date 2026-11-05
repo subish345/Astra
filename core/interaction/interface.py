@@ -1,4 +1,4 @@
-"""Abstract interface and test stubs for the ASTRA-EA interaction engine.
+"""Abstract interface and test stubs for the Pramman interaction engine.
 
 Translates object tracks and hand detections into physical interaction states.
 """

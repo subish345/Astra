@@ -1,0 +1,22 @@
+============================================================
+ ASTRA-EA ASSURANCE ENGINE RUNTIME
+============================================================
+Camera Profile:
+VIEW_LEFT
+
+Session ID:         SESSION_001
+Experiment:         Sample Material Handling & Container Verification (DEMO) (DEMO_EXP_001)
+Observation Angle:  Camera positioned toward the front-left observation quadrant
+Azimuth:            -35.0 deg
+Video Source:       0
+Display HUD:        ENABLED
+============================================================
+------------------------------------------------------------
+ASSURANCE ENGINE EXECUTION SUMMARY
+Camera Profile:       VIEW_LEFT
+Total Frames:         120
+Compute Latency P50:  16.54 ms
+Compute Latency P95:  20.26 ms
+Compute Latency P99:  21.80 ms
+Throughput Capacity:  60.5 FPS
+============================================================

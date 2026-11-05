@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-OPS-002",
+  "requirement_id": "ASTRA-OPS-002",
+  "test_id": "V-OPS-002",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "tests/audio/test_voice_architecture.py",
+    "verification/evidence/EVID-OPS-002-SPEECH.json"
+  ],
+  "notes": "Test V-OPS-002 executed successfully against ASTRA-OPS-002."
+}

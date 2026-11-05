@@ -1,0 +1,22 @@
+[
+  {
+    "event_id": "EVT_000001_6CF2A8",
+    "event_type": "MissionStarted",
+    "sequence_num": 1,
+    "sequence": 1,
+    "timestamp": "2026-09-14T14:50:50.644394+00:00",
+    "timestamp_mono": 3747.6569,
+    "context": {
+      "mission_id": "ASTRA_MISSION",
+      "run_id": "ABORT_RUN_001",
+      "experiment_id": "DEMO_EXP_001",
+      "step_id": null,
+      "parent_event_id": null
+    },
+    "severity": "INFO",
+    "payload": {
+      "profile": "demo",
+      "start_time": "2026-09-14T14:50:50.644386+00:00"
+    }
+  }
+]

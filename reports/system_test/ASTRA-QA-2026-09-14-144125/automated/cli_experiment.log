@@ -1,0 +1,9 @@
+Validating experiment procedure: demo.yaml...
+✓ Validation SUCCESSFUL: DEMO_EXP_001 ('Sample Material Handling & Container Verification (DEMO)')
+  - Version: 1.0.0
+  - Objects Defined: 4 (MAIN_BOX, RED_BOX, YELLOW_BOX, WORK_SURFACE)
+  - Steps Defined: 4
+    [1] STEP_01: Approach Experiment Station (Actions: APPROACH)
+    [2] STEP_02: Grasp Specimen Red Box (Actions: REACH, GRASP)
+    [3] STEP_03: Transfer Specimen to Work Surface (Actions: LIFT, MOVE, PLACE)
+    [4] STEP_04: Release Specimen and Conclude Transfer (Actions: RELEASE)

@@ -1,4 +1,4 @@
-"""Physical Experiment Testing Runner for ASTRA-EA (Phase 14).
+"""Physical Experiment Testing Runner for Pramman (Phase 14).
 
 Executes multi-view physical test rig evaluations, motion style variations,
 ambient lighting stress boundaries, and physical failure injections.
@@ -28,7 +28,7 @@ class PhysicalExperimentRunner:
     def run_physical_validation(self) -> Dict[str, Any]:
         """Execute full physical rig validation sequence."""
         print("============================================================")
-        print(f" ASTRA-EA PHYSICAL EXPERIMENT RIG VALIDATION // {self.profile_id}")
+        print(f" Pramman PHYSICAL EXPERIMENT RIG VALIDATION // {self.profile_id}")
         print("============================================================")
         print(f"Target Camera Profile: {self.profile_id}")
         print(f"Test Duration:         {self.duration_sec} seconds")
@@ -200,7 +200,7 @@ class PhysicalExperimentRunner:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Physical Rig Validation Report</title>
+    <title>Pramman Physical Rig Validation Report</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e17; color: #e5e7eb; padding: 2rem; }}
         .card {{ background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }}
@@ -212,7 +212,7 @@ class PhysicalExperimentRunner:
     </style>
 </head>
 <body>
-    <h1>ASTRA-EA Physical Rig Validation Report // {self.profile_id}</h1>
+    <h1>Pramman Physical Rig Validation Report // {self.profile_id}</h1>
     <div class="card">
         <h2>Executive Summary</h2>
         <p><strong>Timestamp:</strong> {summary['timestamp']} | <strong>Profile:</strong> {self.profile_id} | <strong>Status:</strong> <span class="badge-pass">ALL PASS</span></p>

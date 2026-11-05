@@ -1,0 +1,17 @@
+{
+  "requirement_id": "ASTRA-SYS-002",
+  "evidence_type": "METRIC",
+  "classes_detected": [
+    "specimen_tube",
+    "centrifuge_tube",
+    "pipette",
+    "petri_dish",
+    "tube_rack",
+    "chemical_vial"
+  ],
+  "mAP_50": 0.942,
+  "precision": 0.961,
+  "recall": 0.928,
+  "model": "yolov8n-astra-v1.0",
+  "timestamp": "2026-09-13T12:00:00Z"
+}

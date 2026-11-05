@@ -1,4 +1,4 @@
-"""Mission Alert System and Operator Escalation for ASTRA-EA (Phase 19, Section 15, 16, 17, 56, 57, D19.08).
+"""Mission Alert System and Operator Escalation for Pramman (Phase 19, Section 15, 16, 17, 56, 57, D19.08).
 
 Manages alert lifecycles (RECEIVED -> ACKNOWLEDGED -> RESOLVED), strict severity prioritization
 (CRITICAL > WARNING > NOTICE > INFO), and tiered operational escalation.

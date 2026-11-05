@@ -1,0 +1,18 @@
+{
+  "run_id": "DEMO_RUN_001",
+  "experiment_id": "DEMO_EXP_001",
+  "procedure_version": "1.0.0",
+  "camera_profile": "view_left",
+  "start_time_utc": "2026-09-13T17:02:13.563922+00:00",
+  "end_time_utc": "2026-09-13T17:02:14.307105+00:00",
+  "status": "COMPLETED",
+  "duration_seconds": 0.74,
+  "software_version": "1.0.0",
+  "git_commit": "c02788d769a4468cd63dc4f065429083ae11cef4",
+  "total_steps": 4,
+  "completed_steps": 0,
+  "deviations_count": 0,
+  "recoveries_count": 0,
+  "uncertain_count": 40,
+  "effective_fps": 54.64
+}

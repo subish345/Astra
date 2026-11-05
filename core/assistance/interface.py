@@ -1,4 +1,4 @@
-"""Abstract interfaces and development doubles for the ASTRA-EA assistance tier.
+"""Abstract interfaces and development doubles for the Pramman assistance tier.
 
 Handles multimodal astronaut guidance and closed-loop deviation recovery.
 """

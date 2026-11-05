@@ -1,4 +1,4 @@
-# ASTRA-EA Fault Injection & Simulation Testing Guide
+# Pramman Fault Injection & Simulation Testing Guide
 
 Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 

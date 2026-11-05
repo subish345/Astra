@@ -1,0 +1,28 @@
+ M README.md
+ M core/cli/commands.py
+ M core/perception/benchmark.py
+ M core/perception/pipeline.py
+ M core/perception/types.py
+ M core/perception/visualizer.py
+ M core/procedure/types.py
+ M core/ui/panels/video_panel.py
+ M core/ui/worker.py
+ M data/runs/DEMO_RUN_001/events.json
+ M data/runs/DEMO_RUN_001/health_summary.json
+ M data/runs/DEMO_RUN_001/mission_report.html
+ M data/runs/DEMO_RUN_001/mission_report.json
+ M data/runs/DEMO_RUN_001/run_metadata.json
+ M data/runs/DEMO_RUN_001/version_metadata.json
+ M flight_configuration_manifest.json
+ M flight_manifest.json
+ M reports/qualification/readiness.json
+ M storage/astra.db
+?? core/perception/hands/mediapipe_adapter.py
+?? core/perception/pose/mediapipe_adapter.py
+?? core/perception/pose/smoothing.py
+?? models/checkpoints/pose_landmarker_lite.task
+?? reports/integration/
+?? reports/system_test/
+?? reports/testing/
+?? tests/regression/test_system_validation_fixes.py
+?? tests/unit/test_mediapipe_adapters.py

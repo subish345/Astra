@@ -1,0 +1,22 @@
+id: V-ENV-004
+requirement: ASTRA-ENV-004
+title: Conductive Thermal-Vacuum Cycling (TRL 6 Qualification Plan)
+purpose: Verify that compute hardware dissipates heat conductively and executes nominal inference under vacuum (10^-5 Torr) across temperature extremes (-20 deg C to +60 deg C).
+preconditions:
+  - Thermal-vacuum chamber (TVAC) certified to 10^-5 Torr
+  - Thermal interface conduction plate connected
+setup:
+  - Install payload on thermal cold/hot plate inside TVAC chamber
+inputs:
+  - 4 thermal-vacuum cycles between -20 deg C and +60 deg C with 2-hour dwells
+procedure:
+  - Pump chamber to < 10^-5 Torr
+  - Cycle plate temperature through thermal extremes
+  - Execute continuous inference soak during temperature dwell plateaus
+expected_result:
+  - Zero thermal throttling below 30 FPS target
+  - Die temperature remains within safe silicone envelope (< 85 deg C)
+acceptance_criteria:
+  - Nominal execution across all cycles (TRL 6 qualification gate)
+evidence:
+  - docs/qualification/environmental-test-plan.md

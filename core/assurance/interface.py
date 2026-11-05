@@ -1,4 +1,4 @@
-"""Abstract interface and test stubs for the ASTRA-EA assurance engine.
+"""Abstract interface and test stubs for the Pramman assurance engine.
 
 Determines whether observed evidence validates procedural progress or signals a deviation.
 """

@@ -1,4 +1,4 @@
-"""Model Training Runner for ASTRA-EA.
+"""Model Training Runner for Pramman.
 
 Orchestrates model training across epochs, calculates validation metrics,
 manages GPU (RTX 5060) / CPU acceleration, logs progress, saves versioned
@@ -69,7 +69,7 @@ class ModelTrainingRunner:
             target_device = "CPU"
 
         print("=" * 60)
-        print("ASTRA-EA MODEL TRAINING RUNNER")
+        print("Pramman MODEL TRAINING RUNNER")
         print("=" * 60)
         print(f"Run ID: {run_id}")
         print(f"Model: {self.config.model_name} ({self.config.architecture})")

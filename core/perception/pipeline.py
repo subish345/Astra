@@ -1,4 +1,4 @@
-"""Unified perception pipeline orchestrator for ASTRA-EA.
+"""Unified perception pipeline orchestrator for Pramman.
 
 Orchestrates frame ingestion, quality analysis, scheduled model inferences,
 multi-object tracking, latency measurement, and event publishing.

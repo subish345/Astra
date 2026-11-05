@@ -1,4 +1,4 @@
-"""Abstract interface and test stubs for the ASTRA-EA evidence engine.
+"""Abstract interface and test stubs for the Pramman evidence engine.
 
 Computes explainable multi-factor evidence bundles for candidate activities.
 """

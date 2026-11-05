@@ -1,4 +1,4 @@
-"""Edge Compute Diagnostics and Hardware Capability Profiler for ASTRA-EA.
+"""Edge Compute Diagnostics and Hardware Capability Profiler for Pramman.
 
 Inspects host system hardware architecture, CPU/GPU accelerators,
 memory hierarchy, thermal sensors, and inference runtime engines.
@@ -156,7 +156,7 @@ def print_edge_doctor_report() -> int:
     profile = get_edge_hardware_profile()
 
     print("============================================================")
-    print(" ASTRA-EA EDGE DEPLOYMENT DOCTOR")
+    print(" Pramman EDGE DEPLOYMENT DOCTOR")
     print("============================================================")
     print(f"Platform:           {profile['platform']} ({profile['os_distro']}, {profile['kernel']})")
     print(f"CPU:                {profile['cpu_model']} ({profile['cpu_cores_logical']} logical cores @ {profile['cpu_frequency_mhz']:.0f} MHz)")

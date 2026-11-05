@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor Header Panel
+# ORBITA Ground Monitor Header Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Top telemetry banner displaying connection status, channel health, and simulation indicators."""
@@ -40,7 +40,7 @@ class HeaderPanel(QFrame):
 
         # Left: Identity
         left_layout = QVBoxLayout()
-        title = QLabel("ASTRA-EA GROUND OBSERVABILITY CONSOLE")
+        title = QLabel("ORBITA GROUND OBSERVABILITY CONSOLE")
         title.setStyleSheet("font-size: 15px; font-weight: bold; color: #38bdf8; letter-spacing: 1px;")
         subtitle = QLabel("REMOTE EXPERIMENT OBSERVATION & SITUATIONAL AWARENESS (READ-ONLY)")
         subtitle.setStyleSheet("font-size: 10px; color: #94a3b8;")

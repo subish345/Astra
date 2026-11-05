@@ -1,4 +1,4 @@
-"""Automated Test Suite for ASTRA-EA Environmental & Hardware Qualification Program (Phase 17).
+"""Automated Test Suite for Pramman Environmental & Hardware Qualification Program (Phase 17).
 
 Validates:
 - Qualification Baseline data models & Pydantic schemas (D17.15, D17.16)
@@ -182,7 +182,7 @@ class TestEnvironmentalQualification:
 
         # Verify ASCII report rendering
         ascii_rep = auditor.render_ascii_report()
-        assert "ASTRA-EA DEPENDENCY AUDIT" in ascii_rep
+        assert "DEPENDENCY AUDIT" in ascii_rep
         assert "CRITICAL SUPPLY-CHAIN ARTIFACT PROVENANCE" in ascii_rep
 
     def test_environmental_test_matrix_catalog(self, engine):
@@ -236,7 +236,7 @@ class TestEnvironmentalQualification:
             p = rep_dir / eh
             assert p.exists(), f"Report {eh} must exist"
             content = p.read_text(encoding="utf-8")
-            assert "ASTRA-EA" in content or "Environmental" in content
+            assert "Pramman" in content or "Environmental" in content
 
         # Check readiness.json
         rj_path = rep_dir / "readiness.json"

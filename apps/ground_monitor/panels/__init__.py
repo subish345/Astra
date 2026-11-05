@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor UI Panels
+# Pramman Ground Monitor UI Panels
 # ==============================================================================
 """UI panels comprising the modular Ground Monitor presentation layout."""
 

@@ -1,0 +1,29 @@
+============================================================
+ASTRA-EA ML ENVIRONMENT DIAGNOSTIC
+============================================================
+Python:
+  3.14.7 (/usr/bin/python3)
+
+PyTorch:
+  AVAILABLE (v2.14.0+cpu)
+
+CUDA:
+  UNAVAILABLE (in active PyTorch runtime)
+
+GPU:
+  No GPU detected
+
+CUDA Visible Devices:
+  Not explicitly set (defaults to all)
+
+GPU Tensor Test:
+  PASS (CPU)
+
+------------------------------------------------------------
+ML ENVIRONMENT STATUS:
+  CPU_FALLBACK
+Diagnostics:
+  PyTorch is installed with CPU support only. CUDA runtime is not detected in the current PyTorch build.
+============================================================
+
+[NOTE] CPU fallback training is functional but GPU acceleration is recommended.

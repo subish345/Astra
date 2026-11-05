@@ -1,4 +1,4 @@
-# ASTRA-EA — Flight Command Flow Architecture
+# Pramman — Flight Command Flow Architecture
 
 ### Document ID: `ASTRA-CMD-FLOW-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Telemetry Event Stream Server
+# Pramman Ground Telemetry Event Stream Server
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Lightweight HTTP Server-Sent Events (SSE) server for remote ground observability."""

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Audio UX Interface
+# Pramman Audio UX Interface
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Interface specifications and priority definitions for the Audio UX subsystem."""

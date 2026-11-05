@@ -1,4 +1,4 @@
-# ASTRA-EA: Radiation Hardening & Effects Qualification Test Plan
+# Pramman: Radiation Hardening & Effects Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-RAD-001`  
 **Test Identifier:** `QUAL-RAD-001` (TID) / `QUAL-RAD-002` (SEE/SEL)  
@@ -11,7 +11,7 @@
 
 ## 1. Objective
 
-This qualification test plan outlines the radiation evaluation strategy for the ASTRA-EA compute platform, CMOS optical imager, and flash storage under high-energy ionizing and particle radiation.
+This qualification test plan outlines the radiation evaluation strategy for the Pramman compute platform, CMOS optical imager, and flash storage under high-energy ionizing and particle radiation.
 
 Specific goals:
 1. **Total Ionizing Dose (TID):** Expose powered and unpowered compute modules to Cobalt-60 gamma radiation up to $50\text{ krad(Si)}$ to verify threshold voltage stability, standby leakage current, and non-volatile memory retention.
@@ -38,7 +38,7 @@ Specific goals:
 
 ## 3. Radiation Software Defense Mechanisms
 
-While physical shielding (aluminum equivalent $\ge 2.5\text{ mm}$) and rad-tolerant components provide primary defense, ASTRA-EA implements multi-layered software-level resilience:
+While physical shielding (aluminum equivalent $\ge 2.5\text{ mm}$) and rad-tolerant components provide primary defense, Pramman implements multi-layered software-level resilience:
 
 ```text
 RADIATION DEFENSE LAYER:

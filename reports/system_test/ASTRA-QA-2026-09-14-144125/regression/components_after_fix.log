@@ -1,0 +1,51 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 90 items
+
+tests/regression/test_camera_tuple_unpacking.py ..                       [  2%]
+tests/regression/test_clock_stability.py .                               [  3%]
+tests/regression/test_ground_reconnect_dedup.py .                        [  4%]
+tests/regression/test_mission_console_ui_worker.py ...                   [  7%]
+tests/regression/test_qa6_runtime_safety.py ...........F......           [ 27%]
+tests/regression/test_recovery_verification_latency.py .                 [ 28%]
+tests/regression/test_storage_pruning_policy.py .                        [ 30%]
+tests/regression/test_system_validation_fixes.py ...                     [ 33%]
+tests/regression/test_ui_alert_contrast.py .                             [ 34%]
+tests/unit/test_procedure_semantics.py ............                      [ 47%]
+tests/unit/test_procedure_progress.py .....                              [ 53%]
+tests/unit/test_step_evaluator.py ....                                   [ 57%]
+tests/unit/test_evidence_engine.py .....                                 [ 63%]
+tests/unit/test_assurance_engine.py .....                                [ 68%]
+tests/unit/test_recovery.py ..                                           [ 71%]
+tests/gui/test_console_components.py ........                            [ 80%]
+tests/gui/test_mission_integration.py ......                             [ 86%]
+tests/gui/test_mission_ui_state.py .....                                 [ 92%]
+tests/integration/test_foundation_integration.py .                       [ 93%]
+tests/integration/test_mission_orchestrator.py ...                       [ 96%]
+tests/integration/test_perception_pipeline.py .                          [ 97%]
+tests/integration/test_phase3_pipeline.py .                              [ 98%]
+tests/integration/test_procedure_pipeline.py .                           [100%]
+
+=================================== FAILURES ===================================
+_______________ test_other_object_contact_cannot_satisfy_target ________________
+
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling & Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_other_object_contact_cannot_satisfy_target(procedure):
+        from core.evidence.engine import MultimodalEvidenceEngine
+        from core.interaction.types import InteractionEvent, InteractionState
+        from core.perception.types import HandType, PerceptionState
+        activity = ActivityObservation('GRASP', 'actor', 'RED_BOX', .95, TemporalWindow(0., 3.))
+>       interaction = InteractionEvent(target_object_id='YELLOW_BOX', target_track_id=2, hand_type=HandType.RIGHT,
+            state=InteractionState.CONTACT, confidence=.95, timestamp=3.)
+E       TypeError: InteractionEvent.__init__() missing 1 required positional argument: 'distance'
+
+tests/regression/test_qa6_runtime_safety.py:126: TypeError
+- generated xml file: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/regression/components_after_fix.xml -
+=========================== short test summary info ============================
+FAILED tests/regression/test_qa6_runtime_safety.py::test_other_object_contact_cannot_satisfy_target
+========================= 1 failed, 89 passed in 3.83s =========================

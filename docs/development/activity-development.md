@@ -1,7 +1,7 @@
 # Activity Subsystem Development & Extension Guide
 
 ## 1. Subsystem Philosophy
-ASTRA-EA physical activity recognition is strictly decoupled from experiment procedure logic:
+Pramman physical activity recognition is strictly decoupled from experiment procedure logic:
 - **Phase 3 (This Subsystem):** Understands physical actions (e.g. "Astronaut picked up RED_BOX").
 - **Phase 4 (Procedure Assurance):** Decides whether that action was expected at the current experiment step.
 

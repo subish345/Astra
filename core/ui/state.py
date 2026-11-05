@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Console UI State Store
+# Pramman Mission Console UI State Store
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Typed UI data store translating backend mission events into presentation state.

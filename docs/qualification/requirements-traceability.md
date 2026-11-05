@@ -1,4 +1,4 @@
-# ASTRA-EA: Requirements Traceability Matrix (RTM)
+# Pramman: Requirements Traceability Matrix (RTM)
 
 **Classification:** Verification & Quality Assurance Traceability Record  
 **Standard:** ECSS-E-ST-10-02C / NASA Systems Engineering Handbook  
@@ -8,7 +8,7 @@
 
 ## 1. End-to-End Vertical Traceability Architecture
 
-Every requirement in ASTRA-EA traces through five engineering layers:
+Every requirement in Pramman traces through five engineering layers:
 $$\text{System Requirement} \longrightarrow \text{Design Component} \longrightarrow \text{Implementation File} \longrightarrow \text{Verification Test} \longrightarrow \text{Empirical Evidence}$$
 
 ---

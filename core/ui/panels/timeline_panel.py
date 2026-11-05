@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Timeline Panel
+# Pramman Mission Timeline Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Panel presenting chronological mission events with multi-category filtering."""

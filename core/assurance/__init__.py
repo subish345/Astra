@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Assurance Package
+# Pramman Assurance Package
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Assurance evaluation package for procedural verification and deviation classification."""

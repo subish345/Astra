@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor Application
+# Pramman Ground Monitor Application
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Ground Monitor application package for remote observation and situational awareness."""

@@ -1,4 +1,4 @@
-# ASTRA-EA: Comprehensive Operator Manual
+# Pramman: Comprehensive Operator Manual
 
 **Classification:** Standard Operating Procedure (SOP)  
 **System:** Autonomous Spacecraft Experiment Assurance & Assistance  
@@ -16,14 +16,14 @@
    ```
 3. Run the automated pre-flight audit:
    ```bash
-   astra competition-check
+   pramman competition-check
    ```
 4. If any item reports `FAIL`, consult Section 13 (Troubleshooting).
 
 ### 1.2 Starting the Demonstration Runtime
 Execute the unified demo launcher:
 ```bash
-astra demo
+pramman demo
 ```
 Options:
 - `--headless`: Executes in terminal mode without launching GUI web workers (ideal for low-power or remote testing).
@@ -73,11 +73,11 @@ If an experiment must be restarted due to operator missteps:
 - **Lighting:** Maintain uniform diffused lighting. Avoid direct spotlighting that causes glare on transparent glassware.
 
 ### 4.2 Switching Viewpoint Profiles
-ASTRA-EA supports calibrated viewpoint transformations:
+Pramman supports calibrated viewpoint transformations:
 - **Lateral Left (`VIEW_LEFT`):** Default demonstration profile.
 - **Lateral Right (`VIEW_RIGHT`):** Configured via:
   ```bash
-  astra demo --config configs/deployment/view_right.yaml
+  pramman demo --config configs/deployment/view_right.yaml
   ```
 The spatial interaction engine preserves contact topology across both perspectives.
 
@@ -92,7 +92,7 @@ The spatial interaction engine preserves contact topology across both perspectiv
 ### 5.2 Engaging Fallback
 If the neural model encounters hardware memory limits:
 ```bash
-astra demo --fallback-baseline
+pramman demo --fallback-baseline
 ```
 The system will log `PERCEPTION: RUNNING IN BASELINE FALLBACK` and continue procedure verification.
 
@@ -100,7 +100,7 @@ The system will log `PERCEPTION: RUNNING IN BASELINE FALLBACK` and continue proc
 
 ## 6. Offline Air-Gap Operation
 
-ASTRA-EA is 100% offline-native:
+Pramman is 100% offline-native:
 1. Disconnect Ethernet cables and disable WiFi interfaces.
 2. Launch `astra demo`.
 3. The Mission Console operates via `http://localhost:8000`.

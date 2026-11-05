@@ -1,4 +1,4 @@
-"""Procedure Matcher (D4.01) for ASTRA-EA.
+"""Procedure Matcher (D4.01) for Pramman.
 
 Maps observed human activities and interaction events to candidate experiment steps
 defined in the configured ExperimentDefinition schema.

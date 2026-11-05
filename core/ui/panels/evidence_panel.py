@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Multimodal Evidence Panel
+# Pramman Multimodal Evidence Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Panel presenting physical, spatial, and temporal evidence corroborating decisions."""

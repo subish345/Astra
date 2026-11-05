@@ -1,4 +1,4 @@
-"""Operational Metrics and KPI Engine for ASTRA-EA (Phase 19, Section 58, 59, D19.21).
+"""Operational Metrics and KPI Engine for Pramman (Phase 19, Section 58, 59, D19.21).
 
 Tracks mission timing benchmarks (startup, preparation, experiment, deviation response, recovery,
 reconnect, report generation) and computes operational KPIs for post-mission engineering review.

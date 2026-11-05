@@ -1,4 +1,4 @@
-"""Safety-Style Invariant Property Tests for ASTRA-EA (Phase 16).
+"""Safety-Style Invariant Property Tests for Pramman (Phase 16).
 
 Tests formal aerospace invariant properties:
 - Invariant 1: No evidence / ambiguous evidence -> No step verification (ASTRA-SAF-001)

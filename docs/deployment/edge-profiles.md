@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-ASTRA-EA features a multi-tiered, configuration-driven deployment architecture. Configurations are located in `configs/deployment/` and govern perception resolution, inference cadences, streaming bitrates, and hardware resource limits.
+Pramman features a multi-tiered, configuration-driven deployment architecture. Configurations are located in `configs/deployment/` and govern perception resolution, inference cadences, streaming bitrates, and hardware resource limits.
 
 ---
 
@@ -54,7 +54,7 @@ Verified on host platform (`Intel Core i7-14700HX`, Linux 7.1.12 x86_64):
 
 ## 4. Resource Allocation & Telemetry
 
-When launching ASTRA-EA in production or benchmark mode, the active configuration is applied via `DeploymentProfileManager`:
+When launching Pramman in production or benchmark mode, the active configuration is applied via `DeploymentProfileManager`:
 
 ```python
 from core.optimization.profiles import DeploymentProfileManager

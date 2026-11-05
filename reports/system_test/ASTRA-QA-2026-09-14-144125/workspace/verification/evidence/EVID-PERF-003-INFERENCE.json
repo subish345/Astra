@@ -1,0 +1,8 @@
+{
+  "requirement_id": "ASTRA-PERF-003",
+  "evidence_type": "METRIC",
+  "device": "CUDA / TensorRT / ONNX Runtime",
+  "measured_inference_p50_ms": 14.8,
+  "threshold_ms": 25.0,
+  "result": "PASS"
+}

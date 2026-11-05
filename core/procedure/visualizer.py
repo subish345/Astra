@@ -1,4 +1,4 @@
-"""Procedure Debug Visualizer (D4.08) for ASTRA-EA.
+"""Procedure Debug Visualizer (D4.08) for Pramman.
 
 Renders high-visibility procedural step progression, active evidence checklists,
 and candidate evaluation telemetry onto both terminal consoles and OpenCV video frames.

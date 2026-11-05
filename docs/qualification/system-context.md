@@ -1,19 +1,19 @@
-# ASTRA-EA: Spacecraft Integration Architecture & System Context
+# Pramman: Spacecraft Integration Architecture & System Context
 
 **Document Classification:** Aerospace Payload Architecture & Interface Specification  
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Milestone:** Phase 15 — Qualification Readiness
 
 ---
 
 ## 1. Executive Summary & Integration Principle
 
-ASTRA-EA is architected as an autonomous edge payload subsystem for scientific laboratory experiment monitoring aboard the **Bharatiya Antariksh Station (BAS)** or modular exploration spacecraft.
+Pramman is architected as an autonomous edge payload subsystem for scientific laboratory experiment monitoring aboard the **Bharatiya Antariksh Station (BAS)** or modular exploration spacecraft.
 
 To ensure qualification readiness without binding the software to proprietary spacecraft hardware before official vehicle specifications are finalized, the architecture enforces a strict architectural boundary:
 
 ```
-[ ASTRA-EA INTERNAL APPLICATION CORE ]  <==== EXPLICIT LOGICAL BOUNDARY ====>  [ HOST SPACECRAFT BUS SERVICES ]
+[ Pramman INTERNAL APPLICATION CORE ]  <==== EXPLICIT LOGICAL BOUNDARY ====>  [ HOST SPACECRAFT BUS SERVICES ]
   - Neural Optical Perception (Detector + Pose)                                 - Primary Unregulated / Regulated Power Bus
   - Spatial Interaction & Contact Estimator                                      - Structural Conduction / Thermal Management
   - Temporal Activity Accumulator                                                - Spacecraft Master Clock / SCET Time Source
@@ -38,7 +38,7 @@ graph TD
         OpticalHead["Space-Qualified Camera Optical Head"]
     end
 
-    subgraph PayloadEnclosure ["ASTRA-EA Edge Payload Subsystem"]
+    subgraph PayloadEnclosure ["Pramman Edge Payload Subsystem"]
         PSU["Power Conditioning & Telemetry Monitor"]
         ClockSync["Dual-Clock Time Synchronization Module"]
         ThermalSensors["Internal Temperature Probes"]
@@ -91,5 +91,5 @@ graph TD
 
 ## 4. Operational Invariant: Air-Gap Autonomy
 
-The fundamental spacecraft integration rule for ASTRA-EA:
+The fundamental spacecraft integration rule for Pramman:
 > **The onboard procedural assurance engine, neural detector, temporal activity parser, and local audit storage SHALL NOT require external network connectivity, ground communication passes, or cloud infrastructure to execute, verify, or recover an experiment.**

@@ -1,4 +1,4 @@
-"""ASTRA-EA Optimization, Benchmarking, and Deployment Framework."""
+"""Pramman Optimization, Benchmarking, and Deployment Framework."""
 
 from core.optimization.backend import (
     ComputeBackend,

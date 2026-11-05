@@ -1,4 +1,4 @@
-"""Model Registry and Lifecycle Management for ASTRA-EA.
+"""Model Registry and Lifecycle Management for Pramman.
 
 Maintains model provenance, versioning, performance metrics, and lifecycle states:
 TRAINING -> CANDIDATE -> VALIDATED -> DEPLOYMENT_CANDIDATE -> RETIRED.

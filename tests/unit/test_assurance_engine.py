@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Tri-State Assurance Engine Unit Tests
+# Pramman Tri-State Assurance Engine Unit Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Unit tests for TriStateAssuranceEngine validating deterministic decision logic."""

@@ -1,4 +1,4 @@
-"""ASTRA-EA Platform Abstraction Layer (Phase 18).
+"""Pramman Platform Abstraction Layer (Phase 18).
 
 Provides target hardware decoupling, platform capability detection,
 camera and mission clock drivers, storage priority management, and central watchdog.

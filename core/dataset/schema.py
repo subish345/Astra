@@ -1,4 +1,4 @@
-"""Dataset Schema Definitions for ASTRA-EA.
+"""Dataset Schema Definitions for Pramman.
 
 Defines typed schemas for object detection, activity, procedure annotations,
 session metadata, and dataset manifests.

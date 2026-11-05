@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Model Evaluation Report — ASTRA_OBJECT_DETECTOR_v0.1.0</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }
+        h1, h2 { margin-top: 0; }
+        .metric-badge { display: inline-block; padding: 8px 16px; border-radius: 6px; background: #0f172a; border: 1px solid #334155; margin-right: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #94a3b8; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>ASTRA-EA Model Evaluation Report</h1>
+        <p><strong>Model:</strong> ASTRA_OBJECT_DETECTOR_v0.1.0 | <strong>Dataset:</strong> ASTRA-DATASET-v0.2 (Test Split: 8 samples)</p>
+        <div>
+            <div class="metric-badge">mAP@50: <strong>0.647</strong></div>
+            <div class="metric-badge">Precision: <strong>0.644</strong></div>
+            <div class="metric-badge">Recall: <strong>0.650</strong></div>
+            <div class="metric-badge">F1 Score: <strong>0.647</strong></div>
+            <div class="metric-badge">Latency: <strong>18.4 ms (54.3 FPS)</strong></div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h2>Per-Class Evaluation Metrics</h2>
+            <table>
+                <tr><th>Class</th><th>Precision</th><th>Recall</th><th>F1</th><th>GT Count</th></tr>
+                <tr>
+                <td>ASTRONAUT</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>8</td>
+            </tr><tr>
+                <td>MAIN_BOX</td>
+                <td>0.222</td>
+                <td>0.250</td>
+                <td>0.235</td>
+                <td>8</td>
+            </tr><tr>
+                <td>RED_BOX</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>8</td>
+            </tr><tr>
+                <td>YELLOW_BOX</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>8</td>
+            </tr><tr>
+                <td>WORK_SURFACE</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>1.000</td>
+                <td>8</td>
+            </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Wrong-Object Confusion Matrix</h2>
+            
+        <table>
+            <tr><th>Ground Truth / Predicted</th><th>RED_BOX</th><th>YELLOW_BOX</th><th>OTHER</th></tr>
+            <tr><td>RED_BOX</td><td>8</td><td>0</td><td>0</td></tr>
+            <tr><td>YELLOW_BOX</td><td>0</td><td>8</td><td>0</td></tr>
+        </table>
+        
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# ASTRA-EA: Thermal Qualification Test Plan
+# Pramman: Thermal Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-THM-001`  
 **Test Identifier:** `QUAL-THM-001`  
@@ -10,7 +10,7 @@
 
 ## 1. Objective
 
-The thermal qualification program verifies that ASTRA-EA compute hardware, optical sensors, storage media, and software algorithms execute reliably across ambient temperature extremes without thermal throttling, unrecoverable crashes, or measurement distortion.
+The thermal qualification program verifies that Pramman compute hardware, optical sensors, storage media, and software algorithms execute reliably across ambient temperature extremes without thermal throttling, unrecoverable crashes, or measurement distortion.
 
 Specific goals:
 1. Verify system cold-boot and camera initialization at minimum operating temperature ($-10^\circ\text{C}$).
@@ -30,7 +30,7 @@ Specific goals:
 - **Chamber Atmosphere:** Standard atmospheric pressure (dry nitrogen purge recommended below $+5^\circ\text{C}$ to prevent moisture condensation).
 
 ### 2.2 Device Under Test (DUT)
-- ASTRA-EA compute module in flight-representative aluminum enclosure.
+- Pramman compute module in flight-representative aluminum enclosure.
 - Overhead optical camera mounted on calibrated fixture inside chamber.
 - Isolated DC power harness and external monitoring cabling routed via chamber feedthrough.
 

@@ -1,4 +1,4 @@
-# ASTRA-EA: Operator Quick Reference Card
+# Pramman: Operator Quick Reference Card
 
 **Printable 1-Page Field Card for Demonstration Operators**
 
@@ -38,4 +38,4 @@
 
 ## Authoritative System Claim Boundary (Memorize)
 
-> *"ASTRA-EA is an engineering-grade ground demonstrator (TRL 4) validating offline, edge-native experiment assurance. It is not flight-qualified or zero-gravity certified."*
+> *"Pramman is an engineering-grade ground demonstrator (TRL 4) validating offline, edge-native experiment assurance. It is not flight-qualified or zero-gravity certified."*

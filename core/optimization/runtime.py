@@ -1,4 +1,4 @@
-"""Inference Runtime Abstraction for ASTRA-EA Model Execution.
+"""Inference Runtime Abstraction for Pramman Model Execution.
 
 Supports multiple runtime engines:
 1. OpenCVDNNRuntime: Zero-dependency portable ONNX runner via OpenCV DNN.

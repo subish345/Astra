@@ -1,0 +1,12 @@
+======================================================================
+ ASTRA-EA OPERATIONAL REHEARSAL SCORECARD
+======================================================================
+Rehearsals Evaluated: 60
+Successful Runs:       60
+Failed Runs:           0
+Step Verification:     100.0%
+Recovery Success:      100.0%
+Data Consistency:      100.0%
+Overall Verdict:       [PASS]
+Scorecard HTML:        reports/rehearsal/scorecard.html
+======================================================================

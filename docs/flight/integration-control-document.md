@@ -1,4 +1,4 @@
-# ASTRA-EA — Interface Control Document (ICD)
+# Pramman — Interface Control Document (ICD)
 
 ### Document ID: `ASTRA-ICD-FLIGHT-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  
@@ -10,7 +10,7 @@
 
 ## 1. Scope & System Overview
 
-This document specifies the mechanical, electrical, data, timing, command, and telemetry interface contracts between the **ASTRA-EA Payload Flight Software** and the **Host Spacecraft / Vehicle Bus**.
+This document specifies the mechanical, electrical, data, timing, command, and telemetry interface contracts between the **Pramman Payload Flight Software** and the **Host Spacecraft / Vehicle Bus**.
 
 In accordance with Phase 18 Absolute Rules:
 > [!NOTE]
@@ -29,7 +29,7 @@ In accordance with Phase 18 Absolute Rules:
 │   Spacecraft Clock / PPS     ──► MissionClock Synchronizer  │
 │   Spacecraft Data Bus (TBD)  ──► Uplink / Downlink Channels │
 │                                                             │
-│               ASTRA-EA FLIGHT SOFTWARE                      │
+│               Pramman FLIGHT SOFTWARE                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 

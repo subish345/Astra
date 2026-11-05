@@ -1,4 +1,4 @@
-# ASTRA-EA: Timed Judge Demonstration Script (5–8 Minutes)
+# Pramman: Timed Judge Demonstration Script (5–8 Minutes)
 
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Target Duration:** 7 Minutes 30 Seconds  
@@ -19,13 +19,13 @@ Problem   Arch     Launch    Nominal  Deviation  Recovery  Offline  Traceable Gr
 
 ### [0:00 – 0:30] The Operational Problem
 - **Presenter:**  
-  *"Respected judges, during scientific missions on the Bharatiya Antariksh Station, astronauts perform critical bio-assay and materials experiments under severe cognitive load. An accidental tool swap or an omitted incubation step invalidates months of research. Because deep-space communication delays make real-time guidance from Earth impossible, astronauts need an autonomous, offline co-pilot that watches the experiment, understands what is happening, verifies protocol compliance, and helps them recover immediately if an error occurs. That is ASTRA-EA."*
+  *"Respected judges, during scientific missions on the Bharatiya Antariksh Station, astronauts perform critical bio-assay and materials experiments under severe cognitive load. An accidental tool swap or an omitted incubation step invalidates months of research. Because deep-space communication delays make real-time guidance from Earth impossible, astronauts need an autonomous, offline co-pilot that watches the experiment, understands what is happening, verifies protocol compliance, and helps them recover immediately if an error occurs. That is Pramman."*
 
 ---
 
 ### [0:30 – 1:00] The Core Architecture
 - **Presenter:**  
-  *"ASTRA-EA does not treat procedure monitoring as a black-box video classification problem. We decouple probabilistic computer vision from deterministic state assurance:*
+  *"Pramman does not treat procedure monitoring as a black-box video classification problem. We decouple probabilistic computer vision from deterministic state assurance:*
   $$\text{Camera} \longrightarrow \text{Perception} \longrightarrow \text{Interaction} \longrightarrow \text{Activity} \longrightarrow \text{Evidence} \longrightarrow \text{Procedure Engine} \longrightarrow \text{Assurance}$$
   *The AI observes physical contact; the procedure engine knows what should happen; the assurance engine formally verifies whether it did."*
 
@@ -34,13 +34,13 @@ Problem   Arch     Launch    Nominal  Deviation  Recovery  Offline  Traceable Gr
 ### [1:00 – 1:30] System Startup & Pre-Flight Check
 - **Operator Action:** Execute in terminal:
   ```bash
-  astra final-check
+  pramman final-check
   ```
 - **Presenter:**  
   *"Notice our automated pre-flight audit: 13 subsystems—from camera ingestion to SQLite WAL storage and edge neural weights—verified in under 2 seconds. The system confirms `READY FOR DEMONSTRATION`."*
 - **Operator Action:** Launch demo:
   ```bash
-  astra demo
+  pramman demo
   ```
   Open browser to `http://localhost:8000`.
 
@@ -71,13 +71,13 @@ Problem   Arch     Launch    Nominal  Deviation  Recovery  Offline  Traceable Gr
     *« Alert. Incorrect object selected. Please replace the centrifuge tube and select the micropipette. »*
   - Console flashes amber warning banner.
 - **Presenter:**  
-  *"ASTRA-EA immediately intercepts the error before the experiment is compromised, explains the exact mistake, and gives explicit recovery instructions."*
+  *"Pramman immediately intercepts the error before the experiment is compromised, explains the exact mistake, and gives explicit recovery instructions."*
 
 ---
 
 ### [4:00 – 5:00] Active Recovery Verification
 - **Presenter:**  
-  *"A critical differentiator: ASTRA-EA doesn't just alert; it arms a recovery state and watches to ensure the mistake is actually rectified."*
+  *"A critical differentiator: Pramman doesn't just alert; it arms a recovery state and watches to ensure the mistake is actually rectified."*
 - **Operator Action:** Replace the centrifuge tube and pick up the `pipette`.
 - **System Behavior:**
   - Contact with `pipette` confirmed.
@@ -119,4 +119,4 @@ Problem   Arch     Launch    Nominal  Deviation  Recovery  Offline  Traceable Gr
   **The assurance engine decides whether it did.**  
   **The assistant helps recover.**  
   **The evidence record explains why.**  
-  ASTRA-EA provides the engineering foundation for autonomous experiment assurance aboard the Bharatiya Antariksh Station. We welcome your questions."*
+  Pramman provides the engineering foundation for autonomous experiment assurance aboard the Bharatiya Antariksh Station. We welcome your questions."*

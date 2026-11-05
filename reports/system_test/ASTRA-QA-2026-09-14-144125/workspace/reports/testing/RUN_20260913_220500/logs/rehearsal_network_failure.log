@@ -1,0 +1,23 @@
+======================================================================
+ ASTRA-EA MISSION REHEARSAL FRAMEWORK (Phase 20)
+======================================================================
+Scenario:     REH_04_NETWORK_FAILURE
+Mode:         SIMULATION
+Pacing:       ACCELERATED
+Operator:     ASTRONAUT_OPERATOR_1
+Sandbox:      ISOLATED (Zero live flight records modified)
+----------------------------------------------------------------------
+  [PREPARATION ] Step 1: Pre-mission checks passed
+  [READY       ] Step 2: Experiment started
+  [EXPERIMENT  ] Step 3: Step 1: Verified normally
+  [ANOMALY     ] Step 4: Ground telemetry network link severed (LOS)
+  [EXPERIMENT  ] Step 5: Step 2: Autonomous execution onboard proceeds without ground
+  [EXPERIMENT  ] Step 6: Step 3: Autonomous execution onboard proceeds without ground
+  [RECOVERY    ] Step 7: Ground link restored (AOS); sequence gap reconciliation initiated
+  [EXPERIMENT  ] Step 8: Step 4: Execution continues with synchronized telemetry
+  [COMPLETION  ] Step 9: Experiment completed; ground state reconciled cleanly
+======================================================================
+Rehearsal Verdict:  [PASS] (Duration: 0.039s)
+Data Consistency:   [CONSISTENT]
+Artifacts Pack:     /home/subish-loq/Documents/astra/reports/rehearsal/REH_REH_04_NETWORK_FAILURE_20260913_163749
+======================================================================

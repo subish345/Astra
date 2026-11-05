@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-09-13T12:02:35Z",
+  "iterations": 30,
+  "baseline_ai_only": {
+    "fps": 60.7,
+    "total_duration_sec": 0.494,
+    "crashes": 0
+  },
+  "ai_plus_streaming": {
+    "fps": 59.3,
+    "total_duration_sec": 0.506,
+    "crashes": 0
+  },
+  "impact_summary": {
+    "throughput_overhead_pct": 2.3,
+    "non_blocking_verified": true,
+    "meets_spacecraft_budget": true
+  },
+  "quality_modes": {
+    "low": {
+      "resolution": "640x360",
+      "target_fps": 15,
+      "jpeg_quality": 65,
+      "avg_encode_ms": 0.65,
+      "p95_encode_ms": 0.72,
+      "avg_frame_kb": 72.2
+    },
+    "medium": {
+      "resolution": "1280x720",
+      "target_fps": 15,
+      "jpeg_quality": 75,
+      "avg_encode_ms": 3.02,
+      "p95_encode_ms": 3.07,
+      "avg_frame_kb": 540.6
+    },
+    "high": {
+      "resolution": "1920x1080",
+      "target_fps": 20,
+      "jpeg_quality": 85,
+      "avg_encode_ms": 7.2,
+      "p95_encode_ms": 7.94,
+      "avg_frame_kb": 1222.5
+    }
+  }
+}

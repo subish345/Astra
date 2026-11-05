@@ -1,4 +1,4 @@
-"""Adaptive Perception Scheduler and Bounded Latest-Frame Queue for ASTRA-EA.
+"""Adaptive Perception Scheduler and Bounded Latest-Frame Queue for Pramman.
 
 Implements configurable decoupled inference cadences:
 - High-rate tracking (every frame, 1:1)

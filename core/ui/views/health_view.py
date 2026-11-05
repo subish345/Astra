@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Dedicated System Health & Diagnostics View
+# Pramman Dedicated System Health & Diagnostics View
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Full-screen system health and diagnostic telemetry view."""

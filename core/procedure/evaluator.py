@@ -1,4 +1,4 @@
-"""Step Evaluator (D4.03) for ASTRA-EA.
+"""Step Evaluator (D4.03) for Pramman.
 
 Evaluates StepCandidate hypotheses against multimodal EvidenceBundles and
 configured ExperimentStep criteria to determine VERIFIED, UNCERTAIN, or NOT_MATCHED status.
@@ -102,17 +102,9 @@ class StepEvaluator:
             )
 
         # 6. Determine StepMatchStatus (VERIFIED, UNCERTAIN, NOT_MATCHED)
-        # Fast-placement demo rule: entering the virtual work surface is the
-        # completion trigger, even with a small or moving box.
-        fast_virtual_place = (
-            step.id == "STEP_03"
-            and getattr(step, "allow_unstable_placement", False)
-            and bundle.check_requirement("DESTINATION_MATCH")
-        )
-        if fast_virtual_place:
-            status = StepMatchStatus.VERIFIED
-            reasons.append("Virtual work-surface placement accepted (fast demo rule)")
-        elif req_satisfied and conf_satisfied and duration_satisfied and action_seq_satisfied:
+        # Destination proximity alone must never bypass the other gates.
+        # Optional stillness waivers are resolved by the evidence engine only.
+        if req_satisfied and conf_satisfied and duration_satisfied and action_seq_satisfied:
             status = StepMatchStatus.VERIFIED
             reasons.append("All required evidence, confidence threshold, and temporal constraints satisfied")
         elif (

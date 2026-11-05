@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Streaming Protocol Interfaces
+# Pramman Streaming Protocol Interfaces
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Abstract protocol interfaces for video and event streaming servers and clients."""

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# ASTRA-EA — Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
+# ORBITA — Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # Production & Demonstration Installation Script
 # ==============================================================================
 
 set -e
 
 echo "================================================================================"
-echo " ASTRA-EA SYSTEM INSTALLATION & ENVIRONMENT INITIALIZATION"
+echo " ORBITA SYSTEM INSTALLATION & ENVIRONMENT INITIALIZATION"
 echo "================================================================================"
 
 # 1. Check Python version >= 3.11
@@ -31,7 +31,7 @@ if [ "$PY_MAJOR" -lt "$REQUIRED_MAJOR" ] || ([ "$PY_MAJOR" -eq "$REQUIRED_MAJOR"
 fi
 
 # 2. Install editable package
-echo "[+] Installing ASTRA-EA package in active environment..."
+echo "[+] Installing ORBITA package in active environment..."
 $PYTHON_CMD -m pip install -e .
 
 # 3. Create standardized product directories
@@ -50,14 +50,18 @@ $PYTHON_CMD main.py db init
 
 # 6. Run deployment readiness diagnostic
 echo "[+] Running system readiness verification..."
-if command -v astra &> /dev/null; then
+if command -v orbita &> /dev/null; then
+    orbita doctor
+elif command -v pramman &> /dev/null; then
+    pramman doctor
+elif command -v astra &> /dev/null; then
     astra doctor
 else
     $PYTHON_CMD main.py doctor
 fi
 
 echo "================================================================================"
-echo " ASTRA-EA INSTALLATION COMPLETE"
+echo " ORBITA INSTALLATION COMPLETE"
 echo " Canonical Commands:"
 echo "   astra doctor             # Run system diagnostics"
 echo "   astra demo               # Launch one-command interactive demo"

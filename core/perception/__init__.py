@@ -1,4 +1,4 @@
-"""ASTRA-EA Perception Subsystem.
+"""Pramman Perception Subsystem.
 
 Provides modular computer vision, pose estimation, hand tracking, and multi-object
 tracking for onboard scientific experiment assurance.

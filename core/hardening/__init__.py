@@ -1,4 +1,4 @@
-"""ASTRA-EA Findings-Driven Hardening Subsystem (Phase 21)."""
+"""Pramman Findings-Driven Hardening Subsystem (Phase 21)."""
 
 from core.hardening.manager import HardeningFinding, HardeningManager
 

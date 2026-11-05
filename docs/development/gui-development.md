@@ -1,4 +1,4 @@
-# ASTRA-EA — GUI Development Guide
+# Pramman — GUI Development Guide
 
 ## Extending and Customizing the Mission Console
 
@@ -11,10 +11,10 @@
 When adding features or widgets to the Mission Console:
 1. **Preserve Decoupling**: Do NOT add inference algorithms, OpenCV detectors, or procedure rules inside widget classes.
 2. **Follow the Event Bus Pattern**:
-   - Backend algorithms emit typed events via [`BackendEventBridge`](file:///home/subish-loq/Documents/astra/core/ui/bridge.py).
-   - [`MissionUIState`](file:///home/subish-loq/Documents/astra/core/ui/state.py) updates its presentation data structures.
+   - Backend algorithms emit typed events via [`BackendEventBridge`](file:///home/subish-loq/Documents/pramman_proj/core/ui/bridge.py).
+   - [`MissionUIState`](file:///home/subish-loq/Documents/pramman_proj/core/ui/state.py) updates its presentation data structures.
    - UI widgets observe state changes and update labels/tables.
-3. **Use Space-Operations Theme Tokens**: Reference [`core.ui.theme.Colors`](file:///home/subish-loq/Documents/astra/core/ui/theme.py) for all color assignments. Avoid hardcoding ad-hoc hex colors.
+3. **Use Space-Operations Theme Tokens**: Reference [`core.ui.theme.Colors`](file:///home/subish-loq/Documents/pramman_proj/core/ui/theme.py) for all color assignments. Avoid hardcoding ad-hoc hex colors.
 
 ---
 
@@ -37,6 +37,6 @@ python3 main.py mission --fullscreen
 
 To add a new screen (e.g. `TelemetryView`):
 1. Create `core/ui/views/telemetry_view.py` inheriting from `QWidget`.
-2. Add the view to `MissionConsoleWindow.stack` in [`core/ui/main_window.py`](file:///home/subish-loq/Documents/astra/core/ui/main_window.py).
+2. Add the view to `MissionConsoleWindow.stack` in [`core/ui/main_window.py`](file:///home/subish-loq/Documents/pramman_proj/core/ui/main_window.py).
 3. Add a navigation button to the sidebar navigation panel.
 4. Add unit test in `tests/gui/`.

@@ -1,0 +1,41 @@
+- id: ASTRA-REL-001
+  title: Auxiliary Subsystem Crash Isolation
+  description: The system shall isolate failures in non-critical subsystems (Audio, UI, Ground Streaming) from the critical assurance loop.
+  category: RELIABILITY
+  priority: HIGH
+  verification_method:
+    - ANALYSIS
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Software Architecture
+  evidence:
+    - verification/evidence/EVID-REL-001-CONTAINMENT.json
+
+- id: ASTRA-REL-002
+  title: Deep Neural Detector Heuristic Fallback
+  description: "The system shall implement an automated fallback policy: if the deep neural detector crashes, it shall engage the color heuristic baseline."
+  category: RELIABILITY
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: ML Engineering
+  evidence:
+    - reports/hil/hardware_matrix.html
+    - verification/evidence/EVID-REL-002-FALLBACK.json
+
+- id: ASTRA-REL-003
+  title: Formal Degraded Operational Modes
+  description: The system shall transition into formally defined degraded modes upon resource exhaustion or peripheral failure without unhandled exceptions.
+  category: RELIABILITY
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: SYSTEM
+  status: VERIFIED
+  owner: Software Architecture
+  evidence:
+    - docs/qualification/degraded-modes.md
+    - verification/evidence/EVID-REL-003-DEGRADED.json

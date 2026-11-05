@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Telemetry Connection Manager
+# Pramman Ground Telemetry Connection Manager
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Dual-channel connection orchestrator for Ground Monitor."""

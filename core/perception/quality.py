@@ -1,4 +1,4 @@
-"""Frame visual quality evaluation and diagnostic metrics for ASTRA-EA.
+"""Frame visual quality evaluation and diagnostic metrics for Pramman.
 
 Computes blur, illumination, contrast, and dimensions to expose evidence quality
 factors to downstream assurance and uncertainty handlers.

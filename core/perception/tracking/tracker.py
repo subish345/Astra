@@ -1,4 +1,4 @@
-"""Spatial-temporal multi-object tracker with occlusion handling for ASTRA-EA.
+"""Spatial-temporal multi-object tracker with occlusion handling for Pramman.
 
 Maintains persistent track IDs, computes centroid velocities, and implements
 an occlusion lifecycle (VISIBLE -> TEMPORARILY_LOST -> REACQUIRED -> LOST)

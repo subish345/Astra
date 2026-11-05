@@ -1,0 +1,66 @@
+- id: ASTRA-ENV-001
+  title: Illumination Dynamic Range Robustness
+  description: The system shall maintain nominal object detection across ambient illumination levels between 45 Lux and 850 Lux.
+  category: ENVIRONMENTAL
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: PHYSICAL
+  status: VERIFIED
+  owner: Optics & Sensor Team
+  evidence:
+    - reports/physical/physical_validation.json
+    - verification/evidence/EVID-ENV-001-LUX.json
+
+- id: ASTRA-ENV-002
+  title: Optical Multi-Angle Viewpoint Invariance
+  description: The system shall maintain procedural semantic consistency across camera mounting angles between 35 deg and 65 deg downward pitch.
+  category: ENVIRONMENTAL
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: PHYSICAL
+  status: VERIFIED
+  owner: Optics & Sensor Team
+  evidence:
+    - reports/physical/viewpoint_report.html
+    - verification/evidence/EVID-ENV-002-ANGLE.json
+
+- id: ASTRA-ENV-003
+  title: Launch Random Vibration Survival
+  description: The system hardware shall survive launch random vibration profiles (14.1 Grms) without optical lens or mounting misalignment.
+  category: ENVIRONMENTAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: ENVIRONMENTAL
+  status: DEFERRED
+  owner: Aerospace Structures Team
+  evidence:
+    - docs/qualification/environmental-test-plan.md
+
+- id: ASTRA-ENV-004
+  title: Conductive Thermal-Vacuum Operational Cycling
+  description: Compute hardware shall operate within conductive thermal limits under 10^-5 Torr vacuum across -20 deg C to +60 deg C.
+  category: ENVIRONMENTAL
+  priority: CRITICAL
+  verification_method:
+    - TEST
+  verification_level: ENVIRONMENTAL
+  status: DEFERRED
+  owner: Thermal Engineering Team
+  evidence:
+    - docs/qualification/environmental-test-plan.md
+
+- id: ASTRA-ENV-005
+  title: Total Ionizing Dose Radiation Tolerance
+  description: Compute memory and storage shall withstand Total Ionizing Dose (TID) radiation up to 50 krad without latch-up.
+  category: ENVIRONMENTAL
+  priority: HIGH
+  verification_method:
+    - TEST
+  verification_level: ENVIRONMENTAL
+  status: DEFERRED
+  owner: Radiation Hardening Team
+  evidence:
+    - docs/qualification/environmental-test-plan.md

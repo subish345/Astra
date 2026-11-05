@@ -1,4 +1,4 @@
-# ASTRA-EA — Operational Anomaly Response & Classification
+# Pramman — Operational Anomaly Response & Classification
 
 ## Phase 19: Mission Operations & Ground Segment Integration (D19.08)
 **Project:** Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
@@ -7,7 +7,7 @@
 
 ## 1. Generic Anomaly Response Workflow (Section 18)
 
-Every operational abnormality detected by ASTRA-EA follows an unambiguous 8-step containment workflow:
+Every operational abnormality detected by Pramman follows an unambiguous 8-step containment workflow:
 
 ```text
 1. ANOMALY DETECTED (Visual / Sensor / State Engine)

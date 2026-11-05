@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="10" skipped="0" tests="10" time="0.832" timestamp="2026-09-14T20:15:39.597809+05:30" hostname="fedora-loq"><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_qthread_stop_uses_supported_wait_signature" time="0.012"><failure message="AttributeError: PySide6.QtCore.QThread.wait(): unsupported keyword 'timeout'">app = &lt;PySide6.QtWidgets.QApplication(0x557057c1f930) at 0x7efeba0fed80&gt;
+
+    def test_qthread_stop_uses_supported_wait_signature(app):
+        worker = MissionPipelineWorker(BackendEventBridge())
+&gt;       assert worker.stop() is True
+               ^^^^^^^^^^^^^
+
+tests/regression/test_qa6_runtime_safety.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;core.ui.worker.MissionPipelineWorker(0x557057f7fed0) at 0x7efeba0fec80&gt;
+
+    def stop(self) -&gt; None:
+        """Request worker termination."""
+        self._stop_requested = True
+&gt;       self.wait(timeout=2000)
+E       AttributeError: PySide6.QtCore.QThread.wait(): unsupported keyword 'timeout'
+
+core/ui/worker.py:449: AttributeError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_next_action_keeps_authoritative_current_step" time="0.005"><failure message="ImportError: cannot import name 'MissionMainWindow' from 'core.ui.main_window' (/home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace/core/ui/main_window.py)">app = &lt;PySide6.QtWidgets.QApplication(0x557057c1f930) at 0x7efeba0fed80&gt;
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_next_action_keeps_authoritative_current_step(app, procedure):
+&gt;       from core.ui.main_window import MissionMainWindow
+E       ImportError: cannot import name 'MissionMainWindow' from 'core.ui.main_window' (/home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace/core/ui/main_window.py)
+
+tests/regression/test_qa6_runtime_safety.py:38: ImportError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_zero_visibility_never_becomes_confident_hand" time="0.012"><failure message="assert False&#10; +  where False = all(&lt;generator object test_zero_visibility_never_becomes_confident_hand.&lt;locals&gt;.&lt;genexpr&gt; at 0x7efeb9d402b0&gt;)">def test_zero_visibility_never_becomes_confident_hand():
+        estimator = MediaPipePoseEstimator.__new__(MediaPipePoseEstimator)
+        estimator._is_ready = True
+        estimator.smoother = None
+        landmarks = [SimpleNamespace(x=.5, y=.5, z=0., visibility=0.) for _ in range(33)]
+        estimator.detector = SimpleNamespace(detect=lambda image: SimpleNamespace(pose_landmarks=[landmarks]))
+        frame = FrameData(1, np.zeros((48, 64, 3), dtype=np.uint8), 1., datetime.now(timezone.utc), 'UNIT_FIXTURE')
+        poses = estimator.estimate(frame)
+        assert len(poses[0].keypoints) == 33
+&gt;       assert all(k.confidence == 0. for k in poses[0].keypoints)
+E       assert False
+E        +  where False = all(&lt;generator object test_zero_visibility_never_becomes_confident_hand.&lt;locals&gt;.&lt;genexpr&gt; at 0x7efeb9d402b0&gt;)
+
+tests/regression/test_qa6_runtime_safety.py:56: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_worker_failed_or_empty_camera_never_completes_run[False]" time="0.038"><failure message="assert True is False&#10; +  where True = &lt;core.ui.worker.MissionPipelineWorker(0x5570582fac30) at 0x7efeb9d3d300&gt;._is_running">app = &lt;PySide6.QtWidgets.QApplication(0x557057c1f930) at 0x7efeba0fed80&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7efeb9cdd6e0&gt;
+tmp_path = PosixPath('/home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/automated/tmp/pytest-of-subish-loq/pytest-2/test_worker_failed_or_empty_ca0')
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+opens = False
+
+    @pytest.mark.parametrize('opens', [False, True])
+    def test_worker_failed_or_empty_camera_never_completes_run(app, monkeypatch, tmp_path, procedure, opens):
+        import core.ui.worker as module
+        from core.mission.database import DatabaseManager
+        root = tmp_path
+        monkeypatch.setattr(module, 'get_project_root', lambda: root)
+        monkeypatch.setattr(module, 'load_procedure_file', lambda _: procedure)
+        cfg = AppConfig(); cfg.streaming.enabled = False; cfg.events.enabled = False
+        monkeypatch.setattr(module, 'load_config', lambda: cfg)
+        source = MagicMock(); source.start.return_value = opens; source.read.return_value = None; source.is_active = False
+        monkeypatch.setattr(module, 'WebcamSource', lambda **_: source)
+        worker = MissionPipelineWorker(BackendEventBridge(), session_id='QA_FAILURE')
+        worker.run()
+&gt;       assert worker._is_running is False
+E       assert True is False
+E        +  where True = &lt;core.ui.worker.MissionPipelineWorker(0x5570582fac30) at 0x7efeb9d3d300&gt;._is_running
+
+tests/regression/test_qa6_runtime_safety.py:74: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_worker_failed_or_empty_camera_never_completes_run[True]" time="0.062"><failure message="AssertionError: assert 'COMPLETED' == 'ABORTED'&#10;  &#10;  - ABORTED&#10;  + COMPLETED">app = &lt;PySide6.QtWidgets.QApplication(0x557057c1f930) at 0x7efeba0fed80&gt;
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7efeb9cdeb10&gt;
+tmp_path = PosixPath('/home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/automated/tmp/pytest-of-subish-loq/pytest-2/test_worker_failed_or_empty_ca1')
+procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+opens = True
+
+    @pytest.mark.parametrize('opens', [False, True])
+    def test_worker_failed_or_empty_camera_never_completes_run(app, monkeypatch, tmp_path, procedure, opens):
+        import core.ui.worker as module
+        from core.mission.database import DatabaseManager
+        root = tmp_path
+        monkeypatch.setattr(module, 'get_project_root', lambda: root)
+        monkeypatch.setattr(module, 'load_procedure_file', lambda _: procedure)
+        cfg = AppConfig(); cfg.streaming.enabled = False; cfg.events.enabled = False
+        monkeypatch.setattr(module, 'load_config', lambda: cfg)
+        source = MagicMock(); source.start.return_value = opens; source.read.return_value = None; source.is_active = False
+        monkeypatch.setattr(module, 'WebcamSource', lambda **_: source)
+        worker = MissionPipelineWorker(BackendEventBridge(), session_id='QA_FAILURE')
+        worker.run()
+        assert worker._is_running is False
+        source.stop.assert_called_once()
+        db = DatabaseManager(root / 'storage/astra.db')
+        with db.get_connection() as conn:
+            row = conn.execute("SELECT status FROM experiment_runs WHERE run_id='QA_FAILURE'").fetchone()
+&gt;       assert row[0] == ('FAILED' if not opens else 'ABORTED')
+E       AssertionError: assert 'COMPLETED' == 'ABORTED'
+E         
+E         - ABORTED
+E         + COMPLETED
+
+tests/regression/test_qa6_runtime_safety.py:79: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_uncertain_activity_cannot_verify_or_create_wrong_object_deviation[IDLE-0.95-metadata0]" time="0.006"><failure message="AssertionError: assert False&#10; +  where False = AssuranceDecision(experiment_id='DEMO_EXP_001', step_id='STEP_02', sequence=2, decision=&lt;DecisionType.VERIFIED: 'VERIF...rofile='VIEW_LEFT', session_id='SESSION_001', procedure_version='1.0.0', recommended_recovery=None, severity='WARNING').is_uncertain">procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+name = 'IDLE', confidence = 0.95, metadata = {}
+
+    @pytest.mark.parametrize('name,confidence,metadata', [('IDLE', .95, {}), ('GRASP', .1, {}), ('GRASP', .9, {'occluded': True})])
+    def test_uncertain_activity_cannot_verify_or_create_wrong_object_deviation(procedure, name, confidence, metadata):
+        step = procedure.steps[1]
+        activity = ActivityObservation(name, 'actor', 'YELLOW_BOX' if name != 'IDLE' else 'RED_BOX', confidence, TemporalWindow(0., 3.), metadata=metadata)
+        bundle = EvidenceBundle(required_satisfied=True, evidence_score=.99)
+        decision = TriStateAssuranceEngine().evaluate_step(step, activity, bundle)
+&gt;       assert decision.is_uncertain
+E       AssertionError: assert False
+E        +  where False = AssuranceDecision(experiment_id='DEMO_EXP_001', step_id='STEP_02', sequence=2, decision=&lt;DecisionType.VERIFIED: 'VERIF...rofile='VIEW_LEFT', session_id='SESSION_001', procedure_version='1.0.0', recommended_recovery=None, severity='WARNING').is_uncertain
+
+tests/regression/test_qa6_runtime_safety.py:88: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_uncertain_activity_cannot_verify_or_create_wrong_object_deviation[GRASP-0.1-metadata1]" time="0.005"><failure message="AssertionError: assert False&#10; +  where False = AssuranceDecision(experiment_id='DEMO_EXP_001', step_id='STEP_02', sequence=2, decision=&lt;DecisionType.DEVIATION: 'DEVI...mended_recovery='Warning: Verify that you are grasping the RED box, not the auxiliary yellow box.', severity='WARNING').is_uncertain">procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+name = 'GRASP', confidence = 0.1, metadata = {}
+
+    @pytest.mark.parametrize('name,confidence,metadata', [('IDLE', .95, {}), ('GRASP', .1, {}), ('GRASP', .9, {'occluded': True})])
+    def test_uncertain_activity_cannot_verify_or_create_wrong_object_deviation(procedure, name, confidence, metadata):
+        step = procedure.steps[1]
+        activity = ActivityObservation(name, 'actor', 'YELLOW_BOX' if name != 'IDLE' else 'RED_BOX', confidence, TemporalWindow(0., 3.), metadata=metadata)
+        bundle = EvidenceBundle(required_satisfied=True, evidence_score=.99)
+        decision = TriStateAssuranceEngine().evaluate_step(step, activity, bundle)
+&gt;       assert decision.is_uncertain
+E       AssertionError: assert False
+E        +  where False = AssuranceDecision(experiment_id='DEMO_EXP_001', step_id='STEP_02', sequence=2, decision=&lt;DecisionType.DEVIATION: 'DEVI...mended_recovery='Warning: Verify that you are grasping the RED box, not the auxiliary yellow box.', severity='WARNING').is_uncertain
+
+tests/regression/test_qa6_runtime_safety.py:88: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_uncertain_activity_cannot_verify_or_create_wrong_object_deviation[GRASP-0.9-metadata2]" time="0.005"><failure message="AssertionError: assert False&#10; +  where False = AssuranceDecision(experiment_id='DEMO_EXP_001', step_id='STEP_02', sequence=2, decision=&lt;DecisionType.DEVIATION: 'DEVI...mended_recovery='Warning: Verify that you are grasping the RED box, not the auxiliary yellow box.', severity='WARNING').is_uncertain">procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+name = 'GRASP', confidence = 0.9, metadata = {'occluded': True}
+
+    @pytest.mark.parametrize('name,confidence,metadata', [('IDLE', .95, {}), ('GRASP', .1, {}), ('GRASP', .9, {'occluded': True})])
+    def test_uncertain_activity_cannot_verify_or_create_wrong_object_deviation(procedure, name, confidence, metadata):
+        step = procedure.steps[1]
+        activity = ActivityObservation(name, 'actor', 'YELLOW_BOX' if name != 'IDLE' else 'RED_BOX', confidence, TemporalWindow(0., 3.), metadata=metadata)
+        bundle = EvidenceBundle(required_satisfied=True, evidence_score=.99)
+        decision = TriStateAssuranceEngine().evaluate_step(step, activity, bundle)
+&gt;       assert decision.is_uncertain
+E       AssertionError: assert False
+E        +  where False = AssuranceDecision(experiment_id='DEMO_EXP_001', step_id='STEP_02', sequence=2, decision=&lt;DecisionType.DEVIATION: 'DEVI...mended_recovery='Warning: Verify that you are grasping the RED box, not the auxiliary yellow box.', severity='WARNING').is_uncertain
+
+tests/regression/test_qa6_runtime_safety.py:88: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_wrong_object_recovery_idle_without_evidence_is_not_verified" time="0.005"><failure message="assert not True">procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_wrong_object_recovery_idle_without_evidence_is_not_verified(procedure):
+        manager = ClosedLoopRecoveryManager(); step = procedure.steps[1]
+        decision = AssuranceDecision(experiment_id=procedure.id, step_id=step.id, sequence=step.sequence,
+            decision=DecisionType.DEVIATION, confidence=.9, deviation_reason=DeviationReason.WRONG_OBJECT)
+        manager.handle_decision(decision, step)
+        activity = ActivityObservation('IDLE', 'actor', 'YELLOW_BOX', .9, TemporalWindow(0., 2.))
+        recovered, _ = manager.observe_corrective_action(activity, EvidenceBundle(), step)
+&gt;       assert not recovered
+E       assert not True
+
+tests/regression/test_qa6_runtime_safety.py:98: AssertionError</failure></testcase><testcase classname="tests.regression.test_qa6_runtime_safety" name="test_skipped_step_same_target_is_not_itself_recovery_evidence" time="0.005"><failure message="assert True is False">procedure = ExperimentDefinition(experiment=ExperimentMetadata(id='DEMO_EXP_001', name='Sample Material Handling &amp; Container Verif...': {'next': ['STEP_02']}, 'STEP_02': {'next': ['STEP_03']}, 'STEP_03': {'next': ['STEP_04']}, 'STEP_04': {'next': []}})
+
+    def test_skipped_step_same_target_is_not_itself_recovery_evidence(procedure):
+        manager = ClosedLoopRecoveryManager(); step = procedure.steps[0]
+        decision = AssuranceDecision(experiment_id=procedure.id, step_id=step.id, sequence=step.sequence,
+            decision=DecisionType.DEVIATION, confidence=.9, deviation_reason=DeviationReason.SKIPPED_STEP)
+        manager.handle_decision(decision, step)
+        activity = ActivityObservation('GRASP', 'actor', 'RED_BOX', .9, TemporalWindow(0., 2.))
+&gt;       assert manager.observe_corrective_action(activity, EvidenceBundle(), step)[0] is False
+E       assert True is False
+
+tests/regression/test_qa6_runtime_safety.py:108: AssertionError</failure></testcase></testsuite></testsuites>

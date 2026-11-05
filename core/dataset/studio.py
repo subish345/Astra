@@ -1,4 +1,4 @@
-"""Dataset Studio Foundation for ASTRA-EA.
+"""Dataset Studio Foundation for Pramman.
 
 Unifies dataset recording, procedural synthesis, schema validation,
 session-level splitting, version management, and reporting into a cohesive API.

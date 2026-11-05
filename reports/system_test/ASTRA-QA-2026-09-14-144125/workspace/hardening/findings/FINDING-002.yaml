@@ -1,0 +1,12 @@
+id: "FINDING-002"
+title: "Ground telemetry reconnect introduces duplicate sequence gap replay"
+source: "PHASE20_REHEARSAL_04_NETWORK_FAILURE"
+date: "2026-09-13"
+severity: "MEDIUM"
+category: "GROUND"
+description: "When ground monitor re-establishes connection after loss of signal (LOS), sequence gap extraction between last acknowledged sequence number and current onboard sequence number replayed events already present in local telemetry cache if network disconnected mid-burst."
+evidence:
+  - "REH_04_NETWORK_FAILURE_AUDIT_LOG"
+  - "core/operations/reconciliation.py"
+impact: "Could create duplicate event rows in ground review timeline and distort post-mission audit metrics."
+status: "CLOSED"

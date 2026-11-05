@@ -1,4 +1,4 @@
-"""Dataset Version Manager for ASTRA-EA.
+"""Dataset Version Manager for Pramman.
 
 Creates, registers, and loads immutable dataset versions and manifests
 (e.g., ASTRA-DATASET-v0.1, ASTRA-DATASET-v0.2).

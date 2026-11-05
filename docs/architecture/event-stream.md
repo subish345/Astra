@@ -1,4 +1,4 @@
-# ASTRA-EA Ground Telemetry Event Stream Architecture
+# Pramman Ground Telemetry Event Stream Architecture
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Classification:** Phase 9 Telemetry Schema, Sequence Ordering, and State Catch-up Blueprint
@@ -24,7 +24,7 @@ Subsystem Health   --->                           +---> Live SSE Stream (/events
 
 ## 2. Event Taxonomy & Hierarchy
 
-All events adhere to the typed `GroundEvent` schema defined in [`streaming/events/schema.py`](file:///home/subish-loq/Documents/astra/streaming/events/schema.py):
+All events adhere to the typed `GroundEvent` schema defined in [`streaming/events/schema.py`](file:///home/subish-loq/Documents/pramman_proj/streaming/events/schema.py):
 
 | Event Type | Typical Trigger | Severity Tier | Timeline Category |
 | :--- | :--- | :--- | :--- |

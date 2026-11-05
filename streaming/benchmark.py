@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Streaming Impact & Security Profiler
+# Pramman Streaming Impact & Security Profiler
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Measures onboard AI performance delta (AI-only vs AI+Streaming) and validates security."""

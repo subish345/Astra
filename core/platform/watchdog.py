@@ -1,4 +1,4 @@
-"""Central Subsystem Watchdog and Fault Mitigation Engine for ASTRA-EA (Phase 18).
+"""Central Subsystem Watchdog and Fault Mitigation Engine for Pramman (Phase 18).
 
 In accordance with Section 12 & 13:
 Monitors periodic subsystem heartbeats (camera, perception, event bus, storage, mission state).

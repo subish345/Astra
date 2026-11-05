@@ -1,4 +1,4 @@
-"""Precision, Quantization, and Input Resolution Experiments for ASTRA-EA.
+"""Precision, Quantization, and Input Resolution Experiments for Pramman.
 
 Evaluates model performance across precision variants and input resolutions:
 - FP32 Baseline (640x640)

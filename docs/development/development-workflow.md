@@ -1,4 +1,4 @@
-# ASTRA-EA Development & Engineering Workflow
+# Pramman Development & Engineering Workflow
 
 ## 1. Environment Setup
 
@@ -11,7 +11,7 @@
 ### 1.2 Virtual Environment & Dependencies
 ```bash
 # Clone and enter directory
-cd /home/subish-loq/Documents/astra
+cd /home/subish-loq/Documents/pramman_proj
 
 # Optional: Create and activate virtual environment
 python3 -m venv .venv
@@ -25,7 +25,7 @@ pip install -e .
 
 ## 2. Standard CLI Workflows
 
-ASTRA-EA provides a centralized CLI entrypoint via `main.py` (or `astra` command when installed):
+Pramman provides a centralized CLI entrypoint via `main.py` (or `astra` command when installed):
 
 ```bash
 # 1. Run system diagnostics (Hardware, GPU, Camera, DB, Config)

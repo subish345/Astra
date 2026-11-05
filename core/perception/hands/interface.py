@@ -1,4 +1,4 @@
-"""Abstract hand detector interface for ASTRA-EA.
+"""Abstract hand detector interface for Pramman.
 """
 
 from __future__ import annotations

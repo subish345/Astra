@@ -1,0 +1,24 @@
+id: V-SYS-008
+requirement: ASTRA-REL-002
+title: Neural Model Failure and Heuristic Baseline Fallback
+purpose: Verify that if deep neural detector execution encounters an unexpected error or missing weights, the pipeline automatically engages the color heuristic baseline detector.
+preconditions:
+  - Pipeline initialized
+setup:
+  - Simulate deep detector runtime exception
+inputs:
+  - Test laboratory frame with red and yellow tubes
+procedure:
+  - Trigger detector fallback policy
+  - Verify detection outputs from ColorHeuristicDetector
+  - Verify continued procedure progression
+expected_result:
+  - System switches to heuristic detector without crash
+  - Red and yellow tube apparatus correctly located by HSV segmentation
+  - Degraded mode telemetry flag asserted
+acceptance_criteria:
+  - Pipeline continues without unhandled exception
+  - Apparatus bounding boxes emitted
+evidence:
+  - reports/hil/hardware_matrix.html
+  - verification/evidence/EVID-REL-002-FALLBACK.json

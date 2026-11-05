@@ -1,4 +1,4 @@
-"""Lightweight hand detector adapter for ASTRA-EA.
+"""Lightweight hand detector adapter for Pramman.
 
 Extracts hand regions, wrist anchors, and finger keypoint approximations using
 YCrCb skin segmentation and contour defect geometry without external cloud models.

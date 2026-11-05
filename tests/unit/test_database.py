@@ -146,3 +146,73 @@ def test_record_multimodal_artifacts(test_db):
         assert conn.execute("SELECT COUNT(*) FROM evidence").fetchone()[0] == 1
         assert conn.execute("SELECT COUNT(*) FROM alerts").fetchone()[0] == 1
         assert conn.execute("SELECT COUNT(*) FROM system_health").fetchone()[0] == 1
+
+
+def test_video_segments_and_camera_visuals(test_db, tmp_path):
+    """Verify storing video segments, camera visuals, accuracy scoring, and dataset export."""
+    from datetime import datetime, timezone
+
+    test_db.record_experiment("EXP_TEST", "Test Exp", "1.0.0")
+    test_db.start_experiment_run("RUN_VIS_001", "EXP_TEST")
+
+    # 1. Record Video Segment
+    test_db.record_video_segment(
+        segment_id="SEG_001",
+        run_id="RUN_VIS_001",
+        start_time=datetime.now(timezone.utc),
+        file_path="data/recordings/test.mp4",
+        frame_count=120,
+        fps=30.0,
+        duration_sec=4.0,
+    )
+    segments = test_db.get_video_segments(run_id="RUN_VIS_001")
+    assert len(segments) == 1
+    assert segments[0]["segment_id"] == "SEG_001"
+    assert segments[0]["frame_count"] == 120
+
+    # 2. Record Camera Visuals
+    test_db.record_camera_visual(
+        visual_id="VIS_001",
+        run_id="RUN_VIS_001",
+        frame_id=10,
+        timestamp=0.33,
+        source_type="CAMERA",
+        step_id="STEP_01",
+        step_status="VERIFIED",
+        accuracy_score=0.95,
+        detected_objects=[{"class": "RED_BOX", "box": [10, 20, 50, 60], "confidence": 0.94}],
+        pose_keypoints={"nose": [0.5, 0.5, 0.0]},
+        is_training_sample=True,
+    )
+    test_db.record_camera_visual(
+        visual_id="VIS_002",
+        run_id="RUN_VIS_001",
+        frame_id=20,
+        timestamp=0.66,
+        source_type="CAMERA",
+        step_id="STEP_01",
+        step_status="UNCERTAIN",
+        accuracy_score=0.45,
+        detected_objects=[],
+    )
+
+    visuals = test_db.get_camera_visuals(run_id="RUN_VIS_001")
+    assert len(visuals) == 2
+    assert visuals[0]["visual_id"] == "VIS_001"
+    assert visuals[0]["detected_objects"][0]["class"] == "RED_BOX"
+    assert visuals[0]["accuracy_score"] == 0.95
+
+    # 3. Mark for training & query stats
+    marked = test_db.mark_visuals_for_training(run_id="RUN_VIS_001", min_accuracy=0.90)
+    assert marked >= 1
+
+    stats = test_db.get_visual_training_stats()
+    assert stats["total_visuals"] >= 2
+    assert stats["training_samples"] >= 1
+
+    # 4. Export to Dataset
+    export_dir = tmp_path / "exported_dataset"
+    manifest = test_db.export_visuals_to_dataset(output_dir=export_dir, dataset_id="TEST_DATASET_V1")
+    assert manifest["sample_count"] >= 1
+    assert (export_dir / "dataset_manifest.json").exists()
+

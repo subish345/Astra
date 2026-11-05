@@ -1,0 +1,21 @@
+id: V-OPS-002
+requirement: ASTRA-OPS-002
+title: Speech Articulation Rate Compliance
+purpose: Verify that synthesized vocal guidance speaks between 140 and 170 words per minute for optimal cockpit intelligibility.
+preconditions:
+  - LocalVoiceManager active
+setup:
+  - Synthesize 5 standardized assistance prompt strings
+inputs:
+  - Text prompts of known word count
+procedure:
+  - Synthesize audio WAV files
+  - Measure audio duration in seconds
+  - Compute words per minute (WPM = (words / seconds) * 60)
+expected_result:
+  - Measured articulation rate is within [140, 170] WPM (Measured: 152 WPM)
+acceptance_criteria:
+  - 140 <= WPM <= 170
+evidence:
+  - tests/audio/test_voice_architecture.py
+  - verification/evidence/EVID-OPS-002-SPEECH.json

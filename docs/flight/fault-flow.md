@@ -1,4 +1,4 @@
-# ASTRA-EA — Flight Fault Flow Architecture
+# Pramman — Flight Fault Flow Architecture
 
 ### Document ID: `ASTRA-FAULT-FLOW-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  

@@ -1,6 +1,6 @@
-# ASTRA-EA: Known Issues & Operational Caveats
+# Pramman: Known Issues & Operational Caveats
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Release:** 1.0.0-RC1  
 **Category:** Operational Engineering Documentation
 
@@ -30,7 +30,7 @@ This document logs verified non-fatal issues, environmental caveats, edge behavi
 - **Workaround:**  
   Use `astra deployment doctor` to discover active camera devices and specify the exact video node or use simulated synthetic video injection:
   ```bash
-  astra demo --camera 0
+  pramman demo --camera 0
   ```
   For persistent industrial setups, configure udev rules to symlink the device node (e.g., `/dev/v4l/by-id/...`).
 

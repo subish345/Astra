@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA — System Requirements Status</title>
+    <style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; line-height: 1.5; }
+h1, h2, h3 { color: #38bdf8; font-weight: 600; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; }
+.nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 500; }
+.nav-link.active { color: #38bdf8; font-weight: 700; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+.metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+.metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; margin-top: 0.25rem; }
+.badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-waived { background: #374151; color: #d1d5db; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+tr:hover { background: #1e293b44; }
+code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; font-size: 0.85rem; }
+.alert-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+    <h1>System Requirements Compliance Status</h1>
+    <p>Complete 38-Requirement Baseline across 10 Spacecraft Engineering Disciplines</p>
+    
+<div class="nav-bar">
+    <a href="v_and_v_summary.html" class="nav-link">Executive Summary</a>
+    <a href="requirements_status.html" class="nav-link">Requirements</a>
+    <a href="traceability.html" class="nav-link">Traceability Matrix</a>
+    <a href="verification_results.html" class="nav-link">Verification Results</a>
+    <a href="validation_results.html" class="nav-link">Validation Results</a>
+    <a href="performance_results.html" class="nav-link">Performance Results</a>
+    <a href="discrepancies.html" class="nav-link">Discrepancies</a>
+    <a href="evidence_index.html" class="nav-link">Evidence Index</a>
+</div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Req ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Methods</th>
+                <th>Level</th>
+                <th>Owner</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong><code>ASTRA-DAT-001</code></strong></td>
+                <td>Microsecond Event Logging in SQLite WAL Mode</td>
+                <td>DATA</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Data Management Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-DAT-002</code></strong></td>
+                <td>Causal Provenance Evidence Chain</td>
+                <td>DATA</td>
+                <td>HIGH</td>
+                <td>DEMONSTRATION, TEST</td>
+                <td>SYSTEM</td>
+                <td>Data Management Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-DAT-003</code></strong></td>
+                <td>Bounded Disk Storage Write Rate</td>
+                <td>DATA</td>
+                <td>MEDIUM</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Data Management Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-001</code></strong></td>
+                <td>Illumination Dynamic Range Robustness</td>
+                <td>ENVIRONMENTAL</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>PHYSICAL</td>
+                <td>Optics & Sensor Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-002</code></strong></td>
+                <td>Optical Multi-Angle Viewpoint Invariance</td>
+                <td>ENVIRONMENTAL</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>PHYSICAL</td>
+                <td>Optics & Sensor Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-003</code></strong></td>
+                <td>Launch Random Vibration Survival</td>
+                <td>ENVIRONMENTAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Aerospace Structures Team</td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-004</code></strong></td>
+                <td>Conductive Thermal-Vacuum Operational Cycling</td>
+                <td>ENVIRONMENTAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Thermal Engineering Team</td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-ENV-005</code></strong></td>
+                <td>Total Ionizing Dose Radiation Tolerance</td>
+                <td>ENVIRONMENTAL</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>ENVIRONMENTAL</td>
+                <td>Radiation Hardening Team</td>
+                <td><span class="badge-deferred">DEFERRED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-001</code></strong></td>
+                <td>POSIX V4L2 Sensor Ingestion and Disconnect Handling</td>
+                <td>INTERFACE</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>PHYSICAL</td>
+                <td>Hardware Interface Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-002</code></strong></td>
+                <td>Vehicle Bus Adapter Decoupling</td>
+                <td>INTERFACE</td>
+                <td>HIGH</td>
+                <td>INSPECTION</td>
+                <td>INTEGRATION</td>
+                <td>Systems Integration</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-003</code></strong></td>
+                <td>Dual-Clock Monotonic and UTC Time Synchronization</td>
+                <td>INTERFACE</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Core Systems</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-IF-004</code></strong></td>
+                <td>Non-Blocking Telemetry Publisher</td>
+                <td>INTERFACE</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Ground Network Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-OPS-001</code></strong></td>
+                <td>Cockpit HUD High-Contrast Usability</td>
+                <td>OPERATIONS</td>
+                <td>HIGH</td>
+                <td>INSPECTION</td>
+                <td>SYSTEM</td>
+                <td>Human Factors / Crew Operations</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-OPS-002</code></strong></td>
+                <td>Speech Articulation Rate Compliance</td>
+                <td>OPERATIONS</td>
+                <td>MEDIUM</td>
+                <td>TEST</td>
+                <td>COMPONENT</td>
+                <td>Human Factors / Audio Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-OPS-003</code></strong></td>
+                <td>Pre-Flight Self-Test Execution</td>
+                <td>OPERATIONS</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Systems Integration</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-001</code></strong></td>
+                <td>Sustained Pipeline Execution Throughput</td>
+                <td>PERFORMANCE</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Performance Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-002</code></strong></td>
+                <td>End-to-End Decision Latency</td>
+                <td>PERFORMANCE</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Performance Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-003</code></strong></td>
+                <td>Neural Detector Inference Latency</td>
+                <td>PERFORMANCE</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>COMPONENT</td>
+                <td>ML Engineering</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-004</code></strong></td>
+                <td>Memory Footprint and Leak-Free Stability</td>
+                <td>PERFORMANCE</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Software Systems</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-PERF-005</code></strong></td>
+                <td>Cold-Boot Initialization Latency</td>
+                <td>PERFORMANCE</td>
+                <td>MEDIUM</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Core Systems</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-REL-001</code></strong></td>
+                <td>Auxiliary Subsystem Crash Isolation</td>
+                <td>RELIABILITY</td>
+                <td>HIGH</td>
+                <td>ANALYSIS, TEST</td>
+                <td>SYSTEM</td>
+                <td>Software Architecture</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-REL-002</code></strong></td>
+                <td>Deep Neural Detector Heuristic Fallback</td>
+                <td>RELIABILITY</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>ML Engineering</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-REL-003</code></strong></td>
+                <td>Formal Degraded Operational Modes</td>
+                <td>RELIABILITY</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Software Architecture</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-001</code></strong></td>
+                <td>Non-Guessing Assurance Barrier</td>
+                <td>SAFETY</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>HIL</td>
+                <td>Safety & Mission Assurance</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-002</code></strong></td>
+                <td>Occlusion-Induced Uncertainty State Transition</td>
+                <td>SAFETY</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>PHYSICAL</td>
+                <td>Safety & Mission Assurance</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-003</code></strong></td>
+                <td>Video Stream Ingestion Freeze Containment</td>
+                <td>SAFETY</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>HIL</td>
+                <td>Safety & Mission Assurance</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SAF-004</code></strong></td>
+                <td>Ground Network and Audio Auxiliary Failure Isolation</td>
+                <td>SAFETY</td>
+                <td>CRITICAL</td>
+                <td>ANALYSIS, TEST</td>
+                <td>SYSTEM</td>
+                <td>Safety & Mission Assurance</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SEC-001</code></strong></td>
+                <td>100% Air-Gapped Offline Execution</td>
+                <td>SECURITY</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Security Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SEC-002</code></strong></td>
+                <td>Cryptographic SHA-256 Artifact Integrity Verification</td>
+                <td>SECURITY</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Security Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SEC-003</code></strong></td>
+                <td>Ground Streaming Read-Only Protection</td>
+                <td>SECURITY</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>SYSTEM</td>
+                <td>Security Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-001</code></strong></td>
+                <td>Optical Camera Stream Ingestion</td>
+                <td>FUNCTIONAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>PHYSICAL</td>
+                <td>Perception Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-002</code></strong></td>
+                <td>Laboratory Apparatus Object Detection</td>
+                <td>FUNCTIONAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>COMPONENT</td>
+                <td>ML Engineering</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-003</code></strong></td>
+                <td>Hand-Object Spatial Interaction Detection</td>
+                <td>FUNCTIONAL</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>COMPONENT</td>
+                <td>Perception Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-004</code></strong></td>
+                <td>Temporal Activity Dwell Accumulation</td>
+                <td>FUNCTIONAL</td>
+                <td>HIGH</td>
+                <td>TEST</td>
+                <td>COMPONENT</td>
+                <td>Core Systems</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-005</code></strong></td>
+                <td>Deterministic Experiment Procedure State Tracking</td>
+                <td>FUNCTIONAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>INTEGRATION</td>
+                <td>Core Systems</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-006</code></strong></td>
+                <td>Tri-State Assurance Evaluation</td>
+                <td>FUNCTIONAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>INTEGRATION</td>
+                <td>Assurance Team</td>
+                <td><span class="badge-pass">VERIFIED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-007</code></strong></td>
+                <td>Cockpit Voice Guidance and Visual HUD Alerts</td>
+                <td>FUNCTIONAL</td>
+                <td>HIGH</td>
+                <td>DEMONSTRATION, TEST</td>
+                <td>SYSTEM</td>
+                <td>Cockpit UX Team</td>
+                <td><span class="badge-pass">VALIDATED</span></td>
+            </tr>
+            <tr>
+                <td><strong><code>ASTRA-SYS-008</code></strong></td>
+                <td>Closed-Loop Corrective Action Recovery</td>
+                <td>FUNCTIONAL</td>
+                <td>CRITICAL</td>
+                <td>TEST</td>
+                <td>HIL</td>
+                <td>Assurance Team</td>
+                <td><span class="badge-pass">VALIDATED</span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

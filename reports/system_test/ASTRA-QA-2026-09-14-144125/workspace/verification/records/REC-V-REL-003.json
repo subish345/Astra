@@ -1,0 +1,18 @@
+{
+  "verification_id": "REC-V-REL-003",
+  "requirement_id": "ASTRA-REL-003",
+  "test_id": "V-REL-003",
+  "date": "2026-09-13T13:39:48Z",
+  "software_version": "1.0.0-RC1",
+  "model_version": "yolov8n-astra-v1.0",
+  "dataset_version": "ASTRA-DATASET-v1.0",
+  "procedure_version": "v1.0",
+  "hardware_profile": "edge_profile_jetson",
+  "operator": "ASTRA_AUTOMATED_VV",
+  "result": "PASS",
+  "evidence": [
+    "docs/qualification/degraded-modes.md",
+    "verification/evidence/EVID-REL-003-DEGRADED.json"
+  ],
+  "notes": "Test V-REL-003 executed successfully against ASTRA-REL-003."
+}

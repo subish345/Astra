@@ -1,4 +1,4 @@
-# ASTRA-EA Synthetic-to-Real Domain Gap Analysis
+# Pramman Synthetic-to-Real Domain Gap Analysis
 
 Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
@@ -6,15 +6,15 @@ Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
 ## 1. Executive Summary
 
-Phase 7 of ASTRA-EA introduces a dual data strategy combining **controlled synthetic procedural generation** with **real webcam session recordings**. Synthetic generation provides vast scale, controlled variation across challenge scenarios (occlusion, lighting shifts, viewpoint changes), and programmatic pixel-perfect ground truth annotations. However, synthetic data alone does not reflect physical spacecraft cabin conditions.
+Phase 7 of Pramman introduces a dual data strategy combining **controlled synthetic procedural generation** with **real webcam session recordings**. Synthetic generation provides vast scale, controlled variation across challenge scenarios (occlusion, lighting shifts, viewpoint changes), and programmatic pixel-perfect ground truth annotations. However, synthetic data alone does not reflect physical spacecraft cabin conditions.
 
-This research document analyzes the domain gap between synthetic generation and real-world execution, defining the mitigation strategies implemented in ASTRA-EA.
+This research document analyzes the domain gap between synthetic generation and real-world execution, defining the mitigation strategies implemented in Pramman.
 
 ---
 
 ## 2. Dimensional Gap Analysis
 
-| Domain Dimension | Synthetic Generator (`datasets/raw/synthetic/`) | Real Mission Environment (`datasets/raw/real/`) | Domain Gap Severity | Mitigation in ASTRA-EA |
+| Domain Dimension | Synthetic Generator (`datasets/raw/synthetic/`) | Real Mission Environment (`datasets/raw/real/`) | Domain Gap Severity | Mitigation in Pramman |
 |---|---|---|---|---|
 | **Lighting & Shadows** | Procedural brightness shifts, uniform directional gradients, geometric shadow masks. | Fluorescent cabin lights, reflections on containment acrylic, sensor glare, specular highlights. | **Moderate** | HSV color-space invariance, multi-band color thresholds, exposure-invariant morphological closing. |
 | **Material Textures** | Flat polygonal shading, synthetic panel gridlines, stylized uniform boxes. | Real box plastic textures, tactile tape, micro-scratches, finger grease, ISRO/NASA fabric weave. | **Moderate** | Spatial contour geometry and area ratios prioritized over surface micro-texture; contour convex hulling. |
@@ -32,7 +32,7 @@ Benchmarking models trained on **Synthetic Only**, **Real Only**, and **Hybrid (
 |---|---|---|---|---|---|
 | **Synthetic Only** | 0.62 | 0.68 | 0.65 | Degrades under severe lighting specularities. | Fast bootstrapping, zero annotation cost. |
 | **Real Only** (Small N) | 0.71 | 0.74 | 0.72 | Overfits to specific laboratory background and operator. | Limited variation across challenge scenarios. |
-| **Hybrid (Syn + Real)** | **0.86** | **0.89** | **0.87** | **Highest generalizability across viewpoints and lighting.** | **Selected ASTRA-EA deployment strategy.** |
+| **Hybrid (Syn + Real)** | **0.86** | **0.89** | **0.87** | **Highest generalizability across viewpoints and lighting.** | **Selected Pramman deployment strategy.** |
 
 ---
 

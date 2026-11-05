@@ -1,0 +1,24 @@
+id: V-SYS-007
+requirement: ASTRA-SAF-004
+title: Ground Network Failure and Air-Gap Sever Isolation
+purpose: Verify that complete loss of ground network connectivity or telemetry socket disconnect does not disrupt onboard experiment assurance execution.
+preconditions:
+  - System executing experiment assurance loop
+setup:
+  - Disconnect or simulate socket failure on telemetry client
+inputs:
+  - Socket error / broken pipe simulation on ground streaming thread
+procedure:
+  - Run continuous assurance evaluation loop
+  - Sever ground network connection
+  - Continue processing local video frames
+expected_result:
+  - Telemetry streaming logs non-fatal drop notice
+  - Onboard inference and procedure progress continue uninterrupted
+  - Local SQLite event database maintains 100% record integrity
+acceptance_criteria:
+  - Zero dropped frames in local perception engine
+  - Procedure progress transitions as expected
+evidence:
+  - final_submission/demo_videos/05_offline.mp4
+  - verification/evidence/EVID-SAF-004-ISOLATION.json

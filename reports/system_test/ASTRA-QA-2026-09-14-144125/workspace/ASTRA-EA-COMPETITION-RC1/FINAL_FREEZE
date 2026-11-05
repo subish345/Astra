@@ -1,0 +1,24 @@
+================================================================================
+                    ASTRA-EA PRODUCT COMPETITION FREEZE
+================================================================================
+PRODUCT:             ASTRA-EA (SIH26174)
+VERSION:             1.0.0-RC1
+COMMIT HASH:         5796cdeb70e0727c722fc4dc1df963a48c9c7581
+DATASET VERSION:     ASTRA-DATASET-v1.0
+MODEL VERSION:       ASTRA_OBJECT_DETECTOR_v1.0
+PROCEDURE VERSION:   DEMO_EXP_001 v1.0
+CONFIGURATION:       configs/deployment/final_demo.yaml (Base: configs/system.yaml)
+BENCHMARK STATUS:    PASS (100% Resilience, P50 9.2ms Latency, 247/247 Tests Passed)
+VALIDATION DATE:     2026-09-13
+FREEZE STATUS:       ACTIVE (FEATURE FREEZE ENFORCED)
+================================================================================
+
+POST-FREEZE CHANGE CONTROL POLICY:
+1. No architectural changes or non-essential features may be added.
+2. Only critical defect fixes, judge-requested demonstration tweaks, or security
+   remediations are permitted.
+3. Any code change post-freeze requires re-running the full test suite (`pytest`)
+   and the simulation matrix (`astra sim matrix`).
+4. System claims remain strictly scoped to "Engineering-Grade Ground Demonstrator".
+
+================================================================================

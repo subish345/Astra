@@ -1,4 +1,4 @@
-# ASTRA-EA: Comprehensive Judge Question Database & Technical Defense
+# Pramman: Comprehensive Judge Question Database & Technical Defense
 
 **Document Purpose:** Preparation for technical interrogation and judge defense during SIH26174 evaluation.  
 **Epistemic Standard:** Responses strictly distinguish between `KNOWN`, `MEASURED`, `ASSUMPTION`, `FUTURE WORK`, and `NOT YET VALIDATED`.
@@ -9,7 +9,7 @@
 ### Q: Why is an automated experiment assurance system needed if astronauts are already extensively trained?
 - **Status:** `KNOWN`
 - **Defense:**  
-  While astronauts undergo hundreds of hours of terrestrial training, in-orbit science experiments are conducted months later under extreme physiological and cognitive stress (space motion sickness, sleep disruption, elevated CO2 levels). Terrestrial missions reveal that minor procedural errors—such as incorrect reagent selection, out-of-order pipetting, or premature incubation—frequently invalidate multi-million-dollar science payloads. Terrestrial ground operators cannot guide experiments in real time due to communication latency and orbital blackout zones. ASTRA-EA acts as an onboard, silent co-pilot ensuring protocol fidelity.
+  While astronauts undergo hundreds of hours of terrestrial training, in-orbit science experiments are conducted months later under extreme physiological and cognitive stress (space motion sickness, sleep disruption, elevated CO2 levels). Terrestrial missions reveal that minor procedural errors—such as incorrect reagent selection, out-of-order pipetting, or premature incubation—frequently invalidate multi-million-dollar science payloads. Terrestrial ground operators cannot guide experiments in real time due to communication latency and orbital blackout zones. Pramman acts as an onboard, silent co-pilot ensuring protocol fidelity.
 
 ---
 
@@ -18,7 +18,7 @@
 - **Status:** `MEASURED`
 - **Defense:**  
   1. **Deterministic State Assurance:** Spacecraft mission assurance requires mathematically verifiable state transitions, not probabilistic next-token generation.
-  2. **Latency & Compute:** Modern VLMs require 16–32 GB of VRAM and exhibit inference latencies of 1.5–5 seconds per query. ASTRA-EA’s neural detector (`ASTRA_OBJECT_DETECTOR_v1.0`) executes in **14.8 ms** with 1.2 GB VRAM allocation, delivering a sustained **34.2 FPS** pipeline on edge hardware.
+  2. **Latency & Compute:** Modern VLMs require 16–32 GB of VRAM and exhibit inference latencies of 1.5–5 seconds per query. Pramman’s neural detector (`ASTRA_OBJECT_DETECTOR_v1.0`) executes in **14.8 ms** with 1.2 GB VRAM allocation, delivering a sustained **34.2 FPS** pipeline on edge hardware.
   3. **Zero Hallucination:** A specialized detector coupled with a formal state machine guarantees zero hallucinatory verification of nonexistent objects.
 
 ---
@@ -48,7 +48,7 @@
 ### Q: What happens when the AI is uncertain due to optical occlusion or poor visibility?
 - **Status:** `MEASURED`
 - **Defense:**  
-  ASTRA-EA operates with a strict three-state epistemic model: `VERIFIED`, `UNCERTAIN`, and `DEVIATION`. If an object is partially occluded, confidence scores drop below the decision threshold, and the system transitions to `UNCERTAIN`. It maintains an observation dwell window (10 frames) and **never triggers a false deviation or false verification**. If the occlusion persists, it gently prompts the astronaut to clear the line of sight.
+  Pramman operates with a strict three-state epistemic model: `VERIFIED`, `UNCERTAIN`, and `DEVIATION`. If an object is partially occluded, confidence scores drop below the decision threshold, and the system transitions to `UNCERTAIN`. It maintains an observation dwell window (10 frames) and **never triggers a false deviation or false verification**. If the occlusion persists, it gently prompts the astronaut to clear the line of sight.
 
 ---
 
@@ -62,7 +62,7 @@
 ---
 
 ## 7. Offline Resilience & Network Outages
-### Q: If the spacecraft loses communication with Earth, does ASTRA-EA cease operating?
+### Q: If the spacecraft loses communication with Earth, does Pramman cease operating?
 - **Status:** `MEASURED`
 - **Defense:**  
   No. Onboard assurance is 100% air-gapped and local. Perception, spatial interaction tracking, procedure state transitions, voice guidance, and video recording all run locally on the payload processor. Ground monitoring via WebSockets is an auxiliary subscriber; severing the network connection has zero impact on local mission assurance.
@@ -94,7 +94,7 @@
 ---
 
 ## 11. Cost & Deployment Feasibility
-### Q: What is the estimated deployment cost of ASTRA-EA?
+### Q: What is the estimated deployment cost of Pramman?
 - **Status:** `ASSUMPTION` & `FUTURE WORK`
 - **Defense:**  
   We separate **ground prototype cost** from **spacecraft flight qualification cost**:
@@ -107,4 +107,4 @@
 ### Q: Has this system been tested in zero gravity or certified by ISRO?
 - **Status:** `NOT YET VALIDATED`
 - **Defense:**  
-  **No.** We state with absolute transparency that ASTRA-EA is an **engineering-grade ground demonstrator (TRL 4)**. It has not flown on a parabolic flight, nor has it undergone ISRO spaceflight certification. In microgravity, floating tools and fluid capillary dynamics behave differently than on Earth. Our system validates the foundational software architecture, edge-AI pipeline, and explainable assurance loop, providing the verified baseline for future TRL 5/6 parabolic and space-mockup testing.
+  **No.** We state with absolute transparency that Pramman is an **engineering-grade ground demonstrator (TRL 4)**. It has not flown on a parabolic flight, nor has it undergone ISRO spaceflight certification. In microgravity, floating tools and fluid capillary dynamics behave differently than on Earth. Our system validates the foundational software architecture, edge-AI pipeline, and explainable assurance loop, providing the verified baseline for future TRL 5/6 parabolic and space-mockup testing.

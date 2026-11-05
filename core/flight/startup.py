@@ -1,4 +1,4 @@
-"""Deterministic Flight Startup Sequence and Self-Test Engine for ASTRA-EA (Phase 18).
+"""Deterministic Flight Startup Sequence and Self-Test Engine for Pramman (Phase 18).
 
 In accordance with Section 10, 11, 51 & 65:
 Executes sequential boot stages:

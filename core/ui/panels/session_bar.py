@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Session & Header Bar
+# Pramman Mission Session & Header Bar
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Top mission header bar providing session lifecycle controls and offline indicators."""
@@ -32,6 +32,9 @@ class SessionBar(QFrame):
         on_start: Optional[Callable[[], None]] = None,
         on_pause: Optional[Callable[[], None]] = None,
         on_stop: Optional[Callable[[], None]] = None,
+        on_upload_video: Optional[Callable[[], None]] = None,
+        on_toggle_record: Optional[Callable[[], None]] = None,
+        on_toggle_mirror: Optional[Callable[[bool], None]] = None,
         on_experiment_changed: Optional[Callable[[str], None]] = None,
         parent: Optional[QWidget] = None,
     ) -> None:
@@ -40,6 +43,9 @@ class SessionBar(QFrame):
         self.on_start = on_start
         self.on_pause = on_pause
         self.on_stop = on_stop
+        self.on_upload_video = on_upload_video
+        self.on_toggle_record = on_toggle_record
+        self.on_toggle_mirror = on_toggle_mirror
         self.on_experiment_changed = on_experiment_changed
 
         self._init_ui()
@@ -50,7 +56,7 @@ class SessionBar(QFrame):
         layout.setSpacing(12)
 
         # Brand / App Title
-        self.lbl_brand = QLabel("ASTRA-EA")
+        self.lbl_brand = QLabel("ORBITA")
         self.lbl_brand.setObjectName("HeaderTitle")
         self.lbl_brand.setStyleSheet(f"font-size: 16px; font-weight: 900; color: {Colors.BLUE_BRIGHT}; letter-spacing: 1px;")
         layout.addWidget(self.lbl_brand)
@@ -73,23 +79,35 @@ class SessionBar(QFrame):
         )
         layout.addWidget(self.lbl_sys_status)
 
-        # Offline Mode Indicator (Prominent judge-demo moment)
+        # Internal labels maintained for backwards compatibility with tests
         self.lbl_offline = QLabel("📶 LOCAL / OFFLINE (AIR-GAPPED)")
-        self.lbl_offline.setStyleSheet(
-            f"font-size: 10px; font-weight: bold; color: {Colors.AMBER_BRIGHT}; "
-            f"background-color: {Colors.BG_SURFACE}; border: 1px solid {Colors.BORDER_DEFAULT}; "
-            f"border-radius: 3px; padding: 3px 8px;"
-        )
-        layout.addWidget(self.lbl_offline)
-
-        # Camera Profile Badge
+        self.lbl_offline.setVisible(False)
         self.lbl_cam_profile = QLabel("📷 VIEW_LEFT")
-        self.lbl_cam_profile.setStyleSheet(
-            f"font-size: 10px; font-weight: bold; color: {Colors.TEXT_PRIMARY}; "
-            f"background-color: {Colors.BG_SURFACE}; border: 1px solid {Colors.BORDER_DEFAULT}; "
-            f"border-radius: 3px; padding: 3px 8px;"
+        self.lbl_cam_profile.setVisible(False)
+
+        # Mirror Camera Toggle Button
+        self.btn_mirror = QPushButton("🪞 Mirror Camera")
+        self.btn_mirror.setCheckable(True)
+        self.btn_mirror.setChecked(False)
+        self.btn_mirror.setStyleSheet(
+            f"QPushButton {{ background-color: {Colors.BG_SURFACE}; color: {Colors.TEXT_PRIMARY}; "
+            f"border: 1px solid {Colors.BORDER_DEFAULT}; border-radius: 4px; padding: 4px 10px; font-size: 11px; font-weight: bold; }} "
+            f"QPushButton:hover {{ background-color: {Colors.BG_HOVER}; }} "
+            f"QPushButton:checked {{ background-color: #1e3a5f; color: #93c5fd; border: 1px solid #3b82f6; }}"
         )
-        layout.addWidget(self.lbl_cam_profile)
+        self.btn_mirror.setToolTip("Mirror camera view horizontally (natural selfie / mirror view)")
+        if self.on_toggle_mirror:
+            self.btn_mirror.toggled.connect(self.on_toggle_mirror)
+        layout.addWidget(self.btn_mirror)
+
+        # Recording Active Badge (Hidden by default)
+        self.lbl_rec_badge = QLabel("● REC")
+        self.lbl_rec_badge.setStyleSheet(
+            "font-size: 10px; font-weight: 900; color: #ffffff; background-color: #dc2626; "
+            "border: 1px solid #b91c1c; border-radius: 3px; padding: 3px 8px;"
+        )
+        self.lbl_rec_badge.setVisible(False)
+        layout.addWidget(self.lbl_rec_badge)
 
         layout.addStretch()
 
@@ -114,6 +132,27 @@ class SessionBar(QFrame):
         layout.addWidget(self.lbl_run_id)
 
         # Session Lifecycle Controls
+        self.btn_upload_video = QPushButton("📁 Upload Video")
+        self.btn_upload_video.setStyleSheet(
+            f"background-color: #1e3a5f; color: #93c5fd; border: 1px solid #3b82f6; "
+            f"border-radius: 4px; padding: 4px 10px; font-size: 11px; font-weight: bold;"
+        )
+        self.btn_upload_video.setToolTip("Upload and verify an experiment video file against procedure steps")
+        if self.on_upload_video:
+            self.btn_upload_video.clicked.connect(self.on_upload_video)
+        layout.addWidget(self.btn_upload_video)
+
+        self.btn_rec = QPushButton("🔴 REC")
+        self.btn_rec.setCheckable(True)
+        self.btn_rec.setStyleSheet(
+            "background-color: #27272a; color: #f87171; border: 1px solid #ef4444; "
+            "border-radius: 4px; padding: 4px 10px; font-size: 11px; font-weight: bold;"
+        )
+        self.btn_rec.setToolTip("Record video of the current camera feed and save directly to database")
+        if self.on_toggle_record:
+            self.btn_rec.clicked.connect(self.on_toggle_record)
+        layout.addWidget(self.btn_rec)
+
         self.btn_start = QPushButton("▶ START")
         self.btn_start.setObjectName("PrimaryButton")
         if self.on_start:
@@ -204,3 +243,23 @@ class SessionBar(QFrame):
             style = f"font-size: 10px; font-weight: bold; color: {Colors.AMBER_BRIGHT}; background-color: {Colors.BG_SURFACE}; border: 1px solid {Colors.AMBER}; border-radius: 3px; padding: 3px 8px;"
         self.lbl_mode.setText(f"MODE: {mode_upper}")
         self.lbl_mode.setStyleSheet(style)
+
+    def set_recording_state(self, is_recording: bool, file_path: str = "") -> None:
+        """Update visual recording indicator and button state."""
+        self.lbl_rec_badge.setVisible(is_recording)
+        self.btn_rec.setChecked(is_recording)
+        if is_recording:
+            self.btn_rec.setText("⏹ STOP REC")
+            self.btn_rec.setStyleSheet(
+                "background-color: #7f1d1d; color: #fecaca; border: 1px solid #ef4444; "
+                "border-radius: 4px; padding: 4px 10px; font-size: 11px; font-weight: bold;"
+            )
+            if file_path:
+                self.btn_rec.setToolTip(f"Recording active: {file_path}")
+        else:
+            self.btn_rec.setText("🔴 REC")
+            self.btn_rec.setStyleSheet(
+                "background-color: #27272a; color: #f87171; border: 1px solid #ef4444; "
+                "border-radius: 4px; padding: 4px 10px; font-size: 11px; font-weight: bold;"
+            )
+            self.btn_rec.setToolTip("Record video of the current camera feed and save directly to database")

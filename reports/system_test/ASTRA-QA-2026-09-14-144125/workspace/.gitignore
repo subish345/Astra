@@ -1,0 +1,87 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local Storage / Video / Evidence
+storage/video/*
+!storage/video/.gitkeep
+storage/evidence/*
+!storage/evidence/.gitkeep
+storage/reports/*
+!storage/reports/.gitkeep
+storage/database/*.db
+storage/database/*.db-wal
+storage/database/*.db-shm
+!storage/database/.gitkeep
+
+# Flight Data Partitions
+flight_data/mission/*
+!flight_data/mission/.gitkeep
+flight_data/evidence/*
+!flight_data/evidence/.gitkeep
+flight_data/telemetry/*
+!flight_data/telemetry/.gitkeep
+flight_data/reports/*
+!flight_data/reports/.gitkeep
+flight_data/diagnostics/*
+!flight_data/diagnostics/.gitkeep
+
+# Mission Data Exports
+exports/*
+!exports/.gitkeep
+
+# Operational Reports
+reports/rehearsal/*
+!reports/rehearsal/.gitkeep
+!reports/rehearsal/final-operational-readiness-report.md
+reports/training/*
+!reports/training/.gitkeep
+reports/mission_report_*.html
+
+# IDEs & OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Simulation recordings
+simulation/recordings/*
+!simulation/recordings/.gitkeep

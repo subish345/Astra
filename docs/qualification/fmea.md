@@ -1,4 +1,4 @@
-# ASTRA-EA: Failure Mode and Effects Analysis (FMEA) & Fault Tree Analysis (FTA)
+# Pramman: Failure Mode and Effects Analysis (FMEA) & Fault Tree Analysis (FTA)
 
 **Classification:** System Safety & Reliability Engineering Analysis  
 **Document ID:** `ASTRA-FMEA-001`  

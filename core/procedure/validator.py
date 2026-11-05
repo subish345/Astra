@@ -1,4 +1,4 @@
-"""Procedure validation engine for ASTRA-EA.
+"""Procedure validation engine for Pramman.
 
 Performs semantic and referential integrity checks on loaded experiment procedures.
 Ensures that experiments are fully valid before execution begins.

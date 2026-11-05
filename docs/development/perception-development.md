@@ -1,4 +1,4 @@
-# ASTRA-EA Perception Development Guide
+# Pramman Perception Development Guide
 
 ## 1. Perception Configuration
 All perception parameters are centralized in `configs/system.yaml`:

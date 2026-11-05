@@ -1,0 +1,16 @@
+scenario_id: "SIM_SHIFT_VIEWPOINT"
+name: "Dynamic Multi-Angle Viewpoint Switch"
+description: "Simulates mid-experiment camera angle perspective shift from VIEW_LEFT to VIEW_RIGHT to verify viewpoint invariance."
+procedure_path: "configs/experiments/demo.yaml"
+camera_profile: "VIEW_LEFT"
+duration_sec: 6.0
+target_fps: 30.0
+synthetic_seed: 60006
+faults:
+  - fault_type: "VIEWPOINT_SWITCH"
+    start_time: 2.5
+    duration_sec: 3.5
+    intensity: 1.0
+    target: "VIEW_RIGHT"
+expected_final_status: "VERIFIED"
+expected_deviations: []

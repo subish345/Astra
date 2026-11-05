@@ -1,4 +1,4 @@
-"""Flight Data Storage Manager and Priority Pruning for ASTRA-EA (Phase 18).
+"""Flight Data Storage Manager and Priority Pruning for Pramman (Phase 18).
 
 In accordance with Section 25, 26, 27 & 28:
 Enforces structured flight data partitioning (mission/, evidence/, telemetry/, reports/, diagnostics/).

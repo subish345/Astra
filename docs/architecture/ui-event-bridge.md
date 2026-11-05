@@ -1,4 +1,4 @@
-# ASTRA-EA — Backend-to-UI Event Bridge Architecture
+# Pramman — Backend-to-UI Event Bridge Architecture
 
 ## Thread-Safe Reactive Bridge for Spacecraft Mission Telemetry
 
@@ -37,7 +37,7 @@ In mission-critical spacecraft software, UI freezes or rendering stalls can disr
 
 ## 2. Event Signal Specifications
 
-[`BackendEventBridge`](file:///home/subish-loq/Documents/astra/core/ui/bridge.py) defines the following canonical Qt signals:
+[`BackendEventBridge`](file:///home/subish-loq/Documents/pramman_proj/core/ui/bridge.py) defines the following canonical Qt signals:
 
 ```python
 class BackendEventBridge(QObject):
@@ -76,7 +76,7 @@ class BackendEventBridge(QObject):
 
 ## 3. UI State Store Mapping
 
-The [`MissionUIState`](file:///home/subish-loq/Documents/astra/core/ui/state.py) acts as a passive, typed projection of the active session:
+The [`MissionUIState`](file:///home/subish-loq/Documents/pramman_proj/core/ui/state.py) acts as a passive, typed projection of the active session:
 
 - **Step Transitions**:
   `apply_step_progress(curr, next, completed, status)` updates `step_statuses`, `current_step`, and `next_action`.

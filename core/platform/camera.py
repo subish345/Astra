@@ -1,4 +1,4 @@
-"""Flight-Like Camera Abstraction and Driver Interface for ASTRA-EA (Phase 18).
+"""Flight-Like Camera Abstraction and Driver Interface for Pramman (Phase 18).
 
 In accordance with Section 14 & 15:
 Abstracts sensor hardware away from perception. Enforces deterministic camera failure

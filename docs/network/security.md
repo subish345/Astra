@@ -1,4 +1,4 @@
-# ASTRA-EA Network & Telemetry Security Specification
+# Pramman Network & Telemetry Security Specification
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Classification:** Phase 9 Network Security, Access Control, and Threat Mitigation
@@ -7,7 +7,7 @@
 
 ## 1. Security Architecture & Threat Model
 
-In flight operations, the ASTRA-EA Onboard core and Ground Monitor communicate across an isolated spacecraft LAN or umbilical tether. Despite the physical/air-gapped network boundary, Phase 9 enforces multi-layer defensive programming to guarantee that network degradation, buggy clients, or adversarial injections cannot compromise onboard flight assurance.
+In flight operations, the Pramman Onboard core and Ground Monitor communicate across an isolated spacecraft LAN or umbilical tether. Despite the physical/air-gapped network boundary, Phase 9 enforces multi-layer defensive programming to guarantee that network degradation, buggy clients, or adversarial injections cannot compromise onboard flight assurance.
 
 ```text
 GROUND MONITOR (Untrusted Client Context)

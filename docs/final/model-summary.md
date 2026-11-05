@@ -1,4 +1,4 @@
-# ASTRA-EA — Final Model Architecture & Comparative Summary
+# Pramman — Final Model Architecture & Comparative Summary
 
 ## Model Candidate: `ASTRA_OBJECT_DETECTOR_v1.0`
 **Freeze Status:** LOCKED & VALIDATED  
@@ -23,7 +23,7 @@
 
 ## 2. Comparative Analysis: Baseline vs Learned Detector
 
-ASTRA-EA supports hot-swapping between the deterministic heuristic baseline and the learned neural detector via declarative YAML configuration without altering a single line of downstream interaction, procedure, or assurance code.
+Pramman supports hot-swapping between the deterministic heuristic baseline and the learned neural detector via declarative YAML configuration without altering a single line of downstream interaction, procedure, or assurance code.
 
 | Metric | Baseline (`ColorSpatialObjectDetector`) | Learned (`ASTRA_OBJECT_DETECTOR_v1.0`) | Superiority Rationale |
 | :--- | :--- | :--- | :--- |

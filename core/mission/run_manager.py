@@ -1,4 +1,4 @@
-"""Mission Run Manager and Artifact Persistence for ASTRA-EA.
+"""Mission Run Manager and Artifact Persistence for Pramman.
 
 Orchestrates reproducible experiment run creation, configuration snapshots,
 model snapshots, audit metadata, mission reporting (JSON + HTML), and crash recovery.
@@ -197,7 +197,7 @@ class MissionRunManager:
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ASTRA-EA Mission Report — {manifest.get('run_id')}</title>
+  <title>Pramman Mission Report — {manifest.get('run_id')}</title>
   <style>
     body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0b0f19; color: #e2e8f0; margin: 0; padding: 24px; }}
     .container {{ max-width: 900px; margin: 0 auto; background: #131b2e; border: 1px solid #1e293b; border-radius: 8px; padding: 24px; }}
@@ -215,7 +215,7 @@ class MissionRunManager:
 </head>
 <body>
   <div class="container">
-    <h1>ASTRA-EA Mission Report — {manifest.get('run_id')}</h1>
+    <h1>Pramman Mission Report — {manifest.get('run_id')}</h1>
     <p>Status: <span class="badge">{status}</span> &nbsp;|&nbsp; Experiment: <strong>{manifest.get('experiment_id')}</strong> &nbsp;|&nbsp; Duration: <strong>{manifest.get('duration_seconds')}s</strong></p>
     
     <div class="grid">

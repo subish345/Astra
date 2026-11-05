@@ -1,4 +1,4 @@
-"""Hardware-in-the-Loop (HIL) Execution Engine & Matrix Evaluator for ASTRA-EA.
+"""Hardware-in-the-Loop (HIL) Execution Engine & Matrix Evaluator for Pramman.
 
 Connects physical camera ingestion, edge compute abstractions, local SQLite WAL,
 and ground monitoring. Compares simulation expectations against physical hardware.
@@ -24,7 +24,7 @@ class HILRunner:
     def run_hil_scenario(self) -> Dict[str, Any]:
         """Execute a target HIL scenario and evaluate against simulation baselines."""
         print("============================================================")
-        print(f" ASTRA-EA HARDWARE-IN-THE-LOOP (HIL) RUNNER // {self.scenario}")
+        print(f" Pramman HARDWARE-IN-THE-LOOP (HIL) RUNNER // {self.scenario}")
         print("============================================================")
         print(f"Active Scenario:      {self.scenario}")
         print("Compute Node:         Active Edge Host (POSIX x86_64/ARM64)")
@@ -135,10 +135,10 @@ class HILRunner:
         # Hardware Matrix HTML Report
         hw_matrix_path = self.reports_dir / "hardware_matrix.html"
         hw_matrix_html = """<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>ASTRA-EA Hardware Deployment Matrix</title>
+<html lang="en"><head><meta charset="UTF-8"><title>Pramman Hardware Deployment Matrix</title>
 <style>body{font-family:sans-serif;background:#0a0e17;color:#e5e7eb;padding:2rem;} h1,h2{color:#00e5ff;} table{width:100%;border-collapse:collapse;margin-top:1rem;} th,td{border:1px solid #374151;padding:0.75rem;text-align:left;} th{background:#1e293b;color:#9ca3af;} .pass{color:#00e676;font-weight:bold;}</style>
 </head><body>
-<h1>ASTRA-EA Hardware Matrix & Edge Profile Comparison</h1>
+<h1>Pramman Hardware Matrix & Edge Profile Comparison</h1>
 <table>
 <tr><th>Platform</th><th>Compute Architecture</th><th>Camera Interface</th><th>Model Runtime</th><th>Throughput (FPS)</th><th>P95 Latency</th><th>RAM (RSS)</th><th>Status</th></tr>
 <tr><td><strong>Development Workstation</strong></td><td>x86_64 (8 Core, 32GB, RTX GPU)</td><td>USB 3.0 / PCIe V4L2</td><td>PyTorch 2.x / CUDA</td><td>34.2 FPS</td><td>26.4 ms</td><td>448 MB</td><td class="pass">VERIFIED</td></tr>
@@ -154,7 +154,7 @@ class HILRunner:
 <html lang="en"><head><meta charset="UTF-8"><title>Edge Performance Profile</title>
 <style>body{font-family:sans-serif;background:#0a0e17;color:#e5e7eb;padding:2rem;} h1,h2{color:#00e5ff;} table{width:100%;border-collapse:collapse;} th,td{border:1px solid #374151;padding:0.75rem;} th{background:#1e293b;} .pass{color:#00e676;}</style>
 </head><body>
-<h1>ASTRA-EA Edge Performance & Resource Profile</h1>
+<h1>Pramman Edge Performance & Resource Profile</h1>
 <table><tr><th>Metric</th><th>Workstation Baseline</th><th>Edge Embedded Profile</th><th>Delta / Constraint</th></tr>
 <tr><td>Pipeline Throughput</td><td>34.2 FPS</td><td>31.8 FPS</td><td class="pass">Meets >30 FPS Target</td></tr>
 <tr><td>End-to-End P50 Latency</td><td>18.2 ms</td><td>21.5 ms</td><td>+3.3 ms</td></tr>

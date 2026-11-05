@@ -1,4 +1,4 @@
-"""ASTRA-EA physical activity recognition and temporal reasoning subsystem."""
+"""Pramman physical activity recognition and temporal reasoning subsystem."""
 
 from core.activity.annotation import (
     ActivityAnnotation,

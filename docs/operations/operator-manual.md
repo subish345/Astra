@@ -1,4 +1,4 @@
-# ASTRA-EA — Operational Roles & Operator Manual
+# Pramman — Operational Roles & Operator Manual
 
 ## Phase 19: Mission Operations & Ground Segment Integration (D19.03, D19.04, D19.07)
 **Project:** Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
@@ -7,7 +7,7 @@
 
 ## 1. Operational Roles & Responsibilities (Section 5, 6)
 
-ASTRA-EA structures operations across 6 formal roles (consolidated into `LOCAL_OPERATOR` for standalone competitions):
+Pramman structures operations across 6 formal roles (consolidated into `LOCAL_OPERATOR` for standalone competitions):
 
 ### 1. Astronaut / Experiment Operator (`ASTRONAUT_OPERATOR`)
 - **Primary Interface:** Workstation Mission Console HUD & Offline Audio Guidance.
@@ -80,12 +80,12 @@ ASTRA-EA structures operations across 6 formal roles (consolidated into `LOCAL_O
 1. Power up computer and camera.
 2. Run automated validation:
    ```bash
-   astra mission precheck
+   pramman mission precheck
    ```
 3. Confirm all 9 subsystems report `[PASS]` and overall verdict is `[READY]`.
 4. Launch console interface:
    ```bash
-   astra mission --procedure configs/experiments/demo.yaml
+   pramman mission --procedure configs/experiments/demo.yaml
    ```
 
 ### Anomaly & Deviation Response

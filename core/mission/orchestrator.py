@@ -1,4 +1,4 @@
-"""Central Mission Orchestrator for ASTRA-EA.
+"""Central Mission Orchestrator for Pramman.
 
 Orchestrates the complete integrated product lifecycle:
 - Startup, self-test verification, and clean shutdown
@@ -64,7 +64,7 @@ logger = get_logger("ORCHESTRATOR")
 
 
 class MissionOrchestrator:
-    """Master controller orchestrating all ASTRA-EA flight services."""
+    """Master controller orchestrating all Pramman flight services."""
 
     def __init__(
         self,
@@ -135,7 +135,7 @@ class MissionOrchestrator:
 
     def boot(self) -> bool:
         """Execute system boot sequence and advance lifecycle."""
-        logger.info("ASTRA-EA Orchestrator booting (v%s)...", VERSION)
+        logger.info("Pramman Orchestrator booting (v%s)...", VERSION)
         self.lifecycle.transition_to(MissionLifecycleState.INITIALIZING, "System boot initiated")
 
         # Verify filesystem layout
@@ -555,7 +555,7 @@ class MissionOrchestrator:
 
     def shutdown(self) -> None:
         """Perform orderly, clean shutdown of all hardware and background threads."""
-        logger.info("Shutting down ASTRA-EA Mission Orchestrator...")
+        logger.info("Shutting down Pramman Mission Orchestrator...")
         self.lifecycle.transition_to(MissionLifecycleState.SHUTTING_DOWN, "Clean shutdown initiated")
 
         # Stop active run if running
@@ -572,4 +572,4 @@ class MissionOrchestrator:
         self.db.close()
 
         self.lifecycle.transition_to(MissionLifecycleState.STOPPED, "Shutdown complete")
-        logger.info("ASTRA-EA Mission Orchestrator stopped.")
+        logger.info("Pramman Mission Orchestrator stopped.")

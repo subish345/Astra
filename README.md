@@ -1,4 +1,63 @@
-# ASTRA-EA
+# ORBITA
+
+## Run ORBITA
+
+From the project folder:
+
+```bash
+cd /home/subish-loq/Downloads/DEMO11  # or your project folder
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -e ".[gui,dev]"
+```
+
+Check the camera, then start the Mission Console:
+
+```bash
+python3 orbita.py camera list
+python3 orbita.py camera test --source 0 --frames 30
+python3 orbita.py mission --source 0 --procedure configs/experiments/demo.yaml
+```
+
+For continuous observation, launch **Always Observe** directly:
+
+```bash
+python3 orbita.py mission --source 0 --procedure configs/experiments/always_observe.yaml
+```
+
+You can also select **Always Observe** from the experiment dropdown before starting a run. Observation continues while the application is running; use **STOP** to stop the camera. The current pipeline recognizes its supported pose, hand, and object interaction actions, not every possible human action.
+
+### Video Recording, Playback & Step Accuracy Verification
+* **In-Console Video Recording:** While running any camera session in `python3 orbita.py mission`, click the **`🔴 REC`** button in the header bar to record the live feed. Click **`⏹ STOP REC`** to finalize the recording. The video file is stored in `data/recordings/` and automatically registered in SQLite (`storage/database/astra.db` inside the `video_segments` table).
+* **Recordings Archive & Player:** Switch to the **`RECORDINGS`** tab in the sidebar navigation to:
+  * Browse all recorded experiment sessions and ingested videos stored in the SQLite database.
+  * Play back any recording directly inside an integrated video player with Play, Pause, Stop, timeline scrubber, and speed controls (`1.0x Normal`, `0.5x Slow`, `0.25x Quarter`, `1.5x`, `2.0x`).
+  * Recorded sessions are paced using monotonic hardware timestamps to ensure true 1.0x real-time playback speed (never fast-forwarded) and captured at full camera resolution (1280x720) without HUD blur.
+  * Click **`🔍 Verify Movement Accuracy`** on any recorded video to automatically reload and re-evaluate movement and step accuracy.
+* **Video Upload & Verification:** Click **`📁 Upload Video`** on the header bar to verify any external `.mp4`/`.avi` file against procedure steps, or verify via CLI:
+  ```bash
+  # List all recorded video sessions registered in SQLite
+  python3 orbita.py video list
+
+  # Verify movements and procedural accuracy on any video file
+  python3 orbita.py video verify --video final_submission/demo_videos/01_normal_operation.mp4 --procedure configs/experiments/demo.yaml
+  ```
+
+### Database Visual Storage & Model Training
+All camera visuals, detected bounding boxes, 33-point skeletal keypoints, movement interactions, and step accuracy scores are automatically persisted to the local SQLite audit database (`storage/database/astra.db`). Video binary files (`.mp4`) are stored cleanly in the structured filesystem (`data/recordings/`) using a hybrid storage architecture.
+To train neural networks on these captured visuals:
+```bash
+# 1. Export captured visuals from SQLite into a partitioned training dataset (train/val/test)
+python3 orbita.py dataset export-db --output datasets/raw/from_db --dataset-id ORBITA_VISUALS_V1
+
+# 2. Train model using the exported visual dataset
+python3 orbita.py model train --model-name ASTRA_OBJECT_DETECTOR --dataset ORBITA_VISUALS_V1 --epochs 10
+```
+
+After installation, `orbita` is the primary command-line entry point (for example, `orbita mission`). Backwards compatibility aliases (`pramman` and `astra`) remain available. Direct script execution via `python3 orbita.py` or `python3 main.py` is fully supported. Existing database names, model identifiers, and archived reports keep their original filenames to preserve access to saved data.
+
+If you already have the dependencies installed, skip environment setup and run the commands with your existing Python environment. Additional pose-model dependencies may be needed as described in the installation sections below.
+
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance
 
@@ -11,7 +70,7 @@
 
 ## 1. Executive Summary
 
-**ASTRA-EA** is an offline, edge-AI experiment assurance platform designed to observe an astronaut performing a scientific experiment in microgravity through an onboard optical sensor. By evaluating hand-object interactions, physical kinematics, and temporal activity progression against an external, configuration-driven procedure, ASTRA-EA verifies whether procedural steps are executed correctly, flags sequence deviations, provides real-time voice and visual guidance, and generates an immutable local audit record.
+**ORBITA** is an offline, edge-AI experiment assurance platform designed to observe an astronaut performing a scientific experiment in microgravity through an onboard optical sensor. By evaluating hand-object interactions, physical kinematics, and temporal activity progression against an external, configuration-driven procedure, ORBITA verifies whether procedural steps are executed correctly, flags sequence deviations, provides real-time voice and visual guidance, and generates an immutable local audit record.
 
 ### Core Architectural Axiom
 $$\text{Camera View} \longrightarrow \text{Normalized Observations} \longrightarrow \text{Interaction} \longrightarrow \text{Activity} \longrightarrow \text{Evidence} \longrightarrow \text{Procedure} \longrightarrow \text{Assurance} \longrightarrow \text{Assistance} \longrightarrow \text{Logging}$$
@@ -42,12 +101,39 @@ The assurance engine yields strictly one of three discrete states:
 
 ## 3. Strict Offline & Edge Autonomy
 
-ASTRA-EA is engineered for air-gapped, high-reliability spacecraft operation:
+ORBITA is engineered for air-gapped, high-reliability spacecraft operation:
 - **Zero Cloud Dependencies:** Operates completely offline. No OpenAI, AWS, Azure, Google Cloud, remote GPU inference, or online TTS APIs.
 - **No LLM in Critical Assurance Path:** Procedural validation, sequence verification, and safety decisions are 100% deterministic and model-based.
 - **Local Audio Guidance:** Offline text-to-speech engine (`pyttsx3`) with speech deduplication, priority preemption, and cooldown intervals.
-- **Local Persistence:** ACID-compliant SQLite audit store with Write-Ahead Logging (WAL), persisting assurance decisions, recovery events, step evaluations, and evidence bundles.
+- **Local Persistence (Hybrid Storage Architecture):** ACID-compliant SQLite audit store with Write-Ahead Logging (WAL) and Schema v2, persisting camera visual keyframes, 33-point skeletal poses, bounding boxes, movement accuracy scores, recovery events, step evaluations, and evidence bundles. High-resolution video streams and evidence micro-clips are stored concurrently on the structured local filesystem without database bloat.
 - **Honest Latency & Throughput Metrics:** Measured assurance evaluation latency P50 is **~0.01 ms**; full pipeline compute latency P50 is **~21.6–23.8 ms** (~42–46 FPS processing capacity on CPU with MediaPipe 33-keypoint skeletal inference).
+
+### 3.1 Database Architecture & Selection Guide (Video, Visuals & Evidence Storage)
+
+When designing an edge-AI system for air-gapped spacecraft or isolated laboratory environments, choosing the correct persistence strategy for high-bandwidth video and high-frequency AI evidence is a safety-critical engineering decision.
+
+#### Database Technology Comparison
+
+| Evaluation Criterion | Pure Relational BLOBs (SQLite / PostgreSQL BLOB column) | Distributed / NoSQL DBs (MongoDB, MinIO, S3, CouchDB) | Hybrid Relational Index + Local Filesystem (ORBITA Standard) |
+| :--- | :--- | :--- | :--- |
+| **Video I/O Performance** | ❌ **Poor:** DB page cache thrashing; memory spikes; table locks during large video writes. | ⚠️ **Moderate:** Network socket overhead; serialization latency. | ✅ **Optimal:** Zero-copy OS page caching, direct NVMe/eMMC filesystem streaming. |
+| **Edge Footprint & Overhead** | ⚠️ Moderate, but DB file balloons gigabytes in hours, risking single-file corruption. | ❌ **High:** Requires running separate background server daemons (>1 GB RAM), background threads, and open TCP ports. | ✅ **Extremely Lightweight:** Embedded SQLite engine compiled in-process (0 MB daemon overhead, <10 MB RAM). |
+| **Air-Gap & Cyber Resilience** | ✅ Local file, but vacuuming/defragmentation locks the system. | ❌ **Air-gap violation:** Requires open local ports, daemon authentication, and external network services. | ✅ **100% Air-Gapped:** Zero external daemons, zero open ports required for persistence, ACID transaction guarantees. |
+| **Query & Filter Latency** | ⚠️ Slowed down by oversized DB pages containing binary video chunks. | ⚠️ Eventual consistency; complex multi-document transactional guarantees. | ✅ **Sub-millisecond (<0.5 ms):** B-tree relational queries for timestamps, steps, skeletal poses, and scores. |
+| **Sudden Power Loss Recovery** | ❌ Risk of entire database corruption if power is cut while writing 500 MB video blob. | ⚠️ Journal repair and cluster re-election delays upon reboot. | ✅ **Deterministic Recovery:** SQLite Write-Ahead Logging (WAL) ensures instant crash recovery; video stream files remain intact. |
+
+#### ORBITA's Hybrid Storage Architecture
+
+ORBITA implements the **Hybrid Relational + Structured Filesystem** pattern:
+1. **Video Binary Storage (`data/recordings/*.mp4` & `storage/evidence/`):**
+   - Live camera recordings and evidence video clips are written directly to disk via optimized OpenCV H.264 / MPEG-4 video writers.
+   - Files are named deterministically (`rec_YYYYMMDD_HHMMSS.mp4` or `EVID_<run>_<step>.mp4`), enabling direct seeking, streaming playback, and zero database overhead.
+2. **Relational Audit & Visual Database (`storage/database/astra.db`):**
+   - **`video_segments` Table:** Indexes every recorded or uploaded video with its `segment_id`, `run_id`, start/end timestamps, frame count, FPS, duration, and resolved local path.
+   - **`camera_visuals` Table:** Persists key visual frames along with detected bounding boxes, MediaPipe 33-point 3D skeletal landmarks, hand interaction states, step IDs, verification accuracy scores, and `is_training_sample` flags.
+   - **`evidence_bundles` & `experiment_runs` Tables:** Stores immutable audit chains, deviations, operator overrides, and recovery contexts.
+3. **Model Retraining Dataset Export (`datasets/raw/`):**
+   - Ground truth and high-confidence visuals stored in SQLite can be exported directly into structured, partitioned computer vision datasets (`train`/`val`/`test`) with standard JSON manifests via `orbita dataset export-db`.
 
 ---
 
@@ -123,7 +209,12 @@ astra-ea/
 │   ├── streaming/               # Phase 9: Video (MJPEG) and SSE telemetry streaming
 │   ├── training/                # Phase 7: ModelTrainingRunner, PyTorch pipeline
 │   ├── ui/                      # Phase 6: PySide6 Qt Mission Console, event bridge
+│   │   ├── panels/              # Header, HUD, step progress, timeline, and health panels (🔴 REC toggle)
+│   │   └── views/               # Mission, Recordings (archive & player), Evidence, Timeline, Health, Settings
 │   └── voice/                   # Phase 6: Local audio guidance engine and queue management
+│
+├── data/                        # Local recording storage
+│   └── recordings/              # Recorded live camera sessions and uploaded video files (.mp4)
 │
 ├── deployment/                  # Release packaging and deployment manifests
 │   └── flight/                  # Air-gapped flight packaging (RC1, RC2 release manifests)
@@ -188,8 +279,8 @@ astra-ea/
 ### 6.2 Setup
 ```bash
 # Clone the repository
-git clone <repo-url>
-cd astra
+git clone https://github.com/subish345/Astra.git orbita_proj
+cd orbita_proj
 
 # Optional: Initialize Python virtual environment
 python3 -m venv .venv
@@ -203,76 +294,76 @@ pip install -e ".[dev]"
 
 ## 7. Command-Line Interface (CLI)
 
-ASTRA-EA features a comprehensive command-line suite accessible via the canonical `astra <command>` binary (or `python3 main.py <command>` during development):
+ORBITA features a comprehensive command-line suite accessible via the canonical `astra <command>` binary (or `python3 main.py <command>` during development):
 
 ### 7.0 Integrated Product & Flight Demo Commands
 ```bash
 # Verify complete deployment readiness across all 10 hardware/software subsystems
-astra deployment doctor
+orbita deployment doctor
 
 # Launch one-command autonomous flight demonstration (nominal -> deviation -> recovery -> report)
-astra demo
+orbita demo
 
 # Run demonstration headlessly in CI or terminal environments
-astra demo --headless
+orbita demo --headless
 
 # Launch primary onboard Mission Console runtime
-astra mission
+orbita mission
 
 # Launch mission runtime with custom profile
-astra mission --profile demo
-astra mission --profile validation
+orbita mission --profile demo
+orbita mission --profile validation
 
 # Launch ground observation monitor
-astra ground-monitor
+orbita ground-monitor
 ```
 
 ### 7.0.1 Mission Operations & Rehearsal Commands (Phases 19 & 20)
 ```bash
 # Automated 9-subsystem pre-mission check
-astra mission precheck
+orbita mission precheck
 
 # Execute end-to-end mission rehearsals across operational modes
-astra rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
-astra rehearsal --scenario ALL --speed ACCELERATED
+orbita rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
+orbita rehearsal --scenario ALL --speed ACCELERATED
 
 # Execute authoritative full-length dress rehearsal (zero developer intervention)
-astra dress-rehearsal --speed ACCELERATED
+orbita dress-rehearsal --speed ACCELERATED
 
 # Compile and display consolidated operational scorecard
-astra rehearsal-scorecard
+orbita rehearsal-scorecard
 
 # Export completed mission data package and audit reports
-astra mission export --run RUN_XXXX
-astra mission report --run RUN_XXXX
-astra mission review --run RUN_XXXX
+orbita mission export --run RUN_XXXX
+orbita mission report --run RUN_XXXX
+orbita mission review --run RUN_XXXX
 ```
 
 ### 7.0.2 Findings-Driven Hardening Commands (Phase 21)
 ```bash
 # View live findings dashboard and severity metrics
-astra hardening findings
+orbita hardening findings
 
 # Deep-dive root cause analysis for specific finding
-astra hardening analyze FINDING-001
+orbita hardening analyze FINDING-001
 
 # Execute automated reproduction regression test
-astra hardening reproduce FINDING-001
+orbita hardening reproduce FINDING-001
 
 # Run full dedicated regression test suite and domain workflows
-astra hardening regression
+orbita hardening regression
 
 # Generate Section 46 hardening HTML audit reports
-astra hardening report
+orbita hardening report
 
 # Evaluate Release Candidate 2 (RC2) readiness gate
-astra hardening readiness
+orbita hardening readiness
 ```
 
 ### 7.1 Diagnostics & Configuration
 ```bash
 # Run system diagnostic checks (Python runtime, GPU/CUDA, OpenCV, DB, Camera)
-astra doctor
+orbita doctor
 
 # Validate configuration files against Pydantic schemas
 python3 main.py config validate
@@ -341,6 +432,21 @@ python3 main.py procedure replay --events storage/events/demo_events.json
 python3 main.py procedure benchmark --iterations 500
 ```
 
+### 7.6.1 Video Recording, Archive & Step Accuracy Verification
+```bash
+# List all recorded video sessions and segments registered in SQLite database
+orbita video list
+
+# Verify astronaut movements and procedure step accuracy on any uploaded video file
+orbita video verify --video final_submission/demo_videos/01_normal_operation.mp4 --procedure configs/experiments/demo.yaml
+
+# Run verification under right-side camera viewpoint profile
+orbita video verify --video final_submission/demo_videos/01_normal_operation.mp4 --camera-profile view_right
+
+# Verify with frame limit and save visuals, movements, and audit log directly to SQLite database
+orbita video verify --video storage/video/demo.mp4 --max-frames 150
+```
+
 ### 7.7 Viewpoint-Invariant Assurance & Closed-Loop Recovery (Phase 5)
 ```bash
 # Run live or video assurance monitor under configured camera profiles (VIEW_LEFT / VIEW_RIGHT)
@@ -375,6 +481,20 @@ python3 main.py mission \
 python3 main.py voice test
 ```
 
+#### Mission Console Views & Operator Controls
+* **Top Session Bar:**
+  * **`▶ START` / `⏸ PAUSE` / `⏹ STOP`**: Manage real-time experiment observation.
+  * **`🔴 REC` / `⏹ STOP REC`**: Manual toggle to record high-throughput camera feeds directly to disk (`data/recordings/`) and index segment metadata into SQLite (`video_segments` table).
+  * **`📁 Upload Video`**: Prompt operator to select any video file to immediately run procedural movement and step accuracy verification.
+  * **Experiment Dropdown**: Select between structured procedural workflows (e.g. `demo.yaml`) and continuous background observation (`always_observe.yaml`).
+* **Sidebar Navigation Stack:**
+  1. **`MISSION`**: Live optical feed with cyber-aerospace HUD, 33-point BlazePose skeleton wireframe, anatomical hand reticles, laser targeting vectors, step progress cards, and tri-state assurance status banner.
+  2. **`RECORDINGS`**: Archive of all recorded camera runs and ingested videos from SQLite. Includes an integrated OpenCV video player (Play, Pause, Stop, Seek Scrubbing Slider, Frame & Time Counter) and a 1-click **`🔍 Verify Movement Accuracy`** action button.
+  3. **`EVIDENCE`**: Corroborating multimodal evidence gallery with bounding box visual crops, spatial interaction confidence, and sensor audit bundles.
+  4. **`TIMELINE`**: Filterable chronological ledger of mission events, deviations, recovery actions, and recording triggers.
+  5. **`HEALTH`**: Real-time FPS, compute latency, CPU%, RAM MB, and subsystem status indicators (Camera, Perception, Procedure, Assurance).
+  6. **`SETTINGS`**: Optical sensor selector (hardware camera index or video file), viewpoint profile selection (`VIEW_LEFT`, `VIEW_RIGHT`, `VIEW_CENTER`), and voice guidance test.
+
 ### 7.9 Dataset Studio & Model Training Pipeline (Phase 7)
 ```bash
 # 1. Run Machine Learning Environment Diagnostics (NVIDIA RTX 5060 + PyTorch)
@@ -391,6 +511,12 @@ python3 main.py dataset split --dataset datasets/raw/synthetic/demo_synthetic
 
 # 5. Generate dataset balance and quality HTML/JSON reports
 python3 main.py dataset report --dataset datasets/raw/synthetic/demo_synthetic
+
+# 5b. Export recorded camera visuals & bounding boxes from SQLite database into training dataset
+orbita dataset export-db --output datasets/raw/from_db --dataset-id ORBITA_VISUALS_V1
+
+# 5c. Export visuals filtered by specific run ID
+orbita dataset export-db --run SESSION_001 --output datasets/raw/from_db
 
 # 6. List registered datasets
 python3 main.py dataset list
@@ -460,7 +586,7 @@ python3 -m streaming.benchmark
 
 ## 8. Demonstration Experiment (`DEMO_EXP_001`)
 
-Located at [`configs/experiments/demo.yaml`](file:///home/subish-loq/Documents/astra/configs/experiments/demo.yaml), this procedure serves as an engineering testbed for multimodal action assurance:
+Located at [`configs/experiments/demo.yaml`](file:///home/subish-loq/Documents/orbita_proj/configs/experiments/demo.yaml), this procedure serves as an engineering testbed for multimodal action assurance:
 
 - **Objects Defined:**
   - `MAIN_BOX`: Central experiment containment workstation
@@ -476,9 +602,9 @@ Located at [`configs/experiments/demo.yaml`](file:///home/subish-loq/Documents/a
 > [!NOTE]
 > When the official SIH26174 scientific experiment procedure is released, it can be seamlessly introduced by placing a new YAML file into `configs/experiments/` without altering application source code.
 
-### 8.1 Always Observe (`ALWAYS_OBSERVE_001`)
+### 8.1 Live Observe (`LIVE_OBSERVE_001`)
 
-Located at [`configs/experiments/always_observe.yaml`](file:///home/subish-loq/Documents/astra/configs/experiments/always_observe.yaml), **Always Observe** keeps the camera and local perception pipeline running continuously. It detects astronaut pose, hands, colored experiment objects, tracking, and recognized actions until the operator presses **STOP**. It has no procedural steps and is intended for background monitoring.
+Located at `configs/experiments/always_observe.yaml` (filename retained for existing launch commands), **Live Observe** starts when selected or launched and keeps the camera and local perception pipeline running until **STOP**, window close, or source failure/end of video. PAUSE does not suspend this mode. It uses the installed pose/hand adapters and AstroActAI's EfficientDet-Lite0 model for common-object names. Install the model at `models/checkpoints/efficientdet_lite0.tflite`, set `ASTRA_OBJECT_MODEL`, or keep the existing adjacent AstroActAI project. No network is required at runtime.
 
 ```bash
 python3 main.py mission \
@@ -486,15 +612,15 @@ python3 main.py mission \
   --procedure configs/experiments/always_observe.yaml
 ```
 
-Detected actions are written to the Mission Console timeline, for example `GRASP`, `MOVE`, `PLACE`, and `RELEASE`, with the associated object ID when available.
+The video overlay continuously shows visible/steady or moving hands and recognized nearby objects; changed summaries are added to the timeline at most once every two seconds. “Near hand” does not verify a grip, picking up, or correct tool use. Unknown tools cannot be reliably named by this common-object model. This mode has no procedure steps and does not automatically complete. A real camera test is still needed to validate recognition under your lighting and viewpoint.
 
-During `DEMO_EXP_001`, completing Steps 1 and 2 automatically displays a violet virtual work surface. Move `RED_BOX` into that zone; the demo fast-placement rule advances from Step 3 to Step 4 without requiring the box to be perfectly still.
+During `DEMO_EXP_001`, completing Steps 1 and 2 automatically displays a violet virtual work surface. Step 3 requires destination, stabilization, action-sequence, and confidence checks before advancing. Entering the zone alone does not verify placement. The legacy `allow_unstable_placement` option is disabled in this demo; explicitly opting into it does not bypass the evaluator's other checks.
 
 ---
 
 ## 9. Automated Testing
 
-ASTRA-EA includes **222 automated tests** across 16 test directories verifying mathematical geometry, state machines, temporal buffers, activity composition, procedure matching, multimodal evidence aggregation, step evaluation, spatial zones, destination validation, object stabilization, contact clearance, camera viewpoint invariance, tri-state assurance decisions, closed-loop recovery, offline voice synthesis, UI state stores, Qt event bridge, ML environment diagnostics, dataset integrity, data leakage prevention, session splitting, checkpoint persistence, model registry transitions, held-out evaluation, fault injection operators, simulated camera streams, mission simulation scenarios, batch matrix resilience, MJPEG stream encoding, bounded drop-oldest queues, SSE telemetry broadcasting, ring-buffer replay catch-up, multi-channel link health, jittered exponential backoff, rate limiting, and path traversal security guards:
+ORBITA includes **222 automated tests** across 16 test directories verifying mathematical geometry, state machines, temporal buffers, activity composition, procedure matching, multimodal evidence aggregation, step evaluation, spatial zones, destination validation, object stabilization, contact clearance, camera viewpoint invariance, tri-state assurance decisions, closed-loop recovery, offline voice synthesis, UI state stores, Qt event bridge, ML environment diagnostics, dataset integrity, data leakage prevention, session splitting, checkpoint persistence, model registry transitions, held-out evaluation, fault injection operators, simulated camera streams, mission simulation scenarios, batch matrix resilience, MJPEG stream encoding, bounded drop-oldest queues, SSE telemetry broadcasting, ring-buffer replay catch-up, multi-channel link health, jittered exponential backoff, rate limiting, and path traversal security guards:
 
 ```bash
 python3 -m pytest tests/ -v
@@ -574,7 +700,7 @@ python3 main.py procedure benchmark --iterations 200
 ```
 ```text
 ============================================================
- ASTRA-EA PROCEDURE ENGINE LATENCY BENCHMARK
+ ORBITA PROCEDURE ENGINE LATENCY BENCHMARK
 ============================================================
 Iterations: 200
 Procedure:  Sample Material Handling & Container Verification (DEMO) (4 steps)
@@ -600,7 +726,7 @@ python3 -m streaming.benchmark
 ```
 ```text
 ====================================================================================
- ASTRA-EA STREAMING IMPACT BENCHMARK REPORT
+ ORBITA STREAMING IMPACT BENCHMARK REPORT
 ====================================================================================
 Metric                       Baseline (AI Only)   AI + Recording + Streaming   Delta
 ------------------------------------------------------------------------------------
@@ -651,7 +777,7 @@ python3 main.py sim matrix --matrix configs/simulations/full_matrix.yaml
 Output:
 ```text
 ======================================================================
-ASTRA-EA SIMULATION MATRIX: ASTRA Full Mission & Fault Injection Verification Matrix
+ORBITA SIMULATION MATRIX: ASTRA Full Mission & Fault Injection Verification Matrix
 Total Scenarios to Execute: 6
 ======================================================================
 [01/06] Simulating: Nominal Spacecraft Experiment Mission (SIM_NOMINAL_001)...
@@ -685,7 +811,7 @@ Measured on host platform (`Intel Core i7-14700HX`, 32 GB RAM, Linux 7.1.12 x86_
 
 ```text
 ================================================================================
- ASTRA-EA SYSTEM BENCHMARK & PERFORMANCE PROFILE (REALTIME PROFILE)
+ ORBITA SYSTEM BENCHMARK & PERFORMANCE PROFILE (REALTIME PROFILE)
 ================================================================================
 Platform:       Linux 7.1.12-200.fc44.x86_64 (x86_64) | Python 3.14.7
 Compute Target: CPU (Intel(R) Core(TM) i7-14700HX)
@@ -728,7 +854,7 @@ python3 main.py benchmark optimize
 ```
 ```text
 ================================================================================
- ASTRA-EA MODEL OPTIMIZATION & PRECISION EXPERIMENTS
+ ORBITA MODEL OPTIMIZATION & PRECISION EXPERIMENTS
 ================================================================================
 Variant                Res        Latency (ms)   FPS        Red Recall   Gate    
 --------------------------------------------------------------------------------
@@ -745,7 +871,7 @@ python3 main.py benchmark soak --duration 10 --fps 30
 ```
 ```text
 ============================================================
- ASTRA-EA SOAK TEST SUMMARY
+ ORBITA SOAK TEST SUMMARY
 ============================================================
 Verdict:         PASS
 Duration:        10.03s
@@ -775,7 +901,7 @@ python3 main.py model compatibility
 ## 13. System Maturity, Phase 21 Hardening & Release Candidate 2 (RC2)
 
 ### 13.1 Phase 21 Exit Status & Quality Gates
-ASTRA-EA has completed **Phase 21 (Findings-Driven Hardening + Corrective Action + Release Candidate)**.
+ORBITA has completed **Phase 21 (Findings-Driven Hardening + Corrective Action + Release Candidate)**.
 In strict conformance with the Phase 21 Absolute Rule, zero hypothetical defects were invented, and all 7 empirical findings surfaced during Phase 20 operational rehearsals and Phase 21 live execution have been resolved:
 - **`FINDING-001` (CAMERA / HIGH)**: Unpacked `(frame, timestamp)` safely in precheck routines to handle sensor timeouts.
 - **`FINDING-002` (GROUND / MEDIUM)**: Enforced sequence deduplication in `GroundReconciler` during burst telemetry reconnect.
@@ -787,7 +913,7 @@ In strict conformance with the Phase 21 Absolute Rule, zero hypothetical defects
 
 ### 13.2 Release Candidate 2 (RC2) Verification Summary
 - **Release Identifier:** `ASTRA-EA-v1.0.0-RC2`
-- **Release Manifest:** [`deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json`](file:///home/subish-loq/Documents/astra/deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json)
+- **Release Manifest:** [`deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json`](file:///home/subish-loq/Documents/orbita_proj/deployment/flight/ASTRA-EA-v1.0.0-RC2/release_manifest.json)
 - **Dedicated Regression Tests:** 10 / 10 passed in `tests/regression/`
 - **Full Automated Test Suite:** **329 / 329 passed in 32.4s** across 23 test directories (0 failures)
 - **Rehearsal Matrix:** 13 / 13 scenarios passed with 0 developer interventions
@@ -798,52 +924,52 @@ In strict conformance with the Phase 21 Absolute Rule, zero hypothetical defects
 
 ## 14. Technical Architecture & Verification Documentation
 
-Comprehensive engineering documentation is maintained in the [`docs/`](file:///home/subish-loq/Documents/astra/docs) directory:
+Comprehensive engineering documentation is maintained in the [`docs/`](file:///home/subish-loq/Documents/orbita_proj/docs) directory:
 
 | Document | Category | Description |
 | :--- | :--- | :--- |
-| [`docs/operations/hardening-guide.md`](file:///home/subish-loq/Documents/astra/docs/operations/hardening-guide.md) | Hardening | Phase 21 Findings-Driven Hardening Operational Guide and RC2 baseline. |
-| [`CHANGELOG_HARDENING.md`](file:///home/subish-loq/Documents/astra/CHANGELOG_HARDENING.md) | Release | Phase 21 Findings-driven technical changelog and RC2 disposition notes. |
-| [`docs/operations/mission-rehearsal.md`](file:///home/subish-loq/Documents/astra/docs/operations/mission-rehearsal.md) | Operations | Phase 20 End-to-End Mission Rehearsal Manual, multi-mode matrix, and scorecards. |
-| [`docs/operations/rehearsal-findings.md`](file:///home/subish-loq/Documents/astra/docs/operations/rehearsal-findings.md) | Assurance | Phase 20 Rehearsal findings registry, taxonomy, and resolution history. |
-| [`docs/operations/corrective-actions.md`](file:///home/subish-loq/Documents/astra/docs/operations/corrective-actions.md) | Quality | Phase 20 CAPA traceability tracking, RCA, and regression verification. |
-| [`reports/rehearsal/final-operational-readiness-report.md`](file:///home/subish-loq/Documents/astra/reports/rehearsal/final-operational-readiness-report.md) | Readiness | Phase 20 Formal Operational Readiness Assessment and limitation bounds. |
-| [`docs/operations/operations-concept.md`](file:///home/subish-loq/Documents/astra/docs/operations/operations-concept.md) | Operations | Phase 19 Operational concept, CONOPS, and human-in-the-loop workflows. |
-| [`docs/operations/operator-manual.md`](file:///home/subish-loq/Documents/astra/docs/operations/operator-manual.md) | Operations | Phase 19 Standard operating procedures and astronaut/ground operator manual. |
-| [`docs/operations/ground-operations.md`](file:///home/subish-loq/Documents/astra/docs/operations/ground-operations.md) | Ground | Phase 19 Ground segment monitoring, reconciliation, and audit export. |
-| [`docs/architecture/edge-optimization.md`](file:///home/subish-loq/Documents/astra/docs/architecture/edge-optimization.md) | Architecture | Phase 10 Edge deployment philosophy, hardware abstraction, and scheduler. |
-| [`docs/architecture/profiling-framework.md`](file:///home/subish-loq/Documents/astra/docs/architecture/profiling-framework.md) | Architecture | Phase 10 Multi-dimensional latency profiler, percentiles, and queue health. |
-| [`docs/testing/benchmarking-guide.md`](file:///home/subish-loq/Documents/astra/docs/testing/benchmarking-guide.md) | Verification | Phase 10 Baseline, profiled, soak, and optimization benchmarking guide. |
-| [`docs/deployment/edge-profiles.md`](file:///home/subish-loq/Documents/astra/docs/deployment/edge-profiles.md) | Deployment | Phase 10 Layered deployment profiles and hardware compatibility matrix. |
-| [`docs/architecture/ground-monitor.md`](file:///home/subish-loq/Documents/astra/docs/architecture/ground-monitor.md) | Architecture | Phase 9 PySide6 Ground Monitor Console, panels, and decoupled state model. |
-| [`docs/architecture/streaming.md`](file:///home/subish-loq/Documents/astra/docs/architecture/streaming.md) | Architecture | Phase 9 Video stream server (:8554), drop-oldest queue, and encoder quality profiles. |
-| [`docs/architecture/event-stream.md`](file:///home/subish-loq/Documents/astra/docs/architecture/event-stream.md) | Architecture | Phase 9 SSE telemetry server (:8765), typed schema, and 500-event replay buffer. |
-| [`docs/network/protocol.md`](file:///home/subish-loq/Documents/astra/docs/network/protocol.md) | Network | Phase 9 Wire protocol specification for MJPEG video, SSE events, and replay APIs. |
-| [`docs/network/security.md`](file:///home/subish-loq/Documents/astra/docs/network/security.md) | Security | Phase 9 Network security, bind restriction, path traversal defense, and rate limiting. |
-| [`docs/testing/ground-monitor-testing.md`](file:///home/subish-loq/Documents/astra/docs/testing/ground-monitor-testing.md) | Verification | Phase 9 Headless Qt test plan and panel-level unit validation. |
-| [`docs/testing/streaming-testing.md`](file:///home/subish-loq/Documents/astra/docs/testing/streaming-testing.md) | Verification | Phase 9 Video loopback, SSE event delivery, transit latency, and impact benchmark. |
-| [`docs/deployment/local-network.md`](file:///home/subish-loq/Documents/astra/docs/deployment/local-network.md) | Deployment | Dual-machine LAN setup guide (Machine 1 Onboard, Machine 2 Ground Monitor). |
-| [`docs/architecture/simulation-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/simulation-architecture.md) | Architecture | Phase 8 Simulation Engine, Fault Injection, Scripted Camera, and Matrix Runner. |
-| [`docs/testing/fault-injection-testing.md`](file:///home/subish-loq/Documents/astra/docs/testing/fault-injection-testing.md) | Verification | Phase 8 Fault Injection Test Plan, Resilience Matrix, and MTTD metrics. |
-| [`docs/architecture/dataset-studio.md`](file:///home/subish-loq/Documents/astra/docs/architecture/dataset-studio.md) | Architecture | Phase 7 Dataset Studio, Synthetic Scene Generator, and Leakage Detection. |
-| [`docs/development/ml-environment.md`](file:///home/subish-loq/Documents/astra/docs/development/ml-environment.md) | Development | Phase 7 ML Runtime diagnostics, PyTorch/CUDA setup, and Model Registry. |
-| [`docs/architecture/mission-console.md`](file:///home/subish-loq/Documents/astra/docs/architecture/mission-console.md) | Architecture | Phase 6 PySide6 (Qt) Mission Console and decoupled UI state model. |
-| [`docs/architecture/ui-event-bridge.md`](file:///home/subish-loq/Documents/astra/docs/architecture/ui-event-bridge.md) | Architecture | Phase 6 Thread-safe asynchronous bridge between backend and Qt GUI. |
-| [`docs/architecture/audio-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/audio-architecture.md) | Architecture | Phase 6 Local offline TTS audio guidance and priority queue manager. |
-| [`docs/architecture/procedure-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/procedure-architecture.md) | Architecture | Phase 4 Procedure Matcher, Next-Step Engine, and Progress Manager. |
-| [`docs/architecture/evidence-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/evidence-architecture.md) | Architecture | Phase 4 Multimodal Evidence Aggregator and Causal Audit Tree. |
-| [`docs/architecture/interaction-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/interaction-architecture.md) | Architecture | Phase 3 Spatial Kinematics, Coupling Rules, and State Machine. |
-| [`docs/architecture/activity-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/activity-architecture.md) | Architecture | Phase 3 Rolling Temporal Buffer and Composite Action Recognition. |
-| [`docs/architecture/perception-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/perception-architecture.md) | Architecture | Phase 2 Multi-modal Perception Pipeline and Viewpoint Profiles. |
-| [`docs/architecture/system-architecture.md`](file:///home/subish-loq/Documents/astra/docs/architecture/system-architecture.md) | Architecture | System-level architecture, module decomposition, and event flows. |
-| [`docs/requirements/sih-traceability.md`](file:///home/subish-loq/Documents/astra/docs/requirements/sih-traceability.md) | Requirements | Full SIH26174 problem statement bidirectional requirement traceability. |
-| [`docs/requirements/risk-register.md`](file:///home/subish-loq/Documents/astra/docs/requirements/risk-register.md) | Assurance | FMECA risk register, failure modes, hazards, and mitigation contracts. |
+| [`docs/operations/hardening-guide.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/hardening-guide.md) | Hardening | Phase 21 Findings-Driven Hardening Operational Guide and RC2 baseline. |
+| [`CHANGELOG_HARDENING.md`](file:///home/subish-loq/Documents/orbita_proj/CHANGELOG_HARDENING.md) | Release | Phase 21 Findings-driven technical changelog and RC2 disposition notes. |
+| [`docs/operations/mission-rehearsal.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/mission-rehearsal.md) | Operations | Phase 20 End-to-End Mission Rehearsal Manual, multi-mode matrix, and scorecards. |
+| [`docs/operations/rehearsal-findings.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/rehearsal-findings.md) | Assurance | Phase 20 Rehearsal findings registry, taxonomy, and resolution history. |
+| [`docs/operations/corrective-actions.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/corrective-actions.md) | Quality | Phase 20 CAPA traceability tracking, RCA, and regression verification. |
+| [`reports/rehearsal/final-operational-readiness-report.md`](file:///home/subish-loq/Documents/orbita_proj/reports/rehearsal/final-operational-readiness-report.md) | Readiness | Phase 20 Formal Operational Readiness Assessment and limitation bounds. |
+| [`docs/operations/operations-concept.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/operations-concept.md) | Operations | Phase 19 Operational concept, CONOPS, and human-in-the-loop workflows. |
+| [`docs/operations/operator-manual.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/operator-manual.md) | Operations | Phase 19 Standard operating procedures and astronaut/ground operator manual. |
+| [`docs/operations/ground-operations.md`](file:///home/subish-loq/Documents/orbita_proj/docs/operations/ground-operations.md) | Ground | Phase 19 Ground segment monitoring, reconciliation, and audit export. |
+| [`docs/architecture/edge-optimization.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/edge-optimization.md) | Architecture | Phase 10 Edge deployment philosophy, hardware abstraction, and scheduler. |
+| [`docs/architecture/profiling-framework.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/profiling-framework.md) | Architecture | Phase 10 Multi-dimensional latency profiler, percentiles, and queue health. |
+| [`docs/testing/benchmarking-guide.md`](file:///home/subish-loq/Documents/orbita_proj/docs/testing/benchmarking-guide.md) | Verification | Phase 10 Baseline, profiled, soak, and optimization benchmarking guide. |
+| [`docs/deployment/edge-profiles.md`](file:///home/subish-loq/Documents/orbita_proj/docs/deployment/edge-profiles.md) | Deployment | Phase 10 Layered deployment profiles and hardware compatibility matrix. |
+| [`docs/architecture/ground-monitor.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/ground-monitor.md) | Architecture | Phase 9 PySide6 Ground Monitor Console, panels, and decoupled state model. |
+| [`docs/architecture/streaming.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/streaming.md) | Architecture | Phase 9 Video stream server (:8554), drop-oldest queue, and encoder quality profiles. |
+| [`docs/architecture/event-stream.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/event-stream.md) | Architecture | Phase 9 SSE telemetry server (:8765), typed schema, and 500-event replay buffer. |
+| [`docs/network/protocol.md`](file:///home/subish-loq/Documents/orbita_proj/docs/network/protocol.md) | Network | Phase 9 Wire protocol specification for MJPEG video, SSE events, and replay APIs. |
+| [`docs/network/security.md`](file:///home/subish-loq/Documents/orbita_proj/docs/network/security.md) | Security | Phase 9 Network security, bind restriction, path traversal defense, and rate limiting. |
+| [`docs/testing/ground-monitor-testing.md`](file:///home/subish-loq/Documents/orbita_proj/docs/testing/ground-monitor-testing.md) | Verification | Phase 9 Headless Qt test plan and panel-level unit validation. |
+| [`docs/testing/streaming-testing.md`](file:///home/subish-loq/Documents/orbita_proj/docs/testing/streaming-testing.md) | Verification | Phase 9 Video loopback, SSE event delivery, transit latency, and impact benchmark. |
+| [`docs/deployment/local-network.md`](file:///home/subish-loq/Documents/orbita_proj/docs/deployment/local-network.md) | Deployment | Dual-machine LAN setup guide (Machine 1 Onboard, Machine 2 Ground Monitor). |
+| [`docs/architecture/simulation-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/simulation-architecture.md) | Architecture | Phase 8 Simulation Engine, Fault Injection, Scripted Camera, and Matrix Runner. |
+| [`docs/testing/fault-injection-testing.md`](file:///home/subish-loq/Documents/orbita_proj/docs/testing/fault-injection-testing.md) | Verification | Phase 8 Fault Injection Test Plan, Resilience Matrix, and MTTD metrics. |
+| [`docs/architecture/dataset-studio.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/dataset-studio.md) | Architecture | Phase 7 Dataset Studio, Synthetic Scene Generator, and Leakage Detection. |
+| [`docs/development/ml-environment.md`](file:///home/subish-loq/Documents/orbita_proj/docs/development/ml-environment.md) | Development | Phase 7 ML Runtime diagnostics, PyTorch/CUDA setup, and Model Registry. |
+| [`docs/architecture/mission-console.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/mission-console.md) | Architecture | Phase 6 PySide6 (Qt) Mission Console and decoupled UI state model. |
+| [`docs/architecture/ui-event-bridge.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/ui-event-bridge.md) | Architecture | Phase 6 Thread-safe asynchronous bridge between backend and Qt GUI. |
+| [`docs/architecture/audio-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/audio-architecture.md) | Architecture | Phase 6 Local offline TTS audio guidance and priority queue manager. |
+| [`docs/architecture/procedure-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/procedure-architecture.md) | Architecture | Phase 4 Procedure Matcher, Next-Step Engine, and Progress Manager. |
+| [`docs/architecture/evidence-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/evidence-architecture.md) | Architecture | Phase 4 Multimodal Evidence Aggregator and Causal Audit Tree. |
+| [`docs/architecture/interaction-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/interaction-architecture.md) | Architecture | Phase 3 Spatial Kinematics, Coupling Rules, and State Machine. |
+| [`docs/architecture/activity-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/activity-architecture.md) | Architecture | Phase 3 Rolling Temporal Buffer and Composite Action Recognition. |
+| [`docs/architecture/perception-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/perception-architecture.md) | Architecture | Phase 2 Multi-modal Perception Pipeline and Viewpoint Profiles. |
+| [`docs/architecture/system-architecture.md`](file:///home/subish-loq/Documents/orbita_proj/docs/architecture/system-architecture.md) | Architecture | System-level architecture, module decomposition, and event flows. |
+| [`docs/requirements/sih-traceability.md`](file:///home/subish-loq/Documents/orbita_proj/docs/requirements/sih-traceability.md) | Requirements | Full SIH26174 problem statement bidirectional requirement traceability. |
+| [`docs/requirements/risk-register.md`](file:///home/subish-loq/Documents/orbita_proj/docs/requirements/risk-register.md) | Assurance | FMECA risk register, failure modes, hazards, and mitigation contracts. |
 
 ---
 
 ## 15. Safety, Air-Gap & Mission Assurance Invariants
 
-1. **Strict Offline Autonomy:** ASTRA-EA runs completely local without internet, external API tokens, or cloud dependencies. Zero telemetry is transmitted off-vehicle to external servers.
+1. **Strict Offline Autonomy:** ORBITA runs completely local without internet, external API tokens, or cloud dependencies. Zero telemetry is transmitted off-vehicle to external servers.
 2. **Strict Ground Observability & Decoupled Execution:** The Onboard flight core is fully autonomous and authoritative. The Ground Monitor is strictly read-only. Disconnection, slow clients, or network packet drops **never** block, alter, or pause onboard perception, procedure assurance, deviation detection, or local audit logging.
 3. **Zero False-Deviation Invariant:** When environmental degradation (optical glare, lens smudge, low light, frame drops) degrades perception, the system drops confidence to `UNCERTAIN` and safely pauses step evaluation. An astronaut is **never falsely accused of a procedural violation** due to camera or illumination issues.
 4. **Deterministic Safety Boundary:** Neural network inference is strictly confined to perception observation. Step evaluation, transition progression, deviation flagging, and recovery instructions are governed by deterministic, verifiable finite state machines.
@@ -854,25 +980,25 @@ Comprehensive engineering documentation is maintained in the [`docs/`](file:///h
 
 ## 16. Operational Disclaimer
 
-ASTRA-EA is developed as an engineering ground demonstrator for the **Smart India Hackathon 2024 (SIH26174)**. While architected following spacecraft software assurance principles (ECSS / NASA-STD-8739.8 concepts), it is **not** flight-qualified, radiation-hardened, or certified for human spaceflight missions without formal flight hardware qualification.
+ORBITA is developed as an engineering ground demonstrator for the **Smart India Hackathon 2024 (SIH26174)**. While architected following spacecraft software assurance principles (ECSS / NASA-STD-8739.8 concepts), it is **not** flight-qualified, radiation-hardened, or certified for human spaceflight missions without formal flight hardware qualification.
 
 ---
 
 ## 17. How to Run the Program (Execution Quick Reference)
 
-This section provides a complete, step-by-step operational guide to launch and verify ASTRA-EA in any environment.
+This section provides a complete, step-by-step operational guide to launch and verify ORBITA in any environment.
 
 ### 17.1 Environment Setup & Installation
 ```bash
 # Clone the repository
-git clone <repo-url>
-cd astra
+git clone https://github.com/subish345/Astra.git orbita_proj
+cd orbita_proj
 
 # (Recommended) Activate virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Install ASTRA-EA in editable development mode
+# Install ORBITA in editable development mode
 pip install -e ".[dev]"
 ```
 
@@ -880,10 +1006,10 @@ pip install -e ".[dev]"
 Verify that Python runtime, OpenCV DNN, optical sensors, local SQLite database, and audio speech engines are operational:
 ```bash
 # Verify system dependencies and hardware acceleration
-astra doctor
+orbita doctor
 
 # Verify full 10-subsystem deployment readiness
-astra deployment doctor
+orbita deployment doctor
 ```
 
 ### 17.3 Running the Main Applications
@@ -891,7 +1017,7 @@ astra deployment doctor
 #### Option A: Onboard Astronaut Mission Console (Primary Flight UI)
 Launches the full interactive PySide6 astronaut cockpit interface with live HUD, step verification, tri-state assurance cards, and recovery guidance:
 ```bash
-astra mission
+orbita mission
 # Alternatively:
 python3 main.py mission
 ```
@@ -899,7 +1025,7 @@ python3 main.py mission
 #### Option B: Ground Observation Monitor (Mission Control UI)
 Launches the read-only ground telemetry console for flight directors and ground engineers:
 ```bash
-astra ground-monitor
+orbita ground-monitor
 # Alternatively:
 python3 main.py ground-monitor
 ```
@@ -908,45 +1034,81 @@ python3 main.py ground-monitor
 Executes an automated, self-contained mission demonstration cycle (Preparation → Execution → Planned Deviation → Real-time Recovery → Audit Report):
 ```bash
 # Interactive visual demonstration
-astra demo
+orbita demo
 
 # Headless mode for CI/CD or terminal-only environments
-astra demo --headless
+orbita demo --headless
+```
+
+#### Option D: Video Recording, Archive Player & Step Accuracy Verification
+Record live camera feeds to disk and SQLite, review recordings in the integrated media player, or verify astronaut movements and procedural accuracy:
+
+* **Live Video Recording via Mission Console:**
+  1. Launch console: `orbita mission`
+  2. Click the **`🔴 REC`** button in the header bar. The button changes to **`⏹ STOP REC`** and the red **`● REC`** badge activates.
+  3. When the experiment session ends, click **`⏹ STOP REC`**. The video file is written to `data/recordings/` and its metadata (duration, frame count, FPS, start/end timestamps) is registered in SQLite (`storage/database/astra.db`).
+
+* **Browsing & Playing Recordings Later:**
+  1. Switch to the **`RECORDINGS`** tab in the sidebar navigation.
+  2. Select any recorded session from the SQLite table on the left.
+  3. Use the integrated video player on the right to Play, Pause, Stop, scrub with the seek slider, or adjust speed (`1.0x Normal`, `0.5x Slow`, `0.25x Quarter`, `1.5x`, `2.0x`).
+  4. Click **`🔍 Verify Movement Accuracy`** to re-analyze the video for procedural step accuracy and deviations.
+
+* **Uploading External Video Files for Verification:**
+  * Click **`📁 Upload Video`** on the Mission Console header bar to select any external `.mp4`, `.avi`, or `.mkv` video file for instant automated verification.
+
+* **CLI Commands for Video Management & Verification:**
+  ```bash
+  # List all recorded video sessions and segments registered in the SQLite database
+  orbita video list
+
+  # Verify movements, kinematics, and procedural accuracy on any video file
+  orbita video verify --video final_submission/demo_videos/01_normal_operation.mp4 --procedure configs/experiments/demo.yaml
+  ```
+
+#### Option E: Export Database Visuals & Train Models
+Camera visuals, detected bounding boxes, 33-point skeletal keypoints, and movement accuracy scores are automatically stored in the local SQLite database (`storage/database/astra.db`). To train neural network models from these visuals:
+```bash
+# 1. Export captured visuals into a partitioned dataset (train, val, test)
+orbita dataset export-db --output datasets/raw/from_db --dataset-id ORBITA_VISUALS_V1
+
+# 2. Train the model on the exported dataset
+orbita model train --model-name ASTRA_OBJECT_DETECTOR --dataset ORBITA_VISUALS_V1 --epochs 10
 ```
 
 ### 17.4 Running Operational Rehearsals (Phase 20)
 Simulate nominal, degraded, and fault-injection operational runs under the automated rehearsal framework:
 ```bash
 # Run the canonical Golden Mission rehearsal (accelerated pacing)
-astra rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
+orbita rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
 
 # Run all 13 operational rehearsal scenarios
-astra rehearsal --scenario ALL --speed ACCELERATED
+orbita rehearsal --scenario ALL --speed ACCELERATED
 
 # Execute authoritative full-length Dress Rehearsal (zero developer intervention)
-astra dress-rehearsal --speed ACCELERATED
+orbita dress-rehearsal --speed ACCELERATED
 
 # View consolidated rehearsal scorecards
-astra rehearsal-scorecard
+orbita rehearsal-scorecard
 ```
 
 ### 17.5 Running Findings-Driven Hardening & Release Candidate Gates (Phase 21)
 Inspect the active findings registry, run dedicated regression tests, and evaluate release readiness:
 ```bash
 # Inspect all registered findings and current status
-astra hardening findings
+orbita hardening findings
 
 # Deep-dive root cause analysis for a specific finding
-astra hardening analyze FINDING-001
+orbita hardening analyze FINDING-001
 
 # Run dedicated reproduction test for a finding
-astra hardening reproduce FINDING-001
+orbita hardening reproduce FINDING-001
 
 # Execute all dedicated regression tests
 pytest tests/regression/
 
 # Evaluate the formal Release Candidate 2 (RC2) readiness gate
-astra hardening readiness
+orbita hardening readiness
 ```
 
 ### 17.6 Running the Full Verification Test Suite
@@ -954,5 +1116,3 @@ Execute the entire repository automated test suite (326 tests across 23 director
 ```bash
 pytest
 ```
-
-

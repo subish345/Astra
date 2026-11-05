@@ -1,4 +1,4 @@
-"""Camera and video source interfaces for ASTRA-EA.
+"""Camera and video source interfaces for Pramman.
 
 Decouples physical capture hardware (USB, MIPI, CSI) and recorded video files
 from downstream perception and assurance pipelines.

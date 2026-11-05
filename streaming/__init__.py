@@ -1,8 +1,8 @@
 # ==============================================================================
-# ASTRA-EA Streaming Subsystem
+# Pramman Streaming Subsystem
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
-"""ASTRA-EA Streaming and Remote Observability Platform.
+"""Pramman Streaming and Remote Observability Platform.
 
 Provides decoupled, non-blocking local IP video streaming and lightweight event
 broadcasting for ground telemetry and monitoring without impacting onboard autonomy.

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA — Cryptographic Evidence Index</title>
+    <style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; line-height: 1.5; }
+h1, h2, h3 { color: #38bdf8; font-weight: 600; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; }
+.nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 500; }
+.nav-link.active { color: #38bdf8; font-weight: 700; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+.metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+.metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; margin-top: 0.25rem; }
+.badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-waived { background: #374151; color: #d1d5db; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+tr:hover { background: #1e293b44; }
+code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; font-size: 0.85rem; }
+.alert-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+    <h1>Cryptographic Evidence Index</h1>
+    <p>SHA-256 Provenance Manifest Proving Artifact Integrity</p>
+    
+<div class="nav-bar">
+    <a href="v_and_v_summary.html" class="nav-link">Executive Summary</a>
+    <a href="requirements_status.html" class="nav-link">Requirements</a>
+    <a href="traceability.html" class="nav-link">Traceability Matrix</a>
+    <a href="verification_results.html" class="nav-link">Verification Results</a>
+    <a href="validation_results.html" class="nav-link">Validation Results</a>
+    <a href="performance_results.html" class="nav-link">Performance Results</a>
+    <a href="discrepancies.html" class="nav-link">Discrepancies</a>
+    <a href="evidence_index.html" class="nav-link">Evidence Index</a>
+</div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Artifact Name</th>
+                <th>File Size</th>
+                <th>SHA-256 Checksum</th>
+                <th>Modified Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong><code>EVID-DAT-001-SQLITE.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>6aa25f587a9634a597b8d40d1a32cfcb8a2198a0cfe50c438d7a5ed40ccf7820</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-DAT-002-PROVENANCE.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>b8233fd3e90800b0a73de470375096a794c0aca764099baa21a233d88db13c8e</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-DAT-003-DISKWRITE.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>a5b2d3779a247ca212a1ed13c53b5d8b73409fa882e24827b247a7cd8a67d9ff</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-ENV-001-LUX.json</code></strong></td>
+                <td>0.3 KB</td>
+                <td><code>c1daa53f89114c50f486f04304f13776c3b12a5c3ce608c0f6c48acfa910beac</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-ENV-002-ANGLE.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>913604036d1931bbb63bd77c9b8b06dc44f1ae274085a413859c2e93763c1aa9</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-IF-001-DISCONNECT.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>147995a4eaeaf46b8d80d51ebca31b8fb13ccf132627ce27b93bcfdc5a062f04</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-IF-002-BUS.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>b99fe91291b58dd75bfb65c4d1c361cf198f7756a8718bd16970b1d1f369ec73</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-IF-003-TIME.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>7d86db57897ee0417fe783ec58fadc32508e327c8e1776860f6b211911a6d716</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-IF-004-TELEMETRY.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>dd0ea6ed2386b81006c7f8b97762602b91129b4d77cc707aed4a106846d9abe0</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-OPS-001-HUD.png</code></strong></td>
+                <td>82.9 KB</td>
+                <td><code>9ac5665f8aebb9a151b58efcd3c606166907bdf7d43f2cba651dd0590ddf36f7</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-OPS-002-SPEECH.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>6cc6e8cf7491ebd3419a58fa73fae4df58cc13b2ed8b7eabcfd3050f3aa1b437</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-OPS-003-SELFTEST.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>fbb9c0b01357eb5a56911f03132d66935c318d669a8e935c75d1b0e4248e8f85</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-PERF-001-THROUGHPUT.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>5405917cdcd044d22eb8739f0a65ac7dcd453f7547e8bf72aa5c3de5e8c9d482</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-PERF-002-LATENCY.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>dc157590110d009e7e83b2b51bc62100ddc5223be0cb4e37cb40f82f9808f222</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-PERF-003-INFERENCE.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>5b9be790c35b939df1744dd8b7fa3ac357ccd8f80e2aa2af6a80274fa935b4ba</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-PERF-004-MEMORY.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>c159a0f0a32efc5bdab2db54bbc003766b63c71fba80b514e31f3a55eaf4f5ed</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-PERF-005-BOOT.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>a62f9773f88a0784d765ef63b1ffee7996f2f3c33e69467928b2acce92a14dcf</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-REL-001-CONTAINMENT.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>8422a547ee675714ffeb6bbb3765392c39fdfad2d99af79d193294a725a1967a</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-REL-002-FALLBACK.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>4519c9f7c3d30fb8659a18a4b76d009a953f889efaba0d7a5d945b780608fa38</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-REL-003-DEGRADED.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>c539902e324e52ce16dc4d26ed55ea58ce4b3eea0f27580d1d2db1b7e6c9cbde</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SAF-001-NONGUESSING.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>32c93ae7e48b1d46f6d2a23456f7a87ffd85007a8abc4b37f5b03ebd58841292</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SAF-002-OCCLUSION.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>d38e807af9adf68c648eaf01bab95246eaa53d1cd9e578b4f61f2a2a946b329d</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SAF-003-FREEZE.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>fb70ff6e05537c378c34047cdc18e9c73f6876868799c55e0af73ed928fc1e83</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SAF-004-ISOLATION.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>4e46739256f3a983f4059f0492d59c19c68fe451fcd8d751cf9320ad67f586c6</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SEC-001-AIRGAP.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>3923a6b883f522864ba5aabfdb9e220f1ecb0883d51fd25628f03a119797260a</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SEC-002-SHA256.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>86bee4c6ab9fd837e22a8ee6e32bd6ed9441b6245112c688d78ed1e47ef7337d</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SEC-003-READONLY.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>3855a4e762f32af099210f4bd1535863457d9d81ceb17e1680164aad25381be0</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-001-CAM.png</code></strong></td>
+                <td>101.1 KB</td>
+                <td><code>5cd7a708aa13a707420f8f77eaa142c3c74a4a1ee43e98bbf2246b6779fd4c61</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-002-DET.json</code></strong></td>
+                <td>0.3 KB</td>
+                <td><code>7291240e5afe2abe26aba54d2ab3bbd92ab2fb90662e2fdd2df2f3169a5c860f</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-003-IOU.json</code></strong></td>
+                <td>0.3 KB</td>
+                <td><code>a8ebb2dab2769ec3c539a3c626df7d1e8866ba886b0c184f4e94918ea2c9d3b3</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-004-TEMPORAL.json</code></strong></td>
+                <td>0.2 KB</td>
+                <td><code>1eea16318bfd839bbe039ec2c173d74bf32d0d63cb48cea1e7f6ac85c0165eeb</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-005-PROC.json</code></strong></td>
+                <td>0.7 KB</td>
+                <td><code>1a5c80c643ffb282b09cc140cdca34ee37b6f71e48dff1db78589d0474142227</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-006-ASSURANCE.json</code></strong></td>
+                <td>0.4 KB</td>
+                <td><code>4935757e91c28bdd147892b1147c87eaa36f0e9ef7cf518d26fe2567328445de</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-007-VOICE.wav</code></strong></td>
+                <td>3.2 KB</td>
+                <td><code>2976da01e205a110c9fa41d47659e238a5c6d3c3f3137582f2949853faa201dd</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+            <tr>
+                <td><strong><code>EVID-SYS-008-RECOVERY.json</code></strong></td>
+                <td>0.4 KB</td>
+                <td><code>534354fc8ec30f146d3b7b1567de878458d8e57679c072bd55147e11e6b8fbc8</code></td>
+                <td>2026-09-13T13:33:18Z</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

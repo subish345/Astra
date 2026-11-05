@@ -1,4 +1,4 @@
-# ASTRA-EA: Configuration Management & Change Control Plan
+# Pramman: Configuration Management & Change Control Plan
 
 **Classification:** Aerospace Configuration Management & Data Assurance Plan  
 **Document ID:** `ASTRA-CMP-001`  

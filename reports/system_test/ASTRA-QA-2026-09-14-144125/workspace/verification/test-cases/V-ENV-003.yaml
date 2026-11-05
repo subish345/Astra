@@ -1,0 +1,22 @@
+id: V-ENV-003
+requirement: ASTRA-ENV-003
+title: Launch Random Vibration Profile Survival (TRL 6 Qualification Plan)
+purpose: Verify that payload chassis, optics mounting, and internal interconnects survive launch random vibration (14.1 Grms, 20-2000 Hz, 3 axes) without optical misalignment or mechanical failure.
+preconditions:
+  - Flight-like structural chassis manufactured
+  - Calibrated shaker table facility operational
+setup:
+  - Mount payload to 3-axis electrodynamic shaker table via flight interface bracket
+inputs:
+  - Random vibration power spectral density profile (14.1 Grms, 120 sec per axis)
+procedure:
+  - Execute low-level resonance search (0.5 G sine sweep)
+  - Subject payload to qualification level random vibration along X, Y, and Z axes
+  - Perform post-vibration optical alignment and camera focus inspection
+expected_result:
+  - Zero structural cracking or fastener loosening
+  - Post-test camera optical focus and alignment deviation < 0.5 mm
+acceptance_criteria:
+  - Complete post-vibration functional test pass (TRL 6 qualification gate)
+evidence:
+  - docs/qualification/environmental-test-plan.md

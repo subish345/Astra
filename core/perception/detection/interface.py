@@ -1,4 +1,4 @@
-"""Object detection abstract interface for ASTRA-EA.
+"""Object detection abstract interface for Pramman.
 """
 
 from __future__ import annotations

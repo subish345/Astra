@@ -1,4 +1,4 @@
-"""Deterministic color and spatial contour detector for ASTRA-EA experiment objects.
+"""Deterministic color and spatial contour detector for Pramman experiment objects.
 
 Provides a robust, 100% offline computer-vision baseline for recognizing the 4 core
 demonstration objects (RED_BOX, YELLOW_BOX, MAIN_BOX, ASTRONAUT) via HSV color segmentation

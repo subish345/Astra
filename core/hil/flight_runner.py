@@ -245,7 +245,7 @@ class HILFlightIntegrationRunner:
         failed_count = sum(1 for r in self.results if r.status == "FAIL")
 
         summary = {
-            "title": "ASTRA-EA HIL Flight Integration Test Report",
+            "title": "Pramman HIL Flight Integration Test Report",
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "total_scenarios": len(self.results),
             "passed": passed_count,
@@ -272,7 +272,7 @@ th, td {{ padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e2e50
 th {{ background: #131f38; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; }}
 code {{ font-family: monospace; color: #00d2ff; }}
 </style></head><body>
-<h1>ASTRA-EA // HIL Flight-Integration Test Report</h1>
+<h1>Pramman // HIL Flight-Integration Test Report</h1>
 <p>Status: <span class="badge-pass">{summary['overall_status']}</span> | Passed: {passed_count}/{len(self.results)} | Duration: {total_duration_s}s</p>
 <table><thead><tr><th>ID</th><th>Scenario</th><th>Duration</th><th>Details</th><th>Status</th></tr></thead><tbody>
 """

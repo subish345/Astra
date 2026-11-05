@@ -1,4 +1,4 @@
-"""Compute hardware abstraction and device execution backends for ASTRA-EA.
+"""Compute hardware abstraction and device execution backends for Pramman.
 
 Decouples the flight core from specific workstation hardware (e.g. RTX 5060)
 providing clean, extensible ComputeBackend interfaces for CPU, CUDA, and future

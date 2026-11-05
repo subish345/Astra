@@ -1,4 +1,4 @@
-# ASTRA-EA Simulation & Fault Injection Architecture
+# Pramman Simulation & Fault Injection Architecture
 
 Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
@@ -6,7 +6,7 @@ Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
 ## 1. Executive Overview
 
-The **ASTRA-EA Simulation & Fault Injection Platform** (Phase 8) provides an automated mission simulation and stress-testing harness designed to validate system resilience under extreme non-ideal spaceflight conditions without requiring physical spaceflight hardware or human actors.
+The **Pramman Simulation & Fault Injection Platform** (Phase 8) provides an automated mission simulation and stress-testing harness designed to validate system resilience under extreme non-ideal spaceflight conditions without requiring physical spaceflight hardware or human actors.
 
 Every simulated run executes the **full, unmodified production pipeline**—ensuring that synthetic or degraded frames traverse the real `CameraSource`, `PerceptionPipeline`, `SpatialInteractionEngine`, `TemporalBuffer`, `MultimodalEvidenceEngine`, `ProcedureProgressManager`, and `TriStateAssuranceEngine`.
 
@@ -32,7 +32,7 @@ Every simulated run executes the **full, unmodified production pipeline**—ensu
                                     │
                                     ▼
  +-------------------------------------------------------------------------+
- |                        ASTRA-EA Pipeline Core                           |
+ |                        Pramman Pipeline Core                           |
  |                                                                         |
  |  [Perception Pipeline] ──> Color/Learned Detector + Tracker + Pose      |
  |           │                                                             |

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Telemetry Events Package
+# Pramman Ground Telemetry Events Package
 # ==============================================================================
 """Event streaming package for remote ground observability and telemetry."""
 

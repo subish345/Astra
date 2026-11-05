@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Health Panel
+# Pramman Ground Health Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Subsystem telemetry, network health, and heartbeat latency monitor."""

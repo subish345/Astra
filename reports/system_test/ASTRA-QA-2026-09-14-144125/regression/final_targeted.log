@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 21 items
+
+tests/regression/test_qa6_runtime_safety.py .....................        [100%]
+
+- generated xml file: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/regression/final_targeted.xml -
+============================== 21 passed in 0.83s ==============================

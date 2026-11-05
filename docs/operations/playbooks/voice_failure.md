@@ -21,7 +21,7 @@
 2. Verify headset volume and physical audio jack / Bluetooth link.
 3. Run audio test CLI during post-mission maintenance:
    ```bash
-   astra voice test
+   pramman voice test
    ```
 
 ## 4. Evidence to Capture

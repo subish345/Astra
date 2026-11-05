@@ -1,4 +1,4 @@
-# ASTRA-EA Network Wire Protocol Specification
+# Pramman Network Wire Protocol Specification
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Classification:** Phase 9 Network Wire Protocol Specification

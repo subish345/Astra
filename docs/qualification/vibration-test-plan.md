@@ -1,4 +1,4 @@
-# ASTRA-EA: Structural Vibration Qualification Test Plan
+# Pramman: Structural Vibration Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-VIB-001`  
 **Test Identifier:** `QUAL-VIB-001` (Random) / `QUAL-VIB-002` (Sine Sweep)  
@@ -10,7 +10,7 @@
 
 ## 1. Objective
 
-This qualification test program verifies that the ASTRA-EA mechanical chassis, optical camera assembly, internal circuit board mountings, NVMe storage interconnects, and electrical wiring harness survive launch vibroacoustic acoustic loads without structural deformation, fastener backing-out, optical defocus, or electrical disconnection.
+This qualification test program verifies that the Pramman mechanical chassis, optical camera assembly, internal circuit board mountings, NVMe storage interconnects, and electrical wiring harness survive launch vibroacoustic acoustic loads without structural deformation, fastener backing-out, optical defocus, or electrical disconnection.
 
 Specific goals:
 1. Subject the payload to random vibration energy across 3 orthogonal axes (X, Y, Z) at qualification levels ($14.1\text{ G}_\text{rms}$).

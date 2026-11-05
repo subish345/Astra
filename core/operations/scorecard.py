@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Rehearsal Scorecard & Dress Rehearsal Auditor (Phase 20, D20.19, D20.20)
+# ORBITA Rehearsal Scorecard & Dress Rehearsal Auditor (Phase 20, D20.19, D20.20)
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Aggregates multi-rehearsal run metrics, evaluates pass/fail scorecards,
@@ -152,7 +152,7 @@ class RehearsalScorecardGenerator:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Operational Rehearsal Scorecard (Phase 20)</title>
+    <title>ORBITA Operational Rehearsal Scorecard (Phase 20)</title>
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -220,7 +220,7 @@ class RehearsalScorecardGenerator:
     <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <h1>ASTRA-EA Operational Rehearsal Scorecard</h1>
+                <h1>ORBITA Operational Rehearsal Scorecard</h1>
                 <p style="color: #94a3b8; margin: 0;">Phase 20 End-to-End Operational Validation | Generated: {data.generated_at_utc}</p>
             </div>
             <span class="badge">SCORECARD: {data.overall_verdict}</span>
@@ -315,7 +315,7 @@ class RehearsalScorecardGenerator:
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ASTRA-EA Official Dress Rehearsal Report (Phase 20)</title>
+    <title>ORBITA Official Dress Rehearsal Report (Phase 20)</title>
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -371,7 +371,7 @@ class RehearsalScorecardGenerator:
     <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <h1>ASTRA-EA Full Mission Dress Rehearsal Report</h1>
+                <h1>ORBITA Full Mission Dress Rehearsal Report</h1>
                 <p style="color: #94a3b8; margin: 0;">Run ID: <strong>{dress_result.run_id}</strong> | Operator: <strong>{dress_result.operator}</strong> | Execution Mode: <strong>{dress_result.mode}</strong></p>
             </div>
             <span class="badge">STATUS: {dress_result.status}</span>
@@ -399,7 +399,7 @@ class RehearsalScorecardGenerator:
         <p>1. <strong>Precheck & Start Authorization:</strong> Automated precheck cleanly validated all 9 subsystem health categories, enabling nominal transition to READY and RUNNING.</p>
         <p>2. <strong>Autonomous Deviation & Recovery:</strong> Injected apparatus deviation was detected within &lt;150ms, triggering concise verbal and visual recovery guidance that the operator executed independently.</p>
         <p>3. <strong>Ground Observability & Reconciliation:</strong> Ground monitor maintained faithful mirror of onboard state without any unauthorized override controls or duplicate telemetry packets.</p>
-        <p>4. <strong>Dress Rehearsal Verdict:</strong> The complete ASTRA-EA system has demonstrated full end-to-end operational maturity under controlled rehearsal conditions without requiring developer intervention.</p>
+        <p>4. <strong>Dress Rehearsal Verdict:</strong> The complete ORBITA system has demonstrated full end-to-end operational maturity under controlled rehearsal conditions without requiring developer intervention.</p>
     </div>
 </body>
 </html>

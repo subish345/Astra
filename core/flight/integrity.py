@@ -1,4 +1,4 @@
-"""Model, Procedure, and Configuration Integrity Verifier for ASTRA-EA (Phase 18).
+"""Model, Procedure, and Configuration Integrity Verifier for Pramman (Phase 18).
 
 In accordance with Section 29, 30, 31, 32 & 33:
 - Verifies model checksums, metadata, class mappings, and fallback policies.

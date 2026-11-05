@@ -1,0 +1,12 @@
+id: "FINDING-006"
+title: "Recovery verification latency bound requires strict temporal threshold enforcement"
+source: "PHASE20_REHEARSAL_01_DEVIATION"
+date: "2026-09-13"
+severity: "HIGH"
+category: "RECOVERY"
+description: "In Phase 20 Section 17, recovery verification must occur strictly upon visual perception of the corrected apparatus and meet latency criteria (<300ms). Without an explicit temporal verification bound, slow temporal window accumulation could delay procedural resumption."
+evidence:
+  - "REH_01_DEVIATION_TIMELINE"
+  - "configs/rehearsal/GOLDEN_MISSION.yaml"
+impact: "Ensures astronauts are not left waiting for procedure resumption after placing the correct apparatus into the workstation."
+status: "CLOSED"

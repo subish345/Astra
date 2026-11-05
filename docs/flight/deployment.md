@@ -1,4 +1,4 @@
-# ASTRA-EA — Flight Integration Deployment & Installation Guide
+# Pramman — Flight Integration Deployment & Installation Guide
 
 ### Document ID: `ASTRA-DEP-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  
@@ -8,7 +8,7 @@
 
 ## 1. Clean Environment Installation Procedure (Section 56)
 
-To deploy ASTRA-EA onto a clean target compute environment:
+To deploy Pramman onto a clean target compute environment:
 
 ```
 INSTALL ──► VALIDATE ──► DOCTOR ──► START ──► HIL TEST
@@ -24,12 +24,12 @@ cd /opt/astra-ea
 ### Step 2: Package Validation
 Run the automated package integrity validator:
 ```bash
-astra flight-package validate --package-dir /opt/astra-ea
+pramman flight-package validate --package-dir /opt/astra-ea
 ```
 Expected output:
 ```
 ======================================================================
- ASTRA-EA FLIGHT PACKAGE INTEGRITY VALIDATOR
+ Pramman FLIGHT PACKAGE INTEGRITY VALIDATOR
 ======================================================================
 Target Package:    /opt/astra-ea
 Artifacts Checked: 196
@@ -42,16 +42,16 @@ Validation Result: [PASS]
 ### Step 3: Platform Diagnostics (Doctor)
 Inspect target compute capabilities and verify dependencies:
 ```bash
-astra doctor
-astra edge doctor
+pramman doctor
+pramman edge doctor
 ```
 
 ### Step 4: Systemd Service Deployment (Optional)
-To configure ASTRA-EA as a managed flight daemon on Linux:
+To configure Pramman as a managed flight daemon on Linux:
 ```ini
 # /etc/systemd/system/astra-ea.service
 [Unit]
-Description=ASTRA-EA Autonomous Spacecraft Experiment Assurance Daemon
+Description=Pramman Autonomous Spacecraft Experiment Assurance Daemon
 After=network.target
 
 [Service]
@@ -78,7 +78,7 @@ sudo systemctl start astra-ea
 ### Step 5: Hardware-in-the-Loop Integration Verification
 Execute the automated 12-scenario integration verification suite:
 ```bash
-astra hil flight-integration-test --all
+pramman hil flight-integration-test --all
 ```
 Expected output:
 ```

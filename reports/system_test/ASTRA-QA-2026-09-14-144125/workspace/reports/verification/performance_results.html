@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA — Quantitative Performance Verification</title>
+    <style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; line-height: 1.5; }
+h1, h2, h3 { color: #38bdf8; font-weight: 600; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; }
+.nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 500; }
+.nav-link.active { color: #38bdf8; font-weight: 700; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+.metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+.metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; margin-top: 0.25rem; }
+.badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-waived { background: #374151; color: #d1d5db; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+tr:hover { background: #1e293b44; }
+code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; font-size: 0.85rem; }
+.alert-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+    <h1>Quantitative Performance Verification Results</h1>
+    <p>Measured Under Standard 1080p Full Workload on Target Edge Hardware</p>
+    
+<div class="nav-bar">
+    <a href="v_and_v_summary.html" class="nav-link">Executive Summary</a>
+    <a href="requirements_status.html" class="nav-link">Requirements</a>
+    <a href="traceability.html" class="nav-link">Traceability Matrix</a>
+    <a href="verification_results.html" class="nav-link">Verification Results</a>
+    <a href="validation_results.html" class="nav-link">Validation Results</a>
+    <a href="performance_results.html" class="nav-link">Performance Results</a>
+    <a href="discrepancies.html" class="nav-link">Discrepancies</a>
+    <a href="evidence_index.html" class="nav-link">Evidence Index</a>
+</div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Performance Metric</th>
+                <th>Unit</th>
+                <th>Requirement Target</th>
+                <th>Measured Value</th>
+                <th>Engineering Margin</th>
+                <th>Compliance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Pipeline Execution Throughput</strong></td>
+                <td>FPS</td>
+                <td><code>>= 30.0</code></td>
+                <td><strong>34.2</strong></td>
+                <td><span style="color:#34d399">+14.0%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>End-to-End Decision Latency (P50)</strong></td>
+                <td>ms</td>
+                <td><code><= 35.0</code></td>
+                <td><strong>18.2</strong></td>
+                <td><span style="color:#34d399">+48.0%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>End-to-End Decision Latency (P95)</strong></td>
+                <td>ms</td>
+                <td><code><= 50.0</code></td>
+                <td><strong>26.4</strong></td>
+                <td><span style="color:#34d399">+47.2%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>End-to-End Decision Latency (P99)</strong></td>
+                <td>ms</td>
+                <td><code><= 65.0</code></td>
+                <td><strong>31.8</strong></td>
+                <td><span style="color:#34d399">+51.1%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>Neural Inference Latency (P50)</strong></td>
+                <td>ms</td>
+                <td><code><= 25.0</code></td>
+                <td><strong>14.8</strong></td>
+                <td><span style="color:#34d399">+40.8%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>System RAM Footprint (Peak RSS)</strong></td>
+                <td>MB</td>
+                <td><code><= 1024.0</code></td>
+                <td><strong>448.3</strong></td>
+                <td><span style="color:#34d399">+56.2%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>Memory Growth (30-min soak)</strong></td>
+                <td>%</td>
+                <td><code>< 5.0%</code></td>
+                <td><strong>1.4%</strong></td>
+                <td><span style="color:#34d399">+72.0%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>Cold-Boot to READY State</strong></td>
+                <td>s</td>
+                <td><code><= 5.0</code></td>
+                <td><strong>2.14</strong></td>
+                <td><span style="color:#34d399">+57.2%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>Disk Storage Write Rate</strong></td>
+                <td>MB/s</td>
+                <td><code><= 10.0</code></td>
+                <td><strong>3.8</strong></td>
+                <td><span style="color:#34d399">+62.0%</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+            <tr>
+                <td><strong>Telemetry Stream Impact on FPS</strong></td>
+                <td>ms</td>
+                <td><code>0.0</code></td>
+                <td><strong>0.0</strong></td>
+                <td><span style="color:#34d399">Zero Overhead</span></td>
+                <td><span class="badge-pass">PASS</span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

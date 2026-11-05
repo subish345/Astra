@@ -1,4 +1,4 @@
-# ASTRA-EA — Experiment Procedure Architecture
+# Pramman — Experiment Procedure Architecture
 
 ## 1. Overview & Core Architectural Principle
 
@@ -8,7 +8,7 @@ $$\text{Activity Concept} \neq \text{Experiment Step}$$
 
 A physical activity such as `GRASP` or `MOVE` is a domain-agnostic physical action primitive. An experiment step (e.g., `STEP_02: Grasp Specimen Red Box`) is a context-dependent mission milestone governed by configured sequence rules, target objects, temporal intervals, and multimodal evidence requirements.
 
-ASTRA-EA establishes a formal bridge between temporal activity observations and procedural step verification:
+Pramman establishes a formal bridge between temporal activity observations and procedural step verification:
 
 ```mermaid
 flowchart TD
@@ -50,17 +50,17 @@ flowchart TD
 
 | Deliverable | Module | Purpose |
 |---|---|---|
-| **D4.01** | [`core/procedure/matcher.py`](file:///home/subish-loq/Documents/astra/core/procedure/matcher.py) | Maps activities to ranked step candidates based on action, object, and context |
-| **D4.02** | [`core/evidence/engine.py`](file:///home/subish-loq/Documents/astra/core/evidence/engine.py) | Combines multimodal perception, kinematic, and spatial states into corroborating evidence |
-| **D4.03** | [`core/procedure/evaluator.py`](file:///home/subish-loq/Documents/astra/core/procedure/evaluator.py) | Produces formal `StepEvaluation` decisions (`VERIFIED`, `UNCERTAIN`, `NOT_MATCHED`) |
-| **D4.04** | [`core/procedure/progress.py`](file:///home/subish-loq/Documents/astra/core/procedure/progress.py) | Manages procedure lifecycle state machine, event deduplication, and completion |
-| **D4.05** | [`core/procedure/next_step.py`](file:///home/subish-loq/Documents/astra/core/procedure/next_step.py) | Graph-based transition resolver supporting branches and optional steps |
-| **D4.06** | [`core/evidence/engine.py`](file:///home/subish-loq/Documents/astra/core/evidence/engine.py) | Deterministic multi-factor evidence scoring formula |
-| **D4.07** | [`core/procedure/traceability.py`](file:///home/subish-loq/Documents/astra/core/procedure/traceability.py) | Generates inspectable causal audit trees linking step decisions to raw frames |
-| **D4.08** | [`core/procedure/visualizer.py`](file:///home/subish-loq/Documents/astra/core/procedure/visualizer.py) | Real-time developer step monitor overlay on video frames and terminal |
-| **D4.11** | [`core/procedure/replay.py`](file:///home/subish-loq/Documents/astra/core/procedure/replay.py) | Offline deterministic replay of recorded event sequences |
-| **D4.13** | [`core/mission/database.py`](file:///home/subish-loq/Documents/astra/core/mission/database.py) | SQLite audit tables for step evaluations, evidence bundles, and progress |
-| **D4.15** | [`core/procedure/benchmark.py`](file:///home/subish-loq/Documents/astra/core/procedure/benchmark.py) | Empirical latency profiling across P50, P95, and P99 distributions |
+| **D4.01** | [`core/procedure/matcher.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/matcher.py) | Maps activities to ranked step candidates based on action, object, and context |
+| **D4.02** | [`core/evidence/engine.py`](file:///home/subish-loq/Documents/pramman_proj/core/evidence/engine.py) | Combines multimodal perception, kinematic, and spatial states into corroborating evidence |
+| **D4.03** | [`core/procedure/evaluator.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/evaluator.py) | Produces formal `StepEvaluation` decisions (`VERIFIED`, `UNCERTAIN`, `NOT_MATCHED`) |
+| **D4.04** | [`core/procedure/progress.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/progress.py) | Manages procedure lifecycle state machine, event deduplication, and completion |
+| **D4.05** | [`core/procedure/next_step.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/next_step.py) | Graph-based transition resolver supporting branches and optional steps |
+| **D4.06** | [`core/evidence/engine.py`](file:///home/subish-loq/Documents/pramman_proj/core/evidence/engine.py) | Deterministic multi-factor evidence scoring formula |
+| **D4.07** | [`core/procedure/traceability.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/traceability.py) | Generates inspectable causal audit trees linking step decisions to raw frames |
+| **D4.08** | [`core/procedure/visualizer.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/visualizer.py) | Real-time developer step monitor overlay on video frames and terminal |
+| **D4.11** | [`core/procedure/replay.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/replay.py) | Offline deterministic replay of recorded event sequences |
+| **D4.13** | [`core/mission/database.py`](file:///home/subish-loq/Documents/pramman_proj/core/mission/database.py) | SQLite audit tables for step evaluations, evidence bundles, and progress |
+| **D4.15** | [`core/procedure/benchmark.py`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/benchmark.py) | Empirical latency profiling across P50, P95, and P99 distributions |
 
 ---
 
@@ -108,7 +108,7 @@ The procedure monitor adheres to a finite state machine:
 
 ## 4. Graph Transitions vs Linear Sequences
 
-Universal spacecraft experiments cannot assume $next = current + 1$. The [`ExpectedNextStepEngine`](file:///home/subish-loq/Documents/astra/core/procedure/next_step.py) evaluates graph transitions defined in procedure YAML:
+Universal spacecraft experiments cannot assume $next = current + 1$. The [`ExpectedNextStepEngine`](file:///home/subish-loq/Documents/pramman_proj/core/procedure/next_step.py) evaluates graph transitions defined in procedure YAML:
 
 ```yaml
 transitions:

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Findings Registry (Phase 21)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #090d16; color: #f1f5f9; padding: 32px; }
+        .card { background: #0d1527; border: 1px solid #1e293b; border-radius: 8px; padding: 24px; margin-bottom: 24px; }
+        h1 { color: #38bdf8; font-size: 22px; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { background: #111c35; padding: 10px 12px; text-align: left; color: #94a3b8; border-bottom: 2px solid #1e293b; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>ASTRA-EA Findings Registry</h1>
+        <p style="color: #94a3b8;">Total: 6 | Closed: 6 | Readiness Verdict: <strong style="color: #22c55e;">READY</strong></p>
+    </div>
+    <div class="card">
+        <table>
+            <thead><tr><th>ID</th><th>Severity</th><th>Category</th><th>Title</th><th>Status</th></tr></thead>
+            <tbody>
+            <tr>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><strong>FINDING-001</strong></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">HIGH</span></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">CAMERA</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">Camera sensor timeout causes unhandled tuple unpacking exception</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">CLOSED</span></td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><strong>FINDING-002</strong></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #eab308; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">MEDIUM</span></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">GROUND</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">Ground telemetry reconnect introduces duplicate sequence gap replay</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">CLOSED</span></td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><strong>FINDING-003</strong></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #eab308; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">MEDIUM</span></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">STORAGE</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">Diagnostic storage warning threshold lacks automated preview frame pruning trigger</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">CLOSED</span></td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><strong>FINDING-004</strong></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #38bdf8; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">OBSERVATION</span></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">UI</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">Ground Monitor alert acknowledgement button contrast causes operator hesitation</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">CLOSED</span></td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><strong>FINDING-005</strong></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #38bdf8; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">LOW</span></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">PERFORMANCE</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">Ground Monitor dual clock display format jitter during accelerated synthetic sweeps</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">CLOSED</span></td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><strong>FINDING-006</strong></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">HIGH</span></td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">RECOVERY</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;">Recovery verification latency bound requires strict temporal threshold enforcement</td>
+                <td style="padding: 8px 12px; border-bottom: 1px solid #1e293b;"><span style="background: #111c35; color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold;">CLOSED</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Console UI Subsystem
+# Pramman Mission Console UI Subsystem
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Mission Console and presentation layer for onboard astronaut experiment assurance."""

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Audio Architecture Unit Tests
+# Pramman Audio Architecture Unit Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Unit tests for core.voice subsystem: provider, manager, policies, and fallback."""

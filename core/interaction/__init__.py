@@ -1,4 +1,4 @@
-"""ASTRA-EA physical interaction recognition subsystem."""
+"""Pramman physical interaction recognition subsystem."""
 
 from core.interaction.engine import SpatialInteractionEngine
 from core.interaction.geometry import (

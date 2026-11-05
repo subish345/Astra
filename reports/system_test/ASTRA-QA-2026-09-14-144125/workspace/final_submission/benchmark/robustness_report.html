@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA Simulation Matrix Resilience Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 40px; background: #0f172a; color: #f8fafc; }
+        .card { background: #1e293b; border-radius: 8px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 24px; }
+        h1, h2 { margin-top: 0; }
+        .metric-badge { display: inline-block; padding: 8px 16px; border-radius: 6px; background: #0f172a; border: 1px solid #334155; margin-right: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #94a3b8; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>ASTRA-EA Simulation Matrix Resilience Report</h1>
+        <p><strong>Suite:</strong> ASTRA Full Mission & Fault Injection Verification Matrix</p>
+        <div style="margin-top: 16px;">
+            <div class="metric-badge">Average Resilience: <strong>100.0%</strong></div>
+            <div class="metric-badge">Pass Rate: <strong>6 / 6 (100.0%)</strong></div>
+            <div class="metric-badge">Total Frames: <strong>697</strong></div>
+            <div class="metric-badge">Total Crashes: <strong>0</strong></div>
+            <div class="metric-badge">False Alarm Deviations: <strong>0</strong></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Scenario Resilience Breakdown</h2>
+        <table>
+            <tr><th>Scenario</th><th>Verdict</th><th>Resilience</th><th>Frames</th><th>Ver / Unc / Dev</th><th>MTTD</th><th>Crashes</th></tr>
+            <tr>
+                <td><strong>Nominal Spacecraft Experiment Mission</strong><br><small>SIM_NOMINAL_001</small></td>
+                <td><span style="color:#10b981; font-weight:bold;">PASS</span></td>
+                <td><strong>100.0%</strong></td>
+                <td>120 (0 drop)</td>
+                <td>15 / 60 / 0</td>
+                <td>N/A</td>
+                <td>0</td>
+            </tr><tr>
+                <td><strong>Operator Deviation — Unauthorized Specimen Selection</strong><br><small>SIM_FAULT_WRONG_OBJECT</small></td>
+                <td><span style="color:#10b981; font-weight:bold;">PASS</span></td>
+                <td><strong>100.0%</strong></td>
+                <td>120 (0 drop)</td>
+                <td>0 / 89 / 31</td>
+                <td>0.00s</td>
+                <td>0</td>
+            </tr><tr>
+                <td><strong>Operator Deviation — Out of Order Step Execution</strong><br><small>SIM_FAULT_WRONG_ORDER</small></td>
+                <td><span style="color:#10b981; font-weight:bold;">PASS</span></td>
+                <td><strong>100.0%</strong></td>
+                <td>120 (0 drop)</td>
+                <td>0 / 45 / 75</td>
+                <td>0.00s</td>
+                <td>0</td>
+            </tr><tr>
+                <td><strong>Environmental Degradation — Optical & Lighting Stress</strong><br><small>SIM_STRESS_OPTICAL</small></td>
+                <td><span style="color:#10b981; font-weight:bold;">PASS</span></td>
+                <td><strong>100.0%</strong></td>
+                <td>120 (0 drop)</td>
+                <td>15 / 60 / 0</td>
+                <td>N/A</td>
+                <td>0</td>
+            </tr><tr>
+                <td><strong>Sensor & Telemetry Dropout Stress</strong><br><small>SIM_FAULT_DROPOUT</small></td>
+                <td><span style="color:#10b981; font-weight:bold;">PASS</span></td>
+                <td><strong>100.0%</strong></td>
+                <td>97 (23 drop)</td>
+                <td>15 / 60 / 0</td>
+                <td>N/A</td>
+                <td>0</td>
+            </tr><tr>
+                <td><strong>Dynamic Multi-Angle Viewpoint Switch</strong><br><small>SIM_SHIFT_VIEWPOINT</small></td>
+                <td><span style="color:#10b981; font-weight:bold;">PASS</span></td>
+                <td><strong>100.0%</strong></td>
+                <td>120 (0 drop)</td>
+                <td>15 / 60 / 0</td>
+                <td>N/A</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

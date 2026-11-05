@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This document outlines the standard operational procedures for benchmarking, profiling, soak testing, and validating model optimizations in ASTRA-EA.
+This document outlines the standard operational procedures for benchmarking, profiling, soak testing, and validating model optimizations in Pramman.
 
 All benchmark commands produce both human-readable console summaries and structured, machine-parsable JSON reports stored in `storage/reports/benchmark/`.
 

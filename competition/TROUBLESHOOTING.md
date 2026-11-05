@@ -1,4 +1,4 @@
-# ASTRA-EA: Live Demonstration Troubleshooting Playbook
+# Pramman: Live Demonstration Troubleshooting Playbook
 
 **Strict Demo Policy:** **NEVER MODIFY SOURCE CODE DURING A JUDGE DEMONSTRATION.**  
 All recoveries must use pre-validated CLI switches, hardware reconnections, or clean restart sequences.
@@ -15,15 +15,15 @@ All recoveries must use pre-validated CLI switches, hardware reconnections, or c
 1. **Check Hardware Connection:** Firmly reseat the USB 3.0 webcam cable.
 2. **Device Discovery:** In a spare terminal, run:
    ```bash
-   astra final-check
+   pramman final-check
    ```
 3. **Switch Camera Index:** If the kernel shifted `/dev/video0` to `/dev/video1` or `/dev/video2`, restart the demo with an explicit index:
    ```bash
-   astra demo --camera 1
+   pramman demo --camera 1
    ```
 4. **Synthetic Video Fallback:** If the physical camera hardware is physically damaged, switch to the simulated video pipeline:
    ```bash
-   astra demo --simulated-camera
+   pramman demo --simulated-camera
    ```
 
 ---
@@ -38,7 +38,7 @@ All recoveries must use pre-validated CLI switches, hardware reconnections, or c
 1. Do not attempt to debug or re-compile neural weights.
 2. Immediately launch with the secondary rule-based baseline detector:
    ```bash
-   astra demo --fallback-baseline
+   pramman demo --fallback-baseline
    ```
 3. **Judge Explanation:** *"Notice our fault-isolated architecture: when the deep neural engine experiences compute exhaustion, the runtime gracefully falls back to the deterministic color-heuristic detector so mission assurance continues without halting."*
 
@@ -84,6 +84,6 @@ If an accidental sequence of physical mistakes necessitates restarting the demon
 2. Wait 2 seconds for clean background worker termination.
 3. Re-launch:
    ```bash
-   astra demo
+   pramman demo
    ```
 4. Refresh browser: `http://localhost:8000`. The experiment is reset to Step 1 in $<5$ seconds.

@@ -1,4 +1,4 @@
-# ASTRA-EA Data Flow & Boundary Specification
+# Pramman Data Flow & Boundary Specification
 
 ## 1. End-to-End Information Pipeline
 

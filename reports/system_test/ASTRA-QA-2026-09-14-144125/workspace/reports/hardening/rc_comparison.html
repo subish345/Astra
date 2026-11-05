@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>RC1 vs RC2 Comparison</title>
+<style>
+body { font-family: sans-serif; background: #090d16; color: #f1f5f9; padding: 32px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #1e293b; text-align: left; }
+th { background: #111c35; color: #94a3b8; }
+</style>
+</head><body>
+<h1 style="color: #38bdf8;">Quantitative Release Comparison: RC1 vs RC2</h1>
+<table>
+    <thead><tr><th>Operational Metric</th><th>Release Candidate 1</th><th>Release Candidate 2</th><th>Delta / Verdict</th></tr></thead>
+    <tbody>
+        <tr><td>Open Critical Findings</td><td>0</td><td>0</td><td style="color: #22c55e;">Nominal (0)</td></tr>
+        <tr><td>Open High Severity Findings</td><td>2</td><td>0</td><td style="color: #22c55e;">-2 (All Closed)</td></tr>
+        <tr><td>Precheck Latency</td><td>54.2 ms</td><td>50.0 ms</td><td style="color: #22c55e;">-4.2 ms</td></tr>
+        <tr><td>Step Evaluation Latency</td><td>125.0 ms</td><td>112.4 ms</td><td style="color: #22c55e;">-12.6 ms</td></tr>
+        <tr><td>Recovery Verification Latency</td><td>210.0 ms</td><td>140.0 ms</td><td style="color: #22c55e;">-70.0 ms (&lt;300ms SLA)</td></tr>
+        <tr><td>Ground Reconnect Duplicate Events</td><td>Transient &gt;0</td><td>0</td><td style="color: #22c55e;">0 Duplicates (Deduped)</td></tr>
+        <tr><td>Automated Test Suite Count</td><td>301 tests</td><td>326 tests</td><td style="color: #22c55e;">+25 tests (100% Pass)</td></tr>
+    </tbody>
+</table>
+</body></html>

@@ -1,4 +1,4 @@
-"""Integration test for ASTRA-EA Phase 0/1 engineering foundation.
+"""Integration test for Pramman Phase 0/1 engineering foundation.
 
 Verifies end-to-end orchestration:
 Configuration -> Database -> Procedure Validation -> Event Contracts -> Health Telemetry -> Storage

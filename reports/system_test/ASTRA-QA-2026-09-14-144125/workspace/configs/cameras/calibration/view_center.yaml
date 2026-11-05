@@ -1,0 +1,30 @@
+# Camera Calibration Profile: VIEW_CENTER (Overhead Planar Perspective)
+profile_id: VIEW_CENTER
+description: "Overhead top-down planar perspective centered over manipulation workspace"
+resolution:
+  width: 1920
+  height: 1080
+  framerate: 30
+
+mounting:
+  position_cm: [0.0, -10.0, 60.0]
+  pitch_degrees: -65.0
+  yaw_degrees: 0.0
+  roll_degrees: 0.0
+  distance_cm: 62.0
+
+intrinsics:
+  fx: 1395.2
+  fy: 1394.8
+  cx: 960.0
+  cy: 540.0
+  distortion_coefficients: [-0.038, 0.012, 0.0, 0.0, 0.0]
+
+fov:
+  horizontal_degrees: 79.2
+  vertical_degrees: 49.0
+
+lighting_range_lux:
+  min: 20.0
+  max: 1200.0
+  nominal: 400.0

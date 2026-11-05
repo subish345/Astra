@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Video Stream Client
+# Pramman Video Stream Client
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Background IP video stream client receiving multipart MJPEG streams with auto-reconnect."""

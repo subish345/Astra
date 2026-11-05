@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Root Causes</title>
+<style>body { font-family: sans-serif; background: #090d16; color: #f1f5f9; padding: 32px; }</style>
+</head><body><h1 style="color: #38bdf8;">Root Cause Analyses</h1>
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #38bdf8; margin: 0 0 8px 0;">FINDING-001: Camera sensor timeout causes unhandled tuple unpacking exception</h3>
+                <p><strong>Method:</strong> 5_WHY | <strong>Symptom:</strong> Unhandled AttributeError: 'tuple' object has no attribute 'shape' during camera sensor failure drill.</p>
+                <pre style="background: #090d16; padding: 10px; border-radius: 4px; font-size: 12px; color: #cbd5e1; overflow-x: auto;">{
+  "why_1": "Callers in precheck and maintenance attempted frame.shape directly.",
+  "why_2": "Callers assumed read_frame() returned a bare NumPy ndarray.",
+  "why_3": "CameraDriver API was updated in Phase 14 to return (frame, timestamp) tuple to support nanosecond hardware clock stamping.",
+  "why_4": "Operational precheck wrappers were written before the tuple signature was propagated across all inspection routines.",
+  "why_5": "Root cause: Inconsistent tuple return signature handling across diagnostic wrappers."
+}</pre>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #38bdf8; margin: 0 0 8px 0;">FINDING-002: Ground telemetry reconnect introduces duplicate sequence gap replay</h3>
+                <p><strong>Method:</strong> TIMELINE_ANALYSIS | <strong>Symptom:</strong> Reconciliation upon telemetry reconnect replayed duplicate sequence numbers into ground event buffer.</p>
+                <pre style="background: #090d16; padding: 10px; border-radius: 4px; font-size: 12px; color: #cbd5e1; overflow-x: auto;">{
+  "symptom_detail": "Sequence gaps were computed purely based on [last_ack + 1, current_seq] without intersecting against the ground receiver's existing local cache.",
+  "timeline_step_1": "Onboard sends event seq 102 and 103 in rapid succession.",
+  "timeline_step_2": "Socket drops after 102 is received by ground but before 102 ack packet is downlinked.",
+  "timeline_step_3": "Ground reconnects with last acknowledged seq 101.",
+  "timeline_step_4": "Onboard replays seq 102 and 103. Ground appends 102 a second time.",
+  "root_cause": "Missing set-difference filter in GroundReconciler to reject already-stored sequence numbers."
+}</pre>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #38bdf8; margin: 0 0 8px 0;">FINDING-003: Diagnostic storage warning threshold lacks automated preview frame pruning trigger</h3>
+                <p><strong>Method:</strong> FAULT_TREE | <strong>Symptom:</strong> Storage threshold warnings generated repeated notices without reclaiming diagnostic buffer disk space.</p>
+                <pre style="background: #090d16; padding: 10px; border-radius: 4px; font-size: 12px; color: #cbd5e1; overflow-x: auto;">{
+  "top_event": "Diagnostic storage partition approaches capacity limit.",
+  "intermediate_event": "Retention policy only evaluated on explicit manual maintenance invocation.",
+  "basic_event": "Autonomous trigger hook missing between storage health telemetry evaluator and cache cleaner.",
+  "root_cause": "Decoupled storage monitor lacked active event listener to trigger non-critical frame pruning when utilization exceeds 85%."
+}</pre>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #38bdf8; margin: 0 0 8px 0;">FINDING-004: Ground Monitor alert acknowledgement button contrast causes operator hesitation</h3>
+                <p><strong>Method:</strong> TRACE_ANALYSIS | <strong>Symptom:</strong> Operator hesitation (>2.0s) locating the alert acknowledgment button during simulated deviations.</p>
+                <pre style="background: #090d16; padding: 10px; border-radius: 4px; font-size: 12px; color: #cbd5e1; overflow-x: auto;">{
+  "step_1": "AlertPanel stylesheet styled acknowledge button with muted slate background (#1e293b).",
+  "step_2": "Surrounding frame used #0d1527, creating low color luminance contrast (<2.5:1).",
+  "step_3": "Astronaut trainee's visual scan was drawn to large red warning text rather than actionable acknowledge control.",
+  "root_cause": "Sub-optimal visual hierarchy and contrast ratio on actionable interactive control."
+}</pre>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #38bdf8; margin: 0 0 8px 0;">FINDING-005: Ground Monitor dual clock display format jitter during accelerated synthetic sweeps</h3>
+                <p><strong>Method:</strong> PERFORMANCE_PROFILE | <strong>Symptom:</strong> Rapid millisecond label redraws caused visual jitter on the top telemetry header during accelerated rehearsals.</p>
+                <pre style="background: #090d16; padding: 10px; border-radius: 4px; font-size: 12px; color: #cbd5e1; overflow-x: auto;">{
+  "step_1": "Telemetry worker emitted clock updates at 10Hz with full floating-point millisecond strings.",
+  "step_2": "HeaderPanel formatted clock label with variable-width decimal places, triggering layout geometry recalculations.",
+  "root_cause": "Lack of fixed-width quantized HH:MM:SS string formatting on high-frequency UI clock badge."
+}</pre>
+            </div>
+            
+            <div style="background: #111c35; border: 1px solid #1e293b; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+                <h3 style="color: #38bdf8; margin: 0 0 8px 0;">FINDING-006: Recovery verification latency bound requires strict temporal threshold enforcement</h3>
+                <p><strong>Method:</strong> 5_WHY | <strong>Symptom:</strong> Recovery verification latency could drift if temporal buffer required multi-second evidence accumulation before returning to NOMINAL.</p>
+                <pre style="background: #090d16; padding: 10px; border-radius: 4px; font-size: 12px; color: #cbd5e1; overflow-x: auto;">{
+  "why_1": "Procedure matcher used standard temporal rolling window (15 frames) for recovery validation.",
+  "why_2": "During recovery, the astronaut has already corrected the physical setup and requires rapid confirmation.",
+  "why_3": "A recovery-specific fast confirmation path was missing to promptly match the corrective apparatus.",
+  "why_4": "Recovery assurance relied on the same latency parameters as normal multi-stage procedure transitions.",
+  "why_5": "Root cause: Lack of tuned temporal threshold bound for recovery verification (<300ms SLA)."
+}</pre>
+            </div>
+            </body></html>

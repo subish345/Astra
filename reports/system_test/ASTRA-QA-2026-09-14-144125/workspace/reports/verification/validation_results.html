@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTRA-EA — Operational Validation Results</title>
+    <style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #0a0f1d; color: #e2e8f0; line-height: 1.5; }
+h1, h2, h3 { color: #38bdf8; font-weight: 600; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-bar { display: flex; gap: 1rem; padding: 0.75rem 1rem; background: #1e293b; border-radius: 8px; margin-bottom: 2rem; overflow-x: auto; }
+.nav-link { color: #94a3b8; font-size: 0.88rem; font-weight: 500; }
+.nav-link.active { color: #38bdf8; font-weight: 700; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric-card { background: #1e293b; padding: 1.25rem; border-radius: 8px; border: 1px solid #334155; }
+.metric-title { font-size: 0.8rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+.metric-val { font-size: 2rem; font-weight: bold; color: #38bdf8; margin-top: 0.25rem; }
+.badge-pass { background: #065f46; color: #34d399; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-deferred { background: #78350f; color: #fde047; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-fail { background: #7f1d1d; color: #f87171; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+.badge-waived { background: #374151; color: #d1d5db; padding: 3px 8px; border-radius: 4px; font-weight: 600; font-size: 0.8rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #1e293b; font-size: 0.88rem; }
+th { background: #1e293b; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+tr:hover { background: #1e293b44; }
+code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; font-size: 0.85rem; }
+.alert-box { background: #1e293b; border-left: 4px solid #38bdf8; padding: 1rem; border-radius: 4px; margin: 1.5rem 0; }
+</style>
+</head>
+<body>
+    <h1>Operational Scenario Validation Results</h1>
+    <p>Validation: Does ASTRA-EA solve the operational astronaut experiment assurance problem?</p>
+    
+<div class="nav-bar">
+    <a href="v_and_v_summary.html" class="nav-link">Executive Summary</a>
+    <a href="requirements_status.html" class="nav-link">Requirements</a>
+    <a href="traceability.html" class="nav-link">Traceability Matrix</a>
+    <a href="verification_results.html" class="nav-link">Verification Results</a>
+    <a href="validation_results.html" class="nav-link">Validation Results</a>
+    <a href="performance_results.html" class="nav-link">Performance Results</a>
+    <a href="discrepancies.html" class="nav-link">Discrepancies</a>
+    <a href="evidence_index.html" class="nav-link">Evidence Index</a>
+</div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Validation ID</th>
+                <th>Scenario Title</th>
+                <th>Operational Context</th>
+                <th>Observed Behavior</th>
+                <th>Result</th>
+                <th>Evidence Artifact</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>VAL-SYS-001</code></td>
+                <td><strong>Nominal Experiment Workflow</strong></td>
+                <td>Astronaut completes 4-step experiment without procedural errors</td>
+                <td>All steps verified sequentially with zero false alerts</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><code>final_submission/screenshots/01_mission_console.jpg</code></td>
+            </tr>
+            <tr>
+                <td><code>VAL-SYS-002</code></td>
+                <td><strong>Wrong Apparatus Deviation</strong></td>
+                <td>Astronaut grasps incorrect chemical vial instead of required specimen tube</td>
+                <td>Deviation identified within 10 frames; corrective voice alert emitted</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><code>final_submission/demo_videos/02_wrong_object.mp4</code></td>
+            </tr>
+            <tr>
+                <td><code>VAL-SYS-003</code></td>
+                <td><strong>Closed-Loop Deviation Recovery</strong></td>
+                <td>Astronaut returns incorrect vial and retrieves correct specimen tube</td>
+                <td>Recovery manager confirms corrective action and unlocks procedure advance</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><code>final_submission/demo_videos/03_recovery.mp4</code></td>
+            </tr>
+            <tr>
+                <td><code>VAL-SYS-004</code></td>
+                <td><strong>Optical Viewpoint Robustness</strong></td>
+                <td>Procedure observed across 3 separate physical camera angles (35-65 deg)</td>
+                <td>100% semantic agreement across view_left, view_center, and view_right</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><code>reports/physical/viewpoint_report.html</code></td>
+            </tr>
+            <tr>
+                <td><code>VAL-SYS-005</code></td>
+                <td><strong>Air-Gapped Offline Execution</strong></td>
+                <td>Mission executed with zero network uplinks or cloud dependencies</td>
+                <td>100% offline self-contained run; WAL database verified intact</td>
+                <td><span class="badge-pass">PASS</span></td>
+                <td><code>final_submission/demo_videos/05_offline.mp4</code></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

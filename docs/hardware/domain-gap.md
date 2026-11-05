@@ -1,4 +1,4 @@
-# ASTRA-EA: Domain Gap Analysis
+# Pramman: Domain Gap Analysis
 
 **Classification:** Computer Vision & Hardware Engineering Analysis  
 **Scope:** Synthetic Procedural Variations vs. COTS Webcam vs. Physical Test Rig
@@ -8,7 +8,7 @@
 ## 1. Domain Overview
 In developing an offline edge-AI assurance platform for spaceflight experiments, training models solely on terrestrial laboratory webcams or solely on synthetic computer graphics creates critical blind spots.
 
-ASTRA-EA operates across three distinct visual domains:
+Pramman operates across three distinct visual domains:
 1. **Synthetic Simulation Domain:** Parametrically rendered frames with procedural lighting, color jitter, and injected anomalies.
 2. **COTS Webcam Laboratory Domain:** Standard terrestrial webcam video captured at an operator desk.
 3. **Physical Experiment Rig Domain:** Standardized reference coordinate station with calibrated Lux levels, rigid mounting, and realistic laboratory glassware.

@@ -1,4 +1,4 @@
-# ASTRA-EA: Optical Sensing & Camera Qualification Test Plan
+# Pramman: Optical Sensing & Camera Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-CAM-001`  
 **Test Identifier:** `QUAL-CAM-001`  
@@ -11,7 +11,7 @@
 
 ## 1. Objective
 
-The camera is the primary sensory transducer of ASTRA-EA. The system cannot perform valid procedural assurance if optical input suffers from thermal defocus, lens decentering, motion blur, exposure oscillation, or severe specular reflections.
+The camera is the primary sensory transducer of Pramman. The system cannot perform valid procedural assurance if optical input suffers from thermal defocus, lens decentering, motion blur, exposure oscillation, or severe specular reflections.
 
 Specific goals:
 1. Verify Modulation Transfer Function ($\text{MTF50}$) optical resolution across operating temperatures ($-10^\circ\text{C}$ to $+50^\circ\text{C}$).

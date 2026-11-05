@@ -1,4 +1,4 @@
-# ASTRA-EA — Final Product Overview
+# Pramman — Final Product Overview
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version:** `1.0.0-RC1`  
@@ -16,9 +16,9 @@ Astronauts aboard crewed space habitats (such as the International Space Station
 
 ---
 
-## 2. The ASTRA-EA Solution
+## 2. The Pramman Solution
 
-**ASTRA-EA** is an edge-native, 100% offline spacecraft experiment assurance platform that:
+**Pramman** is an edge-native, 100% offline spacecraft experiment assurance platform that:
 1. **Observes** the astronaut and experimental apparatus through an onboard optical camera.
 2. **Understands** anatomical hand-object proximity, grasps, releases, and spatial kinematics.
 3. **Knows** what should happen by referencing an external, declarative YAML procedure definition.

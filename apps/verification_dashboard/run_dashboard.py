@@ -1,4 +1,4 @@
-"""Standalone Runner for ASTRA-EA Formal V&V Dashboard (Phase 16).
+"""Standalone Runner for Pramman Formal V&V Dashboard (Phase 16).
 
 Serves the V&V Mission Assurance Dashboard locally at http://localhost:8090.
 """
@@ -20,7 +20,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def run_dashboard(open_browser: bool = False) -> None:
     print("=" * 60)
-    print(" ASTRA-EA FORMAL V&V MISSION ASSURANCE DASHBOARD")
+    print(" Pramman FORMAL V&V MISSION ASSURANCE DASHBOARD")
     print("=" * 60)
     print(f" Serving dashboard from: {DIRECTORY}")
     print(f" Access URL: http://localhost:{PORT}/index.html")

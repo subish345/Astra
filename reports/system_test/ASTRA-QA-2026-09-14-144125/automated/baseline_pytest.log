@@ -1,0 +1,294 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+cachedir: ../automated/pytest_cache
+rootdir: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/workspace
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 340 items
+
+tests/activity/test_composite.py ...                                     [  0%]
+tests/activity/test_confidence.py ...                                    [  1%]
+tests/activity/test_events.py ..                                         [  2%]
+tests/activity/test_primitive.py ...                                     [  3%]
+tests/audio/test_voice_architecture.py ....                              [  4%]
+tests/benchmark/test_benchmark_framework.py ....                         [  5%]
+tests/camera_views/test_viewpoint_invariance.py ............             [  9%]
+tests/dataset/test_dataset_subsystem.py .....                            [ 10%]
+tests/flight/test_flight_packaging.py .                                  [ 10%]
+tests/flight/test_flight_startup_and_health.py ...                       [ 11%]
+tests/flight/test_hil_flight_integration.py ..                           [ 12%]
+tests/flight/test_platform_abstraction.py ........                       [ 14%]
+tests/flight/test_storage_and_recovery.py ..                             [ 15%]
+tests/flight/test_telemetry_and_commands.py ...                          [ 16%]
+tests/ground_monitor/test_connection_manager.py ..                       [ 16%]
+tests/ground_monitor/test_ground_panels.py ......                        [ 18%]
+tests/ground_monitor/test_ground_state.py ...                            [ 19%]
+tests/gui/test_console_components.py ........                            [ 21%]
+tests/gui/test_mission_integration.py ......                             [ 23%]
+tests/gui/test_mission_ui_state.py .....                                 [ 25%]
+tests/integration/test_foundation_integration.py .                       [ 25%]
+tests/integration/test_mission_orchestrator.py ...                       [ 26%]
+tests/integration/test_perception_pipeline.py .                          [ 26%]
+tests/integration/test_phase3_pipeline.py .                              [ 26%]
+tests/integration/test_procedure_pipeline.py .                           [ 27%]
+tests/interaction/test_geometry.py ......                                [ 28%]
+tests/interaction/test_rules.py .....                                    [ 30%]
+tests/interaction/test_scenarios.py .....                                [ 31%]
+tests/interaction/test_state_machine.py ..                               [ 32%]
+tests/models/test_models_subsystem.py ...                                [ 33%]
+tests/network/test_network_resilience.py F                               [ 33%]
+tests/operations/test_alerts_and_reconciliation.py ..                    [ 34%]
+tests/operations/test_checklist_and_precheck.py ...                      [ 35%]
+tests/operations/test_export_and_report.py ..                            [ 35%]
+tests/operations/test_failure_drills.py ..                               [ 36%]
+tests/operations/test_maintenance_and_training.py ....                   [ 37%]
+tests/operations/test_mission_phases_and_timeline.py ...                 [ 38%]
+tests/operations/test_roles_and_authority.py ...                         [ 39%]
+tests/optimization/test_runtime.py .....                                 [ 40%]
+tests/optimization/test_scheduler.py .....                               [ 42%]
+tests/optimization/test_soak.py .                                        [ 42%]
+tests/properties/test_safety_invariants.py .....                         [ 43%]
+tests/qualification/test_environmental_qualification.py ........         [ 46%]
+tests/qualification/test_qualification_framework.py ...                  [ 47%]
+tests/regression/test_camera_tuple_unpacking.py ..                       [ 47%]
+tests/regression/test_clock_stability.py .                               [ 47%]
+tests/regression/test_ground_reconnect_dedup.py .                        [ 48%]
+tests/regression/test_mission_console_ui_worker.py ...                   [ 49%]
+tests/regression/test_recovery_verification_latency.py .                 [ 49%]
+tests/regression/test_storage_pruning_policy.py .                        [ 49%]
+tests/regression/test_system_validation_fixes.py ...                     [ 50%]
+tests/regression/test_ui_alert_contrast.py .                             [ 50%]
+tests/rehearsal/test_dress_rehearsal_scorecard.py ...                    [ 51%]
+tests/rehearsal/test_rehearsal_engine.py ...                             [ 52%]
+tests/rehearsal/test_rehearsal_scenarios.py ............                 [ 56%]
+tests/simulation/test_faults.py ..........                               [ 59%]
+tests/simulation/test_simulated_camera.py ....                           [ 60%]
+tests/simulation/test_simulation_engine.py ...                           [ 61%]
+tests/simulation/test_simulation_matrix.py ..                            [ 61%]
+tests/streaming/test_event_server.py ...F                                [ 62%]
+tests/streaming/test_non_blocking_ai.py FF                               [ 63%]
+tests/streaming/test_security_sanitization.py ...                        [ 64%]
+tests/streaming/test_video_server.py ..F                                 [ 65%]
+tests/system/test_failure_regression.py ....                             [ 66%]
+tests/system/test_golden_demo.py ..                                      [ 67%]
+tests/system/test_soak_integration.py .                                  [ 67%]
+tests/temporal/test_temporal_buffer.py ..                                [ 67%]
+tests/training/test_training_subsystem.py ...                            [ 68%]
+tests/unit/test_assurance_engine.py .....                                [ 70%]
+tests/unit/test_camera.py ...                                            [ 71%]
+tests/unit/test_color_detector.py .                                      [ 71%]
+tests/unit/test_config.py .....                                          [ 72%]
+tests/unit/test_database.py .....                                        [ 74%]
+tests/unit/test_device_manager.py ..                                     [ 75%]
+tests/unit/test_events.py ....                                           [ 76%]
+tests/unit/test_evidence_engine.py .....                                 [ 77%]
+tests/unit/test_frame_quality.py .                                       [ 77%]
+tests/unit/test_health.py ...                                            [ 78%]
+tests/unit/test_mediapipe_adapters.py ........                           [ 81%]
+tests/unit/test_ml_doctor.py ..                                          [ 81%]
+tests/unit/test_next_step_engine.py .....                                [ 83%]
+tests/unit/test_perception_types.py ....                                 [ 84%]
+tests/unit/test_procedure_matcher.py ......                              [ 86%]
+tests/unit/test_procedure_progress.py .....                              [ 87%]
+tests/unit/test_procedure_schema.py .......                              [ 89%]
+tests/unit/test_procedure_semantics.py ............                      [ 93%]
+tests/unit/test_recovery.py ..                                           [ 93%]
+tests/unit/test_scheduler.py .                                           [ 94%]
+tests/unit/test_step_evaluator.py ....                                   [ 95%]
+tests/unit/test_storage.py ....                                          [ 96%]
+tests/unit/test_traceability_and_persistence.py ..                       [ 97%]
+tests/unit/test_tracker.py ...                                           [ 97%]
+tests/unit/test_voice.py ...                                             [ 98%]
+tests/unit/test_yolo_adapter.py ....                                     [100%]
+
+=================================== FAILURES ===================================
+_______________ test_disconnect_and_reconnection_reconciliation ________________
+
+    def test_disconnect_and_reconnection_reconciliation() -> None:
+        """Verify ground client receives historical events upon reconnecting."""
+        test_port = 28780
+>       server = EventStreamServer(port=test_port, host="127.0.0.1", heartbeat_interval_seconds=1.0)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/network/test_network_resilience.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+streaming/events/server.py:233: in __init__
+    super().__init__((self.host, self.port), _EventRequestHandler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+__________________ test_event_server_endpoints_and_sse_client __________________
+
+    def test_event_server_endpoints_and_sse_client() -> None:
+        """Verify REST endpoints (/heartbeat, /health, /events/replay) and live SSE client reception."""
+        test_port = 28770
+>       server = EventStreamServer(port=test_port, host="127.0.0.1", heartbeat_interval_seconds=1.0)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/streaming/test_event_server.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+streaming/events/server.py:233: in __init__
+    super().__init__((self.host, self.port), _EventRequestHandler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_________________ test_zero_blocking_when_no_clients_connected _________________
+
+    def test_zero_blocking_when_no_clients_connected() -> None:
+        """Publishing frames when no ground clients are listening must take < 0.1ms."""
+        cfg = VideoStreamConfig(port=28570, host="127.0.0.1")
+>       server = VideoStreamServer(cfg)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/streaming/test_non_blocking_ai.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+streaming/video/server.py:171: in __init__
+    super().__init__((self.config.host, self.config.port), _MJPEGRequestHandler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_____________ test_stalled_client_drops_frames_without_blocking_ai _____________
+
+    def test_stalled_client_drops_frames_without_blocking_ai() -> None:
+        """When a client queue is full and not reading, server drops stale frame immediately."""
+        cfg = VideoStreamConfig(port=28571, host="127.0.0.1", max_queue_size=1)
+>       server = VideoStreamServer(cfg)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/streaming/test_non_blocking_ai.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+streaming/video/server.py:171: in __init__
+    super().__init__((self.config.host, self.config.port), _MJPEGRequestHandler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+_________________ test_video_stream_server_and_client_loopback _________________
+
+    def test_video_stream_server_and_client_loopback() -> None:
+        """Verify live HTTP multipart streaming, client reception, and clean shutdown."""
+        test_port = 28560
+        cfg = VideoStreamConfig(port=test_port, host="127.0.0.1", width=320, height=240, fps=15)
+>       server = VideoStreamServer(cfg)
+                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/streaming/test_video_server.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+streaming/video/server.py:171: in __init__
+    super().__init__((self.config.host, self.config.port), _MJPEGRequestHandler)
+/usr/lib64/python3.14/socketserver.py:453: in __init__
+    self.socket = socket.socket(self.address_family,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <socket.socket fd=-1, family=0, type=0, proto=0>
+family = <AddressFamily.AF_INET: 2>, type = <SocketKind.SOCK_STREAM: 1>
+proto = 0, fileno = None
+
+    def __init__(self, family=-1, type=-1, proto=-1, fileno=None):
+        # For user code address family and type values are IntEnum members, but
+        # for the underlying _socket.socket they're just integers. The
+        # constructor of _socket.socket converts the given argument to an
+        # integer automatically.
+        if fileno is None:
+            if family == -1:
+                family = AF_INET
+            if type == -1:
+                type = SOCK_STREAM
+            if proto == -1:
+                proto = 0
+>       _socket.socket.__init__(self, family, type, proto, fileno)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/usr/lib64/python3.14/socket.py:236: PermissionError
+- generated xml file: /home/subish-loq/Documents/astra/reports/system_test/ASTRA-QA-2026-09-14-144125/automated/baseline_junit.xml -
+=========================== short test summary info ============================
+FAILED tests/network/test_network_resilience.py::test_disconnect_and_reconnection_reconciliation
+FAILED tests/streaming/test_event_server.py::test_event_server_endpoints_and_sse_client
+FAILED tests/streaming/test_non_blocking_ai.py::test_zero_blocking_when_no_clients_connected
+FAILED tests/streaming/test_non_blocking_ai.py::test_stalled_client_drops_frames_without_blocking_ai
+FAILED tests/streaming/test_video_server.py::test_video_stream_server_and_client_loopback
+======================== 5 failed, 335 passed in 28.06s ========================

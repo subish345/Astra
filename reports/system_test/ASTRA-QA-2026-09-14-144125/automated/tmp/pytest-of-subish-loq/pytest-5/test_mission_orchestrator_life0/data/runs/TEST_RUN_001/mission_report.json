@@ -1,0 +1,109 @@
+{
+  "report_id": "REP_TEST_RUN_001",
+  "generated_at": "2026-09-14T14:50:50.528497+00:00",
+  "manifest": {
+    "run_id": "TEST_RUN_001",
+    "experiment_id": "DEMO_EXP_001",
+    "procedure_version": "1.0.0",
+    "camera_profile": "VIEW_LEFT",
+    "start_time_utc": "2026-09-14T14:50:50.411004+00:00",
+    "end_time_utc": "2026-09-14T14:50:50.528497+00:00",
+    "status": "COMPLETED",
+    "duration_seconds": 0.12,
+    "software_version": "1.0.0",
+    "git_commit": "c02788d769a4468cd63dc4f065429083ae11cef4",
+    "total_steps": 4,
+    "completed_steps": 0,
+    "deviations_count": 0,
+    "recoveries_count": 0,
+    "uncertain_count": 1,
+    "effective_fps": 9.72
+  },
+  "metrics": {
+    "effective_fps": 9.72,
+    "total_frames": 1
+  },
+  "health": {
+    "overall_status": "NORMAL",
+    "summary": "All subsystems operational",
+    "timestamp": 1789397450.5284386,
+    "critical_failures": [],
+    "degraded_components": [],
+    "subsystems": {
+      "camera": {
+        "status": "NORMAL",
+        "criticality": "CRITICAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.653852
+      },
+      "perception": {
+        "status": "NORMAL",
+        "criticality": "CRITICAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538534
+      },
+      "procedure": {
+        "status": "NORMAL",
+        "criticality": "CRITICAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538541
+      },
+      "assurance": {
+        "status": "NORMAL",
+        "criticality": "CRITICAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538546
+      },
+      "evidence": {
+        "status": "NORMAL",
+        "criticality": "CRITICAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538553
+      },
+      "database": {
+        "status": "NORMAL",
+        "criticality": "CRITICAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538556
+      },
+      "storage": {
+        "status": "NORMAL",
+        "criticality": "IMPORTANT",
+        "message": "Initialized",
+        "timestamp": 1789397449.653856
+      },
+      "recording": {
+        "status": "NORMAL",
+        "criticality": "IMPORTANT",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538563
+      },
+      "voice": {
+        "status": "NORMAL",
+        "criticality": "OPTIONAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538568
+      },
+      "streaming": {
+        "status": "NORMAL",
+        "criticality": "OPTIONAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.653857
+      },
+      "ground_monitor": {
+        "status": "NORMAL",
+        "criticality": "OPTIONAL",
+        "message": "Initialized",
+        "timestamp": 1789397449.6538572
+      }
+    }
+  },
+  "step_summary": {
+    "total": 4,
+    "completed": 0,
+    "deviations": 0,
+    "recoveries": 0,
+    "uncertain": 1,
+    "completion_rate": 0.0
+  }
+}

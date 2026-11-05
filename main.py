@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ASTRA-EA Root Entrypoint.
+"""ORBITA Root Entrypoint.
 
 Delegates commands to the core CLI.
 """

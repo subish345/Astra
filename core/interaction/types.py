@@ -1,4 +1,4 @@
-"""Data structures for hand-object interaction understanding in ASTRA-EA.
+"""Data structures for hand-object interaction understanding in Pramman.
 
 Models the progression from hand proximity to physical contact, grasping, motion,
 and release.

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Console Component Tests
+# Pramman Mission Console Component Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Headless unit tests for individual Mission Console Qt panels and widgets."""
@@ -168,3 +168,25 @@ def test_session_bar(qapp):
 
     bar.set_camera_profile("VIEW_RIGHT")
     assert "VIEW_RIGHT" in bar.lbl_cam_profile.text()
+
+
+def test_camera_mirror_toggle(qapp):
+    toggled_val = []
+    bar = SessionBar(on_toggle_mirror=lambda val: toggled_val.append(val))
+    assert hasattr(bar, "btn_mirror")
+    assert bar.btn_mirror.isChecked() is False
+    assert bar.lbl_offline.isVisible() is False
+    assert bar.lbl_cam_profile.isVisible() is False
+
+    # Click mirror button
+    bar.btn_mirror.setChecked(True)
+    assert toggled_val == [True]
+    bar.btn_mirror.setChecked(False)
+    assert toggled_val == [True, False]
+
+    panel = VideoPanel()
+    assert hasattr(panel, "btn_mirror")
+    assert panel.btn_mirror.isChecked() is False
+    panel.set_mirrored(True)
+    assert panel.mirror_camera is True
+    assert panel.btn_mirror.isChecked() is True

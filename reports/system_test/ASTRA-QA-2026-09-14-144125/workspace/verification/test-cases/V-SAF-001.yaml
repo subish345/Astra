@@ -1,0 +1,21 @@
+id: V-SAF-001
+requirement: ASTRA-SAF-001
+title: Epistemic Non-Guessing Assurance Barrier
+purpose: Verify that under ambiguous, zero-evidence, or low IoU conditions, the system never emits a false VERIFIED state.
+preconditions:
+  - Procedure active on Step 1
+setup:
+  - Deliver empty detections, zero hand bounding boxes, or disjoint coordinates (IoU <= 0.05)
+inputs:
+  - 20 frames of disjoint or empty detections
+procedure:
+  - Process frames through TriStateAssuranceEngine
+  - Check emitted decision states
+expected_result:
+  - Decision state remains UNCERTAIN or IDLE
+  - Zero false VERIFIED events emitted
+acceptance_criteria:
+  - Zero false verifications under ambiguous evidence
+evidence:
+  - storage/reports/simulation/sim_stress_optical.json
+  - verification/evidence/EVID-SAF-001-NONGUESSING.json

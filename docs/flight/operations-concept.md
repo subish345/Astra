@@ -1,4 +1,4 @@
-# ASTRA-EA — Concept of Operations (CONOPS)
+# Pramman — Concept of Operations (CONOPS)
 
 ### Document ID: `ASTRA-CONOPS-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  

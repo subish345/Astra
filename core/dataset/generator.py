@@ -1,4 +1,4 @@
-"""Synthetic Dataset Generator for ASTRA-EA.
+"""Synthetic Dataset Generator for Pramman.
 
 Generates procedurally rendered experiment scenes with controlled variations
 in lighting, viewpoint perspective, object positions, astronaut poses,

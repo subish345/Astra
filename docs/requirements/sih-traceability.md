@@ -1,7 +1,7 @@
 # SIH26174 Traceability Matrix
 
 ## 1. Traceability Overview
-This matrix traces every requirement specified in the SIH26174 problem statement (*AI Human Activity Recognition for On-board BAS Experiments*) directly to the corresponding component in **ASTRA-EA**.
+This matrix traces every requirement specified in the SIH26174 problem statement (*AI Human Activity Recognition for On-board BAS Experiments*) directly to the corresponding component in **Pramman**.
 
 Status Definitions:
 - **PLANNED**: Architecturally defined with module contracts; implementation scheduled in subsequent phases.
@@ -14,7 +14,7 @@ Status Definitions:
 
 ## 2. Requirement Mapping Matrix
 
-| SIH26174 Requirement | ASTRA-EA Architecture Component | Subsystem Location | Current Status (Phase 4) | Phase Verified | Notes / Verification Strategy |
+| SIH26174 Requirement | Pramman Architecture Component | Subsystem Location | Current Status (Phase 4) | Phase Verified | Notes / Verification Strategy |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **AI Perception (Object Detection)** | Object Detector Interface & Implementations | `core/perception/detection/` | **VALIDATED** | Phase 2 | `ColorSpatialObjectDetector`, `YOLOAdapter` (OpenCV DNN), verified on live camera. |
 | **AI Perception (Human Pose)** | Pose Estimator Interface & Keypoint Models | `core/perception/pose/` | **VALIDATED** | Phase 2 | Microgravity orientation-invariant torso & shoulder keypoint grounding. |

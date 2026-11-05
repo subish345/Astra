@@ -1,4 +1,4 @@
-"""Step Traceability (D4.07) for ASTRA-EA.
+"""Step Traceability (D4.07) for Pramman.
 
 Constructs detailed, inspectable causal audit chains linking step verification
 decisions back through evidence factors, activities, interactions, tracked bounding boxes,

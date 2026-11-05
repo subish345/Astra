@@ -25,7 +25,7 @@
    - Attempt camera restart via Console Settings -> *Re-initialize Camera*.
    - Or enter maintenance mode to run loopback:
      ```bash
-     astra maintenance test-camera
+     pramman maintenance test-camera
      ```
 4. **Escalation:** If unresolved after 60 seconds, escalate to Level 2 (System Engineer).
 

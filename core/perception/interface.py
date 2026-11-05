@@ -1,4 +1,4 @@
-"""Abstract interfaces and development stubs for the ASTRA-EA perception tier.
+"""Abstract interfaces and development stubs for the Pramman perception tier.
 
 Enforces clean boundaries so concrete deep learning backends (YOLO, MediaPipe, ByteTrack)
 can be swapped without affecting downstream interaction or procedure engines.

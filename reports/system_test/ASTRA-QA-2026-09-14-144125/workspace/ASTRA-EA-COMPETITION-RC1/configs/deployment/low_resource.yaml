@@ -1,0 +1,27 @@
+profile_name: "PROFILE_LOW_RESOURCE"
+description: "Constrained edge deployment profile targeting lightweight SBCs and embedded processors."
+
+perception:
+  input_resolution: [320, 320]
+  confidence_threshold: 0.55
+  nms_threshold: 0.45
+  device: "cpu"
+  runtime: "opencv_dnn"
+
+scheduler:
+  tracking_interval: 1
+  detection_interval: 2
+  pose_interval: 3
+  hand_interval: 2
+  queue_policy: "latest_frame"
+  max_queue_size: 2
+
+stream:
+  enabled: true
+  quality_mode: "LOW"
+  fps: 10
+
+resources:
+  max_ram_gb: 1.5
+  max_cpu_percent: 75.0
+  max_gpu_memory_gb: 0.0

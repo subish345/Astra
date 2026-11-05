@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASTRA-EA Final System Test Report</title>
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #131b2e;
+      --bg-card: #1a243b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --border-color: #23314d;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 2.5rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .meta-subtitle {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+      color: var(--accent-cyan);
+      margin: 2rem 0 1rem 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.4rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .badge-ready {
+      background-color: rgba(245, 158, 11, 0.2);
+      color: var(--accent-amber);
+      border: 1px solid var(--accent-amber);
+    }
+    .badge-pass {
+      background-color: rgba(16, 185, 129, 0.2);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem 0;
+      background-color: var(--bg-card);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+    th {
+      background-color: var(--bg-secondary);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    pre {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    .status-pass {
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1>ASTRA-EA Final System Test Report</h1>
+          <div class="meta-subtitle">Autonomous Spacecraft Experiment Assurance &bull; SIH26174</div>
+        </div>
+        <div>
+          <span class="badge badge-ready">READY WITH LIMITATIONS</span>
+        </div>
+      </div>
+    </header>
+
+    <h2>1. Environment</h2>
+    <ul>
+      <li><strong>Host Platform:</strong> Linux 7.1.12-200.fc44.x86_64 (Fedora 44, x86_64)</li>
+      <li><strong>CPU:</strong> Intel Core i7-14700HX (28 vCPUs / 20 physical cores, 33MB cache)</li>
+      <li><strong>Memory (RAM):</strong> 31.03 GB total, 12.10 GB available</li>
+      <li><strong>Disk Partition:</strong> 250.00 GB total, 190.75 GB free (22.8% used)</li>
+      <li><strong>Optical Sensor:</strong> <code>/dev/video0</code> (V4L2 640x480 @ 30.0 FPS)</li>
+      <li><strong>GPU Hardware:</strong> NVIDIA Corporation GB206M [GeForce RTX 5060 Max-Q / Mobile]</li>
+      <li><strong>ML Runtime:</strong> PyTorch 2.14.0+cpu, Torchvision 0.29.0+cpu, OpenCV 5.0.0</li>
+      <li><strong>Database:</strong> SQLite 3.51.2 with Write-Ahead Logging (WAL enabled)</li>
+      <li><strong>Display Server:</strong> Active Wayland / X11 Server (<code>DISPLAY=:0</code>)</li>
+    </ul>
+
+    <h2>2. Automated Tests</h2>
+    <ul>
+      <li><strong>Pytest Total:</strong> 332 tests executed across 24 test suites</li>
+      <li><strong>Passed:</strong> 332 (100%)</li>
+      <li><strong>Failed:</strong> 0 | <strong>Skipped:</strong> 0 | <strong>Errors:</strong> 0</li>
+      <li><strong>Total Duration:</strong> 33.86 seconds</li>
+      <li><strong>Focused Subsystem Suites:</strong> 36/36 passed (interaction, activity, integration)</li>
+      <li><strong>GUI Components:</strong> 19/19 passed</li>
+      <li><strong>Ground Monitor:</strong> 11/11 passed</li>
+      <li><strong>Precheck Subsystems:</strong> 9/9 PASS (Verdict: READY in 84.4 ms)</li>
+    </ul>
+
+    <h2>3. Live Hardware & Subsystem Tests</h2>
+    <table>
+      <thead>
+        <tr><th>Test ID</th><th>Subsystem</th><th>Target / Props</th><th>Measured Metric</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TEST 03</td><td>Camera Capture</td><td><code>/dev/video0</code></td><td>26.1 FPS, 0 read errors</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 04</td><td>Live Perception</td><td>ColorSpatial + Pose + Hands</td><td>28.9 FPS, P50: 15.55 ms</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 05</td><td>Live Interaction</td><td>Spatial Kinematics</td><td>28.4 FPS, P50: 12.38 ms</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 06</td><td>Activity Recognition</td><td>Temporal Buffering</td><td>28.4 FPS, P50: 13.44 ms</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 07</td><td>Live Procedure</td><td><code>demo.yaml</code> (4 steps)</td><td>66.6 FPS cap, P50: 15.03 ms</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 08</td><td>Live Assurance</td><td>VIEW_LEFT profile</td><td>60.5 FPS cap, P50: 16.54 ms</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 09</td><td>Live Recovery</td><td>Guidance injection</td><td>Correct specimen verified</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 10</td><td>Mission Console</td><td>PySide6 / Headless</td><td><code>DEMO_RUN_001</code> completed</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 11</td><td>Air-Gapped Voice</td><td>pyttsx3 Offline TTS</td><td>4 channels + Dedup active</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 12</td><td>Recording & Evidence</td><td>SQLite WAL</td><td>Full trace chain verified</td><td class="status-pass">PASS</td></tr>
+        <tr><td>TEST 13</td><td>Ground Monitor</td><td>Telemetry receiver</td><td>11/11 tests pass</td><td class="status-pass">PASS</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. Failure Tests</h2>
+    <ul>
+      <li><strong>Network Failure (LOS / AOS):</strong> <code>REH_04_NETWORK_FAILURE</code> [PASS] &mdash; Onboard autonomy continued uninterrupted during network loss; telemetry synchronized cleanly upon reconnection.</li>
+      <li><strong>Camera Failure & Recovery:</strong> <code>REH_05_CAMERA_FAILURE</code> [PASS] &mdash; 0 FPS stream timeout paused verification; device re-enumerated and resumed with valid frames.</li>
+      <li><strong>Uncertainty & Occlusion:</strong> <code>REH_03_UNCERTAINTY</code> [PASS] &mdash; Occlusion generated <code>UNCERTAIN</code> state; zero false alarms; nominal status restored upon clear view.</li>
+      <li><strong>Viewpoint Robustness:</strong> <code>REH_11_VIEWPOINT</code> [PASS] &mdash; Multi-view cross-validation satisfied across <code>VIEW_LEFT</code>, <code>VIEW_CENTER</code>, and <code>VIEW_RIGHT</code>.</li>
+    </ul>
+
+    <h2>5. Performance</h2>
+    <pre>CAMERA CAPTURE:       26.1 - 28.9 FPS (0 read errors)
+PERCEPTION P50:       15.55 ms
+PIPELINE P50:         12.38 ms
+SYSTEM THROUGHPUT:    28.4 - 28.9 FPS
+RESOURCE UTILIZATION: 15.2% CPU average, +0.05 MB RAM delta over 897 frames</pre>
+
+    <h2>6. Evidence Locations</h2>
+    <ul>
+      <li>Live Perception Screenshot: <code>reports/testing/RUN_20260913_220500/screenshots/live_perception_overlay.jpg</code></li>
+      <li>Live Interaction Screenshot: <code>reports/testing/RUN_20260913_220500/screenshots/live_interaction_overlay.jpg</code></li>
+      <li>Logs & Metadata: <code>reports/testing/RUN_20260913_220500/logs/</code>, <code>results.json</code>, <code>environment.json</code></li>
+    </ul>
+
+    <h2>7. Defects & Findings</h2>
+    <ul>
+      <li><strong>DEF-001 (HIGH):</strong> Missing PyTorch/Torchvision packages in base Python environment. Resolved via <code>torch 2.14.0+cpu</code> installation.</li>
+      <li><strong>DEF-002 (MEDIUM):</strong> NVIDIA RTX 5060 Laptop GPU module not active in kernel; system operates reliably on CPU at 28.5 FPS.</li>
+      <li><strong>DEF-003 (LOW):</strong> Physical prop handling checklist documented in <code>reports/testing/manual_camera_checklist.md</code>.</li>
+    </ul>
+
+    <h2>8. Fixes</h2>
+    <p>PyTorch CPU installation executed and verified. Zero regressions introduced.</p>
+
+    <h2>9. Regression</h2>
+    <p>Pre-test: <strong>332 passed</strong> | Post-test: <strong>332 passed</strong> (0 failed). Zero regression.</p>
+
+    <h2>10. Final Decision</h2>
+    <p><strong>Status: <span class="badge badge-ready">READY WITH LIMITATIONS</span></strong></p>
+    <p>Core software, optical ingestion, and operational assurance logic fully verified. Ready for astronaut and ground crew evaluation under documented operational boundaries.</p>
+  </div>
+</body>
+</html>

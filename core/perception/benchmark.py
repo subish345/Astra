@@ -1,4 +1,4 @@
-"""Perception performance benchmarking tool for ASTRA-EA.
+"""Perception performance benchmarking tool for Pramman.
 
 Measures FPS throughput, percentile latency profiles (P50, P95, P99), CPU and GPU
 memory utilization across continuous frame ingestion.
@@ -42,7 +42,7 @@ class BenchmarkReport:
         """Format human-readable benchmark summary."""
         lines = [
             "=" * 60,
-            " ASTRA-EA PERCEPTION PERFORMANCE BENCHMARK REPORT",
+            " Pramman PERCEPTION PERFORMANCE BENCHMARK REPORT",
             "=" * 60,
             f"Frames Evaluated:    {self.total_frames}",
             f"Total Duration:      {self.duration_seconds:.2f} s",

@@ -1,4 +1,4 @@
-"""Standardized version and build metadata for ASTRA-EA."""
+"""Standardized version and build metadata for ORBITA."""
 
 from __future__ import annotations
 
@@ -7,8 +7,8 @@ import platform
 import subprocess
 from typing import Any, Dict
 
-VERSION = "1.0.0"
-SYSTEM_NAME = "ASTRA-EA"
+VERSION = "1.1.0"
+SYSTEM_NAME = "ORBITA"
 TAGLINE = "See. Understand. Verify. Assist. Record. — Locally, in Space."
 PROBLEM_STATEMENT = "SIH26174 — AI Human Activity Recognition for On-board BAS Experiments"
 

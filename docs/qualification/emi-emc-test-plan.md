@@ -1,4 +1,4 @@
-# ASTRA-EA: Electromagnetic Compatibility (EMI/EMC) Qualification Test Plan
+# Pramman: Electromagnetic Compatibility (EMI/EMC) Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-EMC-001`  
 **Test Identifier:** `QUAL-EMC-001` to `QUAL-EMC-004`  
@@ -10,7 +10,7 @@
 
 ## 1. Objective
 
-This qualification plan defines the electromagnetic compatibility test procedures to verify that ASTRA-EA does not emit excessive conducted or radiated noise that could interfere with spacecraft radios, avionics, or scientific payloads, and conversely remains immune to external electromagnetic fields and power line transients.
+This qualification plan defines the electromagnetic compatibility test procedures to verify that Pramman does not emit excessive conducted or radiated noise that could interfere with spacecraft radios, avionics, or scientific payloads, and conversely remains immune to external electromagnetic fields and power line transients.
 
 Specific goals:
 1. **Conducted Emissions (CE102):** Quantify high-frequency ripple currents injected back into the spacecraft 28V power bus.
@@ -46,7 +46,7 @@ Specific goals:
 
 ## 4. Real-Time Software Functional Monitoring During EMI Exposure
 
-During active radiated susceptibility (`RS103`) and conducted susceptibility (`CS101`) sweeps, the ASTRA-EA software runs continuous real-time self-auditing to detect subtle bit errors or bus stalls:
+During active radiated susceptibility (`RS103`) and conducted susceptibility (`CS101`) sweeps, the Pramman software runs continuous real-time self-auditing to detect subtle bit errors or bus stalls:
 
 ```text
 MONITORED REAL-TIME SIGNALS:

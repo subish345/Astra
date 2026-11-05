@@ -1,6 +1,6 @@
-# ASTRA-EA: Final Judge Demonstration Guide & Script
+# Pramman: Final Judge Demonstration Guide & Script
 
-**Project:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**Project:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Profile:** `configs/deployment/final_demo.yaml`  
 **Execution Command:** `astra demo`
@@ -9,18 +9,18 @@
 
 ## 1. Demonstration Overview & Setup
 
-The ASTRA-EA Judge Demonstration is a deterministic, 5–8 minute structured presentation designed to prove end-to-end edge-AI autonomy, zero network dependence for mission-critical functions, explainable evidence tracing, real-time procedural assurance, and rapid deviation recovery.
+The Pramman Judge Demonstration is a deterministic, 5–8 minute structured presentation designed to prove end-to-end edge-AI autonomy, zero network dependence for mission-critical functions, explainable evidence tracing, real-time procedural assurance, and rapid deviation recovery.
 
 ### Pre-Demo Verification
 Run the system self-test before inviting judges to observe:
 ```bash
-astra final-check
+pramman final-check
 ```
 *Expected output: All 13 subsystems verified, ending with `SYSTEM: READY FOR DEMONSTRATION`.*
 
 Launch the unified demo session:
 ```bash
-astra demo
+pramman demo
 ```
 *Loads `configs/deployment/final_demo.yaml`, initializes camera ingestion, loads `ASTRA_OBJECT_DETECTOR_v1.0`, binds the local SQLite telemetry database, starts the Mission Console at `http://127.0.0.1:8000`, and streams telemetry to Ground Monitor at `http://127.0.0.1:8080`.*
 
@@ -91,7 +91,7 @@ astra demo
 
 ### Minute 2: The Solution
 - **Presenter Statement:**  
-  *"ASTRA-EA solves this with an edge-native cognitive loop: Observe, Understand, Verify, Assist, and Record. It turns overhead optical sensors into an active assurance co-pilot that watches physical interactions, evaluates them against formal state-machine protocols, provides immediate vocal guidance upon mistakes, and produces an unalterable audit log."*
+  *"Pramman solves this with an edge-native cognitive loop: Observe, Understand, Verify, Assist, and Record. It turns overhead optical sensors into an active assurance co-pilot that watches physical interactions, evaluates them against formal state-machine protocols, provides immediate vocal guidance upon mistakes, and produces an unalterable audit log."*
 
 ### Minute 3: Normal Operation (Step 1)
 - **Action:** Operator reaches into the experiment workspace and grasps the `specimen_tube`.
@@ -127,7 +127,7 @@ astra demo
   - Assurance engine records `RECOVERY_VERIFIED`.
   - Procedure resumes normal progression to Step 3.
 - **Presenter Statement:**  
-  *"ASTRA-EA doesn't just halt on error; it guides the astronaut back to the nominal path and formally verifies that the corrective action occurred before allowing the experiment to proceed."*
+  *"Pramman doesn't just halt on error; it guides the astronaut back to the nominal path and formally verifies that the corrective action occurred before allowing the experiment to proceed."*
 
 ### Minute 7: Offline Resilience & Ground Sync
 - **Action:** Physically unplug the ethernet/WiFi interface or disable network bridge.
@@ -160,11 +160,11 @@ Spacecraft experiments involve rare, safety-critical failure modes—such as dro
 
 ### Q3: Why offline?
 **Answer:**  
-Deep-space exploration platforms operate outside the coverage of constant low-latency communication networks (TDRS or DSN). Cloud-based inference models introduce unacceptable latencies (seconds to tens of minutes), transmission bandwidth costs, and single points of failure. ASTRA-EA runs entirely locally on edge hardware (P50 latency 14.8 ms on GPU, 32.1 ms on CPU), guaranteeing zero mission disruption during signal blackouts.
+Deep-space exploration platforms operate outside the coverage of constant low-latency communication networks (TDRS or DSN). Cloud-based inference models introduce unacceptable latencies (seconds to tens of minutes), transmission bandwidth costs, and single points of failure. Pramman runs entirely locally on edge hardware (P50 latency 14.8 ms on GPU, 32.1 ms on CPU), guaranteeing zero mission disruption during signal blackouts.
 
 ### Q4: What happens when the AI is uncertain?
 **Answer:**  
-ASTRA-EA implements an explicit three-state epistemic model: `VERIFIED`, `UNCERTAIN`, and `DEVIATION`. If optical occlusions, low lighting, or marginal detection scores occur, the system classifies the state as `UNCERTAIN` and initiates an observation dwell window. It will *never* prematurely declare a false deviation or falsely verify a step. Only if the uncertainty window expires without resolution does it prompt the user for visual re-acquisition.
+Pramman implements an explicit three-state epistemic model: `VERIFIED`, `UNCERTAIN`, and `DEVIATION`. If optical occlusions, low lighting, or marginal detection scores occur, the system classifies the state as `UNCERTAIN` and initiates an observation dwell window. It will *never* prematurely declare a false deviation or falsely verify a step. Only if the uncertainty window expires without resolution does it prompt the user for visual re-acquisition.
 
 ### Q5: What happens when the astronaut makes a mistake?
 **Answer:**  
@@ -172,7 +172,7 @@ When an unexpected object or incorrect sequence action is registered with high c
 
 ### Q6: What happens if the network fails?
 **Answer:**  
-The network boundary in ASTRA-EA is strictly one-way and decoupled. Perception, interaction, activity classification, procedure state tracking, voice assistance, and video recording all run as local UNIX processes communicating via in-memory queues and local SQLite databases. A network drop only pauses the Ground Monitor streaming adapter; onboard operations continue without dropped frames or degraded FPS. Upon reconnection, backlogged events are automatically synchronized.
+The network boundary in Pramman is strictly one-way and decoupled. Perception, interaction, activity classification, procedure state tracking, voice assistance, and video recording all run as local UNIX processes communicating via in-memory queues and local SQLite databases. A network drop only pauses the Ground Monitor streaming adapter; onboard operations continue without dropped frames or degraded FPS. Upon reconnection, backlogged events are automatically synchronized.
 
 ### Q7: What happens if the camera fails?
 **Answer:**  
@@ -180,7 +180,7 @@ The Ingestion Health Monitor detects frame freeze or sensor disconnect within 3 
 
 ### Q8: What happens if the model fails?
 **Answer:**  
-ASTRA-EA features a dual-tier perception architecture with an automated fallback policy. If the learned neural detector (`ASTRA_OBJECT_DETECTOR_v1.0`) crashes or throws an inference exception, the Runtime Supervisor logs the failure, raises a telemetry alert, and falls back to the deterministic, rule-based baseline detector (`BaselineColorHeuristicDetector`). If all vision fails, the system enters a graceful `PERCEPTION DEGRADED` state, preventing ungrounded procedure state transitions.
+Pramman features a dual-tier perception architecture with an automated fallback policy. If the learned neural detector (`ASTRA_OBJECT_DETECTOR_v1.0`) crashes or throws an inference exception, the Runtime Supervisor logs the failure, raises a telemetry alert, and falls back to the deterministic, rule-based baseline detector (`BaselineColorHeuristicDetector`). If all vision fails, the system enters a graceful `PERCEPTION DEGRADED` state, preventing ungrounded procedure state transitions.
 
 ### Q9: How do you explain an AI decision?
 **Answer:**  
@@ -188,7 +188,7 @@ Decisions are never black boxes. Every procedure step verification or deviation 
 
 ### Q10: Can the experiment procedure change?
 **Answer:**  
-Yes. ASTRA-EA is completely decoupled from any hardcoded experiment. Procedures are defined declaratively in validated YAML schemas (specifying step keys, required objects, action types, prerequisite steps, timeout durations, and recovery conditions). Introducing a new experiment requires only authoring a YAML file and running `astra procedure validate --config <file>`. No C++ or Python code changes are required.
+Yes. Pramman is completely decoupled from any hardcoded experiment. Procedures are defined declaratively in validated YAML schemas (specifying step keys, required objects, action types, prerequisite steps, timeout durations, and recovery conditions). Introducing a new experiment requires only authoring a YAML file and running `astra procedure validate --config <file>`. No C++ or Python code changes are required.
 
 ### Q11: Can the model change?
 **Answer:**  
@@ -200,4 +200,4 @@ Our system has been explicitly tested across multiple physical perspectives, inc
 
 ### Q13: Is this flight-ready?
 **Answer:**  
-**No.** We state clearly that ASTRA-EA is an **engineering-grade ground demonstrator (TRL 4)**. While its software architecture follows aerospace patterns (decoupled processes, deterministic state machines, bounded memory, fault-isolated subsystems), it has not undergone radiation hardening, thermal-vacuum qualification, vibration testing, zero-gravity parabolic flight validation, or ISRO/NASA flight certification. It provides the validated algorithmic foundation for future flight payload engineering.
+**No.** We state clearly that Pramman is an **engineering-grade ground demonstrator (TRL 4)**. While its software architecture follows aerospace patterns (decoupled processes, deterministic state machines, bounded memory, fault-isolated subsystems), it has not undergone radiation hardening, thermal-vacuum qualification, vibration testing, zero-gravity parabolic flight validation, or ISRO/NASA flight certification. It provides the validated algorithmic foundation for future flight payload engineering.

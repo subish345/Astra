@@ -2,7 +2,7 @@
 
 ## 1. Multi-Dimensional Latency & Resource Profiling
 
-ASTRA-EA features an integrated, non-intrusive profiler (`PipelineProfiler`) that continuously records fine-grained temporal, throughput, and hardware consumption metrics across all execution phases.
+Pramman features an integrated, non-intrusive profiler (`PipelineProfiler`) that continuously records fine-grained temporal, throughput, and hardware consumption metrics across all execution phases.
 
 ```text
 [Camera Capture]
@@ -55,7 +55,7 @@ The profiler maintains microsecond-accurate timing buffers across 13 distinct li
 
 ## 3. End-to-End Decision Latency vs Compute Latency
 
-A common misconception in autonomous systems is treating model inference time as end-to-end latency. ASTRA-EA strictly differentiates:
+A common misconception in autonomous systems is treating model inference time as end-to-end latency. Pramman strictly differentiates:
 
 1. **Model Inference Latency**: The forward pass duration of a single neural network (e.g. 4.3 ms).
 2. **Compute Latency**: The sum of sequential compute operations across all stages for a frame.

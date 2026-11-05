@@ -1,4 +1,4 @@
-"""Automated tests for ASTRA-EA Profiling and Benchmark Framework (D10.01 - D10.09)."""
+"""Automated tests for Pramman Profiling and Benchmark Framework (D10.01 - D10.09)."""
 
 import time
 import pytest

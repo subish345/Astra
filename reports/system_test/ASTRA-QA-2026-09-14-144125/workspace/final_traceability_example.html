@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASTRA-EA — Full Vertical Evidence Traceability (SIH26174)</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --card-bg: #0d1527;
+      --border: #1e293b;
+      --accent: #38bdf8;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success: #10b981;
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 32px 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 26px;
+      color: var(--accent);
+      margin: 0 0 8px 0;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+    .badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .badge-info { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; }
+
+    .trace-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+    .trace-node {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      position: relative;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .trace-node:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .trace-node::after {
+      content: "↓";
+      position: absolute;
+      bottom: -18px;
+      left: 36px;
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: bold;
+      z-index: 2;
+    }
+    .trace-node:last-child::after {
+      display: none;
+    }
+    .node-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .node-title {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .node-level {
+      font-size: 11px;
+      color: var(--text-dim);
+      background: #1e293b;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+    .node-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      font-size: 13px;
+    }
+    .field {
+      background: #0b1120;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #1a2436;
+    }
+    .field-lbl {
+      color: var(--text-dim);
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .field-val {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #e2e8f0;
+      word-break: break-all;
+    }
+    .highlight-danger {
+      color: #f87171;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ASTRA-EA — Full Vertical Evidence Traceability</h1>
+      <div class="subtitle">
+        SIH26174 Automated Audit Trail &bull; Mission Run: <code>DEMO_RUN_001</code> &bull; Event Sequence: <code>#142</code> &bull; 100% Air-Gapped Verification
+      </div>
+    </header>
+
+    <div class="trace-stack">
+      <!-- 1. ASSURANCE DECISION -->
+      <div class="trace-node" style="border-left: 4px solid var(--danger);">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-danger">1. Assurance Decision</span>
+            <span>Tri-State Assurance Engine</span>
+          </div>
+          <span class="node-level">Level 8 (Highest)</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Decision</div>
+            <div class="field-val highlight-danger">DEVIATION</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Deviation Reason</div>
+            <div class="field-val">WRONG_OBJECT</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Assurance Confidence</div>
+            <div class="field-val">95.0% (Deterministic Rule Engine)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Voice Guidance Dispatched</div>
+            <div class="field-val">"Release BLUE_BOX and acquire YELLOW_BOX"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. PROCEDURE CONTEXT -->
+      <div class="trace-node">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-info">2. Procedure Specification</span>
+            <span>Graph-Based Procedure Engine</span>
+          </div>
+          <span class="node-level">Level 7</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Experiment ID</div>
+            <div class="field-val">DEMO_EXP_001 (v1.0.0)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Active Step</div>
+            <div class="field-val">STEP_02: "Acquire Reagent Buffer Box"</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Mandatory Object</div>
+            <div class="field-val">YELLOW_BOX (Allowed: [YELLOW_BOX])</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Observed Interacted Object</div>
+            <div class="field-val highlight-danger">BLUE_BOX (Contradiction)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. ACTIVITY OBSERVATION -->
+      <div class="trace-node">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-info">3. Activity Recognition</span>
+            <span>Temporal Activity Engine</span>
+          </div>
+          <span class="node-level">Level 6</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Activity ID</div>
+            <div class="field-val">ACT_8F4B92C1</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Classified Action</div>
+            <div class="field-val">GRASP (Composite: PICKUP)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Temporal Window</div>
+            <div class="field-val">T+00:04.200 &rarr; T+00:05.100 (900 ms)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Kinematic State</div>
+            <div class="field-val">Coupled Trajectory (&Delta;pos=0.18, vel=0.22/s)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. EVIDENCE BUNDLE -->
+      <div class="trace-node">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-info">4. Explainable Evidence Bundle</span>
+            <span>Multimodal Evidence Engine</span>
+          </div>
+          <span class="node-level">Level 5</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Evidence ID</div>
+            <div class="field-val">EVD_000142_DEVIATION</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Object Match Evidence</div>
+            <div class="field-val highlight-danger">UNEXPECTED_OBJECT (Score: 0.00)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Hand Contact Evidence</div>
+            <div class="field-val">CONTACT_CONFIRMED (Score: 0.98)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Spatial Clearance</div>
+            <div class="field-val">CLEAR (Score: 0.92)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. SPATIAL INTERACTION -->
+      <div class="trace-node">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-info">5. Spatial Interaction</span>
+            <span>Hand-Object Kinematic Engine</span>
+          </div>
+          <span class="node-level">Level 4</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Interaction State</div>
+            <div class="field-val">CONTACT (Transition: PROXIMITY &rarr; CONTACT)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Interacting Hand</div>
+            <div class="field-val">RIGHT_HAND (Wrist keypoint: [412, 280])</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Object Track ID</div>
+            <div class="field-val">TRACK_17 (Class: BLUE_BOX)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Hand-Object Distance</div>
+            <div class="field-val">0.018 norm (Threshold: 0.050)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. PERCEPTION & TRACKING -->
+      <div class="trace-node">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-info">6. Optical Tracking & Detection</span>
+            <span>MultiObjectTracker &amp; Detector</span>
+          </div>
+          <span class="node-level">Level 3</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Detector Model</div>
+            <div class="field-val">ASTRA_OBJECT_DETECTOR_v1.0 (ONNX / SIMD)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Detection Confidence</div>
+            <div class="field-val">0.912</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Bounding Box [x, y, w, h]</div>
+            <div class="field-val">[390, 240, 110, 95]</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Tracker Persistence</div>
+            <div class="field-val">18 consecutive frames (IoU: 0.88)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. SENSOR FRAME & SOURCE VIDEO -->
+      <div class="trace-node">
+        <div class="node-header">
+          <div class="node-title">
+            <span class="badge badge-success">7. Physical Sensor &amp; Video Audit</span>
+            <span>CameraSource / VideoRecorder</span>
+          </div>
+          <span class="node-level">Level 1 (Ground Sensor)</span>
+        </div>
+        <div class="node-grid">
+          <div class="field">
+            <div class="field-lbl">Sensor Frame ID</div>
+            <div class="field-val">FRAME #142</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Sensor Profile</div>
+            <div class="field-val">VIEW_LEFT (Workstation Angled)</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Wall Clock (UTC)</div>
+            <div class="field-val">2026-09-13T12:47:22.450Z</div>
+          </div>
+          <div class="field">
+            <div class="field-lbl">Audit Media Artifact</div>
+            <div class="field-val"><code>data/evidence/snapshots/EVD_000142_DEVIATION.jpg</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Autonomous Spacecraft Experiment Assurance &amp; Assistance (ASTRA-EA &bull; SIH26174) &bull; Explainable Multimodal Evidence Chain
+    </footer>
+  </div>
+</body>
+</html>

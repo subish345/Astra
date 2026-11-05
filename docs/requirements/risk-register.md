@@ -1,4 +1,4 @@
-# ASTRA-EA Engineering Risk Register
+# Pramman Engineering Risk Register
 
 ## 1. Risk Assessment Framework
 Risks are evaluated on a 5x5 matrix combining Likelihood (1 = Rare, 5 = Almost Certain) and Severity/Impact (1 = Negligible, 5 = Catastrophic).

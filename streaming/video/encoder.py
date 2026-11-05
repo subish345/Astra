@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Video Stream Encoder
+# Pramman Video Stream Encoder
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Frame scaling and JPEG compression encoder for local IP video streaming."""

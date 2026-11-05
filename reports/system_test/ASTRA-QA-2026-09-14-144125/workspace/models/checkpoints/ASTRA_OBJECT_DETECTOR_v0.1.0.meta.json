@@ -1,0 +1,23 @@
+{
+  "model_name": "ASTRA_OBJECT_DETECTOR",
+  "version": "0.1.0",
+  "epoch": 5,
+  "metrics": {
+    "epoch": 5,
+    "train_loss": 0.409,
+    "val_loss": 0.5839,
+    "val_precision": 0.895,
+    "val_recall": 0.844,
+    "val_mAP50": 0.87,
+    "per_class_mAP": {
+      "RED_BOX": 0.91,
+      "YELLOW_BOX": 0.89,
+      "MAIN_BOX": 0.92,
+      "ASTRONAUT": 0.85,
+      "WORK_SURFACE": 0.93
+    },
+    "epoch_duration_sec": 0.146
+  },
+  "checkpoint_path": "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.pt",
+  "is_best": true
+}

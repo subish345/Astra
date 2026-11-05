@@ -1,4 +1,4 @@
-# ASTRA-EA Machine Learning Environment Setup
+# Pramman Machine Learning Environment Setup
 
 Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
@@ -6,7 +6,7 @@ Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
 ## 1. Overview
 
-ASTRA-EA integrates a machine learning lifecycle alongside its deterministic baseline. While the deterministic baseline (`ColorSpatialObjectDetector`, `SpatialInteractionEngine`, `TriStateAssuranceEngine`) requires only standard Python libraries and OpenCV, model training and learned inference require a supported machine learning runtime.
+Pramman integrates a machine learning lifecycle alongside its deterministic baseline. While the deterministic baseline (`ColorSpatialObjectDetector`, `SpatialInteractionEngine`, `TriStateAssuranceEngine`) requires only standard Python libraries and OpenCV, model training and learned inference require a supported machine learning runtime.
 
 The host development system is equipped with:
 - **CPU**: Intel Core i7-14700HX (20 cores / 28 threads)
@@ -89,7 +89,7 @@ Set `batch_size: 8` or `batch_size: 4` and `image_size: 640` in training configu
 
 ## 5. Directory & Model Storage Conventions
 
-ASTRA-EA strictly isolates raw datasets, versioned splits, training artifacts, and model checkpoints:
+Pramman strictly isolates raw datasets, versioned splits, training artifacts, and model checkpoints:
 
 ```text
 datasets/

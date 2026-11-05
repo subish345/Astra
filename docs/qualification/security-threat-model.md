@@ -1,4 +1,4 @@
-# ASTRA-EA: Spacecraft Payload Cybersecurity Threat Model & Defense-in-Depth
+# Pramman: Spacecraft Payload Cybersecurity Threat Model & Defense-in-Depth
 
 **Classification:** Payload Cyber-Resilience & Threat Assessment  
 **Document ID:** `ASTRA-SEC-001`  
@@ -8,7 +8,7 @@
 
 ## 1. Security Boundary Architecture
 
-ASTRA-EA enforces four concentric defense zones:
+Pramman enforces four concentric defense zones:
 
 ```
 [ZONE 4: EXTERNAL NETWORK / INTERNET]  <=== AIR-GAP (Zero physical connection)
@@ -27,7 +27,7 @@ ASTRA-EA enforces four concentric defense zones:
 
 ## 2. Threat Vector Identification & Mitigation Matrix
 
-| Threat Vector | Attack Scenario | Potential Impact | ASTRA-EA Mitigation Mechanism | Residual Risk |
+| Threat Vector | Attack Scenario | Potential Impact | Pramman Mitigation Mechanism | Residual Risk |
 | :--- | :--- | :--- | :--- | :---: |
 | **T-01: Unauthorized Ground Connection** | Rogue client connects to Ground Monitor port | Eavesdropping on crew video | IP whitelisting + read-only WebSocket feeds | **LOW** |
 | **T-02: Malformed Network Message** | Fuzzed JSON sent over telemetry socket | Service crash (DoS) | Strict Pydantic schema validation; invalid packets dropped | **LOW** |

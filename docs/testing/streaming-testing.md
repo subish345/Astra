@@ -1,4 +1,4 @@
-# ASTRA-EA — Video & Event Streaming Testing Strategy
+# Pramman — Video & Event Streaming Testing Strategy
 
 ## Verification for Local IP Video, SSE Telemetry, and Network Backpressure
 
@@ -8,7 +8,7 @@
 
 ## 1. Overview & Verification Scope
 
-The Phase 9 streaming subsystem connects the autonomous Onboard ASTRA-EA runtime to the Ground Monitor. The testing strategy validates four core guarantees:
+The Phase 9 streaming subsystem connects the autonomous Onboard Pramman runtime to the Ground Monitor. The testing strategy validates four core guarantees:
 1. **Zero AI Pipeline Disruption:** Video compression and client distribution run in non-blocking worker threads. A blocked or slow network client must drop stream frames rather than backpressure the AI perception loop.
 2. **Deterministic Sequence & Delivery:** Mission telemetry events are stamped with monotonically increasing sequence numbers and preserved in a 500-event ring buffer for seamless replay after link recovery.
 3. **Multi-Channel Resilience:** Video and event streams operate over distinct ports (`:8554` and `:8765`), allowing partial network degradation (e.g. video offline, events online) to be detected and handled independently.
@@ -20,10 +20,10 @@ The Phase 9 streaming subsystem connects the autonomous Onboard ASTRA-EA runtime
 
 | Suite | Path | Verification Focus |
 | :--- | :--- | :--- |
-| **Video Streaming** | [`tests/streaming/test_video_streaming.py`](file:///home/subish-loq/Documents/astra/tests/streaming/test_video_streaming.py) | • `StreamEncoder` quality profiles (`LOW`, `MEDIUM`, `HIGH`).<br>• Zero-client encoding bypass (0.01 ms execution overhead).<br>• Bounded queue (depth=1) with drop-oldest backpressure.<br>• Multipart MJPEG framing and boundary separators.<br>• Clean server startup, client frame reception, and graceful shutdown. |
-| **Event Telemetry** | [`tests/streaming/test_event_streaming.py`](file:///home/subish-loq/Documents/astra/tests/streaming/test_event_streaming.py) | • `GroundEvent` dataclass validation and SSE wire formatting.<br>• Atomic sequence numbering and ring-buffer replay (`GET /events/replay?since={seq}`).<br>• SSE client connection, keep-alive `: ping` processing, and event ingestion.<br>• Onboard-to-ground transit latency calculation.<br>• Thread-safe server shutdown via `threading.Event`. |
-| **Network Resilience** | [`tests/network/test_network_resilience.py`](file:///home/subish-loq/Documents/astra/tests/network/test_network_resilience.py) | • `HeartbeatWatchdog` three-tier status (`GOOD` <2.5s, `DEGRADED` 2.5–6s, `OFFLINE` >6s).<br>• Exponential backoff with random jitter (`BackoffManager`).<br>• Dual-channel `ConnectionManager` state orchestration.<br>• Simulated link loss, offline buffering, and automatic reconnection synchronization. |
-| **Security & Auditing** | [`tests/network/test_security.py`](file:///home/subish-loq/Documents/astra/tests/network/test_security.py) | • Bind address filtering (`127.0.0.1` vs `0.0.0.0` warnings).<br>• Path traversal attacks on `/evidence/{id}` (`..`, `/`, `\0`, special characters).<br>• Token-bucket rate limiter under burst traffic conditions.<br>• Non-mutative API verification. |
+| **Video Streaming** | [`tests/streaming/test_video_streaming.py`](file:///home/subish-loq/Documents/pramman_proj/tests/streaming/test_video_streaming.py) | • `StreamEncoder` quality profiles (`LOW`, `MEDIUM`, `HIGH`).<br>• Zero-client encoding bypass (0.01 ms execution overhead).<br>• Bounded queue (depth=1) with drop-oldest backpressure.<br>• Multipart MJPEG framing and boundary separators.<br>• Clean server startup, client frame reception, and graceful shutdown. |
+| **Event Telemetry** | [`tests/streaming/test_event_streaming.py`](file:///home/subish-loq/Documents/pramman_proj/tests/streaming/test_event_streaming.py) | • `GroundEvent` dataclass validation and SSE wire formatting.<br>• Atomic sequence numbering and ring-buffer replay (`GET /events/replay?since={seq}`).<br>• SSE client connection, keep-alive `: ping` processing, and event ingestion.<br>• Onboard-to-ground transit latency calculation.<br>• Thread-safe server shutdown via `threading.Event`. |
+| **Network Resilience** | [`tests/network/test_network_resilience.py`](file:///home/subish-loq/Documents/pramman_proj/tests/network/test_network_resilience.py) | • `HeartbeatWatchdog` three-tier status (`GOOD` <2.5s, `DEGRADED` 2.5–6s, `OFFLINE` >6s).<br>• Exponential backoff with random jitter (`BackoffManager`).<br>• Dual-channel `ConnectionManager` state orchestration.<br>• Simulated link loss, offline buffering, and automatic reconnection synchronization. |
+| **Security & Auditing** | [`tests/network/test_security.py`](file:///home/subish-loq/Documents/pramman_proj/tests/network/test_security.py) | • Bind address filtering (`127.0.0.1` vs `0.0.0.0` warnings).<br>• Path traversal attacks on `/evidence/{id}` (`..`, `/`, `\0`, special characters).<br>• Token-bucket rate limiter under burst traffic conditions.<br>• Non-mutative API verification. |
 
 ---
 

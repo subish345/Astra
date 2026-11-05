@@ -1,4 +1,4 @@
-# ASTRA-EA — Mission Console Architecture
+# Pramman — Mission Console Architecture
 
 ## Phase 6 Mission Console & Astronaut User Experience
 

@@ -1,0 +1,52 @@
+# Edge Compute Deployment Profile for ASTRA-EA
+profile_name: "edge_profile"
+description: "Optimized configuration profile for embedded Linux edge accelerators"
+
+system:
+  execution_mode: "offline_edge"
+  target_fps: 30.0
+  max_memory_mb: 512.0
+  process_priority: "high"
+
+camera:
+  source: 0
+  width: 1280
+  height: 720
+  fps: 30
+  buffer_size: 2
+  profile: "VIEW_LEFT"
+
+model:
+  name: "ASTRA_OBJECT_DETECTOR_v1.0"
+  checkpoint_path: "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.onnx"
+  runtime: "onnx"
+  precision: "int8"
+  input_resolution: [640, 640]
+  confidence_threshold: 0.50
+  nms_threshold: 0.45
+  num_threads: 4
+
+procedure:
+  config_path: "configs/experiments/demo.yaml"
+  auto_advance: true
+  dwell_window_frames: 10
+
+voice:
+  enabled: true
+  backend: "espeak"
+  volume: 1.0
+  rate: 160
+
+storage:
+  db_path: "storage/database/astra.db"
+  wal_mode: true
+  max_disk_mb: 2048
+  recording_fps: 15
+  video_resolution: [1280, 720]
+
+streaming:
+  enabled: true
+  host: "0.0.0.0"
+  video_port: 8080
+  events_port: 8765
+  jpeg_quality: 65

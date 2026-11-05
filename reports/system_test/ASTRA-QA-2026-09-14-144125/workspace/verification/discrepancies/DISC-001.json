@@ -1,0 +1,11 @@
+{
+  "id": "DISC-001",
+  "requirement": "ASTRA-ENV-001",
+  "test": "V-ENV-001",
+  "severity": "MEDIUM",
+  "description": "Camera auto-exposure hunting caused transient brightness oscillations below 60 Lux.",
+  "status": "CLOSED",
+  "root_cause": "Default V4L2 auto-exposure algorithm over-compensates for localized specular highlights.",
+  "corrective_action": "Locked manual exposure parameters in viewpoint configuration profiles (view_left.yaml, etc.).",
+  "verification": "Re-tested under 45 Lux with zero exposure oscillations. V-ENV-001 PASS."
+}

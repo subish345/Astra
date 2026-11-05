@@ -1,4 +1,4 @@
-"""Runtime Resource Budget and Degraded Mode Controller for ASTRA-EA.
+"""Runtime Resource Budget and Degraded Mode Controller for Pramman.
 
 Enforces operational resource ceilings:
 - Maximum process RSS memory (GB)

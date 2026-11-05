@@ -1,4 +1,4 @@
-"""Modular Fault Injection Operators for ASTRA-EA Simulation.
+"""Modular Fault Injection Operators for Pramman Simulation.
 
 Implements parameterized optical, environmental, sensor, and behavioral
 degradation transforms applied to video frames and pipeline states.

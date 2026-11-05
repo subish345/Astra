@@ -1,0 +1,15 @@
+============================================================
+ ASTRA-EA CAMERA DIAGNOSTIC & BENCHMARK
+============================================================
+Testing camera source '0' (Sampling 30 frames)...
+Camera source:  0
+Backend:        V4L2
+Status:         ONLINE
+Resolution:     640x480
+Configured FPS: 30.0
+----------------------------------------
+Frame count:    30/30
+Read failures:  0
+Effective FPS:  26.1
+Status:         ONLINE (Operational)
+============================================================

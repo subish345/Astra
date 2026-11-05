@@ -1,0 +1,13 @@
+{
+  "requirement_id": "ASTRA-ENV-002",
+  "evidence_type": "METRIC",
+  "angles_tested_deg": [
+    35,
+    45,
+    55,
+    65
+  ],
+  "step_agreement_ratio": 1.0,
+  "false_deviations": 0,
+  "result": "PASS"
+}

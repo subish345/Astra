@@ -1,0 +1,10 @@
+id: "CAPA-004"
+finding_id: "FINDING-004"
+owner: "UI_UX_ENGINEER"
+component: "GROUND_ALERT_PANEL"
+change: "Restyle AlertPanel acknowledge button with vibrant cyan border (#0284c7), white text, and visual hover feedback."
+risk: "NONE"
+tests_required:
+  - "tests/ground_monitor/test_ground_panels.py"
+  - "tests/regression/test_ui_alert_contrast.py"
+status: "CLOSED"

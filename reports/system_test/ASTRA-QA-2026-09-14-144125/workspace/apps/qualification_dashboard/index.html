@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRA-EA — Spacecraft Environmental & Hardware Qualification Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="logo-box">
+                    <span class="logo-text">ASTRA-EA</span>
+                </div>
+                <div class="system-title">
+                    <h1>Environmental & Hardware Qualification Console</h1>
+                    <span class="subtitle">ECSS-E-ST-10-02C / ECSS-E-ST-10-03C | Baseline ASTRA-EA-QB-001</span>
+                </div>
+            </div>
+            <div class="header-status">
+                <div class="status-indicator ready">
+                    <span class="pulse-dot ready"></span>
+                    <span class="status-label ready">READY FOR QUALIFICATION</span>
+                </div>
+                <div class="timestamp" id="live-timestamp">2026-09-13T12:00:00Z</div>
+            </div>
+        </header>
+
+        <!-- Master Qualification Statement Banner -->
+        <div class="verdict-banner">
+            <div class="verdict-text">
+                <h2>QUALIFICATION STATUS: READY FOR FUTURE QUALIFICATION</h2>
+                <p>Ground V&V baseline is 100% verified. 13 formal environmental qualification campaigns (Thermal, TVAC, Vibration, Shock, EMC, Radiation, Power) are specified with instrumentation plans and schemas for future certified facility execution.</p>
+            </div>
+            <div class="verdict-badge">READY FOR TEST</div>
+        </div>
+
+        <!-- Navigation Bar to HTML Reports -->
+        <nav class="nav-bar">
+            <a href="../../reports/qualification/environmental_matrix.html" target="_blank" class="nav-btn">Environmental Matrix (13)</a>
+            <a href="../../reports/qualification/qualification_status.html" target="_blank" class="nav-btn">Qualification Baseline</a>
+            <a href="../../reports/qualification/test_results.html" target="_blank" class="nav-btn">Test Procedures</a>
+            <a href="../../reports/qualification/nonconformances.html" target="_blank" class="nav-btn">Nonconformances (NCR)</a>
+            <a href="../../reports/qualification/resource_report.html" target="_blank" class="nav-btn">Resource Margins</a>
+            <a href="../../reports/qualification/instrumentation.html" target="_blank" class="nav-btn">Instrumentation Plan</a>
+            <a href="../../reports/qualification/final_qualification_readiness.html" target="_blank" class="nav-btn">Readiness Statement</a>
+        </nav>
+
+        <!-- KPI Metrics Grid -->
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Qualification Baseline</span>
+                    <span class="badge badge-ready">FROZEN</span>
+                </div>
+                <div class="kpi-metric">QB-001</div>
+                <div class="kpi-subtext">Software v1.0.0-RC1 (SHA-256)</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Ground V&V Compliance</span>
+                    <span class="badge badge-pass">PASS</span>
+                </div>
+                <div class="kpi-metric">35 / 35</div>
+                <div class="kpi-subtext">100% Ground Requirements Verified</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Environmental Campaigns</span>
+                    <span class="badge badge-planned">PLANNED</span>
+                </div>
+                <div class="kpi-metric">13 Tests</div>
+                <div class="kpi-subtext">Thermal, TVAC, Vib, EMC, Rad, Power</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Discrepancy Control (NCR)</span>
+                    <span class="badge badge-pass">0 OPEN CRITICAL</span>
+                </div>
+                <div class="kpi-metric">4 / 4</div>
+                <div class="kpi-subtext">100% Dispositions Implemented</div>
+            </div>
+        </section>
+
+        <!-- Two Column Layout: Baseline Manifest + Telemetry Stream -->
+        <div class="layout-2col">
+            <!-- Left: Baseline Manifest -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Qualification Baseline & Artifact Provenance</h2>
+                    <span class="panel-sub">ECSS-Q-ST-10C Baseline Freeze</span>
+                </div>
+                <div class="meta-list">
+                    <div class="meta-row">
+                        <span class="meta-label">Qualification Build ID</span>
+                        <span class="meta-value"><code>ASTRA-EA-QB-001</code></span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Software Baseline Version</span>
+                        <span class="meta-value"><code>v1.0.0-RC1</code></span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Target Architecture</span>
+                        <span class="meta-value">NVIDIA Orin NX (20W) / x86_64</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Optical Subsystem</span>
+                        <span class="meta-value">Sony IMX477 / M12 Ruggedized 6mm Lens</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Spacecraft Power Interface</span>
+                        <span class="meta-value">28V DC Bus (18V–36V Extended Float)</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Baseline Manifest Checksum</span>
+                        <span class="meta-value"><code>698e57fb273c...</code> <span class="badge badge-pass">VERIFIED</span></span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Neural Model Evaluation Hash</span>
+                        <span class="meta-value"><code>2d4b94f1ba15...</code> <span class="badge badge-pass">VERIFIED</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Live Telemetry Channel Monitor -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Flight Qualification Telemetry Monitor</h2>
+                    <span class="panel-sub">core.qualification.telemetry (1 Hz)</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">
+                    Simulated synchronized chamber/instrumentation telemetry bus stream.
+                </p>
+                <div class="telemetry-grid">
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">CPU Die Temp</span>
+                        <div class="telemetry-val"><span id="telem-cpu-temp">42.5</span><span class="telemetry-unit">°C</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">GPU Die Temp</span>
+                        <div class="telemetry-val"><span id="telem-gpu-temp">46.0</span><span class="telemetry-unit">°C</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">Baseplate Temp</span>
+                        <div class="telemetry-val"><span id="telem-baseplate-temp">34.8</span><span class="telemetry-unit">°C</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">Bus Voltage</span>
+                        <div class="telemetry-val"><span id="telem-bus-voltage">28.05</span><span class="telemetry-unit">V</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">Chassis Power</span>
+                        <div class="telemetry-val"><span id="telem-bus-power">17.39</span><span class="telemetry-unit">W</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">Inference FPS</span>
+                        <div class="telemetry-val"><span id="telem-inference-fps">33.4</span><span class="telemetry-unit">FPS</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">Inference Latency</span>
+                        <div class="telemetry-val"><span id="telem-inference-latency">14.8</span><span class="telemetry-unit">ms</span></div>
+                    </div>
+                    <div class="telemetry-node">
+                        <span class="telemetry-label">Power State</span>
+                        <div class="telemetry-val" style="color: #10b981;"><span id="telem-power-state">NORMAL</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Master Environmental Test Matrix -->
+        <section class="panel" style="margin-bottom: 24px;">
+            <div class="panel-header">
+                <h2>Master Environmental Qualification Matrix</h2>
+                <span class="panel-sub">ECSS-E-ST-10-03C Test Campaign Matrix</span>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test ID</th>
+                            <th>Domain</th>
+                            <th>Requirement</th>
+                            <th>Test Facility</th>
+                            <th>Acceptance Criteria</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matrix-tbody">
+                        <!-- Populated dynamically via dashboard.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Two Column Layout: NCR Registry + Resource Margins -->
+        <div class="layout-2col">
+            <!-- Nonconformance Management (NCR) -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Nonconformance Records (NCR)</h2>
+                    <span class="panel-sub">ECSS-Q-ST-10-09C Discrepancy Tracking</span>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NCR ID</th>
+                                <th>Test</th>
+                                <th>Severity</th>
+                                <th>Description</th>
+                                <th>Disposition & Remediation</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ncr-tbody">
+                            <!-- Populated dynamically via dashboard.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Resource Budget & Margins -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>Payload Resource Margins</h2>
+                    <span class="panel-sub">AIAA S-120-2006 Margins Standard</span>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resource Metric</th>
+                                <th>Measured</th>
+                                <th>Allocated Limit</th>
+                                <th>Margin</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="margins-tbody">
+                            <!-- Populated dynamically via dashboard.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div>ASTRA-EA Flight Experiment Assurance & Assistance | SIH26174</div>
+            <div>Qualification Standard: ECSS-E-ST-10-02C Rev 1 | Status: READY FOR FUTURE QUALIFICATION</div>
+        </footer>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

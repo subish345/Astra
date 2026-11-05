@@ -1,15 +1,15 @@
-# ASTRA-EA: Spacecraft Logical Interface Control Document (ICD)
+# Pramman: Spacecraft Logical Interface Control Document (ICD)
 
 **Classification:** Payload Systems Engineering & Interface Control Document  
 **Document ID:** `ASTRA-ICD-001`  
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Milestone:** Phase 15 — Qualification Readiness
 
 ---
 
 ## 1. Scope & Interface Architecture
 
-This document defines the formal **logical interface contracts** between the ASTRA-EA edge payload and the host spacecraft bus. Physical pinouts and connector standards are intentionally decoupled to preserve compatibility with both the **Bharatiya Antariksh Station (BAS)** payload racks and modular exploration vehicles.
+This document defines the formal **logical interface contracts** between the Pramman edge payload and the host spacecraft bus. Physical pinouts and connector standards are intentionally decoupled to preserve compatibility with both the **Bharatiya Antariksh Station (BAS)** payload racks and modular exploration vehicles.
 
 ```
 +-------------------------------------------------------------------------+
@@ -55,9 +55,9 @@ Every frame delivered to the edge perception worker includes metadata headers:
 
 ## 3. Power State Management Interface (`ICD-PWR-01`)
 
-ASTRA-EA monitors host vehicle power conditioning without asserting direct power rail control.
+Pramman monitors host vehicle power conditioning without asserting direct power rail control.
 
-| Spacecraft Power State | Voltage / Bus Condition | ASTRA-EA System Action | Permitted Operations |
+| Spacecraft Power State | Voltage / Bus Condition | Pramman System Action | Permitted Operations |
 | :--- | :--- | :--- | :--- |
 | **`POWER_ON`** | Initial cold boot rail energization | Execute boot self-test & model integrity hash | Diagnostics & Self-Test |
 | **`POWER_GOOD`** | Nominal voltage ($28\text{V} \pm 2\text{V}$ DC) | Normal full-workload operation | Full AI, Audio, Recording & Assurance |
@@ -69,7 +69,7 @@ ASTRA-EA monitors host vehicle power conditioning without asserting direct power
 
 ## 4. Master Time Synchronization Interface (`ICD-TIME-01`)
 
-To guarantee absolute causal traceability across orbital downlinks, ASTRA-EA maintains a strict separation between **Spacecraft Event Time (SCET)** and **Local Monotonic Duration**:
+To guarantee absolute causal traceability across orbital downlinks, Pramman maintains a strict separation between **Spacecraft Event Time (SCET)** and **Local Monotonic Duration**:
 
 ```
 EVENT TIME (SCET UTC)     ===> Recorded at physical instant photon strikes camera sensor.

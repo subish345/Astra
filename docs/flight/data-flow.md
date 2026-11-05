@@ -1,4 +1,4 @@
-# ASTRA-EA — Flight Data Flow Architecture
+# Pramman — Flight Data Flow Architecture
 
 ### Document ID: `ASTRA-DATA-FLOW-001`
 **Milestone**: Phase 18 — Flight Integration Preparation + Onboard Software Packaging  

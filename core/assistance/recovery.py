@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Closed-Loop Deviation Recovery State Machine
+# Pramman Closed-Loop Deviation Recovery State Machine
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Closed-loop recovery state machine for procedural deviations.

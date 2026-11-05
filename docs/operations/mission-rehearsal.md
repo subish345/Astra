@@ -1,4 +1,4 @@
-# ASTRA-EA Mission Rehearsal & Operational Validation Manual (Phase 20, D20.25)
+# Pramman Mission Rehearsal & Operational Validation Manual (Phase 20, D20.25)
 
 ### Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
@@ -6,7 +6,7 @@
 
 ## 1. Operational Overview
 
-Phase 20 establishes the operational rehearsal framework for ASTRA-EA. The objective is to transition from component-level demonstrations to unified, mission-like execution combining:
+Phase 20 establishes the operational rehearsal framework for Pramman. The objective is to transition from component-level demonstrations to unified, mission-like execution combining:
 
 ```text
 ASTRONAUT OPERATOR
@@ -32,7 +32,7 @@ The core operational rule governing all rehearsals:
 
 ## 2. Rehearsal Execution Modes (Section 5 & 6)
 
-ASTRA-EA enforces four distinct operational execution modes. In strict adherence to Section 6, **every screen and report prominently displays its active mode badge**; a simulation is NEVER labeled a live mission.
+Pramman enforces four distinct operational execution modes. In strict adherence to Section 6, **every screen and report prominently displays its active mode badge**; a simulation is NEVER labeled a live mission.
 
 ```text
 +-------------------+---------------------------------------------------------------+
@@ -83,37 +83,37 @@ GROUND REVIEW (Read-only observability audit completed)
 
 ### Run the Golden Mission Baseline
 ```bash
-astra rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
+pramman rehearsal --scenario GOLDEN_MISSION --speed ACCELERATED
 ```
 
 ### Run All 12 Operational Scenarios Sequentially
 ```bash
-astra rehearsal --scenario ALL --speed ACCELERATED
+pramman rehearsal --scenario ALL --speed ACCELERATED
 ```
 
 ### Run Specific Failure Drill Scenarios
 ```bash
 # Clean run with zero deviations
-astra rehearsal --scenario REH_02_CLEAN --speed ACCELERATED
+pramman rehearsal --scenario REH_02_CLEAN --speed ACCELERATED
 
 # Sensor loss and pause behavior
-astra rehearsal --scenario REH_05_CAMERA_FAILURE --mode HIL --speed ACCELERATED
+pramman rehearsal --scenario REH_05_CAMERA_FAILURE --mode HIL --speed ACCELERATED
 
 # Telemetry ground sever and reconciliation
-astra rehearsal --scenario REH_04_NETWORK_FAILURE --mode HIL --speed ACCELERATED
+pramman rehearsal --scenario REH_04_NETWORK_FAILURE --mode HIL --speed ACCELERATED
 
 # Independent operator validation
-astra rehearsal --scenario REH_12_OPERATOR_INDEP --operator "Astronaut_Trainee_2"
+pramman rehearsal --scenario REH_12_OPERATOR_INDEP --operator "Astronaut_Trainee_2"
 ```
 
 ### Execute Authoritative Dress Rehearsal
 ```bash
-astra dress-rehearsal --speed ACCELERATED
+pramman dress-rehearsal --speed ACCELERATED
 ```
 
 ### Generate & Audit Consolidated Scorecards
 ```bash
-astra rehearsal-scorecard
+pramman rehearsal-scorecard
 ```
 
 ---

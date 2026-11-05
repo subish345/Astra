@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Dedicated Timeline View
+# Pramman Dedicated Timeline View
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Full-screen chronological event timeline viewer with search and category filters."""

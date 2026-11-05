@@ -1,4 +1,4 @@
-# ASTRA-EA — Final Integrated Performance Benchmark Report
+# Pramman — Final Integrated Performance Benchmark Report
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version:** `1.0.0-RC1`  

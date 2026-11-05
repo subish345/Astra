@@ -1,4 +1,4 @@
-"""Model and dataset registry for ASTRA-EA.
+"""Model and dataset registry for Pramman.
 
 Tracks model metadata, versions, target tasks, input resolutions, and verifies
 checkpoint artifacts for mission reproducibility and auditability.

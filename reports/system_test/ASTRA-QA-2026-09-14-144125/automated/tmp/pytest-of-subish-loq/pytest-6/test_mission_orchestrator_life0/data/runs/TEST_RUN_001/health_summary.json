@@ -1,0 +1,75 @@
+{
+  "overall_status": "NORMAL",
+  "summary": "All subsystems operational",
+  "timestamp": 1789397704.612745,
+  "critical_failures": [],
+  "degraded_components": [],
+  "subsystems": {
+    "camera": {
+      "status": "NORMAL",
+      "criticality": "CRITICAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298634
+    },
+    "perception": {
+      "status": "NORMAL",
+      "criticality": "CRITICAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298653
+    },
+    "procedure": {
+      "status": "NORMAL",
+      "criticality": "CRITICAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.729866
+    },
+    "assurance": {
+      "status": "NORMAL",
+      "criticality": "CRITICAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298665
+    },
+    "evidence": {
+      "status": "NORMAL",
+      "criticality": "CRITICAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.729867
+    },
+    "database": {
+      "status": "NORMAL",
+      "criticality": "CRITICAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298672
+    },
+    "storage": {
+      "status": "NORMAL",
+      "criticality": "IMPORTANT",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298675
+    },
+    "recording": {
+      "status": "NORMAL",
+      "criticality": "IMPORTANT",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298677
+    },
+    "voice": {
+      "status": "NORMAL",
+      "criticality": "OPTIONAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298682
+    },
+    "streaming": {
+      "status": "NORMAL",
+      "criticality": "OPTIONAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.7298687
+    },
+    "ground_monitor": {
+      "status": "NORMAL",
+      "criticality": "OPTIONAL",
+      "message": "Initialized",
+      "timestamp": 1789397703.729869
+    }
+  }
+}

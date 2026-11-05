@@ -1,0 +1,10 @@
+id: "CAPA-002"
+finding_id: "FINDING-002"
+owner: "GROUND_SEGMENT_ENGINEER"
+component: "GROUND_RECONCILER"
+change: "Apply deduplication set filter in GroundReconciler to reject already-stored sequence numbers during reconnect gap request."
+risk: "LOW"
+tests_required:
+  - "tests/operations/test_alerts_and_reconciliation.py"
+  - "tests/regression/test_ground_reconnect_dedup.py"
+status: "CLOSED"

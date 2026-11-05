@@ -1,4 +1,4 @@
-# ASTRA-EA Operational Rehearsal Findings Ledger (Phase 20, D20.21)
+# Pramman Operational Rehearsal Findings Ledger (Phase 20, D20.21)
 
 ### Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 

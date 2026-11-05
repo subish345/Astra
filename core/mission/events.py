@@ -1,4 +1,4 @@
-"""Typed event contracts for ASTRA-EA mission telemetry and assurance logging.
+"""Typed event contracts for Pramman mission telemetry and assurance logging.
 
 All events are validated using Pydantic, enabling serialization to JSON for SQLite storage,
 audit logs, and network transmission to the Ground Monitor.

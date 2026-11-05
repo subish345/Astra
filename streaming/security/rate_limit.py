@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Streaming Rate Limiter
+# Pramman Streaming Rate Limiter
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Basic connection rate limiting and client capacity protection."""

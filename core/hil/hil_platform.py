@@ -1,4 +1,4 @@
-"""Hardware-in-the-Loop (HIL) Platform Contract for ASTRA-EA (Phase 18).
+"""Hardware-in-the-Loop (HIL) Platform Contract for Pramman (Phase 18).
 
 In accordance with Section 40 & 41:
 Provides abstract swap between physical and simulated hardware drivers:

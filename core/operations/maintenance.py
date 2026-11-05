@@ -1,4 +1,4 @@
-"""Maintenance Mode Manager for ASTRA-EA (Phase 19, Section 37, 38, D19.15).
+"""Maintenance Mode Manager for Pramman (Phase 19, Section 37, 38, D19.15).
 
 Isolates maintenance diagnostics (camera loopback, model weight checksums, storage scrubbing)
 from live mission execution, enforcing strict mutual exclusion to prevent accidental experiment starts.

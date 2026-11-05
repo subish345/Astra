@@ -1,4 +1,4 @@
-"""Spacecraft Vehicle Data Bus Interface Abstraction for ASTRA-EA (Phase 15).
+"""Spacecraft Vehicle Data Bus Interface Abstraction for Pramman (Phase 15).
 
 Provides logical interface contracts for telemetry downlink, health reporting,
 command ingestion, time synchronization, and power/thermal state adaptation.

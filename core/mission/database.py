@@ -1,4 +1,4 @@
-"""SQLite audit database engine for ASTRA-EA.
+"""SQLite audit database engine for Pramman.
 
 Manages relational persistence of experiment definitions, session runs, steps,
 decision events, evidence bundles, alerts, and system health heartbeats.
@@ -25,7 +25,7 @@ from core.mission.events import (
 
 logger = get_logger("STORAGE")
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
@@ -123,7 +123,32 @@ CREATE TABLE IF NOT EXISTS video_segments (
     start_time TIMESTAMP NOT NULL,
     end_time TIMESTAMP,
     file_path TEXT NOT NULL,
+    frame_count INTEGER DEFAULT 0,
+    fps REAL DEFAULT 30.0,
+    duration_sec REAL DEFAULT 0.0,
     is_evidence_clip INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (run_id) REFERENCES experiment_runs (run_id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS camera_visuals (
+    visual_id TEXT PRIMARY KEY,
+    run_id TEXT,
+    frame_id INTEGER NOT NULL,
+    timestamp REAL NOT NULL,
+    wall_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    source_type TEXT NOT NULL DEFAULT 'CAMERA',
+    source_path TEXT,
+    image_path TEXT,
+    step_id TEXT,
+    step_status TEXT,
+    accuracy_score REAL DEFAULT 0.0,
+    detected_objects_json TEXT,
+    pose_keypoints_json TEXT,
+    interactions_json TEXT,
+    is_training_sample INTEGER DEFAULT 0,
+    training_split TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (run_id) REFERENCES experiment_runs (run_id) ON DELETE CASCADE
 );
 
@@ -253,6 +278,10 @@ CREATE INDEX IF NOT EXISTS idx_assurance_session ON assurance_decisions (session
 CREATE INDEX IF NOT EXISTS idx_assurance_viewpoint ON assurance_decisions (camera_profile);
 CREATE INDEX IF NOT EXISTS idx_recovery_session ON recovery_events (session_id);
 CREATE INDEX IF NOT EXISTS idx_ui_audit_run ON ui_audit_events (run_id);
+CREATE INDEX IF NOT EXISTS idx_visuals_run_id ON camera_visuals (run_id);
+CREATE INDEX IF NOT EXISTS idx_visuals_step_id ON camera_visuals (step_id);
+CREATE INDEX IF NOT EXISTS idx_visuals_training ON camera_visuals (is_training_sample, training_split);
+CREATE INDEX IF NOT EXISTS idx_video_segments_run ON video_segments (run_id);
 """
 
 
@@ -302,10 +331,24 @@ class DatabaseManager:
         """Create database tables and apply initial migrations if not present."""
         with self.get_connection() as conn:
             conn.executescript(SCHEMA_SQL)
-            # Check migration
-            cursor = conn.execute("SELECT version FROM schema_migrations WHERE version = ?", (SCHEMA_VERSION,))
+            # Apply schema migrations
+            cursor = conn.execute("SELECT version FROM schema_migrations WHERE version = 1")
             if not cursor.fetchone():
-                conn.execute("INSERT INTO schema_migrations (version) VALUES (?)", (SCHEMA_VERSION,))
+                conn.execute("INSERT INTO schema_migrations (version) VALUES (1)")
+
+            cursor = conn.execute("SELECT version FROM schema_migrations WHERE version = 2")
+            if not cursor.fetchone():
+                # Migration v2: Ensure video_segments has all metadata columns
+                cols = [c[1] for c in conn.execute("PRAGMA table_info(video_segments)").fetchall()]
+                if "frame_count" not in cols:
+                    conn.execute("ALTER TABLE video_segments ADD COLUMN frame_count INTEGER DEFAULT 0")
+                if "fps" not in cols:
+                    conn.execute("ALTER TABLE video_segments ADD COLUMN fps REAL DEFAULT 30.0")
+                if "duration_sec" not in cols:
+                    conn.execute("ALTER TABLE video_segments ADD COLUMN duration_sec REAL DEFAULT 0.0")
+                if "created_at" not in cols:
+                    conn.execute("ALTER TABLE video_segments ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+                conn.execute("INSERT INTO schema_migrations (version) VALUES (2)")
         logger.info("Database initialized successfully at %s (Schema v%d)", self.db_path, SCHEMA_VERSION)
 
     def end_experiment_run(self, run_id: str, status: str = "COMPLETED", completed_steps: int = 0, deviations: int = 0) -> None:
@@ -743,5 +786,311 @@ class DatabaseManager:
                     (limit,),
                 )
             return [dict(r) for r in cursor.fetchall()]
+
+    def record_video_segment(
+        self,
+        segment_id: str,
+        run_id: Optional[str],
+        start_time: Any,
+        file_path: str | Path,
+        end_time: Optional[Any] = None,
+        frame_count: int = 0,
+        fps: float = 30.0,
+        duration_sec: float = 0.0,
+        is_evidence_clip: bool = False,
+    ) -> None:
+        """Persist video segment or evidence clip metadata into database."""
+        start_str = start_time.isoformat() if hasattr(start_time, "isoformat") else str(start_time)
+        end_str = end_time.isoformat() if hasattr(end_time, "isoformat") else (str(end_time) if end_time else None)
+        with self.get_connection() as conn:
+            if run_id:
+                # Ensure run_id exists in experiment_runs to satisfy foreign key
+                r = conn.execute("SELECT 1 FROM experiment_runs WHERE run_id = ?", (run_id,)).fetchone()
+                if not r:
+                    conn.execute(
+                        "INSERT OR IGNORE INTO experiments (experiment_id, name, version) VALUES (?, ?, ?)",
+                        ("DEFAULT_EXP", "General Session", "1.0"),
+                    )
+                    conn.execute(
+                        "INSERT OR IGNORE INTO experiment_runs (run_id, experiment_id, start_time, status) VALUES (?, ?, ?, ?)",
+                        (run_id, "DEFAULT_EXP", start_str, "RECORDED"),
+                    )
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO video_segments (
+                    segment_id, run_id, start_time, end_time, file_path,
+                    frame_count, fps, duration_sec, is_evidence_clip
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    segment_id,
+                    run_id,
+                    start_str,
+                    end_str,
+                    str(file_path),
+                    int(frame_count),
+                    float(fps),
+                    float(duration_sec),
+                    1 if is_evidence_clip else 0,
+                ),
+            )
+        logger.debug("Recorded video segment %s (%s)", segment_id, file_path)
+
+    def get_video_segments(self, run_id: Optional[str] = None, limit: int = 50) -> List[Dict[str, Any]]:
+        """Query stored video segments."""
+        with self.get_connection() as conn:
+            if run_id:
+                cursor = conn.execute(
+                    "SELECT * FROM video_segments WHERE run_id = ? ORDER BY start_time DESC LIMIT ?",
+                    (run_id, limit),
+                )
+            else:
+                cursor = conn.execute(
+                    "SELECT * FROM video_segments ORDER BY start_time DESC LIMIT ?",
+                    (limit,),
+                )
+            return [dict(r) for r in cursor.fetchall()]
+
+    def delete_video_segment(self, segment_id: str) -> bool:
+        """Delete a video segment record by segment_id."""
+        with self.get_connection() as conn:
+            cursor = conn.execute("DELETE FROM video_segments WHERE segment_id = ?", (segment_id,))
+            return cursor.rowcount > 0
+
+    def delete_video_segments_by_path(self, file_path: str | Path) -> int:
+        """Delete video segment records referencing a specific file path."""
+        with self.get_connection() as conn:
+            cursor = conn.execute("DELETE FROM video_segments WHERE file_path = ?", (str(file_path),))
+            return cursor.rowcount
+
+    def purge_missing_video_segments(self) -> int:
+        """Remove video segment records whose files no longer exist on disk."""
+        segments = self.get_video_segments(limit=1000)
+        removed = 0
+        with self.get_connection() as conn:
+            for seg in segments:
+                fpath = seg.get("file_path")
+                if not fpath or not Path(fpath).exists():
+                    conn.execute("DELETE FROM video_segments WHERE segment_id = ?", (seg["segment_id"],))
+                    removed += 1
+        return removed
+
+    def record_camera_visual(
+        self,
+        visual_id: str,
+        run_id: Optional[str],
+        frame_id: int,
+        timestamp: float,
+        source_type: str = "CAMERA",
+        source_path: Optional[str] = None,
+        image_path: Optional[str | Path] = None,
+        step_id: Optional[str] = None,
+        step_status: Optional[str] = None,
+        accuracy_score: float = 0.0,
+        detected_objects: Optional[List[Dict[str, Any]]] = None,
+        pose_keypoints: Optional[Dict[str, Any]] = None,
+        interactions: Optional[List[Dict[str, Any]]] = None,
+        is_training_sample: bool = False,
+        training_split: Optional[str] = None,
+    ) -> None:
+        """Store camera/video visual keyframe, movements, bounding boxes, and step accuracy."""
+        det_json = json.dumps(detected_objects) if detected_objects is not None else None
+        pose_json = json.dumps(pose_keypoints) if pose_keypoints is not None else None
+        inter_json = json.dumps(interactions) if interactions is not None else None
+        img_str = str(image_path) if image_path else None
+
+        with self.get_connection() as conn:
+            if run_id:
+                r = conn.execute("SELECT 1 FROM experiment_runs WHERE run_id = ?", (run_id,)).fetchone()
+                if not r:
+                    conn.execute(
+                        "INSERT OR IGNORE INTO experiments (experiment_id, name, version) VALUES (?, ?, ?)",
+                        ("DEFAULT_EXP", "General Session", "1.0"),
+                    )
+                    conn.execute(
+                        "INSERT OR IGNORE INTO experiment_runs (run_id, experiment_id, start_time, status) VALUES (?, ?, ?, ?)",
+                        (run_id, "DEFAULT_EXP", datetime.now(timezone.utc).isoformat(), "RECORDED"),
+                    )
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO camera_visuals (
+                    visual_id, run_id, frame_id, timestamp, source_type,
+                    source_path, image_path, step_id, step_status, accuracy_score,
+                    detected_objects_json, pose_keypoints_json, interactions_json,
+                    is_training_sample, training_split
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    visual_id,
+                    run_id,
+                    frame_id,
+                    float(timestamp),
+                    source_type,
+                    source_path,
+                    img_str,
+                    step_id,
+                    step_status,
+                    float(accuracy_score),
+                    det_json,
+                    pose_json,
+                    inter_json,
+                    1 if is_training_sample else 0,
+                    training_split,
+                ),
+            )
+
+    def get_camera_visuals(
+        self,
+        run_id: Optional[str] = None,
+        step_id: Optional[str] = None,
+        is_training_only: bool = False,
+        limit: int = 100,
+    ) -> List[Dict[str, Any]]:
+        """Query captured camera visuals, movement tracking, and step accuracy records."""
+        query = "SELECT * FROM camera_visuals WHERE 1=1"
+        params: List[Any] = []
+        if run_id:
+            query += " AND run_id = ?"
+            params.append(run_id)
+        if step_id:
+            query += " AND step_id = ?"
+            params.append(step_id)
+        if is_training_only:
+            query += " AND is_training_sample = 1"
+        query += " ORDER BY timestamp ASC LIMIT ?"
+        params.append(limit)
+
+        with self.get_connection() as conn:
+            cursor = conn.execute(query, params)
+            rows = []
+            for r in cursor.fetchall():
+                d = dict(r)
+                if d.get("detected_objects_json"):
+                    try:
+                        d["detected_objects"] = json.loads(d["detected_objects_json"])
+                    except Exception:
+                        d["detected_objects"] = None
+                if d.get("pose_keypoints_json"):
+                    try:
+                        d["pose_keypoints"] = json.loads(d["pose_keypoints_json"])
+                    except Exception:
+                        d["pose_keypoints"] = None
+                if d.get("interactions_json"):
+                    try:
+                        d["interactions"] = json.loads(d["interactions_json"])
+                    except Exception:
+                        d["interactions"] = None
+                rows.append(d)
+            return rows
+
+    def mark_visuals_for_training(
+        self,
+        run_id: Optional[str] = None,
+        min_accuracy: float = 0.70,
+        step_status: str = "VERIFIED",
+    ) -> int:
+        """Mark captured visuals matching quality thresholds as eligible training samples."""
+        query = "UPDATE camera_visuals SET is_training_sample = 1 WHERE accuracy_score >= ?"
+        params: List[Any] = [min_accuracy]
+        if run_id:
+            query += " AND run_id = ?"
+            params.append(run_id)
+        if step_status:
+            query += " AND step_status = ?"
+            params.append(step_status)
+
+        with self.get_connection() as conn:
+            cursor = conn.execute(query, params)
+            return cursor.rowcount
+
+    def get_visual_training_stats(self) -> Dict[str, Any]:
+        """Summary metrics of captured visuals and training samples in the database."""
+        with self.get_connection() as conn:
+            total_visuals = conn.execute("SELECT COUNT(*) FROM camera_visuals").fetchone()[0]
+            training_samples = conn.execute("SELECT COUNT(*) FROM camera_visuals WHERE is_training_sample = 1").fetchone()[0]
+            runs_count = conn.execute("SELECT COUNT(DISTINCT run_id) FROM camera_visuals").fetchone()[0]
+            videos_count = conn.execute("SELECT COUNT(*) FROM video_segments").fetchone()[0]
+            avg_acc = conn.execute("SELECT AVG(accuracy_score) FROM camera_visuals WHERE accuracy_score > 0").fetchone()[0] or 0.0
+
+            splits = dict(conn.execute("SELECT COALESCE(training_split, 'unassigned'), COUNT(*) FROM camera_visuals WHERE is_training_sample = 1 GROUP BY training_split").fetchall())
+
+            return {
+                "total_visuals": total_visuals,
+                "training_samples": training_samples,
+                "runs_count": runs_count,
+                "video_segments_count": videos_count,
+                "average_accuracy": round(float(avg_acc), 3),
+                "splits": splits,
+            }
+
+    def export_visuals_to_dataset(
+        self,
+        output_dir: str | Path,
+        dataset_id: str = "ORBITA_DATASET_V1",
+        run_id: Optional[str] = None,
+        split_ratios: Tuple[float, float, float] = (0.70, 0.15, 0.15),
+    ) -> Dict[str, Any]:
+        """Export stored visual frames and bounding-box / pose annotations to standard dataset directory."""
+        import random
+        out_path = Path(output_dir)
+        ann_dir = out_path / "annotations"
+        ann_dir.mkdir(parents=True, exist_ok=True)
+
+        visuals = self.get_camera_visuals(run_id=run_id, is_training_only=True, limit=50000)
+        if not visuals:
+            visuals = self.get_camera_visuals(run_id=run_id, limit=50000)
+
+        random.seed(42)
+        shuffled = list(visuals)
+        random.shuffle(shuffled)
+
+        n = len(shuffled)
+        n_train = int(n * split_ratios[0])
+        n_val = int(n * split_ratios[1])
+
+        splits = {"train": [], "validation": [], "test": []}
+        for idx, item in enumerate(shuffled):
+            if idx < n_train:
+                sp = "train"
+            elif idx < n_train + n_val:
+                sp = "validation"
+            else:
+                sp = "test"
+            splits[sp].append(item["visual_id"])
+
+            ann_file = ann_dir / f"{item['visual_id']}.json"
+            ann_data = {
+                "visual_id": item["visual_id"],
+                "run_id": item.get("run_id"),
+                "frame_id": item.get("frame_id"),
+                "timestamp": item.get("timestamp"),
+                "step_id": item.get("step_id"),
+                "step_status": item.get("step_status"),
+                "accuracy_score": item.get("accuracy_score"),
+                "image_path": item.get("image_path"),
+                "detected_objects": item.get("detected_objects", []),
+                "pose_keypoints": item.get("pose_keypoints"),
+                "interactions": item.get("interactions"),
+                "split": sp,
+            }
+            with open(ann_file, "w") as f:
+                json.dump(ann_data, f, indent=2)
+
+        with self.get_connection() as conn:
+            for sp, ids in splits.items():
+                for vid in ids:
+                    conn.execute("UPDATE camera_visuals SET training_split = ?, is_training_sample = 1 WHERE visual_id = ?", (sp, vid))
+
+        manifest = {
+            "dataset_id": dataset_id,
+            "sample_count": n,
+            "splits": {k: len(v) for k, v in splits.items()},
+            "output_directory": str(out_path),
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
+        with open(out_path / "dataset_manifest.json", "w") as f:
+            json.dump(manifest, f, indent=2)
+
+        return manifest
 
 

@@ -1,4 +1,4 @@
-# ASTRA-EA: Thermal-Vacuum (TVAC) Qualification Test Plan
+# Pramman: Thermal-Vacuum (TVAC) Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-TVAC-001`  
 **Test Identifier:** `QUAL-TVAC-001`  
@@ -31,7 +31,7 @@ Specific goals:
 - **Quartz Crystal Microbalance (QCM):** Installed near chamber optical ports to measure outgassing deposition rate.
 
 ### 2.2 Mechanical & Conductive Mounting
-- The ASTRA-EA compute chassis shall be bolted to the thermal baseplate using flight-specified interface bolts torqued to $4.5\text{ N}\cdot\text{m}$.
+- The Pramman compute chassis shall be bolted to the thermal baseplate using flight-specified interface bolts torqued to $4.5\text{ N}\cdot\text{m}$.
 - A space-grade low-outgassing thermal interface material (TIM, e.g. Chomerics CHO-THERM or indium foil) with thermal conductivity $\ge 3.0\text{ W/m}\cdot\text{K}$ shall be applied between chassis and plate.
 
 ### 2.3 Chamber Feedthrough Connections

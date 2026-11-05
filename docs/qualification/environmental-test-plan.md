@@ -1,4 +1,4 @@
-# ASTRA-EA: Spacecraft Payload Environmental Test Plan & Qualification Roadmap
+# Pramman: Spacecraft Payload Environmental Test Plan & Qualification Roadmap
 
 **Classification:** Aerospace Environmental Testing & Qualification Plan  
 **Document ID:** `ASTRA-ETP-001`  
@@ -12,7 +12,7 @@
 
 > [!WARNING]
 > **NO PHYSICAL DESTRUCTIVE, RADIATION, OR THERMAL-VACUUM TESTS HAVE BEEN CONDUCTED ON FLIGHT HARDWARE TO DATE.**  
-> This plan outlines the formal protocols, test levels, and acceptance criteria required when ASTRA-EA transitions from commercial off-the-shelf (COTS) edge demonstrators to an aerospace qualification program.
+> This plan outlines the formal protocols, test levels, and acceptance criteria required when Pramman transitions from commercial off-the-shelf (COTS) edge demonstrators to an aerospace qualification program.
 
 ---
 

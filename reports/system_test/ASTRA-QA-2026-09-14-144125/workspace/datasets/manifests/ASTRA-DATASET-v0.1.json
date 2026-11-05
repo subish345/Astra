@@ -1,0 +1,65 @@
+{
+  "dataset_id": "ASTRA-DATASET-v0.1",
+  "version": "0.1.0",
+  "created_at": "2026-09-13T11:04:30.888033+00:00",
+  "source": "HYBRID",
+  "experiment": "DEMO_EXP_001",
+  "classes": [
+    "ASTRONAUT",
+    "MAIN_BOX",
+    "RED_BOX",
+    "YELLOW_BOX",
+    "WORK_SURFACE"
+  ],
+  "sample_count": 20,
+  "session_count": 4,
+  "camera_profiles": [
+    "VIEW_LEFT",
+    "VIEW_RIGHT"
+  ],
+  "scenarios": [
+    "CORRECT",
+    "SKIPPED",
+    "WRONG_OBJECT",
+    "WRONG_ORDER"
+  ],
+  "annotation_schema": "ASTRA_DETECTION_v1",
+  "generator_version": null,
+  "splits": {
+    "train": [
+      "SYNTH_000011",
+      "SYNTH_000012",
+      "SYNTH_000013",
+      "SYNTH_000014",
+      "SYNTH_000015",
+      "SYNTH_000006",
+      "SYNTH_000007",
+      "SYNTH_000008",
+      "SYNTH_000009",
+      "SYNTH_000010"
+    ],
+    "validation": [
+      "SYNTH_000016",
+      "SYNTH_000017",
+      "SYNTH_000018",
+      "SYNTH_000019",
+      "SYNTH_000020"
+    ],
+    "test": [
+      "SYNTH_000001",
+      "SYNTH_000002",
+      "SYNTH_000003",
+      "SYNTH_000004",
+      "SYNTH_000005"
+    ]
+  },
+  "provenance": {
+    "dataset_directory": "datasets/raw/synthetic/demo_synthetic",
+    "sessions": [
+      "SYNTH_SESS_001",
+      "SYNTH_SESS_002",
+      "SYNTH_SESS_003",
+      "SYNTH_SESS_004"
+    ]
+  }
+}

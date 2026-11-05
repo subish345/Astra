@@ -1,4 +1,4 @@
-"""Activity recognition data structures for ASTRA-EA.
+"""Activity recognition data structures for Pramman.
 
 Represents temporal actions aggregated across sliding observation windows.
 """

@@ -1,4 +1,4 @@
-"""Abstract interface and test stubs for the ASTRA-EA activity recognition tier.
+"""Abstract interface and test stubs for the Pramman activity recognition tier.
 
 Transforms sequences of interaction events across temporal windows into discrete
 experiment activities.

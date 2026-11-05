@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Ground Monitor UI Panels Tests
+# Pramman Ground Monitor UI Panels Tests
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Automated tests for Ground Monitor UI panels and components in headless mode."""

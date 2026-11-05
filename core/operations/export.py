@@ -1,4 +1,4 @@
-"""Mission Data Exporter for ASTRA-EA (Phase 19, Section 28, 29, D19.13).
+"""Mission Data Exporter for Pramman (Phase 19, Section 28, 29, D19.13).
 
 Packages run data into a self-contained, verifiable directory bundle (RUN_XXXX/)
 containing reports, events, evidence, timeline, health, configuration, manifest, and SHA-256 checksums,

@@ -27,5 +27,5 @@ class TrainingConfig(BaseModel):
     primary_metric: str = "val_mAP50"
     early_stopping_patience: int = 5
     checkpoint_interval: int = 1
-    description: str = "ASTRA-EA focused experiment object detector training"
+    description: str = "Pramman focused experiment object detector training"
     extra_params: Dict[str, Any] = Field(default_factory=dict)

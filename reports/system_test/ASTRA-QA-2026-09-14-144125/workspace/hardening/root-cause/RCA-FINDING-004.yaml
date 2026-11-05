@@ -1,0 +1,16 @@
+finding_id: "FINDING-004"
+title: "Alert panel button contrast and operator reaction latency"
+analysis_method: "TRACE_ANALYSIS"
+symptom: "Operator hesitation (>2.0s) locating the alert acknowledgment button during simulated deviations."
+reproduction_case: "Display active WARNING alert on Ground Monitor UI and measure human operator click reaction latency."
+evidence:
+  - "reports/rehearsal/REH_12_OPERATOR_INDEP_VIDEO_LOG"
+  - "apps/ground_monitor/panels/alert_panel.py"
+root_cause_breakdown:
+  step_1: "AlertPanel stylesheet styled acknowledge button with muted slate background (#1e293b)."
+  step_2: "Surrounding frame used #0d1527, creating low color luminance contrast (<2.5:1)."
+  step_3: "Astronaut trainee's visual scan was drawn to large red warning text rather than actionable acknowledge control."
+  root_cause: "Sub-optimal visual hierarchy and contrast ratio on actionable interactive control."
+corrective_action: "Update btn_ack styling with high-contrast vibrant cyan border (#0284c7), white text, and visual hover transition."
+verification: "Regression test tests/regression/test_ui_alert_contrast.py verifies WCAG-compliant styling and callback attachment."
+disposition: "RESOLVED"

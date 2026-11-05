@@ -82,6 +82,10 @@ reports/mission_report_*.html
 *.swp
 .DS_Store
 
+# Video recordings
+data/recordings/*
+!data/recordings/.gitkeep
+
 # Simulation recordings
 simulation/recordings/*
 !simulation/recordings/.gitkeep

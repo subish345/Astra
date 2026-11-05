@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Mission Status & Assurance Alert Panel
+# Pramman Mission Status & Assurance Alert Panel
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Priority status panel rendering VERIFIED, UNCERTAIN, DEVIATION, and RECOVERY alerts."""

@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Core Streaming Package Re-export
+# Pramman Core Streaming Package Re-export
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Re-export root streaming subsystem into core namespace for architectural symmetry."""

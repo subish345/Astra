@@ -1,4 +1,4 @@
-"""Generic Qualification Telemetry Interface & Time Synchronization Engine for ASTRA-EA (Phase 17).
+"""Generic Qualification Telemetry Interface & Time Synchronization Engine for Pramman (Phase 17).
 
 Provides synchronized multi-channel ingestion of external chamber sensors and internal
 system performance metrics. Complies with ECSS-E-ST-10-03C telemetry standards.

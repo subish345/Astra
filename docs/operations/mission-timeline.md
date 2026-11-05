@@ -1,4 +1,4 @@
-# ASTRA-EA — Mission Timeline & Timing Architecture
+# Pramman — Mission Timeline & Timing Architecture
 
 ## Phase 19: Mission Operations & Ground Segment Integration (D19.02)
 **Project:** Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
@@ -7,7 +7,7 @@
 
 ## 1. Timing References & Timekeeping (Section 12, 13)
 
-Operational spacecraft experiments require deterministic, synchronized timekeeping. ASTRA-EA defines two authoritative timing planes:
+Operational spacecraft experiments require deterministic, synchronized timekeeping. Pramman defines two authoritative timing planes:
 
 1. **Onboard Mission Elapsed Time (MET):**
    - Authoritative reference monotonic clock started at mission T-0 (`T_START`).
@@ -82,6 +82,6 @@ T+210s : POST-MISSION
 
 ## 3. Sequence Numbering & Gap Detection (Section 44)
 
-Every event published by ASTRA-EA carries a strictly monotonic integer `sequence_num` (e.g. 1, 2, 3, ...).
+Every event published by Pramman carries a strictly monotonic integer `sequence_num` (e.g. 1, 2, 3, ...).
 
 If ground connection drops at sequence `102` and reconnects receiving sequence `108`, Ground Monitor automatically detects the sequence gap `[103, 107]`, marks `SYNC: GAP (5)`, requests the buffered event range from onboard storage, and reconciles the timeline without duplicating records.

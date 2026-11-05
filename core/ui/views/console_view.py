@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Primary Mission Console View
+# Pramman Primary Mission Console View
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Primary operational console view integrating video, status, steps, evidence, and timeline."""
@@ -12,6 +12,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QHBoxLayout,
     QSplitter,
+    QSizePolicy,
     QVBoxLayout,
     QWidget,
 )
@@ -64,10 +65,12 @@ class ConsoleView(QWidget):
         right_layout.addWidget(self.status_panel)
 
         self.step_panel = StepPanel(self)
+        self.step_panel.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         right_layout.addWidget(self.step_panel)
 
         self.progress_panel = ProgressPanel(self)
         right_layout.addWidget(self.progress_panel, stretch=1)
+        right_layout.addStretch()
 
         top_splitter.addWidget(right_container)
         top_splitter.setStretchFactor(0, 6)

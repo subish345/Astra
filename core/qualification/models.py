@@ -1,4 +1,4 @@
-"""Pydantic Data Models for ASTRA-EA Environmental & Hardware Qualification Program (Phase 17).
+"""Pydantic Data Models for Pramman Environmental & Hardware Qualification Program (Phase 17).
 
 Standardized aerospace data structures for qualification baselines, test procedures,
 telemetry records, and nonconformance management.

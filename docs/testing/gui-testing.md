@@ -1,4 +1,4 @@
-# ASTRA-EA — GUI Testing Strategy
+# Pramman — GUI Testing Strategy
 
 ## Automated and Headless Verification for Mission Console
 
@@ -22,9 +22,9 @@ This guarantees 100% test coverage across UI component logic, signal propagation
 
 | Test Suite | File | Focus Areas |
 |---|---|---|
-| **State Store Tests** | [`tests/gui/test_mission_ui_state.py`](file:///home/subish-loq/Documents/astra/tests/gui/test_mission_ui_state.py) | Dataclass mutations, step progress updates, deviation flags, timeline logs. |
-| **Component Tests** | [`tests/gui/test_console_components.py`](file:///home/subish-loq/Documents/astra/tests/gui/test_console_components.py) | VideoPanel layer toggles, StepPanel next action card, StatusPanel alert banners, ProgressPanel step icons, EvidencePanel table, HealthPanel badges. |
-| **Integration Tests** | [`tests/gui/test_mission_integration.py`](file:///home/subish-loq/Documents/astra/tests/gui/test_mission_integration.py) | Full end-to-end signal dispatching: `sig_step_progress`, `sig_assurance_decision`, `sig_deviation`, `sig_recovery`, stack navigation, pixel-perfect window grabs. |
+| **State Store Tests** | [`tests/gui/test_mission_ui_state.py`](file:///home/subish-loq/Documents/pramman_proj/tests/gui/test_mission_ui_state.py) | Dataclass mutations, step progress updates, deviation flags, timeline logs. |
+| **Component Tests** | [`tests/gui/test_console_components.py`](file:///home/subish-loq/Documents/pramman_proj/tests/gui/test_console_components.py) | VideoPanel layer toggles, StepPanel next action card, StatusPanel alert banners, ProgressPanel step icons, EvidencePanel table, HealthPanel badges. |
+| **Integration Tests** | [`tests/gui/test_mission_integration.py`](file:///home/subish-loq/Documents/pramman_proj/tests/gui/test_mission_integration.py) | Full end-to-end signal dispatching: `sig_step_progress`, `sig_assurance_decision`, `sig_deviation`, `sig_recovery`, stack navigation, pixel-perfect window grabs. |
 
 ---
 

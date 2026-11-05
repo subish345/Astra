@@ -1,4 +1,4 @@
-# ASTRA-EA — Final Robustness & Fault Matrix Summary
+# Pramman — Final Robustness & Fault Matrix Summary
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version:** `1.0.0-RC1`  
@@ -8,7 +8,7 @@
 
 ## 1. Simulation Matrix Resilience Results
 
-ASTRA-EA was subjected to the complete 6-scenario automated fault matrix, evaluating system behavior under severe operational, environmental, and procedural stresses:
+Pramman was subjected to the complete 6-scenario automated fault matrix, evaluating system behavior under severe operational, environmental, and procedural stresses:
 
 | Scenario ID | Scenario Name & Fault Description | Frames | Expected Verdict | Actual Decisions | Resilience | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -38,7 +38,7 @@ In spacecraft operations, declaring a false procedural deviation damages crew tr
 
 ## 3. Cross-Viewpoint Invariance (`VIEW_LEFT` vs `VIEW_RIGHT`)
 
-ASTRA-EA achieves camera-angle invariance by transforming raw 2D pixel coordinates into normalized spatial bounding boxes and relative hand-object interaction vectors:
+Pramman achieves camera-angle invariance by transforming raw 2D pixel coordinates into normalized spatial bounding boxes and relative hand-object interaction vectors:
 1. **`VIEW_LEFT`**: Angled lateral view from the port workstation bulkhead.
 2. **`VIEW_RIGHT`**: Opposed lateral perspective from the starboard workstation bulkhead.
 * **Semantic Parity**: Step 1 (`GRASP RED_BOX`) and Step 2 (`GRASP YELLOW_BOX`) produce identical verified step transitions and identical deviation reasons regardless of whether `VIEW_LEFT` or `VIEW_RIGHT` is active.

@@ -1,4 +1,4 @@
-"""Structured logging subsystem for ASTRA-EA.
+"""Structured logging subsystem for Pramman.
 
 Enforces standardized component tags, clean console formatting, and structured file logging.
 """
@@ -40,7 +40,7 @@ def setup_logging(
     log_file_path: Optional[str | Path] = None,
     log_to_console: bool = True,
 ) -> None:
-    """Initialize global logging configuration for ASTRA-EA.
+    """Initialize global logging configuration for Pramman.
 
     Args:
         level: Logging verbosity (DEBUG, INFO, WARNING, ERROR, CRITICAL).

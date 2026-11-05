@@ -1,5 +1,5 @@
 # ==============================================================================
-# ASTRA-EA Offline Text-to-Speech Provider
+# Pramman Offline Text-to-Speech Provider
 # Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 # ==============================================================================
 """Local, air-gapped speech synthesis provider wrapping pyttsx3 with headless fallback."""

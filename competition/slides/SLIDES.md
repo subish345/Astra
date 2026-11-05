@@ -1,4 +1,4 @@
-# ASTRA-EA: Competition Presentation Deck (12 Slides)
+# Pramman: Competition Presentation Deck (12 Slides)
 
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Product:** Autonomous Spacecraft Experiment Assurance & Assistance  
@@ -7,7 +7,7 @@
 ---
 
 ## Slide 1: Title & Identity
-### Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)
+### Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)
 - **Problem Statement:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments
 - **Target Platform:** Bharatiya Antariksh Station (BAS) & Deep-Space Exploration Modules
 - **Core Mission:** Ensure zero procedural errors in orbital scientific laboratory experiments through edge-native visual intelligence.
@@ -25,7 +25,7 @@
 ---
 
 ## Slide 3: The Solution
-### The ASTRA-EA Cognitive Loop
+### The Pramman Cognitive Loop
 $$\text{OBSERVE} \longrightarrow \text{UNDERSTAND} \longrightarrow \text{VERIFY} \longrightarrow \text{ASSIST} \longrightarrow \text{RECORD}$$
 - **Observe:** High-speed overhead optical sensing of astronaut hands and apparatus.
 - **Understand:** Real-time spatial contact, tool grasp estimation, and temporal action accumulation.
@@ -68,7 +68,7 @@ $$\text{OBSERVE} \longrightarrow \text{UNDERSTAND} \longrightarrow \text{VERIFY}
 ## Slide 5: The Central Differentiator
 ### Evidence-Driven Assurance vs. Black-Box HAR
 ```
-          GENERIC BLACK-BOX HAR                     ASTRA-EA EVIDENCE ASSURANCE
+          GENERIC BLACK-BOX HAR                     Pramman EVIDENCE ASSURANCE
       ┌─────────────────────────────┐             ┌─────────────────────────────┐
       │ Raw Video Frames            │             │ Hand-Object Spatial Contact │
       │          ↓                  │             │          ↓                  │

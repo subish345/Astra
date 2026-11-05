@@ -1,4 +1,4 @@
-"""Abstract multi-object tracker interface for ASTRA-EA.
+"""Abstract multi-object tracker interface for Pramman.
 """
 
 from __future__ import annotations

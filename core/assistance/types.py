@@ -1,4 +1,4 @@
-"""Assistance data structures for astronaut voice and visual guidance in ASTRA-EA.
+"""Assistance data structures for astronaut voice and visual guidance in Pramman.
 """
 
 from __future__ import annotations

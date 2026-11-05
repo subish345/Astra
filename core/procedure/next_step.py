@@ -1,4 +1,4 @@
-"""Expected Next Step Engine (D4.05) for ASTRA-EA.
+"""Expected Next Step Engine (D4.05) for Pramman.
 
 Determines valid and expected procedural transitions based on graph topology,
 branch conditions, and optional step resolution, avoiding simplistic sequential hardcoding.

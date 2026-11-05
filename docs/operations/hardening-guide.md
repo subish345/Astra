@@ -1,4 +1,4 @@
-# ASTRA-EA Findings-Driven Hardening Operational Guide (Phase 21, D21.17)
+# Pramman Findings-Driven Hardening Operational Guide (Phase 21, D21.17)
 
 ### Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 
@@ -44,27 +44,27 @@ RELEASE (Mint new Release Candidate with formal audit documentation)
 
 ### Inspect All Registered Findings
 ```bash
-astra hardening findings
+pramman hardening findings
 ```
 
 ### Deep-Dive Analysis of Root Cause and CAPA
 ```bash
-astra hardening analyze FINDING-001
+pramman hardening analyze FINDING-001
 ```
 
 ### Reproduce a Specific Finding via Automated Regression
 ```bash
-astra hardening reproduce FINDING-001
+pramman hardening reproduce FINDING-001
 ```
 
 ### Run Full Regression Suite and Domain Workflows
 ```bash
-astra hardening regression
+pramman hardening regression
 ```
 
 ### Generate Standalone Audit HTML Reports
 ```bash
-astra hardening report
+pramman hardening report
 ```
 Generates the following reports in `reports/hardening/`:
 * `reports/hardening/findings.html`
@@ -76,7 +76,7 @@ Generates the following reports in `reports/hardening/`:
 
 ### Evaluate Release Candidate Readiness Gate
 ```bash
-astra hardening readiness
+pramman hardening readiness
 ```
 
 ---

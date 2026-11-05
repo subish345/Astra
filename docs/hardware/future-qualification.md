@@ -1,6 +1,6 @@
-# ASTRA-EA: Aerospace Flight Qualification Roadmap & Future Engineering Path
+# Pramman: Aerospace Flight Qualification Roadmap & Future Engineering Path
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Current Milestone:** Phase 14 (Physical Experiment Rig & Hardware-in-the-Loop Validation)  
 **Current Technology Readiness Level:** **TRL 4 (Component & Subsystem Validation in Laboratory Environment)**
 

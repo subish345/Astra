@@ -1,4 +1,4 @@
-# ASTRA-EA Integrated Product Architecture
+# Pramman Integrated Product Architecture
 
 ## Autonomous Spacecraft Experiment Assurance & Assistance (SIH26174)
 **Product Version**: `v1.0.0`  
@@ -8,10 +8,10 @@
 
 ## 1. Executive Architecture Overview
 
-In Phase 11, ASTRA-EA transitioned from a collection of modular AI subsystems into **One Unified Product Runtime**. The system provides real-time, closed-loop assurance for on-board biological and physical science experiments on space stations and deep-space habitats.
+In Phase 11, Pramman transitioned from a collection of modular AI subsystems into **One Unified Product Runtime**. The system provides real-time, closed-loop assurance for on-board biological and physical science experiments on space stations and deep-space habitats.
 
 ```text
-                                  ASTRA-EA
+                                  Pramman
                                      │
                  ┌───────────────────┴───────────────────┐
                  ▼                                       ▼
@@ -100,7 +100,7 @@ All subsystem decisions and operational milestones emit typed envelope events (`
 Every experiment execution produces a standardized run package under `data/runs/RUN_XXXX/`:
 1. `config_snapshot.yaml`: Effective runtime configuration snapshot.
 2. `model_snapshot.json`: Exact detector weights, runtime engine, input resolution, and confidence thresholds.
-3. `version_metadata.json`: ASTRA-EA release version, Git commit hash, Python version, platform architecture.
+3. `version_metadata.json`: Pramman release version, Git commit hash, Python version, platform architecture.
 4. `run_metadata.json`: Mission start/end timestamps, duration, overall status.
 5. `events.json`: Complete sequence of correlated mission events.
 6. `timeline.json`: Human-readable operator timeline records.

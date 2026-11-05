@@ -1,0 +1,31 @@
+{
+  "test_campaign": "ASTRA-EA COMPLETE SYSTEM VALIDATION + LIVE CAMERA TEST CAMPAIGN",
+  "run_id": "RUN_20260913_220500",
+  "timestamp": "2026-09-13T22:05:00+05:30",
+  "role": "Principal QA Engineer, Systems Validation Engineer, Computer Vision Test Engineer, and Release Verification Engineer",
+  "objective": "Complete validation of the current ASTRA-EA product using real camera, physical objects, hand movement, interaction, procedure runtime, Mission Console, recording, evidence, ground monitor, network & camera fault injection, and deterministic rehearsal.",
+  "phases": [
+    {"id": "TEST_00", "name": "Repository Inspection", "type": "AUDIT"},
+    {"id": "TEST_01", "name": "Environment Doctor", "type": "DIAGNOSTIC"},
+    {"id": "TEST_02", "name": "Automated Regression", "type": "AUTOMATED"},
+    {"id": "TEST_03", "name": "Camera Hardware", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_04", "name": "Live Perception", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_05", "name": "Live Interaction", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_06", "name": "Live Activity Recognition", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_07", "name": "Live Procedure", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_08", "name": "Live Assurance + Deviation", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_09", "name": "Live Recovery", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_10", "name": "Mission Console", "type": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_11", "name": "Audio", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_12", "name": "Recording + Evidence", "type": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_13", "name": "Ground Monitor", "type": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_14", "name": "Network Failure", "type": "FAULT_INJECTION"},
+    {"id": "TEST_15", "name": "Camera Failure", "type": "FAULT_INJECTION"},
+    {"id": "TEST_16", "name": "Uncertainty / Occlusion", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_17", "name": "Viewpoint Robustness", "type": "LIVE_HARDWARE"},
+    {"id": "TEST_18", "name": "Storage / Long Run", "type": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_19", "name": "Full Golden Mission", "type": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_20", "name": "Final Regression", "type": "AUTOMATED"},
+    {"id": "TEST_21", "name": "Final QA Report", "type": "REPORTING"}
+  ]
+}

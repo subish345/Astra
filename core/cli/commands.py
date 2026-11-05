@@ -1,4 +1,4 @@
-"""Command-Line Interface (CLI) foundation for ASTRA-EA.
+"""Command-Line Interface (CLI) foundation for ORBITA.
 
 Provides operational and diagnostic commands:
   astra doctor
@@ -52,10 +52,10 @@ from core.common.version import VERSION, get_version_metadata
 
 
 def cmd_version(args: argparse.Namespace) -> int:
-    """Print ASTRA-EA version and project identity."""
+    """Print ORBITA version and project identity."""
     meta = get_version_metadata()
     print("=" * 60)
-    print(f"ASTRA-EA — Autonomous Spacecraft Experiment Assurance & Assistance (v{VERSION})")
+    print(f"ORBITA — Autonomous Spacecraft Experiment Assurance & Assistance (v{VERSION})")
     print(f"Git Commit: {meta['git_commit']}")
     print(f"Tagline:    '{meta['tagline']}'")
     print(f"Status:     Engineering-grade ground demonstrator ({meta['problem_statement']})")
@@ -66,7 +66,7 @@ def cmd_version(args: argparse.Namespace) -> int:
 def cmd_doctor(args: argparse.Namespace) -> int:
     """Run comprehensive system diagnostic checks."""
     print("============================================================")
-    print(" ASTRA-EA SYSTEM DIAGNOSTIC (DOCTOR)")
+    print(" ORBITA SYSTEM DIAGNOSTIC (DOCTOR)")
     print("============================================================")
 
     all_passed = True
@@ -222,7 +222,7 @@ def cmd_db_init(args: argparse.Namespace) -> int:
     """Initialize or verify the SQLite database schema."""
     root = get_project_root()
     db_path = root / "storage/database/astra.db"
-    print(f"Initializing ASTRA-EA database at {db_path}...")
+    print(f"Initializing ORBITA database at {db_path}...")
     try:
         db = DatabaseManager(db_path)
         db.initialize()
@@ -298,7 +298,7 @@ def cmd_camera_test(args: argparse.Namespace) -> int:
     frames_to_read = args.frames
 
     print("============================================================")
-    print(" ASTRA-EA CAMERA DIAGNOSTIC & BENCHMARK")
+    print(" ORBITA CAMERA DIAGNOSTIC & BENCHMARK")
     print("============================================================")
     print(f"Testing camera source '{source_id}' (Sampling {frames_to_read} frames)...")
 
@@ -364,7 +364,7 @@ def cmd_camera_test(args: argparse.Namespace) -> int:
 def cmd_camera_list(args: argparse.Namespace) -> int:
     """Discover and probe locally accessible video capture devices."""
     print("============================================================")
-    print(" ASTRA-EA LOCAL CAMERA DISCOVERY")
+    print(" ORBITA LOCAL CAMERA DISCOVERY")
     print("============================================================")
 
     found_any = False
@@ -436,7 +436,7 @@ def cmd_perception_test(args: argparse.Namespace) -> int:
     cfg = load_config()
 
     print("============================================================")
-    print(" ASTRA-EA LIVE PERCEPTION SUBSYSTEM")
+    print(" ORBITA LIVE PERCEPTION SUBSYSTEM")
     print("============================================================")
 
     # 1. Initialize Video Source
@@ -540,7 +540,7 @@ def cmd_perception_test(args: argparse.Namespace) -> int:
         print("Running in headless console telemetry mode.")
         no_display = True
     elif not no_display:
-        print("DISPLAY STATUS: ONLINE (ASTRA-EA — LIVE PERCEPTION)")
+        print("DISPLAY STATUS: ONLINE (ORBITA — LIVE PERCEPTION)")
     else:
         print("DISPLAY STATUS: DISABLED (--no-display requested)")
 
@@ -566,7 +566,7 @@ def cmd_perception_test(args: argparse.Namespace) -> int:
     vis_cfg = OverlayConfig(detector_name=det_impl)
     visualizer = PerceptionVisualizer(config=vis_cfg)
 
-    win_title = "ASTRA-EA — LIVE PERCEPTION"
+    win_title = "ORBITA — LIVE PERCEPTION"
     if not no_display:
         cv2.namedWindow(win_title, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(win_title, 960, 720)
@@ -674,7 +674,7 @@ def cmd_interaction_test(args: argparse.Namespace) -> int:
     cfg = load_config()
 
     print("============================================================")
-    print(" ASTRA-EA PHYSICAL INTERACTION TEST (PHASE 3)")
+    print(" ORBITA PHYSICAL INTERACTION TEST (PHASE 3)")
     print("============================================================")
 
     try:
@@ -725,7 +725,7 @@ def cmd_interaction_test(args: argparse.Namespace) -> int:
         print("DISPLAY STATUS: DISPLAY_UNAVAILABLE (No active display found)")
         no_display = True
     elif not no_display:
-        print("DISPLAY STATUS: ONLINE (ASTRA-EA — PHYSICAL INTERACTION)")
+        print("DISPLAY STATUS: ONLINE (ORBITA — PHYSICAL INTERACTION)")
     else:
         print("DISPLAY STATUS: DISABLED (--no-display requested)")
 
@@ -762,7 +762,7 @@ def cmd_interaction_test(args: argparse.Namespace) -> int:
 
     vis_cfg = OverlayConfig(detector_name=det_impl)
     visualizer = PerceptionVisualizer(config=vis_cfg)
-    win_title = "ASTRA-EA — PHYSICAL INTERACTION"
+    win_title = "ORBITA — PHYSICAL INTERACTION"
     if not no_display:
         cv2.namedWindow(win_title, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(win_title, 960, 720)
@@ -878,7 +878,7 @@ def cmd_activity_test(args: argparse.Namespace) -> int:
     cfg = load_config()
 
     print("============================================================")
-    print(" ASTRA-EA TEMPORAL ACTIVITY RECOGNITION TEST (PHASE 3)")
+    print(" ORBITA TEMPORAL ACTIVITY RECOGNITION TEST (PHASE 3)")
     print("============================================================")
 
     try:
@@ -939,7 +939,7 @@ def cmd_activity_test(args: argparse.Namespace) -> int:
         print("DISPLAY STATUS: DISPLAY_UNAVAILABLE (No active display found)")
         no_display = True
     elif not no_display:
-        print("DISPLAY STATUS: ONLINE (ASTRA-EA — TEMPORAL ACTIVITY RECOGNITION)")
+        print("DISPLAY STATUS: ONLINE (ORBITA — TEMPORAL ACTIVITY RECOGNITION)")
     else:
         print("DISPLAY STATUS: DISABLED (--no-display requested)")
 
@@ -984,7 +984,7 @@ def cmd_activity_test(args: argparse.Namespace) -> int:
 
     vis_cfg = OverlayConfig(detector_name=det_impl)
     visualizer = PerceptionVisualizer(config=vis_cfg)
-    win_title = "ASTRA-EA — TEMPORAL ACTIVITY RECOGNITION"
+    win_title = "ORBITA — TEMPORAL ACTIVITY RECOGNITION"
     if not no_display:
         cv2.namedWindow(win_title, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(win_title, 960, 720)
@@ -1219,7 +1219,7 @@ def cmd_procedure_test(args: argparse.Namespace) -> int:
         no_display = True
 
     print("=" * 60)
-    print(" ASTRA-EA PROCEDURE ASSURANCE & STEP RECOGNITION (LIVE)")
+    print(" ORBITA PROCEDURE ASSURANCE & STEP RECOGNITION (LIVE)")
     print("=" * 60)
     print(f"Experiment:       {procedure.experiment.name} ({procedure.experiment.id} v{procedure.experiment.version})")
     print(f"Total Steps:      {len(procedure.steps)}")
@@ -1228,7 +1228,7 @@ def cmd_procedure_test(args: argparse.Namespace) -> int:
     print(f"Audit Run ID:     {run_id}")
     print("============================================================")
 
-    win_title = "ASTRA-EA | Phase 4 Procedure Assurance Console"
+    win_title = "ORBITA | Phase 4 Procedure Assurance Console"
     if not no_display:
         cv2.namedWindow(win_title, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(win_title, 1280, 720)
@@ -1443,7 +1443,7 @@ def cmd_procedure_replay(args: argparse.Namespace) -> int:
     replayer = ProcedureReplayer(procedure=procedure, run_id=run_id, database_manager=db)
 
     print("=" * 60)
-    print(" ASTRA-EA DETERMINISTIC PROCEDURE REPLAY")
+    print(" ORBITA DETERMINISTIC PROCEDURE REPLAY")
     print("=" * 60)
     print(f"Experiment:    {procedure.experiment.name} ({procedure.experiment.id})")
     print(f"Event Source:  {events_path}")
@@ -1484,7 +1484,7 @@ def cmd_procedure_benchmark(args: argparse.Namespace) -> int:
     bench = ProcedureBenchmark(procedure=procedure)
 
     print("=" * 60)
-    print(" ASTRA-EA PROCEDURE ENGINE LATENCY BENCHMARK")
+    print(" ORBITA PROCEDURE ENGINE LATENCY BENCHMARK")
     print("=" * 60)
     print(f"Iterations: {iterations}")
     print(f"Procedure:  {procedure.experiment.name} ({len(procedure.steps)} steps)")
@@ -1525,7 +1525,7 @@ def cmd_assurance_benchmark(args: argparse.Namespace) -> int:
     viewpoints = ["VIEW_LEFT", "VIEW_RIGHT"] if target_prof in ("all", "both") else [target_prof.upper()]
 
     print("=" * 60)
-    print(" ASTRA-EA VIEWPOINT ASSURANCE BENCHMARK")
+    print(" ORBITA VIEWPOINT ASSURANCE BENCHMARK")
     print("=" * 60)
 
     for vp in viewpoints:
@@ -1641,7 +1641,7 @@ def cmd_assurance_replay(args: argparse.Namespace) -> int:
     db.initialize()
 
     print("=" * 60)
-    print(" ASTRA-EA VIEWPOINT-INVARIANT ASSURANCE REPLAY")
+    print(" ORBITA VIEWPOINT-INVARIANT ASSURANCE REPLAY")
     print("=" * 60)
     print(f"Camera Profile:     {profile.id} ({profile.name})")
     print(f"Session ID:         {session_id}")
@@ -1747,7 +1747,7 @@ def cmd_assurance_test(args: argparse.Namespace) -> int:
     procedure = load_procedure_file(proc_path)
 
     print("=" * 60)
-    print(" ASTRA-EA ASSURANCE ENGINE RUNTIME")
+    print(" ORBITA ASSURANCE ENGINE RUNTIME")
     print("=" * 60)
     print(f"Camera Profile:\n{profile.id}\n")
     print(f"Session ID:         {session_id}")
@@ -1936,7 +1936,7 @@ def cmd_assurance_test(args: argparse.Namespace) -> int:
                     assurance_decision=current_decision,
                     recovery_state=recovery_manager.current_state.value,
                 )
-                cv2.imshow(f"ASTRA-EA Assurance Monitor [{profile.id}]", vis)
+                cv2.imshow(f"ORBITA Assurance Monitor [{profile.id}]", vis)
                 key = cv2.waitKey(1) & 0xFF
                 if key == ord("q"):
                     break
@@ -1993,7 +1993,7 @@ def cmd_mission(args: argparse.Namespace) -> int:
             return 0 if res["is_authorized_to_start"] else 1
 
         print("=" * 70)
-        print(" ASTRA-EA PRE-MISSION VERIFICATION MATRIX (Phase 19)")
+        print(" ORBITA PRE-MISSION VERIFICATION MATRIX (Phase 19)")
         print("=" * 70)
         print(f"{'Subsystem':<16} {'Status':<10} {'Details'}")
         print("-" * 70)
@@ -2018,7 +2018,7 @@ def cmd_mission(args: argparse.Namespace) -> int:
         out_base = Path(args.output_dir) if getattr(args, "output_dir", None) else None
         target = exporter.export_run(run_id=run_id, output_base=out_base)
         print("=" * 65)
-        print(" ASTRA-EA MISSION DATA BUNDLE EXPORT")
+        print(" ORBITA MISSION DATA BUNDLE EXPORT")
         print("=" * 65)
         print(f"Run Identifier:     {run_id}")
         print(f"Export Bundle:      {target}")
@@ -2035,7 +2035,7 @@ def cmd_mission(args: argparse.Namespace) -> int:
         out_p = Path(args.output_dir) if getattr(args, "output_dir", None) else None
         target = reporter.generate_report_file(run_id=run_id, output_path=out_p)
         print("=" * 65)
-        print(" ASTRA-EA MISSION AUDIT REPORT")
+        print(" ORBITA MISSION AUDIT REPORT")
         print("=" * 65)
         print(f"Run Identifier:     {run_id}")
         print(f"Report Generated:   {target}")
@@ -2053,7 +2053,7 @@ def cmd_mission(args: argparse.Namespace) -> int:
         health = exporter._collect_health_snapshot()
         data = reporter.generate_report_data(run_id, events, timeline, health)
         print("=" * 70)
-        print(f" ASTRA-EA MISSION RUN REVIEW — {run_id}")
+        print(f" ORBITA MISSION RUN REVIEW — {run_id}")
         print("=" * 70)
         print(f"Status:     {data['overall_status']}")
         print(f"Duration:   {data['duration_seconds']:.1f}s")
@@ -2078,7 +2078,7 @@ def cmd_mission(args: argparse.Namespace) -> int:
     fullscreen = getattr(args, "fullscreen", False)
 
     print("=" * 60)
-    print(" ASTRA-EA MISSION CONSOLE — STARTUP")
+    print(" ORBITA MISSION CONSOLE — STARTUP")
     print("=" * 60)
     print(f"Session ID:         {session_id}")
     print(f"Procedure:          {proc_path_str}")
@@ -2123,7 +2123,7 @@ def cmd_rehearsal(args: argparse.Namespace) -> int:
     mode = RehearsalMode(mode_str)
 
     print("=" * 70)
-    print(" ASTRA-EA MISSION REHEARSAL FRAMEWORK (Phase 20)")
+    print(" ORBITA MISSION REHEARSAL FRAMEWORK (Phase 20)")
     print("=" * 70)
     print(f"Scenario:     {scenario}")
     print(f"Mode:         {mode.value}")
@@ -2217,7 +2217,7 @@ def cmd_rehearsal_scorecard(args: argparse.Namespace) -> int:
     card = gen.generate_scorecard(results)
 
     print("=" * 70)
-    print(" ASTRA-EA OPERATIONAL REHEARSAL SCORECARD")
+    print(" ORBITA OPERATIONAL REHEARSAL SCORECARD")
     print("=" * 70)
     print(f"Rehearsals Evaluated: {card.total_rehearsals_evaluated}")
     print(f"Successful Runs:       {card.successful_rehearsals}")
@@ -2239,7 +2239,7 @@ def cmd_training_mode(args: argparse.Namespace) -> int:
     engine = OperatorTrainingEngine()
 
     print("=" * 75)
-    print(" ASTRA-EA OPERATOR TRAINING MODE — FAILURE DRILLS (Phase 19)")
+    print(" ORBITA OPERATOR TRAINING MODE — FAILURE DRILLS (Phase 19)")
     print("=" * 75)
     print(f"Operator:     {operator}")
     print("Environment:  SIMULATED FAILURE DRILL (Safe Training Sandbox)")
@@ -2278,7 +2278,7 @@ def cmd_maintenance(args: argparse.Namespace) -> int:
     if maint_cmd == "status":
         is_maint = mgr.is_maintenance_mode()
         print("=" * 60)
-        print(" ASTRA-EA SYSTEM OPERATIONAL MODE STATUS")
+        print(" ORBITA SYSTEM OPERATIONAL MODE STATUS")
         print("=" * 60)
         print(f"Active Mode:     {'MAINTENANCE MODE' if is_maint else 'OPERATIONAL MISSION MODE'}")
         print(f"Live Starts:     {'BLOCKED' if is_maint else 'PERMITTED'}")
@@ -2341,7 +2341,7 @@ def cmd_hardening(args: argparse.Namespace) -> int:
         from core.common.config import get_project_root
         root = get_project_root()
         print("=" * 70)
-        print(" ASTRA-EA DEDICATED REGRESSION TEST SUITE (Phase 21)")
+        print(" ORBITA DEDICATED REGRESSION TEST SUITE (Phase 21)")
         print("=" * 70)
         ret = pytest.main([str(root / "tests" / "regression"), "-v"])
         workflows = DomainHardeningWorkflows(root)
@@ -2356,7 +2356,7 @@ def cmd_hardening(args: argparse.Namespace) -> int:
     elif subcmd == "report":
         reports = dashboard.generate_all_reports()
         print("=" * 70)
-        print(" ASTRA-EA HARDENING AUDIT REPORTS GENERATED (Phase 21)")
+        print(" ORBITA HARDENING AUDIT REPORTS GENERATED (Phase 21)")
         print("=" * 70)
         for name, path in reports.items():
             print(f"  {name.title():<20} -> {path.relative_to(dashboard.root)}")
@@ -2366,7 +2366,7 @@ def cmd_hardening(args: argparse.Namespace) -> int:
     elif subcmd == "readiness":
         metrics = dashboard.manager.get_summary_metrics()
         print("=" * 70)
-        print(" ASTRA-EA RELEASE CANDIDATE 2 READINESS GATE (Phase 21)")
+        print(" ORBITA RELEASE CANDIDATE 2 READINESS GATE (Phase 21)")
         print("=" * 70)
         print(f"CRITICAL FINDINGS:       {metrics['open_critical']}")
         print(f"HIGH FINDINGS:           {metrics['open_high']}")
@@ -2390,7 +2390,7 @@ def cmd_voice_test(args: argparse.Namespace) -> int:
     from core.voice.manager import AudioQueueManager
 
     print("=" * 60)
-    print(" ASTRA-EA LOCAL VOICE SUBSYSTEM TEST")
+    print(" ORBITA LOCAL VOICE SUBSYSTEM TEST")
     print("=" * 60)
     print("Provider:  OfflineTTSProvider (pyttsx3 air-gapped speech synthesis)")
     print("Queue:     Priority preemption & cooldown deduplication enabled")
@@ -2399,7 +2399,7 @@ def cmd_voice_test(args: argparse.Namespace) -> int:
     mgr = AudioQueueManager()
 
     test_messages = [
-        (AudioPriority.INFO, "ASTRA-EA voice guidance channel initialized. Systems nominal."),
+        (AudioPriority.INFO, "ORBITA voice guidance channel initialized. Systems nominal."),
         (AudioPriority.GUIDANCE, "Step 2 active: Grasp the red specimen container."),
         (AudioPriority.WARNING, "Warning: Yellow box detected instead of red specimen container."),
         (AudioPriority.CRITICAL, "Critical procedure deviation detected. Return yellow box immediately."),
@@ -2437,7 +2437,7 @@ def cmd_dataset_list(args: argparse.Namespace) -> int:
     studio = DatasetStudio()
     versions = studio.list_datasets()
     print("=" * 70)
-    print("ASTRA-EA REGISTERED DATASETS")
+    print("ORBITA REGISTERED DATASETS")
     print("=" * 70)
     if not versions:
         print("No datasets registered yet. Use 'astra dataset synthesize' or 'record'.")
@@ -2609,13 +2609,332 @@ def cmd_dataset_report(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_dataset_export_db(args: argparse.Namespace) -> int:
+    """Export captured camera visuals and bounding boxes from database into training dataset."""
+    from core.common.config import get_project_root
+    from core.mission.database import DatabaseManager
+
+    root = get_project_root()
+    db_path = root / "storage" / "database" / "astra.db"
+    if not db_path.exists():
+        db_path = root / "storage" / "astra.db"
+    db = DatabaseManager(db_path)
+    db.initialize()
+
+    out_dir = getattr(args, "output", "datasets/raw/from_db")
+    ds_id = getattr(args, "dataset_id", "ORBITA_DB_DATASET_V1")
+    run_id = getattr(args, "run", None)
+
+    print("=" * 65)
+    print(" EXPORTING CAMERA VISUALS FROM DATABASE TO DATASET")
+    print("=" * 65)
+    print(f"Database:    {db_path}")
+    print(f"Target Dir:  {out_dir}")
+    print(f"Dataset ID:  {ds_id}")
+    if run_id:
+        print(f"Filter Run:  {run_id}")
+    print("-" * 65)
+
+    stats = db.get_visual_training_stats()
+    print(f"Total Visuals in DB:    {stats['total_visuals']}")
+    print(f"Training Samples in DB: {stats['training_samples']}")
+
+    manifest = db.export_visuals_to_dataset(output_dir=out_dir, dataset_id=ds_id, run_id=run_id)
+    print(f"Exported Samples:       {manifest['sample_count']}")
+    print(f"Splits:                 {manifest['splits']}")
+    print(f"Manifest:               {out_dir}/dataset_manifest.json")
+    print("=" * 65)
+    print("[✓] Visuals successfully exported. You can now train models using this dataset!")
+    return 0
+
+
+def cmd_video_verify(args: argparse.Namespace) -> int:
+    """Upload/provide a video file to verify astronaut movements, interactions, and procedure step accuracy."""
+    import time
+    from datetime import datetime, timezone
+    from core.camera.file_source import VideoFileSource
+    from core.camera.ingestion import FramePacket
+    from core.common.config import get_project_root, load_config
+    from core.camera.profile import get_camera_profile
+    from core.perception.pipeline import PerceptionPipeline
+    from core.perception.detection.color_adapter import ColorSpatialObjectDetector
+    from core.perception.factory import create_pose_and_hand_detectors
+    from core.perception.tracking.tracker import MultiObjectTracker
+    from core.perception.scheduler import PerceptionScheduler, SchedulerConfig
+    from core.perception.events import PerceptionEventBus
+    from core.interaction.engine import SpatialInteractionEngine
+    from core.activity.temporal import TemporalBuffer
+    from core.activity.primitive import PrimitiveActivityEngine
+    from core.activity.composite import CompositeActivityEngine
+    from core.activity.events import ActivityEventBus, ActivityEventDeduplicator
+    from core.evidence.engine import MultimodalEvidenceEngine
+    from core.assurance.engine import TriStateAssuranceEngine
+    from core.procedure.validator import load_procedure_file
+    from core.procedure.progress import ProcedureProgressManager
+    from core.mission.database import DatabaseManager
+
+    root = get_project_root()
+    video_path_str = getattr(args, "video", None)
+    if not video_path_str:
+        print("[ERROR] Please provide a video path using --video <path_to_video.mp4>")
+        return 1
+
+    vid_path = Path(video_path_str)
+    if not vid_path.is_absolute():
+        vid_path = root / vid_path
+
+    if not vid_path.is_file():
+        print(f"[ERROR] Video file not found: {vid_path}")
+        return 1
+
+    proc_path_str = getattr(args, "procedure", "configs/experiments/demo.yaml")
+    proc_path = Path(proc_path_str)
+    if not proc_path.is_absolute():
+        proc_path = root / proc_path
+
+    if not proc_path.is_file():
+        print(f"[ERROR] Procedure file not found: {proc_path}")
+        return 1
+
+    procedure = load_procedure_file(proc_path)
+    session_id = getattr(args, "session_id", None) or f"VIDEO_VERIFY_{int(time.time())}"
+    camera_profile_name = getattr(args, "camera_profile", "view_left")
+    profile = get_camera_profile(camera_profile_name)
+    cfg = load_config()
+
+    db_path = root / "storage" / "database" / "astra.db"
+    if not db_path.exists():
+        db_path = root / "storage" / "astra.db"
+    db = DatabaseManager(db_path)
+    db.initialize()
+    db.record_experiment(
+        experiment_id=procedure.experiment.id,
+        name=procedure.experiment.name,
+        version=procedure.experiment.version,
+        description=procedure.experiment.description,
+    )
+    db.start_experiment_run(run_id=session_id, experiment_id=procedure.experiment.id)
+
+    print("=" * 70)
+    print(" ORBITA VIDEO MOVEMENT & STEP ACCURACY VERIFICATION")
+    print("=" * 70)
+    print(f"Video File:     {vid_path}")
+    print(f"Procedure:      {procedure.experiment.name} ({len(procedure.steps)} steps)")
+    print(f"Camera View:    {profile.id}")
+    print(f"Session ID:     {session_id}")
+    print(f"Database:       {db_path} (Saving Visuals & Evidence)")
+    print("=" * 70)
+
+    source = VideoFileSource(file_path=vid_path, realtime_pacing=False)
+    if not source.start():
+        print(f"[ERROR] Failed to open video source: {vid_path}")
+        return 1
+
+    detector = ColorSpatialObjectDetector(min_area=100.0)
+    pose_est, hand_det = create_pose_and_hand_detectors()
+    tracker = MultiObjectTracker(iou_threshold=0.2)
+    scheduler = PerceptionScheduler(SchedulerConfig())
+    event_bus = PerceptionEventBus()
+
+    pipeline = PerceptionPipeline(
+        detector=detector,
+        pose_estimator=pose_est,
+        hand_detector=hand_det,
+        tracker=tracker,
+        scheduler=scheduler,
+        event_bus=event_bus,
+    )
+    interaction_engine = SpatialInteractionEngine(cfg.interaction)
+    temporal_buffer = TemporalBuffer(window_seconds=cfg.activity.temporal_window_seconds)
+    primitive_engine = PrimitiveActivityEngine(cfg.activity)
+    composite_engine = CompositeActivityEngine()
+    act_bus = ActivityEventBus()
+    dedup = ActivityEventDeduplicator(act_bus)
+    evidence_engine = MultimodalEvidenceEngine()
+    assurance_engine = TriStateAssuranceEngine(default_camera_profile=profile.id, default_session_id=session_id)
+    progress_manager = ProcedureProgressManager(procedure=procedure, run_id=session_id)
+    step_map = {s.id: s for s in procedure.steps}
+
+    frame_count = 0
+    step_verifications: Dict[str, Dict[str, Any]] = {}
+    deviations: List[Dict[str, Any]] = []
+
+    print("\n[+] Processing frames and analyzing movements...\n")
+    max_frames = getattr(args, "max_frames", None)
+
+    while True:
+        if max_frames and frame_count >= max_frames:
+            break
+        fd = source.read()
+        if fd is None:
+            break
+
+        frame_count += 1
+        packet = FramePacket.from_frame_data(fd, capture_fps=source.get_fps())
+        state = pipeline.process_frame(packet)
+        interactions = interaction_engine.process(state.tracks, state.hands, state.timestamp)
+        positions = {t.track_id: t.center for t in state.tracks}
+        temporal_buffer.append(state.timestamp, interactions, positions)
+
+        primitives = []
+        composites = []
+        for int_ev in interactions:
+            dedup.process_interaction(int_ev)
+            prim = primitive_engine.evaluate(int_ev, temporal_buffer)
+            primitives.append(prim)
+            dedup.process_activity(prim)
+            comp = composite_engine.update(prim)
+            if comp:
+                composites.append(comp)
+                dedup.process_activity(comp)
+
+        curr_act = composites[0] if composites else (primitives[0] if primitives else None)
+        curr_step_id = progress_manager.current_step
+        step_def = step_map.get(curr_step_id) if curr_step_id else None
+
+        bundle = evidence_engine.evaluate(
+            activity=curr_act,
+            interactions=interactions,
+            tracks=state.tracks,
+            perception_state=state,
+            temporal_buffer=temporal_buffer,
+            step=step_def,
+        )
+
+        decision = None
+        if curr_act and step_def:
+            proc_state = progress_manager.update(activity=curr_act, bundle=bundle, timestamp=state.timestamp)
+            decision = assurance_engine.evaluate_step(
+                current_step=step_def,
+                activity=curr_act,
+                evidence=bundle,
+                camera_profile=profile,
+                session_id=session_id,
+                procedure=procedure,
+                completed_step_ids=proc_state.completed_steps,
+            )
+            db.record_assurance_decision(decision)
+
+            if decision.is_verified:
+                if step_def.id not in step_verifications:
+                    step_verifications[step_def.id] = {
+                        "name": step_def.name,
+                        "confidence": decision.confidence,
+                        "frame": frame_count,
+                        "activity": curr_act.activity_name,
+                    }
+                    print(f"  [✓] STEP VERIFIED: {step_def.id} ({step_def.name}) | Confidence: {decision.confidence*100:.1f}% @ Frame {frame_count}")
+            elif decision.is_deviation:
+                deviations.append({
+                    "step": step_def.id,
+                    "reason": getattr(decision, "deviation_reason", "DEVIATION"),
+                    "frame": frame_count,
+                    "details": "; ".join(decision.reasons),
+                })
+                print(f"  [!] DEVIATION:     {step_def.id} | {'; '.join(decision.reasons)} @ Frame {frame_count}")
+
+        # Store camera visual sample in SQLite
+        if frame_count % 10 == 0 or (decision and decision.is_verified):
+            det_objs = [{"class": t.class_name, "box": list(t.bbox), "confidence": round(float(t.confidence), 3)} for t in state.tracks]
+            acc_val = float(decision.confidence) if decision else (float(curr_act.confidence) if curr_act else 0.0)
+            step_st = decision.decision.value if decision else "PROGRESS"
+            db.record_camera_visual(
+                visual_id=f"VIS_{session_id}_{frame_count}",
+                run_id=session_id,
+                frame_id=frame_count,
+                timestamp=state.timestamp,
+                source_type="VIDEO_FILE",
+                source_path=str(vid_path),
+                step_id=curr_step_id,
+                step_status=step_st,
+                accuracy_score=acc_val,
+                detected_objects=det_objs,
+                interactions=[{"target": i.target_object_id, "state": str(i.state)} for i in interactions],
+                is_training_sample=bool(decision and decision.is_verified and acc_val >= 0.70),
+            )
+
+    source.stop()
+    fps = source.get_fps() or 30.0
+    duration = frame_count / fps
+
+    db.record_video_segment(
+        segment_id=f"SEG_{session_id}",
+        run_id=session_id,
+        start_time=datetime.now(timezone.utc),
+        end_time=datetime.now(timezone.utc),
+        file_path=str(vid_path),
+        frame_count=frame_count,
+        fps=fps,
+        duration_sec=round(duration, 2),
+    )
+    db.complete_experiment_run(session_id, status="COMPLETED" if len(step_verifications) == len(procedure.steps) else "FINISHED", completed_steps=len(step_verifications), deviations=len(deviations))
+
+    print("\n" + "=" * 70)
+    print(" VERIFICATION SUMMARY & AUDIT TRAIL")
+    print("=" * 70)
+    print(f"Total Frames Processed: {frame_count} ({duration:.1f}s @ {fps:.1f} FPS)")
+    print(f"Steps Defined:          {len(procedure.steps)}")
+    print(f"Steps Verified:         {len(step_verifications)}/{len(procedure.steps)}")
+    print(f"Deviations Detected:    {len(deviations)}")
+    overall_acc = (len(step_verifications) / max(1, len(procedure.steps))) * 100.0
+    print(f"Procedure Accuracy:     {overall_acc:.1f}%")
+    print("-" * 70)
+    print(f"{'STEP ID':<12} {'STEP NAME':<30} {'STATUS':<12} {'CONFIDENCE'}")
+    print("-" * 70)
+    for s in procedure.steps:
+        if s.id in step_verifications:
+            info = step_verifications[s.id]
+            print(f"{s.id:<12} {s.name:<30} {'VERIFIED':<12} {info['confidence']*100:.1f}%")
+        else:
+            print(f"{s.id:<12} {s.name:<30} {'UNVERIFIED':<12} ---")
+    print("=" * 70)
+    print(f"[✓] Visuals, movements, and audit log stored in SQLite database: {db_path}")
+    print(f"[✓] Run `orbita dataset export-db --run {session_id}` to export visuals for training.")
+    print("=" * 70)
+    return 0
+
+
+def cmd_video_list(args: argparse.Namespace) -> int:
+    """List all recorded or ingested video segments in the database."""
+    from core.mission.database import DatabaseManager
+    from core.common.config import get_project_root
+
+    db_path = getattr(args, "db", None) or (get_project_root() / "storage" / "database" / "astra.db")
+    db = DatabaseManager(db_path)
+    segments = db.get_video_segments(limit=getattr(args, "limit", 50))
+
+    print("\n" + "=" * 80)
+    print(" ORBITA RECORDED VIDEO ARCHIVE & SEGMENTS")
+    print("=" * 80)
+    if not segments:
+        print("No video segments registered in database.")
+        print("Record video in the Mission Console (🔴 REC) or verify a video via `orbita video verify`.")
+        print("=" * 80 + "\n")
+        return 0
+
+    print(f"{'SEGMENT ID':<20} {'RUN / SESSION':<22} {'DURATION':<10} {'FPS':<6} {'FRAMES':<8} {'FILE PATH'}")
+    print("-" * 80)
+    for seg in segments:
+        dur_str = f"{seg.get('duration_sec', 0.0):.1f}s"
+        fps_str = f"{seg.get('fps', 0.0):.1f}"
+        fpath = str(seg.get('file_path', ''))
+        if len(fpath) > 35:
+            fpath = "..." + fpath[-32:]
+        print(f"{seg.get('segment_id', ''):<20} {seg.get('run_id', ''):<22} {dur_str:<10} {fps_str:<6} {seg.get('frame_count', 0):<8} {fpath}")
+    print("=" * 80)
+    print(f"Total video segments: {len(segments)}")
+    print("Run `orbita video verify --video <file_path>` to analyze any video for step accuracy.")
+    print("=" * 80 + "\n")
+    return 0
+
+
 def cmd_model_list(args: argparse.Namespace) -> int:
     """List registered models and their statuses."""
     from core.models.registry import ModelRegistry
     reg = ModelRegistry()
     models = reg.list_models()
     print("=" * 75)
-    print("ASTRA-EA MODEL REGISTRY")
+    print("ORBITA MODEL REGISTRY")
     print("=" * 75)
     if not models:
         print("No models registered yet. Run 'astra model train' to create one.")
@@ -2764,7 +3083,7 @@ def cmd_sim_run(args: argparse.Namespace) -> int:
     reporter = SimulationReporter(output_dir=args.report_dir)
 
     print("=" * 65)
-    print("ASTRA-EA MISSION SIMULATION RUNNER")
+    print("ORBITA MISSION SIMULATION RUNNER")
     print(f"Scenario:     {scenario.name} ({scenario.scenario_id})")
     print(f"Description:  {scenario.description}")
     print(f"Faults:       {len(scenario.faults)} fault trigger(s) configured")
@@ -2850,7 +3169,7 @@ def cmd_sim_inject_list(args: argparse.Namespace) -> int:
     }
 
     print("=" * 70)
-    print("ASTRA-EA SIMULATION FAULT INJECTION OPERATORS")
+    print("ORBITA SIMULATION FAULT INJECTION OPERATORS")
     print("=" * 70)
     for cat, faults in categories.items():
         print(f"\n[{cat}]")
@@ -2869,7 +3188,7 @@ def cmd_stream_doctor(args: argparse.Namespace) -> int:
     from streaming.events.server import EventStreamServer
 
     print("============================================================")
-    print(" ASTRA-EA STREAMING & REMOTE OBSERVABILITY DIAGNOSTICS")
+    print(" ORBITA STREAMING & REMOTE OBSERVABILITY DIAGNOSTICS")
     print("============================================================")
 
     cfg = load_config()
@@ -2931,7 +3250,7 @@ def cmd_stream_test(args: argparse.Namespace) -> int:
     from streaming.video.client import VideoStreamClient
 
     print("============================================================")
-    print(" ASTRA-EA VIDEO STREAM LOOPBACK TEST")
+    print(" ORBITA VIDEO STREAM LOOPBACK TEST")
     print("============================================================")
 
     test_port = 28555
@@ -2985,7 +3304,7 @@ def cmd_events_stream_test(args: argparse.Namespace) -> int:
     from streaming.events.client import EventStreamClient
 
     print("============================================================")
-    print(" ASTRA-EA EVENT STREAM LOOPBACK TEST")
+    print(" ORBITA EVENT STREAM LOOPBACK TEST")
     print("============================================================")
 
     test_port = 28766
@@ -3075,7 +3394,7 @@ def cmd_benchmark_soak(args: argparse.Namespace) -> int:
     tester = SoakTester()
     report = tester.run_soak(duration_seconds=duration, target_fps=fps)
     print("=" * 60)
-    print(" ASTRA-EA SOAK TEST SUMMARY")
+    print(" ORBITA SOAK TEST SUMMARY")
     print("=" * 60)
     print(f"Verdict:         {report['verdict']}")
     print(f"Duration:        {report['duration_seconds']}s")
@@ -3095,7 +3414,7 @@ def cmd_benchmark_optimize(args: argparse.Namespace) -> int:
     evaluator = ModelOptimizationEvaluator()
     report = evaluator.run_suite()
     print("=" * 80)
-    print(" ASTRA-EA MODEL OPTIMIZATION & PRECISION EXPERIMENTS")
+    print(" ORBITA MODEL OPTIMIZATION & PRECISION EXPERIMENTS")
     print("=" * 80)
     print(f"{'Variant':<22} {'Res':<10} {'Latency (ms)':<14} {'FPS':<10} {'Red Recall':<12} {'Gate':<8}")
     print("-" * 80)
@@ -3123,7 +3442,7 @@ def cmd_model_validate_export(args: argparse.Namespace) -> int:
     model_path = getattr(args, "model_path", "models/checkpoints/ASTRA_OBJECT_DETECTOR_v0.1.0.onnx")
     res = ONNXValidator.validate(model_path)
     print("=" * 60)
-    print(" ASTRA-EA ONNX MODEL VALIDATION")
+    print(" ORBITA ONNX MODEL VALIDATION")
     print("=" * 60)
     print(f"Status:       {res['status']}")
     print(f"Model Path:   {res['model_path']}")
@@ -3157,7 +3476,7 @@ def cmd_demo(args: argparse.Namespace) -> int:
     headless = getattr(args, "headless", False)
 
     print("============================================================")
-    print(" ASTRA-EA — ONE-COMMAND FLIGHT DEMONSTRATION MODE")
+    print(" ORBITA — ONE-COMMAND FLIGHT DEMONSTRATION MODE")
     print("============================================================")
     print(f"Profile:     {profile}")
     print(f"Procedure:   {proc_path}")
@@ -3250,7 +3569,7 @@ def cmd_deployment_doctor(args: argparse.Namespace) -> int:
     from core.common.version import VERSION, get_version_metadata
 
     print("================================================================================")
-    print(f" ASTRA-EA DEPLOYMENT READINESS AUDIT (DOCTOR) — v{VERSION}")
+    print(f" ORBITA DEPLOYMENT READINESS AUDIT (DOCTOR) — v{VERSION}")
     print("================================================================================")
 
     checks = []
@@ -3338,7 +3657,7 @@ def cmd_final_check(args: argparse.Namespace) -> int:
     import shutil
 
     print("============================================================")
-    print(" ASTRA-EA FINAL SYSTEM CHECK")
+    print(" ORBITA FINAL SYSTEM CHECK")
     print("============================================================")
 
     checks = []
@@ -3428,7 +3747,7 @@ def cmd_final_check(args: argparse.Namespace) -> int:
 def cmd_competition_check(args: argparse.Namespace) -> int:
     """Run comprehensive 15-point competition readiness audit (Phase 13)."""
     print("============================================================")
-    print(" ASTRA-EA COMPETITION READINESS")
+    print(" ORBITA COMPETITION READINESS")
     print("============================================================")
     print()
 
@@ -3561,7 +3880,7 @@ def cmd_hil(args: argparse.Namespace) -> int:
     if hil_cmd == "flight-integration-test":
         from core.hil import HILFlightIntegrationRunner
         print("=" * 75)
-        print(" ASTRA-EA HIL FLIGHT INTEGRATION TEST SUITE (Phase 18)")
+        print(" ORBITA HIL FLIGHT INTEGRATION TEST SUITE (Phase 18)")
         print("===========================================================================")
         runner = HILFlightIntegrationRunner()
         res = runner.run_all()
@@ -3592,7 +3911,7 @@ def cmd_flight_package(args: argparse.Namespace) -> int:
         packager = FlightPackager(output_base=Path(args.output_dir) if getattr(args, "output_dir", None) else None)
         pkg_dir = packager.build_package()
         print("=" * 65)
-        print(" ASTRA-EA FLIGHT-INTEGRATION BUILD PACKAGE")
+        print(" ORBITA FLIGHT-INTEGRATION BUILD PACKAGE")
         print("=" * 65)
         print(f"Package Built: {pkg_dir}")
         print(f"Build ID:      {FlightPackager.BUILD_NAME}")
@@ -3611,7 +3930,7 @@ def cmd_flight_package(args: argparse.Namespace) -> int:
         is_valid, summary = validator.validate()
 
         print("=" * 70)
-        print(" ASTRA-EA FLIGHT PACKAGE INTEGRITY VALIDATOR")
+        print(" ORBITA FLIGHT PACKAGE INTEGRITY VALIDATOR")
         print("=" * 70)
         print(f"Target Package:    {target}")
         print(f"Artifacts Checked: {summary['checked_artifacts_count']}")
@@ -3638,7 +3957,7 @@ def cmd_edge(args: argparse.Namespace) -> int:
 
     elif edge_cmd == "benchmark":
         print("============================================================")
-        print(" ASTRA-EA EDGE PERFORMANCE BENCHMARK")
+        print(" ORBITA EDGE PERFORMANCE BENCHMARK")
         print("============================================================")
         import time
         import numpy as np
@@ -3662,7 +3981,7 @@ def cmd_edge(args: argparse.Namespace) -> int:
 
     elif edge_cmd == "validate":
         print("============================================================")
-        print(" ASTRA-EA EDGE FUNCTIONAL VALIDATION")
+        print(" ORBITA EDGE FUNCTIONAL VALIDATION")
         print("============================================================")
         from core.hardware.edge_diagnostics import get_edge_hardware_profile
         prof = get_edge_hardware_profile()
@@ -3689,7 +4008,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
 
     if qual_cmd == "doctor":
         print("============================================================")
-        print(" ASTRA-EA QUALIFICATION READINESS DOCTOR")
+        print(" ORBITA QUALIFICATION READINESS DOCTOR")
         print("============================================================")
         reqs = engine.audit_requirements()
         res = engine.audit_resource_budgets()
@@ -3713,7 +4032,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
 
     elif qual_cmd == "requirements":
         print("============================================================")
-        print(" ASTRA-EA SYSTEM REQUIREMENTS SPECIFICATION")
+        print(" ORBITA SYSTEM REQUIREMENTS SPECIFICATION")
         print("============================================================")
         reqs = engine.audit_requirements()
         for r in reqs["requirements"]:
@@ -3725,7 +4044,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
 
     elif qual_cmd == "traceability":
         print("============================================================")
-        print(" ASTRA-EA REQUIREMENTS TRACEABILITY AUDIT")
+        print(" ORBITA REQUIREMENTS TRACEABILITY AUDIT")
         print("============================================================")
         print("Requirement      Design Subsystem    Source Implementation       Evidence Status")
         print("--------------------------------------------------------------------------------")
@@ -3738,7 +4057,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
 
     elif qual_cmd == "fmea":
         print("============================================================")
-        print(" ASTRA-EA FAILURE MODE & EFFECTS ANALYSIS (FMEA)")
+        print(" ORBITA FAILURE MODE & EFFECTS ANALYSIS (FMEA)")
         print("============================================================")
         modes = [
             ("Optical Camera", "Sensor blackout", "VERIFICATION PAUSED", "LOW"),
@@ -3754,7 +4073,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
 
     elif qual_cmd == "resources":
         print("============================================================")
-        print(" ASTRA-EA RESOURCE BUDGET & MARGIN ALLOCATION")
+        print(" ORBITA RESOURCE BUDGET & MARGIN ALLOCATION")
         print("============================================================")
         res = engine.audit_resource_budgets()
         print(f"{'Resource':<22} {'Measured':<14} {'Allocated':<14} {'Margin':<14} {'Status'}")
@@ -3769,7 +4088,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
 
     elif qual_cmd == "list-tests":
         print("=" * 80)
-        print(" ASTRA-EA ENVIRONMENTAL QUALIFICATION TEST MATRIX (Phase 17)")
+        print(" ORBITA ENVIRONMENTAL QUALIFICATION TEST MATRIX (Phase 17)")
         print(" Standard: ECSS-E-ST-10-03C / MIL-STD-810H | Baseline: ASTRA-EA-QB-001")
         print("=" * 80)
         print(f"{'Test ID':<15} {'Domain':<24} {'Req':<16} {'Status':<10} {'Facility'}")
@@ -3792,7 +4111,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
                 return 1
 
         print("=" * 80)
-        print(" ASTRA-EA QUALIFICATION TEST PROCEDURE STATUS")
+        print(" ORBITA QUALIFICATION TEST PROCEDURE STATUS")
         print("=" * 80)
         for t in tests:
             print(f"Test ID:        {t['id']} ({t['domain']})")
@@ -3814,7 +4133,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
         frames = []
 
         print("=" * 70)
-        print(" ASTRA-EA SPACE QUALIFICATION TELEMETRY STREAM")
+        print(" ORBITA SPACE QUALIFICATION TELEMETRY STREAM")
         print(f" Capturing at {hz} Hz for {duration} seconds...")
         print("=" * 70)
         print(f"{'Timestamp':<22} {'Power':<10} {'CPU %':<8} {'RAM MB':<10} {'FPS':<8} {'Latency':<10}")
@@ -3855,7 +4174,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
             records = [r for r in records if r.get("status") == stat_filter.upper()]
 
         print("=" * 80)
-        print(" ASTRA-EA NONCONFORMANCE & ANOMALY REGISTRY (NCR)")
+        print(" ORBITA NONCONFORMANCE & ANOMALY REGISTRY (NCR)")
         print(" Standard: ECSS-Q-ST-10-09C")
         print("=" * 80)
         print(f"Total: {ncr_data['total_ncrs']} | Closed: {ncr_data['closed_ncrs']} | Waived: {ncr_data['waived_ncrs']} | Open Critical: {ncr_data['critical_open_ncrs']}")
@@ -3882,7 +4201,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
             engine.reports_dir.mkdir(parents=True, exist_ok=True)
         reports = engine.generate_qualification_reports()
         print("=" * 70)
-        print(" ASTRA-EA QUALIFICATION REPORT GENERATION")
+        print(" ORBITA QUALIFICATION REPORT GENERATION")
         print("=" * 70)
         for r in reports:
             print(f"[GENERATED] {r}")
@@ -3894,7 +4213,7 @@ def cmd_qualification(args: argparse.Namespace) -> int:
     elif qual_cmd == "reliability":
         duration = getattr(args, "duration", 10) or 10
         print("=" * 70)
-        print(" ASTRA-EA LONG-DURATION RELIABILITY & SOAK TEST (QUAL-REL-001)")
+        print(" ORBITA LONG-DURATION RELIABILITY & SOAK TEST (QUAL-REL-001)")
         print(f" Duration: {duration}s burn-in soak | Target: Memory drift < 1.0%")
         print("=" * 70)
         import psutil
@@ -3938,7 +4257,7 @@ def cmd_verification(args: argparse.Namespace) -> int:
 
     if verif_cmd == "list":
         print("=" * 80)
-        print(" ASTRA-EA FORMAL REQUIREMENTS & VERIFICATION STATUS (Phase 16)")
+        print(" ORBITA FORMAL REQUIREMENTS & VERIFICATION STATUS (Phase 16)")
         print("=" * 80)
         print(f"{'Requirement ID':<18} {'Category':<14} {'Level':<14} {'Status':<12} {'Title'}")
         print("-" * 80)
@@ -3995,7 +4314,7 @@ def cmd_verification(args: argparse.Namespace) -> int:
 
     elif verif_cmd == "coverage":
         print("=" * 60)
-        print(" ASTRA-EA FORMAL REQUIREMENT COVERAGE AUDIT")
+        print(" ORBITA FORMAL REQUIREMENT COVERAGE AUDIT")
         print("=" * 60)
         metrics = te.compute_metrics()
         print(f"Total Requirements:         {metrics['total_requirements']}")
@@ -4011,7 +4330,7 @@ def cmd_verification(args: argparse.Namespace) -> int:
 
     elif verif_cmd == "traceability":
         print("==============================================================================")
-        print(" ASTRA-EA MASTER REQUIREMENTS TRACEABILITY GRAPH")
+        print(" ORBITA MASTER REQUIREMENTS TRACEABILITY GRAPH")
         print("==============================================================================")
         print(te.render_ascii_table())
         print("==============================================================================")
@@ -4043,7 +4362,7 @@ def cmd_verification(args: argparse.Namespace) -> int:
 def cmd_system_test(args: argparse.Namespace) -> int:
     """Execute non-hardware validation test sequence and generate manual checklist (Section 86)."""
     print("=" * 70)
-    print(" ASTRA-EA COMPLETE SYSTEM VALIDATION RUNNER")
+    print(" ORBITA COMPLETE SYSTEM VALIDATION RUNNER")
     print("======================================================================")
 
     # 1. Environment Doctor
@@ -4098,8 +4417,8 @@ def cmd_system_test(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     """Construct CLI argument parser."""
     parser = argparse.ArgumentParser(
-        prog="astra",
-        description="ASTRA-EA — Autonomous Spacecraft Experiment Assurance & Assistance CLI",
+        prog="orbita",
+        description="ORBITA — Autonomous Spacecraft Experiment Assurance & Assistance CLI",
     )
     subparsers = parser.add_subparsers(dest="command", help="Available subcommands")
 
@@ -4304,6 +4623,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_ds_rep.add_argument("--dataset", default="datasets/raw/synthetic/demo_synthetic", help="Dataset directory or version ID")
     p_ds_rep.add_argument("--output", default=None, help="Output directory for reports")
     p_ds_rep.set_defaults(func=cmd_dataset_report)
+
+    p_ds_exp_db = ds_subs.add_parser("export-db", help="Export camera visuals from SQLite database into training dataset")
+    p_ds_exp_db.add_argument("--output", default="datasets/raw/from_db", help="Destination dataset directory")
+    p_ds_exp_db.add_argument("--dataset-id", default="ORBITA_DB_DATASET_V1", help="Dataset identifier")
+    p_ds_exp_db.add_argument("--run", default=None, help="Filter by specific run ID")
+    p_ds_exp_db.set_defaults(func=cmd_dataset_export_db)
 
     # model (Phase 7 Model Development & Registry)
     p_mod = subparsers.add_parser("model", help="Model development, training, evaluation, and registry")
@@ -4651,6 +4976,29 @@ def build_parser() -> argparse.ArgumentParser:
     p_v_dash = verif_subs.add_parser("dashboard", help="Launch interactive Mission Assurance V&V dashboard")
     p_v_dash.add_argument("--open", action="store_true", help="Open browser automatically")
     p_v_dash.set_defaults(func=cmd_verification)
+
+    # video (Upload and Movement/Step Accuracy Verification)
+    p_vid = subparsers.add_parser("video", help="Video upload, movement tracking, and step accuracy verification")
+    p_vid.add_argument("--video", help="Path to video file (.mp4, .avi, etc.)")
+    p_vid.add_argument("--procedure", default="configs/experiments/demo.yaml", help="Path to procedure YAML")
+    p_vid.add_argument("--camera-profile", default="view_left", help="Camera viewpoint profile")
+    p_vid.add_argument("--session-id", default=None, help="Mission session identifier")
+    p_vid.add_argument("--max-frames", type=int, default=None, help="Max frames to process")
+    vid_subs = p_vid.add_subparsers(dest="video_cmd")
+    p_vid_ver = vid_subs.add_parser("verify", help="Verify astronaut movements and procedure accuracy on video file")
+    p_vid_ver.add_argument("--video", required=True, help="Path to video file (.mp4, .avi, etc.)")
+    p_vid_ver.add_argument("--procedure", default="configs/experiments/demo.yaml", help="Path to procedure YAML")
+    p_vid_ver.add_argument("--camera-profile", default="view_left", help="Camera viewpoint profile")
+    p_vid_ver.add_argument("--session-id", default=None, help="Mission session identifier")
+    p_vid_ver.add_argument("--max-frames", type=int, default=None, help="Max frames to process")
+    p_vid_ver.set_defaults(func=cmd_video_verify)
+
+    p_vid_list = vid_subs.add_parser("list", help="List all video recordings and segments in database")
+    p_vid_list.add_argument("--limit", type=int, default=50, help="Max records to return")
+    p_vid_list.add_argument("--db", default=None, help="Path to SQLite database")
+    p_vid_list.set_defaults(func=cmd_video_list)
+
+    p_vid.set_defaults(func=cmd_video_verify)
 
     # system-test (Complete System Validation Runner - Section 86)
     p_systest = subparsers.add_parser("system-test", help="Execute complete system validation test suite and manual checklist")

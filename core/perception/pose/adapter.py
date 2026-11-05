@@ -1,4 +1,4 @@
-"""Lightweight pose estimator adapter for ASTRA-EA.
+"""Lightweight pose estimator adapter for Pramman.
 
 Extracts body landmarks with microgravity orientation-invariance, avoiding naive assumptions
 of an Earth-aligned gravity reference.

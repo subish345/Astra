@@ -1,4 +1,4 @@
-"""Comprehensive Multi-Dimensional Profiler for ASTRA-EA.
+"""Comprehensive Multi-Dimensional Profiler for Pramman.
 
 Tracks per-stage latency, end-to-end decision latency (capture -> assurance),
 throughput (camera FPS, compute FPS, effective E2E FPS), CPU/GPU resource utilization,
@@ -259,7 +259,7 @@ class PipelineProfiler:
         s = report["stages"]
 
         print("=" * 80)
-        print(" ASTRA-EA SYSTEM BENCHMARK & PERFORMANCE PROFILE")
+        print(" Pramman SYSTEM BENCHMARK & PERFORMANCE PROFILE")
         print("=" * 80)
         print(f"Platform:       {p['os_name']} {p['os_release']} ({p['architecture']}) | Python {p['python_version']}")
         print(f"Compute Target: {p['active_backend'].upper()} ({p['gpu_name'] if p['gpu_available'] else p['cpu_model']})")

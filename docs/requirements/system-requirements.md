@@ -1,7 +1,7 @@
-# ASTRA-EA System Requirements Specification
+# Pramman System Requirements Specification
 
 ## 1. Introduction
-This document defines the functional and non-functional requirements for the **Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)** ground demonstrator, in fulfillment of problem statement **SIH26174**.
+This document defines the functional and non-functional requirements for the **Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)** ground demonstrator, in fulfillment of problem statement **SIH26174**.
 
 ---
 

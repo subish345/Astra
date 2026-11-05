@@ -1,4 +1,4 @@
-# ASTRA-EA: Long-Duration Reliability Qualification Test Plan
+# Pramman: Long-Duration Reliability Qualification Test Plan
 
 **Document ID:** `ASTRA-QTP-REL-001`  
 **Test Identifier:** `QUAL-REL-001`  
@@ -11,7 +11,7 @@
 
 ## 1. Objective
 
-This qualification test evaluates the continuous long-duration stability, memory integrity, and timing determinism of ASTRA-EA under an uninterrupted 168-hour (1 week) simulated spacecraft mission timeline.
+This qualification test evaluates the continuous long-duration stability, memory integrity, and timing determinism of Pramman under an uninterrupted 168-hour (1 week) simulated spacecraft mission timeline.
 
 Specific goals:
 1. Verify continuous error-free operation without daemon restarts, memory leaks, or file descriptor leaks.
@@ -46,15 +46,15 @@ Specific goals:
 
 ## 3. Reliability Execution Command
 
-ASTRA-EA supports automated execution of controlled reliability sweeps via the unified CLI:
+Pramman supports automated execution of controlled reliability sweeps via the unified CLI:
 
 ```bash
-astra qualification reliability --duration <seconds>
+pramman qualification reliability --duration <seconds>
 ```
 
 Example for 1-hour verification sweep:
 ```bash
-astra qualification reliability --duration 3600
+pramman qualification reliability --duration 3600
 ```
 
 ---

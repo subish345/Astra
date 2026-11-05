@@ -1,6 +1,6 @@
-# ASTRA-EA: Master Final Validation Report
+# Pramman: Master Final Validation Report
 
-**System:** Autonomous Spacecraft Experiment Assurance & Assistance (ASTRA-EA)  
+**System:** Autonomous Spacecraft Experiment Assurance & Assistance (Pramman)  
 **Track:** SIH26174 — AI Human Activity Recognition for On-board BAS Experiments  
 **Document Classification:** Final Phase 12 Product Acceptance & Engineering Validation Report  
 **Date:** 2026-09-13  
@@ -12,7 +12,7 @@
 
 | Attribute | Official Specification |
 | :--- | :--- |
-| **Product Name** | ASTRA-EA (Autonomous Spacecraft Experiment Assurance & Assistance) |
+| **Product Name** | Pramman (Autonomous Spacecraft Experiment Assurance & Assistance) |
 | **Product Version** | `1.0.0-RC1` |
 | **Git Commit Hash** | `2f5d872df02013a39b2ef11f1b7c4dc7fb972195` |
 | **Release State** | Release Candidate 1 (Competition Feature Freeze) |
@@ -29,7 +29,7 @@
 
 All 12 core requirements from SIH26174 have been formally evaluated against empirical test suites, simulations, and live runs.
 
-| SIH Requirement | ASTRA-EA Subsystem | Verification Method | Empirical Evidence | Final Status |
+| SIH Requirement | Pramman Subsystem | Verification Method | Empirical Evidence | Final Status |
 | :--- | :--- | :--- | :--- | :---: |
 | **Object Detection** | Perception Engine | Unit & Synthetic Test | `tests/perception/test_detector.py` (99.1% mAP@0.5) | **PASS** |
 | **Human Pose Estimation**| Perception Engine | MediaPipe Integration | `tests/perception/test_pose.py` (17 keypoint tracking) | **PASS** |
@@ -48,7 +48,7 @@ All 12 core requirements from SIH26174 have been formally evaluated against empi
 
 ## 3. Final Architecture Summary
 
-ASTRA-EA operates as an autonomous, multi-tier edge pipeline structured into five synchronous processing stages and three decoupled background subsystems:
+Pramman operates as an autonomous, multi-tier edge pipeline structured into five synchronous processing stages and three decoupled background subsystems:
 
 ```
 [Optical Camera] -> [Ingestion Engine] -> [Perception: Detector + Pose]
@@ -178,7 +178,7 @@ $$\text{DEVIATION Anomaly} \longrightarrow \text{Step Expectation} \longrightarr
 ## 11. Final Product Statements & Freeze Declaration
 
 ### Formal Product Definition
-> **ASTRA-EA is an offline, evidence-driven, vision-based experiment assurance and assistance platform that observes astronaut-object interactions, recognizes experiment activities, maps them to configured procedure steps, validates sequence compliance, detects procedural deviations, guides recovery, and maintains a traceable local mission record.**
+> **Pramman is an offline, evidence-driven, vision-based experiment assurance and assistance platform that observes astronaut-object interactions, recognizes experiment activities, maps them to configured procedure steps, validates sequence compliance, detects procedural deviations, guides recovery, and maintains a traceable local mission record.**
 
 ### Final Judge Summary
 ```
@@ -199,4 +199,4 @@ THE EVIDENCE RECORD EXPLAINS WHY.
 - **Status:** **COMPETITION FEATURE FREEZE ACTIVE**
 - **Git Commit:** `2f5d872df02013a39b2ef11f1b7c4dc7fb972195`
 - **Branch:** `main` (Tag: `v1.0.0-RC1`)
-- **Approved by:** ASTRA-EA Systems Engineering & Quality Assurance
+- **Approved by:** Pramman Systems Engineering & Quality Assurance

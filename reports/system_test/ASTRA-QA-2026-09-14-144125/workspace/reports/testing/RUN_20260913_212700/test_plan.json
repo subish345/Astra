@@ -1,0 +1,31 @@
+{
+  "test_campaign_id": "RUN_20260913_212700",
+  "created_at": "2026-09-13T21:27:00Z",
+  "product": "ASTRA-EA",
+  "baseline_release": "1.0.0-RC2",
+  "total_tests": 22,
+  "test_stages": [
+    {"id": "TEST_00", "name": "Repository Inspection", "category": "INSPECTION"},
+    {"id": "TEST_01", "name": "Environment Doctor", "category": "ENVIRONMENT"},
+    {"id": "TEST_02", "name": "Automated Regression", "category": "AUTOMATED"},
+    {"id": "TEST_03", "name": "Camera Hardware", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_04", "name": "Live Perception", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_05", "name": "Live Interaction", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_06", "name": "Live Activity Recognition", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_07", "name": "Live Procedure", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_08", "name": "Live Assurance + Deviation", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_09", "name": "Live Recovery", "category": "LIVE_HARDWARE"},
+    {"id": "TEST_10", "name": "Mission Console", "category": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_11", "name": "Audio UX", "category": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_12", "name": "Recording + Evidence", "category": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_13", "name": "Ground Monitor", "category": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_14", "name": "Network Failure", "category": "FAULT_INJECTION"},
+    {"id": "TEST_15", "name": "Camera Failure", "category": "FAULT_INJECTION"},
+    {"id": "TEST_16", "name": "Uncertainty / Occlusion", "category": "FAULT_INJECTION"},
+    {"id": "TEST_17", "name": "Viewpoint Robustness", "category": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_18", "name": "Storage / Long Run Soak", "category": "PERFORMANCE"},
+    {"id": "TEST_19", "name": "Full Golden Mission", "category": "SYSTEM_OPERATIONAL"},
+    {"id": "TEST_20", "name": "Final Automated Regression", "category": "AUTOMATED"},
+    {"id": "TEST_21", "name": "Final QA Report & Scorecard", "category": "REPORTING"}
+  ]
+}

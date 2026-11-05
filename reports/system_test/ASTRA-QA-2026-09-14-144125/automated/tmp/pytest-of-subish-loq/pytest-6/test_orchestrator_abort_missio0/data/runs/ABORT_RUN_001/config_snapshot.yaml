@@ -1,0 +1,93 @@
+active_experiment:
+  path: configs/experiments/demo.yaml
+activity:
+  confidence_weight_contact: 0.25
+  confidence_weight_hand: 0.2
+  confidence_weight_motion: 0.2
+  confidence_weight_object: 0.2
+  confidence_weight_temporal: 0.15
+  confirmation_frames: 4
+  hysteresis_frames: 3
+  min_activity_duration_seconds: 0.2
+  sampling_rate_hz: 30.0
+  temporal_window_seconds: 5.0
+  uncertainty_timeout_seconds: 2.0
+camera:
+  config_path: configs/cameras/default.yaml
+database:
+  enable_wal_mode: true
+  path: storage/database/astra.db
+  timeout_seconds: 10.0
+events:
+  buffer_capacity: 500
+  enabled: true
+  heartbeat_interval_seconds: 2.0
+  host: 127.0.0.1
+  port: 8765
+ground_monitor:
+  enabled: true
+  events_url: http://127.0.0.1:8765/events
+  reconnect_interval_seconds: 2.0
+  stream_url: http://127.0.0.1:8554/video
+heartbeat:
+  interval_seconds: 2.0
+  timeout_seconds: 6.0
+interaction:
+  approach_distance_threshold: 0.35
+  approach_speed_threshold: -0.03
+  contact_confirmation_frames: 3
+  contact_distance_threshold: 0.08
+  contact_iou_threshold: 0.05
+  coupled_motion_correlation_min: 0.7
+  coupled_motion_speed_min: 10.0
+  max_temporary_lost_frames: 15
+  near_distance_threshold: 0.18
+  release_distance_growth_threshold: 0.04
+perception:
+  confidence_threshold: 0.45
+  detection_interval: 1
+  detector_backend: color_spatial
+  device: auto
+  hand_interval: 1
+  iou_threshold: 0.25
+  max_lost_frames: 20
+  pose_interval: 1
+  quality_interval: 2
+  tracking_interval: 1
+  yolo_model_path: models/checkpoints/detector.onnx
+storage:
+  base_dir: storage
+  evidence_dir: storage/evidence
+  max_storage_gb: 50.0
+  reports_dir: storage/reports
+  video_dir: storage/video
+streaming:
+  enabled: true
+  fps: 15
+  height: 720
+  host: 127.0.0.1
+  jpeg_quality: 75
+  port: 8554
+  protocol: mjpeg_http
+  quality: medium
+  width: 1280
+system:
+  device_name: ASTRA-EA Ground Demonstrator
+  environment: development
+  log_file_path: storage/reports/astra.log
+  log_level: INFO
+  log_to_file: true
+  offline_mode: true
+thresholds:
+  min_detection_confidence: 0.65
+  min_evidence_score: 0.75
+  min_hand_confidence: 0.6
+  min_pose_confidence: 0.6
+  temporal_window_seconds: 10.0
+  uncertainty_timeout_seconds: 15.0
+voice:
+  cooldown_seconds: 3.5
+  enabled: true
+  engine: pyttsx3
+  rate: 165
+  volume: 0.9

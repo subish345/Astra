@@ -1,4 +1,4 @@
-# ASTRA-EA: Spacecraft Payload Resource Budget & Allocation
+# Pramman: Spacecraft Payload Resource Budget & Allocation
 
 **Classification:** Payload Systems Engineering & Resource Margin Allocation  
 **Document ID:** `ASTRA-RES-001`  
@@ -45,7 +45,7 @@ Based on empirical write measurements from Phase 10–14 endurance soak tests:
 
 ## 3. Communication Bandwidth Budget
 
-ASTRA-EA enforces an **offline-first telemetry hierarchy** where scientific assurance continues regardless of bandwidth throttles:
+Pramman enforces an **offline-first telemetry hierarchy** where scientific assurance continues regardless of bandwidth throttles:
 
 | Stream Channel | Protocol | Packet Rate | Bandwidth Required | Criticality Tier |
 | :--- | :--- | :---: | :---: | :--- |

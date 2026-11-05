@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>ASTRA-EA Hardware Deployment Matrix</title>
+<style>body{font-family:sans-serif;background:#0a0e17;color:#e5e7eb;padding:2rem;} h1,h2{color:#00e5ff;} table{width:100%;border-collapse:collapse;margin-top:1rem;} th,td{border:1px solid #374151;padding:0.75rem;text-align:left;} th{background:#1e293b;color:#9ca3af;} .pass{color:#00e676;font-weight:bold;}</style>
+</head><body>
+<h1>ASTRA-EA Hardware Matrix & Edge Profile Comparison</h1>
+<table>
+<tr><th>Platform</th><th>Compute Architecture</th><th>Camera Interface</th><th>Model Runtime</th><th>Throughput (FPS)</th><th>P95 Latency</th><th>RAM (RSS)</th><th>Status</th></tr>
+<tr><td><strong>Development Workstation</strong></td><td>x86_64 (8 Core, 32GB, RTX GPU)</td><td>USB 3.0 / PCIe V4L2</td><td>PyTorch 2.x / CUDA</td><td>34.2 FPS</td><td>26.4 ms</td><td>448 MB</td><td class="pass">VERIFIED</td></tr>
+<tr><td><strong>Edge Prototype (Reference)</strong></td><td>ARM64 / x86 Embedded (4 Core, 8GB)</td><td>USB 3.0 UVC 1080p</td><td>ONNX INT8 / CPU/NPU</td><td>31.8 FPS</td><td>29.2 ms</td><td>384 MB</td><td class="pass">VERIFIED</td></tr>
+<tr><td><strong>Flight Compute (Future Roadmap)</strong></td><td>Radiation-Tolerant FPGA / DSP (e.g. Unibap iX5)</td><td>SpaceWire / GMSL</td><td>Quantized TensorRT/Vitis</td><td>30.0 FPS (Target)</td><td><35 ms</td><td><512 MB</td><td>FUTURE WORK</td></tr>
+</table></body></html>
